@@ -1,6 +1,6 @@
+<?php
 /* Fichier connexion Php/MySQL */
 
-<?php
   $serveur = "ADRESSE SERVER";
   $nom_base = "NOM BDD";
   $login = "LOGIN";
