@@ -10,4 +10,5 @@
   mysql_select_db ($nom_base) or die ('Connexion base impossible ou base inexistante'.mysql_error());
 
 /* Fichier a include pour chaque connexion a la BDD */
+/* COMPLETER CE FICHIER AVEC LES INFOS MYSQL */
 ?>
