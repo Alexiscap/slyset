@@ -1,4 +1,4 @@
 <?php
-  echo 'test';
-  echo 'ajout au master';
+  include 'login.php';
+  echo $log;
 ?>
