@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 boo test Camille
+=======
+Un edit dans le master
+>>>>>>> d987d8e7217da97f731b67c8d47d7a34408183f7
