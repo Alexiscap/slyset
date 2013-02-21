@@ -1,8 +1,0 @@
-<<<<<<< HEAD
-boo test Camille
-=======
-Un edit dans le master
-
-Entrainez vous a jouer avec les branches et a integrer les modif dans le master après (et enfin vous m'expliquerez
-comment on fait parceque je galere x) )
->>>>>>> d987d8e7217da97f731b67c8d47d7a34408183f7
