@@ -22,7 +22,7 @@
   $requete = "SELECT login, mdp FROM ".$table." WHERE login=".$login;
   $resultat = mysql_query($requete) or die('Erreur SQL !'.mysql_error());
   $data = mysql_fetch_array($resultat);
-  if ($login==$data['login'] && $mdp==$data['mdp')
+  if ($login==$data['login'] && $mdp==$data['mdp'])
   {
     $log=true;
   }
