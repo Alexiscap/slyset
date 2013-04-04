@@ -1,0 +1,84 @@
+aside{ width:170px; height:100%; font-family:"Trebuchet MS"; color:white; background-color:#f9f9f9; float:left; }
+
+	aside .row{ width:168px; height:35px; border:1px solid #d9dadb; border-top:none; }
+	aside .row.head_menu{ background:url("../images/sidebar-left/sprite_bkg_menu-compte.png") no-repeat 0 0; }
+	aside .row.head_menu:hover{ background-position:0 -36px; }
+		aside .row a{ display:inline-block; width:100%; height:100%; text-decoration:none; line-height:35px; font-size:12px; color:#878d95; float:left; }
+		aside .row a:hover{ color:#2ab395; }
+		aside .row.head_menu a{ font-size:14px; color:#ffffff; }
+
+/*
+* SIDEBAR LEFT - FIRST BLOCK
+
+*/
+	aside #first-block{  margin:0 auto; width:170px; height:138px; font-size:16px; }
+		aside a{ display:block; width:100%; height:100%; text-decoration:none; color:#3f3f3f; }
+
+		aside #my-profil{ margin:0 auto; width:168px; height:77px; border:1px solid #d9dadb; border-top:none; background:url("../images/sidebar-left/bkg_first-block.jpg") no-repeat 0 0; }
+			aside #my-profil img{ margin:20px 0 20px 10px; display:block; width:43px; height:43px; float:left; }
+			aside #my-profil h3{ margin:27px 0 0 12px; display:inline-block; font-size:16px; font-weight:bold; float:left; }
+			aside #my-profil span{ margin:2px 0 0 12px; display:inline-block; font-size:12px; font-weight:normal; color:#858585; float:left; }
+
+		aside #listen-playlist{ width:168px; height:61px; border:1px solid #d9dadb; border-top:none; background:url("../images/sidebar-left/bkg_listen-playlist.jpg") no-repeat 0 0; }
+			aside #listen-playlist img{ margin:10px 5px; display:inline-block; width:31px; height:31px; float:left; clear:both; }
+			aside #listen-playlist span{ margin:0; display:inline-block; line-height:52px; font-size:12px; font-weight:bold; color:#3f3f3f; float:left; }
+
+/*
+* SIDEBAR LEFT - MENU MY PAGE
+*/
+	#menu-account{ width:170px; height:100%; margin:0 auto; font-size:16px; }
+		#menu-account .row .menu-text{ display:inline-block; height:100%; line-height:36px; float:left; }
+		#menu-account .row.head_menu .icon{ margin:8px 6px; width:19px; height:22px; background:url("../images/sidebar-left/sprite_categories.png") no-repeat 0 0; float:left; }
+		#menu-account .row .icon{ margin:1px 6px 0 6px; display:inline-block; width:22px; height:35px; background:url("../images/sidebar-left/sprite_menu-compte.png") no-repeat 0 0; float:left; }
+		
+		#menu-account .row.row-1 .icon{ background-position:0 0; }
+		#menu-account .row.row-1:hover .icon{ background-position:-22px 0; }
+
+		#menu-account .row.row-2 .icon{ background-position:0 -35px; }
+		#menu-account .row.row-2:hover .icon{ background-position:-22px -35px; }
+
+		#menu-account .row.row-3 .icon{ background-position:0 -70px; }
+		#menu-account .row.row-3:hover .icon{ background-position:-22px -70px; }
+
+		#menu-account .row.row-4 .icon{ background-position:0 -105px; }
+		#menu-account .row.row-4:hover .icon{ background-position:-22px -105px; }
+
+		#menu-account .row.row-5 .icon{ background-position:0 -140px; }
+		#menu-account .row.row-5:hover .icon{ background-position:-22px -140px; }
+
+		#menu-account .row.row-6 .icon{ background-position:0 -175px; }
+		#menu-account .row.row-6:hover .icon{ background-position:-22px -175px; }
+/*
+* SIDEBAR LEFT - MENU MY PAGE
+*/
+	#menu-my-page{ width:170px; height:100%; margin:0 auto; font-size:16px; }
+		#menu-my-page .row .menu-text{ display:inline-block; height:100%; line-height:36px; float:left; }
+		#menu-my-page .row.head_menu .icon{ margin:8px 6px; width:19px; height:22px; background:url("../images/sidebar-left/sprite_categories.png") no-repeat 0 -22px; float:left; }
+		#menu-my-page .row .icon{ margin:1px 6px 0 6px; display:inline-block; width:22px; height:35px; background:url("../images/sidebar-left/sprite_menu-my-page.png") no-repeat 0 0; float:left; }
+		
+		#menu-my-page .row.row-8 .icon{ background-position:0 0; }
+		#menu-my-page .row.row-8:hover .icon{ background-position:-22px 0; }
+
+		#menu-my-page .row.row-9 .icon{ background-position:0 -35px; }
+		#menu-my-page .row.row-9:hover .icon{ background-position:-22px -35px; }
+
+		#menu-my-page .row.row-10 .icon{ background-position:0 -70px; }
+		#menu-my-page .row.row-10:hover .icon{ background-position:-22px -70px; }
+
+		#menu-my-page .row.row-11 .icon{ background-position:0 -105px; }
+		#menu-my-page .row.row-11:hover .icon{ background-position:-22px -105px; }
+
+		#menu-my-page .row.row-12 .icon{ background-position:0 -140px; }
+		#menu-my-page .row.row-12:hover .icon{ background-position:-22px -140px; }
+
+		#menu-my-page .row.row-13 .icon{ background-position:0 -175px; }
+		#menu-my-page .row.row-13:hover .icon{ background-position:-22px -175px; }
+
+		#menu-my-page .row.row-14 .icon{ background-position:0 -210px; }
+		#menu-my-page .row.row-14:hover .icon{ background-position:-22px -210px; }
+
+		#menu-my-page .row.row-15 .icon{ background-position:0 -245px; }
+		#menu-my-page .row.row-15:hover .icon{ background-position:-22px -245px; }
+
+		#menu-my-page .row.row-16 .icon{ background-position:0 -280px; }
+		#menu-my-page .row.row-16:hover .icon{ background-position:-22px -280px; }
