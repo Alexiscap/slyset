@@ -1,4 +1,5 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /*
 | -------------------------------------------------------------------
 | DATABASE CONNECTIVITY SETTINGS
@@ -48,10 +49,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'mysql51-50.perso';
-$db['default']['username'] = 'alexiscamydb';
-$db['default']['password'] = 'h4qNUNA0';
-$db['default']['database'] = 'alexiscamydb';
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
+$db['default']['database'] = 'slyset';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = 'sl_';
 $db['default']['pconnect'] = TRUE;
@@ -63,7 +64,6 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
-
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
