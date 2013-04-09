@@ -49,9 +49,13 @@ footer{ background-color:#3f3f3f; padding:20px 0px 0 0px; height:190px; position
 #footer #reseaux #liens_rsx a span{ text-indent:-50000px; display:inline-block; }
 #footer #reseaux #liens_rsx a{ float:left; display:block; height:50px; width:37px; background:url("../images/footer/reseaux.png") no-repeat; margin:0 10px; border:0; padding:0 5px; }
 
-#footer #reseaux #liens_rsx #twitter{ background-position:-18px 0px; }
-#footer #reseaux #liens_rsx #fb{ background-position:-101px 0px; }
-#footer #reseaux #liens_rsx #google{ background-position:-185px 0px; }
+#footer #reseaux #liens_rsx #twitter{ background-position:-18px -5px; }
+#footer #reseaux #liens_rsx #fb{ background-position:-101px -5px; }
+#footer #reseaux #liens_rsx #google{ background-position:-185px -5px; }
+
+#footer #reseaux #liens_rsx #twitter:hover{ background-position:-18px -60px; }
+#footer #reseaux #liens_rsx #fb:hover{ background-position:-101px -60px; }
+#footer #reseaux #liens_rsx #google:hover{ background-position:-185px -60px; }
 
 #footer #reseaux p{ text-align:left; margin-top:20px; font-size:13px; margin-bottom:5px }
 #footer #reseaux form{ text-align:left; margin:0; font-size:15px; }

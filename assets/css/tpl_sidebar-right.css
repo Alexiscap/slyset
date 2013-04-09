@@ -1,0 +1,51 @@
+#right{ width:200px; height:100%; font-family:"Trebuchet MS"; color:white; background-color:#f9f9f9; float:right; margin:-202px 10px 0 0;/*-345px*/ position:relative;}
+
+/* AVATAR */
+#right #avatar #photo {width:200px;height:195px;} 
+#right #avatar #description {height:118px;background:#e6e6e6;margin:0 0 0 3px;width:194px;} 
+#right #avatar #description #texte_description {color:#3f3f3f;width:174px;margin:0;font-family:'Trebuchet MS';font-size:12px;padding:10px 10px;}
+#right #avatar #description #style {font-weight:bold;font-style:italic;color:#3f3f3f;margin:0;font-family:'Trebuchet MS';font-size:12px;padding:10px 10px;}
+#right #avatar #description #instruments {font-style:italic;color:#3f3f3f;margin:0;font-family:'Trebuchet MS';font-size:12px;padding:0 10px;}
+/* FIN AVATAR*/
+
+/* TOP TITRES */
+#right #top_titre{margin:30px 0 0 0;}
+#right #top_titre img{float:left;}
+#right #top_titre p {float:left;color:#3f3f3f;margin:0 0 10px 10px;font-size:20px;}
+#right #top_titre p span{color:#31a58c;}
+#right #top_titre #classement{clear:both;background:#e6e6e6;width:200px;height:235px;}
+#right #top_titre #classement #num_impair{background:#f6f6f6;font-size:14px;width:196px;height:38px;border:2px solid #dadada;}
+#right #top_titre #classement #num_impair p{font-size:14px;padding:10px 0;margin:0;}
+#right #top_titre #classement #num_impair .position{width:23px;border-right:2px solid #e6e6e6;height:31px;font-size:24px;padding:7px 0 0 0;text-align: center;}
+#right #top_titre #classement #num_impair img{width:18px;height:18px;margin:9px 7px;}
+#right #top_titre #classement #num_pair{background:#e6e6e6;font-size:14px;width:196px;height:38px;border:1px solid #dadada;}
+#right #top_titre #classement #num_pair p{font-size:14px;padding:10px 0;margin:0;}
+#right #top_titre #classement #num_pair .position{width:23px;border-right:2px solid #dadada;height:31px;font-size:24px;padding:7px 0 0 0;text-align: center;}
+#right #top_titre #classement #num_pair img{width:18px;height:18px;margin:9px 7px;}
+#right #top_titre #classement a{font-size:12px;margin:8px 0 0 8px;height:auto;width:150px;}
+#right #top_titre #classement .play{margin:0;}
+/* FIN TOP TITRES */
+
+/* LAST PHOTOS */
+#right #last_photo {margin:30px 0 0 0;}
+#right #last_photo img{float:left;}
+#right #last_photo p {float:left;color:#3f3f3f;margin:0 0 10px 10px;font-size:20px;}
+#right #last_photo p span{color:#31a58c;}
+#right #last_photo #encart_photos{width:200px;height:200px;background:#e6e6e6;clear:both;}
+#right #last_photo #encart_photos #miniatures{width:193px;margin:7px auto 0;clear:both;height:65px;}
+#right #last_photo #encart_photos img {margin:6px 4px 0;}
+#right #last_photo #encart_photos #thelast {margin:0 2px;width:188px;height:106px;}
+#right #last_photo #encart_photos a{font-size:12px;margin:10px 0 0 8px;height:auto;width:150px;}
+/* FIN LAST PHOTOS */
+
+/*AILLEUR RESEAUX*/
+#right #reseaux_ailleur {margin:30px 0 0 0;width:200px;}
+#right #reseaux_ailleur p {float:left;color:#3f3f3f;margin:0 0 10px 0;font-size:20px;}
+#right #reseaux_ailleur p span{color:#31a58c;}
+#reseaux_ailleur a{float:left;width:90px;height:30px;background:url('../images/sidebar-right/sprite_ailleurs.png') no-repeat;padding:6px 0 0 0;}
+#reseaux_ailleur a span{margin:0 35px;font-size:12px;}
+#reseaux_ailleur .twitter{background-position:-36px -9px;}
+#reseaux_ailleur .fb{background-position:-36px -45px;}
+#reseaux_ailleur .google{background-position:-36px -81px;}
+#reseaux_ailleur .site{background-position:-36px -117px;}
+/*FIN AILLEUR RESEAUX*/

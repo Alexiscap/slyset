@@ -7,6 +7,10 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 #breadcrumbs li a{ text-decoration:none; font-size:10px; color:#858585; }
 #breadcrumbs li a:hover{ text-decoration:underline; color:#2ab395; }
 #breadcrumbs li:after{ margin:0px 6px; width:9px; height:23px; display:inline-block; content:''; vertical-align:middle; background:url("../images/common/breadcrumbs_arrow.png") no-repeat; }
+.bt_noir{height:30px;float:left;margin:5px 0 0 8px;}
+.bt_noir .bt_left{width:10px;height:30px;float:left;background:url("../images/common/bt_noir.png") no-repeat 0px -10px;}
+.bt_noir .bt_middle{height:16px;float:left;background:url("../images/common/bt_noir.png") no-repeat 0px -60px;font-size:12px;color:white;padding:7px 0;}
+.bt_noir .bt_right{width:9px;height:30px;float:left;background:url("../images/common/bt_noir.png") no-repeat -391px -107px;}
 
 
 
@@ -20,13 +24,13 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 #infos-cover a .button_center{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_suivre.png") repeat-x 0 -30px; float:left; }
 #infos-cover a .button_right{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_suivre.png") no-repeat -77px 0; float:left; }
 
-#stats-cover{ padding:0 21px; width:176px; height:33px; -webkit-border-bottom-right-radius:10px; -webkit-border-radius-bottom-left-radius:10px; -moz-border-radius-bottomright:10px; -moz-border-radius-bottomleft:10px; border-bottom-right-radius:10px; border-bottom-left-radius:10px; background:#e6e6e6; }
+#stats-cover{ padding:0 21px; width:176px; height:33px; -webkit-border-bottom-right-radius:10px; -webkit-border-radius-bottom-left-radius:10px; -moz-border-radius-bottomright:10px; -moz-border-radius-bottomleft:10px; border-bottom-right-radius:10px; border-bottom-left-radius:10px; background:#e6e6e6;float:left;}
 #stats-cover .stats_cover_block:first-child{ margin:4px 0 0 0px; }
 #stats-cover .stats_cover_block{ margin:4px 0 0 18px; height:29px; float:left; }
 #stats-cover .stats_number{ margin:1px 0 0 0; font-weight:bold; font-size:14px; color:#2ab395; float:left; }
 #stats-cover .stats_title{ font-size:10px; font-weight:bold; text-transform:uppercase; color:#3f3f3f; float:left; clear:both; }
 
-.actus_post{ margin:8px 0 0 0; width:540px; height:134px; background:#e6e6e6; }
+.actus_post{ margin:12px 0 0 0; width:540px; height:134px; background:#e6e6e6; float:left; clear:both; }
 .actus_post_links{ margin:12px 0 0 7px; float:left; }
 .actus_post_links a{ margin:0 0 0 10px; padding:0 4px; height:20px; line-height:20px; display:inline-block; font-size:13px; font-weight:bold; text-decoration:none; color:#737578; background:transparent; }
 .actus_post_links a:hover, .actus_post_links a:active{ height:20px; display:inline-block; text-decoration:none; background:#cccccc; }
@@ -34,7 +38,8 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .actus_post input[type="submit"]{ margin:0 16px 0 0; width:62px; height:32px; border:none; font-size:11px; color:#ffffff; background:url("../images/common/btn_validate.png") no-repeat transparent; float:right; }
 .actus_post input[type="submit"]:hover{ cursor:pointer; }
 
-.content{ margin:10px 0 0 0; width:540px; background:#e6e6e6; float:left; }
+.content{ margin:10px 0 0 0; width:540px; background:#e6e6e6; float:left; clear:both; }
+.empty{ width:100%; height:12px; background:#f9f9f9; float:left; clear:both; }
 .artist_post{ margin:8px 20px; width:500px; height:auto; position:relative; float:left; }
 .artist_post .top{ width:100%; height:16px; }
 .artist_post .top img{ display:block; position:absolute; right:2px; top:17px; width:14px; height:14px; float:right; }
@@ -84,7 +89,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 
 /* --------- MUSICIEN - CONCERTS  --------- */
 
-#col_mil{background:#e6e6e6; margin:5px 0 10px 0;float:left;padding: 0 0 30px 0;width:541px;clear:both;}
+#col_mil{background:#e6e6e6; margin:10px 0 10px 0;float:left;padding: 0;width:541px; clear:both;}
 #col_mil #btn_tmp{width:191px; margin:0 20px; padding:20px 0;}
 #col_mil #btn_tmp a{float:left;}
 #col_mil h2 {font-size:20px; margin:25px 20px;clear:both;}
@@ -109,7 +114,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 #col_mil .participer .button_center{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_participer.png") repeat-x 0 -31px; float:left; }
 #col_mil .participer .button_right{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_participer.png") no-repeat -77px -1px; float:left; }
 
-.bt_ajout_concert{width:125px;height:33px;float:right;margin:5px 230px 0 0;}
+.bt_ajout_concert{width:125px;height:30px;float:left;margin:3px 0 0 198px;}
 #col_mil .info_sup {width: 539px;height: 205px;margin: 10px 0 0 0;clear: both;background:#d3d3d3;padding:5px 0 0 0;border:1px solid #c3c3c3;}
 #col_mil .info_sup .informations{width: 287px;float:left;}
 #col_mil .info_sup .nom_date {font-size:16px;font-family:'Trebuchet MS';margin:5px 0 0 20px;color:#4e4e4e;}
@@ -140,68 +145,19 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 
 /* --------- FIN  DE MUSICIEN - CONCERTS  --------- */
 
+/* --------- MUSICIEN PHOTO ET VIDEO --------- */
+#col_mil .photo {background:white;margin:10px;float:left;}
+#col_mil .photo img {margin:10px 10px 0 10px;}
+#col_mil .photo p{margin:0 10px 5px;color:#4d4d4d;font-size:12px;font-weight:bold;}
+#col_mil .photo .bord_photo{background:#f2f0f0;margin:0;height:25px;}
+#col_mil .photo .bord_photo p{margin:0 10px 0;display:inline;font-size:10px;color:#878d95;}
+#col_mil .photo .bord_photo img{margin:0 5px 0 15px;display:inline;}
+#col_mil .photo .bord_photo .nb_like{margin:0;}
 
+/* --------- FIN MUSICIEN PHOTO ET VIDEO --------- */
 
 /* --------- PORTAIL  --------- */
 
-#coverflow{background:url("../images/portail/bg-coverflow.png") no-repeat; height: 364px;}
 
-#coverflow #coverflow-alaune {position : absolute; }
-#coverflow #coverflow-left {float:left; position : absolute; margin-top : 60px; margin-left : 55px;}
-#coverflow #coverflow-center {float:left; position : absolute;margin-top : 32px;margin-left : 274px; }				 
-#coverflow-right{float:left; position : absolute;margin-top : 60px;margin-left : 544px;}
-#coverflow .coverflow-img {opacity:0.6; filter:alpha(opacity=60); box-shadow: 0 0 7px 3px #2B2B2B; }
-#coverflow .coverflow-img2 {box-shadow: 0 0 7px 3px #2B2B2B;}
-#coverflow .coverflow-img-player {background-color:#737373;opacity:0.5; margin-top : 177px;height: 60px; position : absolute;width :238px; }
-#coverflow .coverflow-center-artiste {text-align : center; margin-top : 10px;font-family:'Myriad Pro'; font-size:13px; text-shadow: 0px -2px #000000; color: white;}
-#coverflow .coverflow-center-slide {margin-top : 7px;margin-right : 5px;}
-
-
-#first-line {width : 100%;}
-
-//#first-line-top-song {float:left; position : absolute; height:180px; width: 346px;}
-//#first-line-top-calendar {float:left; position : absolute; margin-left : 365px; height:180px; width: 213px;}
-//#first-line-top-newbies {float:left; position : absolute;margin-left : 599px; height:180px; width: 171px;}
-//#top-song-title, #newbies-title,#calendar-title {font-family:"Trebuchet MS";font-size : 20px; color: #3f3f3f; width : 200px;}
-.title-color {color : #2ab395;}
-.title-color-bold {color : #2ab395; font-weight: bold;}
-
-//#top-song-title .title-img {}
-
-#top-song-title{font-family:"Trebuchet MS";font-size : 20px; color: #3f3f3f; width : 200px;float:left; position : absolute; width: 346px;}
-#calendar-title {font-family:"Trebuchet MS";font-size : 20px; color: #3f3f3f; width : 200px;float:left; position : absolute;margin-left : 365px;width: 213px;}					 
-#newbies-title {font-family:"Trebuchet MS";font-size : 20px; color: #3f3f3f;float:left; position : absolute;margin-left : 599px; width: 171px; }
-
-
-#top-song-play table {float:left; position : absolute; height:185px; width: 345px;;margin-top : 40px;box-shadow:0 0 1px 1px #EDEDED; text-align : center; border : 1px solid #dedede;  }
-
-#top-song-play table td {padding-top: 3px; text-align : left;}
-#top-song-play .top-number {width : 30px;font-size : 21px;text-indent: 9px; color :#7f7d7d;font-weight:bold; height: 27px; border-left : 1px solid #dedede; border-right : 1px solid #dedede;}
-#top-song-play .top-title {width : 150px;  text-indent: 28px;font-size : 12px; color :#7f7d7d;height: 27px;}
-#top-song-play .top-title .top-artist {font-size : 10px; color :#7f7d7d; padding-top:2px;}
-#top-song-play .grey {background-color: #e6e6e6;}
-#top-song-play .white {background-color: #f6f6f6;}
-
-
-#calendar-content {float:left; position : absolute;margin-left : 365px;height:185px; width: 213px; background-color: #e6e6e6;margin-top : 40px;}
-					 
-#newbies-content {float:left; position : absolute;margin-left : 599px;height:185px; width: 171px; background-color : #e6e6e6;margin-top : 40px;}
-
-
-
-#wall-flux {float:left; position : relative; margin-top : 240px; margin-bottom : 12px; width: 579px; background-color: #e6e6e6;}
-.wall-flux-content {margin : 13px; width: 550px; background-color: #f6f6f6; padding-bottom : 1px;}
-.wall-flux-content .img-blog { width : 550px; margin-top : 7px; margin-bottom : 2px;}
-.wall-flux-content .img-blog-artiste { width : 550px; margin-top : 7px; margin-bottom : 20px;}
-
-.wall-flux-content .wall-flux-content-title {font-size : 18px; color:#3f3f3f;margin : 5px 19px 5px 19px;padding-top : 20px; word-wrap: break-word;}
-.wall-flux-content .wall-flux-content-subtitle {font-size : 13px; color:#8d8c80; margin : 0px 19px 19px 19px; word-wrap: break-word;}
-.wall-flux-content .wall-flux-content-titre-artiste { margin : 19px 19px 5px 19px; color:#535353 ;padding-top : 15px; font-size : 13px;}
-.wall-flux-content .wall-flux-content-text {font-size : 14px; line-height : 21px; color:#555555; margin : 10px 19px 19px 19px; word-wrap: break-word;}
-.wall-flux-content .wall-flux-content-text .wall-flux-content-text-chapeau {font-weight : bold;}
-.wall-flux-content .wall-flux-content-right-text {margin-left : 185px; padding-bottom : 20px;}
-.wall-flux-content .wall-flux-content-left-picture .img-blog-artiste-carre {position : absolute; margin  :19px 15px 15px 15px;}
-.wall-flux-content .wall-flux-content-goto-profile {color : #f05f4c;font-size : 14px;float:right;margin-top : -17px;margin-right : 20px; padding: 10px;} 
-//#e6e6e6
 
 /* --------- FIN  DE PORTAIL  --------- */
