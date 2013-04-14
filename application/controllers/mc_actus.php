@@ -6,13 +6,7 @@ class Mc_actus extends CI_Controller
     public function __construct()
     {
       parent::__construct();
-      $this->load->helper('assets_helper');
-      $this->load->library('layout');
-
-      $this->layout->ajouter_css('reset');
-      $this->layout->ajouter_css('tpl_header-footer');
-      $this->layout->ajouter_css('tpl_sidebar-left');
-      $this->layout->ajouter_css('tpl_sidebar-right');
+      
       $this->layout->ajouter_css('slyset');
     }
   

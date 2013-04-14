@@ -9,18 +9,18 @@
     <meta name="description" content="<?php if(isset($description)) echo $description; ?>" />
     <meta name="keywords" content="slyset, project web, social networks, music, réseau social, réseau social musical, musique, écoute, artiste, efficom, projet" />
 
-  <!--	<link type="text/css" rel="stylesheet" href="<?php //echo css_url('reset') ?>" />
-    <link type="text/css" rel="stylesheet" href="<?php //echo css_url('tpl_header-footer') ?>" />
-    <link type="text/css" rel="stylesheet" href="<?php //echo css_url('tpl_sidebar-left') ?>" />
-    <link rel="stylesheet" href="<?php //echo css_url('tpl_sidebar-right')" type="text/css ?>" />
-    <link type="text/css" rel="stylesheet" href="<?php //echo css_url('slyset') ?>" />-->
-    <!--[if IE]>
-      <link type="text/css" rel="stylesheet" href="<?php //echo css_url('corrections-ie') ?>" />
-    <![endif]-->
-
+    <link type="text/css" rel="stylesheet" href="<?php echo css_url('reset') ?>" />
+    <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_header-footer') ?>" />
+    <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_sidebar-left') ?>" />
+    <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_sidebar-right') ?>" />
+    
     <?php foreach($css as $url): ?>
-          <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $url; ?>" />
+      <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $url; ?>" />
     <?php endforeach; ?>
+    
+    <!--[if IE]>
+      <link type="text/css" rel="stylesheet" href="<?php echo css_url('corrections-ie') ?>" />
+    <![endif]-->
   </head>
 
   <body>
@@ -114,8 +114,13 @@
       </div>
     </footer>
 
+    <script type="text/javascript" src="<?php echo js_url('jquery-1.7.1.min') ?>"></script>
+    <script type="text/javascript" src="<?php echo js_url('modernizr.custom.63321') ?>"></script>
+    
     <?php foreach($js as $url): ?>
           <script type="text/javascript" src="<?php echo $url; ?>"></script> 
     <?php endforeach; ?>
+          
+    <script type="text/javascript" src="<?php echo js_url('slyset') ?>"></script>
   </body>
 </html>
