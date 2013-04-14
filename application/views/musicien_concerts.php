@@ -1,1 +1,0 @@
-<p>Coucou du $contents</p>

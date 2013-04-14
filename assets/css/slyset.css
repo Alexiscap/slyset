@@ -38,7 +38,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .actus_post input[type="submit"]{ margin:0 16px 0 0; width:62px; height:32px; border:none; font-size:11px; color:#ffffff; background:url("../images/common/btn_validate.png") no-repeat transparent; float:right; }
 .actus_post input[type="submit"]:hover{ cursor:pointer; }
 
-.content{ margin:10px 0 0 0; width:540px; background:#e6e6e6; float:left; clear:both; }
+.content{ margin:10px 0 10px 0; padding:0; width:541px; background:#e6e6e6; float:left; clear:both; }
 .empty{ width:100%; height:12px; background:#f9f9f9; float:left; clear:both; }
 .artist_post{ margin:8px 20px; width:500px; height:auto; position:relative; float:left; }
 .artist_post .top{ width:100%; height:16px; }
@@ -89,51 +89,51 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 
 /* --------- MUSICIEN - CONCERTS  --------- */
 
-#col_mil{ background:#e6e6e6; margin:10px 0 10px 0;float:left;padding: 0;width:541px; clear:both; }
-#col_mil #btn_tmp{ width:191px; margin:0 20px; padding:20px 0; }
-#col_mil #btn_tmp a{ float:left; }
-#col_mil h2{ font-size:20px; margin:25px 20px;clear:both; }
-#col_mil p{ font-size:14px; margin:20px 0 0 20px; font-weight:bold; }
-#col_mil .date-heure{ clear:both; }
-#col_mil hr{ color:#888d95;width:499px;margin:10px auto; }
-#col_mil .infos_concert{ width:302px; margin:0 0 0 20px;float:left; }
-#col_mil .calendrier{ background:url("../images/musicien/calendrier.png") no-repeat;width:50px;height:50px;float:left; }
-#col_mil .infos_concert p{ margin:3px;color:#5d5d5b;font-size:14px; }
-#col_mil .infos_concert .mois{ margin:5px 17px;font-size:9px;color:white;position:absolute; }
-#col_mil .infos_concert .jour{ margin:20px 9px;font-size:24px;font-family:georgia;position:absolute; }
-#col_mil .infos_concert img{ float:left; }
-#col_mil .adr_concert{ width:196px;float:left;margin:0 0px; }
-#col_mil .adr_concert p{ margin:3px;color:#5d5d5b;font-size:14px; }
-#col_mil .adr_concert .adr_lieu{ margin:3px;color:#5d5d5b;font-size:14px;font-weight:bold; }
-#col_mil .adr_concert .adr_rue{ margin:3px;font-size:12px; }
-#col_mil .adr_concert .adr_ville{ margin:3px;font-size:12px; }
-#col_mil .adr_concert img{ float:left; }
-#col_mil .more{ color:#3c495a;font-size:14px;font-family:'Trebuchet MS';display:block;margin:30px 20px;float:left; }
-#col_mil .participer{ margin:25px 30px 0 150px; padding:0; font-family:Arial, "Trebuchet MS"; font-size:14px; text-decoration:none; color:#ffffff; float:left; }
-#col_mil .participer .button_left{ display:block; width:22px; height:30px; background:url("../images/common/sprite_btn_participer.png") no-repeat 0 -61px; float:left; }
-#col_mil .participer .button_center{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_participer.png") repeat-x 0 -31px; float:left; }
-#col_mil .participer .button_right{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_participer.png") no-repeat -77px -1px; float:left; }
+/*.content{ background:#e6e6e6; margin:10px 0 10px 0;float:left;padding: 0;width:541px; clear:both; }*/
+.content #btn_tmp{ width:191px; margin:0 20px; padding:20px 0; }
+.content #btn_tmp a{ float:left; }
+.content h2{ font-size:20px; margin:25px 20px;clear:both; }
+.content p{ font-size:14px; margin:20px 0 0 20px; font-weight:bold; }
+.content .date-heure{ clear:both; }
+.content hr{ color:#888d95;width:499px;margin:10px auto; }
+.content .infos_concert{ width:302px; margin:0 0 0 20px;float:left; }
+.content .calendrier{ background:url("../images/musicien/calendrier.png") no-repeat;width:50px;height:50px;float:left; }
+.content .infos_concert p{ margin:3px;color:#5d5d5b;font-size:14px; }
+.content .infos_concert .mois{ margin:5px 17px;font-size:9px;color:white;position:absolute; }
+.content .infos_concert .jour{ margin:20px 9px;font-size:24px;font-family:georgia;position:absolute; }
+.content .infos_concert img{ float:left; }
+.content .adr_concert{ width:196px;float:left;margin:0 0px; }
+.content .adr_concert p{ margin:3px;color:#5d5d5b;font-size:14px; }
+.content .adr_concert .adr_lieu{ margin:3px;color:#5d5d5b;font-size:14px;font-weight:bold; }
+.content .adr_concert .adr_rue{ margin:3px;font-size:12px; }
+.content .adr_concert .adr_ville{ margin:3px;font-size:12px; }
+.content .adr_concert img{ float:left; }
+.content .more{ color:#3c495a;font-size:14px;font-family:'Trebuchet MS';display:block;margin:30px 20px;float:left; }
+.content .participer{ margin:25px 30px 0 150px; padding:0; font-family:Arial, "Trebuchet MS"; font-size:14px; text-decoration:none; color:#ffffff; float:left; }
+.content .participer .button_left{ display:block; width:22px; height:30px; background:url("../images/common/sprite_btn_participer.png") no-repeat 0 -61px; float:left; }
+.content .participer .button_center{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_participer.png") repeat-x 0 -31px; float:left; }
+.content .participer .button_right{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_participer.png") no-repeat -77px -1px; float:left; }
 
 .bt_ajout_concert{ width:125px;height:30px;float:left;margin:3px 0 0 198px; }
-#col_mil .info_sup{ width: 539px;height: 205px;margin: 10px 0 0 0;clear: both;background:#d3d3d3;padding:5px 0 0 0;border:1px solid #c3c3c3; }
-#col_mil .info_sup .informations{ width: 287px;float:left; }
-#col_mil .info_sup .nom_date{ font-size:16px;font-family:'Trebuchet MS';margin:5px 0 0 20px;color:#4e4e4e; }
-#col_mil .info_sup .lieu_salle{ font-size:14px;font-family:'Trebuchet MS';margin:15px 0 0 20px;color:#4e4e4e; }
-#col_mil .info_sup .lieu_rue{ font-size:14px;font-family:'Trebuchet MS';margin:5px 0 0 20px;color:#4e4e4e; }
-#col_mil .info_sup .lieu_ville{ font-size:14px;font-family:'Trebuchet MS';margin:5px 0 0 20px;color:#4e4e4e; }
-#col_mil .info_sup .tel{ font-size:14px;font-family:'Trebuchet MS';margin:15px 0 0 20px;color:#4e4e4e; }
-#col_mil .info_sup .site{ font-size:14px;font-family:'Trebuchet MS';margin:5px 0 0 20px;color:#4e4e4e; }
-#col_mil .info_sup .partager{ font-size:12px;font-family:'Trebuchet MS';margin:15px 0 0 20px;color:#4e4e4e; }
-#col_mil .partage_reseaux{ margin:5px 0 0 25px;color:#4e4e4e;width:114px; }
-#col_mil .partage_reseaux span{ display:inline-block;text-indent:-50000px; }
-#col_mil .partage_reseaux .twitter{ width:30px;height:29px;margin:0;padding:0;background:url('../images/musicien/sprite_info_sup.png') -7px -10px; }
-#col_mil .partage_reseaux .facebook{ width:30px;height:29px;margin:0;padding:0;background:url('../images/musicien/sprite_info_sup.png') -48px -10px; }
-#col_mil .partage_reseaux .google{ width:30px;height:29px;margin:0;padding:0;background:url('../images/musicien/sprite_info_sup.png') -90px -10px; }
-#col_mil .plan_google{ width:233px;height:198px;background:url("../images/musicien/plan_google.png");float:left; margin: 0 0 0 10px; }
-#col_mil .edition{ float:right;margin:-16px 20px 0 0; }
-#col_mil .edition span{ margin:0 5px 0 5px;display:inline-block;text-indent:-50000px; }
-#col_mil .edition .edit{ background:url('../images/musicien/sprite_edition.png') -10px -6px;width:14px;height:14px; }
-#col_mil .edition .suppr{ background:url('../images/musicien/sprite_edition.png') -28px -6px;width:14px;height:14px; }
+.content .info_sup{ width: 539px;height: 205px;margin: 10px 0 0 0;clear: both;background:#d3d3d3;padding:5px 0 0 0;border:1px solid #c3c3c3; }
+.content .info_sup .informations{ width: 287px;float:left; }
+.content .info_sup .nom_date{ font-size:16px;font-family:'Trebuchet MS';margin:5px 0 0 20px;color:#4e4e4e; }
+.content .info_sup .lieu_salle{ font-size:14px;font-family:'Trebuchet MS';margin:15px 0 0 20px;color:#4e4e4e; }
+.content .info_sup .lieu_rue{ font-size:14px;font-family:'Trebuchet MS';margin:5px 0 0 20px;color:#4e4e4e; }
+.content .info_sup .lieu_ville{ font-size:14px;font-family:'Trebuchet MS';margin:5px 0 0 20px;color:#4e4e4e; }
+.content .info_sup .tel{ font-size:14px;font-family:'Trebuchet MS';margin:15px 0 0 20px;color:#4e4e4e; }
+.content .info_sup .site{ font-size:14px;font-family:'Trebuchet MS';margin:5px 0 0 20px;color:#4e4e4e; }
+.content .info_sup .partager{ font-size:12px;font-family:'Trebuchet MS';margin:15px 0 0 20px;color:#4e4e4e; }
+.content .partage_reseaux{ margin:5px 0 0 25px;color:#4e4e4e;width:114px; }
+.content .partage_reseaux span{ display:inline-block;text-indent:-50000px; }
+.content .partage_reseaux .twitter{ width:30px;height:29px;margin:0;padding:0;background:url('../images/musicien/sprite_info_sup.png') -7px -10px; }
+.content .partage_reseaux .facebook{ width:30px;height:29px;margin:0;padding:0;background:url('../images/musicien/sprite_info_sup.png') -48px -10px; }
+.content .partage_reseaux .google{ width:30px;height:29px;margin:0;padding:0;background:url('../images/musicien/sprite_info_sup.png') -90px -10px; }
+.content .plan_google{ width:233px;height:198px;background:url("../images/musicien/plan_google.png");float:left; margin: 0 0 0 10px; }
+.content .edition{ float:right;margin:-16px 20px 0 0; }
+.content .edition span{ margin:0 5px 0 5px;display:inline-block;text-indent:-50000px; }
+.content .edition .edit{ background:url('../images/musicien/sprite_edition.png') -10px -6px;width:14px;height:14px; }
+.content .edition .suppr{ background:url('../images/musicien/sprite_edition.png') -28px -6px;width:14px;height:14px; }
 
 .pagination{ clear:both;height:47px;width:200px;margin:15px 0 25px 0;padding:0 22%;float:left; }
 .pagination a{ height:17px; width:8px; background:url("../images/common/sprite_pagination.png") no-repeat; margin:0 0; border:0; padding:15px 10px;float:left; display:block; }
@@ -148,24 +148,20 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 
 
 /* --------- MUSICIEN PHOTO ET VIDEO --------- */
-#col_mil .photo{ background:white;margin:5px; text-align:center; float:left; }
-#col_mil .photo .pochette{ width:139px;margin:10px 10px 5px 10px; }
-#col_mil .photo a{ text-decoration:none; }
-#col_mil .photo a:hover{ text-decoration:underline;color:#4d4d4d; }
-#col_mil .photo p{ margin:0 10px 5px;color:#4d4d4d;font-size:12px;font-weight:bold; }
-#col_mil .photo .bord_photo{ background:#f2f0f0;margin:0;height:25px; text-align:left; }
-#col_mil .photo .bord_photo p{ margin:0 10px 0;display:inline;font-size:10px;color:#878d95; }
-#col_mil .photo .nom_photo{ width:138px; }
-#col_mil .photo .bord_photo img{ margin:0 5px 0 15px;display:inline; }
-#col_mil .photo .bord_photo .nb_like{ margin:0; }
+.content .col1{ width:160px; }
+.content .col1 .img_cover{ max-width:160px; }
+.content .box{ margin:5px; padding:5px; /*max-width:150px;*/ background:#D8D5D2; font-size:11px; line-height:1.4em; float:left; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; display:block; }
+.content .photo{ background:white;margin:5px; text-align:center; float:left; }
+.content .photo .pochette{ width:139px;margin:10px 10px 5px 10px; }
+.content .photo a{ text-decoration:none; }
+.content .photo a:hover{ text-decoration:underline;color:#4d4d4d; }
+.content .photo p{ margin:0 10px 5px;color:#4d4d4d;font-size:12px;font-weight:bold; }
+.content .photo .bord_photo{ background:#f2f0f0;margin:0;height:25px; text-align:left; }
+.content .photo .bord_photo p{ margin:0 10px 0;display:inline;font-size:10px;color:#878d95; }
+.content .photo .nom_photo{ width:138px; }
+.content .photo .bord_photo img{ margin:0 5px 0 15px;display:inline; }
+.content .photo .bord_photo .nb_like{ margin:0; }
 
-
-/*.col1{ width:150px; height:150px; }*/
-.col1{ width:160px; }
-/*.col2{ width:150px; }
-.col3{ width:150px; }*/
-.box{ margin:5px; padding:5px; /*max-width:150px;*/ background:#D8D5D2; font-size:11px; line-height:1.4em; float:left; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; display:block; }
-.col1 .img_cover{ max-width:160px; }
 /*.box .img_cover, #tumblelog .img_cover{ display:block; width:100%; }*/
 /* --------- FIN MUSICIEN PHOTO ET VIDEO --------- */
 

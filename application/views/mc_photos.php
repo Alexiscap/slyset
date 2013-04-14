@@ -6,6 +6,7 @@
     <li><a href="#">Photos & Vidéos</a></li>
   </ul>
 </div>
+
 <div id="cover">
   <div id="infos-cover">
     <h2>Bob Dylan</h2>
@@ -36,7 +37,7 @@
   <span class="bt_left"></span><span class="bt_middle">Supprimer la sélection</span><span class="bt_right"></span>
 </div>
 
-<div id="col_mil">
+<div class="content">
   <div class="photo box col1">
     <img src="<?php echo img_url('musicien/photo1.png'); ?>" class="img_cover" />
     <p class="nom_photo">Concert N.Y, 1971</p>

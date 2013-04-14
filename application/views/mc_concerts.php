@@ -6,6 +6,7 @@
     <li><a href="#">Concerts</a></li>
   </ul>
 </div>
+
 <div id="cover">
   <div id="infos-cover">
     <h2>Bob Dylan</h2>
@@ -33,7 +34,7 @@
   <img src="<?php echo img_url('musicien/ajout_concert.png'); ?>" alt="ajout concert"/>
 </div>
 
-<div id="col_mil">
+<div class="content">
   <div id="btn_tmp">
     <a href="#"><img src="<?php echo img_url('musicien/filtre_avenir.png'); ?>" alt="A venir"/></a>
     <a href="#"><img src="<?php echo img_url('musicien/filtre_passe.png'); ?>" alt="A venir"/></a>

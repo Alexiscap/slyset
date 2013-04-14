@@ -1,9 +1,9 @@
 $(document).ready(function() {
   
-  var $container = $('#col_mil');
+  var $container = $('.content');
   $container.imagesLoaded(function(){
     $container.masonry({
-      itemSelector: '.box',
+      itemSelector: '.box'
 //      columnWidth : 100,
 //      isFitWidth: true,
 //      isAnimated:true
