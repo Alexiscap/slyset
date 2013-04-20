@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Sam 20 Avril 2013 à 12:56
+-- Généré le: Sam 20 Avril 2013 à 20:40
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -331,10 +331,11 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `nationalite` varchar(125) DEFAULT NULL,
   `genre` int(11) DEFAULT NULL,
   `Communaute_id` int(11) NOT NULL,
+  `created` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_Utilisateur_Adresse1_idx` (`Adresse_id`),
   KEY `fk_Utilisateur_Communaute1_idx` (`Communaute_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 

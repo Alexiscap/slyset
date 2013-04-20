@@ -50,7 +50,7 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'admin';
+$db['default']['username'] = 'slyset';
 $db['default']['password'] = 'slyset';
 $db['default']['database'] = 'preprod-slyset';
 $db['default']['dbdriver'] = 'mysql';
