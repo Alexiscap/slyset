@@ -26,8 +26,10 @@
   <body>
     <header>
       <div id="header">
-        <img id="logo" src="<?php echo img_url('header/logo.png') ?>" alt="Logo Slyset"/>
-
+        <a href="<?php echo site_url('welcome'); ?>">
+          <img id="logo" src="<?php echo img_url('header/logo.png') ?>" alt="Logo Slyset"/>
+        </a>
+          
         <div id="ico_menu">
           <a href="<?php echo site_url('welcome'); ?>" id="accueil"><span>Accueil</span></a>
           <a href="#" id="explorer"><span>Explorer</span></a>
