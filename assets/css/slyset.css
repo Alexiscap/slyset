@@ -177,6 +177,98 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 
 /* --------- PORTAIL  --------- */
 
+#coverflow{background:url("../images/portail/bg-coverflow.png") no-repeat; height: 364px;}
 
+#coverflow #coverflow-alaune {position : absolute; }
+#coverflow #coverflow-left {float:left; position : absolute; margin-top : 60px; margin-left : 55px;}
+#coverflow #coverflow-center {float:left; position : absolute;margin-top : 32px;margin-left : 274px; }				 
+#coverflow-right{float:left; position : absolute;margin-top : 60px;margin-left : 544px;}
+#coverflow .coverflow-img {opacity:0.6; filter:alpha(opacity=60); box-shadow: 0 0 7px 3px #2B2B2B; }
+#coverflow .coverflow-img2 {box-shadow: 0 0 7px 3px #2B2B2B;}
+#coverflow .coverflow-img-player {background-color:#737373;opacity:0.5; margin-top : 177px;height: 60px; position : absolute;width :238px; }
+#coverflow .coverflow-center-artiste {text-align : center; margin-top : 10px;font-family:'Myriad Pro'; font-size:13px; text-shadow: 0px -2px #000000; color: white;}
+#coverflow .coverflow-center-slide {margin-top : 7px;margin-right : 5px;}
+
+
+#first-line {width : 100%;}
+
+#first-line-top-song {float:left; position : absolute; height:180px; width: 346px;}
+#first-line-top-calendar {float:left; position : absolute; margin-left : 370px; height:180px; width: 213px;}
+#first-line-top-newbies {float:left; position : absolute;margin-left : 599px; height:180px; width: 171px;} /*
+#top-song-title, #newbies-title,#calendar-title {font-family:"Trebuchet MS";font-size : 20px; color: #3f3f3f; width : 200px;}*/
+.title-color {color : #2ab395;}
+.title-color-bold {color : #2ab395; font-weight: bold;}
+
+/*#top-song-title .title-img {}*/
+
+#top-song-title{font-family:"Trebuchet MS";font-size : 20px; color: #3f3f3f; width : 200px;float:left; position : absolute; width: 346px;}
+#calendar-title {font-family:"Trebuchet MS";font-size : 20px; color: #3f3f3f; width : 200px;float:left; position : absolute;margin-left : 370px;width: 213px;}					 
+#newbies-title {font-family:"Trebuchet MS";font-size : 20px; color: #3f3f3f;float:left; position : absolute;margin-left : 599px; width: 171px; }
+
+
+#top-song-play-one {position : absolute;margin-top : 33px; box-shadow:-1px 0 1px 1px #EDEDED; border-left : 1px solid #dedede;border-top : 1px solid #dedede;border-bottom : 1px solid #dedede;width: 175px;}
+#top-song-play-two {position : absolute; margin-left : 175px; margin-top : 33px; box-shadow:1px 0 1px 1px #EDEDED; border-right : 1px solid #dedede;border-left : 1px solid #dedede;border-top : 1px solid #dedede;border-bottom : 1px solid #dedede;width: 175px;}
+
+#first-line-top-song #tab-top-song-col-number {position : absolute;width : 25px; color :#7f7d7d;font-weight:bold; border-right : 1px solid #dedede; height : 27px; padding-top : 8px;text-align:center; font-size : 21px;}
+#first-line-top-song #tab-top-song-col-texte {margin-left : 25px; color :#7f7d7d; font-size : 12px; height : 35px; }
+#first-line-top-song .tab-top-song-col-texte-img {position : absolute;margin-top : 8px; margin-left : 5px;}
+#first-line-top-song .tab-top-song-col-texte-titre {position:absolute;color :#7f7d7d; font-size : 12px;margin-left:28px; margin-top : 6px;}
+#first-line-top-song .tab-top-song-col-texte-artiste {color :#7f7d7d; font-size : 10px;}
+
+#first-line-top-song #tab-top-song-line-white {background-color: #f6f6f6;  height: 35px;}
+#first-line-top-song #tab-top-song-line-grey {background-color: #e6e6e6; height: 35px;border-top : 1px solid #dedede;border-bottom : 1px solid #dedede;}
+#first-line-top-song #tab-top-song-col-one{width: 175px; border-right : 1px solid #dedede; height: 35px;}
+#first-line-top-song #tab-top-song-col-two{margin-left : 175px;width: 175px; height: 43px; border-right : 1px solid #dedede;}
+/*
+#top-song-play table {float:left; position : absolute; height:185px; width: 345px;margin-top : 40px;box-shadow:0 0 1px 1px #EDEDED; border : 1px solid #dedede;  }
+
+#top-song-play .ten {padding-right : 10px; width : 30px;font-size : 21px;text-indent: 9px; color :#7f7d7d;font-weight:bold; border-left : 1px solid #dedede; border-right : 1px solid #dedede; padding-top : 8px}
+#top-song-play .top-title {width : 150px; padding-left:10px;font-size : 12px; color :#7f7d7d;vertical-align:middle;}
+#top-song-play .top-title-img {position : asbolute; margin-left : 5px;padding-top : 5px;}
+#top-song-play #top-title-text {position : asbolute;  width : 20px;}
+#top-song-play .top-title .top-artist {font-size : 10px; color :#7f7d7d; text-indent : 23px;}
+#top-song-play .grey {background-color: #e6e6e6;}
+#top-song-play .white {background-color: #f6f6f6;}
+*/
+#calendar-content {float:left; position : absolute;margin-left : 370px;height:185px; width: 213px;margin-top : 33px;}
+					 
+#newbies-content {float:left; position : absolute;margin-left : 599px;height:181px; width: 171px; background-color : #e6e6e6;margin-top : 33px;}
+#newbies-content #newbies-one{float:left;height:45px; width:100%; background-color : #e6e6e6;}
+
+#newbies-content .newbies-picture {position : absolute; margin-top : 4px; margin-left : 4px;}
+#newbies-content .newbies-people {position : absolute; font-family:"Trebuchet MS";color : #3f3f3f; margin-top : 10px; font-weight :600;font-size : 13px;margin-left : 47px;}
+#newbies-content .newbies-people-type {color:#72797f; font-size : 11px; font-weight : normal;}
+#wall-flux {float:left; position : relative; margin-top : 250px; margin-bottom : 12px; width: 579px; background-color: #e6e6e6;}
+.wall-flux-content {margin : 13px; width: 550px; background-color: #f6f6f6; padding-bottom : 1px; }
+.wall-flux-content .img-blog { width : 550px; margin-top : 7px; margin-bottom : 2px;}
+.wall-flux-content .img-blog-artiste { width : 550px;font-family:"Trebuchet MS"; margin-top : 7px; margin-bottom : 20px;}
+
+.wall-flux-content .wall-flux-content-title {font-size : 18px; color:#3f3f3f;margin : 5px 19px 5px 19px;padding-top : 20px; word-wrap: break-word;}
+.wall-flux-content .wall-flux-content-subtitle {font-size : 13px; color:#8d8c80; margin : 0px 19px 19px 19px; word-wrap: break-word;}
+.wall-flux-content .wall-flux-content-titre-artiste { margin : 19px 19px 5px 19px; color:#535353 ;padding-top : 15px; font-size : 13px;}
+.wall-flux-content .wall-flux-content-text {font-size : 14px; line-height : 21px; color:#555555; margin : 10px 19px 19px 19px; word-wrap: break-word;}
+.wall-flux-content .wall-flux-content-text .wall-flux-content-text-chapeau {font-weight : bold;}
+.wall-flux-content .wall-flux-content-right-text {margin-left : 185px; padding-bottom : 20px;}
+.wall-flux-content .wall-flux-content-left-picture .img-blog-artiste-carre {position : absolute; margin  :19px 15px 15px 15px;}
+.wall-flux-content .wall-flux-content-goto-profile {color : #f05f4c;font-size : 14px;float:right;margin-top : -17px;margin-right : 20px; padding: 10px;} 
+/*#e6e6e6*/
+
+/* ----- CALENDAR PORTAIL ------- */
+ ui-datepicker {width: 212px; height: 175px; margin: 5px auto 0; font: 9pt Arial, sans-serif;}  
+
+.ui-datepicker a {/*margin-left : 10px;*/text-decoration: none;color:#4d5155; font-family:"Trebuchet MS"; font-weight:bold; font-size:11px; text-align:center;}  
+.ui-datepicker table {border-spacing: 0px; width: 212px; padding:0px; height: 151px; border-top-left-radius: 3px; border-top-right-radius: 3px; /* box-shadow: 0px 0px 5px 5px #888;*/ /*border-bottom: 1px solid #e6e6e6;  */ border-left: 1px solid #e6e6e6;}  
+.ui-datepicker th {padding: 0; border-left: 1px solid #e6e6e6; border-right: 1px solid #e6e6e6;}
+.ui-datepicker-header {background-color: #e6e6e6; color: #4d5155; font-size:12px; font-family:"Trebuchet MS";font-weight: bold; height:28px; border: 1px solid #e4e5e7; border-top-left-radius: 3px; border-top-right-radius: 3px;} 
+.ui-datepicker-title { margin-top : 7px; text-transform:uppercase; text-align: center;} 
+.ui-datepicker-prev, .ui-datepicker-next {width: 28px; background-repeat: no-repeat; display: inline-block; cursor: pointer; height: 28px; text-align: center; overflow: hidden; line-height: 600%;}
+.ui-datepicker-prev { float: left; background-position: 6px 7px; background-image: url('../images/calendar/narrow-suiv.png');}  
+.ui-datepicker-next { float: right; background-position: 8px 7px; background-image: url('../images/calendar/narrow-next.png');}   
+.ui-datepicker tbody td { border-right: 1px solid #e6e6e6; text-align:center; font-family:"Trebuchet MS"; border-bottom: 1px solid #e6e6e6; color:#cccfd3; font-weight:bold; padding-top: 11px; font-size:11px;}   
+.ui-datepicker tbody td:last-child { /* border-right: 0px; */}  
+.ui-datepicker tbody tr { border-bottom: 1px solid #e6e6e6; padding: 0px;}  
+.ui-datepicker-calendar .ui-state-hover {color: #D1D1D1;}
+.ui-datepicker-calendar .ui-state-active {color: #EF7363;}
+.css_jour_evenement{ background-image: url('../images/calendar/red_arrow.png'); background-repeat : no-repeat ;background-position : top right }
 
 /* --------- FIN  DE PORTAIL  --------- */
