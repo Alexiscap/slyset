@@ -197,23 +197,17 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 
 #first-line {width : 100%;}
 
-<<<<<<< HEAD
 #first-line-top-song {float:left; position : absolute; height:180px; width: 346px;}
 #first-line-top-calendar {float:left; position : absolute; margin-left : 370px; height:180px; width: 213px;}
-#first-line-top-newbies {float:left; position : absolute;margin-left : 599px; height:180px; width: 171px;} /*
-=======
-/*#first-line-top-song {float:left; position : absolute; height:180px; width: 346px;}
-#first-line-top-calendar {float:left; position : absolute; margin-left : 365px; height:180px; width: 213px;}
 #first-line-top-newbies {float:left; position : absolute;margin-left : 599px; height:180px; width: 171px;}
->>>>>>> 389b31b386a08cfeffa602ac02fd46ad9bf5b4af
-#top-song-title, #newbies-title,#calendar-title {font-family:"Trebuchet MS";font-size : 20px; color: #3f3f3f; width : 200px;}*/
+
+/*#top-song-title, #newbies-title,#calendar-title {font-family:"Trebuchet MS";font-size : 20px; color: #3f3f3f; width : 200px;}*/
 .title-color {color : #2ab395;}
 .title-color-bold {color : #2ab395; font-weight: bold;}
 
 /*#top-song-title .title-img {}*/
 
 #top-song-title{font-family:"Trebuchet MS";font-size : 20px; color: #3f3f3f; width : 200px;float:left; position : absolute; width: 346px;}
-<<<<<<< HEAD
 #calendar-title {font-family:"Trebuchet MS";font-size : 20px; color: #3f3f3f; width : 200px;float:left; position : absolute;margin-left : 370px;width: 213px;}					 
 #newbies-title {font-family:"Trebuchet MS";font-size : 20px; color: #3f3f3f;float:left; position : absolute;margin-left : 599px; width: 171px; }
 
@@ -254,32 +248,6 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .wall-flux-content {margin : 13px; width: 550px; background-color: #f6f6f6; padding-bottom : 1px; }
 .wall-flux-content .img-blog { width : 550px; margin-top : 7px; margin-bottom : 2px;}
 .wall-flux-content .img-blog-artiste { width : 550px;font-family:"Trebuchet MS"; margin-top : 7px; margin-bottom : 20px;}
-=======
-#calendar-title {font-family:"Trebuchet MS";font-size : 20px; color: #3f3f3f; width : 200px;float:left; position : absolute;margin-left : 365px;width: 213px;}					 
-#newbies-title {font-family:"Trebuchet MS";font-size : 20px; color: #3f3f3f;float:left; position : absolute;margin-left : 599px; width: 171px; }
-
-
-#top-song-play table {float:left; position : absolute; height:185px; width: 345px;;margin-top : 40px;box-shadow:0 0 1px 1px #EDEDED; text-align : center; border : 1px solid #dedede;  }
-
-#top-song-play table td {padding-top: 3px; text-align : left;}
-#top-song-play .top-number {width : 30px;font-size : 21px;text-indent: 9px; color :#7f7d7d;font-weight:bold; height: 27px; border-left : 1px solid #dedede; border-right : 1px solid #dedede;}
-#top-song-play .top-title {width : 150px;  text-indent: 28px;font-size : 12px; color :#7f7d7d;height: 27px;}
-#top-song-play .top-title .top-artist {font-size : 10px; color :#7f7d7d; padding-top:2px;}
-#top-song-play .grey {background-color: #e6e6e6;}
-#top-song-play .white {background-color: #f6f6f6;}
-
-
-#calendar-content {float:left; position : absolute;margin-left : 365px;height:185px; width: 213px; background-color: #e6e6e6;margin-top : 40px;}
-					 
-#newbies-content {float:left; position : absolute;margin-left : 599px;height:185px; width: 171px; background-color : #e6e6e6;margin-top : 40px;}
-
-
-
-#wall-flux {float:left; position : relative; margin-top : 240px; margin-bottom : 12px; width: 579px; background-color: #e6e6e6;}
-.wall-flux-content {margin : 13px; width: 550px; background-color: #f6f6f6; padding-bottom : 1px;}
-.wall-flux-content .img-blog { width : 550px; margin-top : 7px; margin-bottom : 2px;}
-.wall-flux-content .img-blog-artiste { width : 550px; margin-top : 7px; margin-bottom : 20px;}
->>>>>>> 389b31b386a08cfeffa602ac02fd46ad9bf5b4af
 
 .wall-flux-content .wall-flux-content-title {font-size : 18px; color:#3f3f3f;margin : 5px 19px 5px 19px;padding-top : 20px; word-wrap: break-word;}
 .wall-flux-content .wall-flux-content-subtitle {font-size : 13px; color:#8d8c80; margin : 0px 19px 19px 19px; word-wrap: break-word;}
@@ -290,7 +258,6 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .wall-flux-content .wall-flux-content-left-picture .img-blog-artiste-carre {position : absolute; margin  :19px 15px 15px 15px;}
 .wall-flux-content .wall-flux-content-goto-profile {color : #f05f4c;font-size : 14px;float:right;margin-top : -17px;margin-right : 20px; padding: 10px;} 
 /*#e6e6e6*/
-<<<<<<< HEAD
 
 /* ----- CALENDAR PORTAIL ------- */
  ui-datepicker {width: 212px; height: 175px; margin: 5px auto 0; font: 9pt Arial, sans-serif;}  
@@ -309,7 +276,5 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .ui-datepicker-calendar .ui-state-hover {color: #D1D1D1;}
 .ui-datepicker-calendar .ui-state-active {color: #EF7363;}
 .css_jour_evenement{ background-image: url('../images/calendar/red_arrow.png'); background-repeat : no-repeat ;background-position : top right }
-=======
->>>>>>> 389b31b386a08cfeffa602ac02fd46ad9bf5b4af
 
 /* --------- FIN  DE PORTAIL  --------- */

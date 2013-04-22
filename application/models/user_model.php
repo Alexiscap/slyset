@@ -24,6 +24,7 @@ class User_model extends CI_Model {
     public function insert_user($mail, $password){
         $this->load->library('encrypt');
         
+        $data['login'] = $login;
         $data['mail'] = $mail;
         $data['password'] = $this->encrypt->sha1($password);
         $data['created'] = Date('Y-m-d');

@@ -6,37 +6,67 @@ class User extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->output->enable_profiler(true);
+        
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->load->model('user_model');
+        $this->load->library('layout');
     }
   
     public function index()
     {
-        $this->register();
+        $this->register_step_1();
     }
   
-    public function register(){
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        $this->load->model('user_model');
-
+    public function register_step_1()
+    {
         $this->form_validation->set_rules('mail', 'Email', 'trim|required|valid_email|xss_clean|callback_check_register');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
-
-        $this->load->library('layout');
+        $this->form_validation->set_rules('login', 'Nom d\'utilisateur', 'trim|required|xss_clean');
 
         if($this->form_validation->run() == FALSE){			 
-          $this->layout->view('loginform');
+          $this->layout->view('inscription/loginform');
         } else {
           $mail = $this->input->post('mail');
-          $password = $this->input->post('password');
-          $this->user_model->insert_user($mail, $password);
-
-          //on pourrait le loguer direct mais on l'envoi vers le formulaire d'identification
-          //redirect('login', 'refresh');
-          echo('GG MEC ! : '.$mail.' et '.$password);
+          $login = $this->input->post('login');
+          
+//          $this->register_step_2(););
+          $this->layout->view('inscription/loginform2');
         }
     }
 
-    function check_register(){
+    public function register_step_2()
+    {
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|matches[confpassword]');
+        $this->form_validation->set_rules('confpassword', 'Confirmation password', 'trim|required|xss_clean');
+      
+//        $required_if = $this->input->post('password') ? '|required' : '' ;
+//        $required_if2 = $this->input->post('confpassword') ? 'required' : '' ;
+//        $valid_pass = $this->input->post('password');
+//        $valid_confpass = $this->input->post('confpassword');
+//      if(empty($valid_pass) && empty($valid_confpass)){
+//        $this->form_validation->set_rules('password', 'Password', 'trim|xss_clean|matches[confpassword]');
+//        $this->form_validation->set_rules('confpassword', 'Confirmation password', 'trim|xss_clean');
+//      } else {
+//        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|matches[confpassword]');
+//        $this->form_validation->set_rules('confpassword', 'Confirmation password', 'trim|required|xss_clean');
+//      }
+      
+        if($this->form_validation->run() == FALSE){			 
+          $this->layout->view('inscription/loginform2');
+        } else {
+          $password = $this->input->post('password');
+          $confpassword = $this->input->post('confpassword');
+          //$this->user_model->insert_user($mail, $password);
+
+          //on pourrait le loguer direct mais on l'envoi vers le formulaire d'identification
+          //redirect('login', 'refresh');
+          //echo('GG MEC ! : '.$mail.' et '.$password);
+          $this->layout->view('inscription/loginform3');
+        }
+    }
+    
+    public function check_register(){
         $mail = $this->input->post('mail');
         $result = $this->user_model->register($mail);
 

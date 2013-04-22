@@ -19,44 +19,35 @@ class Welcome extends CI_Controller {
 	 */
   public function __construct()
   {
-    parent::__construct();
+      parent::__construct();
     
-      $this->layout->ajouter_js('jquery-1.7.1.min');
-   	 $this->layout->ajouter_css('slyset');
+      $this->layout->ajouter_css('slyset');
+      
       $this->layout->ajouter_js('jsdate');
       $this->layout->ajouter_js('calendar');
-    
-
   }
   
 	public function index()
 	{
-		//$this->load->view('welcome_message');		 
+      //$this->load->view('welcome_message');		 
    		$this->homepage();
-
 	}
   
-
-
-
   public function homepage(){
-  $this->load->model('homepage');
-    $datas = array();
-    $datas['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-    $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
-    $datas['concert_date'] = $this->homepage->get_concert();
-    
+      $this->load->model('homepage');
 
-   // $this->load->model('homepage','model_concert');
-//    $data['messages'] = $this->livreorManager->get_commentaires(self::NB_COMMENTAIRE_PAR_PAGE, $nb_commentaire-1);
+      $datas = array();
 
-    
-	//$datas['daten'] = "12/02" ;
+      $datas['sidebar_left']  = $this->load->view('sidebars/sidebar_left', '', TRUE);
+      $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
+      $datas['concert_date']  = $this->homepage->get_concert();
 
-    $this->layout->view('homepage', $datas);
- 
+      //$this->load->model('homepage','model_concert');
+      //$data['messages'] = $this->livreorManager->get_commentaires(self::NB_COMMENTAIRE_PAR_PAGE, $nb_commentaire-1);
+      //$datas['daten'] = "12/02" ;
+
+      $this->layout->view('homepage', $datas);
   }
-  
   
 }
 
