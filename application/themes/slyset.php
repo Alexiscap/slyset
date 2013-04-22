@@ -49,17 +49,17 @@
       </div>
     </header>
 
-    <div id="page">
-      <?php if(isset($sidebar_left)) echo $sidebar_left; ?>
+    <div id="any-background<?php if(isset($id_bkg)) echo '-'.$id_bkg; ?>">
+      <div id="page">
+        <?php if(isset($sidebar_left)) echo $sidebar_left; ?>
 
-      <div id="contentAll">
-        <!-- Display All Content -->
-        <?php if(isset($output)) echo $output; ?>
-        <!-- End Display All Content -->
+        <div id="contentAll">
+          <?php if(isset($output)) echo $output; ?>
 
-        <?php //if(isset($sidebar_right)) echo $sidebar_right; ?>
+          <?php //if(isset($sidebar_right)) echo $sidebar_right; ?>
+        </div>
       </div>
-    </div>  
+    </div>
 
     <footer>
       <div id="footer">

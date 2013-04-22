@@ -8,10 +8,14 @@ class User extends CI_Controller
         parent::__construct();
         $this->output->enable_profiler(true);
         
+        $this->layout->ajouter_css('slyset');
+        
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('user_model');
         $this->load->library('layout');
+        
+        $this->layout->set_id_background('inscription');
     }
   
     public function index()

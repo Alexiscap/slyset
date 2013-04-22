@@ -98,6 +98,16 @@ class Layout
         }
         return false;
     }
+
+    public function set_id_background($id_bkg)
+    {
+        if(is_string($id_bkg) AND !empty($id_bkg))
+        {
+            $this->var['id_bkg'] = $id_bkg;
+            return true;
+        }
+        return false;
+    }
     
     /*
     |===============================================================================
