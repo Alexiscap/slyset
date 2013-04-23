@@ -53,11 +53,11 @@
       <div id="page">
         <?php if(isset($sidebar_left)) echo $sidebar_left; ?>
 
-        <div id="contentAll">
+<!--        <div id="contentAll">-->
           <?php if(isset($output)) echo $output; ?>
 
           <?php //if(isset($sidebar_right)) echo $sidebar_right; ?>
-        </div>
+<!--        </div>-->
       </div>
     </div>
 

@@ -9,6 +9,8 @@ class User extends CI_Controller
         $this->output->enable_profiler(true);
         
         $this->layout->ajouter_css('slyset');
+        $this->layout->ajouter_js('jquery.placeheld.min');
+        $this->layout->ajouter_js('slyset');
         
         $this->load->helper('form');
         $this->load->library('form_validation');

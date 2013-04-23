@@ -1,3 +1,5 @@
+<h1 id="title-subscription">Créez votre compte et explorez Slyset</h1>
+
 <?php
   //appel à la function "register" du controller "user"
   echo form_open('user');
@@ -12,9 +14,9 @@
 <div class="step-form">
   <h2>Étape 3/3</h2>
   <div id="state-step">
+    <span class="checked first"></span>
     <span class="checked"></span>
-    <span class="checked"></span>
-    <span class="current"></span>
+    <span class="current last"></span>
   </div>
 </div>
 

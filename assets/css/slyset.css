@@ -284,6 +284,62 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 /* --------- INSCRIPTION --------- */
 #any-background-inscription{ display:block; width:100%; height:978px; background:url('../images/subscription/bkg_subscription.png') no-repeat; background-size:cover; }
 
+h1#title-subscription{ padding:85px 0 0 0; display:block; text-align:center; font-family:'Rockwell'; font-weight:bold; font-size:39px; color:#3f3f3f; }
+
+.step-form{ margin:50px 0 0 242px; width:470px; float:left; 
+    background-color:#ededed; border:5px solid rgba(217, 233, 229, 0.6); -moz-border-radius:10px; -webkit-border-radius:10px; border-radius:10px;
+    /*IE 7 AND 8 DO NOT SUPPORT BORDER RADIUS*/
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr = '#e8e8e8', endColorstr = '#f1f1f1');
+    /*INNER ELEMENTS MUST NOT BREAK THIS ELEMENTS BOUNDARIES*/
+    /*Element must have a height (not auto)*/
+    /*All filters must be placed together*/
+    -ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr = '#e8e8e8', endColorstr = '#f1f1f1')";
+    /*Element must have a height (not auto)*/
+    /*All filters must be placed together*/
+    background-image:-moz-linear-gradient(top, #ededed, #f1f1f1);
+    background-image:-ms-linear-gradient(top, #ededed, #f1f1f1);
+    background-image:-o-linear-gradient(top, #ededed, #f1f1f1);
+    background-image:-webkit-gradient(linear, center top, center bottom, from(#ededed), to(#f1f1f1));
+    background-image:-webkit-linear-gradient(top, #ededed, #f1f1f1);
+    background-image:linear-gradient(top, #ededed, #f1f1f1);
+    -moz-background-clip:padding;
+    -webkit-background-clip:padding-box;
+    background-clip:padding-box;
+    /*Use "background-clip:padding-box" when using rounded corners to avoid the gradient bleeding through the corners*/
+    /*--IE9 WILL PLACE THE FILTER ON TOP OF THE ROUNDED CORNERS--*/
+
+
+}
+
+.step-form .step-head{ padding:5px 0 8px 0; width:100%; background:#e9e9e9; float:left; }
+.step-form h2{ text-align:center; font-family:"Trebuchet MS"; font-weight:bold; font-size:18px; color:#3f3f3f; }
+.step-form #state-step{ margin:5px auto; width:123px; }
+.step-form #state-step span{ display:inline-block; width:41px; height:22px; background-image:url('../images/subscription/sprite_form_steps.png'); float:left; }
+.step-form #state-step span.current{ background-position:-41px 0; }
+.step-form #state-step span.current.first{ background-position:0 -22px; }
+.step-form #state-step span.current.last{ background-position:-82px -22px; }
+.step-form #state-step span.checked{ background-position:-41px -22px; }
+.step-form #state-step span.checked.first{ background-position:0 0; }
+.step-form #state-step span.disable{ background-position:-41px -44px; }
+.step-form #state-step span.disable.last{ background-position:-82px 0; }
+
+.step-form form{ margin:10px 0 0 0; padding:10px 30px 35px 30px; float:left; clear:both; }
+.step-form form p{ font-family:"Trebuchet MS"; font-weight:bold; font-size:12px; color:#6b6b6b; }
+.step-form form hr{ display:block; width:100%; height:1.5px; border-top:none; border-right:none; border-bottom:1px solid #f8f8f8; border-left:none; background:#e9e9e9; float:left; }
+
+.step-form form .ico-placeholder{ width:26px; height:23px; display:inline-block; position:absolute; background:url('../images/subscription/sprite_form_placeholder.png') no-repeat 0 0 transparent; }
+.step-form form .ico-placeholder.username{ background-position:0 0; }
+.step-form form .ico-placeholder.email{ background-position:0 -23px; }
+
+.step-form form label{ float:left; clear:both; }
+.step-form form input{ float:left; clear:both; }
+.step-form form input[type="text"], .step-form form input[type="password"], .step-form form input[type="mail"]{ margin:0 0 25px 0; padding:0 10px; display:block; width:390px; height:48px; position:relative; font-size:17px; font-family:'Myriad Pro'; border:1px solid #cccccc; outline:none; color:#CCCCCC; background:#FFFFFF; }
+
+.step-form form input[type="submit"]{ float:right; background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #717171), color-stop(1, #686868) ); background:-moz-linear-gradient( center top, #717171 5%, #686868 100% ); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#717171', endColorstr='#686868'); background-color:#717171; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; border:1px solid #676767; display:inline-block; color:#ffffff; font-family:Trebuchet MS; font-size:15px; font-weight:bold; padding:8px 24px; text-decoration:none; }
+.step-form form input[type="submit"]:hover{ background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #686868), color-stop(1, #717171) ); background:-moz-linear-gradient( center top, #686868 5%, #717171 100% ); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#686868', endColorstr='#717171'); background-color:#686868; cursor:pointer; }
+.step-form form input[type="submit"]:active{ position:relative; top:1px; }
+
+
 /* --------- FIN  D'INSCRIPTION'  --------- */
 
 
