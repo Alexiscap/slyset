@@ -15,6 +15,7 @@ class User extends CI_Controller
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('user_model');
+        $this->load->model('Facebook_Model');
         $this->load->library('layout');
         
         $this->layout->set_id_background('inscription');
@@ -27,17 +28,21 @@ class User extends CI_Controller
   
     public function register_step_1()
     {
+        $fb_data = $this->session->userdata('fb_data');
+        //print_r($fb_data);
+        $data = array('fb_data' => $fb_data);
+            
         $this->form_validation->set_rules('mail', 'Email', 'trim|required|valid_email|xss_clean|callback_check_register');
         $this->form_validation->set_rules('login', 'Nom d\'utilisateur', 'trim|required|xss_clean');
 
         if($this->form_validation->run() == FALSE){			 
-          $this->layout->view('inscription/loginform');
+          $this->layout->view('inscription/loginform', $data);
         } else {
           $mail = $this->input->post('mail');
           $login = $this->input->post('login');
           
 //          $this->register_step_2(););
-          $this->layout->view('inscription/loginform2');
+          $this->layout->view('inscription/loginform2', $data);
         }
     }
 
