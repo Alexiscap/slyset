@@ -24,7 +24,7 @@
     
     <p class="sub-text-type">Choisissez votre type de profil</p>
     
-    <div id="type-user">
+<!--    <div id="type-user">
       <a href="#" class="active melomane">
         <span></span>
       </a>
@@ -33,16 +33,21 @@
         <span></span>
       </a>
       
-      <span class="change-type"></span>
-    </div>
-    
-    <?php
-      echo form_checkbox('melomane', '1', true);
-      echo form_label('Melomane','melomane');
+    </div>-->
 
-      echo form_checkbox('musicien', '2', false);
-      echo form_label('Musicien','musicien');
-     
+    <div id="type-user">
+        <?php
+          echo form_checkbox('typeaccount', '1', true);
+          echo form_label('Melomane','typeaccount');
+
+          echo form_checkbox('typeaccount', '2', false);
+          echo form_label('Musicien','typeaccount');
+        ?>
+
+        <span class="change-type"></span>
+    </div>
+
+    <?php
       echo form_password('password','','placeholder="Mot de passe"');
       echo '<div class="ico-placeholder username"></div>';
       echo form_error('password', '<span class="error-form">', '</span>');
@@ -51,9 +56,7 @@
       echo '<div class="ico-placeholder username"></div>';
       echo form_error('confpassword', '<span class="error-form">', '</span>');
 
-      echo form_hidden('usertype', '1');
-      
-      echo form_submit('submit','Créer un compte');
+      echo form_submit('submit','Suivant');
     ?>
     
     <?php

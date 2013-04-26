@@ -33,7 +33,7 @@
         <div id="ico_menu">
           <a href="<?php echo site_url('welcome'); ?>" id="accueil"><span>Accueil</span></a>
           <a href="#" id="explorer"><span>Explorer</span></a>
-          <a href="#" id="inscrire"><span>S'inscrire</span></a>
+          <a href="<?php echo site_url('user'); ?>" id="inscrire"><span>S'inscrire</span></a>
         </div>
 
         <div id="connexion">

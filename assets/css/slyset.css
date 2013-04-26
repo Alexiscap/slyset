@@ -1,3 +1,16 @@
+
+
+
+
+/* --------- GENERAL CI  --------- */
+#codeigniter_profiler{
+    overflow: scroll;
+}
+
+/* --------- FIN DE GENERAL CI  --------- */
+
+
+
 body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; background:#f9f9f9; z-index:2; }
 #page{ margin:0 auto; width:980px; }
 #contentAll{ margin:0 0 0 20px; width:770px; float:left; }
@@ -346,7 +359,7 @@ h1#title-subscription{ padding:85px 0 0 0; display:block; text-align:center; fon
 .step-form form input[type="submit"]:active{ position:relative; top:1px; }
 
 
-.step-form #type-user{ margin:0 0 20px 0; float:left; }
+.step-form #type-user{ margin:0 0 15px 0; float:left; }
 .step-form #type-user a.melomane.active{ display:inline-block; width:203px; height:123px; float:left; }
 .step-form #type-user a.musicien{ display:inline-block; width:209px; height:123px; float:left; }
 .step-form #type-user span{ display:block; width:209px; height:123px; background:url('../images/subscription/sprite_choix_compte.png') no-repeat 0 0 transparent; }
