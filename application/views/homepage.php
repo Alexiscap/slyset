@@ -1,10 +1,6 @@
 <div id="contentAll">
-
-  <?php 
-    $evenement = explode('-', $concert_date[0]->date); 
-  ?>
   <script>
-    var joursEvenement = <?php print '['.$evenement[1].','.substr($evenement[2],0,2).','.$evenement[0].']'.',' ?>;
+    var joursEvenement = <?php print '['.$evenement[1].','.substr($evenement[2],0,2).','.$evenement[0].']' ?>;
   </script>
 
   <div id="breadcrumbs">
