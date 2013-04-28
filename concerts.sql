@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Dim 28 Avril 2013 à 22:50
+-- Généré le: Dim 28 Avril 2013 à 23:26
 -- Version du serveur: 5.6.10
 -- Version de PHP: 5.3.15
 
@@ -32,13 +32,13 @@ CREATE TABLE IF NOT EXISTS `concerts` (
   `titre` varchar(255) DEFAULT NULL,
   `lieu` varchar(45) DEFAULT NULL,
   `date` timestamp NULL DEFAULT NULL,
-  `ville` varchar(20) NOT NULL DEFAULT 'NULL',
-  `snd_partie` varchar(40) NOT NULL DEFAULT 'NULL',
-  `website_salle` varchar(45) NOT NULL DEFAULT 'NULL',
-  `phone_salle` varchar(17) NOT NULL DEFAULT 'NULL',
-  `adress_salle` varchar(100) NOT NULL DEFAULT 'NULL',
-  `cp_ville` int(5) NOT NULL DEFAULT '0',
-  `prix` int(3) NOT NULL DEFAULT '0',
+  `ville` varchar(20) DEFAULT NULL,
+  `snd_partie` varchar(40) DEFAULT NULL,
+  `website_salle` varchar(45) DEFAULT NULL,
+  `phone_salle` varchar(17) DEFAULT NULL,
+  `adress_salle` varchar(100) DEFAULT NULL,
+  `cp_ville` int(5) DEFAULT NULL,
+  `prix` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`,`Artiste_id`),
   KEY `fk_Concert_Artiste1_idx` (`Artiste_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
@@ -56,3 +56,5 @@ INSERT INTO `concerts` (`id`, `Artiste_id`, `titre`, `lieu`, `date`, `ville`, `s
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+<br />
+<b>Fatal error</b>:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 8456596 bytes) in <b>Unknown</b> on line <b>0</b><br />
