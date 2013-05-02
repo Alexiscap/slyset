@@ -20,6 +20,10 @@
         $value = htmlentities(stripslashes(strip_tags($value)));
         echo form_hidden($key, $value);
       }
+      
+      print_r($_POST);
+      echo $fb_data['me'];
+      echo $this->facebook->getUser();
     ?>
     
     <p class="sub-text-type">Choisissez votre type de profil</p>
@@ -45,15 +49,17 @@
         ?>
 
         <span class="change-type"></span>
+        
+        <p class="choix-text"><a href="#">Vous ne savez pas quoi choisir ?</a></p>
     </div>
 
     <?php
       echo form_password('password','','placeholder="Mot de passe"');
       echo '<div class="ico-placeholder username"></div>';
-      echo form_error('password', '<span class="error-form">', '</span>');
 
       echo form_password('confpassword','','placeholder="Confirmer mot de passe"');
       echo '<div class="ico-placeholder username"></div>';
+      echo form_error('password', '<span class="error-form">', '</span>');
       echo form_error('confpassword', '<span class="error-form">', '</span>');
 
       echo form_submit('submit','Suivant');

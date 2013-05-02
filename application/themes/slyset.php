@@ -23,7 +23,7 @@
     <![endif]-->
   </head>
 
-  <body>
+  <body <?php if(isset($id_bkg)) echo 'class="'.$id_bkg.'"'; ?>>
     <header>
       <div id="header">
         <a href="<?php echo site_url('welcome'); ?>">

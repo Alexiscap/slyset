@@ -20,7 +20,7 @@ class Facebooklocal extends CI_Controller {
                 'fb_data' => $fb_data,
             );
             
-        $this->load->view('facebooklocal', $data);
+        $this->load->view('inscription/loginform2', $data);
     }
 
 }

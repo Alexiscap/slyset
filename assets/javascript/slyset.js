@@ -2,10 +2,10 @@ $(document).ready(function() {
   
   $("input[placeholder]").placeHeld();
   
-  $userType = $('.step-form label');
+  $userType = $('.step-form #type-user label');
   $userType.click(function(){
-    $('input:checkbox').attr('checked', false);
-    $(this).prev('input:checkbox').attr('checked', true);
+    $('.step-form #type-user input:checkbox').attr('checked', false);
+    $(this).prev('.step-form #type-user input:checkbox').attr('checked', true);
   })
   
   $container = $('.content');

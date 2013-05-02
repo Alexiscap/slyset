@@ -36,9 +36,9 @@
     
     <?php    
 //      echo form_label('Nom d\'utilisateur','login');
-      echo form_input('login',set_value('login'),'placeholder="Nom d\'utilisateur"');
-      echo '<div class="ico-placeholder username"></div>';
-      echo form_error('login', '<span class="error-form">', '</span>');
+//      echo form_input('login',set_value('login'),'placeholder="Nom d\'utilisateur"');
+//      echo '<div class="ico-placeholder username"></div>';
+//      echo form_error('login', '<span class="error-form">', '</span>');
       
 //      echo form_label('E-mail','mail');
       echo form_input('mail',set_value('mail'),'placeholder="E-Mail"');
