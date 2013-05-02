@@ -12,6 +12,8 @@ class Mc_photos extends CI_Controller
       $this->layout->ajouter_js('jquery.imagesloaded.min');
       $this->layout->ajouter_js('jquery.masonry.min');
       $this->layout->ajouter_js('jquery.stapel');
+      
+        $this->layout->set_id_background('photos_videos');
     }
   
     public function index()
