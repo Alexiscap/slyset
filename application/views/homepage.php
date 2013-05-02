@@ -1,6 +1,7 @@
 <div id="contentAll">
   <script>
-    var joursEvenement = <?php print '['.$evenement[1].','.substr($evenement[2],0,2).','.$evenement[0].']' ?>;
+    var joursEvenement = <?php echo '['; if (isset($all_date_calendar)) echo $all_date_calendar; echo "]" 
+    ?> ;
   </script>
 
   <div id="breadcrumbs">

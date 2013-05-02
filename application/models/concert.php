@@ -4,10 +4,12 @@ class concert extends CI_Model
 {
   
     protected $table = 'concerts';
+	protected $table_addresse = 'adresse';
+
 
 	public function count()
     	{
-        	return $this->db->count_all($this->table);
+        	return $this->db->count_all('concerts');
     	}
 
     public function get_concert($nb, $first = 0)
@@ -17,56 +19,31 @@ class concert extends CI_Model
         {
             return false;
         }
-         
-    
-        return $this->db->select('lieu,ville,titre,date,prix,snd_partie')
-        				->where(array('Artiste_id' => 2))
-                        ->from($this->table)
-                        ->order_by('date','desc')
+
+        return $this->db->select('Utilisateur_id,Adresse_id,date,titre,seconde_partie,numero_adresse,salle,voie_adresse,ville,code_postal,pays,prix')        				
+                        ->from ('concerts')
+                        ->join ('adresse','concerts.Adresse_id=adresse.id')
+                        ->where(array('Utilisateur_id' => 1))
+                        ->order_by('date','asc')
                         ->limit($nb, $first)
                         ->get()
                         ->result();
-    }
-
-    public function ajout_concert ($artiste,$snd_partie,$date_concert,$heure_concert,$salle,$ville,$prix)
+	}
+	
+	
+//ajouter adresse -> recuperer id adresse pour ajouter dans table concert
+    public function ajout_adresse ($ville,$pays,$code_postal,$route,$street_number)
     {
-    	 if(!is_string($artiste) OR empty($artiste))
-        {
-            return false;
-        }
-    
     	
-    	 return $this->db->set(array('titre' => $artiste,'Artiste_id'=>3,'lieu'=>$salle,'ville'=>$ville,'snd_partie'=>$snd_partie,'prix'=>$prix))
-               // ->set('date', 'NOW()', false)
+  		return $this->db->set(array('ville'=>$ville,'pays'=>$pays,'code_postal'=>$code_postal,'voie_adresse'=>$route,'numero_adresse'=>$street_number))
+                		->insert($this->table_addresse);
+    }
+    
+    public function ajout_concert($artiste,$snd_partie,$date,$heure,$salle,$prix)
+        {
+
+  		return $this->db->set(array('Utilisateur_id'=>3,'titre'=>$artiste,'Adresse_id'=>2,'salle'=>$salle,'seconde_partie'=>$snd_partie,'prix'=>$prix))
                 ->insert($this->table);
     	}
     
 }
-
-
-/*
-   
-    public function count()
-    {
-        return $this->db->count_all($this->table);
-    }
-     
-    public function get_commentaires($nb, $debut = 0)
-    {
-        if(!is_integer($nb) OR $nb < 1 OR !is_integer($debut) OR $debut < 0)
-        {
-            return false;
-        }
-         
-        return $this->db->select('`id`, `pseudo`, `message`, DATE_FORMAT(`date`,\'%d/%m/%Y &agrave; %H:%i:%s\') AS \'date\'', false)
-                ->from($this->table)
-                ->order_by('id', 'desc')
-                ->limit($nb, $debut)
-                ->get()
-                ->result();
-    }
-}
-
-
-
-*/

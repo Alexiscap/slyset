@@ -40,9 +40,21 @@ class Welcome extends CI_Controller {
 
       $datas['sidebar_left']  = $this->load->view('sidebars/sidebar_left', '', TRUE);
       $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
-      $datas['concert_date']  = $this->homepage->get_concert();
-      $datas['evenement'] = explode('-', $datas['concert_date'][0]->date); 
+      $datas['concert_date']  = $this->homepage->get_concert();   
+      $datas['all_date_calendar'] ="";
+      foreach ($datas['concert_date'] as $datas['concert_date_uniq'])
+      {
+     	 if (isset ($datas['concert_date_uniq']->date))
+     	 {
+			$datas['evenement'] = explode('-', $datas['concert_date_uniq']->date);  
+  			$datas['all_date_calendar'] .= 
+			$datas['format_date_calendar'] =  '['.$datas['evenement'][1].','.substr($datas['evenement'][2],0,2).','.$datas['evenement'][0].'],' ;
+     			    
 
+      	}
+      }
+    
+    
       $this->layout->view('homepage', $datas);
   }
   

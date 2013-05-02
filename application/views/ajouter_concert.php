@@ -1,4 +1,3 @@
-
 <form method="post" action="">
 	
 	<!-- Ajouter automatiquement nom de l'artiste quand profil utilisateur developpé -->
@@ -9,6 +8,7 @@
 	Salle  <input type="text" name="salle" value="" placeholder="Ex: L'aeronef" /> 
 	Ville  <input type="text" name="ville" value="" placeholder="Ex: Lille" /></br>
 	prix  <input type="number" name="prix" value="" placeholder="12" /> €</br>
+
 	
 	<input type="submit" value="Valider" />
 
