@@ -49,18 +49,16 @@
    { 
    	   foreach($concert_all as $concert_unit): ?>
  
-  		 <p  class="date-heure"><span><?php
-  		/* $date = (date_create($concert_unit->date, timezone_open('Europe/Paris')));		  
-  		 $date_2 = date_format($date,"L-n-Y-M");*/
-		//echo $test_bone_date;
-
- ?><!--Mardi 26 Octobre 2013 - 19h30 ---> <?php if(isset($concert_unit->prix))echo $concert_unit->prix.'&euro;'?></span></p>
+  		<p  class="date-heure"><span><?php
+		get_date($concert_unit->date,'complete');?> <?php if(isset($concert_unit->prix))echo ' - '.$concert_unit->prix.'&euro;'?></span></p>
    		 <div class="edition"><a href="#"><span class="edit">editer</span></a><a href="#"><span class="suppr">supprimer</span></a></div>
    		 <hr/>
    			 <div class="infos_concert">
-      			 <div class="calendrier"><p class="mois"><!--oct--></p><p class="jour"><!--26--></p></div>
+      			 <div class="calendrier"><p class="mois"><?php
+		get_date($concert_unit->date,'mois_trois');?></p><p class="jour"><?php
+	get_date($concert_unit->date,'jour_texte');?></p></div>
      			 <p><?php echo $concert_unit->titre ?></p>
-     			 <p><?php echo $concert_unit->seconde_partie ?></p>
+     			 <p><?php if(isset($concert_unit->prix)) echo '+ '.$concert_unit->seconde_partie ?></p>
     		 </div>
    			 <div class="adr_concert">
      	 		<img src="<?php echo img_url('musicien/localisation.png'); ?>" />
@@ -68,31 +66,16 @@
       	 		<p class="adr_rue"><?php echo $concert_unit->numero_adresse." ".$concert_unit->voie_adresse ?> <!--Bis Rue de Bagnolet--></p>
       			 <p class="adr_ville"><?php echo $concert_unit->ville.", ".$concert_unit->pays ?></p>
    		 	</div>
-   		 <a href="#" class="more" >Voir plus d'informations</a>
+   		 <a href="javascript:void(0);" class="more" id="more_<?php echo $concert_unit->id ?>" onclick='showInfo(more_<?php echo $concert_unit->id ?>,more_info_<?php echo $concert_unit->id ?>)' >Voir plus d'informations</a>
     	 <a href="#" class="participer"><span class="button_left"></span><span class="button_center">J'y vais</span><span class="button_right"></span></a>
     
-    <?php endforeach; }?>
-
-    <p class="date-heure"><span>Samedi 28 Novembre 2013 - 20h30 - 10&euro;</span></p>
-    <div class="edition"><a href="#"><span class="edit">editer</span></a><a href="#"><span class="suppr">supprimer</span></a></div>
-    <hr/>
-    <div class="infos_concert">
-      <div class="calendrier"><p class="mois">nov</p><p class="jour">28</p></div>
-      <p><?php /* echo $concert_main_artiste */ ?></p>
-      <p>+ The Rock & Roll Dubble Bubble</p>
-    </div>
-    <div class="adr_concert">
-      <img src="<?php echo img_url('musicien/localisation.png'); ?>" />
-      <p class="adr_lieu">La Fl&egrave;che d'Or</p>
-      <p class="adr_rue">102 Bis Rue de Bagnolet</p>
-      <p class="adr_ville">Paris, France</p>
-    </div>
-    <a href="javascript:void(0);" class="more" id="class" onclick='showInfo("class",more_info)' >Cacher les informations</a>
-    <a href="#" class="participer"><span class="button_left"></span><span class="button_center">J'y vais</span><span class="button_right"></span></a>
-    <div class="info_sup" id="more_info" style="display:none">
+   
+    
+    
+    <div class="info_sup" id="more_info_<?php echo $concert_unit->id ?>" style="display:none">
       <div class="informations">
-        <p class="nom_date">Bob Dylan, le 28/11/13 &agrave; 20h30</p>
-        <p class="lieu_salle">L‘Aéronef,</p>
+        <p class="nom_date"><?php echo $concert_unit->titre.',' ?> <!--le 28/11/13 &agrave; 20h30--></p>
+        <p class="lieu_salle"><?php echo $concert_unit->salle.',' ?></p>
         <p class="lieu_rue">168 Avenue Willy Brandt,</p>
         <p class="lieu_ville">59777, Lille</p>
         <p class="tel">Tel. : 03.20.13.50.00 </p>
@@ -108,24 +91,13 @@
 
       </div>
     </div>
+ <?php endforeach; }?>
+   
 
-    <p class="date-heure"><span>Mardi 26 Octobre 2013 - 19h30 - 10&euro;</span></p>
-    <div class="edition"><a href="#"><span class="edit">editer</span></a><a href="#"><span class="suppr">supprimer</span></a></div>
-    <hr/>
-    <div class="infos_concert">
-      <div class="calendrier"><p class="mois">oct</p><p class="jour">26</p></div>
-      <p>Bob Dylan</p>
-      <p>+ The Rock & Roll Dubble Bubble</p>
-    </div>
-    <div class="adr_concert">
-      <img src="<?php echo img_url('musicien/localisation.png'); ?>"/>
-      <p class="adr_lieu">La Fl&egrave;che d'Or</p>
-      <p class="adr_rue">102 Bis Rue de Bagnolet</p>
-      <p class="adr_ville">Paris, France</p>
-    </div>
-    <a href="#" class="more">Voir plus d'informations</a>
-    <a href="#" class="participer"><span class="button_left"></span><span class="button_center">Je n'y vais plus</span><span class="button_right"></span></a>
-  </div>
+  
+   
+  
+     </div>
 
   <?php if(isset($sidebar_right)) echo $sidebar_right; ?>
 

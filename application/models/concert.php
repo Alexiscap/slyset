@@ -12,15 +12,16 @@ class concert extends CI_Model
         	return $this->db->count_all('concerts');
     	}
 
-    public function get_concert($nb, $first = 0)
-    {
    
-     if(!is_integer($nb) OR $nb < 1 OR !is_integer($first) OR $first < 0)
+    public function get_concert($nb, $first = 0)
+	{
+   
+		if(!is_integer($nb) OR $nb < 1 OR !is_integer($first) OR $first < 0)
         {
-            return false;
+			return false;
         }
 
-        return $this->db->select('Utilisateur_id,Adresse_id,date,titre,seconde_partie,numero_adresse,salle,voie_adresse,ville,code_postal,pays,prix')        				
+		return $this->db->select('concerts.id,Utilisateur_id,Adresse_id,date,titre,seconde_partie,numero_adresse,salle,voie_adresse,ville,code_postal,pays,prix')        				
                         ->from ('concerts')
                         ->join ('adresse','concerts.Adresse_id=adresse.id')
                         ->where(array('Utilisateur_id' => 1))
@@ -31,7 +32,7 @@ class concert extends CI_Model
 	}
 	
 	
-//ajouter adresse -> recuperer id adresse pour ajouter dans table concert
+	//ajouter adresse -> recuperer id adresse pour ajouter dans table concert
     public function ajout_adresse ($ville,$pays,$code_postal,$route,$street_number)
     {
     	
@@ -39,10 +40,15 @@ class concert extends CI_Model
                 		->insert($this->table_addresse);
     }
     
-    public function ajout_concert($artiste,$snd_partie,$date,$heure,$salle,$prix)
+    public function ajout_concert($artiste,$snd_partie,$salle,$prix,$heure,$date)
         {
 
-  		return $this->db->set(array('Utilisateur_id'=>3,'titre'=>$artiste,'Adresse_id'=>2,'salle'=>$salle,'seconde_partie'=>$snd_partie,'prix'=>$prix))
+		 if(!is_string($date) OR empty($date))
+      		  {
+          	  return false;
+       		}
+    	$date_concert = $date.' '.$heure.':00';
+  		return $this->db->set(array('Utilisateur_id'=>3,'titre'=>$artiste,'Adresse_id'=>2,'salle'=>$salle,'seconde_partie'=>$snd_partie,'prix'=>$prix,'date'=>$date_concert))
                 ->insert($this->table);
     	}
     
