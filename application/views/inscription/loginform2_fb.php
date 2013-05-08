@@ -12,7 +12,7 @@
 
   <?php
     //appel à la function "register" du controller "user"
-    echo form_open('user/register_step_2');
+    echo form_open('user/register_step_2fb');
 
     // Loop through the POST variables passed from the previous page
     foreach ($_POST as $key => $value){
@@ -25,6 +25,15 @@
 //      echo $this->facebook->getUser();
   ?>
 
+  <?php if($fb_data['me']): ?>
+    <div class="user_fb_sub">
+        <p>Bonjour <?php echo $fb_data['me']['name']; ?><!--,<br />
+          <a href="<?php echo site_url('topsecret'); ?>">You can access the top secret page</a> or <a href="<?php echo $fb_data['logoutUrl']; ?>">logout</a>-->
+        </p>
+        <img src="https://graph.facebook.com/<?php echo $fb_data['uid']; ?>/picture" alt="" class="pic" />
+    </div>
+  <?php endif; ?>
+  
   <p class="sub-text-type">Choisissez votre type de profil</p>
 
   <div id="type-user">
@@ -41,22 +50,9 @@
       <p class="choix-text"><a href="#">Vous ne savez pas quoi choisir ?</a></p>
   </div>
 
-  <?php
-    echo form_password('password','','placeholder="Mot de passe"');
-    echo '<div class="ico-placeholder password"></div>';
-
-    echo form_password('confpassword','','placeholder="Confirmer mot de passe"');
-    echo '<div class="ico-placeholder password"></div>';
-    echo form_error('password', '<span class="error-form">', '</span>');
-    echo form_error('confpassword', '<span class="error-form">', '</span>');
-    
-    //$attributes_button = array('name' => 'retour', 'class' => 'back', 'type' => 'button', 'content' => 'Retour', 'onClick' => 'redirect("user")'); //document.location.href = document.referrer
-    //echo form_button($attributes_button);
-    
+  <?php    
     echo form_submit('submit','Suivant');
-  ?>
-
-  <?php
+    
     echo form_close();
   ?>
 

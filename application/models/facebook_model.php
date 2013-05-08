@@ -25,7 +25,7 @@ class Facebook_model extends CI_Model {
         {
             try {
                 // Proceed knowing you have a logged in user who's authenticated.
-                $profile = $this->facebook->api('/me?fields=id,name,link,email');
+                $profile = $this->facebook->api('/me?fields=id,name,link,email,first_name,last_name,gender,birthday,cover,location,picture');
             } catch (FacebookApiException $e) {
                 error_log($e);
                 $user = null;
@@ -37,8 +37,8 @@ class Facebook_model extends CI_Model {
                         'uid' => $user,
                         'loginUrl' => $this->facebook->getLoginUrl(
                             array(
-                                'scope' => 'email,user_birthday,publish_stream', // app permissions
-                                'redirect_uri' => 'http://localhost.slyset.com/user/' // URL where you want to redirect your users after a successful login
+                                'scope' => 'email,user_birthday,publish_stream,user_location', // app permissions
+                                'redirect_uri' => 'http://localhost.slyset.com/user/register_step_2fb/' // URL where you want to redirect your users after a successful login
                             )
                         ),
                         'logoutUrl' => $this->facebook->getLogoutUrl(),

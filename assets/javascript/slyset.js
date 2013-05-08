@@ -27,7 +27,8 @@ $(document).ready(function() {
   
   //Modifie l'apparence des checkboxs
   $checkboxs = $('input:checkbox');
-  $ccLabels = $('input:checkbox + label');
+  $checkLabel = $('.checkbox-style label');
+  $checkLabel.prepend('<span/>');
   
   
   //Appel de la fonction masonry uniquement sur la page photos/vidéos

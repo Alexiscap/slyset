@@ -7,10 +7,11 @@ class User_model extends CI_Model {
         parent::__construct();
     }
     
-    public function facebook_register($facebook_id){
+    public function facebook_register($facebook_id)
+    {
         $this->db->select('facebook_id');
         $this->db->from('utilisateur');
-        $this->db->where('facebook_id = ' . "'" . $facebook_id . "'");
+        $this->db->where('facebook_id = ' . "'" . $facebook_id . "'" . ' AND facebook_id != 0');
         $this->db->limit(1);
 
         $query = $this->db->get();
@@ -22,10 +23,12 @@ class User_model extends CI_Model {
         }
     }
     
-    public function mail_register($mail){
+    public function mail_register($mail)
+    {
         $this->db->select('mail');
         $this->db->from('utilisateur');
         $this->db->where('mail = ' . "'" . $mail . "'");
+        $this->db->limit(1);
 
         $query = $this->db->get();
 
@@ -36,17 +39,24 @@ class User_model extends CI_Model {
         }
     }
 		 
-    public function insert_user($login, $mail, $password, $nom, $prenom, $ville, $pays, $type){
+    public function insert_user($facebook_id, $login, $mail, $password, $type, $nom, $prenom, $naissance, $genre, $ville, $pays, $stylemusicecoute, $stylemusicjoue, $stylemusicinstru)
+    {
         $this->load->library('encrypt');
         
+        $data['facebook_id'] = $facebook_id;
         $data['mail'] = $mail;
         $data['password'] = $this->encrypt->sha1($password);
         $data['login'] = $login;
         $data['nom'] = $nom;
         $data['prenom'] = $prenom;
+        $data['date_naissance'] = $naissance;
+        $data['genre'] = $genre;
         $data['ville'] = $ville;
         $data['nationalite'] = $pays;
         $data['type'] = $type;
+        $data['style_ecoute'] = $stylemusicecoute;
+        $data['style_joue'] = $stylemusicjoue;
+        $data['instrument'] = $stylemusicinstru;
         $data['created'] = Date('Y-m-d');
         
         $this->db->insert('utilisateur', $data);

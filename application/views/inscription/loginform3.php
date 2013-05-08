@@ -23,89 +23,195 @@
 //      print_r($_POST);
   ?>
 
+  <p class="label_big">Dites-nous en un peu plus sur vous...</p>
+  
   <?php
     if($_POST['typeaccount'] == 1):
-
-//      echo form_input('nom',set_value('nom'),'placeholder="Votre nom"');
-//      echo '<div class="ico-placeholder firstname"></div>';
-//      echo form_error('nom', '<span class="error-form">', '</span>');
-
-//      echo form_input('prenom',set_value('prenom'),'placeholder="Votre prénom"');
-//      echo '<div class="ico-placeholder name"></div>';
-//      echo form_error('prenom', '<span class="error-form">', '</span>');
-
-      echo form_input('nomscene',set_value('nomscene'),'placeholder="Votre nom de scène"');
-      echo '<div class="ico-placeholder nomscene"></div>';
-      echo form_error('nomscene', '<span class="error-form">', '</span>');
-
-//      echo form_input('ville',set_value('ville'),'placeholder="Votre ville"');
-//      echo '<div class="ico-placeholder ville"></div>';
-//      echo form_error('ville', '<span class="error-form">', '</span>');
-
-//      echo form_input('pays',set_value('pays'),'placeholder="Votre pays"');
-//      echo '<div class="ico-placeholder pays"></div>';
-//      echo form_error('pays', '<span class="error-form">', '</span>');
-
-//      $optionsSelect = array('genre'=>'Votre genre', 'homme'=>'Homme', 'femme'=>'Femme');
-//      echo form_dropdown('genre', $optionsSelect, 'genre');
-//      echo form_error('genre', '<span class="error-form">', '</span>');
-
-//      echo form_input('datenaissance',set_value('datenaissance'),'placeholder="Date naissance format jj/mm/aaaa"');
-//      echo '<div class="ico-placeholder datenaissance"></div>';
-//      echo form_error('datenaissance', '<span class="error-form">', '</span>');
-
-      echo form_label('Votre style','stylemusic');
-      echo '<div class="checkbox-style">';
-        echo '<div class="checkbox-group group1">';
-          echo form_checkbox('stylemusic', 'pop', true, 'id="checkpop"');
-          echo form_label('Pop','checkpop');
-
-          echo form_checkbox('stylemusic', 'rock', false, 'id="checkrock"');
-          echo form_label('Rock','checkrock');
-
-          echo form_checkbox('stylemusic', 'folk', false, 'id="checkfolk"');
-          echo form_label('Folk','checkfolk');
-        echo '</div>';
-
-        echo '<div class="checkbox-group group2">';
-          echo form_checkbox('stylemusic', 'garage', false, 'id="checkgarage"');
-          echo form_label('Garage','checkgarage');
-
-          echo form_checkbox('stylemusic', 'punk', false, 'id="checkpunk"');
-          echo form_label('Punk','checkpunk');
-
-          echo form_checkbox('stylemusic', 'jazz', false, 'id="checkjazz"');
-          echo form_label('Jazz','checkjazz');
-        echo '</div>';
-
-        echo '<div class="checkbox-group group3">';
-          echo form_checkbox('stylemusic', 'classique', false, 'id="checkclassique"');
-          echo form_label('Classique','checkclassique');
-
-          echo form_checkbox('stylemusic', 'classique', false, 'id="checkclassique"');
-          echo form_label('Classique','checkclassique');
-
-          echo form_checkbox('stylemusic', 'classique', false, 'id="checkclassique"');
-          echo form_label('Classique','checkclassique');
-        echo '</div>';
-      echo '</div>';
-
-      echo form_submit('submit','Finaliser le compte');
-      echo form_close();
-
-    elseif($_POST['typeaccount'] == 2):
-
-//      echo form_input('nom',set_value('nom'),'placeholder="Votre nom"');
-//      echo '<div class="ico-placeholder firstname"></div>';
-//      echo form_error('nom', '<span class="error-form">', '</span>');
-
-//      echo form_input('prenom',set_value('prenom'),'placeholder="Votre prénom"');
-//      echo '<div class="ico-placeholder name"></div>';
-//      echo form_error('prenom', '<span class="error-form">', '</span>');
 
       echo form_input('login',set_value('login'),'placeholder="Nom d\'utilisateur"');
       echo '<div class="ico-placeholder username"></div>';
       echo form_error('login', '<span class="error-form">', '</span>');
+
+      echo '<hr>';
+      
+      $label_attributes = array('class'=>'label_big');
+      echo form_label('Quel(s) genre(s) de musique écoutez-vous ?','stylemusicecoute', $label_attributes);
+      echo '<div class="checkbox-style">';
+//        echo '<div class="checkbox-group group1">';
+          echo form_checkbox('stylemusicecoute', 'pop', true, 'id="checkecoutepop"');
+          echo form_label('Pop','checkecoutepop');
+
+          echo form_checkbox('stylemusicecoute', 'rock', false, 'id="checkecouterock"');
+          echo form_label('Rock','checkecouterock');
+
+          echo form_checkbox('stylemusicecoute', 'folk', false, 'id="checkecoutefolk"');
+          echo form_label('Folk','checkecoutefolk');
+//        echo '</div>';
+
+//        echo '<div class="checkbox-group group2">';
+          echo form_checkbox('stylemusicecoute', 'garage', false, 'id="checkecoutegarage"');
+          echo form_label('Garage','checkecoutegarage');
+
+          echo form_checkbox('stylemusicecoute', 'punk', false, 'id="checkecoutepunk"');
+          echo form_label('Punk','checkecoutepunk');
+
+          echo form_checkbox('stylemusicecoute', 'jazz', false, 'id="checkecoutejazz"');
+          echo form_label('Jazz','checkecoutejazz');
+//        echo '</div>';
+
+//        echo '<div class="checkbox-group group3">';
+          echo form_checkbox('stylemusicecoute', 'classique1', false, 'id="checkecouteclassique1"');
+          echo form_label('Classique1','checkecouteclassique1');
+
+          echo form_checkbox('stylemusicecoute', 'classique2', false, 'id="checkecouteclassique2"');
+          echo form_label('Classique2','checkecouteclassique2');
+
+          echo form_checkbox('stylemusicecoute', 'classique3', false, 'id="checkecouteclassique3"');
+          echo form_label('Classique3','checkecouteclassique3');
+//        echo '</div>';
+      echo '</div>';
+      echo form_error('stylemusicecoute', '<span class="error-form">', '</span>');
+      
+      echo '<hr>';
+
+//      $attributes_button = array('name' => 'retour', 'class' => 'back', 'type' => 'button', 'content' => 'Retour', 'onClick' => 'history.go(-1)');
+//      echo form_button($attributes_button);
+
+    elseif($_POST['typeaccount'] == 2):
+      
+      echo form_input('nomscene',set_value('nomscene'),'placeholder="Votre nom de scène"');
+      echo '<div class="ico-placeholder nomscene"></div>';
+      echo form_error('nomscene', '<span class="error-form">', '</span>');
+
+      echo '<hr>';
+
+      $label_attributes = array('class'=>'label_big');
+      echo form_label('Quel(s) genre(s) de musique écoutez-vous ?','stylemusicecoute', $label_attributes);
+      echo '<div class="checkbox-style">';
+        echo form_checkbox('stylemusicecoute', 'pop', true, 'id="checkecoutepop"');
+        echo form_label('Pop','checkecoutepop');
+
+        echo form_checkbox('stylemusicecoute', 'rock', false, 'id="checkecouterock"');
+        echo form_label('Rock','checkecouterock');
+
+        echo form_checkbox('stylemusicecoute', 'folk', false, 'id="checkecoutefolk"');
+        echo form_label('Folk','checkecoutefolk');
+
+        echo form_checkbox('stylemusicecoute', 'garage', false, 'id="checkecoutegarage"');
+        echo form_label('Garage','checkecoutegarage');
+
+        echo form_checkbox('stylemusicecoute', 'punk', false, 'id="checkecoutepunk"');
+        echo form_label('Punk','checkecoutepunk');
+
+        echo form_checkbox('stylemusicecoute', 'jazz', false, 'id="checkecoutejazz"');
+        echo form_label('Jazz','checkecoutejazz');
+
+        echo form_checkbox('stylemusicecoute', 'classique1', false, 'id="checkecouteclassique1"');
+        echo form_label('Classique1','checkecouteclassique1');
+
+        echo form_checkbox('stylemusicecoute', 'classique2', false, 'id="checkecouteclassique2"');
+        echo form_label('Classique2','checkecouteclassique2');
+
+        echo form_checkbox('stylemusicecoute', 'classique3', false, 'id="checkecouteclassique3"');
+        echo form_label('Classique3','checkecouteclassique3');
+      echo '</div>';
+      echo form_error('stylemusicecoute', '<span class="error-form">', '</span>');
+
+      echo '<hr>';
+
+      echo form_label('Quel(s) genre(s) de musique jouez-vous ?','stylemusicjoue', $label_attributes);
+      echo '<div class="checkbox-style">';
+        echo form_checkbox('stylemusicjoue', 'pop', true, 'id="checkjouepop"');
+        echo form_label('Pop','checkjouepop');
+
+        echo form_checkbox('stylemusicjoue', 'rock', false, 'id="checkjouerock"');
+        echo form_label('Rock','checkjouerock');
+
+        echo form_checkbox('stylemusicjoue', 'folk', false, 'id="checkjouefolk"');
+        echo form_label('Folk','checkjouefolk');
+
+        echo form_checkbox('stylemusicjoue', 'garage', false, 'id="checkjouegarage"');
+        echo form_label('Garage','checkjouegarage');
+
+        echo form_checkbox('stylemusicjoue', 'punk', false, 'id="checkjouepunk"');
+        echo form_label('Punk','checkjouepunk');
+
+        echo form_checkbox('stylemusicjoue', 'jazz', false, 'id="checkjouejazz"');
+        echo form_label('Jazz','checkjouejazz');
+
+        echo form_checkbox('stylemusicjoue', 'classique1', false, 'id="checkjoueclassique1"');
+        echo form_label('Classique1','checkjoueclassique1');
+
+        echo form_checkbox('stylemusicjoue', 'classique2', false, 'id="checkjoueclassique2"');
+        echo form_label('Classique2','checkjoueclassique2');
+
+        echo form_checkbox('stylemusicjoue', 'classique3', false, 'id="checkjoueclassique3"');
+        echo form_label('Classique3','checkjoueclassique3');
+      echo '</div>';
+      echo form_error('stylemusicjoue', '<span class="error-form">', '</span>');
+
+      echo '<hr>';
+
+      echo form_label('De quel(s) instrument(s) jouez-vous ?','stylemusicinstru', $label_attributes);
+      echo '<div class="checkbox-style">';
+        echo form_checkbox('stylemusicinstru', 'guitare', true, 'id="checkinstruguitare"');
+        echo form_label('Guitare','checkinstruguitare');
+
+        echo form_checkbox('stylemusicinstru', 'voix', false, 'id="checkinstruvoix"');
+        echo form_label('Voix','checkinstruvoix');
+
+        echo form_checkbox('stylemusicinstru', 'piano', false, 'id="checkinstrupiano"');
+        echo form_label('Piano','checkinstrupiano');
+
+        echo form_checkbox('stylemusicinstru', 'accordeon', false, 'id="checkinstruaccordeon"');
+        echo form_label('Accordéon','checkinstruaccordeon');
+
+        echo form_checkbox('stylemusicinstru', 'harmonica', false, 'id="checkinstruharmonica"');
+        echo form_label('Harmonica','checkinstruharmonica');
+
+        echo form_checkbox('stylemusicinstru', 'basse', false, 'id="checkinstrubasse"');
+        echo form_label('Basse','checkinstrubasse');
+
+        echo form_checkbox('stylemusicinstru', 'flute', false, 'id="checkinstruflute"');
+        echo form_label('Flûte','checkinstruflute');
+
+        echo form_checkbox('stylemusicinstru', 'trompette', false, 'id="checkinstrutrompette"');
+        echo form_label('Trompette','checkinstrutrompette');
+
+        echo form_checkbox('stylemusicinstru', 'batterie', false, 'id="checkinstrubatterie"');
+        echo form_label('Batterie','checkinstrubatterie');
+      echo '</div>';
+      echo form_error('stylemusicinstru', '<span class="error-form">', '</span>');
+      
+//      $attributes_button = array('name' => 'retour', 'class' => 'back', 'type' => 'button', 'content' => 'Retour', 'onClick' => 'history.go(-1)');
+//      echo form_button($attributes_button);
+
+    endif;
+      
+    echo form_submit('submit','Finaliser le compte');
+    echo form_error('submit', '<span class="error-form">', '</span>');
+    
+    echo form_close();
+  ?>
+
+</div>
+
+
+
+
+
+
+
+
+
+<?php
+//      echo form_input('nom',set_value('nom'),'placeholder="Votre nom"');
+//      echo '<div class="ico-placeholder firstname"></div>';
+//      echo form_error('nom', '<span class="error-form">', '</span>');
+
+//      echo form_input('prenom',set_value('prenom'),'placeholder="Votre prénom"');
+//      echo '<div class="ico-placeholder name"></div>';
+//      echo form_error('prenom', '<span class="error-form">', '</span>');
 
 //      echo form_input('ville',set_value('ville'),'placeholder="Votre ville"');
 //      echo '<div class="ico-placeholder ville"></div>';
@@ -122,47 +228,4 @@
 //      echo form_input('datenaissance',set_value('datenaissance'),'placeholder="Votre date de naissance au format jj/mm/aaaa"');
 //      echo '<div class="ico-placeholder datenaissance"></div>';
 //      echo form_error('datenaissance', '<span class="error-form">', '</span>');
-
-      echo form_label('Votre style','stylemusic');
-      echo '<div class="checkbox-style">';
-        echo '<div class="checkbox-group group1">';
-          echo form_checkbox('stylemusic', 'pop', true, 'id="checkpop"');
-          echo form_label('Pop','checkpop');
-
-          echo form_checkbox('stylemusic', 'rock', false, 'id="checkrock"');
-          echo form_label('Rock','checkrock');
-
-          echo form_checkbox('stylemusic', 'folk', false, 'id="checkfolk"');
-          echo form_label('Folk','checkfolk');
-        echo '</div>';
-
-        echo '<div class="checkbox-group group2">';
-          echo form_checkbox('stylemusic', 'garage', false, 'id="checkgarage"');
-          echo form_label('Garage','checkgarage');
-
-          echo form_checkbox('stylemusic', 'punk', false, 'id="checkpunk"');
-          echo form_label('Punk','checkpunk');
-
-          echo form_checkbox('stylemusic', 'jazz', false, 'id="checkjazz"');
-          echo form_label('Jazz','checkjazz');
-        echo '</div>';
-
-        echo '<div class="checkbox-group group3">';
-          echo form_checkbox('stylemusic', 'classique', false, 'id="checkclassique"');
-          echo form_label('Classique','checkclassique');
-
-          echo form_checkbox('stylemusic', 'classique', false, 'id="checkclassique"');
-          echo form_label('Classique','checkclassique');
-
-          echo form_checkbox('stylemusic', 'classique', false, 'id="checkclassique"');
-          echo form_label('Classique','checkclassique');
-        echo '</div>';
-      echo '</div>';
-
-      echo form_submit('submit','Finaliser le compte');
-      echo form_close();
-
-    endif;
-  ?>
-
-</div>
+?>
