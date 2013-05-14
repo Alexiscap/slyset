@@ -33,7 +33,7 @@
       <li class="head_menu row row-7"><a href="#"><span class="icon"></span><span class="menu-text">Ma page musicien</span></a></li>
       <li class="first-row row row-8"><a href="<?php echo site_url('mc_actus'); ?>"><span class="icon"></span><span class="menu-text">Actualités</span></a></li>
       <li class="row row-9"><a href="<?php echo site_url('mc_concerts'); ?>"><span class="icon"></span><span class="menu-text">Concerts</span></a></li>
-      <li class="row row-10"><a href="#"><span class="icon"></span><span class="menu-text">Musique</span></a></li>
+      <li class="row row-10"><a href="<?php echo site_url('mc_musique'); ?>"><span class="icon"></span><span class="menu-text">Musique</span></a></li>
       <li class="row row-11"><a href="<?php echo site_url('mc_photos'); ?>"><span class="icon"></span><span class="menu-text">Photos et vidéos</span></a></li>
       <li class="row row-12"><a href="#"><span class="icon"></span><span class="menu-text">Livrets et partitions</span></a></li>
       <li class="row row-13"><a href="#"><span class="icon"></span><span class="menu-text">Statistiques</span></a></li>
