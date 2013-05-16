@@ -5,24 +5,23 @@ class Mc_concerts extends CI_Controller
     
     public function __construct()
     {
-      parent::__construct();
-      
-      $this->layout->ajouter_css('slyset');
-      $this->layout->ajouter_js('concert');
+        parent::__construct();
 
+        $this->user_authentication->musicien_user_validation();
+        $this->layout->ajouter_css('slyset');
+        $this->layout->ajouter_js('concert');
     }
   
-    public function index()
+    public function index($uid = NULL)
     {
-      $this->page_main();
+       $this->page_main();
     }
     
 
-  public function page_main()
+    public function page_main()
     {
-    
       $this->load->model('concert');
-	  $this->load->helper('date');
+      $this->load->helper('date');
 
       $datas = array();
 

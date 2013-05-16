@@ -209,6 +209,21 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 #coverflow .coverflow-center-artiste{ text-align:center; margin-top:10px; font-family:'Myriad Pro'; font-size:13px; text-shadow:0px -2px #000000; color:white; }
 #coverflow .coverflow-center-slide{ margin-top:7px; margin-right:5px; }
 
+#coverflowContainer{ padding:45px 0 0 0; background:url("../images/portail/bg-coverflow2.png") no-repeat; width:100%; height:364px; }
+.caroufredsel_wrapper{ margin:0 auto !important; }
+#coverflow2{ width:770px; height:364px; }
+#coverflow2 a{ display:block; float:left; width:188px; height:188px; margin:0 15px; text-decoration:none; text-align:center; position:relative; }
+#coverflow2 a img{ display:block; float:left; width:100%; height:100%; }
+#coverflow2 a .coverflow_artist{ text-align:center; margin-top:10px; font-family:'Myriad Pro'; font-size:13px; color:white; }
+#coverflow2 a .coverflow_player{ background-color:#737373; opacity:0.5; width:100%; height:60px; position:absolute; left:0; }
+#paginationContainer{ display:block; width:100%; margin:0 auto; text-align:center; }
+#paginationContainer #pagination{ display:inline-block; margin:0 auto; text-align:center; }
+#paginationContainer #pagination-prev{ display:inline-block; width:12px; height:12px; color:transparent; background:url("../images/portail/slide.png") no-repeat 0 0; cursor:pointer; }
+#paginationContainer #pagination-next{ display:inline-block; width:12px; height:12px; color:transparent; background:url("../images/portail/slide.png") no-repeat -95px 0; cursor:pointer; }
+#coverflowContainer #pagination a{ display:block; float:left; width:15px; height:12px; margin:0 1px; text-indent:-9999px; color:transparent; background:url("../images/portail/slide.png") no-repeat -12px 0; }
+#coverflowContainer #pagination a.selected{ background-position:-44px 0; }
+#coverflowContainer #pagination a:hover{ background-position:-44px 0; }
+
 
 #first-line{ width:100%; }
 
@@ -300,7 +315,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 body.inscription{ background:url('../images/subscription/bkg_subscription.png') no-repeat; background-size:cover; background-position:0px -100px; }
 /*#any-background-inscription{ display:block; width:100%; height:825px;height:978px; background:url('../images/subscription/bkg_subscription.png') no-repeat; background-size:cover; background-position:0px -100px; }*/
 #any-background-inscription{ margin:85px 0; width:100%; float:left; }
-h1#title-subscription{ padding:0; display:block; text-align:center; font-family:'Rockwell'; font-weight:bold; font-size:39px; color:#3f3f3f; }
+h1#title-subscription, h1#title-identification{ padding:0; display:block; text-align:center; font-family:'Rockwell'; font-weight:bold; font-size:39px; color:#3f3f3f; }
 
 .step-form{ margin:50px 0 0 242px; width:470px; float:left; 
     background-color:#ededed; border:5px solid rgba(217, 233, 229, 0.6); -moz-border-radius:10px; -webkit-border-radius:10px; border-radius:10px;
@@ -351,7 +366,8 @@ h1#title-subscription{ padding:0; display:block; text-align:center; font-family:
 .step-form form p.choix-text{ margin:0 auto; padding:0.5em 0; display:block; width:100%; text-align:center; clear:both; }
 .step-form form p.choix-text a, .step-form form p.choix-text a:active{ text-decoration:none; color:inherit; }
 .step-form form p.choix-text a:hover{ text-decoration:underline; }
-.step-form form span.error-form{ margin:5px 0 17px 0; display:block; width:89%; font-family:"Trebuchet MS"; font-weight:bold; font-size:12px; color:#e04e4e; float:left; }
+span.error-form{ margin:5px 0 17px 0; display:block; width:89%; font-family:"Trebuchet MS"; font-weight:bold; font-size:12px; color:#e04e4e; float:left; }
+form + .error-form{ padding:0 0 0 30px; }
 
 .step-form form .user_fb_sub{ margin:0 auto 20px auto; height:50px; width:208px; text-align:center; }
 .step-form form .user_fb_sub p{ display:inline-block; line-height:50px; float:left; }
@@ -399,6 +415,15 @@ h1#title-subscription{ padding:0; display:block; text-align:center; font-family:
 .step-form .checkbox-style input[type="checkbox"] + label span{ display:inline-block; width:14px; height:14px; margin:-3px 22px 0 0; vertical-align:middle; background:url('../images/common/sprite_checkbox.png') 0 0 no-repeat; cursor:pointer; }
 .step-form .checkbox-style input[type="checkbox"]:checked + label span{ background:url('../images/common/sprite_checkbox.png') 0 -16px no-repeat; }
 
+#subscription-upload{ margin:0 0 60px 0; display:block; width:100%; float:left; clear:both; }
+#subscription-upload label{ margin:-10px 0 0.4em 0; font-weight:normal; float:left; clear:none; }
+#subscription-upload .container-cover + label{ margin:-15px 0 0.4em 0; font-weight:normal; float:right; clear:none; }
+.step-form .upload_images{ display:block; width:409px; height:150px; background:url('../images/subscription/upload_images2.png') no-repeat; float:left; clear:both; }
+.step-form .upload-file-container{ display:block; width:161px; height:29px; float:left; cursor:pointer; position:relative; }
+.step-form .upload-file-container:hover{ background-position:0 -29px; cursor:pointer; }
+.step-form .upload-file-container.container-cover{ background:url('../images/subscription/sprite_button_file_cover.png') 0 0 no-repeat; clear:both; }
+.step-form .upload-file-container.container-thumb{ margin:-20px 10px 0 0; width:147px; background:url('../images/subscription/sprite_button_file_thumb.png') no-repeat; float:right; clear:both; }
+.step-form input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:alpha(opacity=0); opacity:0; position:absolute; left:0; top:0; cursor:pointer; }
 /* --------- FIN  D'INSCRIPTION'  --------- */
 
 

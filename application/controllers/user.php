@@ -1,4 +1,4 @@
-<?php
+  <?php
  
 class User extends CI_Controller
 {
@@ -91,6 +91,11 @@ class User extends CI_Controller
     public function register_step_3()
     {
         $fb_data = $this->session->userdata('fb_data');
+        
+        $config['upload_path']   = './files/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $this->load->library('upload', $config);
+        
         $data = array('fb_data' => $fb_data);
         print_r($fb_data);
         
@@ -103,6 +108,8 @@ class User extends CI_Controller
         
         $this->form_validation->set_rules('stylemusicecoute', 'Style de musique écouté', 'required');
         $this->form_validation->set_rules('submit', 'Validation du compte', 'callback_check_fb_register');
+        $this->form_validation->set_rules('cover', 'Photo de couverture', 'callback_handle_upload');
+        $this->form_validation->set_rules('thumb', 'Photo de profil', 'callback_handle_upload');
         
         if($this->input->post('typeaccount') == 1){
             $this->form_validation->set_rules('login', 'Nom d\'utilisateur', 'trim|required|xss_clean');
@@ -172,10 +179,10 @@ class User extends CI_Controller
                 break;
             }
           
-            $this->user_model->insert_user($facebook_id, $login, $mail, $password, $type, $nom, $prenom, $naissance, $genre, $ville, $pays, $stylemusicecoute, $stylemusicjoue, $stylemusicinstru);
+            //////////////$this->user_model->insert_user($facebook_id, $login, $mail, $password, $type, $nom, $prenom, $naissance, $genre, $ville, $pays, $stylemusicecoute, $stylemusicjoue, $stylemusicinstru);
 
             //on pourrait le loguer direct mais on l'envoi vers le formulaire d'identification
-            //redirect('login', 'refresh');
+            //////////////redirect('login', 'refresh');
             //redirect('homepage', 'refresh');
             //echo $this->input->post('stylemusicecoute');
             echo 'Le formulaire a été correctement rempli et envoyé.';
@@ -207,6 +214,26 @@ class User extends CI_Controller
             return false;
         } else {
             return true;
+        }
+    }
+    
+    function handle_upload()
+    {
+        if (isset($_FILES['image']) && !empty($_FILES['image']['name'])){
+            if ($this->upload->do_upload('image')){
+                // set a $_POST value for 'image' that we can use later
+                $upload_data    = $this->upload->data();
+                $_POST['image'] = $upload_data['file_name'];
+                return true;
+            } else {
+                // possibly do some clean up ... then throw an error
+                $this->form_validation->set_message('handle_upload', $this->upload->display_errors());
+                return false;
+            }
+        } else {
+            // throw an error because nothing was uploaded
+            $this->form_validation->set_message('handle_upload', "You must upload an image!");
+            return false;
         }
     }
   

@@ -17,7 +17,7 @@ class User_model extends CI_Model {
         $query = $this->db->get();
 
         if($query->num_rows() == 1){
-           return $query->result();
+            return $query->result();
         } else {
            return false;
         }
@@ -35,7 +35,7 @@ class User_model extends CI_Model {
         if($query->num_rows() == 1){
            return $query->result();
         } else {
-           return false;
+            return false;
         }
     }
 		 

@@ -25,10 +25,10 @@
 |
 | There area two reserved routes:
 |
-|	$route['default_controller'] = 'welcome';
+|	$route['default_controller'] = 'home';
 |
 | This route indicates which controller class should be loaded if the
-| URI contains no data. In the above example, the "welcome" class
+| URI contains no data. In the above example, the "home" class
 | would be loaded.
 |
 |	$route['404_override'] = 'errors/page_missing';
@@ -38,8 +38,19 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "home";
 $route['404_override'] = '';
+
+//$route['(:num)'] = "$1";
+$route['home/(:num)'] = "home/index/$1";
+$route['admin/(:num)'] = "admin/index/$1";
+$route['concerts/(:num)'] = "mc_concerts/index/$1";
+$route['actus/(:num)'] = "mc_actus/index/$1";
+$route['medias/(:num)'] = "mc_photos/index/$1";
+//$route['home/(:num)'] = "home/$1";
+//$route['home/(:any)/(:num)'] = "home/$1";
+//$route['home/index/(:num)'] = "home/$1";
+//$route['mc_concerts/index/(:num)'] = "mc_concerts/$1";
 
 
 /* End of file routes.php */

@@ -10,7 +10,7 @@
     </ul>
   </div>
 
-  <div id="coverflow">
+<!--  <div id="coverflow">
     <div id="coverflow-alaune">
        <img src="<?php echo img_url('portail/alaune.png') ?>">
      </div>
@@ -30,6 +30,21 @@
 
     <div id="coverflow-right">
       <img class="coverflow-img" src="<?php echo img_url('portail/foals.png') ?>">
+    </div>
+  </div>-->
+  <div id="coverflowContainer">
+    <div id="coverflow2">
+      <a href="#"><img class="coverflow-img" src="<?php echo img_url('portail/bh.png') ?>"><span class="coverflow_artist">Name Artist 1</span></a>
+      <a href="#" class="coverflow-img2"><img class="coverflow-img2" src="<?php echo img_url('portail/bandone.png') ?>"><span class="coverflow_artist">Name Artist 2</span></a>
+      <a href="#"><img class="coverflow-img" src="<?php echo img_url('portail/foals.png') ?>"><span class="coverflow_artist">Name Artist 3</span></a>
+      <a href="#" class="coverflow-img2"><img class="coverflow-img2" src="<?php echo img_url('portail/bh.png') ?>"><span class="coverflow_artist">Name Artist 4</span></a>
+      <a href="#"><img class="coverflow-img2" src="<?php echo img_url('portail/bandone.png') ?>"><span class="coverflow_artist">Name Artist 5</span></a>
+      <a href="#"><img class="coverflow-img" src="<?php echo img_url('portail/foals.png') ?>"><span class="coverflow_artist">Name Artist 6</span></a>
+    </div>
+    <div id="paginationContainer">
+      <div id="pagination-prev"></div>
+      <div id="pagination"></div>
+      <div id="pagination-next"></div>
     </div>
   </div>
 

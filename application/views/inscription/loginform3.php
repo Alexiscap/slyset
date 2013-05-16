@@ -12,7 +12,7 @@
 
   <?php
     //appel à la function "register" du controller "user"
-    echo form_open('user/register_step_3');
+    echo form_open_multipart('user/register_step_3');
 
     // Loop through the POST variables passed from the previous page
     foreach ($_POST as $key => $value){
@@ -72,8 +72,6 @@
       echo '</div>';
       echo form_error('stylemusicecoute', '<span class="error-form">', '</span>');
       
-      echo '<hr>';
-
 //      $attributes_button = array('name' => 'retour', 'class' => 'back', 'type' => 'button', 'content' => 'Retour', 'onClick' => 'history.go(-1)');
 //      echo form_button($attributes_button);
 
@@ -187,7 +185,30 @@
 //      echo form_button($attributes_button);
 
     endif;
+  ?>
       
+    <hr>
+
+    <p class="label_big">Dites-nous en un peu plus sur vous...</p>
+  
+    <div id="subscription-upload">
+      <div class="upload_images"></div>
+
+      <?php 
+        $label_attributes = array('class'=>'label_big');
+        echo form_label('Votre photo de couverture','cover', $label_attributes);
+      ?>
+      <div class="upload-file-container container-cover">
+        <input type="file" name="cover" size="200" id="upload_images_cover" />
+      </div>
+      
+      <?php echo form_label('Votre photo de profil','thumb', $label_attributes); ?>
+      <div class="upload-file-container container-thumb">
+        <input type="file" name="thumb" size="200" id="upload_images_thumb" />
+      </div>
+    </div>
+      
+  <?php
     echo form_submit('submit','Finaliser le compte');
     echo form_error('submit', '<span class="error-form">', '</span>');
     
