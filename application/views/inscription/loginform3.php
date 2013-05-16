@@ -185,8 +185,10 @@
 //      echo form_button($attributes_button);
 
     endif;
+    
+    $fbdata = $this->session->userdata('fb_data');    
+    if(empty($fbdata['me'])):
   ?>
-      
     <hr>
 
     <p class="label_big">Dites-nous en un peu plus sur vous...</p>
@@ -207,8 +209,9 @@
         <input type="file" name="thumb" size="200" id="upload_images_thumb" />
       </div>
     </div>
-      
   <?php
+    endif;
+  
     echo form_submit('submit','Finaliser le compte');
     echo form_error('submit', '<span class="error-form">', '</span>');
     

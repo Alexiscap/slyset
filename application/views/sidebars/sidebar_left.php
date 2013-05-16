@@ -2,16 +2,16 @@
     <aside>
         <div id="first-block">
             <div id="my-profil">
-                <a href="#">
-                    <img src="<?php echo img_url('sidebar-left/photo-profil.png'); ?>" alt="Photo Profil" />
-                    <h3>Bob Dylan</h3>
+                <a href="<?php print site_url('home/'.$this->session->userdata('uid')); ?>">
+                    <img src="<?php print files($this->session->userdata('thumb')); ?>" alt="Photo Profil" />
+                    <h3><?php print $this->session->userdata('login'); ?></h3>
                     <span>Voir mon profil</span>
                 </a>
             </div>
 
             <div id="listen-playlist">
                 <a href="#">
-                    <img src="<?php echo img_url('sidebar-left/btn-play.png'); ?>" alt="Lecture Playlist" />
+                    <img src="<?php print img_url('sidebar-left/btn-play.png'); ?>" alt="Lecture Playlist" />
                     <span>Écouter mes playlists</span>
                 </a>
             </div>
@@ -34,10 +34,10 @@
             <div id="menu-my-page">
                 <ul>
                     <li class="head_menu row row-7"><a href="#"><span class="icon"></span><span class="menu-text">Ma page musicien</span></a></li>
-                    <li class="first-row row row-8"><a href="<?php echo site_url('actualite/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Actualités</span></a></li>
-                    <li class="row row-9"><a href="<?php echo site_url('concert/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Concerts</span></a></li>
-                    <li class="row row-10"><a href="<?php echo site_url('musique/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Musique</span></a></li>
-                    <li class="row row-11"><a href="<?php echo site_url('media/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Photos et vidéos</span></a></li>
+                    <li class="first-row row row-8"><a href="<?php print site_url('actualite/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Actualités</span></a></li>
+                    <li class="row row-9"><a href="<?php print site_url('concert/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Concerts</span></a></li>
+                    <li class="row row-10"><a href="<?php print site_url('musique/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Musique</span></a></li>
+                    <li class="row row-11"><a href="<?php print site_url('media/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Photos et vidéos</span></a></li>
                     <li class="row row-12"><a href="#"><span class="icon"></span><span class="menu-text">Livrets et partitions</span></a></li>
                     <li class="row row-13"><a href="#"><span class="icon"></span><span class="menu-text">Statistiques</span></a></li>
                     <li class="row row-14"><a href="#"><span class="icon"></span><span class="menu-text">Mes abonnés</span></a></li>
@@ -83,7 +83,7 @@
               echo @$error_credentials;
             ?>
 
-            <p class="identification-inscrire">Pas encore inscrit ? <a href="<?php echo site_url('user'); ?>">Inscrivez-vous</a></p>
+            <p class="identification-inscrire">Pas encore inscrit ? <a href="<?php print site_url('user'); ?>">Inscrivez-vous</a></p>
         </div>
     </aside>
 <?php endif; ?>

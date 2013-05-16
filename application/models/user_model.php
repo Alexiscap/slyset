@@ -5,6 +5,29 @@ class User_model extends CI_Model {
     public function __construct()
     {
         parent::__construct();
+        $data = array();
+    }
+    
+    public function getAll()
+    {
+        $this->db->select('id');
+        $this->db->from('utilisateur');
+        $this->db->where('facebook_id = ' . "'" . $facebook_id . "'" . ' AND facebook_id != 0');
+        $this->db->limit(1);
+
+        $query = $this->db->get();
+
+        if($query->num_rows() == 1){
+            $data = $query->result();
+            return $data;
+        } else {
+           return false;
+        }
+        
+//        $query = $this->db->get('utilisateur');
+//        $data  = $query->result();
+//        $query->free_result();
+//        return $data;
     }
     
     public function facebook_register($facebook_id)
@@ -39,7 +62,7 @@ class User_model extends CI_Model {
         }
     }
 		 
-    public function insert_user($facebook_id, $login, $mail, $password, $type, $nom, $prenom, $naissance, $genre, $ville, $pays, $stylemusicecoute, $stylemusicjoue, $stylemusicinstru)
+    public function insert_user($facebook_id, $login, $mail, $password, $type, $nom, $prenom, $naissance, $genre, $ville, $pays, $stylemusicecoute, $stylemusicjoue, $stylemusicinstru, $cover, $thumb)
     {
         $this->load->library('encrypt');
         
@@ -57,6 +80,8 @@ class User_model extends CI_Model {
         $data['style_ecoute'] = $stylemusicecoute;
         $data['style_joue'] = $stylemusicjoue;
         $data['instrument'] = $stylemusicinstru;
+        $data['cover'] = $cover;
+        $data['thumb'] = $thumb;
         $data['created'] = Date('Y-m-d');
         
         $this->db->insert('utilisateur', $data);

@@ -67,7 +67,7 @@ $(document).ready(function() {
               items: 1,
               fx: 'scroll',
               pauseOnHover: true,
-              duration: 1500
+              duration: 1000
             },
             pagination: "#pagination",
             prev: "#pagination-prev",

@@ -37,7 +37,21 @@ class Login_model extends CI_Model {
 
         if($query->num_rows() > 0){
             $r = $query->result();
-            $session_data = array('login' => $r[0]->login, 'uid' => $r[0]->id, 'account' => $r[0]->type, 'logged_in' => true);//, 'account' => $r[0]->type,
+            $session_data = array(
+                'logged_in'      => true,
+                'uid'            => $r[0]->id,
+                'fid'            => $r[0]->facebook_id,
+                'account'        => $r[0]->type,
+                'login'          => $r[0]->login,
+                'nom'            => $r[0]->nom,
+                'prenom'         => $r[0]->prenom,
+                'mail'           => $r[0]->mail,
+                'date_naissance' => $r[0]->date_naissance,
+                'cover'          => $r[0]->cover,
+                'thumb'          => $r[0]->thumb,
+                'created'        => $r[0]->created
+            );
+//                , 'account' => $r[0]->type,
             $this->session->set_userdata($session_data);
             return true;
         } else {

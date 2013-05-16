@@ -6,11 +6,12 @@ class Home extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-
+        $this->output->enable_profiler(true);
         $this->layout->ajouter_css('slyset');
 
         $this->load->helper('form');
         $this->load->model('login_model');
+//        $this->load->model('user_model');
   //      $this->load->model('Facebook_Model');
 
         $this->layout->ajouter_js('jsdate');
@@ -34,7 +35,10 @@ class Home extends CI_Controller
     public function homepage()
     {
         $this->load->model('homepage');
-
+        
+//        $data = $this->user_model->getAll();
+//        var_dump($data);
+        
         $datas = array();
         
 //        if($this->session->userdata('logged_in')){

@@ -1,4 +1,5 @@
 <div id="contentAll">
+  <!--<img src="<?php echo files('titre_objectifs.png') ?>" />-->
   <script>
     var joursEvenement = <?php echo '['; if (isset($all_date_calendar)) echo $all_date_calendar; echo "]" 
     ?> ;
@@ -39,7 +40,6 @@
       <a href="#"><img class="coverflow-img" src="<?php echo img_url('portail/foals.png') ?>"><span class="coverflow_artist">Name Artist 3</span></a>
       <a href="#" class="coverflow-img2"><img class="coverflow-img2" src="<?php echo img_url('portail/bh.png') ?>"><span class="coverflow_artist">Name Artist 4</span></a>
       <a href="#"><img class="coverflow-img2" src="<?php echo img_url('portail/bandone.png') ?>"><span class="coverflow_artist">Name Artist 5</span></a>
-      <a href="#"><img class="coverflow-img" src="<?php echo img_url('portail/foals.png') ?>"><span class="coverflow_artist">Name Artist 6</span></a>
     </div>
     <div id="paginationContainer">
       <div id="pagination-prev"></div>

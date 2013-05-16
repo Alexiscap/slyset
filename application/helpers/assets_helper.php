@@ -29,3 +29,10 @@ if ( ! function_exists('img'))
     return '<img src="'.img_url($nom).'" alt="'.$alt.'" />';
   }
 }
+
+if ( ! function_exists('files'))
+{
+  function files($nom){
+    return base_url().'files/'.$nom;
+  }
+}

@@ -6,7 +6,7 @@ class User extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        //$this->output->enable_profiler(true);
+//        $this->output->enable_profiler(true);
         
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_js('jquery.placeheld.min');
@@ -94,10 +94,13 @@ class User extends CI_Controller
         
         $config['upload_path']   = './files/';
         $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size']    = '100000';
+        $config['max_width']  = '1024';
+        $config['max_height']  = '768';
         $this->load->library('upload', $config);
         
         $data = array('fb_data' => $fb_data);
-        print_r($fb_data);
+//        print_r($fb_data);
         
         //echo '<pre>'.print_r($fb_data).'</pre>';
 //        $this->form_validation->set_rules('nom', 'Nom', 'trim|required|xss_clean');
@@ -108,8 +111,8 @@ class User extends CI_Controller
         
         $this->form_validation->set_rules('stylemusicecoute', 'Style de musique écouté', 'required');
         $this->form_validation->set_rules('submit', 'Validation du compte', 'callback_check_fb_register');
-        $this->form_validation->set_rules('cover', 'Photo de couverture', 'callback_handle_upload');
-        $this->form_validation->set_rules('thumb', 'Photo de profil', 'callback_handle_upload');
+        $this->form_validation->set_rules('cover', 'Photo de couverture', 'callback_handle_upload_cover');
+        $this->form_validation->set_rules('thumb', 'Photo de profil', 'callback_handle_upload_thumb');
         
         if($this->input->post('typeaccount') == 1){
             $this->form_validation->set_rules('login', 'Nom d\'utilisateur', 'trim|required|xss_clean');
@@ -151,6 +154,8 @@ class User extends CI_Controller
                 $ville            = $ville_fb;
                 $pays             = $pays_fb;
                 $stylemusicecoute = $this->input->post('stylemusicecoute');
+                $cover            = $fb_data['me']['cover']['source'];
+                $thumb            = $fb_data['me']['picture']['data']['url'];
             } else {
                 $facebook_id      = '';
                 $type             = $this->input->post('typeaccount');
@@ -163,6 +168,8 @@ class User extends CI_Controller
                 $ville            = '';
                 $pays             = '';
                 $stylemusicecoute = $this->input->post('stylemusicecoute');
+                $cover            = $this->input->post('cover');
+                $thumb            = $this->input->post('thumb');
             }
             
             switch($this->input->post('typeaccount')){
@@ -179,13 +186,13 @@ class User extends CI_Controller
                 break;
             }
           
-            //////////////$this->user_model->insert_user($facebook_id, $login, $mail, $password, $type, $nom, $prenom, $naissance, $genre, $ville, $pays, $stylemusicecoute, $stylemusicjoue, $stylemusicinstru);
+            $this->user_model->insert_user($facebook_id, $login, $mail, $password, $type, $nom, $prenom, $naissance, $genre, $ville, $pays, $stylemusicecoute, $stylemusicjoue, $stylemusicinstru, $cover, $thumb);
 
             //on pourrait le loguer direct mais on l'envoi vers le formulaire d'identification
-            //////////////redirect('login', 'refresh');
-            //redirect('homepage', 'refresh');
+            redirect('login', 'refresh');
+//            redirect('homepage', 'refresh');
             //echo $this->input->post('stylemusicecoute');
-            echo 'Le formulaire a été correctement rempli et envoyé.';
+//            echo 'Le formulaire a été correctement rempli et envoyé.';
         }
     }
     
@@ -217,13 +224,33 @@ class User extends CI_Controller
         }
     }
     
-    function handle_upload()
+    function handle_upload_cover()
     {
-        if (isset($_FILES['image']) && !empty($_FILES['image']['name'])){
-            if ($this->upload->do_upload('image')){
+        if (isset($_FILES['cover']) && !empty($_FILES['cover']['name'])){
+            if ($this->upload->do_upload('cover')){
                 // set a $_POST value for 'image' that we can use later
                 $upload_data    = $this->upload->data();
-                $_POST['image'] = $upload_data['file_name'];
+                $_POST['cover'] = $upload_data['file_name'];
+                return true;
+            } else {
+                // possibly do some clean up ... then throw an error
+                $this->form_validation->set_message('handle_upload', $this->upload->display_errors());
+                return false;
+            }
+        } else {
+            // throw an error because nothing was uploaded
+            $this->form_validation->set_message('handle_upload', "You must upload an image!");
+            return false;
+        }
+    }
+    
+    function handle_upload_thumb()
+    {
+        if (isset($_FILES['thumb']) && !empty($_FILES['thumb']['name'])){
+            if ($this->upload->do_upload('thumb')){
+                // set a $_POST value for 'image' that we can use later
+                $upload_data    = $this->upload->data();
+                $_POST['thumb'] = $upload_data['file_name'];
                 return true;
             } else {
                 // possibly do some clean up ... then throw an error
