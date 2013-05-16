@@ -33,10 +33,10 @@
     </div>
   </div>
   <div class="bt_noir">
-    <span class="bt_left"></span><span class="bt_middle">Ajouter une photo/vidéo</span><span class="bt_right"></span>
+    <a href="#"><span class="bt_left"></span><span class="bt_middle">Ajouter une photo/vidéo</span><span class="bt_right"></span></a>
   </div>
   <div class="bt_noir">
-    <span class="bt_left"></span><span class="bt_middle">Supprimer la sélection</span><span class="bt_right"></span>
+    <a href="#"><span class="bt_left"></span><span class="bt_middle">Supprimer la sélection</span><span class="bt_right"></span></a>
   </div>
 
   <div class="content">
@@ -49,11 +49,11 @@
     </div>
     <div class="photo box col1">
     <div class="edit">
-      <img src="<?php echo img_url('musicien/edite.png'); ?>"/>
-      <img src="<?php echo img_url('musicien/suppr.png'); ?>"/>
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
     </div>
     <div class="open_alb">
-      <img src="<?php echo img_url('musicien/open_plus.png'); ?>"/>
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
     </div>
       <a href="#"><img src="<?php echo img_url('musicien/photo1.png'); ?>" class="img_cover" /></a>
       <a href="#"><img src="<?php echo img_url('musicien/photo3.png'); ?>" class="img_miniat" /></a>
@@ -99,11 +99,13 @@
         <a href="#"><p>3 commentaires</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">56</p>
       </div>
     <div class="comm">
+	<img src="<?php echo img_url('common/del.png'); ?>" class="del"/>
       <img src="<?php echo img_url('common/avatar_comm.png'); ?>" />
       <p class="name_comm"> Jim Morrison</p>
-      <p class="commentaire"> Waouuuw </p>
+      <p class="commentaire"> Waouuuw </p> 
     </div>
     <div class="comm">
+	<img src="<?php echo img_url('common/del.png'); ?>" class="del"/>
       <img src="<?php echo img_url('common/avatar_comm.png'); ?>" />
       <p class="name_comm"> Jim Morrison</p>
       <p class="commentaire"> Waouuuw </p>

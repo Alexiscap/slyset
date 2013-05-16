@@ -164,34 +164,53 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 
 /* --------- MUSICIEN PHOTO ET VIDEO --------- */
 .content .col1{ width:160px; }
-.content .col1 .img_cover{ max-width:160px; }
-.content .box{ margin:5px; padding:5px; /*max-width:150px; */ background:#D8D5D2; font-size:11px; line-height:1.4em; float:left; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; display:block; }
-.content .photo{ background:white; margin:5px; text-align:center; }
+.content .col1 .img_cover{width:160px;}
+.content .box{ margin:5px; padding:5px 5px 0; /*max-width:150px; */ background:#D8D5D2; font-size:11px; line-height:1.4em; float:left; display:block; }
+.content .photo{ background:white; margin:5px; text-align:center;-moz-box-shadow: 1px 1px 1px 1px #9b9b9b;-webkit-box-shadow: 1px 1px 1px 1px #aaa;-o-box-shadow: 1px 1px 1px 1px #9b9b9b;box-shadow: 1px 1px 1px 1px #9b9b9b; }
 .content .photo .pochette{ width:139px; margin:10px 10px 5px 10px; min-height:214px; }
 .content .photo .img_miniat{ width:45px; margin:0; }
 .content .photo a{ text-decoration:none; }
 .content .photo a:hover{ text-decoration:underline; color:#4d4d4d; }
 .content .photo p{ margin:0 10px 5px; color:#4d4d4d; font-size:12px; font-weight:bold; }
-.content .photo .bord_photo{ background:#f2f0f0; margin:0; height:25px; text-align:left; border:1px solid #cdcdcd; }
+.content .photo .bord_photo{ background:#f2f0f0; margin:0 -5px; height:25px; text-align:left;}
 .content .photo .bord_photo p{ margin:0 10px 0; display:inline; font-size:10px; color:#878d95; }
 .content .photo .bord_photo a:hover{ text-decoration:none; }
 .content .photo .nom_photo{ width:138px; text-align:left; }
 .content .photo .bord_photo img{ margin:0 5px 0 15px; display:inline; }
 .content .photo .bord_photo .nb_like{ margin:0; }
-.content .photo .comm{ width:158px; margin:0; background:#f2f0f0; border:1px solid #cdcdcd; border-top:none; min-height:34px; }
+.content .photo .comm{ width:170px; margin:0 -5px; background:#f2f0f0; border-bottom:1px solid #cdcdcd; border-top:none; min-height:34px; }
 .content .photo .comm img{ float:left; margin:5px; height:24px; }
+.content .photo .comm .del{ float:right; margin:5px 5px; height:14px; }
 .content .photo .comm p{ margin:0; text-align:left; }
 .content .photo .comm .name_comm{ font-size:10px; color:#595959; }
 .content .photo .comm .commentaire{ font-size:10px; color:#888d95; }
 .content .photo .comm input[type=text]{ float:left; width:112px; border:1px solid #dfdede; margin:5px 0; }
 .content .photo .comm input[type=image]{ clear:both; width:48px; margin:0 0 0 58px; }
-.content .photo .edit{ background:rgba(36, 36, 36, 0.7); width:136px; height:22px; position:absolute; margin:0 11px; }
+.content .photo .edit{ background:rgba(36, 36, 36, 0.7); width:158px; height:22px; position:absolute; margin:0; }
 .content .photo .edit img{ float:right; margin:4px 8px 0 0; }
-.content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:136px; height:177px; position:absolute; margin:22px 11px; }
-.content .photo .open_alb img{ padding:25% 0; }
+.content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:158px; height:228px; position:absolute; margin:22px 0; }
+.content .photo .open_alb img{ padding:35% 0; }
 
 /*.box .img_cover, #tumblelog .img_cover{ display:block; width:100%; }*/
+
 /* --------- FIN MUSICIEN PHOTO ET VIDEO --------- */
+
+
+/* ---------- POP IN ------------- */
+
+.pop-in{width:510px;height:349px;background:#eff4f3;padding:31px 0 75px;border:1px solid #bbbbbb;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;}
+.pop-in p{margin:0 15px 31px;float:left;font-size:18px;color:#4e4e4e;}
+.pop-in img{margin-left:315px;float:left}
+.content-pi {background:#fafafa;width:510px;height:233px;padding: 25px 0;border:1px solid #e0e4e6;border-left:none;border-right:none;clear:both;}
+.content-pi .label {width:123px;padding:0 12px 0 0;float:left;margin:15px 0 0 0;text-align:right;font-size:16px;color:#4e4e4e;}
+.content-pi .label img{width:85px;height:73px;margin-left:40px;}
+.content-pi .champs {width:306px;float:left;margin:15px 0 0 12px;}
+.content-pi .champs input{width:296px;padding:0 5px;outline:none}
+.content-pi .champs select{width:296px;padding:0 0 0 5px;outline:none}
+.content-pi .champs .descript-vid{width:296px;padding:0 5px;height:73px;outline:none;word-break:break-word;}
+.content-pi input[type="submit"]{clear:both;width: 80px;height: 30px;margin: 10px 145px;background:url('../images/common/bt-rouge.png');color:white;}
+
+/* --------------- FIN POP IN ----------- */
 
 
 
@@ -426,4 +445,91 @@ form + .error-form{ padding:0 0 0 30px; }
 .step-form input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:alpha(opacity=0); opacity:0; position:absolute; left:0; top:0; cursor:pointer; }
 /* --------- FIN  D'INSCRIPTION'  --------- */
 
+
+/* --------- MUSICIEN MUSIQUE --------- */
+
+.content .a_la_une {margin:0 20px 20px;width:172px;float:left;}
+.content .a_la_une .bandeau_top{position:absolute;margin:-175px 0;}
+.content .player{position:absolute;background:rgba(115,115,115,0.68);width: 172px;height: 42px;margin: -44px 0;}
+.content .player img{margin:8px 70px;}
+.content .a_la_une .infos{margin:0;}
+.content .a_la_une .infos p{margin:0;color:#2f2f2f;font-weight:normal;}
+.content .a_la_une .infos p span{color:#45baa0;}
+.content .a_la_une .infos .title{font-weight:bold;}
+.content .a_la_une .infos .annee_crea{margin:0;color:#888d95;font-size:12px;}
+.content .a_la_une .infos a{margin:0;color:#3c495a;font-size:12px;}
+
+.content .top_album{float:left;}
+.content .top_album a{color:#888d95;font-size:12px;text-decoration:none;}
+.content .top_album p{display:inline;margin:0;font-weight:normal;}
+.content .top_album img{display:inline;width:12px;margin:0 0 0 5px;}
+.content .top_album .liste_titres{width:308px;border:1px solid #909395;border-radius:4px;margin:0 0 10px 0;}
+.content .top_album .liste_titres tr{border-bottom:1px solid #cbcbcb;}
+.content .top_album .liste_titres .en_tete{width:308px;height:35px;background:#e9ebec;border-radius:4px;}
+.content .top_album .liste_titres .en_tete tr{border:none;text-align:center;font-weight:bold;font-size:14px;}
+.content .top_album .liste_titres .en_tete .check{width:20px;height:21px;padding:7px 3px 0 3px;}
+.content .top_album .liste_titres .en_tete .le_titre{width:300px;height:21px;padding:0 3px;}
+.content .top_album .liste_titres .en_tete .duree{width:15px;height:21px;padding:0 15px;}
+.content .top_album .liste_titres .titres{width:308px;background:white;border-top:1px solid #cbcbcb;border-bottom-left-radius:4px;border-bottom-right-radius:4px}
+.content .top_album .liste_titres .titres .check{width:20px;height:21px;padding:7px 3px 0 3px;border-right:1px solid #cbcbcb}
+.content .top_album .liste_titres .titres .le_titre{width:300px;height:21px;padding:0 3px;border-right:1px solid #cbcbcb;color:#555555; font-size:12px;}
+
+.content .top_album .liste_titres .titres .le_titre .miniat_titre {display:inline;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre a{width:17px;height:13px;display:inline;margin:0 2px 0 0;display:block;float:right;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre span{display:inline-block; text-indent: -5000px;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .cam{background:url('../images/common/sprite_edit_titre.png') 0px -2px;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .coeur{background:url('../images/common/sprite_edit_titre.png') -20px -2px;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .edit{background:url('../images/common/sprite_edit_titre.png') -37px -2px;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .add{background:url('../images/common/sprite_edit_titre.png') -56px -2px;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .cadis{background:url('../images/common/sprite_edit_titre.png') -76px -3px;}
+
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .cam:hover{background-position:0px -22px;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .coeur:hover{background-position:-20px -22px;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .edit:hover{background-position:-37px -22px;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .add:hover{background-position:-56px -22px;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .cadis:hover{background-position:-76px -23px;}
+
+.content .top_album .liste_titres .titres .le_titre .play{width:17px;margin:-2px 0;}
+.content .top_album .liste_titres .titres .duree{width:15px;height:21px;padding:0 15px;color:#555555; font-size:12px;}
+
+.content .bt_cadis{float:right;width:93px;height:30px;background:url('../images/common/bt_cadis.png');border:none;color:white;padding:0 0 0 25px;font-weight:bold;font-size:14px;}
+.content .bt_playlist{float:right;width:145px;height:30px;background:url('../images/common/bt_playlist.png');border:none;color:white;padding:0 0 0 20px;font-weight:bold;font-size:14px;margin:0 10px 0 0;}
+
+.content .tout_titre{margin:20px 20px 20px;}
+.content .tout_titre p{display:inline;margin:0;font-weight:normal;}
+.content .tout_titre img{display:inline;width:12px;margin:0 0 0 5px;}
+.content .tout_titre a{color:#888d95;font-size:12px;text-decoration:none;}
+.content .tout_titre .liste_titres{width:500px;border:1px solid #909395;border-radius:4px;margin:20px 0 10px 0;}
+.content .tout_titre .liste_titres tr{border-bottom:1px solid #cbcbcb;}
+.content .tout_titre .liste_titres .en_tete{width:500px;height:35px;background:#e9ebec;border-radius:4px;}
+.content .tout_titre .liste_titres .en_tete tr{border:none;text-align:center;font-weight:bold;font-size:14px;}
+.content .tout_titre .liste_titres .en_tete .check{width:20px;height:21px;padding:7px 3px 0 3px;}
+.content .tout_titre .liste_titres .en_tete .le_titre{width:280px;height:21px;padding:0 3px;}
+.content .tout_titre .liste_titres .en_tete .duree{width:15px;height:21px;padding:0 5px;}
+.content .tout_titre .liste_titres .en_tete .album{width:15px;height:21px;padding:0 25px;}
+.content .tout_titre .liste_titres .titres{width:500px;background:white;border-top:1px solid #cbcbcb;border-bottom-left-radius:4px;border-bottom-right-radius:4px}
+.content .tout_titre .liste_titres .titres .check{width:20px;height:21px;padding:7px 3px 0 3px;border-right:1px solid #cbcbcb}
+.content .tout_titre .liste_titres .titres .le_titre{width:280px;height:21px;padding:0 3px;border-right:1px solid #cbcbcb;color:#555555; font-size:12px;}
+.content .tout_titre .liste_titres .titres .duree{border-right:1px solid #cbcbcb;}
+.content .tout_titre .liste_titres .titres .album{font-size:12px;color:#555555;padding:0 17px;}
+
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre {display:inline;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre a{width:17px;height:13px;display:inline;margin:0 2px 0 0;display:block;float:right;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre span{display:inline-block; text-indent: -5000px;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .cam{background:url('../images/common/sprite_edit_titre.png') 0px -2px;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .coeur{background:url('../images/common/sprite_edit_titre.png') -20px -2px;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .edit{background:url('../images/common/sprite_edit_titre.png') -37px -2px;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .add{background:url('../images/common/sprite_edit_titre.png') -56px -2px;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .cadis{background:url('../images/common/sprite_edit_titre.png') -76px -3px;}
+
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .cam:hover{background-position:0px -22px;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .coeur:hover{background-position:-20px -22px;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .edit:hover{background-position:-37px -22px;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .add:hover{background-position:-56px -22px;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .cadis:hover{background-position:-76px -23px;}
+
+.content .tout_titre .liste_titres .titres .le_titre .play{width:17px;margin:-2px 0;}
+.content .tout_titre .liste_titres .titres .duree{width:15px;height:21px;padding:0 15px;color:#555555; font-size:12px;}
+
+/* --------- FIN MUSICIEN MUSIQUE  --------- */
 
