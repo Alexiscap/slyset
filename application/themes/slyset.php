@@ -64,7 +64,8 @@
 <!--        <div id="contentAll">-->
           <?php if(isset($output)) echo $output; ?>
 
-          <?php //if(isset($sidebar_right)) echo $sidebar_right; ?>
+          <?php //if(isset($sidebar_right)) echo $sidebar_right; 
+          ?>
 <!--        </div>-->
       </div>
     </div>

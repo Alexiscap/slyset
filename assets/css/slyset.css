@@ -129,8 +129,8 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .content .participer .button_right{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_participer.png") no-repeat -77px -1px; float:left; }
 
 .bt_ajout_concert{ width:125px; height:30px; float:left; margin:3px 0 0 198px; }
-.content .info_sup{ width:539px; height:205px; margin:10px 0 0 0; clear:both; background:#d3d3d3; padding:5px 0 0 0; border:1px solid #c3c3c3; }
-.content .info_sup .informations{ width:287px; float:left; }
+.content .info_sup{ width:539px; margin:10px 0 0 0; float:left; clear:both; background:#d3d3d3; padding:5px 0 0 0; border:1px solid #c3c3c3; }
+.content .info_sup .informations{ width:287px; float:left; margin-bottom : 10px; }
 .content .info_sup .nom_date{ font-size:16px; font-family:'Trebuchet MS'; margin:5px 0 0 20px; color:#4e4e4e; }
 .content .info_sup .lieu_salle{ font-size:14px; font-family:'Trebuchet MS'; margin:15px 0 0 20px; color:#4e4e4e; }
 .content .info_sup .lieu_rue{ font-size:14px; font-family:'Trebuchet MS'; margin:5px 0 0 20px; color:#4e4e4e; }
@@ -143,7 +143,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .content .partage_reseaux .twitter{ width:30px; height:29px; margin:0; padding:0; background:url('../images/musicien/sprite_info_sup.png') -7px -10px; }
 .content .partage_reseaux .facebook{ width:30px; height:29px; margin:0; padding:0; background:url('../images/musicien/sprite_info_sup.png') -48px -10px; }
 .content .partage_reseaux .google{ width:30px; height:29px; margin:0; padding:0; background:url('../images/musicien/sprite_info_sup.png') -90px -10px; }
-.content .plan_google{ width:233px; height:198px; background:url("../images/musicien/plan_google.png"); float:left; margin:0 0 0 10px; }
+.content #plan_google{ width:233px; height:198px; float:left; margin:0 0 0 10px; margin-bottom : 10px;}
 .content .edition{ float:right; margin:-16px 20px 0 0; }
 .content .edition span{ margin:0 5px 0 5px; display:inline-block; text-indent:-50000px; }
 .content .edition .edit{ background:url('../images/musicien/sprite_edition.png') -10px -6px; width:14px; height:14px; }

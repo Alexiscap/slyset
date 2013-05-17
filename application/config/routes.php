@@ -48,6 +48,11 @@ $route['concert/(:num)'] = "mc_concerts/index/$1";
 $route['actualite/(:num)'] = "mc_actus/index/$1";
 $route['media/(:num)'] = "mc_photos/index/$1";
 $route['musique/(:num)'] = "mc_musique/index/$1";
+
+
+$route['mc_concerts'] = "welcome"; 
+$route['mc_concerts/ajouter_concert'] = "welcome"; 
+$route['mc_concerts/(:num)'] = "mc_concerts/index/$1"; 
 //$route['home/(:num)'] = "home/$1";
 //$route['home/(:any)/(:num)'] = "home/$1";
 //$route['home/index/(:num)'] = "home/$1";
