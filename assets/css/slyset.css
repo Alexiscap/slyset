@@ -610,3 +610,20 @@ form + .error-form{ padding:0 0 0 30px; }
 .content .toutes_partitions .liste_partitions .titres .partitions{width:95px;height:21px;padding:0 5px;color:#555555; font-size:12px;}
 
 /* --------- FIN MUSICIEN PARTITIONS ----------*/
+
+/*-------- MUSICIEN FOLLOWERS------*/
+.content .follower .photo_follow {width:64px;float:left;margin:0 10px 10px 20px;}
+.content .follower .description {width:220px;float:left;margin:0 10px}
+.content .follower .description span {font-size:12px;color:#888d95;}
+.content .follower .description .nom_follow {font-size:14px;font-weight:bold;color:#3f3f3f;margin:0;}
+.content .follower .description .text_follow {font-size:14px;color:#5d5b5b;font-weight:normal;width:220px;margin:0;}
+.content .follower .bouton .participer {margin:20px 0 0 30px;}
+
+.content .participer .button_left_abonne{ display:block; width:22px; height:30px; background:url("../images/common/sprite_btn_suivre.png") no-repeat 0 -61px; float:left; }
+.content .participer .button_center_abonne{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_suivre.png") repeat-x 0 -31px; float:left; }
+.content .participer .button_right_abonne{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_suivre.png") no-repeat -77px -1px; float:left; }
+.content .participer .button_left_non{ display:block; width:22px; height:30px; background:url("../images/common/sprite_btn_pas_suivre.png") no-repeat 0 -61px; float:left; }
+.content .participer .button_center_non{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_pas_suivre.png") repeat-x 0 -31px; float:left; }
+.content .participer .button_right_non{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_pas_suivre.png") no-repeat -77px -1px; float:left; }
+.content #btn_tmp_follow{ width:195px; margin:0 20px; padding:20px 0; }
+.content #btn_tmp_follow a{ float:left; }
