@@ -40,7 +40,7 @@
                     <li class="row row-11"><a href="<?php print site_url('media/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Photos et vidéos</span></a></li>
                     <li class="row row-12"><a href="<?php print site_url('mc_partitions/');?>"><span class="icon"></span><span class="menu-text">Livrets et partitions</span></a></li>
                     <li class="row row-13"><a href="#"><span class="icon"></span><span class="menu-text">Statistiques</span></a></li>
-                    <li class="row row-14"><a href="#"><span class="icon"></span><span class="menu-text">Mes abonnés</span></a></li>
+                    <li class="row row-14"><a href="<?php print site_url('mc_followers/'); ?>"><span class="icon"></span><span class="menu-text">Mes abonnés</span></a></li>
                     <li class="row row-15"><a href="#"><span class="icon"></span><span class="menu-text">Personnaliser</span></a></li>
                     <li class="last-row row row-16"><a href="#"><span class="icon"></span><span class="menu-text">Réglages</span></a></li>
                 </ul>

@@ -40,7 +40,7 @@
   </div>
 
   <div class="content">
-	<h2>Musique de Bob Dylan</h2>
+	<h2>Partitions, livrets et paroles de Bob Dylan</h2>
 	<div class="a_la_une">
 		<img src="<?php echo img_url('musicien/album_top.jpg'); ?>"/>
 		<div class="player">
@@ -197,7 +197,7 @@
 	</div>
 	<hr />
 	<div class="a_la_une">
-		<img src="<?php echo img_url('musicien/album_top.jpg'); ?>"/>
+		<img src="<?php echo img_url('musicien/logo_slyset_partition.png'); ?>"/>
 		<div class="infos">
 			<p class="title">Tempest</p>
 			<p class="annee_crea">2012</p>
