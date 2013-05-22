@@ -612,6 +612,7 @@ form + .error-form{ padding:0 0 0 30px; }
 /* --------- FIN MUSICIEN PARTITIONS ----------*/
 
 /*-------- MUSICIEN FOLLOWERS------*/
+
 .content .follower .photo_follow {width:64px;float:left;margin:0 10px 10px 20px;}
 .content .follower .description {width:220px;float:left;margin:0 10px}
 .content .follower .description span {font-size:12px;color:#888d95;}
@@ -627,3 +628,146 @@ form + .error-form{ padding:0 0 0 30px; }
 .content .participer .button_right_non{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_pas_suivre.png") no-repeat -77px -1px; float:left; }
 .content #btn_tmp_follow{ width:195px; margin:0 20px; padding:20px 0; }
 .content #btn_tmp_follow a{ float:left; }
+
+/* ---------- FIN MUSICIEN FOLLOWERS --------- */
+
+/* ---------- MUSICIEN PERSO --------- */
+
+.content .detail_perso {font-size:14px;color:#888d95;font-weight:normal;margin:0 20px 0 20px;}
+.content .categ_perso {margin:20px 0;}
+.content .categ_perso p {font-size:16px;color:#4e4e4e;float:left;}
+.content .categ_perso .themes {margin:-15px 10px 10px;width:360px;float:left;}
+.content .categ_perso .themes a {width:82px;height:55px;float:left;text-indent:-50000px;margin:0 5px 0 0;}
+.content .categ_perso .themes .t1 {background:url("../images/musicien/sprite_theme.png") no-repeat -15px -8px;}
+.content .categ_perso .themes .t2 {background:url("../images/musicien/sprite_theme.png") no-repeat -111px -8px;}
+.content .categ_perso .themes .t3 {background:url("../images/musicien/sprite_theme.png") no-repeat -210px -8px;}
+.content .categ_perso .themes .t4 {background:url("../images/musicien/sprite_theme.png") no-repeat -311px -8px;}
+
+.content .categ_perso_detail {margin:40px 0;}
+.content .categ_perso_detail p {font-size:16px;color:#4e4e4e;float:left;width: 95px;text-align:right;margin: 0 0 0 60px;}
+.content .categ_perso_detail .themes {margin:-15px 20px 10px;float:left;width:290px;}
+.content .categ_perso_detail .themes a {width:82px;height:55px;float:left;text-indent:-50000px;margin:0 5px 0 0;}
+.content .categ_perso_detail .themes .t1 {background:url("../images/musicien/fond_perso.png") no-repeat 0 0;}
+.content .categ_perso_detail .themes span {font-size:12px;color:#a5a9af;font-weight:normal;float:left;width:200px;}
+.content .categ_perso_detail .themes .repeat {font-size:12px;color:#4e4e4e;font-weight:normal;width:75px;float:none;}
+
+.content .categ_perso_precis {margin:20px 0;}
+.content .categ_perso_precis p {font-size:16px;color:#4e4e4e;float:left;width: 135px;text-align:right;}
+.content .categ_perso_precis .themes {margin:-15px 20px 10px;float:left;width:290px;}
+.content .categ_perso_precis .themes input{width:85px;margin:20px 0;}
+.content .categ_perso_precis .themes a {width:82px;height:30px;float:left;text-indent:-50000px;margin:15px 5px 0 0;}
+.content .categ_perso_precis .themes .t1 {background:#19849b;border-radius:25px;-moz-border-radius:25px;-webkit-border-radius:25px;}
+.content .categ_perso_precis .themes span {font-size:12px;color:#a5a9af;font-weight:normal;float:left;width:200px;}
+.content .categ_perso_precis .themes .repeat {font-size:12px;color:#4e4e4e;font-weight:normal;width:75px;float:none;}
+
+.content .categ_perso_precis2 {margin:20px 0;}
+.content .categ_perso_precis2 p {font-size:16px;color:#4e4e4e;float:left;width: 135px;text-align:right;}
+.content .categ_perso_precis2 .themes {margin:-15px 20px 10px;float:left;width:290px;}
+.content .categ_perso_precis2 .themes input{width:85px;margin:20px 0;}
+.content .categ_perso_precis2 .themes a {width:82px;height:30px;float:left;text-indent:-50000px;margin:15px 5px 0 0;}
+.content .categ_perso_precis2 .themes .t1 {background:#b3b2bb;border-radius:25px;-moz-border-radius:25px;-webkit-border-radius:25px;}
+.content .categ_perso_precis2 .themes span {font-size:12px;color:#a5a9af;font-weight:normal;float:left;width:200px;}
+.content .categ_perso_precis2 .themes .repeat {font-size:12px;color:#4e4e4e;font-weight:normal;width:75px;float:none;}
+
+.content .categ_perso_precis3 {margin:20px 0;}
+.content .categ_perso_precis3 p {font-size:16px;color:#4e4e4e;float:left;width: 135px;text-align:right;}
+.content .categ_perso_precis3 .themes {margin:-15px 20px 10px;float:left;width:290px;}
+.content .categ_perso_precis3 .themes input{width:85px;margin:20px 0;}
+.content .categ_perso_precis3 .themes a {width:82px;height:30px;float:left;text-indent:-50000px;margin:15px 5px 0 0;}
+.content .categ_perso_precis3 .themes .t1 {background:#323c6a;border-radius:25px;-moz-border-radius:25px;-webkit-border-radius:25px;}
+.content .categ_perso_precis3 .themes span {font-size:12px;color:#a5a9af;font-weight:normal;float:left;width:200px;}
+.content .categ_perso_precis3 .themes .repeat {font-size:12px;color:#4e4e4e;font-weight:normal;width:75px;float:none;}
+
+.content .categ_perso_precis4 {margin:20px 0;}
+.content .categ_perso_precis4 p {font-size:16px;color:#4e4e4e;float:left;width: 135px;text-align:right;}
+.content .categ_perso_precis4 .themes {margin:-15px 20px 10px;float:left;width:290px;}
+.content .categ_perso_precis4 .themes input{width:85px;margin:20px 0;}
+.content .categ_perso_precis4 .themes a {width:82px;height:30px;float:left;text-indent:-50000px;margin:15px 5px 0 0;}
+.content .categ_perso_precis4 .themes .t1 {background:#b3b2bb;border-radius:25px;-moz-border-radius:25px;-webkit-border-radius:25px;}
+.content .categ_perso_precis4 .themes span {font-size:12px;color:#a5a9af;font-weight:normal;float:left;width:200px;}
+.content .categ_perso_precis4 .themes .repeat {font-size:12px;color:#4e4e4e;font-weight:normal;width:75px;float:none;}
+
+.content .clear {clear:both;}
+.content .valider {background:url("../images/common/bt-rouge.png") no-repeat;color:white;width:85px;height:30px;font-size:16px;margin:0 175px 90px;border:none;}
+/* ---------- FIN MUSICIEN PERSO --------- */
+
+
+/*------------ REGLAGES -------------*/
+
+.content .reglage_detail {margin:40px 0;}
+.content .reglage_detail p {font-size:16px;color:#4e4e4e;float:left;width: 95px;text-align:right;margin: 0 0 0 60px;}
+.content .reglage_detail .themes {margin:-15px 20px 10px;float:left;width:290px;}
+.content .reglage_detail .themes a {width:58px;height:58px;float:left;text-indent:-50000px;margin:0 5px 0 0;}
+.content .reglage_detail .themes .tete {background:url("../images/musicien/choix_photo_tete.png") no-repeat 0 0;}
+.content .reglage_detail .themes .profil {background:url("../images/musicien/choix_photo_profil.png") no-repeat 0 0;}
+.content .reglage_detail .themes span {font-size:12px;color:#737578;font-weight:normal;float:left;width:200px;}
+
+.content .reglage_detail_txt {margin:40px 0;}
+.content .reglage_detail_txt p {font-size:16px;color:#4e4e4e;float:left;width: 140px;text-align:right;margin: 0 0 0 15px;}
+.content .reglage_detail_txt input[type="text"] {width:310px;outline:none;margin:0 20px;}
+.content .reglage_detail_txt input[type="textarea"] {width:310px;height:75px;outline:none;margin:0 20px;word-break: break-word;}
+
+.content .reglage_detail_domaine {margin:40px 0;height:115px;}
+.content .reglage_detail_domaine p {font-size:16px;color:#4e4e4e;float:left;width: 140px;text-align:right;margin: 0 0 0 15px;}
+.content .reglage_detail_domaine .themes {float:left;width: 310px;height:115px;overflow-y:scroll;margin: 0 0 0 15px;border:1px solid #2ab395;background:#fff;}
+.content .reglage_detail_domaine .themes span{width: 500px;margin: 0 5px 0 0;font-size:14px;color:#7f7d7d;}
+.content .reglage_detail_domaine .themes input[type="checkbox"]{margin: 5px 20px 0 10px;}
+
+/* -------------- FIN REGLAGES ------------*/
+
+/* ------------------ STATS ---------------*/
+
+.content .stats_carre {width: 504px;height: 105px;margin: 0 auto 10px;}
+.content .stats_carre div{width:108px;height:108px;float:left;margin:0 9px;}
+.content .stats_carre span{font-size:20px;color:#f9f9f9;position: relative;top: 60px;left: 35px;}
+.content .stats_carre .abonnes{background:url("../images/musicien/sprite_carre_stats.png") no-repeat 0px 0px;}
+.content .stats_carre .visites{background:url("../images/musicien/sprite_carre_stats.png") no-repeat -131px 0px;}
+.content .stats_carre .vues{background:url("../images/musicien/sprite_carre_stats.png") no-repeat -260px 0px;}
+.content .stats_carre .ventes{background:url("../images/musicien/sprite_carre_stats.png") no-repeat -389px 0px;}
+.content .visites_quotidiennes{margin:20px 0;}
+.content .visites_quotidiennes span{margin:0 20px;font-size:14px;font-weight:bold;color:#676666;float:left;}
+.content .visites_quotidiennes .legende{margin:0 0 0 320px;}
+.content .visites_quotidiennes .legende span{font-size:12px;font-weight:normal;color:#676666;margin:5px 10px;}
+.content .visites_quotidiennes .legende .visites{background:url("../images/musicien/sprite_legende.png") no-repeat -8px 0px;width:20px;height:4px;float:left;margin:8px 0;}
+.content .visites_quotidiennes .legende .unique{background:url("../images/musicien/sprite_legende.png") no-repeat -32px 0px;width:20px;height:4px;float:left;margin:8px 0;}
+.content .visites_quotidiennes .graph_stats{background:white;width:497px;height:204px;margin:0 20px;}
+.content .provenance {width:305px;float:left;}
+.content .provenance span{margin:0 20px;font-size:14px;font-weight:bold;color:#676666;}
+.content .provenance .graph{width:305px;height:169px;background:#fff;margin:5px 0 20px 20px;}
+.content .provenance .graph .stats{width:150px;height:169px;float:left;}
+.content .provenance .graph .stats span{font-size:17px;color:#ffffff;margin: 0;position: relative;top: 10px;left: 12px;}
+.content .provenance .graph .stats .portail{width:55px;height:55px;float:left;margin:20px 10px;background:url("../images/musicien/sprite_provenance.png") no-repeat 0px 0px;}
+.content .provenance .graph .stats .google{width:55px;height:55px;float:left;margin:20px 10px;background:url("../images/musicien/sprite_provenance.png") no-repeat -64px 0px;}
+.content .provenance .graph .stats .site{width:55px;height:55px;float:left;margin:0px 10px;background:url("../images/musicien/sprite_provenance.png") no-repeat 0px -58px;}
+.content .provenance .graph .stats .autre{width:55px;height:55px;float:left;margin:0px 10px;background:url("../images/musicien/sprite_provenance.png") no-repeat -64px -58px;}
+.content .provenance .graph .cercle {width:150px;height:169px;float:left;margin:0px 0 0 5px;}
+.content .vente{width:171px;float:left;margin:0 20px;}
+.content .vente span{margin:0 20px;font-size:14px;font-weight:bold;color:#676666;}
+.content .vente .resume_vente{width:171px;height:169px;background:white;margin:5px 20px;}
+.content .vente .resume_vente .nb_vente{font-size:36px;font-weight:bold;color:#f05f4c;margin:0 50px;}
+.content .vente .resume_vente .titres_vendus{font-size:12px;color:#676666;width:75px;margin:0 auto;}
+.content .vente .resume_vente img{width:19px;height:16px;margin:5px 72px;}
+.content .vente .resume_vente .source{font-size:12px;color:#676666;text-align:right;margin:6px 5px 0 0;float:left;width:100px;}
+.content .vente .resume_vente .source_detail{font-size:12px;color:#868686;text-align:right;margin:6px 5px 0 0;float:left;width:100px;}
+.content .vente .resume_vente .revenu{font-size:12px;color:#3f3f3f;font-weight:bold;text-align:left;margin:6px 10px;float:left;}
+.content .ecoutes {margin:20px 0;}
+.content .ecoutes span{margin:0 20px;font-size:14px;font-weight:bold;color:#676666;float:left;}
+.content .ecoutes select{margin:0 0 0 160px;width:106px;}
+
+.content .ecoutes  tr{}
+.content .ecoutes  .en_tete{width:500px;height:60px;background:#e9ebec;border:1px solid #cbcbcb;border-bottom:none;margin:10px auto 0;border-top-left-radius:2px;border-top-right-radius:2px}
+.content .ecoutes  .en_tete tr{border:none;text-align:center;font-weight:bold;font-size:14px;color:#666666;}
+.content .ecoutes  .en_tete tr span{text-align:center;font-weight:normal;font-size:10px;color:#666666;}
+.content .ecoutes  .en_tete .le_titre{width:261px;height:21px;padding:20px 0;}
+.content .ecoutes  .en_tete .paroles{width:140px;height:21px;}
+.content .ecoutes  .en_tete .partitions{width:140px;height:21px;}
+
+.content .ecoutes  .titres{width:500px;background:white;border:1px solid #cbcbcb;border-bottom-left-radius:2px;border-bottom-right-radius:2px;margin:0 auto;}
+
+.content .ecoutes  .titres .le_titre{width:235px;height:15px;padding:6px 0;border-right:1px solid #cbcbcb;color:#555555; font-size:12px;text-align:center;}
+.content .ecoutes  .titres .le_titre span{color:#555555; font-size:12px;font-weight:normal;}
+
+.content .ecoutes  .titres .paroles{width:140px;height:21px;color:#555555; font-size:12px;border-right:1px solid #cbcbcb;text-align:center;}
+
+.content .ecoutes  .titres .partitions{width:140px;height:21px;color:#555555; font-size:12px;text-align:center;}
+/* ------------------- FIN STATS -------------- */

@@ -346,7 +346,6 @@
 			</div>
 		</div>
 	</div>
-	</div>
   </div>
 
   <?php if(isset($sidebar_right)) echo $sidebar_right; ?>

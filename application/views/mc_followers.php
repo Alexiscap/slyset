@@ -32,13 +32,6 @@
       <span class="stats_title">morceaux</span>
     </div>
   </div>
-  <div class="bt_noir">
-    <a href="#"><span class="bt_left"></span><span class="bt_middle">Mettre un album à la une</span><span class="bt_right"></span></a>
-  </div>
-  <div class="bt_noir">
-    <a href="#"><span class="bt_left"></span><span class="bt_middle">Ajouter un morceau</span><span class="bt_right"></span></a>
-  </div>
-
   <div class="content">
 	<div id="btn_tmp_follow">
        <a href="#"><img src="<?php echo img_url('common/tous.png'); ?>" alt="Tous"/></a>
