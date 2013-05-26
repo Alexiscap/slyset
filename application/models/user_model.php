@@ -30,6 +30,23 @@ class User_model extends CI_Model {
 //        return $data;
     }
     
+        public function getUser($uid)
+    {
+        $this->db->select('*');
+        $this->db->from('utilisateur');
+        $this->db->where('id = ' . "'" . $uid);
+        $this->db->limit(1);
+
+        $query = $this->db->get();
+
+        if($query->num_rows() == 1){
+            $data = $query->result();
+            return $data;
+        } else {
+           return false;
+        }
+    }
+    
     public function facebook_register($facebook_id)
     {
         $this->db->select('facebook_id');
@@ -82,7 +99,7 @@ class User_model extends CI_Model {
         $data['instrument'] = $stylemusicinstru;
         $data['cover'] = $cover;
         $data['thumb'] = $thumb;
-        $data['created'] = Date('Y-m-d');
+        $data['created'] = Date('Y-m-d H:i:s');
         
         $this->db->insert('utilisateur', $data);
     }

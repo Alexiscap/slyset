@@ -92,7 +92,12 @@ class User extends CI_Controller
     {
         $fb_data = $this->session->userdata('fb_data');
         
-        $config['upload_path']   = './files/';
+        $dynamic_path = './files/profiles/';
+        if (is_dir($dynamic_path) == false){
+            mkdir($dynamic_path, 0755, true);
+        }
+        
+        $config['upload_path']   = $dynamic_path;
         $config['allowed_types'] = 'gif|jpg|png';
         $config['max_size']    = '100000';
         $config['max_width']  = '1024';

@@ -20,7 +20,7 @@ class User_authentication
     {
         // Not logged in and have right member access, then redirect to the Home Page.
         // If it's a melomane (1) account, it's not a anonym, melomane or admin
-        if($this->obj->session->userdata('account') == 1)
+        if($this->obj->session->userdata('account') == 1 || $this->obj->session->userdata('logged_in') != 1)
             redirect('');
     }
 
