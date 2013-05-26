@@ -35,14 +35,14 @@
                 <ul>
                     <li class="head_menu row row-7"><a href="#"><span class="icon"></span><span class="menu-text">Ma page musicien</span></a></li>
                     <li class="first-row row row-8"><a href="<?php print site_url('actualite/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Actualités</span></a></li>
-                    <li class="row row-9"><a href="<?php print site_url('concert/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Concerts</span></a></li>
+                    <li class="row row-9"><a href="<?php print site_url('mc_concerts/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Concerts</span></a></li>
                     <li class="row row-10"><a href="<?php print site_url('musique/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Musique</span></a></li>
                     <li class="row row-11"><a href="<?php print site_url('media/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Photos et vidéos</span></a></li>
-                    <li class="row row-12"><a href="#"><span class="icon"></span><span class="menu-text">Livrets et partitions</span></a></li>
-                    <li class="row row-13"><a href="#"><span class="icon"></span><span class="menu-text">Statistiques</span></a></li>
-                    <li class="row row-14"><a href="#"><span class="icon"></span><span class="menu-text">Mes abonnés</span></a></li>
-                    <li class="row row-15"><a href="#"><span class="icon"></span><span class="menu-text">Personnaliser</span></a></li>
-                    <li class="last-row row row-16"><a href="#"><span class="icon"></span><span class="menu-text">Réglages</span></a></li>
+                    <li class="row row-12"><a href="<?php print site_url('mc_partitions/');?>"><span class="icon"></span><span class="menu-text">Livrets et partitions</span></a></li>
+                    <li class="row row-13"><a href="<?php print site_url('mc_stats/'); ?>"><span class="icon"></span><span class="menu-text">Statistiques</span></a></li>
+                    <li class="row row-14"><a href="<?php print site_url('mc_followers/'); ?>"><span class="icon"></span><span class="menu-text">Mes abonnés</span></a></li>
+                    <li class="row row-15"><a href="<?php print site_url('mc_perso/'); ?>"><span class="icon"></span><span class="menu-text">Personnaliser</span></a></li>
+                    <li class="last-row row row-16"><a href="<?php print site_url('mc_reglages/'); ?>"><span class="icon"></span><span class="menu-text">Réglages</span></a></li>
                 </ul>
             </div>
         <?php endif; ?>
