@@ -11,28 +11,6 @@
     </ul>
   </div>
 
-<!--  <div id="coverflow">
-    <div id="coverflow-alaune">
-       <img src="<?php echo img_url('portail/alaune.png') ?>">
-     </div>
-
-    <div id="coverflow-left">
-      <img class="coverflow-img" src="<?php echo img_url('portail/bh.png') ?>">
-    </div>
-
-    <div id="coverflow-center">
-      <span class="coverflow-img-player"> </span><img class="coverflow-img2" src="<?php echo img_url('portail/bandone.png') ?>">
-      <div class="coverflow-center-artiste">
-        GRANVILLE
-        </br>
-        <img class="coverflow-center-slide" src="<?php echo img_url('portail/slide.png') ?>">
-      </div>
-    </div>
-
-    <div id="coverflow-right">
-      <img class="coverflow-img" src="<?php echo img_url('portail/foals.png') ?>">
-    </div>
-  </div>-->
   <div id="coverflowContainer">
     <div id="coverflow2">
       <a href="#"><img class="coverflow-img" src="<?php echo img_url('portail/bh.png') ?>"><span class="coverflow_artist">Name Artist 1</span></a>
@@ -56,169 +34,138 @@
       </div>
 
       <div id="top-song-play-one">
-
-        <div id="tab-top-song-line-white">
-          <div id="tab-top-song-col-one">
-            <div id="tab-top-song-col-number">
-            1
-            </div>
-            <div id="tab-top-song-col-texte">
-
-              <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-              <div class="tab-top-song-col-texte-titre">Blowin The Wind</br>
-              <span class="tab-top-song-col-texte-artiste">Bob Dylan</div>
-
-            </div>
+          <div class="tab-top-song-line-white">
+              <div class="tab-top-song-col-one">
+                  <div class="tab-top-song-col-number">1</div>
+                  <div class="tab-top-song-col-texte">
+                      <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
+                      <div class="tab-top-song-col-texte-titre">
+                          Blowin The Wind</br>
+                          <span class="tab-top-song-col-texte-artiste">Bob Dylan
+                      </div>
+                  </div>
+              </div>
           </div>
 
-        </div>
-
-        <div id="tab-top-song-line-grey">
-          <div id="tab-top-song-col-one">
-          <div id="tab-top-song-col-number">
-          2
-            </div>
-            <div id="tab-top-song-col-texte">
-            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-              <div class="tab-top-song-col-texte-titre">Blowin The Wind</br>
-              <span class="tab-top-song-col-texte-artiste">Bob Dylan</div>
-
-            </div>
-
+          <div class="tab-top-song-line-grey">
+              <div class="tab-top-song-col-one">
+                  <div class="tab-top-song-col-number">2</div>
+                  <div class="tab-top-song-col-texte">
+                      <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
+                      <div class="tab-top-song-col-texte-titre">
+                          Blowin The Wind</br>
+                          <span class="tab-top-song-col-texte-artiste">Bob Dylan
+                      </div>
+                  </div>
+              </div>
           </div>
 
-        </div>
-
-        <div id="tab-top-song-line-white">
-          <div id="tab-top-song-col-one">
-          <div id="tab-top-song-col-number">
-          3
-            </div>
-            <div id="tab-top-song-col-texte">
-            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-              <div class="tab-top-song-col-texte-titre">Blowin The Wind</br>
-              <span class="tab-top-song-col-texte-artiste">Bob Dylan</div>
-
-            </div>
-
+          <div class="tab-top-song-line-white">
+              <div class="tab-top-song-col-one">
+                  <div class="tab-top-song-col-number">3</div>
+                  <div class="tab-top-song-col-texte">
+                      <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
+                      <div class="tab-top-song-col-texte-titre">
+                          Blowin The Wind</br>
+                          <span class="tab-top-song-col-texte-artiste">Bob Dylan
+                      </div>
+                  </div>
+              </div>
           </div>
 
-        </div>
-
-        <div id="tab-top-song-line-grey">
-        <div id="tab-top-song-col-one">
-          <div id="tab-top-song-col-number">
-          4
-            </div>
-            <div id="tab-top-song-col-texte">
-            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-              <div class="tab-top-song-col-texte-titre">Blowin The Wind</br>
-              <span class="tab-top-song-col-texte-artiste">Bob Dylan</div>
-
-            </div>
-
+          <div class="tab-top-song-line-grey">
+              <div class="tab-top-song-col-one">
+                  <div class="tab-top-song-col-number">4</div>
+                  <div class="tab-top-song-col-texte">
+                      <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
+                      <div class="tab-top-song-col-texte-titre">
+                          Blowin The Wind</br>
+                          <span class="tab-top-song-col-texte-artiste">Bob Dylan
+                      </div>
+                  </div>
+              </div>
           </div>
-
-        </div>
-
-        <div id="tab-top-song-line-white">
-        <div id="tab-top-song-col-one">
-          <div id="tab-top-song-col-number">
-          5
-            </div>
-            <div id="tab-top-song-col-texte">
-            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-              <div class="tab-top-song-col-texte-titre">Blowin The Wind</br>
-              <span class="tab-top-song-col-texte-artiste">Bob Dylan</div>
-
-            </div>
-
+        
+          <div class="tab-top-song-line-white">
+              <div class="tab-top-song-col-one">
+                  <div class="tab-top-song-col-number">5</div>
+                  <div class="tab-top-song-col-texte">
+                      <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
+                      <div class="tab-top-song-col-texte-titre">
+                          Blowin The Wind</br>
+                          <span class="tab-top-song-col-texte-artiste">Bob Dylan
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
-
       </div>
 
-         <div id="top-song-play-two">
-
-        <div id="tab-top-song-line-white">
-          <div id="tab-top-song-col-one">
-            <div id="tab-top-song-col-number">
-            6
-            </div>
-            <div id="tab-top-song-col-texte">
-            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-              <div class="tab-top-song-col-texte-titre">Blowin The Wind</br>
-              <span class="tab-top-song-col-texte-artiste">Bob Dylan</div>
-
-            </div>
+      <div id="top-song-play-two">
+          <div class="tab-top-song-line-white">
+              <div class="tab-top-song-col-one">
+                  <div class="tab-top-song-col-number">6</div>
+                  <div class="tab-top-song-col-texte">
+                      <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
+                      <div class="tab-top-song-col-texte-titre">
+                          Blowin The Wind</br>
+                          <span class="tab-top-song-col-texte-artiste">Bob Dylan
+                      </div>
+                  </div>
+              </div>
           </div>
 
-        </div>
-
-        <div id="tab-top-song-line-grey">
-          <div id="tab-top-song-col-one">
-          <div id="tab-top-song-col-number">
-          7
-            </div>
-            <div id="tab-top-song-col-texte">
-            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-              <div class="tab-top-song-col-texte-titre">Blowin The Wind</br>
-              <span class="tab-top-song-col-texte-artiste">Bob Dylan</div>
-
-            </div>
-
+          <div class="tab-top-song-line-grey">
+              <div class="tab-top-song-col-one">
+                  <div class="tab-top-song-col-number">7</div>
+                  <div class="tab-top-song-col-texte">
+                      <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
+                      <div class="tab-top-song-col-texte-titre">
+                          Blowin The Wind</br>
+                          <span class="tab-top-song-col-texte-artiste">Bob Dylan
+                      </div>
+                  </div>
+              </div>
           </div>
 
-        </div>
-
-        <div id="tab-top-song-line-white">
-          <div id="tab-top-song-col-one">
-          <div id="tab-top-song-col-number">
-          8
-            </div>
-            <div id="tab-top-song-col-texte">
-            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-              <div class="tab-top-song-col-texte-titre">Blowin The Wind</br>
-              <span class="tab-top-song-col-texte-artiste">Bob Dylan</div>
-
-            </div>
-
+          <div class="tab-top-song-line-white">
+              <div class="tab-top-song-col-one">
+                  <div class="tab-top-song-col-number">8</div>
+                  <div class="tab-top-song-col-texte">
+                      <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
+                      <div class="tab-top-song-col-texte-titre">
+                          Blowin The Wind</br>
+                          <span class="tab-top-song-col-texte-artiste">Bob Dylan
+                      </div>
+                  </div>
+              </div>
           </div>
 
-        </div>
-
-        <div id="tab-top-song-line-grey">
-        <div id="tab-top-song-col-one">
-          <div id="tab-top-song-col-number">
-          9
-            </div>
-            <div id="tab-top-song-col-texte">
-            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-              <div class="tab-top-song-col-texte-titre">Blowin The Wind</br>
-              <span class="tab-top-song-col-texte-artiste">Bob Dylan</div>
-
-            </div>
-
+          <div class="tab-top-song-line-grey">
+              <div class="tab-top-song-col-one">
+                  <div class="tab-top-song-col-number">9</div>
+                  <div class="tab-top-song-col-texte">
+                      <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
+                      <div class="tab-top-song-col-texte-titre">
+                          Blowin The Wind</br>
+                          <span class="tab-top-song-col-texte-artiste">Bob Dylan
+                      </div>
+                  </div>
+              </div>
           </div>
-
-        </div>
-
-        <div id="tab-top-song-line-white">
-        <div id="tab-top-song-col-one">
-          <div id="tab-top-song-col-number">
-          10
-            </div>
-            <div id="tab-top-song-col-texte">
-            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-              <div class="tab-top-song-col-texte-titre">Blowin The Wind</br>
-              <span class="tab-top-song-col-texte-artiste">Bob Dylan</div>
-
-            </div>
-
+        
+          <div class="tab-top-song-line-white">
+              <div class="tab-top-song-col-one">
+                  <div class="tab-top-song-col-number">10</div>
+                  <div class="tab-top-song-col-texte">
+                      <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
+                      <div class="tab-top-song-col-texte-titre">
+                          Blowin The Wind</br>
+                          <span class="tab-top-song-col-texte-artiste">Bob Dylan
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>	
       </div>
-    </div>
 
     <div id="first-line-calendar">
       <div id="calendar-title">

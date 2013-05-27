@@ -32,8 +32,8 @@
       <span class="stats_title">morceaux</span>
     </div>
   </div>
-  <div class="bt_ajout_concert">
-   <a href="<?php echo base_url('index.php/mc_concerts/ajouter_concert/'.$user_id)?>"> <img href="" src="<?php echo img_url('musicien/ajout_concert.png'); ?>" alt="ajout concert"/></a>
+  <div class="bt_noir">
+    <a href="#"><span class="bt_left"></span><span class="bt_middle">Ajouter un concert</span><span class="bt_right"></span></a>
   </div>
 
   <div class="content">

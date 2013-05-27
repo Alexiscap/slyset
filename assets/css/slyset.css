@@ -44,13 +44,20 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 #stats-cover .stats_number{ margin:1px 0 0 0; font-weight:bold; font-size:14px; color:#2ab395; float:left; }
 #stats-cover .stats_title{ font-size:10px; font-weight:bold; text-transform:uppercase; color:#3f3f3f; float:left; clear:both; }
 
-.actus_post{ margin:12px 0 0 0; width:540px; height:134px; background:#e6e6e6; float:left; clear:both; }
+.actus_post{ margin:12px 0 4px 0; width:540px; /*height:134px;*/ background:#e6e6e6; float:left; clear:both; }
+.actus_post form{ clear:both; }
+.actus_post .upload-file-container.container-photo{ margin:0 0 0 17px; width:125px; background:url('../images/musicien/sprite_button_file_photo.png') 0 0 no-repeat; float:left; clear:both; }
+.actus_post .upload-file-container.container-photo input{ width:125px; }
+.actus_post .upload_photo_name_file{ display:inline-block; height:30px; line-height:30px; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; color:#737578; float:left; }
 .actus_post_links{ margin:12px 0 0 7px; float:left; }
 .actus_post_links a{ margin:0 0 0 10px; padding:0 4px; height:20px; line-height:20px; display:inline-block; font-size:13px; font-weight:bold; text-decoration:none; color:#737578; background:transparent; }
-.actus_post_links a:hover, .actus_post_links a:active{ height:20px; display:inline-block; text-decoration:none; background:#cccccc; }
-.actus_post textarea{ margin:2px 17px; padding:2px 5px; width:494px; height:54px; resize:none; font-family:"Trebuchet MS", Arial, sans-serif; color:#535353; }
-.actus_post input[type="submit"]{ margin:0 16px 0 0; width:62px; height:32px; border:none; font-size:11px; color:#ffffff; background:url("../images/common/btn_validate.png") no-repeat transparent; float:right; }
+.actus_post_links a:hover, .actus_post_links a:active, .actus_post_links a.active{ height:20px; display:inline-block; text-decoration:none; background:#cccccc; }
+.actus_post textarea{ margin:2px 17px 4px 17px; padding:2px 5px; width:494px; height:54px; resize:none; font-family:"Trebuchet MS", Arial, sans-serif; color:#535353; float:left; clear:both; }
+.actus_post #comments-link-video input[type="text"]{ margin:0 0 0 17px; padding:0 5px; width:400px; height:26px; font-size:12px; font-style:italic; color:#737578; float:left; clear:both; }
+.actus_post input[type="submit"]{ margin:0 16px 0 0; width:62px; height:32px; border:none; font-size:11px; color:#ffffff; background:url("../images/common/btn_validate.png") no-repeat transparent; float:right; clear:none; }
 .actus_post input[type="submit"]:hover{ cursor:pointer; }
+.actus_post #comments-msg input[type="submit"]{ clear:both; }
+.actus_post span.error-form{ margin:5px 0 5px 17px; }
 
 .content{ margin:10px 0 10px 0; padding:0; width:541px; background:#e6e6e6; float:left; clear:both; }
 .empty{ width:100%; height:12px; background:#f9f9f9; float:left; clear:both; }
@@ -58,13 +65,14 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .artist_post .top{ width:100%; height:16px; }
 .artist_post .top img{ display:block; position:absolute; right:2px; top:17px; width:14px; height:14px; float:right; }
 .artist_post .left{ width:45px; height:100%; float:left; clear:both; }
-.artist_post .left img{ display:block; position:relative; width:43px; height:43px; right:5px; }
+.artist_post .left img{ display:block; position:relative; width:43px; height:43px; right:5px; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px; }
 .artist_post .right{ padding:11px 0 0 0; width:455px; background:#f9f9f9; float:left; }
 .artist_post .right .ico_citation{ margin:0 8px 0 22px; display:inline-block; width:24px; height:19px; background:url("../images/common/ico_cite.png") no-repeat; float:left; }
 .artist_post .right .msg_post{ padding:0 0 20px 0; display:inline-block; width:370px; font-weight:normal; font-size:13px; color:#535353; float:left; }
 .artist_post .right .msg_post a{ font-weight:bold; text-decoration:none; color:#31a58c; }
 .artist_post .right .msg_post a:hover{ text-decoration:underline; }
-.artist_post .right img.single{ display:block; width:455px; height:256px; overflow:hidden; float:left; clear:both; }
+.artist_post .right .singleWrapper{ width:455px; max-height:500px; overflow:hidden; float:left; clear:both; }
+.artist_post .right img.single{ display:block; min-width:455px; max-width:100%; }
 .artist_post .right img.mosaic{ margin:0 5px 10px 5px; display:inline-block; width:135px; height:135px; overflow:hidden; float:left; }
 .artist_post .right img.mosaic.first{ margin:0 0 10px 20px; }
 .artist_post .right img.mosaic.last{ margin:0 20px 10px 0; }
@@ -76,17 +84,18 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .artist_post .right .post_article a{ margin:10px 0 0 27px; font-weight:bold; font-size:14px; text-decoration:none; color:#31a58c; float:left; }
 .artist_post .right .post_article a:hover{ text-decoration:underline; }
 .artist_post .right .post_article p{ margin:7px 0 0 27px; display:block; width:275px; line-height:14px; font-weight:normal; font-size:12px; color:#535353; float:left; }
+.artist_post .right iframe{ float:left; clear:both; }
 .artist_post .bottom{ width:455px; height:100%; background:#cccccc; float:right; clear:both; }
 .artist_post .bottom .infos_publi{ margin:0 0 0 8px; padding:0; font-size:10px; display:inline-block; height:16px; line-height:16px; vertical-align:middle; color:#737578; float:left; }
 .artist_post .bottom .infos_coms{ margin:0 8px 0 0; padding:0; font-size:10px; display:inline-block; height:16px; line-height:16px; vertical-align:middle; color:#737578; float:right; }
 .artist_post .bottom .infos_coms a{ text-decoration:none; color:#737578; }
 .artist_post .bottom .infos_coms a:hover{ text-decoration:underline; color:#31a58c; }
 
-.artist_post .comments{ width:455px; position:relative; left:45px; background:#ffffff; float:left; clear:both; }
+.artist_post .comments{ margin:0 0 1px 0; width:455px; position:relative; left:45px; background:#ffffff; float:left; clear:both; }
 .artist_post .comments .com_left{ width:62px; height:100%; float:left; }
 .artist_post .comments .com_left img{ margin:4px; display:block; }
 .artist_post .comments .com_right{ width:393px; float:left; }
-.artist_post .comments .com_right .com_top{ width:100%; float:left; }
+.artist_post .comments .com_right .com_top{ width:100%; height:17px; float:left; }
 .artist_post .comments .com_right .com_top a{ margin:1px 2px 0 0; display:block; float:right; }
 .artist_post .comments .com_right .com_bottom{ margin:-2px 0 10px 0; width:353px; float:left; clear:both; }
 .artist_post .comments .com_publi_infos{ display:block; font-size:12px; font-weight:bold; color:#3f3f3f; float:left; clear:both; }
@@ -96,6 +105,8 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .artist_post .form_comments{ margin:3px 0 0 0; width:457px; position:relative; left:44px; float:left; }
 .artist_post .form_comments input[type="text"]{ padding:0 0 0 15px; display:inline-block; width:440px; height:38px; position:relative; font-size:12px; border:1px solid #c1c1c1; color:#909090; float:left; }
 .artist_post .form_comments input[type="submit"]{ display:inline-block; width:64px; height:28px; position:absolute; right:6px; top:5px; border:1px solid #d85342; font-size:12px; font-weight:bold; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; color:#ffffff; background:#f05f4c; float:left; -moz-box-shadow:1px 1px 2px 1px #c2c2c2; -webkit-box-shadow:1px 1px 2px 1px #c2c2c2; -o-box-shadow:1px 1px 2px 1px #c2c2c2; box-shadow:1px 1px 2px 1px #c2c2c2; filter:progid:DXImageTransform.Microsoft.Shadow(color=#c2c2c2, Direction=134, Strength=2); }
+.artist_post .ajax_loader{ padding:5px 0 0 0; text-align:center; clear:both; }
+.artist_post .ajax_loader img{ margin:0 10px 0 0; }
 
 /* --------- FIN  DE MUSICIEN - ACTUS  --------- */
 
@@ -109,7 +120,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .content h2{ font-size:20px; margin:25px 20px; clear:both; }
 .content p{ font-size:14px; margin:0 0 0 20px; font-weight:bold; }
 .content .date-heure{ clear:both; }
-.content hr{ color:#888d95; width:499px; margin:10px auto; }
+.content hr{ color:#888d95; width:499px; margin:10px auto;clear:both; }
 .content .infos_concert{ width:302px; margin:0 0 0 20px; float:left; }
 .content .calendrier{ background:url("../images/musicien/calendrier.png") no-repeat; width:50px; height:50px; float:left; }
 .content .infos_concert p{ margin:3px; color:#5d5d5b; font-size:14px; }
@@ -175,7 +186,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .content .photo .bord_photo p{ margin:0 10px 0; display:inline; font-size:10px; color:#878d95; }
 .content .photo .bord_photo a:hover{ text-decoration:none; }
 .content .photo .nom_photo{ width:138px; text-align:left; }
-.content .photo .bord_photo img{ margin:0 5px 0 15px; display:inline; }
+.content .photo .bord_photo img{ margin:8px 5px 0 40px; display:inline; }
 .content .photo .bord_photo .nb_like{ margin:0; }
 .content .photo .comm{ width:170px; margin:0 -5px; background:#f2f0f0; border-bottom:1px solid #cdcdcd; border-top:none; min-height:34px; }
 .content .photo .comm img{ float:left; margin:5px; height:24px; }
@@ -227,7 +238,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 #coverflow .coverflow-center-artiste{ text-align:center; margin-top:10px; font-family:'Myriad Pro'; font-size:13px; text-shadow:0px -2px #000000; color:white; }
 #coverflow .coverflow-center-slide{ margin-top:7px; margin-right:5px; }
 
-#coverflowContainer{ padding:45px 0 0 0; background:url("../images/portail/bg-coverflow2.png") no-repeat; width:100%; height:364px; }
+#coverflowContainer{ padding:45px 0 10px 0; background:url("../images/portail/bg-coverflow2.png") no-repeat; width:100%; height:308px; }
 .caroufredsel_wrapper{ margin:0 auto !important; }
 #coverflow2{ width:770px; height:364px; }
 #coverflow2 a{ display:block; float:left; width:188px; height:188px; margin:0 15px; text-decoration:none; text-align:center; position:relative; }
@@ -263,16 +274,16 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 #top-song-play-one{ position:absolute; margin-top:33px; box-shadow:-1px 0 1px 1px #EDEDED; border-left:1px solid #dedede; border-top:1px solid #dedede; border-bottom:1px solid #dedede; width:175px; }
 #top-song-play-two{ position:absolute; margin-left:175px; margin-top:33px; box-shadow:1px 0 1px 1px #EDEDED; border-right:1px solid #dedede; border-left:1px solid #dedede; border-top:1px solid #dedede; border-bottom:1px solid #dedede; width:175px; }
 
-#first-line-top-song #tab-top-song-col-number{ position:absolute; width:25px; color:#7f7d7d; font-weight:bold; border-right:1px solid #dedede; height:27px; padding-top:8px; text-align:center; font-size:21px; }
-#first-line-top-song #tab-top-song-col-texte{ margin-left:25px; color:#7f7d7d; font-size:12px; height:35px; }
+#first-line-top-song .tab-top-song-col-number{ position:absolute; width:25px; color:#7f7d7d; font-weight:bold; border-right:1px solid #dedede; height:27px; padding-top:8px; text-align:center; font-size:21px; }
+#first-line-top-song .tab-top-song-col-texte{ margin-left:25px; color:#7f7d7d; font-size:12px; height:35px; }
 #first-line-top-song .tab-top-song-col-texte-img{ position:absolute; margin-top:8px; margin-left:5px; }
 #first-line-top-song .tab-top-song-col-texte-titre{ position:absolute; color:#7f7d7d; font-size:12px; margin-left:28px; margin-top:6px; }
 #first-line-top-song .tab-top-song-col-texte-artiste{ color:#7f7d7d; font-size:10px; }
 
-#first-line-top-song #tab-top-song-line-white{ background-color:#f6f6f6;  height:35px; }
-#first-line-top-song #tab-top-song-line-grey{ background-color:#e6e6e6; height:35px; border-top:1px solid #dedede; border-bottom:1px solid #dedede; }
-#first-line-top-song #tab-top-song-col-one{ width:175px; border-right:1px solid #dedede; height:35px; }
-#first-line-top-song #tab-top-song-col-two{ margin-left:175px; width:175px; height:43px; border-right:1px solid #dedede; }
+#first-line-top-song .tab-top-song-line-white{ background-color:#f6f6f6;  height:35px; }
+#first-line-top-song .tab-top-song-line-grey{ background-color:#e6e6e6; height:35px; border-top:1px solid #dedede; border-bottom:1px solid #dedede; }
+#first-line-top-song .tab-top-song-col-one{ width:175px; border-right:1px solid #dedede; height:35px; }
+#first-line-top-song .tab-top-song-col-two{ margin-left:175px; width:175px; height:43px; border-right:1px solid #dedede; }
 /*
 #top-song-play table{ float:left; position:absolute; height:185px; width:345px; margin-top:40px; box-shadow:0 0 1px 1px #EDEDED; border:1px solid #dedede;  }
 
@@ -292,7 +303,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 #newbies-content .newbies-picture{ position:absolute; margin-top:4px; margin-left:4px; }
 #newbies-content .newbies-people{ position:absolute; font-family:"Trebuchet MS"; color:#3f3f3f; margin-top:10px; font-weight:600; font-size:13px; margin-left:47px; }
 #newbies-content .newbies-people-type{ color:#72797f; font-size:11px; font-weight:normal; }
-#wall-flux{ float:left; position:relative; margin-top:250px; margin-bottom:12px; width:579px; background-color:#e6e6e6; }
+#wall-flux{ float:left; position:relative; margin-top:235px; margin-bottom:12px; width:579px; background-color:#e6e6e6; }
 .wall-flux-content{ margin:13px; width:550px; background-color:#f6f6f6; padding-bottom:1px; }
 .wall-flux-content .img-blog{ width:550px; margin-top:7px; margin-bottom:2px; }
 .wall-flux-content .img-blog-artiste{ width:550px; font-family:"Trebuchet MS"; margin-top:7px; margin-bottom:20px; }
@@ -437,11 +448,11 @@ form + .error-form{ padding:0 0 0 30px; }
 #subscription-upload label{ margin:-10px 0 0.4em 0; font-weight:normal; float:left; clear:none; }
 #subscription-upload .container-cover + label{ margin:-15px 0 0.4em 0; font-weight:normal; float:right; clear:none; }
 .step-form .upload_images{ display:block; width:409px; height:150px; background:url('../images/subscription/upload_images2.png') no-repeat; float:left; clear:both; }
-.step-form .upload-file-container{ display:block; width:161px; height:29px; float:left; cursor:pointer; position:relative; }
-.step-form .upload-file-container:hover{ background-position:0 -29px; cursor:pointer; }
+.upload-file-container{ display:block; width:161px; height:29px; float:left; cursor:pointer; position:relative; }
+.upload-file-container:hover{ background-position:0 -29px; cursor:pointer; }
 .step-form .upload-file-container.container-cover{ background:url('../images/subscription/sprite_button_file_cover.png') 0 0 no-repeat; clear:both; }
 .step-form .upload-file-container.container-thumb{ margin:-20px 10px 0 0; width:147px; background:url('../images/subscription/sprite_button_file_thumb.png') no-repeat; float:right; clear:both; }
-.step-form input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:alpha(opacity=0); opacity:0; position:absolute; left:0; top:0; cursor:pointer; }
+input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:alpha(opacity=0); opacity:0; position:absolute; left:0; top:0; cursor:pointer; }
 /* --------- FIN  D'INSCRIPTION'  --------- */
 
 
@@ -531,6 +542,23 @@ form + .error-form{ padding:0 0 0 30px; }
 .content .tout_titre .liste_titres .titres .duree{width:15px;height:21px;padding:0 15px;color:#555555; font-size:12px;}
 
 /* --------- FIN MUSICIEN MUSIQUE  --------- */
+
+/*-------------- POP IN -----------------------*/
+.pop-in{width:510px;height:349px;background:#eff4f3;padding:31px 0 75px;border:1px solid #bbbbbb;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;margin:10px auto;}
+.pop-in p{margin:0 15px 31px;float:left;font-size:18px;color:#4e4e4e;width:155px;}
+.pop-in img{margin-left:295px;float:left;cursor:pointer;}
+.content-pi {background:#fafafa;width:510px;height:233px;padding: 25px 0;border:1px solid #e0e4e6;border-left:none;border-right:none;clear:both;}
+.content-pi .label {width:123px;padding:0 12px 0 0;float:left;margin:15px 0 0 0;text-align:right;font-size:16px;color:#4e4e4e;}
+.content-pi .label img{width:85px;height:73px;margin-left:40px;}
+.content-pi .champs {width:306px;float:left;margin:15px 0 0 12px;}
+.content-pi .champs input{width:296px;padding:0 5px;outline:none}
+.content-pi .champs_heure input{width:50px;padding:0 5px;outline:none;margin:15px 0 0 10px;}
+.content-pi .champs_lieu input{padding:0 5px;outline:none;margin:15px 0 0 10px;}
+.content-pi .champs_prix input{width:50px;padding:0 5px;outline:none;margin:15px 0 0 10px;}
+.content-pi .champs select{width:296px;padding:0 0 0 5px;outline:none}
+.content-pi .champs .descript-vid{width:296px;padding:0 5px;height:73px;outline:none;word-break:break-word;}
+.content-pi input[type="submit"]{clear:both;width: 80px;height: 30px;margin: 10px 145px;background:url('../images/common/bt-rouge.png');color:white;}
+/*-------------------- FIN POP IN --------------------*/
 
 /* --------- MUSICIEN PARTITIONS ------------*/
 
