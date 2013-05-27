@@ -55,8 +55,52 @@ function unhighlight(items) {
     return items;
 }
 
-$(document).ready(function() {
+$(document).ready(function(){
+  
+    var baseurl = $('#baseurl').val();
+    $('.form_comments form').submit(function(){
+//        dataString2 = $(this).serialize();
+//         alert(dataString2);
+//        $.ajax({
+//            url : baseurl + 'index.php/mc_actus/form_wall_user_comment',
+//            data : $('.form_comments form').serialize(),
+//            type: "POST",
+//            success : function(usercomment){
+//                alert($('form').serialize());
+//                alert(usercomment);
+//                $(usercomment).hide().insertBefore('#insertbeforMe').slideDown('slow');
+//            }
+//        })
 
+        var usercomment = $(this).find("#usercomment").val();
+        var messageid = $(this).find("#messageid").val();
+        var thisParent = $(this).parent();
+        var dataString = 'usercomment='+usercomment+'&messageid='+messageid;
+    //            var dataString = 'usercomment='+usercomment;
+
+        if(usercomment == '' || messageid == ''){
+            alert('Veuillez renseigner un message !');
+        } else {
+            var ajaxLoader = $(this).parent().find(".ajax_loader");
+            
+            ajaxLoader.show();
+            ajaxLoader.fadeIn(500).html('<img src="'+baseurl+'assets/images/common/ajax-loader.gif" />Loading Comment...');
+
+            $.ajax({
+                type: "POST",
+                url : baseurl + 'index.php/mc_actus/form_wall_user_comment',
+                data: dataString,
+
+                success: function(comment){
+                    $(comment).hide().insertBefore(thisParent).slideDown('slow');
+                    ajaxLoader.fadeOut(1000);
+//                    ajaxLoader.hide();
+               }
+            })
+            return false;
+        }
+    });
+    
     //Utilisation du caroufredsel sur la page home
     if($("body.home").length > 0){
         $("#coverflow2").carouFredSel({
@@ -99,7 +143,7 @@ $(document).ready(function() {
         );
     }
 
-//      $("#coverflow2 a:nth-child(2)").addClass("testt");
+//    $("#coverflow2 a:nth-child(2)").addClass("testt");
 //    $("#coverflow2 a + a").css("width","300");
 //    $("#coverflow2 a + a img").css("width","300");
 
@@ -141,6 +185,31 @@ $(document).ready(function() {
     //Appel de la fonction masonry uniquement sur la page photos/vidéos
     if($("body.photos_videos").length > 0){
         playMasonry();
+    }
+    
+    
+    //Appel de la fonction
+    if($("body.musicien_actus").length > 0){
+        $('input[type=file]').change(function(e){
+            $in = $(this);
+            $(".upload_photo_name_file").html($in.val().replace(/C:\\fakepath\\/i, ''));
+        });
+      
+        $(".actus_post .actus_post_links a").click(function(e){
+            var cls = $(this).attr('href').replace('#', '');
+            var desact =  $(".actus_post .actus_post_links").find('.active').removeClass('active')
+            var act =$(this).addClass("active");
+            
+            location.hash = cls;
+            
+            var newForm = location.hash;
+            $(".actus_post form").css("display","none");
+//            $(newForm).css("display","block");
+            $(newForm).slideToggle('slow', "swing");
+            
+            window.location.hash = "";
+            e.preventDefault();
+        });
     }
     
 });
