@@ -21,12 +21,12 @@
             <ul>
                 <li class="head_menu row row-0">
                   <a href="#"><span class="icon"></span><span class="menu-text">Mon compte</span></a></li>
-                <li class="first-row row row-1"><a href="#"><span class="icon"></span><span class="menu-text">Fil d'actualité</span></a></li>
-                <li class="row row-2"><a href="#"><span class="icon"></span><span class="menu-text">Modifier mon profil</span></a></li>
-                <li class="row row-3"><a href="#"><span class="icon"></span><span class="menu-text">Mes achats</span></a></li>
-                <li class="row row-4"><a href="#"><span class="icon"></span><span class="menu-text">Mes playlists</span></a></li>
-                <li class="row row-5"><a href="#"><span class="icon"></span><span class="menu-text">Mes concerts</span></a></li>
-                <li class="last-row row row-6"><a href="#"><span class="icon"></span><span class="menu-text">Mes abonnements</span></a></li>
+                <li class="first-row row row-1"><a href="<?php print site_url('melo_actu/'); ?>"><span class="icon"></span><span class="menu-text">Fil d'actualité</span></a></li>
+                <li class="row row-2"><a href="<?php print site_url('melo_reglages/'); ?>"><span class="icon"></span><span class="menu-text">Modifier mon profil</span></a></li>
+                <li class="row row-3"><a href="<?php print site_url('melo_achats/'); ?>"><span class="icon"></span><span class="menu-text">Mes achats</span></a></li>
+                <li class="row row-4"><a href="<?php print site_url('melo_playlist/'); ?>"><span class="icon"></span><span class="menu-text">Mes playlists</span></a></li>
+                <li class="row row-5"><a href="<?php print site_url('melo_concerts/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Mes concerts</span></a></li>
+                <li class="last-row row row-6"><a href="<?php print site_url('melo_abonnements/'); ?>"><span class="icon"></span><span class="menu-text">Mes abonnements</span></a></li>
             </ul>
         </div>
 

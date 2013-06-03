@@ -12,35 +12,33 @@
   <div id="cover">
     <div id="infos-cover">
       <h2>Bob Dylan</h2>
-      <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
     </div>
   </div>
 
   <div id="stats-cover">
     <div class="stats_cover_block">
       <span class="stats_number">489</span>
-      <span class="stats_title">abonnés</span>
+      <span class="stats_title">écoutes</span>
     </div>
 
     <div class="stats_cover_block">
       <span class="stats_number">18</span>
-      <span class="stats_title">albums</span>
+      <span class="stats_title">playlists</span>
     </div>
 
     <div class="stats_cover_block">
       <span class="stats_number">278</span>
-      <span class="stats_title">morceaux</span>
+      <span class="stats_title">abonnements</span>
     </div>
   </div>
-  <div class="bt_noir_concert">
-	  <div class="bt_noir">
-		<a href="#"><span class="bt_left"></span><span class="bt_middle">Ajouter un concert</span><span class="bt_right"></span></a>
-	  </div>
+  <div class="bt_noir">
+    <a href="#"><span class="bt_left"></span><span class="bt_middle">Ajouter un concert</span><span class="bt_right"></span></a>
   </div>
+
   <div class="content">
     <div id="btn_tmp">
-       <a href="<?php echo base_url('index.php/mc_concerts/'.$user_id) ?>" class="avenir">A venir</a>
-       <a href="<?php echo base_url('index.php/mc_concerts/concert_passe/'.$user_id) ?>" class="cpasse">Concerts passé</a>
+       <a href="<?php echo base_url('index.php/mc_concerts/'.$user_id) ?>"><img src="<?php echo img_url('musicien/filtre_avenir.png'); ?>" alt="A venir"/></a>
+       <a href="<?php echo base_url('index.php/mc_concerts/concert_passe/'.$user_id) ?>"><img src="<?php echo img_url('musicien/filtre_passe.png'); ?>" alt="Concert passé"/></a>
    </div>
     <h2>Les concerts de <?php echo $info_user[0]->{'login'}; ?> &agrave; venir</h2>
    

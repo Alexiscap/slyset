@@ -213,3 +213,21 @@ $(document).ready(function(){
     }
     
 });
+
+function bt_edit(){
+	document.getElementById('select').getElementsByClassName('miniat_titre')[0].style.display="inline";
+}
+
+function cache_edit(){
+	document.getElementById('select').getElementsByClassName('miniat_titre')[0].style.display="none";
+}
+
+function edit_photo(){
+	document.getElementById('select').getElementsByClassName('edit')[0].style.visibility="visible";
+	document.getElementById('select').getElementsByClassName('open_alb')[0].style.visibility="visible";
+}
+
+function cache_photo(){
+		document.getElementById('select').getElementsByClassName('edit')[0].style.visibility="hidden";
+	document.getElementById('select').getElementsByClassName('open_alb')[0].style.visibility="hidden";
+}

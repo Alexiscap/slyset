@@ -67,8 +67,9 @@ footer{ background-color:#3f3f3f; padding:20px 0px 0 0px; height:190px; position
 #footer .reseaux form{ text-align:left; margin:0; font-size:15px; }
 #footer .reseaux form #fd_form{ background-color:white; width:253px; border-radius:5px; height:32px; }
 #footer .reseaux form input[type="text"]{ width:195px; display:inline; color:#bdbdbd; border-radius:5px; background-color:white; outline:none; padding-left:5px; height:28px; border:0;float:left; }
-#footer .reseaux form input[type=image]{ margin:1px 5px; width:45px;float:left;}
+#footer .reseaux form input[type=image]{ margin:2px 2px 0 5px; width:45px;float:left;}
 #footer .reseaux #mention{ font-size:10px; clear:both; margin:5px 0; color:#bdbdbd; line-height:12px; }
+#footer .reseaux .fd_form{background: white;width: 252px;height: 32px;border-radius: 5px;}
 
 #footer a{ color:#bdbdbd; text-decoration:none; }
 #footer a:hover{ color:#419f8a; text-decoration:none; }

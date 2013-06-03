@@ -12,30 +12,29 @@
   <div id="cover">
     <div id="infos-cover">
       <h2>Bob Dylan</h2>
-      <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
     </div>
   </div>
 
-  <div id="stats-cover">
+  <div id="stats-cover_melo">
     <div class="stats_cover_block">
       <span class="stats_number">489</span>
-      <span class="stats_title">abonnés</span>
+      <span class="stats_title">écoutes</span>
     </div>
 
     <div class="stats_cover_block">
       <span class="stats_number">18</span>
-      <span class="stats_title">albums</span>
+      <span class="stats_title">playlists</span>
     </div>
 
     <div class="stats_cover_block">
       <span class="stats_number">278</span>
-      <span class="stats_title">morceaux</span>
+      <span class="stats_title">abonnements</span>
     </div>
   </div>
 
   <div class="content">
-	<h2>Réglages</h2>
-	<p class="detail_perso">Personnalisez l’affichage de votre page musicien. Slyset vous propose différents thèmes préconçus mais vous pouvez également créer le votre.</p>
+	<h2>Modifier mon profil</h2>
+	<p class="detail_perso">Cette page vous permet d'ajouter et/ou de modifier les informations qui figurent sur votre profil.</p>
 	<div class="reglage_detail">
 		<p>Votre photo</p>
 		<div class="themes">
@@ -55,9 +54,27 @@
 	</div>
 	<hr/>
 	<div class="reglage_detail_txt">
-		<p>Nom de scène</p>
+		<p>Nom d'utilisateur</p>
 		<div class="themes">
 			<input type="text" class="detail_musicien" value="Bob Dylan">
+		</div>
+	</div>
+	<div class="reglage_detail_txt">
+		<p>Prénom</p>
+		<div class="themes">
+			<input type="text" class="detail_musicien">
+		</div>
+	</div>
+	<div class="reglage_detail_txt">
+		<p>Nom</p>
+		<div class="themes">
+			<input type="text" class="detail_musicien">
+		</div>
+	</div>
+	<div class="reglage_detail_txt">
+		<p>Email</p>
+		<div class="themes">
+			<input type="text" class="detail_musicien">
 		</div>
 	</div>
 	<div class="clear"></div>
@@ -68,50 +85,7 @@
 		</div>
 	</div>
 	<div class="clear"></div>
-	<div class="reglage_detail_txt">
-		<p>Google+</p>
-		<div class="themes">
-			<input type="text" class="detail_musicien">
-		</div>
-	</div>
-	<div class="clear"></div>
-	<div class="reglage_detail_txt">
-		<p>Site Web</p>
-		<div class="themes">
-			<input type="text" class="detail_musicien">
-		</div>
-	</div>
-	<div class="clear"></div>
-	<div class="reglage_detail_txt">
-		<p>Twitter</p>
-		<div class="themes">
-			<input type="text" class="detail_musicien">
-		</div>
-	</div>
-	<div class="clear"></div>
-	<div class="reglage_detail_txt">
-		<p>Facebook</p>
-		<div class="themes">
-			<input type="text" class="detail_musicien">
-		</div>
-	</div>
-	<div class="clear"></div>
 	<hr/>
-	<div class="reglage_detail_domaine">
-		<p>Instruments</p>
-		<div class="themes">
-			<ul>
-				<li><input type="checkbox" name="instru"><span>Guitare</span></li>
-				<li><input type="checkbox" name="instru"><span>Voix</span></li>
-				<li><input type="checkbox" name="instru"><span>Piano</span></li>
-				<li><input type="checkbox" name="instru"><span>Accordéon</span></li>
-				<li><input type="checkbox" name="instru"><span>Harmonica</span></li>
-				<li><input type="checkbox" name="instru"><span>Flute</span></li>
-				<li><input type="checkbox" name="instru"><span>Batterie</span></li>
-			</ul>
-		</div>
-	</div>
-	<div class="clear"></div>
 	<div class="reglage_detail_domaine">
 		<p>Genres musicaux</p>
 		<div class="themes">
