@@ -2,52 +2,85 @@
 
 class Mc_actus extends CI_Controller
 {
+    var $data;
     
     public function __construct()
     {
         parent::__construct();
 //        $this->output->enable_profiler(true);
 
-        $this->user_authentication->musicien_user_validation();
+//        $this->user_authentication->musicien_user_validation();
         
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_js('jquery.placeheld.min');
         $this->layout->ajouter_js('jquery.easing.min');
         
-        $this->load->helper('form');
-        $this->load->model('mc_actus_model');
-        $this->load->library('form_validation');
-        $this->load->library('layout');
+        $this->load->helper(array('form', 'comments_helper'));
+        $this->load->model(array('mc_actus_model', 'perso_model', 'user_model'));
+        $this->load->library(array('form_validation', 'layout'));
         
         $this->layout->set_id_background('musicien_actus');
         
-        $data = array();
-    }
-  
-    public function index()
-    {
-        $this->page();
-    }
-  
-    public function page()
-    {
-        $data['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-        $data['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
-        $data['messages'] = $this->mc_actus_model->liste_actus();
-        $data['commentaires'] = $this->mc_actus_model->liste_comments();
         
+        $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
+        $output = $this->perso_model->get_perso($this->user_id);
+       
+        $sub_data = array();
+        $sub_data['profile'] = $this->user_model->getUser($this->user_id);
+        $sub_data['perso'] = $output;
+        
+        if(!empty($output)){
+            $this->layout->ajouter_dynamique_css($output->theme_css);
+            write_css($output);
+        }
+        
+        $this->data = array(
+            'sidebar_left'  => $this->load->view('sidebars/sidebar_left', '', TRUE),
+            'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE),
+            'commentaires'  => $this->mc_actus_model->liste_comments()
+        );
+    }
+  
+    public function index($user_id, $uid = NULL)
+    {
+//        $user_id = $this->user_infos->uri_user();
+        $uid = $this->session->userdata('uid');
+
+        if($user_id == $uid){
+            $this->page();
+        }	elseif($user_id != $uid && !empty($user_id)){
+//            $user_id = $this->user_infos->uri_user();
+            $infos_profile = $this->user_model->getUser($user_id);
+            $this->page($infos_profile);
+        } else {
+            show_404();
+        }
+    }	
+  
+    public function page($infos_profile = NULL)
+    {
+        $data = $this->data;
+        $user_visited = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id;
+        $data['messages'] = $this->mc_actus_model->liste_actus(10, 0, $user_visited);
+        
+        if(!empty($infos_profile)){
+            $data['infos_profile'] = $infos_profile;
+        }
 //        $data['nb_commentaires'] = $this->userManager->count('Wall_id', 'Arthur');
         
         $this->layout->view('mc_actus', $data);
     }
     
-    public function form_wall_musicien_message()
-    {   
-        $data['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-        $data['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
-        $data['messages'] = $this->mc_actus_model->liste_actus();
-        $data['commentaires'] = $this->mc_actus_model->liste_comments();
-      
+    public function form_wall_musicien_message($user_id)
+    {
+        $data = $this->data;
+        $user_visited = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id;
+        $data['messages'] = $this->mc_actus_model->liste_actus(10, 0, $user_visited);
+        
+        if(!empty($infos_profile)){
+            $data['infos_profile'] = $infos_profile;
+        }
+        
         $this->form_validation->set_rules('comment1', 'Message', 'trim|required|xss_clean');
       
         if($this->form_validation->run() == FALSE){
@@ -57,17 +90,16 @@ class Mc_actus extends CI_Controller
             $lien = '';
             $photo = '';
             
-            $this->mc_actus_model->insert_actus($message, $lien, $photo);
-            redirect('mc_actus', 'refresh');
+            $this->mc_actus_model->insert_actus($message, $lien, $photo, $user_visited);
+            redirect('actualite/'.$user_visited, 'refresh');
         }
     }
     
-    public function form_wall_musicien_photo()
-    {   
-        $data['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-        $data['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
-        $data['messages'] = $this->mc_actus_model->liste_actus();
-        $data['commentaires'] = $this->mc_actus_model->liste_comments();
+    public function form_wall_musicien_photo($user_id)
+    {
+        $data = $this->data;
+        $user_visited = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id;
+        $data['messages'] = $this->mc_actus_model->liste_actus(10, 0, $user_visited);
         
         $dynamic_path = './files/'.$this->session->userdata('uid').'/wall/';
         if (is_dir($dynamic_path) == false){
@@ -91,17 +123,16 @@ class Mc_actus extends CI_Controller
             $lien = '';
             $photo = $this->input->post('photo');
             
-            $this->mc_actus_model->insert_actus($message, $lien, $photo);
-            redirect('mc_actus', 'refresh');
+            $this->mc_actus_model->insert_actus($message, $lien, $photo, $user_visited);
+            redirect('mc_actus/'.$user_visited, 'refresh');
         }
     }
     
-    public function form_wall_musicien_link()
-    {   
-        $data['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-        $data['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
-        $data['messages'] = $this->mc_actus_model->liste_actus();
-        $data['commentaires'] = $this->mc_actus_model->liste_comments();
+    public function form_wall_musicien_link($user_id)
+    {
+        $data = $this->data;
+        $user_visited = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id;
+        $data['messages'] = $this->mc_actus_model->liste_actus(10, 0, $user_visited);
       
         $this->form_validation->set_rules('comment3', 'Message', 'trim|required|xss_clean');
         $this->form_validation->set_rules('linkurl', 'Lien', 'trim|required|prep_url|valid_url|xss_clean|callback_valid_youtube_url');
@@ -113,31 +144,13 @@ class Mc_actus extends CI_Controller
             $lien = $this->input->post('linkurl');
             $photo = '';
             
-            $this->mc_actus_model->insert_actus($message, $lien, $photo);
-            redirect('mc_actus', 'refresh');
+            $this->mc_actus_model->insert_actus($message, $lien, $photo, $user_visited);
+            redirect('mc_actus/'.$user_visited, 'refresh');
         }
     }
 
     public function form_wall_user_comment()
-    {   
-//        $data['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-//        $data['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
-//        $data['messages'] = $this->mc_actus_model->liste_actus();
-//      
-//        $this->form_validation->set_rules('comment3', 'Message', 'trim|required|xss_clean');
-//        $this->form_validation->set_rules('linkurl', 'Lien', 'trim|required|prep_url|valid_url|xss_clean|callback_valid_youtube_url');
-//      
-//        if($this->form_validation->run() == FALSE){
-//            $this->layout->view('mc_actus', $data);
-//        } else {
-//            $message = ucfirst($this->input->post('comment3'));
-//            $lien = $this->input->post('linkurl');
-//            $photo = '';
-//            
-//            $this->mc_actus_model->insert_actus($message, $lien, $photo);
-//            redirect('mc_actus', 'refresh');
-//        }
-      
+    {      
         $usercomment = $this->input->post('usercomment');
         $messageid   = $this->input->post('messageid');
         echo $this->mc_actus_model->insert_comments();
@@ -175,14 +188,22 @@ class Mc_actus extends CI_Controller
     
     public function delete($message_id)
     {
+        $user_id = $this->user_infos->uri_user();
+        $infos_profile = $this->user_model->getUser($user_id);
+        $user_visited = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id;
+        
         $this->mc_actus_model->delete_actus($message_id);
-        redirect('mc_actus', 'refresh');
+        redirect('actualite/'.$user_visited, 'refresh');
     }
     
     public function delete_comment($comment_id)
     {
+        $user_id = $this->user_infos->uri_user();
+        $infos_profile = $this->user_model->getUser($user_id);
+        $user_visited = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id;
+        
         $this->mc_actus_model->delete_comments($comment_id);
-        redirect('mc_actus', 'refresh');
+        redirect('actualite/'.$user_visited, 'refresh');
     }
   
 }

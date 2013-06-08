@@ -59,24 +59,10 @@ $(document).ready(function(){
   
     var baseurl = $('#baseurl').val();
     $('.form_comments form').submit(function(){
-//        dataString2 = $(this).serialize();
-//         alert(dataString2);
-//        $.ajax({
-//            url : baseurl + 'index.php/mc_actus/form_wall_user_comment',
-//            data : $('.form_comments form').serialize(),
-//            type: "POST",
-//            success : function(usercomment){
-//                alert($('form').serialize());
-//                alert(usercomment);
-//                $(usercomment).hide().insertBefore('#insertbeforMe').slideDown('slow');
-//            }
-//        })
-
         var usercomment = $(this).find("#usercomment").val();
         var messageid = $(this).find("#messageid").val();
         var thisParent = $(this).parent();
         var dataString = 'usercomment='+usercomment+'&messageid='+messageid;
-    //            var dataString = 'usercomment='+usercomment;
 
         if(usercomment == '' || messageid == ''){
             alert('Veuillez renseigner un message !');
@@ -86,9 +72,11 @@ $(document).ready(function(){
             ajaxLoader.show();
             ajaxLoader.fadeIn(500).html('<img src="'+baseurl+'assets/images/common/ajax-loader.gif" />Loading Comment...');
 
+            $(this).find("#usercomment").val("");
+            
             $.ajax({
                 type: "POST",
-                url : baseurl + 'index.php/mc_actus/form_wall_user_comment',
+                url : baseurl + 'index.php/mc_actus/form_wall_user_comment/',
                 data: dataString,
 
                 success: function(comment){
@@ -97,6 +85,7 @@ $(document).ready(function(){
 //                    ajaxLoader.hide();
                }
             })
+            
             return false;
         }
     });
@@ -176,6 +165,13 @@ $(document).ready(function(){
         $(this).prev('.step-form #type-user input:checkbox').attr('checked', true);
     });
 
+    //Modifie l'affichage des checkboxs pour le choix de thème perso
+    $userType = $('.personnaliser #themes label');
+    $userType.click(function(){
+        $('.personnaliser #themes input:checkbox').attr('checked', false);
+        $(this).prev('.personnaliser #themes input:checkbox').attr('checked', true);
+    });
+
     //Modifie l'apparence des checkboxs
     $checkboxs = $('input:checkbox');
     $checkLabel = $('.checkbox-style label');
@@ -187,14 +183,16 @@ $(document).ready(function(){
         playMasonry();
     }
     
+    //Appel de la fonction
+    if($("input[type=file]").length > 0){
+        $(".upload-file-container").change(function(e){
+            $in = $(this).find("input[type=file]");
+            $(this).next(".upload_photo_name_file").html($in.val().replace(/C:\\fakepath\\/i, ''));
+        });
+    }
     
     //Appel de la fonction
-    if($("body.musicien_actus").length > 0){
-        $('input[type=file]').change(function(e){
-            $in = $(this);
-            $(".upload_photo_name_file").html($in.val().replace(/C:\\fakepath\\/i, ''));
-        });
-      
+    if($("body.musicien_actus").length > 0){      
         $(".actus_post .actus_post_links a").click(function(e){
             var cls = $(this).attr('href').replace('#', '');
             var desact =  $(".actus_post .actus_post_links").find('.active').removeClass('active')
@@ -209,6 +207,84 @@ $(document).ready(function(){
             
             window.location.hash = "";
             e.preventDefault();
+        });
+    }
+    
+    if($("body.personnaliser").length > 0){
+        $('#colorpickerField1').ColorPicker({
+            onSubmit: function(hsb, hex, rgb, el) {
+                $(el).val('#' + hex);
+                $(el).ColorPickerHide();
+                $('#colorpickerField1').prev().css('background','#' + hex);
+            },
+            onBeforeShow: function () {
+               $(this).ColorPickerSetColor(this.value);
+            },
+            onChange: function(hsb, hex, rgb, el){
+                $('#colorpickerField1').val('#' + hex);
+                $("body").css("background",'#' + hex);
+                $('#colorpickerField1').prev().css('background','#' + hex);
+            }
+        })
+        .bind('keyup', function(){
+            $(this).ColorPickerSetColor(this.value);
+        });
+        
+        $('#colorpickerField2').ColorPicker({
+            onSubmit: function(hsb, hex, rgb, el) {
+                $(el).val('#' + hex);
+                $(el).ColorPickerHide();
+                $('#colorpickerField2').prev().css('background','#' + hex);
+            },
+            onBeforeShow: function () {
+               $(this).ColorPickerSetColor(this.value);
+            },
+            onChange: function(hsb, hex, rgb, el){
+                $('#colorpickerField2').val('#' + hex);
+                $("aside#right").css("backgroundColor",'#' + hex);
+                $('#colorpickerField2').prev().css('background','#' + hex);
+            }
+        })
+        .bind('keyup', function(){
+            $(this).ColorPickerSetColor(this.value);
+        });
+        
+        $('#colorpickerField3').ColorPicker({
+            onSubmit: function(hsb, hex, rgb, el) {
+                $(el).val('#' + hex);
+                $(el).ColorPickerHide();
+                $('#colorpickerField3').prev().css('background','#' + hex);
+            },
+            onBeforeShow: function () {
+               $(this).ColorPickerSetColor(this.value);
+            },
+            onChange: function(hsb, hex, rgb, el){
+                $('#colorpickerField3').val('#' + hex);
+                $(".content a").css("color",'#' + hex);
+                $('#colorpickerField3').prev().css('background','#' + hex);
+            }
+        })
+        .bind('keyup', function(){
+            $(this).ColorPickerSetColor(this.value);
+        });
+        
+        $('#colorpickerField4').ColorPicker({
+            onSubmit: function(hsb, hex, rgb, el) {
+                $(el).val('#' + hex);
+                $(el).ColorPickerHide();
+                $('#colorpickerField4').prev().css('background','#' + hex);
+            },
+            onBeforeShow: function () {
+               $(this).ColorPickerSetColor(this.value);
+            },
+            onChange: function(hsb, hex, rgb, el){
+                $('#colorpickerField4').val('#' + hex);
+                $("p.head-title, p.head-title span").css("color",'#' + hex);
+                $('#colorpickerField4').prev().css('background','#' + hex);
+            }
+        })
+        .bind('keyup', function(){
+            $(this).ColorPickerSetColor(this.value);
         });
     }
     

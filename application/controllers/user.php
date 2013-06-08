@@ -48,11 +48,6 @@ class User extends CI_Controller
             $this->layout->view('inscription/loginform3', $data);
         } else {
             $mail  = $this->input->post('mail');
-            
-//            $sess_mail = $this->session->userdata('mail');
-//            $this->session->set_userdata('mail', $sess_mail);
-//            $this->session->set_userdata('mail', $mail);
-          
             $this->layout->view('inscription/loginform2', $data);
         }
     }
@@ -158,7 +153,10 @@ class User extends CI_Controller
                 $genre            = $genre_fb;
                 $ville            = $ville_fb;
                 $pays             = $pays_fb;
-                $stylemusicecoute = $this->input->post('stylemusicecoute');
+                
+                $array_stylemusicecoute = $this->input->post('stylemusicecoute');
+                $stylemusicecoute   = join(', ',$array_stylemusicecoute);
+                
                 $cover            = $fb_data['me']['cover']['source'];
                 $thumb            = $fb_data['me']['picture']['data']['url'];
             } else {
@@ -172,7 +170,10 @@ class User extends CI_Controller
                 $genre            = '';
                 $ville            = '';
                 $pays             = '';
-                $stylemusicecoute = $this->input->post('stylemusicecoute');
+                
+                $array_stylemusicecoute = $this->input->post('stylemusicecoute');
+                $stylemusicecoute   = join(', ',$array_stylemusicecoute);
+                
                 $cover            = $this->input->post('cover');
                 $thumb            = $this->input->post('thumb');
             }
@@ -186,18 +187,17 @@ class User extends CI_Controller
               
               case 2 :
                 $login            = $this->input->post('nomscene');
-                $stylemusicjoue   = $this->input->post('stylemusicjoue');
-                $stylemusicinstru = $this->input->post('stylemusicinstru');
+                $array_stylemusicjoue   = $this->input->post('stylemusicjoue');
+                $stylemusicjoue   = join(', ',$array_stylemusicjoue);
+                
+                $array_stylemusicinstru = $this->input->post('stylemusicinstru');
+                $stylemusicinstru   = join(', ',$array_stylemusicinstru);
                 break;
             }
-          
+
             $this->user_model->insert_user($facebook_id, $login, $mail, $password, $type, $nom, $prenom, $naissance, $genre, $ville, $pays, $stylemusicecoute, $stylemusicjoue, $stylemusicinstru, $cover, $thumb);
 
-            //on pourrait le loguer direct mais on l'envoi vers le formulaire d'identification
             redirect('login', 'refresh');
-//            redirect('homepage', 'refresh');
-            //echo $this->input->post('stylemusicecoute');
-//            echo 'Le formulaire a été correctement rempli et envoyé.';
         }
     }
     
@@ -233,17 +233,14 @@ class User extends CI_Controller
     {
         if (isset($_FILES['cover']) && !empty($_FILES['cover']['name'])){
             if ($this->upload->do_upload('cover')){
-                // set a $_POST value for 'image' that we can use later
                 $upload_data    = $this->upload->data();
                 $_POST['cover'] = $upload_data['file_name'];
                 return true;
             } else {
-                // possibly do some clean up ... then throw an error
                 $this->form_validation->set_message('handle_upload', $this->upload->display_errors());
                 return false;
             }
         } else {
-            // throw an error because nothing was uploaded
             $this->form_validation->set_message('handle_upload', "You must upload an image!");
             return false;
         }
@@ -253,17 +250,14 @@ class User extends CI_Controller
     {
         if (isset($_FILES['thumb']) && !empty($_FILES['thumb']['name'])){
             if ($this->upload->do_upload('thumb')){
-                // set a $_POST value for 'image' that we can use later
                 $upload_data    = $this->upload->data();
                 $_POST['thumb'] = $upload_data['file_name'];
                 return true;
             } else {
-                // possibly do some clean up ... then throw an error
                 $this->form_validation->set_message('handle_upload', $this->upload->display_errors());
                 return false;
             }
         } else {
-            // throw an error because nothing was uploaded
             $this->form_validation->set_message('handle_upload', "You must upload an image!");
             return false;
         }

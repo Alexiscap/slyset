@@ -4,7 +4,7 @@ class Mc_actus_model extends CI_Model
 {
     protected $table = 'wall';
     
-    public function insert_actus($message, $lien, $photo)
+    public function insert_actus($message, $lien, $photo, $user_visited)
     {
 //        $this->db->set('auteur',  $auteur);
 //        $this->db->set('titre',   $titre);
@@ -16,7 +16,7 @@ class Mc_actus_model extends CI_Model
 //        return $this->db->insert($this->table);
         
         $data['Utilisateur_id'] = $this->session->userdata('uid');
-        $data['wallto_utilisateur_id'] = $this->session->userdata('uid');
+        $data['wallto_utilisateur_id'] = $user_visited;
         $data['markup_message'] = $message;
         $data['photo'] = $photo;
         $data['video'] = $lien;
@@ -70,23 +70,34 @@ class Mc_actus_model extends CI_Model
                               ->count_all_results();
     }
     
-    public function liste_actus($nb = 10, $debut = 0)
+    public function liste_actus($nb = 10, $debut = 0, $user_visited = null)
     {
-        return $this->db->select('*')
-                        ->from($this->table)
-                        ->limit($nb, $debut)
-                        ->order_by('id', 'desc')
+        return $this->db->select('W.*, U.login AS loginU, U.thumb AS thumbU, U.id AS idU')
+                        ->from('wall AS W')
+                        ->join('utilisateur U', 'U.id = W.Utilisateur_id')
+                        ->where('W.wallto_utilisateur_id', (int) $user_visited)
+//                        ->limit($nb, $debut)
+                        ->order_by('W.id', 'desc')
                         ->get()
                         ->result();
     }
     
-    public function liste_comments() //$nb = 50, $debut = 0
+    public function liste_comments($nb = 100, $debut = 0)
     {
-        return $this->db->select('*')
-                        ->from($this->table)
-                        ->join('commentaires', 'commentaires.Wall_id = wall.id')
+        return $this->db->select('A.id AS idA,
+                                  B.id AS idB,
+                                  B.Wall_id AS wallidB,
+                                  B.comment AS commentB,
+                                  B.created AS createdB,
+                                  B.Utilisateur_id AS utilisateuridB,
+                                  U.id AS idU,
+                                  U.login AS loginU,
+                                  U.thumb AS thumbU')
+                        ->from('wall AS A')
+                        ->join('commentaires AS B', 'B.Wall_id = A.id')
+                        ->join('utilisateur AS U', 'U.id = B.Utilisateur_id')
 //                        ->limit($nb, $debut)
-                        ->order_by('commentaires.id', 'asc')
+                        ->order_by('B.id', 'asc')
                         ->get()
                         ->result();
     }
@@ -94,61 +105,38 @@ class Mc_actus_model extends CI_Model
     public function insert_comments()
     {
         if(!empty($_POST['usercomment']) && !empty($_POST['messageid'])){
-            $wallid   = $this->input->post('messageid');
-            $comment  = $this->input->post('usercomment');
-            $created  = Date('Y-m-d H:i:s');
-            
-//            $now   = time();
-//            $date2 = strtotime($created2);
-//
-//            function dateDiff($date1, $date2){
-//                $diff = abs($date1 - $date2); // abs pour avoir la valeur absolute, ainsi éviter d'avoir une différence négative
-//                $retour = array();
-//
-//                $tmp = $diff;
-//                $retour['second'] = $tmp % 60;
-//
-//                $tmp = floor( ($tmp - $retour['second']) /60 );
-//                $retour['minute'] = $tmp % 60;
-//
-//                $tmp = floor( ($tmp - $retour['minute'])/60 );
-//                $retour['hour'] = $tmp % 24;
-//
-//                $tmp = floor( ($tmp - $retour['hour'])  /24 );
-//                $retour['day'] = $tmp;
-//
-//                return $retour;
-//            }
-//
-//            // Test de la fonction
-//            $created = dateDiff($now, $date2);
-            
-            
+            $utilisateurid = $this->session->userdata('uid');
+            $wallid        = $this->input->post('messageid');
+            $comment       = $this->input->post('usercomment');
+            $login         = $this->session->userdata('login');
+            $thumb         = $this->session->userdata('thumb');
+            $created       = Date('Y-m-d H:i:s');            
             
             $commentArray = array(
-              'Wall_id'  =>   $wallid,
-              'comment'  =>   $comment,
-              'created'  =>   $created
+              'Utilisateur_id' => $utilisateurid,
+              'Wall_id'        => $wallid,
+              'comment'        => $comment,
+              'created'        => $created
             );
             
             $this->db->insert('commentaires', $commentArray);
-            return $this->returnMarkup($comment, $created);
+            return $this->returnMarkup($comment, $created, $utilisateurid, $login, $thumb);
         } else {
             echo 'Oops, une erreur ! Vérifie que tu as bien remplie ton commentaire !';
         }
     }
     
-    private function returnMarkup($comment, $created)
+    private function returnMarkup($comment, $created, $utilisateurid, $login, $thumb)
     {         
         return '<div class="comments">
                     <div class="com_left">
-                        <img src="'.img_url("sidebar-left/photo-profil.png").'" alt="Photo Profil" />
+                        <a href='.site_url("home/".$utilisateurid).'" ><img src="'.files("profiles/".$thumb).'" alt="Photo Profil" /></a>
                     </div>
                     <div class="com_right">
                         <div class="com_top">
                         </div>
                         <div class="com_bottom">
-                            <span class="com_publi_infos">John Doe <small>- '.$created.'</small></span>
+                            <span class="com_publi_infos">'.$login.'<small> - '.my_time($created).'</small></span>
                             <span class="com_publi_msg">'.$comment.'</span>
                         </div>
                     </div>

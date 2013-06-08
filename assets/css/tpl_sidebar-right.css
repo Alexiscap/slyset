@@ -1,8 +1,9 @@
-#right{ width:200px; height:100%; font-family:"Trebuchet MS"; color:white; background-color:#f9f9f9; float:right; margin:-202px 10px 0 0;/*-345px*/ position:relative;}
+#right{ width:200px; height:100%; font-family:"Trebuchet MS"; -webkit-border-top-left-radius:5px; -webkit-border-top-right-radius:5px; -moz-border-radius-topleft:5px; -moz-border-radius-topright:5px; border-top-left-radius:5px; border-top-right-radius:5px; color:white; background-color:#f9f9f9; float:right; margin:-202px 10px 0 0;/*-345px*/ position:relative;}
 
 /* AVATAR */
-#right #avatar #photo {width:200px;height:195px;} 
-#right #avatar #description {height:118px;background:#e6e6e6;margin:0 0 0 3px;width:194px;} 
+#right #avatar #photo { margin:4px 3px 3px 3px; width:200px;height:195px;}
+#right #avatar #photo img{ display:block; width:194px; }
+#right #avatar #description {padding:0 0 30px 0; background:#e6e6e6;margin:0 0 0 3px;width:194px;} 
 #right #avatar #description #texte_description {color:#3f3f3f;width:174px;margin:0;font-family:'Trebuchet MS';font-size:12px;padding:10px 10px;}
 #right #avatar #description #style {font-weight:bold;font-style:italic;color:#3f3f3f;margin:0;font-family:'Trebuchet MS';font-size:12px;padding:10px 10px;}
 #right #avatar #description #instruments {font-style:italic;color:#3f3f3f;margin:0;font-family:'Trebuchet MS';font-size:12px;padding:0 10px;}
@@ -42,8 +43,8 @@
 #right #reseaux_ailleur {margin:30px 0 0 0;width:200px;}
 #right #reseaux_ailleur p {float:left;color:#3f3f3f;margin:0 0 10px 0;font-size:20px;}
 #right #reseaux_ailleur p span{color:#31a58c;}
-#reseaux_ailleur a{float:left;width:90px;height:30px;background:url('../images/sidebar-right/sprite_ailleurs.png') no-repeat;padding:6px 0 0 0;}
-#reseaux_ailleur a span{margin:0 35px;font-size:12px;}
+#reseaux_ailleur a{margin:0 10px 0 0; float:left;width:90px;height:30px;background:url('../images/sidebar-right/sprite_ailleurs.png') no-repeat;padding:6px 0 0 0;}
+#reseaux_ailleur a span{margin:0 0 0 35px;font-size:12px;}
 #reseaux_ailleur .twitter{background-position:-36px -9px;}
 #reseaux_ailleur .fb{background-position:-36px -45px;}
 #reseaux_ailleur .google{background-position:-36px -81px;}

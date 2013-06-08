@@ -17,6 +17,10 @@
     <?php foreach($css as $url): ?>
       <link rel="stylesheet" type="text/css" media="screen" href="<?php print $url; ?>" />
     <?php endforeach; ?>
+      
+    <?php foreach($dynamic_css as $url): ?>
+      <link rel="stylesheet" type="text/css" media="screen" href="<?php print $url; ?>" />
+    <?php endforeach; ?>
     
     <!--[if IE]>
       <link type="text/css" rel="stylesheet" href="<?php print css_url('corrections-ie') ?>" />

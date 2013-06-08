@@ -7,27 +7,41 @@ class Mc_concerts extends CI_Controller
     {
         parent::__construct();
 
-        $this->user_authentication->musicien_user_validation();
+//        $this->user_authentication->musicien_user_validation();
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_js('concert');
         $this->layout->ajouter_js('maps_api');
       	$this->layout->ajouter_js('maps-google');
+        
+        $this->load->model(array('perso_model', 'user_model'));
+        
+        $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
+        $output = $this->perso_model->get_perso($this->user_id);
+        
+        $sub_data = array();
+        $sub_data['profile'] = $this->user_model->getUser($this->user_id);
+        $sub_data['perso'] = $output;
+        
+        if(!empty($output)){
+            $this->layout->ajouter_dynamique_css($output->theme_css);
+            write_css($output);
+        }
+        
+        $this->data = array(
+            'sidebar_left'  => $this->load->view('sidebars/sidebar_left', '', TRUE),
+            'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
+        );
 
     }
   
-    public function index($user_id,$uid = NULL)
+    public function index($user_id,$uid = NULL){    
+        $uid = $this->session->userdata('uid');
 
-    {    
-    $uid = $this->session->userdata('uid');
-
- 	   if( $user_id ==$uid)
-  	 	{
-    		$this->page_main($user_id,"mc_concerts",">");
-    	}
-    	else
-    		{
-    	      	show_404();
-    		}
+        if($user_id ==$uid){
+            $this->page_main($user_id,"mc_concerts",">");
+        }	else {
+            show_404();
+        }
     }	
     
     

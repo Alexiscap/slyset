@@ -6,7 +6,7 @@ class Home extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->output->enable_profiler(true);
+//        $this->output->enable_profiler(true);
         $this->layout->ajouter_css('slyset');
 
         $this->load->helper('form');

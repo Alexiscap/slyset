@@ -180,46 +180,44 @@
     </div>
 
     <div id="first-line-newbies">
-      <div id="newbies-title">
-        <span class="title-img"><img src="<?php echo img_url('portail/etoile.png') ?>"></span>
-        Les <span class="title-color"> newbies</span>
-      </div>
+        <div id="newbies-title">
+            <span class="title-img"><img src="<?php echo img_url('portail/etoile.png') ?>"></span>
+            Les <span class="title-color">newbies</span>
+        </div>
 
-      <div id="newbies-content">
+        <div id="newbies-content">
+            <div class="newbies-peoples">
+                <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>" height="38px" alt="Photo Profil" /></p>
+                <div class="newbies-people">
+                    Skip the Use</br>
+                    <span class="newbies-people-type">Musicien</span>
+                </div>
+            </div>
 
-            <div id="newbies-one">
+            <div class="newbies-peoples">
+                <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>"  height="38px" alt="Photo Profil" /></p>
+                <div class="newbies-people">
+                    Yannis P</br>
+                    <span class="newbies-people-type">Mélomane</span>
+                </div>
+            </div>
 
-        <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>" height="38px" alt="Photo Profil" /></p>
-          <div class = "newbies-people">
-          Skip the Use</br>
-            <span class="newbies-people-type">Musicien</span>
-          </div>
-          </div>
-                    <div id="newbies-one">
+            <div class="newbies-peoples">
+                <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>"  height="38px" alt="Photo Profil" /></p>
+                <div class="newbies-people">
+                    Alison Mosshart</br>
+                    <span class="newbies-people-type">Mélomane</span>
+                </div>
+            </div>
 
-        <p  class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>"  height="38px" alt="Photo Profil" /></p>
-        <div class = "newbies-people">
-          Yannis P</br>
-            <span class="newbies-people-type">Mélomane</span>
+          <div class="newbies-peoples">
+              <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>"  height="38px" alt="Photo Profil" /></p>
+              <div class="newbies-people">
+                  Jack White</br>
+                  <span class="newbies-people-type">Musicien</span>
+              </div>
           </div>
         </div>
-                          <div id="newbies-one">
-
-        <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>"  height="38px" alt="Photo Profil" /></p>
-                    <div class = "newbies-people">
-          Alison Mosshart</br>
-            <span class="newbies-people-type">Mélomane</span>
-          </div>
-                    </div>
-                          <div id="newbies-one">
-
-        <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>"  height="38px" alt="Photo Profil" /></p>
-        <div class = "newbies-people">
-          Jack White</br>
-          <span class="newbies-people-type">Musicien</span>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
