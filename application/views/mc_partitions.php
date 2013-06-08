@@ -32,20 +32,19 @@
       <span class="stats_title">morceaux</span>
     </div>
   </div>
-  <div class="bt_noir">
-    <a href="#"><span class="bt_left"></span><span class="bt_middle">Ajouter des paroles</span><span class="bt_right"></span></a>
-  </div>
-  <div class="bt_noir">
-    <a href="#"><span class="bt_left"></span><span class="bt_middle">Ajouter un morceau</span><span class="bt_right"></span></a>
-  </div>
+    <div class="bts_noir_partition">
+	  <div class="bt_noir">
+		<a href="#"><span class="bt_left"></span><span class="bt_middle">Ajouter des paroles</span><span class="bt_right"></span></a>
+	  </div>
+	  <div class="bt_noir">
+		<a href="#"><span class="bt_left"></span><span class="bt_middle">Ajouter un morceau</span><span class="bt_right"></span></a>
+	  </div>
+	</div>
 
   <div class="content">
 	<h2>Partitions, livrets et paroles de Bob Dylan</h2>
 	<div class="a_la_une">
 		<img src="<?php echo img_url('musicien/album_top.jpg'); ?>"/>
-		<div class="player">
-			<a href="#"><img src="<?php echo img_url('musicien/player_top.png'); ?>"/></a>
-		</div>
 		<div class="infos">
 			<p class="title">Blonde on blonde</p>
 			<p class="annee_crea">1966</p>

@@ -32,22 +32,31 @@
       <span class="stats_title">morceaux</span>
     </div>
   </div>
-  <div class="bt_noir">
-    <a href="#"><span class="bt_left"></span><span class="bt_middle">Ajouter une photo/vidéo</span><span class="bt_right"></span></a>
-  </div>
-  <div class="bt_noir">
-    <a href="#"><span class="bt_left"></span><span class="bt_middle">Supprimer la sélection</span><span class="bt_right"></span></a>
-  </div>
+    <div class="bts_noir_photo">
+	  <div class="bt_noir">
+		<a href="#"><span class="bt_left"></span><span class="bt_middle">Ajouter une photo/vidéo</span><span class="bt_right"></span></a>
+	  </div>
+	  <div class="bt_noir">
+		<a href="#"><span class="bt_left"></span><span class="bt_middle">Supprimer la sélection</span><span class="bt_right"></span></a>
+	  </div>
+	</div>
 
   <div class="content">
-    <div class="photo box col1">
-      <a href="#"><img src="<?php echo img_url('musicien/photo1.png'); ?>" class="img_cover" /></a>
+    <div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
+	<div class="edit">
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+    </div>
+    <div class="open_alb">
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+    </div>
+      <a href="#"><img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" /></a>
       <p class="nom_photo">Concert N.Y, 1971</p>
       <div class="bord_photo">
         <a href="#"><p>3 commentaires</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">56</p>
       </div>
     </div>
-    <div class="photo box col1">
+    <div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
     <div class="edit">
       <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
       <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
@@ -55,7 +64,7 @@
     <div class="open_alb">
       <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
     </div>
-      <a href="#"><img src="<?php echo img_url('musicien/photo1.png'); ?>" class="img_cover" /></a>
+      <a href="#"><img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" /></a>
       <a href="#"><img src="<?php echo img_url('musicien/photo3.png'); ?>" class="img_miniat" /></a>
       <a href="#"><img src="<?php echo img_url('musicien/photo4.png'); ?>" class="img_miniat" /></a>
       <a href="#"><img src="<?php echo img_url('musicien/photo5.png'); ?>" class="img_miniat" /></a>
@@ -64,35 +73,70 @@
         <a href="#"><p>1 commentaire</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">75</p>
       </div>
     </div>
-    <div class="photo box col1">
+    <div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
+	<div class="edit">
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+    </div>
+    <div class="open_alb">
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+    </div>
       <img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" />
       <p class="nom_photo">Concert N.Y, 1973</p>
       <div class="bord_photo">
         <a href="#"><p>3 commentaires</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">56</p>
       </div>
     </div>
-    <div class="photo box col1">
-      <img src="<?php echo img_url('musicien/photo1.png'); ?>" class="img_cover" />
+    <div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
+	<div class="edit">
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+    </div>
+    <div class="open_alb">
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+    </div>
+      <img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" />
       <p class="nom_photo">Concert N.Y, 1974</p>
       <div class="bord_photo">
         <a href="#"><p>3 commentaires</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">56</p>
       </div>
     </div>
-    <div class="photo box col1">
+    <div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
+	<div class="edit">
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+    </div>
+    <div class="open_alb">
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+    </div>
       <img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" />
       <p class="nom_photo">Concert N.Y, 1975</p>
       <div class="bord_photo">
         <a href="#"><p>3 commentaires</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">56</p>
       </div>
     </div>
-    <div class="photo box col1">
-      <img src="<?php echo img_url('musicien/photo1.png'); ?>" class="img_cover" />
+    <div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
+	<div class="edit">
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+    </div>
+    <div class="open_alb">
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+    </div>
+      <img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" />
       <p class="nom_photo">Concert N.Y, 1976</p>
       <div class="bord_photo">
         <a href="#"><p>3 commentaires</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">56</p>
       </div>
     </div>
-    <div class="photo box col1">
+    <div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
+	<div class="edit">
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+    </div>
+    <div class="open_alb">
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+    </div>
       <img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" />
       <p class="nom_photo">Concert N.Y, 1977</p>
       <div class="bord_photo">
@@ -133,29 +177,57 @@
       </form>
     </div>
     </div>
-    <div class="photo box col1">
-      <img src="<?php echo img_url('musicien/photo1.png'); ?>" class="img_cover" />
+    <div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
+	<div class="edit">
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+    </div>
+    <div class="open_alb">
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+    </div>
+      <img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" />
       <p class="nom_photo">Concert N.Y, 1978</p>
       <div class="bord_photo">
         <a href="#"><p>3 commentaires</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">56</p>
       </div>
     </div>
-    <div class="photo box col1">
-      <img src="<?php echo img_url('musicien/photo1.png'); ?>" class="img_cover" />
+    <div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
+	<div class="edit">
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+    </div>
+    <div class="open_alb">
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+    </div>
+      <img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" />
       <p class="nom_photo">Concert N.Y, 1979</p>
       <div class="bord_photo">
         <a href="#"><p>3 commentaires</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">56</p>
       </div>
     </div>
-    <div class="photo box col1">
-      <img src="<?php echo img_url('musicien/photo1.png'); ?>" class="img_cover" />
+    <div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
+	<div class="edit">
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+    </div>
+    <div class="open_alb">
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+    </div>
+      <img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" />
       <p class="nom_photo">Concert N.Y, 1971</p>
       <div class="bord_photo">
         <a href="#"><p>3 commentaires</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">56</p>
       </div>
     </div>
-    <div class="photo box col1">
-      <img src="<?php echo img_url('musicien/photo1.png'); ?>" class="img_cover" />
+    <div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
+	<div class="edit">
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+    </div>
+    <div class="open_alb">
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+    </div>
+      <img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" />
       <p class="nom_photo">Concert N.Y, 1972</p>
       <div class="bord_photo">
         <a href="#"><p>3 commentaires</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">56</p>
@@ -183,8 +255,15 @@
       </form>
     </div>
     </div>
-    <div class="photo box col1">
-      <img src="<?php echo img_url('musicien/photo1.png'); ?>" class="img_cover" />
+    <div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
+	<div class="edit">
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+    </div>
+    <div class="open_alb">
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+    </div>
+      <img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" />
       <p class="nom_photo">Concert N.Y, 1973</p>
       <div class="bord_photo">
         <a href="#"><p>3 commentaires</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">56</p>
@@ -221,6 +300,104 @@
         <input src= "<?php echo img_url('common/valider_comm.png'); ?>" type="image"/>
       </form>
     </div>
+    </div>
+	<div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
+	<div class="edit">
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+    </div>
+    <div class="open_alb">
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+    </div>
+      <img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" />
+      <p class="nom_photo">Concert N.Y, 1971</p>
+      <div class="bord_photo">
+        <a href="#"><p>3 commentaires</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">56</p>
+      </div>
+    </div>
+	<div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
+	<div class="edit">
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+    </div>
+    <div class="open_alb">
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+    </div>
+      <img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" />
+      <p class="nom_photo">Concert N.Y, 1971</p>
+      <div class="bord_photo">
+        <a href="#"><p>3 commentaires</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">56</p>
+      </div>
+    </div>
+	<div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
+	<div class="edit">
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+    </div>
+    <div class="open_alb">
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+    </div>
+      <img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" />
+      <p class="nom_photo">Concert N.Y, 1971</p>
+      <div class="bord_photo">
+        <a href="#"><p>3 commentaires</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">56</p>
+      </div>
+    </div>
+	<div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
+	<div class="edit">
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+    </div>
+    <div class="open_alb">
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+    </div>
+      <img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" />
+      <p class="nom_photo">Concert N.Y, 1971</p>
+      <div class="bord_photo">
+        <a href="#"><p>3 commentaires</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">56</p>
+      </div>
+    </div>
+	<div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
+	<div class="edit">
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+    </div>
+    <div class="open_alb">
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+    </div>
+      <img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" />
+      <p class="nom_photo">Concert N.Y, 1971</p>
+      <div class="bord_photo">
+        <a href="#"><p>3 commentaires</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">56</p>
+      </div>
+    </div>
+	<div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
+	<div class="edit">
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+    </div>
+    <div class="open_alb">
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+    </div>
+      <img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" />
+      <p class="nom_photo">Concert N.Y, 1971</p>
+      <div class="bord_photo">
+        <a href="#"><p>3 commentaires</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">56</p>
+      </div>
+    </div>
+	<div class="photo box col1" onMouseOver="this.id='select';edit_photo();" onMouseOut="cache_photo();this.id='';">
+	<div class="edit">
+      <a href="#"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      <a href="#"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+    </div>
+    <div class="open_alb">
+      <a href="#"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+    </div>
+      <img src="<?php echo img_url('musicien/photo2.png'); ?>" class="img_cover" />
+      <p class="nom_photo">Concert N.Y, 1971</p>
+      <div class="bord_photo">
+        <a href="#"><p>3 commentaires</p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like">56</p>
+      </div>
     </div>
   </div>
 

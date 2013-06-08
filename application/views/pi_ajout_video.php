@@ -1,8 +1,14 @@
- <div class="pop-in">
-  <p> Modifier la photo </p>
+<div class="pop-in">
+  <p> Ajouter une vidéo </p>
   <img src="<?php echo img_url('musicien/pop_close.png'); ?>" alt="Fermer" />
   <div class="content-pi">
     <form>
+		<div class="label">
+			<label>URL de la video </label>
+		</div>
+		<div class="champs">
+			<input type="text">
+		</div>
 		<div class="label">
 			<label>Album</label>
 		</div>
@@ -12,7 +18,7 @@
 		</select>
 		</div>
 		<div class="label">
-			<img src="<?php echo img_url('musicien/apercu_photo.png'); ?>" alt="visuel photo" />
+			<img src="<?php echo img_url('musicien/apercu_vid.png'); ?>" alt="visuel video" />
 		</div>
 		<div class="champs">
 			<input type="textarea" class="descript-vid" maxlength="110">

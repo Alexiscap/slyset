@@ -12,33 +12,27 @@
   <div id="cover">
     <div id="infos-cover">
       <h2>Bob Dylan</h2>
-      <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
     </div>
   </div>
 
-  <div id="stats-cover">
+  <div id="stats-cover_melo">
     <div class="stats_cover_block">
       <span class="stats_number">489</span>
-      <span class="stats_title">abonnés</span>
+      <span class="stats_title">écoutes</span>
     </div>
 
     <div class="stats_cover_block">
       <span class="stats_number">18</span>
-      <span class="stats_title">albums</span>
+      <span class="stats_title">playlists</span>
     </div>
 
     <div class="stats_cover_block">
       <span class="stats_number">278</span>
-      <span class="stats_title">morceaux</span>
+      <span class="stats_title">abonnements</span>
     </div>
   </div>
   <div class="content">
-	<div id="btn_tmp_follow">
-       <a href="#" class="tous">Tous</a>
-       <a href="#" class="musiciens">Musiciens</a>
-       <a href="#" class="melomanes">Mélomanes</a>
-   </div>
-	<h2>Mes 6 abonnés</h2>
+	<h2>Mes 6 abonnements</h2>
 	<div class="follower">
 		<div class="photo_follow">
 			<img src="<?php print img_url('common/photo_follower.png'); ?>" />
@@ -49,7 +43,7 @@
 			<img src="<?php print img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
 		</div>
 		<div class="bouton">
-			<a href="#" class="participer"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
+			<a href="#" class="participer"><span class="button_left_abonne"></span><span class="button_center_abonne">Abonné</span><span class="button_right_abonne"></span></a>
 		</div>
 	</div>
 	<hr/>
@@ -80,6 +74,49 @@
 			<a href="#" class="participer"><span class="button_left_non"></span><span class="button_center_non">Ne plus suivre</span><span class="button_right_non"></span></a>
 		</div>
 	</div>
+	<hr/>
+	<div class="follower">
+		<div class="photo_follow">
+			<img src="<?php print img_url('common/photo_follower.png'); ?>" />
+		</div>
+		<div class="description">
+			<p class="nom_follow">Skip the use</p>
+			<p class="text_follow">Du rock, des tatouages, des kilowatts, de la sueur ! Notre album est enfin dans les bacs !</p>
+			<img src="<?php print img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
+		</div>
+		<div class="bouton">
+			<a href="#" class="participer"><span class="button_left_abonne"></span><span class="button_center_abonne">Abonné</span><span class="button_right_abonne"></span></a>
+		</div>
+	</div>
+	<hr/>
+	<div class="follower">
+		<div class="photo_follow">
+			<img src="<?php print img_url('common/photo_follower.png'); ?>" />
+		</div>
+		<div class="description">
+			<p class="nom_follow">Skip the use</p>
+			<p class="text_follow">Du rock, des tatouages, des kilowatts, de la sueur ! Notre album est enfin dans les bacs !</p>
+			<img src="<?php print img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
+		</div>
+		<div class="bouton">
+			<a href="#" class="participer"><span class="button_left_abonne"></span><span class="button_center_abonne">Abonné</span><span class="button_right_abonne"></span></a>
+		</div>
+	</div>
+	<hr/>
+	<div class="follower">
+		<div class="photo_follow">
+			<img src="<?php print img_url('common/photo_follower.png'); ?>" />
+		</div>
+		<div class="description">
+			<p class="nom_follow">Skip the use</p>
+			<p class="text_follow">Du rock, des tatouages, des kilowatts, de la sueur ! Notre album est enfin dans les bacs !</p>
+			<img src="<?php print img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
+		</div>
+		<div class="bouton">
+			<a href="#" class="participer"><span class="button_left_non"></span><span class="button_center_non">Ne plus suivre</span><span class="button_right_non"></span></a>
+		</div>
+	</div>
+	<hr/>
   </div>
 
 

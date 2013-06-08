@@ -210,6 +210,7 @@ $(document).ready(function(){
         });
     }
     
+<<<<<<< HEAD
     if($("body.personnaliser").length > 0){
         $('#colorpickerField1').ColorPicker({
             onSubmit: function(hsb, hex, rgb, el) {
@@ -289,3 +290,24 @@ $(document).ready(function(){
     }
     
 });
+=======
+});
+
+function bt_edit(){
+	document.getElementById('select').getElementsByClassName('miniat_titre')[0].style.display="inline";
+}
+
+function cache_edit(){
+	document.getElementById('select').getElementsByClassName('miniat_titre')[0].style.display="none";
+}
+
+function edit_photo(){
+	document.getElementById('select').getElementsByClassName('edit')[0].style.visibility="visible";
+	document.getElementById('select').getElementsByClassName('open_alb')[0].style.visibility="visible";
+}
+
+function cache_photo(){
+		document.getElementById('select').getElementsByClassName('edit')[0].style.visibility="hidden";
+	document.getElementById('select').getElementsByClassName('open_alb')[0].style.visibility="hidden";
+}
+>>>>>>> e2b34329af29101e1f052de57b6a22afbf989dc6
