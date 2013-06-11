@@ -911,3 +911,21 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 .content .historique .total_panier span{margin:0 0 0 30px;color:#666666;}
 .content .telecharge_select{float:right;width:124px;height:30px;background:url('../images/common/bt_download.png');border:none;color:white;padding:0 0 0 25px;font-weight:bold;font-size:13px;margin:0 25px 10px 0;}
 /*------------------- FIN MELO ACHATS -------------------*/
+
+
+/*--------------------PAGES STATIQUE---------------------------*/
+.content_static{ margin:1px 0 10px 0; padding:0; width:770px; background:#e6e6e6; float:left; clear:both;border-top:1px solid #3f3f3f }
+.content_static .page_static{font-size:24px;color:#3f3f3f;}
+.content_static h2{ font-size:20px; margin:25px 20px; clear:both; }
+.content_static p{ font-size:14px; margin:0 20px 0 20px;}
+.content_static .section_faq{ font-size:18px; margin-bottom:25px;}
+.content_static .titre_mention{font-size:18px;color:#3f3f3f;}
+.content_static .txt_mention{font-size:14px;color:#3f3f3f;}
+.content_static .menu_faq{height:135px;margin:0 0 20px 0;}
+.content_static .menu_faq ul{margin:10px 0 30px 20px;}
+.content_static .menu_faq .left{float:left;width:375px;border-right:1px solid #a5a9ae;}
+.content_static .menu_faq .left p{font-size:16px;color:#2da288;font-weight:bold;}
+.content_static .menu_faq .left li{font-size:14px;color:#3f3f3f;}
+.content_static .menu_faq .right{float:left;width:375px;}
+.content_static .menu_faq .right p{font-size:16px;color:#2da288;font-weight:bold;}
+.content_static .menu_faq .right li{font-size:14px;color:#3f3f3f;}
