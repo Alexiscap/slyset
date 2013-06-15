@@ -8,7 +8,15 @@
                     <span>Voir mon profil</span>
                 </a>
             </div>
-
+          
+            <?php if($this->session->userdata('account') == 0): ?>
+                <div id="admin-generale">
+                    <a href="<?php print site_url('admin'); ?>">
+                        <span>Accès administration</span>
+                    </a>
+                </div>
+            <?php endif; ?>
+          
             <div id="listen-playlist">
                 <a href="#">
                     <img src="<?php print img_url('sidebar-left/btn-play.png'); ?>" alt="Lecture Playlist" />
@@ -47,9 +55,10 @@
                 </ul>
             </div>
         <?php elseif($user_id != $this->session->userdata('uid')): ?>
+            <?php $user_info = $this->user_infos->profile_user($user_id) ?>
             <div id="menu-profile" class="active">
                 <ul>
-                    <li class="head_menu row row-7"><a href="<?php print site_url('home/'.$user_id); ?>"><span class="icon"></span><span class="menu-text"><?php print $this->user_infos->profile_user($user_id); ?></span></a></li>
+                    <li class="head_menu row row-7"><a href="<?php print site_url('home/'.$user_id); ?>"><span class="icon"></span><span class="menu-text"><?php print $user_info->login; ?></span></a></li>
                     <li class="first-row row row-8"><a href="<?php print site_url('actualite/'.$user_id); ?>"><span class="icon"></span><span class="menu-text">Actualités</span></a></li>
                     <li class="row row-9"><a href="<?php print site_url('concert/'.$user_id); ?>"><span class="icon"></span><span class="menu-text">Concerts</span></a></li>
                     <li class="row row-10"><a href="<?php print site_url('musique/'.$user_id); ?>"><span class="icon"></span><span class="menu-text">Musique</span></a></li>

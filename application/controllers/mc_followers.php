@@ -28,7 +28,7 @@ class Mc_followers extends CI_Controller
       $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
       
       //$this->layout->views('3');
-      $this->layout->view('mc_followers', $datas);
+      $this->layout->view('follower/mc_followers', $datas);
     }
   
 }

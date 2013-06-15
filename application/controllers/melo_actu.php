@@ -38,7 +38,7 @@ class melo_actu extends CI_Controller
         
 //        $data['nb_commentaires'] = $this->userManager->count('Wall_id', 'Arthur');
         
-        $this->layout->view('melo_actu', $data);
+        $this->layout->view('wall/melo_actu', $data);
     }
     
     public function form_wall_musicien_message()
@@ -51,7 +51,7 @@ class melo_actu extends CI_Controller
         $this->form_validation->set_rules('comment1', 'Message', 'trim|required|xss_clean');
       
         if($this->form_validation->run() == FALSE){
-            $this->layout->view('mc_actus', $data);
+            $this->layout->view('wall/mc_actus', $data);
         } else {
             $message = ucfirst($this->input->post('comment1'));
             $lien = '';
@@ -85,7 +85,7 @@ class melo_actu extends CI_Controller
         $this->form_validation->set_rules('photo', 'Photo', 'callback_handle_upload_photo');
       
         if($this->form_validation->run() == FALSE){
-            $this->layout->view('mc_actus', $data);
+            $this->layout->view('wall/mc_actus', $data);
         } else {
             $message = ucfirst($this->input->post('comment2'));
             $lien = '';
@@ -107,7 +107,7 @@ class melo_actu extends CI_Controller
         $this->form_validation->set_rules('linkurl', 'Lien', 'trim|required|prep_url|valid_url|xss_clean|callback_valid_youtube_url');
       
         if($this->form_validation->run() == FALSE){
-            $this->layout->view('mc_actus', $data);
+            $this->layout->view('wall/mc_actus', $data);
         } else {
             $message = ucfirst($this->input->post('comment3'));
             $lien = $this->input->post('linkurl');

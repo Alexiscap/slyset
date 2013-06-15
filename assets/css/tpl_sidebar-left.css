@@ -10,7 +10,7 @@ aside{ width:170px; height:100%; font-family:"Trebuchet MS"; color:white; backgr
 /*
 * SIDEBAR LEFT - FIRST BLOCK
 */
-	aside #first-block{  margin:0 auto; width:170px; height:138px; font-size:16px; }
+	aside #first-block{  margin:0 auto; width:170px; /*height:138px;*/ font-size:16px; }
 		aside a{ display:block; width:100%; height:100%; text-decoration:none; color:#3f3f3f; }
 
 		aside #my-profil{ margin:0 auto; padding:0 2px 0 0; width:166px; height:77px; border:1px solid #d9dadb; border-top:none; background:url("../images/sidebar-left/bkg_first-block.jpg") no-repeat 0 0; }
@@ -18,9 +18,13 @@ aside{ width:170px; height:100%; font-family:"Trebuchet MS"; color:white; backgr
 			aside #my-profil h3{ margin:27px 0 0 12px; display:inline-block; max-width:101px; font-size:16px; font-weight:bold; float:left; overflow:hidden; }
 			aside #my-profil span{ margin:2px 0 0 12px; display:inline-block; font-size:12px; font-weight:normal; color:#858585; float:left; }
 
-		aside #listen-playlist{ width:168px; height:61px; border:1px solid #d9dadb; border-top:none; background:url("../images/sidebar-left/bkg_listen-playlist.jpg") no-repeat 0 0; }
+		aside #listen-playlist{ width:168px; height:51px; border:1px solid #d9dadb; border-top:none; background:url("../images/sidebar-left/bkg_listen-playlist.jpg") no-repeat 0 0; }
 			aside #listen-playlist img{ margin:10px 5px; display:inline-block; width:31px; height:31px; float:left; clear:both; }
 			aside #listen-playlist span{ margin:0; display:inline-block; line-height:52px; font-size:12px; font-weight:bold; color:#3f3f3f; float:left; }
+      
+		aside #admin-generale{ width:168px; height:35px; border:1px solid #d9dadb; border-top:none; background:url("../images/sidebar-left/bkg_listen-playlist.jpg") no-repeat 0 0; }
+        aside #admin-generale a{ display:inline-block; text-align:center; }
+        aside #admin-generale span{ margin:0; display:inline-block; line-height:28px; font-size:13px; text-align:center; font-weight:bold; color:#888d95; }
 
     aside #welcome-slyset{ width:168px; height:45px; border:1px solid #d9dadb; border-top:none; background:url("../images/sidebar-left/bkg_listen-playlist.jpg") no-repeat 0 0; }
       aside #welcome-slyset span{ display:block; width:100%; height:100%; line-height:45px; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:normal; font-size:16px; text-align:center; color:#888d95; }

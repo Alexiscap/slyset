@@ -28,7 +28,7 @@ class melo_abonnements extends CI_Controller
       $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
       
       //$this->layout->views('3');
-      $this->layout->view('melo_abonnements', $datas);
+      $this->layout->view('follower/melo_abonnements', $datas);
     }
   
 }

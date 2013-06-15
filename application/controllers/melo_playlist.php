@@ -28,7 +28,7 @@ class melo_playlist extends CI_Controller
       $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
       
       //$this->layout->views('3');
-      $this->layout->view('melo_playlist', $datas);
+      $this->layout->view('playlist/melo_playlist', $datas);
     }
   
 }

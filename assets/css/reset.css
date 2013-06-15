@@ -15,7 +15,7 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
+	/*font: inherit;*/
 	vertical-align: baseline;
 }
 
@@ -30,12 +30,12 @@ ol, ul {
 	list-style: none;
 }
 blockquote, q {
-	quotes: none;
+	/*quotes: none;*/
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+/*	content: '';
+	content: none;*/
 }
 table {
 	border-collapse: collapse;

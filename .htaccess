@@ -13,3 +13,9 @@ RewriteCond $1 !^(index\.php|assets/|files/|robots\.txt)
 
 #   Toutes les autres URL vont être redirigées vers le fichier index.php.
 RewriteRule ^(.*)$ index.php/$1 [L]
+
+#RewriteBase /serveur5/
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule ^([a-z-A-Z0-9\-\_\.]+)$ test.php?id=$1 [L]
+#http://test.php/?id=$1

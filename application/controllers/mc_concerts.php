@@ -60,8 +60,7 @@ class Mc_concerts extends CI_Controller
   	}	
 
   	public function page_main($user_id,$moment,$inf_sup)
-    {	
-
+    {	      
       		$this->load->model('concert');
       		$this->load->helper('url');
 	  		$this->load->helper('date');
@@ -96,7 +95,7 @@ class Mc_concerts extends CI_Controller
   					echo $date[$test];
       			}	
  
-      		$this->layout->view($moment, $datas);
+      		$this->layout->view('concert/'.$moment, $datas);
     }
   
   
@@ -127,7 +126,7 @@ class Mc_concerts extends CI_Controller
 			  if ($this->form_validation->run() == FALSE)
 					{
 
-						$this->layout->view('ajouter_concert');
+						$this->layout->view('concert/ajouter_concert');
 						
 					}
 			  else
@@ -204,7 +203,7 @@ class Mc_concerts extends CI_Controller
 		
 					}
 		   				
-		   				$this->layout->view('mc_concerts');
+		   				$this->layout->view('concert/mc_concerts');
 		   				
 						redirect('mc_concerts','refresh');
 
@@ -239,7 +238,7 @@ class Mc_concerts extends CI_Controller
 			  if ($this->form_validation->run() == FALSE)
 					{
 
-						$this->layout->view('modifier_concert');
+						$this->layout->view('musicien/modifier_concert');
 						
 					}
 			  else

@@ -1,5 +1,6 @@
+<?php setlocale (LC_TIME, 'fr_FR.utf8','fra'); ?>
+
 <div id="contentAll">
-  <!--<img src="<?php echo files('titre_objectifs.png') ?>" />-->
   <script>
     var joursEvenement = <?php echo '['; if (isset($all_date_calendar)) echo $all_date_calendar; echo "]" 
     ?> ;
@@ -10,6 +11,13 @@
       <li><a href="#" title="#">Accueil</a></li>
     </ul>
   </div>
+  
+  <?php if(isset($notification) && $notification != ''): ?>
+    <div id="message-notification">
+        <div class="ico-msg"></div>
+        <p><?php print $notification ?></p>
+    </div>
+  <?php endif; ?>
 
   <div id="coverflowContainer">
     <div id="coverflow2">
@@ -186,7 +194,25 @@
         </div>
 
         <div id="newbies-content">
-            <div class="newbies-peoples">
+            <?php foreach($newbies as $newbie): ?>
+                <?php // print_r($newbie); ?>
+                <div class="newbies-peoples">
+                    <p class="newbies-picture">
+                        <a href="<?php print site_url('actualite/'.$newbie->id); ?>">
+                            <img src="<?php print $thumb = (!empty($newbie->thumb)) ? files('profiles/'.$newbie->thumb) : img_url('sidebar-right/defaultphoto-profil.png'); ?>" height="38px" alt="Photo Profil" />
+                        </a>
+                    </p>
+                    <div class="newbies-people">
+                        <a href="<?php print site_url('actualite/'.$newbie->id); ?>">
+                            <?php print $newbie->login; ?>
+                        </a>
+                        </br>
+                        <span class="newbies-people-type"><?php print $type = ($newbie->type == 1)? 'Musicien' : 'Mélomane'; ?></span>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+          
+<!--            <div class="newbies-peoples">
                 <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>" height="38px" alt="Photo Profil" /></p>
                 <div class="newbies-people">
                     Skip the Use</br>
@@ -216,13 +242,34 @@
                   Jack White</br>
                   <span class="newbies-people-type">Musicien</span>
               </div>
-          </div>
+          </div>-->
         </div>
     </div>
   </div>
 
 
   <div id="wall-flux">
+      <?php foreach($articles as $article): ?>
+          <div class="wall-flux-content" >
+              <p class="wall-flux-content-title">
+                  <?php print $article->titre; ?>
+              </p>
+
+              <p class="wall-flux-content-subtitle">
+                  Publié par Slyset, le <?php echo strftime("%A %d %B %Y à %Hh%M ", strtotime($article->updated)); ?>
+              </p>
+
+              <div class="wall-flux-content-text">
+                  <?php print $article->article; ?>
+              </div>
+          </div>
+      <?php endforeach; ?>
+    
+    
+    
+    
+    
+    
     <div class="wall-flux-content" >
       <p class="wall-flux-content-title">Le rock de Foals investit l’Hôtel de Ville de Paris
       </p>
@@ -288,4 +335,5 @@
     <a href="#" id="suivant"><span>></span></a>
   </div>
   
+</div>
 </div>

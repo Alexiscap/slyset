@@ -60,7 +60,7 @@ class Mc_reglages extends CI_Controller
         $data = $this->data;
         $data['profile'] = $this->user_model->getUser($this->user_id);
         
-        $this->layout->view('mc_reglages', $data);
+        $this->layout->view('reglage/mc_reglages', $data);
     }
     
     public function update_user($infos_profile = NULL)
@@ -95,7 +95,7 @@ class Mc_reglages extends CI_Controller
         $this->form_validation->set_rules('submit', 'Modification du compte', '');
              
         if($this->form_validation->run() == FALSE){
-            $this->layout->view('mc_reglages', $data);
+            $this->layout->view('reglage/mc_reglages', $data);
         } else {
             $cover            = $this->input->post('cover');
             $this->session->set_userdata('cover', $cover);

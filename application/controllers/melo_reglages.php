@@ -28,7 +28,7 @@ class melo_reglages extends CI_Controller
       $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
       
       //$this->layout->views('3');
-      $this->layout->view('melo_reglages', $datas);
+      $this->layout->view('reglage/melo_reglages', $datas);
     }
   
 }

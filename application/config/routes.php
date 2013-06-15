@@ -43,7 +43,7 @@ $route['404_override'] = '';
 
 //$route['(:num)'] = "$1";
 $route['home/(:num)'] = "home/index/$1";
-$route['admin/(:num)'] = "admin/index/$1";
+//$route['admin/(:num)'] = "admin/index/$1";
 $route['concert/(:num)'] = "mc_concerts/index/$1";
 $route['actualite/(:num)'] = "mc_actus/index/$1";
 //$route['actualite/(:num)'] = "mc_actus/form_wall_musicien_message/$1";

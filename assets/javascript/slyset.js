@@ -57,6 +57,115 @@ function unhighlight(items) {
 
 $(document).ready(function(){
   
+  
+//    Shadowbox.open({
+////        content:    'application/views/lightbox/pi_ajout_concerts.php',
+//        player:     "iframe",
+//        height:     600,
+//        width:      700
+//    });
+  
+    if($("#shadowbox").length > 0){
+        Shadowbox.init({
+            skipSetup: true
+        });
+
+    //    window.onload = function() {
+        $("#shadowbox").click(function(){
+            Shadowbox.open({
+                content: '#shadow',
+                title: 'Ajouter un article',
+                player: 'inline',
+                width: 510,
+                height: 475
+            });
+        });
+    }
+    
+     $(".check_all").click(function(){
+        var inputs = $("form input[type='checkbox']");
+
+        for(var i = 0; i < inputs.length; i++){
+            var type = inputs[i].getAttribute("type");
+            if(type == "checkbox") {
+                if(this.checked) {
+                    inputs[i].checked = true;
+                } else {
+                    inputs[i].checked = false;
+                }
+            }
+        }
+    });
+    
+//    $('.check_all').toggle(
+//        function() {
+//            $('.article-checkbox input[type="checkbox"]').prop('checked', true);
+//        },
+//        function() {
+//            $('.article-checkbox input[type="checkbox"]').prop('checked', false);
+//        }
+//    );
+    
+    //Utilisation du caroufredsel sur la page home
+    if($("body.admin-articles").length > 0){
+      
+        $('#redactor').redactor();
+
+        $('#articles-tab th.article-title, #articles-tab th.article-date').click(function(e){
+            e.preventDefault();
+            var valFilter = $(this).children().attr('id');
+            var byFilter = $(this).children('span');
+            var orderBy = 'desc';
+            var lastSegment = location.href.split('/').pop();
+
+            if(lastSegment == 'desc'){
+                byFilter.removeClass().addClass('asc');
+                orderBy = 'asc';
+            } else if(lastSegment == 'asc'){
+                byFilter.removeClass().addClass('desc');
+                orderBy = 'desc';
+            } else {
+                byFilter.addClass('desc');
+            }
+
+//            var multiClass = byFilter.attr('class');
+//            var arrayClass = multiClass.split(' ');
+
+            var basePath = 'http://' + window.location.hostname + '/index.php/';
+            location.href = basePath + 'admin_articles/index/' + valFilter + '/' + orderBy;
+        });
+          
+        var pathname = window.location.hash;
+        if(pathname.indexOf('#open') > -1){
+            $('#wysiwyg-block').slideToggle('slow');
+        }
+
+         $('#wysiwyg-link').toggle(
+            function (){
+                event.preventDefault();
+                window.location.hash = this.hash;
+                $('#wysiwyg-block').slideToggle('slow');
+            },
+            function (){
+                event.preventDefault();
+                location.hash = 'close';
+                $('#wysiwyg-block').slideToggle('slow');
+            }
+        );
+
+        $('#articles-tab td .article-actions').hide();
+        $('#articles-tab tr').hover(function() {
+            $(this).find('.article-actions').show();
+    //              $(this).find('.article-actions').stop().fadeIn();
+        }, function(){
+            $(this).find('.article-actions').hide();
+    //              $(this).find('.article-actions').stop().fadeOut();
+        });
+        
+        $('#articles-tab table tr:nth-child(even)').addClass('even row-color-1');
+        $('#articles-tab table tr:nth-child(odd)').addClass('odd row-color-2');
+    }
+    
     var baseurl = $('#baseurl').val();
     $('.form_comments form').submit(function(){
         var usercomment = $(this).find("#usercomment").val();
@@ -174,7 +283,7 @@ $(document).ready(function(){
 
     //Modifie l'apparence des checkboxs
     $checkboxs = $('input:checkbox');
-    $checkLabel = $('.checkbox-style label');
+    $checkLabel = $('.checkbox-style label, .checkbox-style2 label');
     $checkLabel.prepend('<span/>');
 
 
@@ -210,7 +319,6 @@ $(document).ready(function(){
         });
     }
     
-<<<<<<< HEAD
     if($("body.personnaliser").length > 0){
         $('#colorpickerField1').ColorPicker({
             onSubmit: function(hsb, hex, rgb, el) {
@@ -290,24 +398,21 @@ $(document).ready(function(){
     }
     
 });
-=======
-});
 
 function bt_edit(){
-	document.getElementById('select').getElementsByClassName('miniat_titre')[0].style.display="inline";
+    document.getElementById('select').getElementsByClassName('miniat_titre')[0].style.display="inline";
 }
 
 function cache_edit(){
-	document.getElementById('select').getElementsByClassName('miniat_titre')[0].style.display="none";
+    document.getElementById('select').getElementsByClassName('miniat_titre')[0].style.display="none";
 }
 
 function edit_photo(){
-	document.getElementById('select').getElementsByClassName('edit')[0].style.visibility="visible";
-	document.getElementById('select').getElementsByClassName('open_alb')[0].style.visibility="visible";
+    document.getElementById('select').getElementsByClassName('edit')[0].style.visibility="visible";
+    document.getElementById('select').getElementsByClassName('open_alb')[0].style.visibility="visible";
 }
 
 function cache_photo(){
 		document.getElementById('select').getElementsByClassName('edit')[0].style.visibility="hidden";
-	document.getElementById('select').getElementsByClassName('open_alb')[0].style.visibility="hidden";
+    document.getElementById('select').getElementsByClassName('open_alb')[0].style.visibility="hidden";
 }
->>>>>>> e2b34329af29101e1f052de57b6a22afbf989dc6

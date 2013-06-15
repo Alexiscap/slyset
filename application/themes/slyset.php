@@ -21,10 +21,17 @@
     <?php foreach($dynamic_css as $url): ?>
       <link rel="stylesheet" type="text/css" media="screen" href="<?php print $url; ?>" />
     <?php endforeach; ?>
-    
+      
     <!--[if IE]>
       <link type="text/css" rel="stylesheet" href="<?php print css_url('corrections-ie') ?>" />
     <![endif]-->
+    
+    <script type="text/javascript" src="<?php echo js_url('jquery-1.7.1.min') ?>"></script>
+    <script type="text/javascript" src="<?php echo js_url('modernizr.custom.63321') ?>"></script>
+    
+    <?php foreach($js as $url): ?>
+          <script type="text/javascript" src="<?php echo $url; ?>"></script> 
+    <?php endforeach; ?>
   </head>
 
   <body <?php if(isset($id_bkg)) print 'class="'.$id_bkg.'"'; ?>>
@@ -129,12 +136,7 @@
       </div>
     </footer>
 
-    <script type="text/javascript" src="<?php echo js_url('jquery-1.7.1.min') ?>"></script>
-    <script type="text/javascript" src="<?php echo js_url('modernizr.custom.63321') ?>"></script>
-    
-    <?php foreach($js as $url): ?>
-          <script type="text/javascript" src="<?php echo $url; ?>"></script> 
-    <?php endforeach; ?>
+
           
     <script type="text/javascript" src="<?php echo js_url('slyset') ?>"></script>
   </body>

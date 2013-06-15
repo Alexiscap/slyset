@@ -47,7 +47,7 @@ class Mc_photos extends CI_Controller
       $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
       
       //$this->layout->views('3');
-      $this->layout->view('mc_photos', $datas);
+      $this->layout->view('photos/mc_photos', $datas);
     }
   
 }

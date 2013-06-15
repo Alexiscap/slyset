@@ -94,7 +94,7 @@ class Login extends CI_Controller
             redirect('home/'.$this->session->userdata('uid'), 'refresh');
         } else if($this->login_model->isLoggedInAdmin()){
     //            $this->layout->view('admin');
-            redirect('admin/'.$this->session->userdata('uid'), 'refresh');
+            redirect('admin', 'refresh');
         }
     }
      

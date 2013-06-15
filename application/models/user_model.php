@@ -49,6 +49,23 @@ class User_model extends CI_Model {
         }
     }
     
+    public function getNewbies()
+    {
+        $this->db->select('id, type, login, thumb');
+        $this->db->from('utilisateur');
+        $this->db->order_by('id', 'desc');
+        $this->db->limit(4);
+
+        $query = $this->db->get();
+
+        if($query->num_rows() > 0){
+            $data = $query->result();
+            return $data;
+        } else {
+           return false;
+        }
+    }
+    
     public function getUserByName($nid)
     {
         $this->db->select('id, login');

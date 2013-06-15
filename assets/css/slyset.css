@@ -9,12 +9,13 @@ input[type='file'], input[type='button'], input[type='submit']{ cursor:pointer; 
 body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; background:#f9f9f9; z-index:2; }
 #page{ margin:0 auto; width:980px; }
 #contentAll{ margin:0 0 0 20px; width:770px; float:left; }
-#breadcrumbs{ margin:0 0 0 12px; width:100%; height:23px; }
+#breadcrumbs{ margin:0 0 0 12px; width:100%; height:23px; float:left; clear:both; }
 #breadcrumbs ul{ display:inline-block; }
 #breadcrumbs li{ display:inline-block; line-height:20px; }
 #breadcrumbs li a{ text-decoration:none; font-size:10px; color:#858585; }
 #breadcrumbs li a:hover{ text-decoration:underline; color:#2ab395; }
 #breadcrumbs li:after{ margin:0px 6px; width:9px; height:23px; display:inline-block; content:''; vertical-align:middle; background:url("../images/common/breadcrumbs_arrow.png") no-repeat; }
+.content{ margin:0 0 10px 0; padding:0; width:541px; background:#e6e6e6; float:left; clear:both; }
 .bts_noir{float:left; margin-left:15px;}
 .bts_noir_partition{float:left; margin-left:47px;}
 .bts_noir_photo{float:left; margin-left:5px;}
@@ -26,7 +27,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 
 
 /* --------- MUSICIEN - ACTUS  --------- */
-#cover{ width:770px; height:176px; position:relative; border-top:1px solid #d9dadb; background-repeat:no-repeat; }
+#cover{ width:770px; height:176px; position:relative; border-top:1px solid #d9dadb; background-repeat:no-repeat; float:left; clear:both; }
 #infos-cover{ margin:0; padding:0; width:100%; height:68px; position:absolute; bottom:0; background:rgba(255, 255, 255, 0.3); }
 #infos-cover h2{ margin:5px 0 0 0; padding:0; position:relative; right:240px; font-size:30px; color:#ffffff; float:right; }
 #infos-cover a{ margin:-2px 0 0 10px; padding:0; font-family:Arial, "Trebuchet MS"; font-size:14px; text-decoration:none; color:#ffffff; float:left; clear:both; }
@@ -34,7 +35,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 #infos-cover a .button_center{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_suivre.png") repeat-x 0 -30px; float:left; }
 #infos-cover a .button_right{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_suivre.png") no-repeat -77px 0; float:left; }
 
-#stats-cover{ padding:0 21px; width:176px; height:33px; -webkit-border-bottom-right-radius:10px; -webkit-border-radius-bottom-left-radius:10px; -moz-border-radius-bottomright:10px; -moz-border-radius-bottomleft:10px; border-bottom-right-radius:10px; border-bottom-left-radius:10px; background:#e6e6e6; float:left; }
+#stats-cover{ margin:0 0 10px 0; padding:0 21px; width:180px; height:33px; -webkit-border-bottom-right-radius:10px; -webkit-border-radius-bottom-left-radius:10px; -moz-border-radius-bottomright:10px; -moz-border-radius-bottomleft:10px; border-bottom-right-radius:10px; border-bottom-left-radius:10px; background:#e6e6e6; float:left; }
 #stats-cover .stats_cover_block:first-child{ margin:4px 0 0 0px; }
 #stats-cover .stats_cover_block{ margin:4px 0 0 18px; height:29px; float:left; }
 #stats-cover .stats_number{ margin:1px 0 0 0; font-weight:bold; font-size:14px; color:#2ab395; float:left; }
@@ -61,7 +62,6 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .actus_post #comments-msg input[type="submit"]{ clear:both; }
 .actus_post span.error-form{ margin:5px 0 5px 17px; }
 
-.content{ margin:10px 0 10px 0; padding:0; width:541px; background:#e6e6e6; float:left; clear:both; }
 .empty{ width:100%; height:12px; background:#f9f9f9; float:left; clear:both; }
 .artist_post{ margin:8px 20px; width:500px; height:auto; position:relative; float:left; }
 .artist_post .top{ width:100%; height:16px; }
@@ -248,7 +248,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 #coverflow .coverflow-center-artiste{ text-align:center; margin-top:10px; font-family:'Myriad Pro'; font-size:13px; text-shadow:0px -2px #000000; color:white; }
 #coverflow .coverflow-center-slide{ margin-top:7px; margin-right:5px; }
 
-#coverflowContainer{ padding:45px 0 10px 0; background:url("../images/portail/bg-coverflow2.png") no-repeat; width:100%; height:308px; }
+#coverflowContainer{ padding:45px 0 10px 0; background:url("../images/portail/bg-coverflow2.png") no-repeat; width:100%; height:308px; float:left; clear:both; }
 .caroufredsel_wrapper{ margin:0 auto !important; }
 #coverflow2{ width:770px; height:364px; }
 #coverflow2 a{ display:block; float:left; width:188px; height:188px; margin:0 15px; text-decoration:none; text-align:center; position:relative; }
@@ -264,7 +264,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 #coverflowContainer #pagination a:hover{ background-position:-44px 0; }
 
 
-#first-line{ width:100%; }
+#first-line{ width:100%; float:left; clear:both; }
 
 #first-line-top-song{ float:left; position:absolute; height:180px; width:346px; }
 #first-line-top-calendar{ float:left; position:absolute; margin-left:370px; height:180px; width:213px; }
@@ -307,11 +307,13 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 */
 #calendar-content{ float:left; position:absolute; margin-left:370px; height:185px; width:213px; margin-top:33px; }
 					 
-#newbies-content{ float:left; position:absolute; margin-left:599px; height:181px; width:171px; background-color:#e6e6e6; margin-top:33px; }
+#newbies-content{ float:left; position:absolute; margin-left:599px; height:181px; width:171px; background-color:#e6e6e6; margin-top:33px; overflow:hidden; }
 #newbies-content .newbies-peoples{ float:left; height:45px; width:100%; background-color:#e6e6e6; }
 
 #newbies-content .newbies-picture{ position:absolute; margin-top:4px; margin-left:4px; }
 #newbies-content .newbies-people{ position:absolute; font-family:"Trebuchet MS"; color:#3f3f3f; margin-top:10px; font-weight:600; font-size:13px; margin-left:47px; }
+#newbies-content .newbies-people a{ text-decoration:none; font-family:"Trebuchet MS"; color:#3f3f3f; font-weight:600; font-size:13px; }
+#newbies-content .newbies-people a:hover{ text-decoration:underline; }
 #newbies-content .newbies-people-type{ color:#72797f; font-size:11px; font-weight:normal; }
 #wall-flux{ float:left; position:relative; margin-top:235px; margin-bottom:12px; width:579px; background-color:#e6e6e6; }
 .wall-flux-content{ margin:13px; width:550px; background-color:#f6f6f6; padding-bottom:1px; }
@@ -446,9 +448,9 @@ form .label_big{ margin:0 0 0.6em 0; display:block; font-family:"Trebuchet MS"; 
 .checkbox-style{ margin:0 0 20px 0; width:411px; height:115px; position:relative; font-size:17px; font-family:'Myriad Pro'; border:1px solid #cccccc; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; color:#999999; background:#FFFFFF; float:left; clear:both; overflow-y:scroll; }
 /*.step-form .checkbox-group{ width:33%; float:left; }*/
 
-.checkbox-style input[type="checkbox"]{ display:none; }
-.checkbox-style input[type="checkbox"] + label span{ display:inline-block; width:14px; height:14px; margin:-3px 22px 0 0; vertical-align:middle; background:url('../images/common/sprite_checkbox.png') 0 0 no-repeat; cursor:pointer; }
-.checkbox-style input[type="checkbox"]:checked + label span{ background:url('../images/common/sprite_checkbox.png') 0 -16px no-repeat; }
+input[type="checkbox"]{ display:none; }
+input[type="checkbox"] + label span{ display:inline-block; width:14px; height:14px; margin:-3px 22px 0 0; vertical-align:middle; background:url('../images/common/sprite_checkbox.png') 0 0 no-repeat; cursor:pointer; }
+input[type="checkbox"]:checked + label span{ background:url('../images/common/sprite_checkbox.png') 0 -16px no-repeat; }
 
 #subscription-upload{ margin:0 0 60px 0; display:block; width:100%; float:left; clear:both; }
 #subscription-upload label{ margin:-10px 0 0.4em 0; font-weight:normal; float:left; clear:none; }
@@ -890,3 +892,76 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 .content .historique .total_panier span{margin:0 0 0 30px;color:#666666;}
 .content .telecharge_select{float:right;width:124px;height:30px;background:url('../images/common/bt_download.png');border:none;color:white;padding:0 0 0 25px;font-weight:bold;font-size:13px;margin:0 25px 10px 0;}
 /*------------------- FIN MELO ACHATS -------------------*/
+
+
+/*------------------- FIN ADMIN -------------------*/
+#message-notification{ margin:2px 0 10px 0; padding:20px; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; font-family:"Myriad Pro", Arial, sans-serif; font-size:16px; font-weight:normal; line-height:20px; text-align:left; color:#FFFFFF; background:rgba(233, 68, 68, 0.6); float:left; clear:both; }
+#message-notification .ico-msg{ display:inline-block; width:47px; height:45px; background:url('../images/admin/sprite_chiffres.png') no-repeat 0 0 transparent; float:left; }
+#message-notification p{ margin:0 0 0 20px; display:inline-block; width:663px; float:left; }
+
+.contentAdmin{ padding:0 40px 20px 0; width:100%; }
+.contentAdmin p{ font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; line-height:18px; font-weight:normal; color:#464646; }
+.contentAdmin h3, .contentAdmin h3:before{ margin:0 0 20px 0; font-family:"Trebuchet MS", Arial, sans-serif; font-size:18px; font-weight:normal; color: #464646; }
+.contentAdmin h3:before{ content: '>'; }
+.contentAdmin label{ font-family:"Myriad Pro", Arial, sans-serif; font-size:17px; font-weight:normal; color:#878d95; }
+
+#admin_notification{ margin:30px 0 0 20px; width:100%; float:left; clear:both; }
+#admin_notification textarea{ margin:10px 0 0 0; padding:20px; display:block; width:727px; height:115px; font-family:"Myriad Pro", Arial, sans-serif; font-size:17px; font-weight:normal; border:1px solid #b0d4cc; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px; outline:none; color:#717171; float:left; clear:both; }
+#admin_notification [type='submit']{ margin:12px 0 0 0; display:block; width:124px; height:41px; line-height:41px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:17px; font-weight:bold; text-align:center; color:#2ba086; background:url('../images/admin/btn_enregistrer.png') no-repeat 0 0 transparent; float:right; clear:both; }
+
+#admin_chiffres{ margin:45px 0 0 20px; width:100%; float:left; clear:both; }
+#admin_chiffres .admin_chiffre{ margin:0 10px 0 0; display:inline-block; width:132px; height:132px; float:left; -webkit-box-shadow:1px 1px 1px 0px rgba(0, 0, 0, 0.2); box-shadow:1px 1px 1px 0px rgba(0, 0, 0, 0.2); }
+#admin_chiffres .admin_chiffre .count{ font-family:"Trebuchet MS", Arial, sans-serif; font-size:20px; font-weight:normal; text-align:center; color:#FFFFFF; }
+#admin_chiffres .admin_chiffre .raison{ font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:normal; text-align:center; color:#FFFFFF; }
+#admin_chiffres .admin_chiffre.abuse_attente{ background-color:#f05f4c; }
+#admin_chiffres .admin_chiffre.abuse_attente .ico{ margin:25px auto 0 auto; width:47px; height:51px; background:url('../images/admin/sprite_chiffres.png') no-repeat 0 0 transparent; }
+
+#admin_chiffres .admin_chiffre.abuse_suspension{ background-color:#57b8db; }
+#admin_chiffres .admin_chiffre.abuse_suspension .ico{ margin:25px auto 0 auto; width:61px; height:51px; background:url('../images/admin/sprite_chiffres.png') no-repeat -48px 0 transparent; }
+
+.admin_links{ margin:0 0 0 10px; float:left; }
+.admin_links a, .admin_links a:before{ font-family:"Myriad Pro", Arial, sans-serif; font-size:16px; font-weight:normal; text-decoration:none; color:#888d95; float:left; clear:both; }
+.admin_links a:before{ content:'>'; }
+.admin_links a:hover{ text-decoration:underline;}
+
+
+
+.admin-articles a.btn_admin{ margin:25px 0 0 18px; padding:0 7px; display:block; height:41px; line-height:41px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:17px; font-weight:bold; text-align:center; text-decoration:none; outline:none; border:none; color:#eb5440; background:url('../images/admin/btn_enregistrer.png') no-repeat 0 0 transparent; float:left; clear:both; }
+.admin-articles a.btn_admin#back-articles{ background:url('../images/admin/btn_admin-action.png') no-repeat 0 0 transparent; background-size:contain; }
+.admin-articles #wysiwyg-block h2{ margin:20px 20px 0 20px; }
+.admin-articles #wysiwyg-block, .admin-articles #edit-block{ margin:20px 0 0 20px; display:block; width:748px; border:1px solid #CCCCCC; float:left; clear:both; }
+.admin-articles #wysiwyg-block form, .admin-articles #edit-block form{ margin:25px 20px; width:688px; float:left; clear:both; }
+.admin-articles #wysiwyg-block input[type="text"], .admin-articles #edit-block input[type="text"]{ margin:0 0 20px 0; padding:0 10px; display:block; width:390px; height:40px; position:relative; font-size:17px; font-family:'Myriad Pro'; border:1px solid #cccccc; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; outline:none; color:#999999; background:#FFFFFF; float:left; clear:both; }
+.admin-articles #wysiwyg-block .redactor_box, .admin-articles #edit-block .redactor_box{ width: 100%; -moz-box-shadow:0px 0px 5px 0px #cbcefb; -webkit-box-shadow:0px 0px 5px 0px #cbcefb; -o-box-shadow:0px 0px 5px 0px #cbcefb; box-shadow:0px 0px 5px 0px #cbcefb; filter:progid:DXImageTransform.Microsoft.Shadow(color=#cbcefb, Direction=NaN, Strength=5); float:left; clear:both; }
+.admin-articles #wysiwyg-block .redactor_editor, .admin-articles #edit-block .redactor_editor{ height:200px; }
+.admin-articles #wysiwyg-block input[type="submit"], .admin-articles #edit-block input[type="submit"]{ margin:12px 0 0 0; padding:0 5px; display:block; height:41px; line-height:41px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:17px; font-weight:bold; text-align:center; color:#eb5440; background:url('../images/admin/btn_enregistrer.png') no-repeat 0 0 transparent; background-size:cover; float:right; clear:both; }
+
+.admin-articles #articles-tab{ margin:20px 0 20px 20px; float:left; clear:both; }
+.admin-articles #articles-tab table{ margin:0 0 20px 0; border:1px solid #cccfd1; -moz-box-shadow:0px 2px 3px 0px #999999;
+-webkit-box-shadow:0px 2px 3px 0px #999999; -o-box-shadow:0px 2px 3px 0px #999999; box-shadow:0px 2px 3px 0px #999999; filter:progid:DXImageTransform.Microsoft.Shadow(color=#999999, Direction=180, Strength=3);}
+.admin-articles #articles-tab tr{ }
+.admin-articles #articles-tab th{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:left; color:#666666; }
+.admin-articles #articles-tab td{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:left; text-align:left; border:1px solid #ebebeb; color:#555555; }
+.admin-articles #articles-tab tr{ height:28px; background:#fafafa; }
+.admin-articles #articles-tab tr.tab-head{ height:60px; border:1px solid #cccfd1; background:#e9ebec !important; }
+.admin-articles #articles-tab tr.tab-head + tr td{ border-top:1px solid #cccfd1; }
+.admin-articles #articles-tab tr.tab-head th{ border:none; }
+.admin-articles #articles-tab tr.row-color-1{ background:#fafafa; }
+.admin-articles #articles-tab tr.row-color-2{ background:#f7f7f7; }
+
+.admin-articles input[type="checkbox"] + label span{ margin:-3px 0 0 0; }
+.admin-articles #articles-tab .article-checkbox{ padding:0 6px; }
+.admin-articles #articles-tab .article-title{ padding:0 12px 0 25px; width:577px; }
+.admin-articles #articles-tab .article-date{ padding:0 10px; width:115px; }
+
+.admin-articles #articles-tab th.article-title{ cursor:pointer; }
+.admin-articles #articles-tab th.article-date{ cursor:pointer; }
+.admin-articles #articles-tab .article-actions{ display:none; }
+.admin-articles #articles-tab tr:hover .article-actions, .admin-articles #articles-tab tr:hover .article-actions{ display:inline-block; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:right; text-align:left; color:#555555; float:right; opacity:1; }
+.admin-articles #articles-tab .article-actions a{ display:inline-block; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:right; text-align:left; color:#555555; text-decoration:none; }
+.admin-articles #articles-tab .article-actions a:hover{ text-decoration:none; color:#eb5440; }
+
+.admin-articles #articles-tab .filter{ margin:0 0 0 8px; display:inline-block; width:11px; height:7px; cursor:pointer; background:url('../images/common/filters.png') no-repeat 0 0 transparent; }
+.admin-articles #articles-tab input[type="submit"]{ margin:0 0 0 0; padding:0 5px; display:block; width:94px; height:32px; line-height:32px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:center; color:#FFFFFF; background:url('../images/admin/btn_supprimer.png') no-repeat 0 0 transparent; float:right; clear:both; }
+.admin-articles #articles-tab input[type="submit"]:hover{ font-size:15px; }
+/*------------------- FIN ADMIN -------------------*/

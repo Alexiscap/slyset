@@ -1,7 +1,7 @@
 <aside id="right">
   <div id="avatar">
     <div id="photo">
-      <img src="<?php if(!empty($profile->thumb)) print files('profiles/'.$profile->thumb); else print img_url('sidebar-right/photo-profil.png'); ?>" alt="Photo de profil"/>
+      <img src="<?php print $thumb = (!empty($profile->thumb)) ? files('profiles/'.$profile->thumb) : img_url('sidebar-right/default-photo-profil.png'); ?>" alt="Photo de profil"/>
     </div>
     <div id="description">
       <p id="texte_description"><?php if(!empty($profile->description)) print ucfirst($profile->description); else print 'Aucune description n\'a été remplie pour le moment.'; ?></p>

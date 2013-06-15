@@ -66,7 +66,7 @@ class Mc_perso extends CI_Controller
         $data['profile'] = $this->user_model->getUser($this->user_id);
         $data['perso'] = $this->perso_model->get_perso($this->user_id);
 //        $data['custom_css'] = $this->layout->view('personnaliser/custom_user_css', $data);
-        $this->layout->view('mc_perso', $data);
+        $this->layout->view('personnalisation/mc_perso', $data);
         
     }
     
@@ -100,7 +100,7 @@ class Mc_perso extends CI_Controller
         $this->form_validation->set_rules('submit', 'Personnalisation du profil', '');
              
         if($this->form_validation->run() == FALSE){
-            $this->layout->view('mc_perso', $data);
+            $this->layout->view('personnalisation/mc_perso', $data);
         } else {
             $theme_css  = 'custom_user_css.php';
             $background = $this->input->post('background');
@@ -147,7 +147,11 @@ class Mc_perso extends CI_Controller
     public function delete_perso()
     {
         $this->perso_model->delete_perso();
-        unlink('assets/css/custom_user_css.php');
+        
+        if(file_exists('assets/css/custom_user_css.php')){
+            unlink('assets/css/custom_user_css.php');
+        }
+        
         redirect('personnaliser/'.$this->session->userdata('uid'), 'refresh');
     }
     
