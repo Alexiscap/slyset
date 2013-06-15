@@ -1,0 +1,114 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+<style>
+#test, li, input{
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+-ms-border-radius: 3px;
+-o-border-radius: 3px;
+border-radius: 3px;
+width : 150px;
+background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #f0f0f0));
+background: -webkit-linear-gradient(#ffffff,#f0f0f0);
+background: -moz-linear-gradient(#ffffff,#f0f0f0);
+background: -o-linear-gradient(#ffffff,#f0f0f0);
+background: linear-gradient(#ffffff,#f0f0f0);
+border: 1px solid #c1c1c1;
+cursor: pointer;
+font-size: 13px;
+padding: 7px 12px;
+position: relative;
+list-style-type : none;
+}
+
+#test_one{
+visibility : hidden;
+}
+
+ul {
+cursor: pointer;
+padding : 0px;
+margin : 0px;
+}
+
+li:hover{
+background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2AB395), color-stop(100%, #2AB395));
+background: -webkit-linear-gradient(#ffffff,#2AB395);
+background: -moz-linear-gradient(#ffffff,#2AB395);
+background: -o-linear-gradient(#ffffff,#2AB395);
+background: linear-gradient(#ffffff,#2AB395);
+}
+#create {
+
+}
+input 
+{
+padding: 18px;
+width : 177px;
+}
+
+#create_ok{margin-top : -27px;
+margin-left : 190px;
+cursor : pointer;}
+</style>
+
+<!-- ne pas changer la structure ! --> 
+</head>
+<body>
+
+<script>
+function showInfo() {
+if( document.getElementById('test_one').style.visibility == "hidden")
+{
+ document.getElementById('test_one').style.visibility = "visible";
+}
+else
+{
+ document.getElementById('test_one').style.visibility = "hidden";
+
+}
+}
+function selectalbum(e) {
+
+   document.getElementById('album_select').value = e.target.innerHTML;
+
+}
+
+function selectalbumcreate(e) {
+
+   document.getElementById('album_select').value = document.getElementById('create').value 
+
+}
+    
+
+</script>
+
+<input placeholder="Choisir un album" name="albums" id="album_select" autocomplete="off" type="text" disabled/><span onclick="javascript:showInfo()">fleche basse</span>
+
+	<div id='test_one'>
+		
+		<ul id='test_two'>
+		<li onclick="selectalbum(event)">hi</li>
+			<li  onclick="selectalbum(event)">hib</li>
+			<li  onclick="selectalbum(event)">hia</li>
+			<li  onclick="selectalbum(event)">hic</li>
+			<li  onclick="selectalbum(event)">hie</li>
+						<li onclick="selectalbum(event)">hijke</li>
+			<li  onclick="selectalbum(event)">hif</li>
+			<li  onclick="selectalbum(event)">hig</li>
+			<li  onclick="selectalbum(event)">hih</li>
+			<li  onclick="selectalbum(event)">hii</li>
+			<li  onclick="selectalbum(event)">hij</li>
+
+
+		
+		
+		</ul>
+			<div id='test_three'>
+				<input  id="create" type="text" value="" autocomplete="off"  placeholder="creer un nouvel album"/><div id="create_ok"  onclick="selectalbumcreate()">ok</div>
+			</div>
+	</div>
+
+</body>
+</html>

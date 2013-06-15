@@ -1,38 +1,31 @@
-<div id="contentAll">
-  <!--<img src="<?php echo files('titre_objectifs.png') ?>" />-->
+<?php setlocale (LC_TIME, 'fr_FR.utf8','fra'); ?>
+
   <script>
-    var joursEvenement = <?php echo '['; if (isset($all_date_calendar)) echo $all_date_calendar; echo "]" 
-    ?> ;
+  
+var events = [ <?php echo $all_date_calendar ?>
+]; 
+
+   /* var joursEvenement = <?php echo '['; if (isset($all_date_calendar)) echo $all_date_calendar; echo "]" 
+    ?> ;*/
   </script>
 
-  <div id="breadcrumbs">
+
+<div id="contentAll">
+  <!--<img src="<?php echo files('titre_objectifs.png') ?>" />-->
+
+ <div id="breadcrumbs">
     <ul>
       <li><a href="#" title="#">Accueil</a></li>
     </ul>
   </div>
-
-<!--  <div id="coverflow">
-    <div id="coverflow-alaune">
-       <img src="<?php echo img_url('portail/alaune.png') ?>">
-     </div>
-
-    <div id="coverflow-left">
-      <img class="coverflow-img" src="<?php echo img_url('portail/bh.png') ?>">
+  
+  <?php if(isset($notification) && $notification != ''): ?>
+    <div id="message-notification">
+        <div class="ico-msg"></div>
+        <p><?php print $notification ?></p>
     </div>
+  <?php endif; ?>
 
-    <div id="coverflow-center">
-      <span class="coverflow-img-player"> </span><img class="coverflow-img2" src="<?php echo img_url('portail/bandone.png') ?>">
-      <div class="coverflow-center-artiste">
-        GRANVILLE
-        </br>
-        <img class="coverflow-center-slide" src="<?php echo img_url('portail/slide.png') ?>">
-      </div>
-    </div>
-
-    <div id="coverflow-right">
-      <img class="coverflow-img" src="<?php echo img_url('portail/foals.png') ?>">
-    </div>
-  </div>-->
   <div id="coverflowContainer">
     <div id="coverflow2">
       <a href="#"><img class="coverflow-img" src="<?php echo img_url('portail/bh.png') ?>"><span class="coverflow_artist">Name Artist 1</span></a>
@@ -47,6 +40,7 @@
       <div id="pagination-next"></div>
     </div>
   </div>
+
 
   <div id="first-line">
     <div id="first-line-top-song">
@@ -227,9 +221,13 @@
       </div>
 
       <div id="calendar-content">
+        <div id="calendar_alert">
+
+		</div>
       <div id="datepicker"></div>
 
       </div>
+    
     </div>
 
     <div id="first-line-newbies">
@@ -238,46 +236,84 @@
         Les <span class="title-color"> newbies</span>
       </div>
 
-      <div id="newbies-content">
-
-            <div id="newbies-one">
-
-        <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>" height="38px" alt="Photo Profil" /></p>
-          <div class = "newbies-people">
-          Skip the Use</br>
-            <span class="newbies-people-type">Musicien</span>
-          </div>
-          </div>
-                    <div id="newbies-one">
-
-        <p  class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>"  height="38px" alt="Photo Profil" /></p>
-        <div class = "newbies-people">
-          Yannis P</br>
-            <span class="newbies-people-type">Mélomane</span>
-          </div>
-        </div>
-                          <div id="newbies-one">
-
-        <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>"  height="38px" alt="Photo Profil" /></p>
-                    <div class = "newbies-people">
-          Alison Mosshart</br>
-            <span class="newbies-people-type">Mélomane</span>
-          </div>
+       <div id="newbies-content">
+            <?php foreach($newbies as $newbie): ?>
+                <?php // print_r($newbie);
+                 ?>
+                <div class="newbies-peoples">
+                    <p class="newbies-picture">
+                        <a href="<?php print site_url('actualite/'.$newbie->id); ?>">
+                            <img src="<?php print $thumb = (!empty($newbie->thumb)) ? files('profiles/'.$newbie->thumb) : img_url('sidebar-right/defaultphoto-profil.png'); ?>" height="38px" alt="Photo Profil" />
+                        </a>
+                    </p>
+                    <div class="newbies-people">
+                        <a href="<?php print site_url('actualite/'.$newbie->id); ?>">
+                            <?php print $newbie->login; ?>
+                        </a>
+                        </br>
+                        <span class="newbies-people-type"><?php print $type = ($newbie->type == 1)? 'Musicien' : 'Mélomane'; ?></span>
                     </div>
-                          <div id="newbies-one">
+                </div>
+            <?php endforeach; ?>
+          
+<!--            <div class="newbies-peoples">
+                <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>" height="38px" alt="Photo Profil" /></p>
+                <div class="newbies-people">
+                    Skip the Use</br>
+                    <span class="newbies-people-type">Musicien</span>
+                </div>
+            </div>
 
-        <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>"  height="38px" alt="Photo Profil" /></p>
-        <div class = "newbies-people">
-          Jack White</br>
-          <span class="newbies-people-type">Musicien</span>
-          </div>
+            <div class="newbies-peoples">
+                <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>"  height="38px" alt="Photo Profil" /></p>
+                <div class="newbies-people">
+                    Yannis P</br>
+                    <span class="newbies-people-type">Mélomane</span>
+                </div>
+            </div>
+
+            <div class="newbies-peoples">
+                <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>"  height="38px" alt="Photo Profil" /></p>
+                <div class="newbies-people">
+                    Alison Mosshart</br>
+                    <span class="newbies-people-type">Mélomane</span>
+                </div>
+            </div>
+
+          <div class="newbies-peoples">
+              <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>"  height="38px" alt="Photo Profil" /></p>
+              <div class="newbies-people">
+                  Jack White</br>
+                  <span class="newbies-people-type">Musicien</span>
+              </div>
+          </div>-->
         </div>
-      </div>
     </div>
   </div>
 
 
   <div id="wall-flux">
+      <?php foreach($articles as $article): ?>
+          <div class="wall-flux-content" >
+              <p class="wall-flux-content-title">
+                  <?php print $article->titre; ?>
+              </p>
+
+              <p class="wall-flux-content-subtitle">
+                  Publié par Slyset, le <?php echo strftime("%A %d %B %Y à %Hh%M ", strtotime($article->updated)); ?>
+              </p>
+
+              <div class="wall-flux-content-text">
+                  <?php print $article->article; ?>
+              </div>
+          </div>
+      <?php endforeach; ?>
+    
+    
+    
+    
+    
+    
     <div class="wall-flux-content" >
       <p class="wall-flux-content-title">Le rock de Foals investit l’Hôtel de Ville de Paris
       </p>
@@ -343,4 +379,5 @@
     <a href="#" id="suivant"><span>></span></a>
   </div>
   
+</div>
 </div>

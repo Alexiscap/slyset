@@ -43,14 +43,26 @@ $route['404_override'] = '';
 
 //$route['(:num)'] = "$1";
 $route['home/(:num)'] = "home/index/$1";
-$route['admin/(:num)'] = "admin/index/$1";
+//$route['admin/(:num)'] = "admin/index/$1";
 $route['concert/(:num)'] = "mc_concerts/index/$1";
 $route['actualite/(:num)'] = "mc_actus/index/$1";
+//$route['actualite/(:num)'] = "mc_actus/form_wall_musicien_message/$1";
 $route['media/(:num)'] = "mc_photos/index/$1";
 $route['musique/(:num)'] = "mc_musique/index/$1";
+$route['follower/(:num)'] = "mc_followers/index/$1";
+$route['my-concert/(:num)'] = "/melo_concerts/index/$1";
+$route['my-follower/(:num)'] = "/melo_abonnements/index/$1";
+$route['document/(:num)'] = "/mc_partitions/index/$1";
+$route['my-wall/(:num)'] = "/melo_wall/index/$1";
+$route['reglages/(:num)'] = "mc_reglages/index/$1";
+$route['reglages/update_user/(:num)'] = "mc_reglages/update_user/$1";
+$route['personnaliser/(:num)'] = "mc_perso/index/$1";
+$route['personnaliser/update/(:num)'] = "mc_perso/update_perso/$1";
+$route['personnaliser/delete/(:num)'] = "mc_perso/delete_perso/$1";
+$route['personnaliser/theme-1/(:num)'] = "mc_perso/theme1/$1";
 
 
-$route['mc_concerts'] = "welcome"; 
+$route['mc_concerts'] = "home"; 
 $route['mc_concerts/ajouter_concert'] = "welcome"; 
 $route['mc_concerts/(:num)'] = "mc_concerts/index/$1"; 
 //$route['home/(:num)'] = "home/$1";
