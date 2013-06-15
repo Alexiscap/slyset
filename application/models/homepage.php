@@ -7,7 +7,7 @@ class homepage extends CI_Model
 
     public function get_concert()
     {
-        return $this->db->select('date')
+        return $this->db->select('date','titre')
                         ->from($this->table)
                         ->get()
                         ->result();
