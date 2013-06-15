@@ -1,12 +1,23 @@
 <?php setlocale (LC_TIME, 'fr_FR.utf8','fra'); ?>
 
+<<<<<<< HEAD
+=======
 <div id="contentAll">
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
   <script>
-    var joursEvenement = <?php echo '['; if (isset($all_date_calendar)) echo $all_date_calendar; echo "]" 
-    ?> ;
+  
+var events = [ <?php echo $all_date_calendar ?>
+]; 
+
+   /* var joursEvenement = <?php echo '['; if (isset($all_date_calendar)) echo $all_date_calendar; echo "]" 
+    ?> ;*/
   </script>
 
-  <div id="breadcrumbs">
+
+<div id="contentAll">
+  <!--<img src="<?php echo files('titre_objectifs.png') ?>" />-->
+
+ <div id="breadcrumbs">
     <ul>
       <li><a href="#" title="#">Accueil</a></li>
     </ul>
@@ -33,6 +44,7 @@
       <div id="pagination-next"></div>
     </div>
   </div>
+
 
   <div id="first-line">
     <div id="first-line-top-song">
@@ -182,20 +194,26 @@
       </div>
 
       <div id="calendar-content">
+        <div id="calendar_alert">
+
+		</div>
       <div id="datepicker"></div>
 
       </div>
+    
     </div>
 
     <div id="first-line-newbies">
-        <div id="newbies-title">
-            <span class="title-img"><img src="<?php echo img_url('portail/etoile.png') ?>"></span>
-            Les <span class="title-color">newbies</span>
-        </div>
+<<<<<<< HEAD
+      <div id="newbies-title">
+        <span class="title-img"><img src="<?php echo img_url('portail/etoile.png') ?>"></span>
+        Les <span class="title-color"> newbies</span>
+      </div>
 
-        <div id="newbies-content">
+       <div id="newbies-content">
             <?php foreach($newbies as $newbie): ?>
-                <?php // print_r($newbie); ?>
+                <?php // print_r($newbie);
+                 ?>
                 <div class="newbies-peoples">
                     <p class="newbies-picture">
                         <a href="<?php print site_url('actualite/'.$newbie->id); ?>">
@@ -236,6 +254,57 @@
                 </div>
             </div>
 
+=======
+        <div id="newbies-title">
+            <span class="title-img"><img src="<?php echo img_url('portail/etoile.png') ?>"></span>
+            Les <span class="title-color">newbies</span>
+        </div>
+
+        <div id="newbies-content">
+            <?php foreach($newbies as $newbie): ?>
+                <?php // print_r($newbie);
+                 ?>
+                <div class="newbies-peoples">
+                    <p class="newbies-picture">
+                        <a href="<?php print site_url('actualite/'.$newbie->id); ?>">
+                            <img src="<?php print $thumb = (!empty($newbie->thumb)) ? files('profiles/'.$newbie->thumb) : img_url('sidebar-right/defaultphoto-profil.png'); ?>" height="38px" alt="Photo Profil" />
+                        </a>
+                    </p>
+                    <div class="newbies-people">
+                        <a href="<?php print site_url('actualite/'.$newbie->id); ?>">
+                            <?php print $newbie->login; ?>
+                        </a>
+                        </br>
+                        <span class="newbies-people-type"><?php print $type = ($newbie->type == 1)? 'Musicien' : 'Mélomane'; ?></span>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+          
+<!--            <div class="newbies-peoples">
+                <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>" height="38px" alt="Photo Profil" /></p>
+                <div class="newbies-people">
+                    Skip the Use</br>
+                    <span class="newbies-people-type">Musicien</span>
+                </div>
+            </div>
+
+            <div class="newbies-peoples">
+                <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>"  height="38px" alt="Photo Profil" /></p>
+                <div class="newbies-people">
+                    Yannis P</br>
+                    <span class="newbies-people-type">Mélomane</span>
+                </div>
+            </div>
+
+            <div class="newbies-peoples">
+                <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>"  height="38px" alt="Photo Profil" /></p>
+                <div class="newbies-people">
+                    Alison Mosshart</br>
+                    <span class="newbies-people-type">Mélomane</span>
+                </div>
+            </div>
+
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
           <div class="newbies-peoples">
               <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>"  height="38px" alt="Photo Profil" /></p>
               <div class="newbies-people">

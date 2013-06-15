@@ -32,6 +32,47 @@
     </div>
   </div>
   <div class="content">
+<<<<<<< HEAD
+  
+	
+		<?php
+ 	if (count($all_follower)==1):?>
+	<h2>Mon abonnement</h2>
+	<?php endif;
+	if (count($all_follower)==0):?>
+	<h2>Aucun abonnement</h2>
+	<?php endif;
+	if (count($all_follower)>1):?>
+	<h2>Mes <?php echo count($all_follower);?> abonnements</h2>
+	<?php endif;
+	
+		if(isset($all_follower)):
+	foreach($all_follower as $follower): ?>
+	<div class="follower">
+		<div class="photo_follow">
+					<img src="<?php echo './files/'.$follower->Utilisateur_id ?>" />
+
+		</div>
+		<div class="description">
+			<p class="nom_follow"><?php echo $follower->login ?></p>
+			<p class="text_follow"><?php echo $follower->description ?></p>
+				<img src="<?php print img_url('common/casque.png'); ?>" /><span><?php echo $follower->style_joue ?></span>
+		</div>
+		<div class="bouton">
+			<a href="#" class="participer">
+			<span class="button_left_abonne"></span>
+			<span class="button_center_abonne">Abonné</span>
+			<span class="button_right_abonne"></span></a>
+		</div>
+	</div>
+	<hr/>
+	
+		<?php
+	endforeach;
+	endif;
+	?>
+	<!--<div class="follower">
+=======
 	<h2>Mes 6 abonnements</h2>
 	<div class="follower">
 		<div class="photo_follow">
@@ -48,6 +89,7 @@
 	</div>
 	<hr/>
 	<div class="follower">
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
 		<div class="photo_follow">
 			<img src="<?php print img_url('common/photo_follower2.png'); ?>" />
 		</div>
@@ -116,7 +158,11 @@
 			<a href="#" class="participer"><span class="button_left_non"></span><span class="button_center_non">Ne plus suivre</span><span class="button_right_non"></span></a>
 		</div>
 	</div>
+<<<<<<< HEAD
+	<hr/>-->
+=======
 	<hr/>
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
   </div>
 
 

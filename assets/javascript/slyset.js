@@ -57,6 +57,23 @@ function unhighlight(items) {
 
 $(document).ready(function(){
   
+<<<<<<< HEAD
+    var baseurl = $('#baseurl').val();
+    $('.form_comments form').submit(function(){
+//        dataString2 = $(this).serialize();
+//         alert(dataString2);
+//        $.ajax({
+//            url : baseurl + 'index.php/mc_actus/form_wall_user_comment',
+//            data : $('.form_comments form').serialize(),
+//            type: "POST",
+//            success : function(usercomment){
+//                alert($('form').serialize());
+//                alert(usercomment);
+//                $(usercomment).hide().insertBefore('#insertbeforMe').slideDown('slow');
+//            }
+//        })
+
+=======
   
 //    Shadowbox.open({
 ////        content:    'application/views/lightbox/pi_ajout_concerts.php',
@@ -168,10 +185,15 @@ $(document).ready(function(){
     
     var baseurl = $('#baseurl').val();
     $('.form_comments form').submit(function(){
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
         var usercomment = $(this).find("#usercomment").val();
         var messageid = $(this).find("#messageid").val();
         var thisParent = $(this).parent();
         var dataString = 'usercomment='+usercomment+'&messageid='+messageid;
+<<<<<<< HEAD
+    //            var dataString = 'usercomment='+usercomment;
+=======
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
 
         if(usercomment == '' || messageid == ''){
             alert('Veuillez renseigner un message !');
@@ -181,11 +203,17 @@ $(document).ready(function(){
             ajaxLoader.show();
             ajaxLoader.fadeIn(500).html('<img src="'+baseurl+'assets/images/common/ajax-loader.gif" />Loading Comment...');
 
+<<<<<<< HEAD
+            $.ajax({
+                type: "POST",
+                url : baseurl + 'index.php/mc_actus/form_wall_user_comment',
+=======
             $(this).find("#usercomment").val("");
             
             $.ajax({
                 type: "POST",
                 url : baseurl + 'index.php/mc_actus/form_wall_user_comment/',
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
                 data: dataString,
 
                 success: function(comment){
@@ -194,7 +222,10 @@ $(document).ready(function(){
 //                    ajaxLoader.hide();
                }
             })
+<<<<<<< HEAD
+=======
             
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
             return false;
         }
     });
@@ -292,6 +323,16 @@ $(document).ready(function(){
         playMasonry();
     }
     
+<<<<<<< HEAD
+    
+    //Appel de la fonction
+    if($("body.musicien_actus").length > 0){
+        $('input[type=file]').change(function(e){
+            $in = $(this);
+            $(".upload_photo_name_file").html($in.val().replace(/C:\\fakepath\\/i, ''));
+        });
+      
+=======
     //Appel de la fonction
     if($("input[type=file]").length > 0){
         $(".upload-file-container").change(function(e){
@@ -302,6 +343,7 @@ $(document).ready(function(){
     
     //Appel de la fonction
     if($("body.musicien_actus").length > 0){      
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
         $(".actus_post .actus_post_links a").click(function(e){
             var cls = $(this).attr('href').replace('#', '');
             var desact =  $(".actus_post .actus_post_links").find('.active').removeClass('active')
@@ -319,6 +361,343 @@ $(document).ready(function(){
         });
     }
     
+<<<<<<< HEAD
+});
+
+
+
+
+ 
+$(document).ready(function(){
+  
+    var baseurl = $('#baseurl').val();
+    //commentaire photo
+    $('.comment-form form').submit(function(){
+//        dataString2 = $(this).serialize();
+//         alert(dataString2);
+//        $.ajax({
+//            url : baseurl + 'index.php/mc_actus/form_wall_user_comment',
+//            data : $('.form_comments form').serialize(),
+//            type: "POST",
+//            success : function(usercomment){
+//                alert($('form').serialize());
+//                alert(usercomment);
+//                $(usercomment).hide().insertBefore('#insertbeforMe').slideDown('slow');
+//            }
+//        })
+
+        var usercomment = $(this).find("#usercomment").val();
+        var messageid = $(this).find("#messageid").val();
+        var thisParent = $(this).parent();
+        var dataString = 'usercomment='+usercomment+'&messageid='+messageid;
+    //            var dataString = 'usercomment='+usercomment;
+
+        if(usercomment == '' || messageid == ''){
+            alert('Veuillez renseigner un message !');
+        } else {
+            var ajaxLoader = $(this).parent().find(".ajax_loader");
+            
+            ajaxLoader.show();
+          //  ajaxLoader.fadeIn(500).html('<img src="'+baseurl+'assets/images/common/ajax-loader.gif" />Loading Comment...');
+            $.ajax({
+
+                type: "POST",
+                url : baseurl + 'index.php/mc_photos/form_photo_user_comment',
+                data: dataString,
+
+                success: function(comment){
+                    $(comment).hide().insertBefore(thisParent).slideDown('slow');
+                    ajaxLoader.fadeOut(1000);
+                    jQuery(".content").masonry( 'reload' );
+
+//                    ajaxLoader.hide();
+               }
+            })
+            return false;
+        }
+    });
+    //commentaire album
+    $('.comment-form-album form').submit(function(){
+//        dataString2 = $(this).serialize();
+//         alert(dataString2);
+//        $.ajax({
+//            url : baseurl + 'index.php/mc_actus/form_wall_user_comment',
+//            data : $('.form_comments form').serialize(),
+//            type: "POST",
+//            success : function(usercomment){
+//                alert($('form').serialize());
+//                alert(usercomment);
+//                $(usercomment).hide().insertBefore('#insertbeforMe').slideDown('slow');
+//            }
+//        })
+
+        var usercomment = $(this).find("#usercomment").val();
+        var messageid = $(this).find("#messageid").val();
+        var thisParent = $(this).parent();
+        var dataString = 'usercomment='+usercomment+'&messageid='+messageid;
+    //            var dataString = 'usercomment='+usercomment;
+
+        if(usercomment == '' || messageid == ''){
+            alert('Veuillez renseigner un message !');
+        } else {
+            var ajaxLoader = $(this).parent().find(".ajax_loader");
+            
+            ajaxLoader.show();
+          //  ajaxLoader.fadeIn(500).html('<img src="'+baseurl+'assets/images/common/ajax-loader.gif" />Loading Comment...');
+            $.ajax({
+
+                type: "POST",
+                url : baseurl + 'index.php/mc_photos/form_album_user_comment',
+                data: dataString,
+
+                success: function(comment){
+                    $(comment).hide().insertBefore(thisParent).slideDown('slow');
+                    ajaxLoader.fadeOut(1000);
+                    jQuery(".content").masonry( 'reload' );
+
+//                    ajaxLoader.hide();
+               }
+            })
+            return false;
+        }
+    });
+      $('.comment-form-video form').submit(function(){
+
+        var usercomment = $(this).find("#usercomment").val();
+        var messageid = $(this).find("#messageid").val();
+        var thisParent = $(this).parent();
+        var dataString = 'usercomment='+usercomment+'&messageid='+messageid;
+    //            var dataString = 'usercomment='+usercomment;
+
+        if(usercomment == '' || messageid == ''){
+            alert('Veuillez renseigner un message !');
+        } else {
+            var ajaxLoader = $(this).parent().find(".ajax_loader");
+            
+            ajaxLoader.show();
+          //  ajaxLoader.fadeIn(500).html('<img src="'+baseurl+'assets/images/common/ajax-loader.gif" />Loading Comment...');
+            $.ajax({
+
+                type: "POST",
+                url : baseurl + 'index.php/mc_photos/form_video_user_comment',
+                data: dataString,
+
+                success: function(comment){
+                    $(comment).hide().insertBefore(thisParent).slideDown('slow');
+                    ajaxLoader.fadeOut(1000);
+                    jQuery(".content").masonry( 'reload' );
+
+//                    ajaxLoader.hide();
+               }
+            })
+            return false;
+        }
+    });
+    //like photo
+    //1 incrementer de 1
+    // select du login connecté
+    // changement classe du couer pour rose !
+  	$('.like').click(function(){
+  	    var id_photo = $(this).attr('id');
+       	var dataid = 'id_photo='+id_photo;
+            $.ajax({
+
+                type: "POST",
+                url : 'http://127.0.0.1/slyset/index.php/mc_photos/add_like',
+                data: dataid,
+                success: function(jelike){
+                
+              alert('ok executé')
+                   
+                    }
+
+           
+            })
+    });
+    $('.nolike').click(function(){
+  	    var id_photo = $(this).attr('id');
+       	var dataid = 'id_photo='+id_photo;
+            $.ajax({
+
+                type: "POST",
+                url : 'http://127.0.0.1/slyset/index.php/mc_photos/minus_like',
+                data: dataid,
+                success: function(jelike){
+                
+              alert('ok executé')
+                   
+                    }
+
+           
+            })
+    });
+    $('.like-album ').click(function(){
+  	    var fn_album = $(this).attr('id');
+       	var dataid = 'album_file_name='+fn_album;
+            $.ajax({
+            
+
+                type: "POST",
+                url : 'http://127.0.0.1/slyset/index.php/mc_photos/add_like_a',
+                data: dataid,
+                success: function(jelike){
+                
+              alert('ok executé')
+                   
+                    }
+
+           
+            })
+    });
+    $('.nolike-album').click(function(){
+  	    var file_name_album = $(this).attr('id');
+       	var dataid = 'file_name_album='+file_name_album;
+            $.ajax({
+
+                type: "POST",
+                url : 'http://127.0.0.1/slyset/index.php/mc_photos/minus_like_a',
+                data: dataid,
+                success: function(jelike){
+                
+              alert('ok executé')
+                   
+                    }
+
+           
+            })
+    });
+    $('.like-video ').click(function(){
+  	    var video_nom = $(this).attr('id');
+       	var dataid = 'video_nom='+video_nom;
+            $.ajax({
+            
+
+                type: "POST",
+                url : 'http://127.0.0.1/slyset/index.php/mc_photos/add_like_v',
+                data: dataid,
+                success: function(jelike){
+                
+              alert('ok executé')
+                   
+                    }
+
+           
+            })
+    });
+    $('.nolike-video').click(function(){
+  	    var video_nom = $(this).attr('id');
+       	var dataid = 'video_nom='+video_nom;
+            $.ajax({
+
+                type: "POST",
+                url : 'http://127.0.0.1/slyset/index.php/mc_photos/minus_like_v',
+                data: dataid,
+                success: function(jelike){
+                
+              alert('ok executé')
+                   
+                    }
+
+           
+            })
+    });
+    //assister a un concert
+     $('.participer').click(function(){
+
+    	var id_concert = $(this).attr('id');
+    	var dataid = 'id_concert='+id_concert;
+		var divid = "#"+id_concert;
+            $.ajax({
+
+                type: "POST",
+                url : 'http://127.0.0.1/slyset/index.php/mc_concerts/add_activity_concert',
+                data: dataid,
+                //afficher le bon bouton
+                success: function(dataid){
+                var newe = '<a id='+id_concert+' href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">Je n\'y vais plus</span><span class="button_right"></span></a>';
+                $('.participer').replaceWith(newe);
+				$(newe).trigger('click');
+
+				//$('<a id='+id_concert+' href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">Je n\'y vais plus</span><span class="button_right"></span></a>').click(go));
+            //   $( '<a id='+id_concert+'href="#" class="participer"><span class="button_left"></span><span  class="button_center">J\'y vais</span><span class="button_right"></span></a>' ).appendTo( "#concert_activity" );
+              
+              /*  $(this).hide();*/
+				//$('.content').append('<a id="'+id_concert+' href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">Je ny vais plus</span><span class="button_right"></span></a>');
+
+               // $('#'+id_concert+'.noparticiper').toggle();
+                   
+                    }
+
+           
+            })
+          return false;
+
+        
+    });
+    //ne plus assister a un concert
+       $('.noparticiper').click(function(){
+
+    	var id_concert = $(this).attr('id');
+    	var dataid = 'id_concert='+id_concert;
+		var divid = "#"+id_concert;
+            $.ajax({
+
+                type: "POST",
+                url : 'http://127.0.0.1/slyset/index.php/mc_concerts/delete_activity_concert',
+                data: dataid,
+                //afficher le bon bouton
+                success: function(jego){
+                
+                $('.noparticiper').replaceWith('<a id='+id_concert+' href="#" class="participer"><span class="button_left"></span><span  class="button_center">J\'y vais</span><span class="button_right"></span></a>');
+
+                   
+                    }
+
+           
+            })
+        return false
+    });
+    /*
+   $('.img_cover').live({
+        mouseenter:
+           function()
+           {
+            $(this).siblings('.edit').toggle();
+			//$(".edit").show();
+           },
+        mouseleave:
+           function()
+           {
+
+           }
+       
+		
+	})*/
+    
+
+
+});
+
+
+
+function showComment(divid) {
+  var divid = document.getElementById(divid); 
+  if(divid.style.display=='none') { 
+    divid.style.display = 'block'; 
+	jQuery(".content").masonry( 'reload' );
+
+  } else { 
+    divid.style.display = 'none';
+    jQuery(".content").masonry( 'reload' );
+
+  }
+}
+
+
+
+
+
+=======
     if($("body.personnaliser").length > 0){
         $('#colorpickerField1').ColorPicker({
             onSubmit: function(hsb, hex, rgb, el) {
@@ -416,3 +795,4 @@ function cache_photo(){
 		document.getElementById('select').getElementsByClassName('edit')[0].style.visibility="hidden";
     document.getElementById('select').getElementsByClassName('open_alb')[0].style.visibility="hidden";
 }
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d

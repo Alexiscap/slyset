@@ -61,19 +61,33 @@ class concert extends CI_Model
 	}
 	
 	
+    public function get_one_concert($id_concert)
+	{
+   		
+
+		return $this->db->select('date,titre,seconde_partie,salle,ville,prix')        				
+                        ->from ('concerts')
+                        ->join ('adresse','concerts.Adresse_id=adresse.id')
+                        ->where(array('concerts.id' => $id_concert))
+                        ->get()
+                        ->result();               
+	}
+	
+	
 	//ajouter adresse -> recuperer id adresse pour ajouter dans table concert
 	
-	public function ajout_concert_data ($ville,$pays,$code_postal,$route,$street_number,$artiste,$snd_partie,$salle,$prix,$heure,$date,$user)
+	public function ajout_concert_data ($ville,$pays,$code_postal,$route,$street_number,$artiste,$snd_partie,$salle,$prix,$heure,$date,$user,$phone,$website)
 		{
 		
-  		 $this->db->set(array('ville'=>$ville,'pays'=>$pays,'code_postal'=>$code_postal,'voie_adresse'=>$route,'numero_adresse'=>$street_number))
+  		 $this->db->set(array('ville'=>$ville,'pays'=>$pays,'code_postal'=>$code_postal,'voie_adresse'=>$route,'numero_adresse'=>$street_number,'phone_number'=>$phone,'website'=>$website))
                 		->insert($this->table_addresse);
 
     	 $last_id_addresse =  $this->db->insert_id();
 
 	
 		 $prix = !empty($prix) ? "$prix" : NULL;
-    	
+    	  $snd_partie = !empty($snd_partie) ? "$snd_partie" : NULL;
+
     	 $date_concert = $date.' '.$heure.':00';
   		
   		 $this->db->set(array('Utilisateur_id'=>$user,'titre'=>$artiste,'Adresse_id'=>$last_id_addresse,'salle'=>$salle,'seconde_partie'=>$snd_partie,'prix'=>$prix,'date'=>$date_concert))
@@ -81,22 +95,80 @@ class concert extends CI_Model
         
     }
     	     
-	public function update_concert_data ($ville,$pays,$code_postal,$route,$street_number,$artiste,$snd_partie,$salle,$prix,$heure,$date,$id_concert,$adresse_id)
+	public function update_concert_data ($ville,$pays,$code_postal,$route,$street_number,$artiste,$snd_partie,$salle,$prix,$heure,$date,$id_concert,$adresse_id,$phone,$website)
 		{
-  			 $date_concert = $date.' '.$heure.':00';
+  			 $date_concert = $date.' '.$heure;
+  			 
+  			         	
+  			 $prix = !empty($prix) ? "$prix" : NULL;
+    		 $snd_partie = !empty($snd_partie) ? "$snd_partie" : NULL;
+
 
              $data_concert =  array('titre'=>$artiste,'salle'=>$salle,'seconde_partie'=>$snd_partie,'prix'=>$prix,'date'=>$date_concert);
         
-        	 $prix = !empty($prix) ? "$prix" : NULL;
   		  	 $this->db->where('id',$id_concert)
                 ->update($this->table,$data_concert);
 		
-			 $data_adresse =  array('ville'=>$ville,'pays'=>$pays,'code_postal'=>$code_postal,'voie_adresse'=>$route,'numero_adresse'=>$street_number);
+			 $data_adresse =  array('ville'=>$ville,'pays'=>$pays,'code_postal'=>$code_postal,'voie_adresse'=>$route,'numero_adresse'=>$street_number,'phone_number'=>$phone,'website'=>$website);
          
   		  	 $this->db->where('id',$adresse_id)
                 ->update($this->table_addresse,$data_adresse);
   		
                   
 		}
+		
+	public function delete_concert_data($id_concert,$id_adresse)
+	
+	{
+	
+		$this->db->where('id', $id_concert)
+				 ->delete('concerts'); 
+		
+		$this->db->where('id', $id_adresse);
+		$this->db->delete('adresse'); 
+	}
+	
+	public function add_activity($id_concert,$uid)
+	{
+	 $this->db->set(array('Utilisateur_id'=>$uid,'Concerts_id'=>$id_concert))
+                		->insert('concerts_activite');
+                		
+    return $this->returnMarkup($id_concert);
+
+
+	}
+	
+	        
+    private function returnMarkup($id_concert)
+    {         
+   return '<a id="'.$id_concert.'" href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">Je n\'y vais plus</span><span class="button_right"></span></a>';
+                
+          /*    return  '<div class="comm">
+						<img src="'.img_url('common/del.png').'" class="del"/>
+    					<img src="'.img_url('common/avatar_comm.png').' />
+      					<p class="name_comm"> Jim Morrison</p>
+      					<p class="commentaire">'.$comment.'</p> 
+    				</div>';
+    				*/
+    }
+    
+	
+	public function delete_activity($id_concert,$uid)
+	{
+	 $data_delete_act = array('Utilisateur_id'=>$uid,'Concerts_id'=>$id_concert); 
+	 $this->db->delete('concerts_activite', $data_delete_act); 
+
+
+	}
+	
+	public function get_activity($user_id)
+	{
+	 return $this->db->select('Concerts_id')        				
+                        ->from ('concerts_activite')
+                        ->where(array('Utilisateur_id' => $user_id))
+                        ->get()
+                        ->result();
+    	
+	}
 
 }
