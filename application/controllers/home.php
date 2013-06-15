@@ -6,7 +6,11 @@ class Home extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+<<<<<<< HEAD
    //     $this->output->enable_profiler(true);
+=======
+//        $this->output->enable_profiler(true);
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
         $this->layout->ajouter_css('slyset');
 
         $this->load->helper(array('cookie', 'form'));
@@ -35,20 +39,25 @@ class Home extends CI_Controller
 
     public function homepage()
     {
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
 //        $data = $this->user_model->getAll();
 //        var_dump($data);
         
-        $datas = array();
+        $data = array();
         
 //        if($this->session->userdata('logged_in')){
 //            $user_id = $this->session->userdata('uid');
-//            $datas['uid'] = $user_id;
+//            $data['uid'] = $user_id;
 //            
 //            print_r($this->session->all_userdata());
 //            echo '<br /><br />'.$this->uri->segment(1);
 //        }
 
+<<<<<<< HEAD
         $datas['sidebar_left']      = $this->load->view('sidebars/sidebar_left', '', TRUE);
         $datas['sidebar_right']     = $this->load->view('sidebars/sidebar_right', '', TRUE);
         $datas['concert_date']      = $this->homepage->get_concert();   
@@ -91,11 +100,26 @@ class Home extends CI_Controller
             	$datas['format_date_calendar'] =  '{ Title:"Concert du '.$datas['concert_date_uniq']->date.'</br><a href='.$link.'> '.$datas['concert_date_uniq']->titre.' & '.$datas['concert_date_uniq']->seconde_partie.' </a> </br> '.$datas['concert_date_uniq']->salle.' - '.$datas['concert_date_uniq']->ville.'", Date: new Date("'.$datas['evenement'][1].'/'.substr($datas['evenement'][2],0,2).'/'.$datas['evenement'][0].'") },';
 				//print $datas['format_date_calendar'];
 			
+=======
+        $data['notification']      = $this->input->cookie('notification');
+        $data['sidebar_left']      = $this->load->view('sidebars/sidebar_left', '', TRUE);
+        $data['sidebar_right']     = $this->load->view('sidebars/sidebar_right', '', TRUE);
+        $data['articles']          = $this->article_model->liste_article('updated', 'desc');
+        $data['newbies']           = $this->user_model->getNewbies();
+        $data['concert_date']      = $this->homepage->get_concert();   
+        $data['all_date_calendar'] = "";
+        
+        foreach ($data['concert_date'] as $data['concert_date_uniq']){
+            if (isset($data['concert_date_uniq']->date)){
+                $data['evenement']            = explode('-', $data['concert_date_uniq']->date);  
+                $data['all_date_calendar']   .= 
+                $data['format_date_calendar'] =  '['.$data['evenement'][1].','.substr($data['evenement'][2],0,2).','.$data['evenement'][0].'],' ;
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
             }
         }
         
 
-        $this->layout->view('homepage', $datas);
+        $this->layout->view('homepage', $data);
     }
     
     public function _remap($method, $params = array())

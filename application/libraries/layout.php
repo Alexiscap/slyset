@@ -26,6 +26,7 @@ class Layout
         $this->var['charset'] = $this->CI->config->item('charset');
         
         $this->var['css'] = array();
+        $this->var['dynamic_css'] = array();
         $this->var['js'] = array();
     }
      
@@ -121,6 +122,16 @@ class Layout
         if(is_string($nom) AND !empty($nom) AND file_exists('./assets/css/' . $nom . '.css'))
         {
             $this->var['css'][] = css_url($nom);
+            return true;
+        }
+        return false;
+    }
+    
+    public function ajouter_dynamique_css($nom)
+    {
+        if(is_string($nom) AND !empty($nom) AND file_exists('./assets/css/' . $nom))
+        {
+            $this->var['dynamic_css'][] = dynamic_css_url($nom);
             return true;
         }
         return false;

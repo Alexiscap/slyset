@@ -7,19 +7,24 @@ class Mc_concerts extends CI_Controller
     {
         parent::__construct();
 
-        $this->user_authentication->musicien_user_validation();
+//        $this->user_authentication->musicien_user_validation();
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_css('colorbox');
 
         $this->layout->ajouter_js('concert');
         $this->layout->ajouter_js('maps_api');
       	$this->layout->ajouter_js('maps-google');
+<<<<<<< HEAD
       	$this->layout->ajouter_js('jquery.colorbox');
 
 		$this->load->model('concert');
 		
 		
 		$this->load->model(array('perso_model', 'user_model'));
+=======
+        
+        $this->load->model(array('perso_model', 'user_model'));
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
         
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
         $output = $this->perso_model->get_perso($this->user_id);
@@ -37,13 +42,18 @@ class Mc_concerts extends CI_Controller
             'sidebar_left'  => $this->load->view('sidebars/sidebar_left', '', TRUE),
             'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
         );
+<<<<<<< HEAD
 
       	
+=======
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
 
     }
   
-    public function index($user_id,$uid = NULL)
+    public function index($user_id,$uid = NULL){    
+        $uid = $this->session->userdata('uid');
 
+<<<<<<< HEAD
     {    
     $uid = $this->session->userdata('uid');
 
@@ -55,6 +65,13 @@ class Mc_concerts extends CI_Controller
     	//	{
     	  //    	show_404();
     		//}
+=======
+        if($user_id ==$uid){
+            $this->page_main($user_id,"mc_concerts",">");
+        }	else {
+            show_404();
+        }
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
     }	
     
     
@@ -73,9 +90,13 @@ class Mc_concerts extends CI_Controller
   	}	
 
   	public function page_main($user_id,$moment,$inf_sup)
+<<<<<<< HEAD
     {	
   	    	$uid = $this->session->userdata('uid');
 
+=======
+    {	      
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
       		$this->load->model('concert');
       		$this->load->helper('url');
 	  		$this->load->helper('date');
@@ -109,6 +130,7 @@ class Mc_concerts extends CI_Controller
   		   			$date['jour_texte'] = $jour_chiffre;	
   					echo $date[$test];
       			}	
+<<<<<<< HEAD
       		$datas['activity'] = $this->concert->get_activity($uid);
       		$datas['all_concert_act'] ="";
       		foreach($datas['activity'] as $datas['activite'])
@@ -117,6 +139,10 @@ class Mc_concerts extends CI_Controller
 				$datas['activite']->Concerts_id."/";
 			}
       		$this->layout->view($moment, $datas);
+=======
+ 
+      		$this->layout->view('concert/'.$moment, $datas);
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
     }
    
   	public function ajouter_concert($user_id)
@@ -149,7 +175,11 @@ class Mc_concerts extends CI_Controller
 			  if ($this->form_validation->run() == FALSE)
 					{
 
+<<<<<<< HEAD
 						$this->load->view('concert/ajouter_concert');
+=======
+						$this->layout->view('concert/ajouter_concert');
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
 						
 					}
 			  else
@@ -235,7 +265,11 @@ class Mc_concerts extends CI_Controller
 		
 					}
 		   				
+<<<<<<< HEAD
 		   				$this->load->view('concert/success-concert');
+=======
+		   				$this->layout->view('concert/mc_concerts');
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
 		   				
 						//redirect('mc_concerts','refresh');
 
@@ -269,8 +303,13 @@ class Mc_concerts extends CI_Controller
 	
 			  if ($this->form_validation->run() == FALSE)
 					{
+<<<<<<< HEAD
 						
 						$this->load->view('concert/modifier_concert',$datas);
+=======
+
+						$this->layout->view('musicien/modifier_concert');
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
 						
 					}
 			  else

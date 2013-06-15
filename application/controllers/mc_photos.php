@@ -5,6 +5,7 @@ class Mc_photos extends CI_Controller
 
     public function __construct()
     {
+<<<<<<< HEAD
       parent::__construct();
       
       $this->layout->ajouter_css('slyset');
@@ -21,6 +22,21 @@ class Mc_photos extends CI_Controller
   	  $this->load->model('photos');
         $this->load->model(array('perso_model', 'user_model'));
     $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
+=======
+        parent::__construct();
+
+        $this->layout->ajouter_css('slyset');
+
+        $this->layout->ajouter_js('jquery.imagesloaded.min');
+        $this->layout->ajouter_js('jquery.masonry.min');
+        $this->layout->ajouter_js('jquery.stapel');
+        
+        $this->load->model(array('perso_model', 'user_model'));
+      
+        $this->layout->set_id_background('photos_videos');
+        
+        $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
         $output = $this->perso_model->get_perso($this->user_id);
         
         $sub_data = array();
@@ -36,24 +52,32 @@ class Mc_photos extends CI_Controller
             'sidebar_left'  => $this->load->view('sidebars/sidebar_left', '', TRUE),
             'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
         );
+<<<<<<< HEAD
         
     $this->load->helper('form');
     $this->load->library('form_validation');
     $this->layout->set_id_background('photos_videos');
 
+=======
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
     }
    
   
     public function index()
     {
+<<<<<<< HEAD
       $this->page();
       
+=======
+        $this->page();
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
     }
   	
   	
   	
     public function page()
     {
+<<<<<<< HEAD
 
 		$datas = array();
 		$datas['user_id'] =  $this->session->userdata('uid');
@@ -89,6 +113,14 @@ class Mc_photos extends CI_Controller
 
 //doit faire passer name album en requete 2
 
+=======
+      $datas = array();
+      $datas['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
+      $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
+      
+      //$this->layout->views('3');
+      $this->layout->view('photos/mc_photos', $datas);
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
     }
 	
 	// page album

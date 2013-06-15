@@ -49,7 +49,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
+$db['default']['hostname'] = '127.0.0.1';
 $db['default']['username'] = 'slyset';
 $db['default']['password'] = 'slyset';
 $db['default']['database'] = 'preprod-slyset';

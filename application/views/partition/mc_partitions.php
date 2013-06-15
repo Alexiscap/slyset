@@ -42,6 +42,7 @@
 	</div>
 
   <div class="content">
+<<<<<<< HEAD
 	<h2>Partitions, livrets et paroles de <?php echo $this->session->userdata('login') ?></h2>
 	<?php foreach($get_doc as $doc): 
 	//if($doc->type == 2): 
@@ -60,6 +61,16 @@
 			<?php if($doc->livret_path != null): ?>
 			<p><span>> </span><a href="#">Voir le livret d'album</a></p>
 			<?php endif;?>
+=======
+	<h2>Partitions, livrets et paroles de Bob Dylan</h2>
+	<div class="a_la_une">
+		<img src="<?php echo img_url('musicien/album_top.jpg'); ?>"/>
+		<div class="infos">
+			<p class="title">Blonde on blonde</p>
+			<p class="annee_crea">1966</p>
+			<p><span>> </span><a href="#">Voir le livret d'album</a></p>
+			<p><span>> </span><a href="#">Voir les partitions</a></p>
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
 		</div>
 	</div>
 	<div class="top_partition">
@@ -81,6 +92,7 @@
 			</div>
 			<div class="titres">
 				<table>
+<<<<<<< HEAD
 				<?php 
 
 				foreach($get_morc as $morceau):
@@ -96,10 +108,18 @@
 						<?php if ($morceau->path!=null)
 						{ ?>
 						<td class="paroles"><a href="<?php echo base_url('./files/'.$this->session->userdata('uid').'/albums/'.$doc->Albums_id.'/partition/'.$morceau->path) ?>">Voir</a>
+=======
+					<tr>
+						<td class="le_titre">
+							<p> Rainy Day Women </p>
+						</td>
+						<td class="paroles"><a href="#">Voir</a>
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
 							<div class="miniat_titre">
 								<a href="#" class="edit"><span>edit</span></a>
 							</div>
 						</td>
+<<<<<<< HEAD
 						
 						<?php
 						}
@@ -107,21 +127,41 @@
 						{
 						?>
 						<td class="paroles"><a href="#"> - </a>
+=======
+						<td class="partitions">
+							Acheter
+							<div class="miniat_titre">
+								<a href="#" class="cadis"><span>cadis</span></a>
+								<a href="#" class="edit"><span>edit</span></a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="le_titre">
+							<p> Hurricane </p>
+						</td>
+						<td class="paroles"><a href="#">Voir</a>
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
 							<div class="miniat_titre">
 								<a href="#" class="edit"><span>edit</span></a>
 							</div>
 						</td>
+<<<<<<< HEAD
 						<?php
 						}
 						 ?>												<?php if ($morceau->prix!=null) { ?>
 
 						<td class="partitions">
 
+=======
+						<td class="partitions">
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
 							Acheter
 							<div class="miniat_titre">
 								<a href="#" class="cadis"><span>cadis</span></a>
 								<a href="#" class="edit"><span>edit</span></a>
 							</div>
+<<<<<<< HEAD
 							</td>
 							<?php
 							}
@@ -129,10 +169,26 @@
 							?>						<td class="partitions">
 
 							-
+=======
+						</td>
+					</tr>
+					<tr>
+						<td class="le_titre">
+							<p> I Want You </p>
+						</td>
+						<td class="paroles"><a href="#">Voir</a>
+							<div class="miniat_titre">
+								<a href="#" class="edit"><span>edit</span></a>
+							</div>
+						</td>
+						<td class="partitions">
+							Acheter
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
 							<div class="miniat_titre">
 								<a href="#" class="cadis"><span>cadis</span></a>
 								<a href="#" class="edit"><span>edit</span></a>
 							</div>
+<<<<<<< HEAD
 													</td>
 
 							<?php
@@ -144,11 +200,84 @@
 									endforeach;?>
 					
 				
+=======
+						</td>
+					</tr>
+					<tr>
+						<td class="le_titre">
+							<p> I Want You </p>
+						</td>
+						<td class="paroles"><a href="#">Voir</a>
+							<div class="miniat_titre">
+								<a href="#" class="edit"><span>edit</span></a>
+							</div>
+						</td>
+						<td class="partitions">
+							Acheter
+							<div class="miniat_titre">
+								<a href="#" class="cadis"><span>cadis</span></a>
+								<a href="#" class="edit"><span>edit</span></a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="le_titre">
+							<p> I Want You </p>
+						</td>
+						<td class="paroles"><a href="#">Voir</a>
+							<div class="miniat_titre">
+								<a href="#" class="edit"><span>edit</span></a>
+							</div>
+						</td>
+						<td class="partitions">
+							Acheter
+							<div class="miniat_titre">
+								<a href="#" class="cadis"><span>cadis</span></a>
+								<a href="#" class="edit"><span>edit</span></a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="le_titre">
+							<p> I Want You </p>
+						</td>
+						<td class="paroles"><a href="#">Voir</a>
+							<div class="miniat_titre">
+								<a href="#" class="edit"><span>edit</span></a>
+							</div>
+						</td>
+						<td class="partitions">
+							Acheter
+							<div class="miniat_titre">
+								<a href="#" class="cadis"><span>cadis</span></a>
+								<a href="#" class="edit"><span>edit</span></a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="le_titre">
+							<p> I Want You </p>
+						</td>
+						<td class="paroles"><a href="#">Voir</a>
+							<div class="miniat_titre">
+								<a href="#" class="edit"><span>edit</span></a>
+							</div>
+						</td>
+						<td class="partitions">
+							Acheter
+							<div class="miniat_titre">
+								<a href="#" class="cadis"><span>cadis</span></a>
+								<a href="#" class="edit"><span>edit</span></a>
+							</div>
+						</td>
+					</tr>
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
 				</table>
 			</div>
 		</div>
 	</div>
 	<hr />
+<<<<<<< HEAD
 
 
 
@@ -160,6 +289,8 @@
 	endforeach; ?>
 	
 	<!--
+=======
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
 	<div class="a_la_une">
 		<img src="<?php echo img_url('musicien/logo_slyset_partition.png'); ?>"/>
 		<div class="infos">
@@ -168,7 +299,11 @@
 			<p><span>> </span><a href="#">Ajouter le livret</a></p>
 		</div>
 	</div>
+<<<<<<< HEAD
 	<div class="top_partition">
+=======
+	<div class="toutes_partitions">
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
 		<div>
 			<a href="#">
 				<img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
@@ -310,7 +445,10 @@
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
  -->
+=======
+>>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
   </div>
 
   <?php if(isset($sidebar_right)) echo $sidebar_right; ?>
