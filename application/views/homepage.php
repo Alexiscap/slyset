@@ -262,7 +262,8 @@ var events = [ <?php echo $all_date_calendar ?>
 
         <div id="newbies-content">
             <?php foreach($newbies as $newbie): ?>
-                <?php // print_r($newbie); ?>
+                <?php // print_r($newbie);
+                 ?>
                 <div class="newbies-peoples">
                     <p class="newbies-picture">
                         <a href="<?php print site_url('actualite/'.$newbie->id); ?>">
