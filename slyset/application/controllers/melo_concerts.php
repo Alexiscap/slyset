@@ -61,12 +61,12 @@ class melo_concerts extends CI_Controller
             show_404();
         }
       		
-        $datas['nbr_concert_par_artiste'] = $this->concert->count_artiste_concert($user_id, $inf_sup);
+        $datas['nbr_concert_par_melo'] = $this->concert->count_artiste_concert($user_id, $inf_sup);
 
         $datas['sidebar_left']  = $this->load->view('sidebars/sidebar_left', '', TRUE);
         $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
 
-        $datas['concert_all']   = $this->concert->get_concert($datas['nbr_concert_par_artiste'], 0, $user_id, $inf_sup);
+        $datas['concert_all']   = $this->concert->get_concert($datas['nbr_concert_par_melo'], 0, $user_id, $inf_sup);
    
         function get_date($date_concert, $test)
         {
@@ -84,7 +84,17 @@ class melo_concerts extends CI_Controller
             echo $date[$test];
         }	
  
-        $this->layout->view('concert/'.$moment, $datas);
+ 		
+      		$datas['activity'] = $this->concert->get_activity($user_id);
+      		$datas['all_concert_act'] ="";
+      		foreach($datas['activity'] as $datas['activite'])
+      		{
+      		  	$datas['all_concert_act'] .=
+				$datas['activite']->Concerts_id."/";
+			}
+ 
+ 
+        $this->layout->view($moment, $datas);
     }
 
   

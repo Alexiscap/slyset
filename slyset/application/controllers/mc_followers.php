@@ -38,6 +38,12 @@ class Mc_followers extends CI_Controller
       $datas['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
       $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
       $datas['all_follower'] = $this->follower->get_all_follower_user($user_id);
+      $ifollow = $this->follower->get_abonnement($user_id);
+       $datas['allifollow'] = "";
+      foreach($ifollow as $allmy);
+      {
+      $datas['allifollow'] .=$allmy->Utilisateur_id.',';
+      }
       //$this->layout->views('3');
       $this->layout->view('follower/mc_followers', $datas);
     }
@@ -50,6 +56,12 @@ class Mc_followers extends CI_Controller
       $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
       $datas['all_follower'] = $this->follower->get_follower_bytype($user_id,2);
       //$this->layout->views('3');
+        $ifollow = $this->follower->get_abonnement($user_id);
+       $datas['allifollow'] = "";
+      foreach($ifollow as $allmy);
+      {
+      $datas['allifollow'] .=$allmy->Utilisateur_id.',';
+      }
       $this->layout->view('follower/musicien', $datas);
     	
     	

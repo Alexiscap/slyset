@@ -1,34 +1,68 @@
 
+$( document ).ready(function() {
 
- function hover()
- {
-document.getElementsByClassName('css_jour_evenement')
-}
-             
-             
-function testaffichage(date)
-{  
-                var evenement = false ;
-              
-                if (joursEvenement != null) {
-                    for (i = 0; i < joursEvenement.length; i++) {
-                        if (date.getMonth() == joursEvenement[i][0] - 1 && date.getDate() == joursEvenement[i][1] && date.getFullYear() == joursEvenement[i][2]) {
-                            evenement = true;
-                        }
-                    }
-                }  
-                if (evenement) return [true, 'css_jour_evenement'] ;
-                else return [true, ''] ;
+$('#datepicker').datepicker({ 
+    inline: true,  
+    showOtherMonths: true,  
+    dayNamesMin: ['', '', '', '', '', '', ''], 
+    beforeShowDay: function test (date) {
+    
+        var result = [true, '', null];
+        var matching = $.grep(events, function(event) {
+            return event.Date.valueOf() === date.valueOf();
+        });
+        
+        if (matching.length) {
+            result = [true, 'css_jour_evenement', null];
+        }
+        return result;
+    },
+    onSelect: function select (dateText) {
+        var date,
+            selectedDate = new Date(dateText),
+            i = 0,
+            event = null;
+        
+        while (i < events.length && !event) {
+            date = events[i].Date;
+
+            if (selectedDate.valueOf() === date.valueOf()) {
+                event = events[i];
             }
-             
+            i++;
+        }
+        if (event) {
+            document.getElementById('calendar_alert').innerHTML = event.Title;
 
-     
-        $('#datepicker').datepicker({  
+  if(document.getElementById('calendar_alert').style.display =='none') { 
+      $('#calendar_alert').fadeIn(200)
 
-            inline: true,  
-            showOtherMonths: true,  
-            dayNamesMin: ['', '', '', '', '', '', ''], 
-             beforeShowDay: testaffichage, 
+  } else { 
+  
+    document.getElementById('calendar_alert').style.display  = 'none'; 
 
-        });  
-         
+  }
+  
+
+        	//document.getElementById('calendar_alert').style.display = "block";
+            //alert(event.Title);
+        }
+    }
+    
+});
+ 
+ 
+ $('body').click(function()
+ { 
+
+  if(document.getElementById('calendar_alert').style.display =='block') { 
+   $('#calendar_alert').fadeOut(200)
+  } else { 
+    document.getElementById('calendar_alert').style.display  = 'none'; 
+  }
+ }
+ 
+ 
+ 
+ )
+   });

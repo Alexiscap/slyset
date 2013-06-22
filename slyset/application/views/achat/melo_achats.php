@@ -8,7 +8,7 @@
       <li><a href="#">Photos & Vidéos</a></li>
     </ul>
   </div>
-
+<?php var_dump($cmd);?>
   <div id="cover">
     <div id="infos-cover">
       <h2>Bob Dylan</h2>
@@ -37,9 +37,9 @@
 	<div class="panier">
 		<div class="descri_panier">
 			<span class="nom_pl">Mon panier</span>
-			<span class="detail_pl">3 partitions</span>
-			<span class="detail_pl">3 albums</span>
-			<span class="detail_pl">12 chansons</span>
+			<span class="detail_pl"><?php if (isset($total_document_panier)){ if ($total_document_panier==1){ echo $total_document_panier.' partition';} if  ($total_document_panier>1){ echo $total_document_panier.' partitions';}} else{echo '0 partition';}   ?></span>
+			<span class="detail_pl"><?php if (isset($total_album_panier)){ if ($total_album_panier==1){ echo $total_album_panier.' album';} if  ($total_album_panier>1){ echo $total_album_panier.' albums';}} else{echo '0 album';}   ?></span>
+			<span class="detail_pl"><?php if(isset($total_morceaux_panier)){ if ($total_morceaux_panier==1){ echo $total_morceaux_panier.' chanson';} if  ($total_morceaux_panier>1){ echo $total_morceaux_panier.' chansons';}} else{echo '0 chanson';} ?> </span>
 			<img src="<?php echo img_url('common/caddis_achat.png'); ?>" class="detail_pl"/>
 		</div>
 		<hr />
@@ -57,56 +57,23 @@
 		</div>
 		<div class="titres">
 			<table>
+				<?php foreach ($cmd as $commande):
+					if($commande->status=="P"): ?>
+					
 				<tr>
 					<td class="check"><input type="checkbox"></td>
 					<td class="le_titre">
 						<img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
-						Rainy Day Women
+						<?php echo $commande->nom ?>
 					</td>
-					<td class="artiste">Bob Dylan</td>
-					<td class="type">Partition</td>
-					<td class="prix">2,00€</td>
+					<td class="artiste"><?php echo $commande->user_login ?></td>
+					<td class="type"><?php echo $commande->type ?></td>
+					<td class="prix"><?php echo $commande->prix ?> €</td>
 				</tr>
-				<tr>
-					<td class="check"><input type="checkbox"></td>
-					<td class="le_titre">
-						<img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
-						Rainy Day Women
-					</td>
-					<td class="artiste">Bob Dylan</td>
-					<td class="type">Partition</td>
-					<td class="prix">2,00€</td>
-				</tr>
-				<tr>
-					<td class="check"><input type="checkbox"></td>
-					<td class="le_titre">
-						<img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
-						Rainy Day Women
-					</td>
-					<td class="artiste">Bob Dylan</td>
-					<td class="type">Partition</td>
-					<td class="prix">2,00€</td>
-				</tr>
-				<tr>
-					<td class="check"><input type="checkbox"></td>
-					<td class="le_titre">
-						<img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
-						Rainy Day Women
-					</td>
-					<td class="artiste">Bob Dylan</td>
-					<td class="type">Album</td>
-					<td class="prix">2,00€</td>
-				</tr>
-				<tr>
-					<td class="check"><input type="checkbox"></td>
-					<td class="le_titre">
-						<img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
-						Rainy Day Women
-					</td>
-					<td class="artiste">Bob Dylan</td>
-					<td class="type">Morceau</td>
-					<td class="prix">2,00€</td>
-				</tr>
+	
+				<?php 
+					endif;
+				endforeach;?>
 			</table>
 			<div class="clear"></div>
 		</div>
@@ -115,13 +82,14 @@
 			<input type="button" value="Paiement sécurisé" class="cadis_panier">
 			<input type="button" value="Supprimer" class="bt_supp_playlist">
 	</div>
+	
 	<div class="clear"></div>
 	<div class="historique">
 		<div class="descri_historique">
 			<span class="nom_pl">Historique d'achats</span>
-			<span class="detail_pl">3 partitions</span>
-			<span class="detail_pl">3 albums</span>
-			<span class="detail_pl">12 chansons</span>
+			<span class="detail_pl"><?php if (isset($total_document_history)){ if ($total_document_history==1){ echo $total_document_history.' partition';} if  ($total_document_history>1){ echo $total_document_history.' partitions';}} else{echo '0 partition';}   ?></span>
+			<span class="detail_pl"><?php if (isset($total_album_history)){ if ($total_album_history==1){ echo $total_album_history.' album';} if  ($total_album_history>1){ echo $total_album_history.' albums';}} else{echo '0 album';}   ?></span>
+			<span class="detail_pl"><?php if(isset($total_morceaux_history)){ if ($total_morceaux_history==1){ echo $total_morceaux_history.' chanson';} if  ($total_morceaux_history>1){ echo $total_morceaux_history.' chansons';}} else{echo '0 chanson';} ?> </span>
 			<img src="<?php echo img_url('common/sac_historique.png'); ?>" class="detail_pl"/>
 		</div>
 		<hr />
@@ -139,66 +107,24 @@
 		</div>
 		<div class="titres">
 			<table>
+			<?php foreach ($cmd as $commande):
+					if($commande->status=="V"): ?>
+					
 				<tr>
 					<td class="check"><input type="checkbox"></td>
 					<td class="le_titre">
 						<img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
-						Rainy Day Women
+						<?php echo $commande->nom ?>
 					</td>
-					<td class="artiste">Bob Dylan</td>
-					<td class="type">Partition</td>
+					<td class="artiste"><?php echo $commande->user_login ?></td>
+					<td class="type"><?php echo $commande->type ?></td>
 					<td class="prix"></td>
 				</tr>
-				<tr>
-					<td class="check"><input type="checkbox"></td>
-					<td class="le_titre">
-						<img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
-						Rainy Day Women
-					</td>
-					<td class="artiste">Bob Dylan</td>
-					<td class="type">Partition</td>
-					<td class="prix"></td>
-				</tr>
-				<tr>
-					<td class="check"><input type="checkbox"></td>
-					<td class="le_titre">
-						<img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
-						Rainy Day Women
-					</td>
-					<td class="artiste">Bob Dylan</td>
-					<td class="type">Partition</td>
-					<td class="prix"></td>
-				</tr>
-				<tr>
-					<td class="check"><input type="checkbox"></td>
-					<td class="le_titre">
-						<img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
-						Rainy Day Women
-					</td>
-					<td class="artiste">Bob Dylan</td>
-					<td class="type">Partition</td>
-					<td class="prix"></td>
-				</tr>
-				<tr>
-					<td class="check"><input type="checkbox"></td>
-					<td class="le_titre">
-						<img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
-						Rainy Day Women
-					</td>
-					<td class="artiste">Bob Dylan</td>
-					<td class="type">Partition</td>
-					<td class="prix"></td>
-				</tr>
-				<tr>
-					<td class="check"><input type="checkbox"></td>
-					<td class="le_titre">
-						<img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
-						Rainy Day Women
-					</td>
-					<td class="artiste">Bob Dylan</td>
-					<td class="type">Partition</td>
-					<td class="prix"></td>
-				</tr>
+	
+				<?php 
+					endif;
+				endforeach;?>
+			
 			</table>
 			<div class="clear"></div>
 		</div>

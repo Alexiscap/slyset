@@ -17,7 +17,7 @@ class Mc_concerts extends CI_Controller
         $this->layout->ajouter_js('jquery.colorbox');
 		$this->load->model('concert');
 
-        $this->load->model(array('perso_model', 'user_model'));
+        $this->load->model(array('perso_model', 'user_model','concert'));
         
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
         $output = $this->perso_model->get_perso($this->user_id);
@@ -112,7 +112,7 @@ class Mc_concerts extends CI_Controller
 				$datas['activite']->Concerts_id."/";
 			}
  
-      		$this->layout->view('concert/'.$moment, $datas);
+      		$this->layout->view($moment, $datas);
     }
   
   

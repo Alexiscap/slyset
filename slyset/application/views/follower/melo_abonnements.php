@@ -49,7 +49,7 @@
 	foreach($all_follower as $follower): ?>
 	<div class="follower">
 		<div class="photo_follow">
-					<img src="<?php echo './files/'.$follower->Utilisateur_id ?>" />
+					<img src="<?php echo base_url('/files/profiles/'.$follower->cover) ?>" />
 
 		</div>
 		<div class="description">

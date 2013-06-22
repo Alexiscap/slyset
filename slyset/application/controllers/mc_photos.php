@@ -42,20 +42,19 @@ class Mc_photos extends CI_Controller
         );
     }
   
-    public function index()
+    public function index($user_id)
     {
-        $this->page();
+        $this->page($user_id);
     }
   
-     public function page()
+     public function page($user_id)
     {
-
 		$datas = array();
 		$datas['user_id'] =  $this->session->userdata('uid');
 		$datas['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
 		$datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
      // $datas['all_media_user_result'] = $this->photos->get_media_user(30);
-        $datas['all_media_user_result'] = $this->photos->liste_photos();
+        $datas['all_media_user_result'] = $this->photos->liste_photos($user_id);
         $datas['commentaires'] = $this->photos->liste_comments();
         $datas['commentaires_albums'] = $this->photos->liste_comments_album();
         $datas['commentaires_video'] = $this->photos->liste_comments_video();
@@ -63,7 +62,7 @@ class Mc_photos extends CI_Controller
         $datas['all_photos'] = $this->photos->all_photos();
 		$datas['all_photos_albums'] = $this->photos->all_photos_album();
 	//	$datas['all_video_user'] = $this->photos->get_video($datas['user_id']) ;
-        $datas['like_photo'] = $this->photos->get_like_user($datas['user_id']);
+        $datas['like_photo'] = $this->photos->get_like_user($user_id);
       		$datas['all_photo_like'] ="";
       					$datas['all_album_like'] ="";
       					$datas['all_video_like'] ="";
@@ -400,6 +399,7 @@ class Mc_photos extends CI_Controller
 	    $id_photo = $this->input->post('id_photo');
 		$id_user = $this->session->userdata('uid');
         echo $this->photos->delete_like($id_photo,$id_user);
+        
 	}
 	
 	public function minus_like_a()

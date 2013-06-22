@@ -653,7 +653,7 @@ $(document).ready(function(){
             })
     });
     //assister a un concert
-     $('.participer').click(function(){
+    $('.participer').click(function(){
 
     	var id_concert = $(this).attr('id');
     	var dataid = 'id_concert='+id_concert;
@@ -664,19 +664,11 @@ $(document).ready(function(){
                 url : 'http://127.0.0.1/slyset/index.php/mc_concerts/add_activity_concert',
                 data: dataid,
                 //afficher le bon bouton
-                success: function(dataid){
+                success: function(){
+                alert('ee');
                 var newe = '<a id='+id_concert+' href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">Je n\'y vais plus</span><span class="button_right"></span></a>';
                 $('.participer').replaceWith(newe);
-				$(newe).trigger('click');
-
-				//$('<a id='+id_concert+' href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">Je n\'y vais plus</span><span class="button_right"></span></a>').click(go));
-            //   $( '<a id='+id_concert+'href="#" class="participer"><span class="button_left"></span><span  class="button_center">J\'y vais</span><span class="button_right"></span></a>' ).appendTo( "#concert_activity" );
-              
-              /*  $(this).hide();*/
-				//$('.content').append('<a id="'+id_concert+' href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">Je ny vais plus</span><span class="button_right"></span></a>');
-
-               // $('#'+id_concert+'.noparticiper').toggle();
-                   
+		
                     }
 
            
@@ -686,7 +678,7 @@ $(document).ready(function(){
         
     });
     //ne plus assister a un concert
-       $('.noparticiper').click(function(){
+        $('.noparticiper').click(function(){
 
     	var id_concert = $(this).attr('id');
     	var dataid = 'id_concert='+id_concert;
@@ -699,7 +691,7 @@ $(document).ready(function(){
                 //afficher le bon bouton
                 success: function(jego){
                 
-                $('.noparticiper').replaceWith('<a id='+id_concert+' href="#" class="participer"><span class="button_left"></span><span  class="button_center">J\'y vais</span><span class="button_right"></span></a>');
+                $('#'+id_concert+'.noparticiper').replaceWith('<a id='+id_concert+' href="#" class="participer"><span class="button_left"></span><span  class="button_center">J\'y vais</span><span class="button_right"></span></a>');
 
                    
                     }
@@ -708,22 +700,46 @@ $(document).ready(function(){
             })
         return false
     });
-    /*
-   $('.img_cover').live({
-        mouseenter:
-           function()
-           {
-            $(this).siblings('.edit').toggle();
-			//$(".edit").show();
-           },
-        mouseleave:
-           function()
-           {
 
-           }
-       
-		
-	})*/
-    
+    $('.top').click(function(){
+   		var id_wall = $(this).attr('id');
+    	var data_id_wall = 'id_wall='+id_wall;
+    	
+    	$.ajax({
+    		type: "POST",
+            url : 'http://127.0.0.1/slyset/index.php/melo_wall/delete_from_wall',
+            data: data_id_wall,
+                success: function(){
+        	$('#'+id_wall).slideUp();
+    }
+    	});
 });
+
+	var one = '<a href="#" class="participer"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>';
+var two ='<div class="bouton" id="suivre"><a href="#" class="participer"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a></div>';
+	$('.bouton #suivre').hover(function(){$(this).replaceWith(one).show()},
+	function(){$(this).replaceWith(two).show()})
+
+
+	
+
+});
+
+
+function showComment(divid) {
+  var divid = document.getElementById(divid); 
+  if(divid.style.display=='none') { 
+    divid.style.display = 'block'; 
+	jQuery(".content").masonry( 'reload' );
+
+  } else { 
+    divid.style.display = 'none';
+    jQuery(".content").masonry( 'reload' );
+
+  }
+}
+
+
+
+
 

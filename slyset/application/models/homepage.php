@@ -10,7 +10,7 @@ class homepage extends CI_Model
         return $this->db->select('date,titre,salle,Utilisateur_id,salle,ville,concerts.id,seconde_partie')
                         ->from($this->table)
                         ->join ('adresse','concerts.Adresse_id=adresse.id')
-                        ->group_by('date')
+                       // ->group_by('date')
                         ->get()
                         ->result();
     }

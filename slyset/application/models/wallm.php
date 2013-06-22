@@ -30,12 +30,12 @@ class wallm extends CI_Model
                         ->result(); 
 	}
 	
-	public function get_entities_id_mu($list_id)
+	public function get_entities_id($list_id,$user_id)
 	{
 	       //  $this->db->join('photos as b','true');
 	if($list_id!=null)
 	{
-$sql_mu = '(SELECT wall_melo_component.type,wall_melo_component.date,photos_id,photos.nom,photos.file_name,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login, 1 as product
+$sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,photos_id as idproduit,photos.nom AS main_nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser, 1 as product
 				FROM wall_melo_component
 				JOIN photos
 						ON photos.id = wall_melo_component.Photos_id
@@ -43,36 +43,84 @@ $sql_mu = '(SELECT wall_melo_component.type,wall_melo_component.date,photos_id,p
 						ON utilisateur.id = photos.Utilisateur_id
 					WHERE wall_melo_component.Utilisateur_id 	
 						IN ('.$list_id.') 
-					AND wall_melo_component.type = "MU")';
-			return $this->db->query($sql_mu)
-					->result();
-	}
-	}
-	
-		
-	public function get_entities_id_me($listforin)
-	{
-		if($listforin!=null)
-	{
-	$sql = '(SELECT wall_melo_component.type,wall_melo_component.date,photos_id,photos.nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login, 1 as product
-				FROM wall_melo_component
-				JOIN photos
-						ON photos.id = wall_melo_component.Photos_id
-				JOIN utilisateur
-						ON utilisateur.id = photos.Utilisateur_id
-					WHERE wall_melo_component.Utilisateur_id 	
-						IN ('.$listforin.') 
-					AND wall_melo_component.type = "ME")
+					AND wall_melo_component.type = "MU")			
 			UNION
-			(SELECT wall_melo_component.type,wall_melo_component.date,videos_id,videos.description,videos.nom,videos.Utilisateur_id,utilisateur.thumb,utilisateur.login, 2 as product
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,videos_id,videos.description,videos.nom,videos.Utilisateur_id,utilisateur.thumb,utilisateur.login,"null","null" ,"null", 2 as product
 				FROM wall_melo_component
 				JOIN videos
 						ON videos.id = wall_melo_component.Videos_id
 				JOIN utilisateur
 						ON utilisateur.id = videos.Utilisateur_id
 					WHERE wall_melo_component.Utilisateur_id 	
-						IN ('.$listforin.') 
+						IN ('.$list_id.') 
+					AND wall_melo_component.type = "MU")
+			UNION
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,concerts_id,concerts.titre,concerts.seconde_partie,utilisateur.id,Utilisateur.thumb,utilisateur.login,adresse.ville,concerts.salle,"null", 3 as product
+				FROM wall_melo_component
+				JOIN concerts
+						ON concerts.id = wall_melo_component.concerts_id
+				JOIN adresse
+						ON adresse.id = concerts.Adresse_id
+				JOIN Utilisateur
+						ON Utilisateur.id = concerts.Utilisateur_id
+					WHERE wall_melo_component.Utilisateur_id 	
+						IN ('.$list_id.') 
+					AND wall_melo_component.type = "MU")
+			UNION
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,message_id,wall.markup_message,"null",utilisateur.id,utilisateur.thumb,utilisateur.login,"null","null",wall.wallto_utilisateur_id,  4 as product
+				FROM wall_melo_component
+				JOIN wall
+						ON wall.id = wall_melo_component.message_id
+				JOIN Utilisateur
+						ON Utilisateur.id = wall.wallto_utilisateur_id
+					WHERE wall_melo_component.Utilisateur_id 	
+						IN ('.$list_id.') 
+					AND wall_melo_component.type = "MU")
+			UNION
+			
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,message_id,wall.markup_message,"null",utilisateur.id,utilisateur.thumb,utilisateur.login,"null","null",wall.wallto_utilisateur_id,  4 as product
+				FROM wall_melo_component
+				JOIN wall
+						ON wall.id = wall_melo_component.message_id
+				JOIN Utilisateur
+						ON Utilisateur.id = wall.wallto_utilisateur_id
+					WHERE wall_melo_component.Utilisateur_id 	
+						IN ('.$user_id.') 
 					AND wall_melo_component.type = "ME")
+			
+			UNION 
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,photos_id,photos.nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login,"null","null","null", 1 as product
+				FROM wall_melo_component
+				JOIN photos
+						ON photos.id = wall_melo_component.Photos_id
+				JOIN utilisateur
+						ON utilisateur.id = photos.Utilisateur_id
+					WHERE wall_melo_component.Utilisateur_id = '.$user_id.'
+					AND wall_melo_component.type = "ME")
+			UNION
+
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,videos_id,videos.description,videos.nom,videos.Utilisateur_id,utilisateur.thumb,utilisateur.login,"null","null","null",  2 as product
+				FROM wall_melo_component
+				JOIN videos
+						ON videos.id = wall_melo_component.Videos_id
+				JOIN utilisateur
+						ON utilisateur.id = videos.Utilisateur_id
+					WHERE wall_melo_component.Utilisateur_id= '.$user_id.'
+					AND wall_melo_component.type = "ME")
+					
+			UNION
+
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,concerts_id,concerts.titre,concerts.seconde_partie,concerts.Utilisateur_id,Utilisateur.thumb,Utilisateur.login,adresse.ville,concerts.salle,"null" ,3 as product
+				FROM wall_melo_component
+				JOIN concerts
+						ON concerts.id = wall_melo_component.concerts_id
+				JOIN adresse
+						ON adresse.id = concerts.Adresse_id
+				JOIN utilisateur
+						ON concerts.Utilisateur_id = utilisateur.id
+					WHERE wall_melo_component.Utilisateur_id= '.$user_id.'
+					AND wall_melo_component.type = "ME")
+			ORDER BY date DESC
 				';/*	
 				UNION
 			(SELECT morceaux_id,morceaux.nom,3
@@ -91,7 +139,7 @@ $sql_mu = '(SELECT wall_melo_component.type,wall_melo_component.date,photos_id,p
 						IN ('.$listforin.') 
 					AND type = "MU")
 			';*/
-	return $this->db->query($sql)
+	return $this->db->query($sql_mu)
 					->result();
    		} 			
    		 			/*$this->db->select('*')        				
@@ -103,8 +151,32 @@ $sql_mu = '(SELECT wall_melo_component.type,wall_melo_component.date,photos_id,p
                         ->result(); 
             */
 	}
+	
+	public function difference($list_id,$user_id)
+	{
+	$sql_diff ='SELECT id FROM wall_melo_component WHERE Utilisateur_id IN ('.$list_id.') AND type ="MU" OR (Utilisateur_id = '.$user_id.' AND type="ME")';
+	return $this->db->query($sql_diff)
+					->result();
+					
+	
+	}
+	
+	
+	public function get_new_item($id_component)
+		{
+		$sql_new_item = 'SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date
+				FROM wall_melo_component
+				JOIN photos
+						ON photos.id = wall_melo_component.Photos_id
+				JOIN utilisateur
+						ON utilisateur.id = photos.Utilisateur_id
+					WHERE wall_melo_component.id = '.$id_component;	
+		return $this->db->query($sql_new_item)
+					->result();	
+		}
   /*
   
+  	
    
     public function get_album($user_id)
     {
@@ -117,5 +189,13 @@ $sql_mu = '(SELECT wall_melo_component.type,wall_melo_component.date,photos_id,p
 
     }
   */
+  
+  public function delete_activity_wall($id)
+  {
+  $this->db->delete('wall_melo_component', array('id' => $id)); 
+
+  
+  }
+  
 }
   

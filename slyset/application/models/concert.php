@@ -60,6 +60,17 @@ class concert extends CI_Model
                         ->result();               
 	}
 	
+	  public function get_one_concert($id_concert)
+	{
+   		
+
+		return $this->db->select('date,titre,seconde_partie,salle,ville,prix')        				
+                        ->from ('concerts')
+                        ->join ('adresse','concerts.Adresse_id=adresse.id')
+                        ->where(array('concerts.id' => $id_concert))
+                        ->get()
+                        ->result();               
+	}
 	
 	//ajouter adresse -> recuperer id adresse pour ajouter dans table concert
 	
@@ -79,10 +90,16 @@ class concert extends CI_Model
   		
   		 $this->db->set(array('Utilisateur_id'=>$user,'titre'=>$artiste,'Adresse_id'=>$last_id_addresse,'salle'=>$salle,'seconde_partie'=>$snd_partie,'prix'=>$prix,'date'=>$date_concert))
                 ->insert($this->table);
+          
+         	 $last_id_concert =  $this->db->insert_id(); 
+         	       
+           $insert_community = array('Utilisateur_id'=>$user,'concerts_id'=>$last_id_concert,'type'=>'MU'); 
+	 	$this->db->insert('wall_melo_component', $insert_community); 
+	
         
     }
     	     
-	public function update_concert_data ($ville,$pays,$code_postal,$route,$street_number,$artiste,$snd_partie,$salle,$prix,$heure,$date,$id_concert,$adresse_id)
+		public function update_concert_data ($ville,$pays,$code_postal,$route,$street_number,$artiste,$snd_partie,$salle,$prix,$heure,$date,$id_concert,$adresse_id,$phone,$website)
 		{
   			 $date_concert = $date.' '.$heure;
   			 
@@ -119,7 +136,9 @@ class concert extends CI_Model
 	{
 	 $this->db->set(array('Utilisateur_id'=>$uid,'Concerts_id'=>$id_concert))
                 		->insert('concerts_activite');
-                		
+     
+      $this->db->set(array('Utilisateur_id'=>$uid,'concerts_id'=>$id_concert,'type'=>"ME"))
+                		->insert('wall_melo_component');           		
     return $this->returnMarkup($id_concert);
 
 
@@ -144,7 +163,9 @@ class concert extends CI_Model
 	{
 	 $data_delete_act = array('Utilisateur_id'=>$uid,'Concerts_id'=>$id_concert); 
 	 $this->db->delete('concerts_activite', $data_delete_act); 
-
+	
+	$data_delete_acte = array('Utilisateur_id'=>$uid,'concerts_id'=>$id_concert,'type'=>"ME"); 
+	 $this->db->delete('wall_melo_component', $data_delete_acte); 
 
 	}
 	

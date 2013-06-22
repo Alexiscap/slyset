@@ -54,7 +54,7 @@
 			?>		
     		<div onclick="displayHover" class="photo box col1">
     		<!--  edition : HOVER *******************-->
-  				 	<div style="display:none" class="edit">
+  				 	<div class="edit">
       					<a href="<?php echo base_url('/index.php/mc_photos/update_photo/'.$user_id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
      					 <!--  edition : SUPPRESSION *******************-->
 

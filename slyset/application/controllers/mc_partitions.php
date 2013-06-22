@@ -51,9 +51,9 @@ class Mc_partitions extends CI_Controller
       $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
       
       $datas['get_doc'] = $this->load->document->get_all_morceau_doc($user_id);
-      var_dump($datas['get_doc']);
+    //  var_dump($datas['get_doc']);
       $datas['get_morc'] = $this->load->document-> get_morceau_album();
-            var_dump($datas['get_morc']);
+        //    var_dump($datas['get_morc']);
 
       $this->layout->view('partition/mc_partitions', $datas);
     }
