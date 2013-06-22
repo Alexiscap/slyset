@@ -1,0 +1,1132 @@
+/* --------- GENERAL CI  --------- */
+.checkbox-style input[type="checkbox"]:checked + label{  }
+input[type='file'], input[type='button'], input[type='submit']{ cursor:pointer; }
+
+#codeigniter_profiler{ overflow:scroll; }
+
+/* --------- FIN DE GENERAL CI  --------- */
+
+
+body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; background:#f9f9f9; z-index:2; }
+#page{ margin:0 auto; width:980px; }
+#contentAll{ margin:0 0 0 20px; width:770px; float:left; }
+#breadcrumbs{ margin:0 0 0 12px; width:100%; height:23px; float:left; clear:both; }
+#breadcrumbs ul{ display:inline-block; }
+#breadcrumbs li{ display:inline-block; line-height:20px; }
+#breadcrumbs li a{ text-decoration:none; font-size:10px; color:#858585; }
+#breadcrumbs li a:hover{ text-decoration:underline; color:#2ab395; }
+#breadcrumbs li:after{ margin:0px 6px; width:9px; height:23px; display:inline-block; content:''; vertical-align:middle; background:url("../images/common/breadcrumbs_arrow.png") no-repeat; }
+.content{ margin:0 0 10px 0; padding:0; width:541px; background:#e6e6e6; float:left; clear:both; }
+.bts_noir{float:left; margin-left:15px;}
+.bts_noir_partition{float:left; margin-left:47px;}
+.bts_noir_photo{float:left; margin-left:5px;}
+.bt_noir_concert{float: right;margin-right: 230px;}
+.bt_noir{ height:30px; float:left; margin:5px 0 0 8px; }
+.bt_noir .bt_left{ width:10px; height:30px; float:left; background:url("../images/common/bt_noir.png") no-repeat 0px -10px; }
+.bt_noir .bt_middle{ height:16px; float:left; background:url("../images/common/bt_noir.png") no-repeat 0px -60px; font-size:12px; color:white; padding:7px 0; }
+.bt_noir .bt_right{ width:9px; height:30px; float:left; background:url("../images/common/bt_noir.png") no-repeat -391px -107px; }
+
+
+/* --------- MUSICIEN - ACTUS  --------- */
+#cover{ width:770px; height:176px; position:relative; border-top:1px solid #d9dadb; background-repeat:no-repeat; float:left; clear:both; }
+#infos-cover{ margin:0; padding:0; width:100%; height:68px; position:absolute; bottom:0; background:rgba(255, 255, 255, 0.3); }
+#infos-cover h2{ margin:5px 0 0 0; padding:0; position:relative; right:240px; font-size:30px; color:#ffffff; float:right; }
+#infos-cover a{ margin:-2px 0 0 10px; padding:0; font-family:Arial, "Trebuchet MS"; font-size:14px; text-decoration:none; color:#ffffff; float:left; clear:both; }
+#infos-cover a .button_left{ display:block; width:22px; height:30px; background:url("../images/common/sprite_btn_suivre.png") no-repeat 0 -60px; float:left; }
+#infos-cover a .button_center{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_suivre.png") repeat-x 0 -30px; float:left; }
+#infos-cover a .button_right{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_suivre.png") no-repeat -77px 0; float:left; }
+
+#stats-cover{ margin:0 0 10px 0; padding:0 21px; width:180px; height:33px; -webkit-border-bottom-right-radius:10px; -webkit-border-radius-bottom-left-radius:10px; -moz-border-radius-bottomright:10px; -moz-border-radius-bottomleft:10px; border-bottom-right-radius:10px; border-bottom-left-radius:10px; background:#e6e6e6; float:left; }
+#stats-cover .stats_cover_block:first-child{ margin:4px 0 0 0px; }
+#stats-cover .stats_cover_block{ margin:4px 0 0 18px; height:29px; float:left; }
+#stats-cover .stats_number{ margin:1px 0 0 0; font-weight:bold; font-size:14px; color:#2ab395; float:left; }
+#stats-cover .stats_title{ font-size:10px; font-weight:bold; text-transform:uppercase; color:#3f3f3f; float:left; clear:both; }
+
+#stats-cover_melo{ padding:0 21px; width:201px; height:33px; -webkit-border-bottom-right-radius:10px; -webkit-border-radius-bottom-left-radius:10px; -moz-border-radius-bottomright:10px; -moz-border-radius-bottomleft:10px; border-bottom-right-radius:10px; border-bottom-left-radius:10px; background:#e6e6e6; float:left; }
+#stats-cover_melo .stats_cover_block:first-child{ margin:4px 0 0 0px; }
+#stats-cover_melo .stats_cover_block{ margin:4px 0 0 18px; height:29px; float:left; }
+#stats-cover_melo .stats_number{ margin:1px 0 0 0; font-weight:bold; font-size:14px; color:#2ab395; float:left; }
+#stats-cover_melo .stats_title{ font-size:10px; font-weight:bold; text-transform:uppercase; color:#3f3f3f; float:left; clear:both; }
+
+.actus_post{ margin:12px 0 4px 0; width:540px; /*height:134px;*/ background:#e6e6e6; float:left; clear:both; }
+.actus_post form{ clear:both; }
+.actus_post .upload-file-container.container-photo{ margin:0 0 0 17px; width:125px; background:url('../images/musicien/sprite_button_file_photo.png') 0 0 no-repeat; float:left; clear:both; }
+.actus_post .upload-file-container.container-photo input{ width:125px; }
+.upload_photo_name_file{ display:inline-block; height:30px; line-height:30px; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; color:#737578; float:left; }
+.actus_post_links{ margin:12px 0 0 7px; float:left; }
+.actus_post_links a{ margin:0 0 0 10px; padding:0 4px; height:20px; line-height:20px; display:inline-block; font-size:13px; font-weight:bold; text-decoration:none; color:#737578; background:transparent; }
+.actus_post_links a:hover, .actus_post_links a:active, .actus_post_links a.active{ height:20px; display:inline-block; text-decoration:none; background:#cccccc; }
+.actus_post textarea{ margin:2px 17px 4px 17px; padding:2px 5px; width:494px; height:54px; resize:none; font-family:"Trebuchet MS", Arial, sans-serif; color:#535353; float:left; clear:both; }
+.actus_post #comments-link-video input[type="text"]{ margin:0 0 0 17px; padding:0 5px; width:400px; height:26px; font-size:12px; font-style:italic; color:#737578; float:left; clear:both; }
+.actus_post input[type="submit"]{ margin:0 16px 0 0; width:62px; height:32px; border:none; font-size:11px; color:#ffffff; background:url("../images/common/btn_validate.png") no-repeat transparent; float:right; clear:none; }
+.actus_post input[type="submit"]:hover{ cursor:pointer; }
+.actus_post #comments-msg input[type="submit"]{ clear:both; }
+.actus_post span.error-form{ margin:5px 0 5px 17px; }
+
+.empty{ width:100%; height:12px; background:#f9f9f9; float:left; clear:both; }
+.artist_post{ margin:8px 20px; width:500px; height:auto; position:relative; float:left; }
+.artist_post .top{ width:100%; height:16px; }
+.artist_post .top img{ display:block; position:absolute; right:2px; top:17px; width:14px; height:14px; float:right; }
+.artist_post .left{ width:45px; height:100%; float:left; clear:both; }
+.artist_post .left img{ display:block; position:relative; width:43px; height:43px; right:5px; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px; }
+.artist_post .right{ padding:11px 0 0 0; width:455px; background:#f9f9f9; float:left; }
+.artist_post .right .ico_citation{ margin:0 8px 0 22px; display:inline-block; width:24px; height:19px; background:url("../images/common/ico_cite.png") no-repeat; float:left; }
+.artist_post .right .msg_post{ padding:0 0 20px 0; display:inline-block; width:370px; font-weight:normal; font-size:13px; color:#535353; float:left; }
+.artist_post .right .msg_post a{ font-weight:bold; text-decoration:none; color:#31a58c; }
+.artist_post .right .msg_post a:hover{ text-decoration:underline; }
+.artist_post .right .singleWrapper{ width:455px; max-height:500px; overflow:hidden; float:left; clear:both; }
+.artist_post .right img.single{ display:block; min-width:455px; max-width:100%; }
+.artist_post .right img.mosaic{ margin:0 5px 10px 5px; display:inline-block; width:135px; height:135px; overflow:hidden; float:left; }
+.artist_post .right img.mosaic.first{ margin:0 0 10px 20px; }
+.artist_post .right img.mosaic.last{ margin:0 20px 10px 0; }
+.artist_post .right .new_songs{ margin:0 0 15px 22px; width:402px; float:left; clear:both; }
+.artist_post .right .new_songs a{ margin:0 0 5px 0; line-height:19px; font-weight:bold; font-size:14px; text-decoration:none; color:#7f7d7d; float:left; clear:both; }
+.artist_post .right .new_songs a:hover{ color:#31a58c; }
+.artist_post .right .new_songs a .btn_play{ margin:0 5px 0 3px; display:block; width:19px; height:19px; background:url("../images/common/btn_play.png") no-repeat; float:left; }
+.artist_post .right .post_article img{ margin:0 0 15px 22px; display:block; width:96px; height:96px; float:left; }
+.artist_post .right .post_article a{ margin:10px 0 0 27px; font-weight:bold; font-size:14px; text-decoration:none; color:#31a58c; float:left; }
+.artist_post .right .post_article a:hover{ text-decoration:underline; }
+.artist_post .right .post_article p{ margin:7px 0 0 27px; display:block; width:275px; line-height:14px; font-weight:normal; font-size:12px; color:#535353; float:left; }
+.artist_post .right iframe{ float:left; clear:both; }
+.artist_post .bottom{ width:455px; height:100%; background:#cccccc; float:right; clear:both; }
+.artist_post .bottom .infos_publi{ margin:0 0 0 8px; padding:0; font-size:10px; display:inline-block; height:16px; line-height:16px; vertical-align:middle; color:#737578; float:left; }
+.artist_post .bottom .infos_coms{ margin:0 8px 0 0; padding:0; font-size:10px; display:inline-block; height:16px; line-height:16px; vertical-align:middle; color:#737578; float:right; }
+.artist_post .bottom .infos_coms a{ text-decoration:none; color:#737578; }
+.artist_post .bottom .infos_coms a:hover{ text-decoration:underline; color:#31a58c; }
+
+.artist_post .comments{ margin:0 0 1px 0; width:455px; position:relative; left:45px; background:#ffffff; float:left; clear:both; }
+.artist_post .comments .com_left{ width:62px; height:100%; float:left; }
+.artist_post .comments .com_left img{ margin:4px; display:block; position:relative; width:43px; height:43px; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px; }
+.artist_post .comments .com_right{ width:393px; float:left; }
+.artist_post .comments .com_right .com_top{ width:100%; height:17px; float:left; }
+.artist_post .comments .com_right .com_top a{ margin:1px 2px 0 0; display:block; float:right; }
+.artist_post .comments .com_right .com_bottom{ margin:-2px 0 10px 0; width:353px; float:left; clear:both; }
+.artist_post .comments .com_publi_infos{ display:block; font-size:12px; font-weight:bold; color:#3f3f3f; float:left; clear:both; }
+.artist_post .comments .com_publi_infos small{ font-size:10px; }
+.artist_post .comments .com_publi_msg{ margin:2px 0 0 0; display:block; font-size:12px; color:#707070; float:left; clear:both; }
+
+.artist_post .form_comments{ margin:3px 0 0 0; width:457px; position:relative; left:44px; float:left; }
+.artist_post .form_comments input[type="text"]{ padding:0 0 0 15px; display:inline-block; width:440px; height:38px; position:relative; font-size:12px; border:1px solid #c1c1c1; color:#909090; float:left; }
+.artist_post .form_comments input[type="submit"]{ display:inline-block; width:64px; height:28px; position:absolute; right:6px; top:5px; border:1px solid #d85342; font-size:12px; font-weight:bold; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; color:#ffffff; background:#f05f4c; float:left; -moz-box-shadow:1px 1px 2px 1px #c2c2c2; -webkit-box-shadow:1px 1px 2px 1px #c2c2c2; -o-box-shadow:1px 1px 2px 1px #c2c2c2; box-shadow:1px 1px 2px 1px #c2c2c2; filter:progid:DXImageTransform.Microsoft.Shadow(color=#c2c2c2, Direction=134, Strength=2); }
+.artist_post .ajax_loader{ padding:5px 0 0 0; text-align:center; clear:both; }
+.artist_post .ajax_loader img{ margin:0 10px 0 0; }
+/* --------- FIN  DE MUSICIEN - ACTUS  --------- */
+
+
+/* --------- MUSICIEN - CONCERTS  --------- */
+/*.content{ background:#e6e6e6; margin:10px 0 10px 0; float:left; padding:0; width:541px; clear:both; }*/
+.content #btn_tmp{ width:191px; margin:0 20px; padding:20px 0; }
+
+/*.content #btn_tmp a{ float:left; }
+.content h2{ font-size:20px; margin:20px 20px 15px 20px; clear:both; font-family:"Trebuchet MS", Arial, sans-serif; color:#3f3f3f; }*/
+
+.content #btn_tmp .avenir{background:url("../images/common/fd_av.png");width:68px;height:22px;text-align:center;padding-top:8px;}
+.content #btn_tmp .cpasse{ width:123px;height:22px;background:url("../images/common/fd_cp.png");text-align:center;padding-top:8px;}
+.content #btn_tmp a{ float:left;color:#666666;font-size:12px;text-decoration:none;}
+.content #btn_tmp a:hover{color:#f05f4c;}
+.content h2{ font-size:20px; margin:25px 20px; clear:both; }
+
+.content p{ font-size:14px; margin:0 0 0 20px; font-weight:bold; }
+.content .date-heure{ clear:both; }
+.content hr{ color:#888d95; width:499px; margin:10px auto;clear:both; }
+.content .infos_concert{ width:302px; margin:0 0 0 20px; float:left; }
+.content .calendrier{ background:url("../images/musicien/calendrier.png") no-repeat; width:50px; height:50px; float:left; }
+.content .infos_concert p{ margin:3px; color:#5d5d5b; font-size:14px; }
+.content .infos_concert .mois{ margin:7px 15px; font-size:9px; color:white; position:absolute; text-align : center; }
+.content .infos_concert .jour{ margin:20px 9px; font-size:24px; font-family:georgia; position:absolute; text-align : center; width : 31px; }
+.content .infos_concert img{ float:left; }
+.content .adr_concert{ width:196px; float:left; margin:0 0px; }
+.content .adr_concert p{ margin:3px; color:#5d5d5b; font-size:14px; }
+.content .adr_concert .adr_lieu{ margin:3px; color:#5d5d5b; font-size:14px; font-weight:bold; }
+.content .adr_concert .adr_rue{ margin:3px; font-size:12px; }
+.content .adr_concert .adr_ville{ margin:3px; font-size:12px; }
+.content .adr_concert img{ float:left; }
+.content .more{ color:#3c495a; font-size:14px; font-family:'Trebuchet MS'; display:block; margin:30px 20px; float:left; }
+.content .participer{ margin:25px 30px 0 150px; padding:0; font-family:Arial, "Trebuchet MS"; font-size:14px; text-decoration:none; color:#ffffff; float:left; }
+.content .participer .button_left{ display:block; width:22px; height:30px; background:url("../images/common/sprite_btn_participer.png") no-repeat 0 -61px; float:left; }
+.content .participer .button_center{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_participer.png") repeat-x 0 -31px; float:left; }
+.content .participer .button_right{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_participer.png") no-repeat -77px -1px; float:left; }
+
+.content .noparticiper{ margin:25px 30px 0 150px; padding:0; font-family:Arial, "Trebuchet MS"; font-size:14px; text-decoration:none; color:#ffffff; float:left; }
+.content .noparticiper .button_left{ display:block; width:22px; height:30px; background:url("../images/common/sprite_btn_suivre.png") no-repeat 0 -61px; float:left; }
+.content .noparticiper .button_center{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_suivre.png") repeat-x 0 -31px; float:left; }
+.content .noparticiper .button_right{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_suivre.png") no-repeat -77px -1px; float:left; }
+
+
+
+.bt_ajout_concert{ width:125px; height:30px; float:left; margin:3px 0 0 198px; }
+.content .info_sup{ width:539px; margin:10px 0 10px 0; float:left; clear:both; background:#d3d3d3; padding:5px 0 0 0; border:1px solid #c3c3c3; }
+.content .info_sup .informations{ width:287px; float:left; margin-bottom : 10px; }
+.content .info_sup .nom_date{ font-size:16px; font-family:'Trebuchet MS'; margin:5px 0 0 20px; color:#4e4e4e; }
+.content .info_sup .lieu_salle{ font-size:14px; font-family:'Trebuchet MS'; margin:15px 0 0 20px; color:#4e4e4e; }
+.content .info_sup .lieu_rue{ font-size:14px; font-family:'Trebuchet MS'; margin:5px 0 0 20px; color:#4e4e4e; }
+.content .info_sup .lieu_ville{ font-size:14px; font-family:'Trebuchet MS'; margin:5px 0 0 20px; color:#4e4e4e; }
+.content .info_sup .tel{ font-size:14px; font-family:'Trebuchet MS'; margin:15px 0 0 20px; color:#4e4e4e; }
+.content .info_sup .site{ font-size:14px; font-family:'Trebuchet MS'; margin:5px 0 0 20px; color:#4e4e4e; }
+.content .info_sup .partager{ font-size:12px; font-family:'Trebuchet MS'; margin:15px 0 0 20px; color:#4e4e4e; }
+.content .partage_reseaux{ margin:5px 0 0 25px; color:#4e4e4e; width:114px; }
+.content .partage_reseaux span{ display:inline-block; text-indent:-50000px; }
+.content .partage_reseaux .twitter{ width:30px; height:29px; margin:0; padding:0; background:url('../images/musicien/sprite_info_sup.png') -7px -10px; }
+.content .partage_reseaux .facebook{ width:30px; height:29px; margin:0; padding:0; background:url('../images/musicien/sprite_info_sup.png') -48px -10px; }
+.content .partage_reseaux .google{ width:30px; height:29px; margin:0; padding:0; background:url('../images/musicien/sprite_info_sup.png') -90px -10px; }
+.content #plan_google{ width:233px; height:198px; float:left; margin:0 0 0 10px; margin-bottom : 10px;}
+.content .edition{ float:right; margin:-16px 20px 0 0; }
+.content .edition span{ margin:0 5px 0 5px; display:inline-block; text-indent:-50000px; }
+.content .edition .edit{ background:url('../images/musicien/sprite_edition.png') -10px -6px; width:14px; height:14px; }
+.content .edition .suppr{ background:url('../images/musicien/sprite_edition.png') -28px -6px; width:14px; height:14px; }
+
+.pagination{ clear:both; height:47px; width:200px; margin:15px 0 25px 0; padding:0 22%; float:left; }
+.pagination a{ height:17px; width:8px; background:url("../images/common/sprite_pagination.png") no-repeat; margin:0 0; border:0; padding:15px 10px; float:left; display:block; }
+.pagination a span{ text-indent:-50000px; display:inline-block; }
+.pagination #precedent{ background-position:-2px 0px; }
+.pagination .page{ background-position:-38px 0px; color:#7e7e7e; text-decoration:none; }
+.pagination #suivant{ background-position:-79px 0px; }
+.pagination .page:hover{ background-position:-38px -49px; color:white; }
+
+.allcomment {display: none;}
+
+/* --------- FIN  DE MUSICIEN - CONCERTS  --------- */
+
+
+/* --------- MUSICIEN PHOTO ET VIDEO --------- */
+.content .col1{ width:160px; }
+.content .col1 .img_cover{width:160px;}
+.content .box{ margin:5px; padding:5px 5px 0; /*max-width:150px; */ background:#D8D5D2; font-size:11px; line-height:1.4em; float:left; display:block; }
+.content .photo{ background:white; margin:5px; text-align:left;-moz-box-shadow: 1px 1px 1px 1px #9b9b9b;-webkit-box-shadow: 1px 1px 1px 1px #aaa;-o-box-shadow: 1px 1px 1px 1px #9b9b9b;box-shadow: 1px 1px 1px 1px #9b9b9b; }
+.content .photo .pochette{ width:139px; margin:10px 10px 5px 10px; min-height:214px; }
+.content .photo .img_miniat{ width:51px; margin:0; }
+.content .photo a{ text-decoration:none; }
+.content .photo a:hover{ text-decoration:underline; color:#4d4d4d; }
+.content .photo p{ margin:0 10px 5px; color:#4d4d4d; font-size:12px; font-weight:bold; }
+.content .photo .bord_photo{ background:#f2f0f0; margin:0 -5px; height:25px; text-align:left;}
+.content .photo .bord_photo p{ margin:0 10px 0; display:inline; font-size:10px; color:#878d95; }
+.content .photo .bord_photo a:hover{ text-decoration:none; }
+.content .photo .nom_photo{ width:138px; text-align:left; word-wrap : break-word }
+.content .photo .bord_photo img{ margin:0 5px 0 15px; display:inline; }
+.nolike {background-color : pink;}
+.content .photo .bord_photo .nb_like{ margin:0; }
+.content .photo .comm,.content .photo .comment-form,.content .photo .comment-form-album{ width:170px; margin:0 -5px; background:#f2f0f0; border-bottom:1px solid #cdcdcd; border-top:none; min-height:34px; }
+.content .photo .comm img,.content .photo .comment-form img, .content .photo .comment-form-album img{ float:left; margin:5px; height:24px; }
+.content .photo .comm .del,.content .photo .comment-form .del, .content .photo .comment-form-album .del{ float:right; margin:5px 5px; height:14px; }
+.content .photo .comm p,.content .photo .comment-form p,.content .photo .comment-form-album p{ margin:0; text-align:left; }
+.content .photo .comm .name_comm,.content .photo .comment-form .name_comm, .content .photo .comment-form-album .name_comm{ font-size:10px; color:#595959; }
+.content .photo .comm .commentaire,.content .photo .comment-form .commentaire, .content .photo .comment-form-album .commentaire{ font-size:10px; color:#888d95; }
+.content .photo .comm input[type=text],.content .photo .comment-form input[type=text], .content .photo .comment-form-album input[type=text]{ float:left; width:112px; border:1px solid #dfdede; margin:5px 0; }
+.content .photo .comm input[type=image],.content .photo .comment-form input[type=submit], .content .photo .comment-form-album input[type=submit]{ clear:both; width:48px; margin:0 0 0 58px; }
+.content .photo .edit{ background:rgba(36, 36, 36, 0.7); width:160px; height:22px; position:absolute; margin:0;visibility:hidden;}
+.content .photo .edit img{ float:right; margin:4px 8px 0 0; }
+.content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:160px; position:absolute; margin:22px 0;visibility:hidden;}
+.content .photo .open_alb img{ margin:35% 0; }
+.content .sepa_comm {width:170px;height:5px;background:#e6e6e6;margin-left:-5px;}
+
+/*.box .img_cover, #tumblelog .img_cover{ display:block; width:100%; }*/
+
+/*  -----CSS TMP AJOUTER PHOTO -------- */
+
+#test, ul#test_two li, input#album_select, input#create{
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+-ms-border-radius: 3px;
+-o-border-radius: 3px;
+border-radius: 3px;
+width : 150px;
+background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #f0f0f0));
+background: -webkit-linear-gradient(#ffffff,#f0f0f0);
+background: -moz-linear-gradient(#ffffff,#f0f0f0);
+background: -o-linear-gradient(#ffffff,#f0f0f0);
+background: linear-gradient(#ffffff,#f0f0f0);
+border: 1px solid #c1c1c1;
+cursor: pointer;
+font-size: 13px;
+padding: 7px 12px;
+position: relative;
+list-style-type : none;
+}
+
+#test_one{
+visibility : hidden;
+}
+
+ul#test_two{
+cursor: pointer;
+padding : 0px;
+margin : 0px;
+}
+
+ul#test_two li:hover{
+background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2AB395), color-stop(100%, #2AB395));
+background: -webkit-linear-gradient(#ffffff,#2AB395);
+background: -moz-linear-gradient(#ffffff,#2AB395);
+background: -o-linear-gradient(#ffffff,#2AB395);
+background: linear-gradient(#ffffff,#2AB395);
+}
+#create {
+
+}
+
+input #album_select, input #create
+{
+padding: 18px;
+width : 177px;
+}
+
+#create_ok{margin-top : -27px;
+margin-left : 190px;
+cursor : pointer;}
+/*  ----- FIN CSS TMP AJOUTER PHOTO -------- */
+
+
+
+/* --------- FIN MUSICIEN PHOTO ET VIDEO --------- */
+
+
+/* ---------- POP IN ------------- */
+.pop-in{width:510px;background:#eff4f3;padding:31px 0 75px;border:1px solid #bbbbbb;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;margin:10px auto;}
+.pop-in p{margin:0 0 31px 15px;float:left;font-size:18px;color:#4e4e4e;width:210px;}
+.pop-in img{margin-left:255px;float:left;cursor:pointer;}
+.content-pi {background:#fafafa;width:510px;padding: 25px 0;border:1px solid #e0e4e6;border-left:none;border-right:none;clear:both;}
+
+.content-pi .label label{width:123px;padding:0 12px 0 0;float:left;margin:15px 0 0 0;text-align:right;font-size:16px;color:#4e4e4e;}
+.content-pi .label img{width:85px;height:73px;margin:15px 12px 0 40px;}
+.content-pi .champs img{width:85px;height:73px;margin-left:0;}
+.content-pi .champs {width:306px;float:left;margin:15px 0 0 12px;}
+.content-pi .champs input{width:296px;padding:0 5px;outline:none}
+.content-pi .champs_heure input{width:50px;padding:0 5px;outline:none;margin:15px 0 0 10px;}
+.content-pi .champs_lieu input{padding:0 5px;outline:none;margin:15px 0 0 10px;}
+.content-pi .champs_prix input{width:50px;padding:0 5px;outline:none;margin:15px 0 0 10px;}
+.content-pi .champs select{width:296px;padding:0 0 0 5px;outline:none}
+.content-pi .champs .descript-vid{width:296px;padding:0 5px;height:73px;outline:none;word-break:break-word;}
+.content-pi input[type="submit"]{clear:both;width: 80px;height: 30px;margin: 10px 145px;background:url('../images/common/bt-rouge.png');color:white;}
+.content-pi .champs .bt_noir{ height:30px; float:left; margin:-5px 0 0; }
+.content-pi .champs .bt_noir .bt_left{ width:10px; height:30px; float:left; background:url("../images/common/bt_noir.png") no-repeat 0px -10px; }
+.content-pi .champs .bt_noir .bt_middle{ height:16px; float:left; background:url("../images/common/bt_noir.png") no-repeat 0px -60px; font-size:12px; color:white; padding:7px 0; }
+.content-pi .champs .bt_noir .bt_right{ width:9px; height:30px; float:left; background:url("../images/common/bt_noir.png") no-repeat -391px -107px; }
+.content-pi .champs .nom_img{font-size:12px;color:#737578;margin: 7px 15px;width:130px;}
+
+.pop-in_big{width:538px;background:#eff4f3;padding:31px 0 75px;border:1px solid #bbbbbb;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;margin:10px auto;}
+.pop-in_big p{margin:0 0 31px 15px;float:left;font-size:18px;color:#4e4e4e;width:210px;min-height:15px;}
+.pop-in_big img{margin-left:255px;float:left;cursor:pointer;}
+.pop-in_big .content-pi {background:#fafafa;width:538px;padding: 25px 0;border:1px solid #e0e4e6;border-left:none;border-right:none;clear:both;}
+.pop-in_big .content-pi img{max-width:458px;float:none;margin:0 40px 0;}
+.pop-in_big .content-pi .titre_visu_photo{width:auto;margin:10px 40px;font-size:16px;font-weight:bold;color:#4e4e4e;}
+.pop-in_big .content-pi .bord_photo {width:100%;height:40px;}
+.pop-in_big .content-pi .bord_photo p{width:20px;margin:10px 0 0 5px;color:#888d95;}
+.pop-in_big .content-pi .bord_photo img{float:left;width:15px;margin:13px 0 0 119px;}
+.pop-in_big .content-pi .comm p{width:20px;margin:10px 0 0 5px;}
+.pop-in_big .content-pi .comm img{width:34px;float:left;margin:0 10px 0 40px;}
+.pop-in_big .content-pi .comm .del{width:14px;float:right;margin:0 40px;}
+.pop-in_big .content-pi .comm .name_comm{font-size:14px;color:#595959;width:auto;margin:0;float:none;}
+.pop-in_big .content-pi .comm .commentaire{font-size:14px;color:#888d95;width:auto;margin:0;float:none;}
+.pop-in_big .content-pi hr{width:458px;margin:20px auto 10px;}
+.pop-in_big .content-pi .ajout_comm{height:70px;}
+.pop-in_big .content-pi .ajout_comm img{width:34px;float:left;margin:0 10px 0 40px;}
+.pop-in_big .content-pi .ajout_comm input[type=text]{width:405px;height:25px;border:1px solid #cccccc;outline:none;padding:0 5px;}
+.pop-in_big .content-pi .ajout_comm input[type=image]{float:right;margin:10px 40px;}
+
+.pop-in_ta{width:557px;padding:16px 0 75px;border:1px solid #bbbbbb;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;margin:10px auto;background:#eff4f3 url('../images/common/etapes_1.png')no-repeat 0 -4px;}
+.pop_in2{width:557px;padding:16px 0 75px;border:1px solid #bbbbbb;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;margin:10px auto;background:#eff4f3 url('../images/common/etapes_2.png')no-repeat -12px -8px;}
+.pop_in3{width:557px;padding:16px 0 75px;border:1px solid #bbbbbb;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;margin:10px auto;background:#eff4f3 url('../images/common/etapes_3.png')no-repeat -12px -8px;}
+.pop-in_ta span{margin:0;float:left;font-size:16px;color:#cdcdcd;width:140px;min-height:15px;}
+.pop-in_ta span.info{margin:6px 0 0 50px;}
+.pop-in_ta span.paiement{margin:6px 0 0 26px;}
+.pop-in_ta span.telechargement{margin:6px 0 0 10px;}
+.pop-in_ta span.et_active{color:#2ab395;}
+.pop-in_ta img{margin:10px 0 21px 20px;width:16px;float:left;cursor:pointer;}
+.pop-in_ta .content-pi {background:#fafafa;width:557px;padding: 25px 0;border:1px solid #e0e4e6;border-left:none;border-right:none;clear:both;}
+.pop-in_ta .content-pi h2{color:#4e4e4e;font-size:18px;font-weight:bold;margin:0 50px 20px;}
+.pop-in_ta .content-pi span{color:#4e4e4e;font-size:16px;margin:0 30px 0 35px;width:75px;text-align:right;}
+.pop-in_ta .content-pi input[type=text]{width:295px;margin:0 0 5px;outline-color:#2ab395;padding:0 5px;}
+.pop-in_ta .content-pi .espace{width:100%;height:40px;}
+.pop-in_ta .content-pi .clear{clear:both;}
+.pop-in_ta .content-pi .en_tete{width:500px;height:60px;background:#e5e7e8;border:1px solid #cccfd1;;border-bottom:none;border-top-left-radius:5px;border-top-right-radius:5px;margin:0 auto;font-size:14px;font-weight:bold;color:#666666;}
+.pop-in_ta .content-pi .en_tete .le_titre{width:135px;padding:20px 0 0 20px;}
+.pop-in_ta .content-pi .en_tete .artiste{width:85px;padding:20px 0 0 10px;}
+.pop-in_ta .content-pi .en_tete .type{width:65px;padding:20px 0 0 10px;}
+.pop-in_ta .content-pi .en_tete .format{width:90px;padding:20px 0 0 10px;}
+.pop-in_ta .content-pi .en_tete .prix{width:60px;padding:20px 0 0 10px;}
+
+.pop-in_ta .content-pi .achats{width:500px;background:#fafafa;border:1px solid #cccfd1;border-bottom:none;margin:0 auto;border-bottom-left-radius:5px;border-bottom-right-radius:5px;}
+.pop-in_ta .content-pi .achats td{border-right:1px solid #cccfd1;border-bottom:1px solid #cccfd1;font-size:12px;color:#555555;height:25px;}
+.pop-in_ta .content-pi .achats .le_titre{width:135px;padding:5px 0 0 20px;}
+.pop-in_ta .content-pi .achats .artiste{width:85px;padding:5px 0 0 10px;}
+.pop-in_ta .content-pi .achats .type{width:65px;padding:5px 0 0 10px;}
+.pop-in_ta .content-pi .achats .format{width:90px;padding:5px 0 0 10px;}
+.pop-in_ta .content-pi .achats .prix{width:60px;padding:5px 0 0 10px;border-right:none;}
+
+.pop-in_ta .content-pi p {float:right;margin:10px 30px 20px 0;}
+.pop-in_ta .content-pi .total {color:#666666;font-weight:bold;font-size:14px;}
+.pop-in_ta .content-pi p:last-child {color:#3f3f3f;font-weight:bold;font-size:14px;}
+.pop-in_ta .content-pi input[type=submit]{width:148px;margin:0 30px 5px;padding:0 5px;background:url("../images/common/bt_paiment.png") no-repeat;float:right;color:#ffffff;font-weight:bold;font-size:15px;}
+
+.pop-in_ta .content-pi .moyen_pmt {margin:0 0 50px 0;height:140px;}
+.pop-in_ta .content-pi .moyen_pmt img{width:210px;margin:0 0 0 45px;float:left;}
+.pop-in_ta .content-pi .moyen_pmt span{width:210px;margin:0 0 0 52px;font-size:14px;color:#4e4e4e;text-align:left;}
+
+.pop-in_ta .content-pi .infos_cb span {width:130px;margin:15px 20px 0 25px;}
+.pop-in_ta .content-pi .infos_cb span:first-child {width:130px;margin:20px 20px 0 25px;}
+.pop-in_ta .content-pi .infos_cb img {width:53px;margin:6px 8px 10px 5px;float:none;}
+.pop-in_ta .content-pi .infos_cb input[type=text] {margin:20px 0 5px;}
+.pop-in_ta .content-pi .infos_cb select {margin:15px 0 5px;}
+.pop-in_ta .content-pi .infos_cb input[type=submit] {margin:25px 30px 5px;width:100px;}
+/* --------------- FIN POP IN ----------- */
+
+/* --------- PORTAIL  --------- */
+#coverflow{ background:url("../images/portail/bg-coverflow.png") no-repeat; height:364px; }
+
+#coverflow #coverflow-alaune{ position:absolute; }
+#coverflow #coverflow-left{ float:left; position:absolute; margin-top:60px; margin-left:55px; }
+#coverflow #coverflow-center{ float:left; position:absolute; margin-top:32px; margin-left:274px; }				 
+#coverflow-right{ float:left; position:absolute; margin-top:60px; margin-left:544px; }
+#coverflow .coverflow-img{ opacity:0.6; filter:alpha(opacity=60); box-shadow:0 0 7px 3px #2B2B2B; }
+#coverflow .coverflow-img2{ box-shadow:0 0 7px 3px #2B2B2B; }
+#coverflow .coverflow-img-player{ background-color:#737373; opacity:0.5; margin-top:177px; height:60px; position:absolute; width:238px; }
+#coverflow .coverflow-center-artiste{ text-align:center; margin-top:10px; font-family:'Myriad Pro'; font-size:13px; text-shadow:0px -2px #000000; color:white; }
+#coverflow .coverflow-center-slide{ margin-top:7px; margin-right:5px; }
+
+#coverflowContainer{ padding:45px 0 10px 0; background:url("../images/portail/bg-coverflow2.png") no-repeat; width:100%; height:308px; float:left; clear:both; }
+.caroufredsel_wrapper{ margin:0 auto !important; }
+#coverflow2{ width:770px; height:364px; }
+#coverflow2 a{ display:block; float:left; width:188px; height:188px; margin:0 15px; text-decoration:none; text-align:center; position:relative; }
+#coverflow2 a img{ display:block; float:left; width:100%; height:100%; }
+#coverflow2 a .coverflow_artist{ text-align:center; margin-top:10px; font-family:'Myriad Pro'; font-size:13px; color:white; }
+#coverflow2 a .coverflow_player{ background-color:#737373; opacity:0.5; width:100%; height:60px; position:absolute; left:0; }
+#paginationContainer{ display:block; width:100%; margin:0 auto; text-align:center; }
+#paginationContainer #pagination{ display:inline-block; margin:0 auto; text-align:center; }
+#paginationContainer #pagination-prev{ display:inline-block; width:12px; height:12px; color:transparent; background:url("../images/portail/slide.png") no-repeat 0 0; cursor:pointer; }
+#paginationContainer #pagination-next{ display:inline-block; width:12px; height:12px; color:transparent; background:url("../images/portail/slide.png") no-repeat -95px 0; cursor:pointer; }
+#coverflowContainer #pagination a{ display:block; float:left; width:15px; height:12px; margin:0 1px; text-indent:-9999px; color:transparent; background:url("../images/portail/slide.png") no-repeat -12px 0; }
+#coverflowContainer #pagination a.selected{ background-position:-44px 0; }
+#coverflowContainer #pagination a:hover{ background-position:-44px 0; }
+
+
+#first-line{ width:100%; float:left; clear:both; }
+
+#first-line-top-song{ float:left; position:absolute; height:180px; width:346px; }
+#first-line-top-calendar{ float:left; position:absolute; margin-left:370px; height:180px; width:213px; }
+#first-line-top-newbies{ float:left; position:absolute; margin-left:599px; height:180px; width:171px; }
+
+/*#top-song-title, #newbies-title, #calendar-title{ font-family:"Trebuchet MS"; font-size:20px; color:#3f3f3f; width:200px; }*/
+.title-color{ color:#2ab395; }
+.title-color-bold{ color:#2ab395; font-weight:bold; }
+
+/*#top-song-title .title-img{ }*/
+
+#top-song-title{ font-family:"Trebuchet MS"; font-size:20px; color:#3f3f3f; width:200px; float:left; position:absolute; width:346px; }
+#calendar-title{ font-family:"Trebuchet MS"; font-size:20px; color:#3f3f3f; width:200px; float:left; position:absolute; margin-left:370px; width:213px; }					 
+#newbies-title{ font-family:"Trebuchet MS"; font-size:20px; color:#3f3f3f; float:left; position:absolute; margin-left:599px; width:171px; }
+
+
+#top-song-play-one{ position:absolute; margin-top:33px; box-shadow:-1px 0 1px 1px #EDEDED; border-left:1px solid #dedede; border-top:1px solid #dedede; border-bottom:1px solid #dedede; width:175px; }
+#top-song-play-two{ position:absolute; margin-left:175px; margin-top:33px; box-shadow:1px 0 1px 1px #EDEDED; border-right:1px solid #dedede; border-left:1px solid #dedede; border-top:1px solid #dedede; border-bottom:1px solid #dedede; width:175px; }
+
+#first-line-top-song .tab-top-song-col-number{ position:absolute; width:25px; color:#7f7d7d; font-weight:bold; border-right:1px solid #dedede; height:27px; padding-top:8px; text-align:center; font-size:21px; }
+#first-line-top-song .tab-top-song-col-texte{ margin-left:25px; color:#7f7d7d; font-size:12px; height:35px; }
+#first-line-top-song .tab-top-song-col-texte-img{ position:absolute; margin-top:8px; margin-left:5px; }
+#first-line-top-song .tab-top-song-col-texte-titre{ position:absolute; color:#7f7d7d; font-size:12px; margin-left:28px; margin-top:6px; }
+#first-line-top-song .tab-top-song-col-texte-artiste{ color:#7f7d7d; font-size:10px; }
+
+#first-line-top-song .tab-top-song-line-white{ background-color:#f6f6f6;  height:35px; }
+#first-line-top-song .tab-top-song-line-grey{ background-color:#e6e6e6; height:35px; border-top:1px solid #dedede; border-bottom:1px solid #dedede; }
+#first-line-top-song .tab-top-song-col-one{ width:175px; border-right:1px solid #dedede; height:35px; }
+#first-line-top-song .tab-top-song-col-two{ margin-left:175px; width:175px; height:43px; border-right:1px solid #dedede; }
+/*
+#top-song-play table{ float:left; position:absolute; height:185px; width:345px; margin-top:40px; box-shadow:0 0 1px 1px #EDEDED; border:1px solid #dedede;  }
+
+#top-song-play .ten{ padding-right:10px; width:30px; font-size:21px; text-indent:9px; color:#7f7d7d; font-weight:bold; border-left:1px solid #dedede; border-right:1px solid #dedede; padding-top:8px}
+#top-song-play .top-title{ width:150px; padding-left:10px; font-size:12px; color:#7f7d7d; vertical-align:middle; }
+#top-song-play .top-title-img{ position:asbolute; margin-left:5px; padding-top:5px; }
+#top-song-play #top-title-text{ position:asbolute;  width:20px; }
+#top-song-play .top-title .top-artist{ font-size:10px; color:#7f7d7d; text-indent:23px; }
+#top-song-play .grey{ background-color:#e6e6e6; }
+#top-song-play .white{ background-color:#f6f6f6; }
+*/
+#calendar-content{ float:left; position:absolute; margin-left:370px; height:185px; width:213px; margin-top:33px; }
+					 
+#newbies-content{ float:left; position:absolute; margin-left:599px; height:181px; width:171px; background-color:#e6e6e6; margin-top:33px; overflow:hidden; }
+#newbies-content .newbies-peoples{ float:left; height:45px; width:100%; background-color:#e6e6e6; }
+
+#newbies-content .newbies-picture{ position:absolute; margin-top:4px; margin-left:4px; }
+#newbies-content .newbies-people{ position:absolute; font-family:"Trebuchet MS"; color:#3f3f3f; margin-top:10px; font-weight:600; font-size:13px; margin-left:47px; }
+#newbies-content .newbies-people a{ text-decoration:none; font-family:"Trebuchet MS"; color:#3f3f3f; font-weight:600; font-size:13px; }
+#newbies-content .newbies-people a:hover{ text-decoration:underline; }
+#newbies-content .newbies-people-type{ color:#72797f; font-size:11px; font-weight:normal; }
+#wall-flux{ float:left; position:relative; margin-top:235px; margin-bottom:12px; width:579px; background-color:#e6e6e6; }
+.wall-flux-content{ margin:13px; width:550px; background-color:#f6f6f6; padding-bottom:1px; }
+.wall-flux-content .img-blog{ width:550px; margin-top:7px; margin-bottom:2px; }
+.wall-flux-content .img-blog-artiste{ width:550px; font-family:"Trebuchet MS"; margin-top:7px; margin-bottom:20px; }
+
+.wall-flux-content .wall-flux-content-title{ font-size:18px; color:#3f3f3f; margin:5px 19px 5px 19px; padding-top:20px; word-wrap:break-word; }
+.wall-flux-content .wall-flux-content-subtitle{ font-size:13px; color:#8d8c80; margin:0px 19px 19px 19px; word-wrap:break-word; }
+.wall-flux-content .wall-flux-content-titre-artiste{ margin:19px 19px 5px 19px; color:#535353 ; padding-top:15px; font-size:13px; }
+.wall-flux-content .wall-flux-content-text{ font-size:14px; line-height:21px; color:#555555; margin:10px 19px 19px 19px; word-wrap:break-word; }
+.wall-flux-content .wall-flux-content-text .wall-flux-content-text-chapeau{ font-weight:bold; }
+.wall-flux-content .wall-flux-content-right-text{ margin-left:185px; padding-bottom:20px; }
+.wall-flux-content .wall-flux-content-left-picture .img-blog-artiste-carre{ position:absolute; margin :19px 15px 15px 15px; }
+.wall-flux-content .wall-flux-content-goto-profile{ color:#f05f4c; font-size:14px; float:right; margin-top:-17px; margin-right:20px; padding:10px; } 
+/*#e6e6e6*/
+
+/* ----- CALENDAR PORTAIL ------- */
+ ui-datepicker{ width:212px; height:175px; margin:5px auto 0; font:9pt Arial, sans-serif; }  
+
+.ui-datepicker a{ /*margin-left:10px; */text-decoration:none; color:#4d5155; font-family:"Trebuchet MS"; font-weight:bold; font-size:11px; text-align:center; }  
+.ui-datepicker table{ border-spacing:0px; width:212px; padding:0px; height:151px; border-top-left-radius:3px; border-top-right-radius:3px; /* box-shadow:0px 0px 5px 5px #888; */ /*border-bottom:1px solid #e6e6e6;  */ border-left:1px solid #e6e6e6; }  
+.ui-datepicker th{ padding:0; border-left:1px solid #e6e6e6; border-right:1px solid #e6e6e6; }
+.ui-datepicker-header{ background-color:#e6e6e6; color:#4d5155; font-size:12px; font-family:"Trebuchet MS"; font-weight:bold; height:28px; border:1px solid #e4e5e7; border-top-left-radius:3px; border-top-right-radius:3px; } 
+.ui-datepicker-title{ margin-top:7px; text-transform:uppercase; text-align:center; } 
+.ui-datepicker-prev, .ui-datepicker-next{ width:28px; background-repeat:no-repeat; display:inline-block; cursor:pointer; height:28px; text-align:center; overflow:hidden; line-height:600%; }
+.ui-datepicker-prev{ float:left; background-position:6px 7px; background-image:url('../images/calendar/narrow-suiv.png'); }  
+.ui-datepicker-next{ float:right; background-position:8px 7px; background-image:url('../images/calendar/narrow-next.png'); }   
+.ui-datepicker tbody td{ border-right:1px solid #e6e6e6; text-align:center; font-family:"Trebuchet MS"; border-bottom:1px solid #e6e6e6; color:#cccfd3; font-weight:bold; padding-top:11px; font-size:11px; }   
+.ui-datepicker tbody td:last-child{ /* border-right:0px; */}  
+.ui-datepicker tbody tr{ border-bottom:1px solid #e6e6e6; padding:0px; }  
+.ui-datepicker-calendar .ui-state-hover{ color:#D1D1D1; }
+.ui-datepicker-calendar .ui-state-active{ color:#EF7363; }
+.css_jour_evenement{ background-image:url('../images/calendar/red_arrow.png'); background-repeat:no-repeat ; background-position:top right }
+
+
+/* ----------- TEMPORAIRE -------------- */
+
+#calendar_alert{ position: absolute; margin-top: 40px; margin-left: -7px; width: 100%; border: 1px solid #dedede; box-shadow: 1px 0 1px 1px #EDEDED; padding: 5px; line-height: 25px; display: none; position: absolute; background-color:#f6f6f6; font-family:"Trebuchet MS"; font-size: 12px; color: #7f7d7d; text-decoration: none; z-index: +1;}
+#calendar_alert a {color: #2ab395;}
+#calendar_alert span {text-decoration: underline;font-size: 14px;}
+/* --------- FIN  DE PORTAIL  --------- */
+
+
+
+/* --------- FIN  DE PORTAIL  --------- */
+
+
+/* --------- INSCRIPTION --------- */
+body.inscription{ background:url('../images/subscription/bkg_subscription.png') no-repeat; background-size:cover; background-position:0px -100px; }
+/*#any-background-inscription{ display:block; width:100%; height:825px;height:978px; background:url('../images/subscription/bkg_subscription.png') no-repeat; background-size:cover; background-position:0px -100px; }*/
+#any-background-inscription{ margin:85px 0; width:100%; float:left; }
+h1#title-subscription, h1#title-identification{ padding:0; display:block; text-align:center; font-family:'Rockwell'; font-weight:bold; font-size:39px; color:#3f3f3f; }
+
+.step-form{ margin:50px 0 0 242px; width:470px; float:left; 
+    background-color:#ededed; border:5px solid rgba(217, 233, 229, 0.6); -moz-border-radius:10px; -webkit-border-radius:10px; border-radius:10px;
+    /*IE 7 AND 8 DO NOT SUPPORT BORDER RADIUS*/
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr = '#e8e8e8', endColorstr = '#f1f1f1');
+    /*INNER ELEMENTS MUST NOT BREAK THIS ELEMENTS BOUNDARIES*/
+    /*Element must have a height (not auto)*/
+    /*All filters must be placed together*/
+    -ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr = '#e8e8e8', endColorstr = '#f1f1f1')";
+    /*Element must have a height (not auto)*/
+    /*All filters must be placed together*/
+    background-image:-moz-linear-gradient(top, #ededed, #f1f1f1);
+    background-image:-ms-linear-gradient(top, #ededed, #f1f1f1);
+    background-image:-o-linear-gradient(top, #ededed, #f1f1f1);
+    background-image:-webkit-gradient(linear, center top, center bottom, from(#ededed), to(#f1f1f1));
+    background-image:-webkit-linear-gradient(top, #ededed, #f1f1f1);
+    background-image:linear-gradient(top, #ededed, #f1f1f1);
+    -moz-background-clip:padding;
+    -webkit-background-clip:padding-box;
+    background-clip:padding-box;
+    /*Use "background-clip:padding-box" when using rounded corners to avoid the gradient bleeding through the corners*/
+    /*--IE9 WILL PLACE THE FILTER ON TOP OF THE ROUNDED CORNERS--*/
+    -moz-box-shadow:1px -3px 10px 0px #999999; -webkit-box-shadow:1px -3px 10px 0px #999999; -o-box-shadow:1px -3px 10px 0px #999999; box-shadow:1px -3px 10px 0px #999999; filter:progid:DXImageTransform.Microsoft.Shadow(color=#999999, Direction=18, Strength=10);
+}
+
+.step-form .step-head{ padding:5px 0 8px 0; width:100%; background:#e9e9e9; float:left; }
+.step-form h2{ text-align:center; font-family:"Trebuchet MS"; font-weight:bold; font-size:18px; color:#3f3f3f; }
+.step-form #state-step{ margin:5px auto; width:123px; }
+.step-form #state-step span{ display:inline-block; width:41px; height:22px; background-image:url('../images/subscription/sprite_form_steps.png'); float:left; }
+.step-form #state-step span.current{ background-position:-41px 0; }
+.step-form #state-step span.current.first{ background-position:0 -22px; }
+.step-form #state-step span.current.last{ background-position:-82px -22px; }
+.step-form #state-step span.checked{ background-position:-41px -22px; }
+.step-form #state-step span.checked.first{ background-position:0 0; }
+.step-form #state-step span.disable{ background-position:-41px -44px; }
+.step-form #state-step span.disable.last{ background-position:-82px 0; }
+
+.step-form form{ margin:10px 0 0 0; padding:20px 30px 35px 30px; position:relative; float:left; clear:both; }
+.step-form form p{ font-family:"Trebuchet MS"; font-weight:bold; font-size:12px; color:#6b6b6b; float:left; }
+.step-form form #fb-subscription{ margin:0.5em 0 1em 0; width:100%; float:left; clear:both; }
+form hr{ margin:0 0 20px 0; display:block; width:100%; height:1.5px; border-top:none; border-right:none; border-bottom:1px solid #f8f8f8; border-left:none; background:#e9e9e9; float:left; }
+.step-form form p.sub-text-mail, .step-form form p.sub-text-type{ margin:0 0 12px 0; clear:both; }
+.step-form form p.sub-text-inscrit{ margin:25px 0 0 0; display:block; float:right; clear:both; }
+.step-form form p.sub-text-inscrit a{ font-family:"Trebuchet MS"; font-weight:bold; font-size:13px; color:#262626; text-decoration:none; }
+.step-form form p.sub-text-inscrit a:hover{ text-decoration:underline; }
+.step-form form p.choix-text{ margin:0 auto; padding:0.5em 0; display:block; width:100%; text-align:center; clear:both; }
+.step-form form p.choix-text a, .step-form form p.choix-text a:active{ text-decoration:none; color:inherit; }
+.step-form form p.choix-text a:hover{ text-decoration:underline; }
+span.error-form{ margin:5px 0 17px 0; display:block; width:89%; font-family:"Trebuchet MS"; font-weight:bold; font-size:12px; color:#e04e4e; float:left; }
+form + .error-form{ padding:0 0 0 30px; }
+
+.step-form form .user_fb_sub{ margin:0 auto 20px auto; height:50px; width:208px; text-align:center; }
+.step-form form .user_fb_sub p{ display:inline-block; line-height:50px; float:left; }
+.step-form form .user_fb_sub img{ margin:0 0 0 25px; display:inline-block; float:left; }
+
+.step-form form .ico-placeholder{ margin-top:-55px; width:26px; height:23px; display:inline-block; position:relative; /*top:-35px;*/ right:10px; background:url('../images/subscription/sprite_form_placeholder.png') no-repeat 0 0 transparent; float:right; z-index:10; }
+.step-form form .ico-placeholder.username{ background-position:0 0; }
+.step-form form .ico-placeholder.nomscene{ background-position:0 -69px; }
+.step-form form .ico-placeholder.email{ background-position:0 -23px; }
+.step-form form .ico-placeholder.password{ background-position:0 -46px; }
+
+form label{ font-family:'Myriad Pro'; font-weight:normal; font-size:17px; color:#6b6b6b; float:left; clear:both; }
+.checkbox-style label{ margin:7px 0 2px 15px; font-family:"Trebuchet MS"; font-size:14px; color:#7f7d7d; }
+form .label_big{ margin:0 0 0.6em 0; display:block; font-family:"Trebuchet MS"; font-weight:bold; font-size:17px; color:#6b6b6b; float:left; }
+.step-form form input{ float:left; clear:both; }
+.step-form form input[type="text"], .step-form form input[type="password"], .step-form form input[type="mail"]{ margin:0 0 20px 0; padding:0 10px; display:block; width:390px; height:48px; position:relative; font-size:17px; font-family:'Myriad Pro'; border:1px solid #cccccc; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; outline:none; color:#999999; background:#FFFFFF; }
+
+.step-form form input[type="submit"], .step-form form button.back{ background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #717171), color-stop(1, #686868) ); background:-moz-linear-gradient( center top, #717171 5%, #686868 100% ); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#717171', endColorstr='#686868'); background-color:#717171; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; border:1px solid #676767; display:inline-block; color:#ffffff; font-family:Trebuchet MS; font-size:15px; font-weight:bold; padding:8px 24px; text-decoration:none; float:right; clear:none; }
+.step-form form input[type="submit"]:hover, .step-form form button.back:hover{ background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #686868), color-stop(1, #717171) ); background:-moz-linear-gradient( center top, #686868 5%, #717171 100% ); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#686868', endColorstr='#717171'); background-color:#686868; cursor:pointer; }
+.step-form form input[type="submit"]:active{ position:relative; top:1px; }
+.step-form form button.back{ display:inline-block; float:left; clear:both;  }
+
+.step-form #type-user{ margin:0 0 15px 0; width:100%; float:left; }
+.step-form #type-user a.melomane.active{ display:inline-block; width:203px; height:123px; float:left; }
+.step-form #type-user a.musicien{ display:inline-block; width:209px; height:123px; float:left; }
+.step-form #type-user span{ display:block; width:209px; height:123px; background:url('../images/subscription/sprite_choix_compte.png') no-repeat 0 0 transparent; }
+.step-form #type-user a.melomane.active span{ background-position:0 0; }
+.step-form #type-user a.musicien span{ background-position:-203px 0; }
+.step-form #type-user span.change-type{ margin:0 auto; display:block; width:32px; height:22px; position:relative; top:50px; background-position:0px -127px; z-index:50; }
+
+.step-form #type-user input[type="checkbox"]{ display:none; float:left; }
+.step-form #type-user input[type="checkbox"] + label{ display:inline-block; width:205px; height:123px; cursor:pointer; color:transparent; float:left; clear:none !important; }
+.step-form #type-user input[type="checkbox"] + label:before{ content:""; display:inline-block; width:209px; height:123px; color:transparent; background:url('../images/subscription/sprite_choix_compte2.png') no-repeat -205px 0 transparent; float:left; }
+.step-form #type-user input[type="checkbox"].check_typeaccount_1 + label:before{ background-position: 0 -162px; }
+.step-form #type-user input[type="checkbox"].check_typeaccount_2 + label:before{ background-position: -205px 0; }
+.step-form #type-user input[type="checkbox"]:checked.check_typeaccount_1 + label:before{ background-position:0 0; }
+.step-form #type-user input[type="checkbox"]:checked.check_typeaccount_2 + label:before{ background-position:-205px -162px; }
+
+.step-form select{ margin:0 0 24px 0; padding:0 0 0 6px; display:block; width:412px; height:48px; position:relative; font-size:17px; font-family:'Myriad Pro'; border:1px solid #cccccc; outline:none; color:#999999; background:#FFFFFF; float:left; }
+.step-form p.choix-stylemusic{ float:left; clear:both; }
+.checkbox-style{ margin:0 0 20px 0; width:411px; height:115px; position:relative; font-size:17px; font-family:'Myriad Pro'; border:1px solid #cccccc; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; color:#999999; background:#FFFFFF; float:left; clear:both; overflow-y:scroll; }
+/*.step-form .checkbox-group{ width:33%; float:left; }*/
+
+input[type="checkbox"]{ display:none; }
+input[type="checkbox"] + label span{ display:inline-block; width:14px; height:14px; margin:-3px 22px 0 0; vertical-align:middle; background:url('../images/common/sprite_checkbox.png') 0 0 no-repeat; cursor:pointer; }
+input[type="checkbox"]:checked + label span{ background:url('../images/common/sprite_checkbox.png') 0 -16px no-repeat; }
+
+#subscription-upload{ margin:0 0 60px 0; display:block; width:100%; float:left; clear:both; }
+#subscription-upload label{ margin:-10px 0 0.4em 0; font-weight:normal; float:left; clear:none; }
+#subscription-upload .container-cover + label{ margin:-15px 0 0.4em 0; font-weight:normal; float:right; clear:none; }
+.upload_images{ display:block; width:409px; height:150px; background:url('../images/subscription/upload_images2.png') no-repeat; float:left; clear:both; }
+.upload-file-container{ display:block; width:161px; height:29px; float:left; cursor:pointer; position:relative; }
+.upload-file-container:hover{ background-position:0 -29px; cursor:pointer; }
+.upload-file-container{ background:url('../images/subscription/sprite_button_file_cover.png') 0 0 no-repeat; clear:both; }
+.upload-file-container.container-thumb{ margin:-20px 10px 0 0; width:147px; background:url('../images/subscription/sprite_button_file_thumb.png') no-repeat; float:right; clear:both; }
+input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:alpha(opacity=0); opacity:0; position:absolute; left:0; top:0; cursor:pointer; }
+/* --------- FIN  D'INSCRIPTION'  --------- */
+
+
+/* --------- MUSICIEN MUSIQUE --------- */
+.content .a_la_une {margin:0 20px 20px;width:172px;float:left;}
+.content .a_la_une .bandeau_top{position:absolute;margin:-175px 0;}
+.content .player{position:absolute;background:rgba(115,115,115,0.68);width: 172px;height: 42px;margin: -44px 0;}
+.content .player img{margin:8px 70px;}
+.content .a_la_une .infos{margin:0;}
+.content .a_la_une .infos p{margin:0;color:#2f2f2f;font-weight:normal;}
+.content .a_la_une .infos p span{color:#45baa0;}
+.content .a_la_une .infos .title{font-weight:bold;}
+.content .a_la_une .infos .annee_crea{margin:0;color:#888d95;font-size:12px;}
+.content .a_la_une .infos a{margin:0;color:#3c495a;font-size:12px;}
+
+.content .top_album{float:left;}
+.content .top_album a{color:#888d95;font-size:12px;text-decoration:none;}
+.content .top_album p{display:inline;margin:0;font-weight:normal;}
+.content .top_album img{display:inline;width:12px;margin:0 0 0 5px;}
+.content .top_album .liste_titres{width:308px;border:1px solid #d2d5d7;border-bottom:none;border-radius:4px;margin:0 0 10px 0;}
+.content .top_album .liste_titres tr{border-bottom:1px solid #d2d5d7;}
+.content .top_album .liste_titres .titres tr{border-bottom:1px solid #d2d5d7;background:#fafafa;}
+.content .top_album .liste_titres .en_tete{width:308px;height:60px;background:#e9ebec;border-radius:4px;}
+.content .top_album .liste_titres .en_tete tr{border:none;text-align:center;font-weight:bold;font-size:14px;}
+.content .top_album .liste_titres .en_tete .check{width:20px;height:21px;padding:20px 3px 0 3px;}
+.content .top_album .liste_titres .en_tete .le_titre{width:165px;height:21px;padding:0 60px 0 0;color:#666666;}
+.content .top_album .liste_titres .en_tete .duree{width:15px;height:21px;padding:0 9px;color:#666666;}
+.content .top_album .liste_titres .titres{width:308px;background:white;border-top:1px solid #d2d5d7;border-bottom-left-radius:4px;border-bottom-right-radius:4px}
+.content .top_album .liste_titres .titres .check{width:20px;height:21px;padding:7px 3px 0 3px;border-right:1px solid #d2d5d7}
+.content .top_album .liste_titres .titres .le_titre{width:300px;height:21px;padding:0 3px;border-right:1px solid #d2d5d7;color:#555555; font-size:12px;}
+
+.content .top_album .liste_titres .titres .le_titre .miniat_titre {display:none;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre a{width:17px;height:13px;margin:0 2px 0 0;display:block;float:right;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre span{display:inline-block; text-indent: -5000px;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .cam{background:url('../images/common/sprite_edit_titre.png') 0px -2px;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .coeur{background:url('../images/common/sprite_edit_titre.png') -20px -2px;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .edit{background:url('../images/common/sprite_edit_titre.png') -37px -2px;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .add{background:url('../images/common/sprite_edit_titre.png') -56px -2px;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .cadis{background:url('../images/common/sprite_edit_titre.png') -76px -3px;}
+
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .cam:hover{background-position:0px -22px;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .coeur:hover{background-position:-20px -22px;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .edit:hover{background-position:-37px -22px;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .add:hover{background-position:-56px -22px;}
+.content .top_album .liste_titres .titres .le_titre .miniat_titre .cadis:hover{background-position:-76px -23px;}
+
+.content .top_album .liste_titres .titres .le_titre .play{width:17px;margin:-2px 0;}
+.content .top_album .liste_titres .titres .duree{width:15px;height:21px;padding:0 15px;color:#555555; font-size:12px;}
+
+.content .bt_cadis{float:right;width:93px;height:30px;background:url('../images/common/bt_cadis.png');border:none;color:white;padding:0 0 0 25px;font-weight:bold;font-size:14px;}
+.content .bt_playlist{float:right;width:145px;height:30px;background:url('../images/common/bt_playlist.png');border:none;color:white;padding:0 0 0 20px;font-weight:bold;font-size:14px;margin:0 10px 0 0;}
+
+.content .tout_titre{margin:20px 20px 20px;}
+.content .tout_titre p{display:inline;margin:0;font-weight:normal;}
+.content .tout_titre img{display:inline;width:12px;margin:0 0 0 5px;}
+.content .tout_titre a{color:#888d95;font-size:12px;text-decoration:none;}
+.content .tout_titre .liste_titres{width:500px;border:1px solid #d2d5d7;border-bottom:none;border-radius:4px;margin:20px 0 10px 0;}
+.content .tout_titre .liste_titres tr{border-bottom:1px solid #d2d5d7;}
+.content .tout_titre .liste_titres .titres tr{border-bottom:1px solid #d2d5d7;background:#fafafa;}
+.content .tout_titre .liste_titres .en_tete{width:500px;height:60px;background:#e9ebec;border-radius:4px;}
+.content .tout_titre .liste_titres .en_tete tr{border:none;text-align:center;font-weight:bold;font-size:14px;}
+.content .tout_titre .liste_titres .en_tete .check{width:20px;height:21px;padding:20px 3px 0 3px;}
+.content .tout_titre .liste_titres .en_tete .le_titre{width:175px;height:21px;padding:0 110px 0 0;color:#666666;}
+.content .tout_titre .liste_titres .en_tete .duree{width:15px;height:21px;padding:0 5px;color:#666666;}
+.content .tout_titre .liste_titres .en_tete .album{width:15px;height:21px;padding:0 25px;color:#666666;}
+.content .tout_titre .liste_titres .titres{width:500px;background:white;border-top:1px solid #d2d5d7;border-bottom-left-radius:4px;border-bottom-right-radius:4px}
+.content .tout_titre .liste_titres .titres .check{width:20px;height:21px;padding:7px 3px 0 3px;border-right:1px solid #d2d5d7}
+.content .tout_titre .liste_titres .titres .le_titre{width:280px;height:21px;padding:0 3px;border-right:1px solid #d2d5d7;color:#555555; font-size:12px;}
+.content .tout_titre .liste_titres .titres .duree{border-right:1px solid #d2d5d7;}
+.content .tout_titre .liste_titres .titres .album{font-size:12px;color:#555555;padding:0 17px;}
+
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre {display:none;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre a{width:17px;height:13px;display:inline;margin:0 2px 0 0;display:block;float:right;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre span{display:inline-block; text-indent: -5000px;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .cam{background:url('../images/common/sprite_edit_titre.png') 0px -2px;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .coeur{background:url('../images/common/sprite_edit_titre.png') -20px -2px;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .edit{background:url('../images/common/sprite_edit_titre.png') -37px -2px;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .add{background:url('../images/common/sprite_edit_titre.png') -56px -2px;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .cadis{background:url('../images/common/sprite_edit_titre.png') -76px -3px;}
+
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .cam:hover{background-position:0px -22px;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .coeur:hover{background-position:-20px -22px;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .edit:hover{background-position:-37px -22px;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .add:hover{background-position:-56px -22px;}
+.content .tout_titre .liste_titres .titres .le_titre .miniat_titre .cadis:hover{background-position:-76px -23px;}
+
+.content .tout_titre .liste_titres .titres .le_titre .play{width:17px;margin:-2px 0;}
+.content .tout_titre .liste_titres .titres .duree{width:15px;height:21px;padding:0 15px;color:#555555; font-size:12px;}
+/* --------- FIN MUSICIEN MUSIQUE  --------- */
+
+
+/* --------- MUSICIEN PARTITIONS ------------*/
+.content .top_partition{float:left;}
+.content .top_partition a{color:#888d95;font-size:12px;text-decoration:none;}
+.content .top_partition p{display:inline;margin:0;font-weight:normal;}
+.content .top_partition img{display:inline;width:12px;margin:0 0 0 5px;}
+.content .top_partition .liste_partitions{width:308px;border:1px solid #d2d5d7;border-radius:4px;margin:0 0 10px 0;}
+.content .top_partition .liste_partitions tr{border-bottom:1px solid #d2d5d7;}
+.content .top_partition .liste_partitions .en_tete{width:308px;height:60px;background:#e9ebec;border-radius:4px;color:#666666;}
+.content .top_partition .liste_partitions .en_tete tr{border:none;text-align:center;font-weight:bold;font-size:14px;}
+.content .top_partition .liste_partitions .en_tete .check{width:20px;height:21px;padding:7px 3px 0 3px;}
+.content .top_partition .liste_partitions .en_tete .le_titre{width:300px;height:21px;padding:23px 3px;}
+.content .top_partition .liste_partitions .en_tete .paroles{width:15px;height:21px;padding:0 15px;}
+.content .top_partition .liste_partitions .en_tete .partitions{width:15px;height:21px;padding:0 15px;}
+.content .top_partition .liste_partitions .titres{width:308px;background:white;border-top:1px solid #d2d5d7;border-bottom-left-radius:4px;border-bottom-right-radius:4px}
+.content .top_partition .liste_partitions .titres .check{width:20px;height:21px;padding:7px 3px 0 3px;border-right:1px solid #d2d5d7}
+.content .top_partition .liste_partitions .titres .le_titre{width:140px;height:18px;padding:5px 3px;border-right:1px solid #d2d5d7;color:#555555; font-size:12px;}
+
+.content .top_partition .liste_partitions .titres .paroles .miniat_titre {display:inline;}
+.content .top_partition .liste_partitions .titres .paroles .miniat_titre a{width:17px;height:13px;display:inline;margin:0 2px 0 0;display:block;float:right;}
+.content .top_partition .liste_partitions .titres .paroles .miniat_titre span{display:inline-block; text-indent: -5000px;}
+.content .top_partition .liste_partitions .titres .paroles .miniat_titre .edit{background:url('../images/common/sprite_edit_titre.png') -37px -2px;}
+
+.content .top_partition .liste_partitions .titres .paroles .miniat_titre .edit:hover{background-position:-37px -22px;}
+
+.content .top_partition .liste_partitions .titres .le_titre .play{width:17px;margin:-2px 0;}
+.content .top_partition .liste_partitions .titres .paroles{width:55px;height:21px;padding:0 10px;color:#555555; font-size:12px;border-right:1px solid #cbcbcb;}
+
+.content .top_partition .liste_partitions .titres .partitions .miniat_titre {display:inline;}
+.content .top_partition .liste_partitions .titres .partitions .miniat_titre a{width:17px;height:13px;display:inline;margin:0 2px 0 0;display:block;float:right;}
+.content .top_partition .liste_partitions .titres .partitions .miniat_titre span{display:inline-block; text-indent: -5000px;}
+.content .top_partition .liste_partitions .titres .partitions .miniat_titre .edit{background:url('../images/common/sprite_edit_titre.png') -37px -2px;}
+.content .top_partition .liste_partitions .titres .partitions .miniat_titre .cadis{background:url('../images/common/sprite_edit_titre.png') -76px -3px;}
+
+.content .top_partition .liste_partitions .titres .partitions .miniat_titre .edit:hover{background-position:-37px -22px;}
+.content .top_partition .liste_partitions .titres .partitions .miniat_titre .cadis:hover{background-position:-76px -23px;}
+.content .top_partition .liste_partitions .titres .partitions{width:95px;height:21px;padding:0 5px;color:#555555; font-size:12px;}
+
+.content .bt_cadis{float:right;width:93px;height:30px;background:url('../images/common/bt_cadis.png');border:none;color:white;padding:0 0 0 22px;font-weight:bold;font-size:14px;}
+.content .bt_playlist{float:right;width:145px;height:30px;background:url('../images/common/bt_playlist.png');border:none;color:white;padding:0 0 0 17px;font-weight:bold;font-size:14px;margin:0 10px 0 0;}
+
+.content .toutes_partitions{float:left;}
+.content .toutes_partitions a{color:#888d95;font-size:12px;text-decoration:none;}
+.content .toutes_partitions p{display:inline;margin:0;font-weight:normal;}
+.content .toutes_partitions img{display:inline;width:12px;margin:0 0 0 5px;}
+.content .toutes_partitions .liste_partitions{width:308px;border:1px solid #d2d5d7;border-radius:4px;margin:0 0 10px 0;}
+.content .toutes_partitions .liste_partitions tr{border-bottom:1px solid #d2d5d7;}
+.content .toutes_partitions .liste_partitions .en_tete{width:308px;height:60px;background:#e9ebec;border-radius:4px;color:#666666;}
+.content .toutes_partitions .liste_partitions .en_tete tr{border:none;text-align:center;font-weight:bold;font-size:14px;}
+.content .toutes_partitions .liste_partitions .en_tete .check{width:20px;height:21px;padding:7px 3px 0 3px;}
+.content .toutes_partitions .liste_partitions .en_tete .le_titre{width:300px;height:21px;padding:23px 3px;}
+.content .toutes_partitions .liste_partitions .en_tete .paroles{width:15px;height:21px;padding:0 15px;}
+.content .toutes_partitions .liste_partitions .en_tete .partitions{width:15px;height:21px;padding:0 15px;}
+.content .toutes_partitions .liste_partitions .titres{width:308px;background:white;border-top:1px solid #d2d5d7;border-bottom-left-radius:4px;border-bottom-right-radius:4px}
+.content .toutes_partitions .liste_partitions .titres .check{width:20px;height:21px;padding:7px 3px 0 3px;border-right:1px solid #d2d5d7}
+.content .toutes_partitions .liste_partitions .titres .le_titre{width:140px;height:18px;padding:5px 3px;border-right:1px solid #d2d5d7;color:#555555; font-size:12px;}
+
+.content .toutes_partitions .liste_partitions .titres .paroles .miniat_titre {display:inline;}
+.content .toutes_partitions .liste_partitions .titres .paroles .miniat_titre a{width:17px;height:13px;display:inline;margin:0 2px 0 0;display:block;float:right;}
+.content .toutes_partitions .liste_partitions .titres .paroles .miniat_titre span{display:inline-block; text-indent: -5000px;}
+.content .toutes_partitions .liste_partitions .titres .paroles .miniat_titre .edit{background:url('../images/common/sprite_edit_titre.png') -37px -2px;}
+
+.content .toutes_partitions .liste_partitions .titres .paroles .miniat_titre .edit:hover{background-position:-37px -22px;}
+
+.content .toutes_partitions .liste_partitions .titres .le_titre .play{width:17px;margin:-2px 0;}
+.content .toutes_partitions .liste_partitions .titres .paroles{width:55px;height:21px;padding:0 10px;color:#555555; font-size:12px;border-right:1px solid #cbcbcb;}
+
+.content .toutes_partitions .liste_partitions .titres .partitions .miniat_titre {display:inline;}
+.content .toutes_partitions .liste_partitions .titres .partitions .miniat_titre a{width:17px;height:13px;display:inline;margin:0 2px 0 0;display:block;float:right;}
+.content .toutes_partitions .liste_partitions .titres .partitions .miniat_titre span{display:inline-block; text-indent: -5000px;}
+.content .toutes_partitions .liste_partitions .titres .partitions .miniat_titre .edit{background:url('../images/common/sprite_edit_titre.png') -37px -2px;}
+.content .toutes_partitions .liste_partitions .titres .partitions .miniat_titre .cadis{background:url('../images/common/sprite_edit_titre.png') -76px -3px;}
+
+.content .toutes_partitions .liste_partitions .titres .partitions .miniat_titre .edit:hover{background-position:-37px -22px;}
+.content .toutes_partitions .liste_partitions .titres .partitions .miniat_titre .cadis:hover{background-position:-76px -23px;}
+.content .toutes_partitions .liste_partitions .titres .partitions{width:95px;height:21px;padding:0 5px;color:#555555; font-size:12px;}
+/* --------- FIN MUSICIEN PARTITIONS ----------*/
+
+
+/*-------- MUSICIEN FOLLOWERS------*/
+.content .follower .photo_follow {width:64px;float:left;margin:0 10px 10px 20px;}
+.content .follower .photo_follow img {width : 63px; border-radius : 10px;}
+.content .follower .description {width:220px;float:left;margin:0 10px}
+.content .follower .description span {font-size:12px;color:#888d95;}
+.content .follower .description .nom_follow {font-size:14px;font-weight:bold;color:#3f3f3f;margin:0;}
+.content .follower .description .text_follow {font-size:14px;color:#5d5b5b;font-weight:normal;width:220px;margin:0;}
+.content .follower .bouton .participer {margin:20px 0 0 30px;}
+
+.content .participer .button_left_abonne{ display:block; width:22px; height:30px; background:url("../images/common/sprite_btn_suivre.png") no-repeat 0 -61px; float:left; }
+.content .participer .button_center_abonne{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_suivre.png") repeat-x 0 -31px; float:left; }
+.content .participer .button_right_abonne{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_suivre.png") no-repeat -77px -1px; float:left; }
+.content .participer .button_left_non{ display:block; width:22px; height:30px; background:url("../images/common/sprite_btn_pas_suivre.png") no-repeat 0 -61px; float:left; }
+.content .participer .button_center_non{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_pas_suivre.png") repeat-x 0 -31px; float:left; }
+.content .participer .button_right_non{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_pas_suivre.png") no-repeat -77px -1px; float:left; }
+.content #btn_tmp_follow{ width:193px; margin:0 20px; padding:20px 0; }
+.content #btn_tmp_follow .tous{background:url("../images/common/fd_ts.png");width:46px;height:22px;text-align:center;padding-top:8px;}
+.content #btn_tmp_follow .musiciens{ width:65px;height:22px;background:url("../images/common/fd_music.png");text-align:center;padding-top:8px;}
+.content #btn_tmp_follow .melomanes{ width:82px;height:22px;background:url("../images/common/fd_melo.png");text-align:center;padding-top:8px;}
+.content #btn_tmp_follow a{ float:left;color:#666666;font-size:12px;text-decoration:none;}
+.content #btn_tmp_follow a:hover{color:#f05f4c;}
+/* ---------- FIN MUSICIEN FOLLOWERS --------- */
+
+
+/* ---------- MUSICIEN PERSO --------- */
+.personnaliser form{ float:left; clear:both; }
+.personnaliser .checkbox-style{ margin:5px 98px 0 0; width:135px; height:10px; position:relative; font-size:17px; font-family:'Myriad Pro'; border:none; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; color:#999999; background:transparent; float:right; clear:both; overflow-y:visible; }
+.personnaliser .checkbox-style input[type="checkbox"] + label span{ margin:-3px 10px 0 0; }
+.personnaliser .label_big{ width:155px; text-align:right; font-size:16px; }
+.personnaliser #subscription-upload{ margin:0; }
+.personnaliser #subscription-upload .label_big{ margin:0; width:155px; font-weight:bold; text-align:right; font-size:16px; clear:none; }
+.personnaliser .preview_upload{ width:82px; height:55px; }
+#any-background-personnaliser .upload-file-container.container-background{ margin:2px 0 0 0; float:left; clear:none; }
+.personnaliser .upload_photo_name_file{ margin:0 0 0 1px; line-height:22px; }
+#any-background-personnaliser input[type="submit"]{ margin:0 0 10px 175px; padding:0 14px; height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; font-weight:bold; text-align:center; outline:none; color:#FFFFFF; background:url('../images/common/bt-rouge.png') no-repeat transparent; float:left; }
+#any-background-personnaliser a.reset_theme{ margin:0 0 10px 50px; padding:0 14px; height:30px; line-height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; font-weight:bold; text-align:center; text-decoration:none; outline:none; color:#FFFFFF; background:url('../images/common/bt-rouge2.png') no-repeat transparent; float:left; }
+
+.detail_perso {font-size:14px;color:#888d95;font-weight:normal;margin:0 20px 0 20px;}
+.categ_perso {margin:20px 0;}
+.categ_perso p {margin:0; display:inline-block; font-family:"Trebuchet MS"; font-weight:bold; font-size:16px; width:150px; color:#6b6b6b; float:left;}
+.categ_perso .themes {/*margin:-15px 10px 10px;*/ margin:0; width:348px; float:left;}
+.categ_perso .themes a {width:82px;height:55px;float:left;text-indent:-50000px;margin:0 5px 0 0;}
+.categ_perso .themes .t1 {background:url("../images/musicien/sprite_theme.png") no-repeat -15px -8px;}
+.categ_perso .themes .t2 {background:url("../images/musicien/sprite_theme.png") no-repeat -111px -8px;}
+.categ_perso .themes .t3 {background:url("../images/musicien/sprite_theme.png") no-repeat -210px -8px;}
+.categ_perso .themes .t4 {background:url("../images/musicien/sprite_theme.png") no-repeat -311px -8px;}
+
+.categ_perso_detail {margin:40px 0;}
+.categ_perso_detail p {font-size:16px;color:#4e4e4e;float:left;width: 95px;text-align:right;margin: 0 0 0 60px;}
+.categ_perso_detail .themes {margin:-15px 20px 10px;float:left;width:290px;}
+.categ_perso_detail .themes a {width:82px;height:55px;float:left;text-indent:-50000px;margin:0 5px 0 0;}
+.categ_perso_detail .themes .t1 {background:url("../images/musicien/fond_perso.png") no-repeat 0 0;}
+.categ_perso_detail .themes span {font-size:12px;color:#a5a9af;font-weight:normal;float:left;width:200px;}
+.categ_perso_detail .themes .repeat {font-size:12px;color:#4e4e4e;font-weight:normal;width:75px;float:none;}
+
+.categ_perso_precis {margin:20px 0;}
+.categ_perso_precis p {font-size:16px;color:#4e4e4e;float:left;width: 135px;text-align:right;}
+.categ_perso_precis .themes {margin:-15px 20px 10px;float:left;width:290px;}
+.categ_perso_precis .themes input{width:85px;margin:20px 0;}
+.categ_perso_precis .themes a{width:82px;height:30px;float:left;text-indent:-50000px;margin:15px 5px 0 0;}
+.categ_perso_precis .themes .t1 {width:82px;height:30px;background:#19849b;margin:15px 5px 0 0;border-radius:25px;-moz-border-radius:25px;-webkit-border-radius:25px;float:left;}
+.categ_perso_precis .themes .t1.color2 {background:#b3b2bb;}
+.categ_perso_precis .themes .t1.color3 {background:#323c6a;}
+.categ_perso_precis .themes .t1.color4 {background:#b3b2bb;}
+.categ_perso_precis .themes span {font-size:12px;color:#a5a9af;font-weight:normal;float:left;width:200px;}
+.categ_perso_precis .themes .repeat {font-size:12px;color:#4e4e4e;font-weight:normal;width:75px;float:none;}
+
+.content .clear {clear:both;}
+.content .valider {background:url("../images/common/bt-rouge.png") no-repeat;color:white;width:85px;height:30px;font-size:16px;margin:0 175px 90px;border:none;}
+/* ---------- FIN MUSICIEN PERSO --------- */
+
+
+/*------------ REGLAGES -------------*/
+#any-background-personnaliser .content, #any-background-reglages .content{ margin:10px 0 25px 0; padding:0 20px; width:499px; }
+#any-background-personnaliser .content h2, #any-background-reglages .content h2{ margin:20px 0 15px 0; }
+p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:normal; line-height:21px; color:#888d95; float:left; text-align:left; }
+.preview_upload{ margin:0 10px 0 18px; width:58px; height:58px; -webkit-border-radius:8px; -moz-border-radius:8px; border-radius:8px; overflow:hidden; background-repeat:no-repeat; background-size:cover; background-position:center center; float:left; }
+#any-background-reglages #subscription-upload{ margin:15px 0 0 0; clear:both; }
+#any-background-reglages #subscription-upload label{ margin:4px 0 55px 0; display:inline-block; width:150px; font-size:16px; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:bold; text-align:right; color: #4e4e4e; clear:both; }
+#any-background-reglages #subscription-upload input{ width:100%; position:relative; }
+#any-background-reglages .upload-file-container.container-thumb{ margin:2px 0 0 0; float:left; clear:none; }
+#any-background-reglages .upload-file-container.container-cover{ margin:2px 0 0 0; float:left; clear:none; }
+#any-background-reglages hr, #any-background-personnaliser hr{ margin:15px auto 25px auto; height:1px; border-bottom:1.5px solid rgb(184, 187, 190); background:#f8f8f8; }
+
+#any-background-reglages form > label{ margin:8px 0 0 0; width:150px; height:26px; line-height:26px; font-size:16px; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:bold; text-align:right; color: #4e4e4e; float:left; }
+#any-background-reglages .checkbox-style{ margin:0 0 20px 20px; width:306px; clear:none; }
+#any-background-reglages input[type="text"]{ margin:8px 0 8px 20px; padding:3px 10px; width:285px; outline-color:rgba(42, 179, 149, 0.6); color:rgb(100, 100, 100); float:left; }
+#any-background-reglages textarea{ margin:8px 0 8px 20px; padding:3px 10px; width:287px; max-width:287px; height:75px; max-height:300px; font-family:"Trebuchet MS", Arial, sans-serif; word-break:break-word; outline-color:rgba(42, 179, 149, 0.6); color:rgb(100, 100, 100); float:left; }
+#any-background-reglages input[type="submit"]{ margin:0 0 10px 170px; padding:0 14px; height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; font-weight:bold; text-align:center; outline:none; color:#FFFFFF; background:url('../images/common/bt-rouge.png') no-repeat transparent; float:left; }
+#any-background-reglages span.error-form{ margin:0 0 10px 172px; }
+
+.reglage_detail_domaine {margin:40px 0;height:115px;}
+.reglage_detail_domaine p {font-size:16px;color:#4e4e4e;float:left;width: 140px;text-align:right;margin:0 0 0 15px;}
+.reglage_detail_domaine .themes {float:left;width: 310px;height:115px;overflow-y:scroll;margin: 0 0 0 15px;border:1px solid #2ab395;background:#fff;}
+.reglage_detail_domaine .themes span{width: 500px;margin: 0 5px 0 0;font-size:14px;color:#7f7d7d;}
+.reglage_detail_domaine .themes input[type="checkbox"]{margin: 5px 20px 0 10px;}
+/* -------------- FIN REGLAGES ------------*/
+
+
+/* ------------------ STATS ---------------*/
+.content .stats_carre {width: 504px;height: 105px;margin: 0 auto 10px;}
+.content .stats_carre div{width:108px;height:108px;float:left;margin:0 9px;}
+.content .stats_carre span{font-size:20px;color:#f9f9f9;position: relative;top: 60px;left: 35px;}
+.content .stats_carre .abonnes{background:url("../images/musicien/sprite_carre_stats.png") no-repeat 0px 0px;}
+.content .stats_carre .visites{background:url("../images/musicien/sprite_carre_stats.png") no-repeat -131px 0px;}
+.content .stats_carre .vues{background:url("../images/musicien/sprite_carre_stats.png") no-repeat -260px 0px;}
+.content .stats_carre .ventes{background:url("../images/musicien/sprite_carre_stats.png") no-repeat -389px 0px;}
+.content .visites_quotidiennes{margin:20px 0;}
+.content .visites_quotidiennes span{margin:0 20px;font-size:14px;font-weight:bold;color:#676666;float:left;}
+.content .visites_quotidiennes .legende{margin:0 0 0 320px;}
+.content .visites_quotidiennes .legende span{font-size:12px;font-weight:normal;color:#676666;margin:5px 10px;}
+.content .visites_quotidiennes .legende .visites{background:url("../images/musicien/sprite_legende.png") no-repeat -8px 0px;width:20px;height:4px;float:left;margin:8px 0;}
+.content .visites_quotidiennes .legende .unique{background:url("../images/musicien/sprite_legende.png") no-repeat -32px 0px;width:20px;height:4px;float:left;margin:8px 0;}
+.content .visites_quotidiennes .graph_stats{background:white;width:497px;height:204px;margin:0 20px;}
+.content .provenance {width:305px;float:left;}
+.content .provenance span{margin:0 20px;font-size:14px;font-weight:bold;color:#676666;}
+.content .provenance .graph{width:305px;height:169px;background:#fff;margin:5px 0 20px 20px;}
+.content .provenance .graph .stats{width:150px;height:169px;float:left;}
+.content .provenance .graph .stats span{font-size:17px;color:#ffffff;margin: 0;position: relative;top: 10px;left: 12px;}
+.content .provenance .graph .stats .portail{width:55px;height:55px;float:left;margin:20px 10px;background:url("../images/musicien/sprite_provenance.png") no-repeat 0px 0px;}
+.content .provenance .graph .stats .google{width:55px;height:55px;float:left;margin:20px 10px;background:url("../images/musicien/sprite_provenance.png") no-repeat -64px 0px;}
+.content .provenance .graph .stats .site{width:55px;height:55px;float:left;margin:0px 10px;background:url("../images/musicien/sprite_provenance.png") no-repeat 0px -58px;}
+.content .provenance .graph .stats .autre{width:55px;height:55px;float:left;margin:0px 10px;background:url("../images/musicien/sprite_provenance.png") no-repeat -64px -58px;}
+.content .provenance .graph .cercle {width:150px;height:169px;float:left;margin:0px 0 0 5px;}
+.content .vente{width:171px;float:left;margin:0 20px;}
+.content .vente span{margin:0 20px;font-size:14px;font-weight:bold;color:#676666;}
+.content .vente .resume_vente{width:171px;height:169px;background:white;margin:5px 20px;}
+.content .vente .resume_vente .nb_vente{font-size:36px;font-weight:bold;color:#f05f4c;margin:0 50px;}
+.content .vente .resume_vente .titres_vendus{font-size:12px;color:#676666;width:75px;margin:0 auto;}
+.content .vente .resume_vente img{width:19px;height:16px;margin:5px 72px;}
+.content .vente .resume_vente .source{font-size:12px;color:#676666;text-align:right;margin:6px 5px 0 0;float:left;width:100px;}
+.content .vente .resume_vente .source_detail{font-size:12px;color:#868686;text-align:right;margin:6px 5px 0 0;float:left;width:100px;}
+.content .vente .resume_vente .revenu{font-size:12px;color:#3f3f3f;font-weight:bold;text-align:left;margin:6px 10px;float:left;}
+.content .ecoutes {margin:20px 0;}
+.content .ecoutes span{margin:0 20px;font-size:14px;font-weight:bold;color:#676666;float:left;}
+.content .ecoutes select{margin:0 0 0 160px;width:106px;}
+
+.content .ecoutes  tr{border-bottom:1px solid #cbcbcb;}
+.content .ecoutes  .en_tete{width:500px;height:60px;background:#e9ebec;border:1px solid #cbcbcb;border-bottom:none;margin:10px auto 0;border-top-left-radius:2px;border-top-right-radius:2px}
+.content .ecoutes  .en_tete tr{border:none;text-align:center;font-weight:bold;font-size:14px;color:#666666;}
+.content .ecoutes  .en_tete tr span{text-align:center;font-weight:normal;font-size:10px;color:#666666;}
+.content .ecoutes  .en_tete .le_titre{width:261px;height:21px;padding:20px 0;}
+.content .ecoutes  .en_tete .paroles{width:140px;height:21px;}
+.content .ecoutes  .en_tete .partitions{width:140px;height:21px;}
+
+.content .ecoutes  .titres{width:500px;background:white;border:1px solid #cbcbcb;border-bottom-left-radius:2px;border-bottom-right-radius:2px;margin:0 auto;border-bottom: none}
+
+.content .ecoutes  .titres .le_titre{width:235px;height:15px;padding:6px 0;border-right:1px solid #cbcbcb;color:#555555; font-size:12px;text-align:center;}
+.content .ecoutes  .titres .le_titre span{color:#555555; font-size:12px;font-weight:normal;}
+
+.content .ecoutes  .titres .paroles{width:140px;height:21px;color:#555555; font-size:12px;border-right:1px solid #cbcbcb;text-align:center;}
+
+.content .ecoutes  .titres .partitions{width:140px;height:21px;color:#555555; font-size:12px;text-align:center;}
+/* ------------------- FIN STATS -------------- */
+
+
+/* ------------------- MELO PLAYLIST -------------- */
+.content .playlist .visu_playlist {float: left;width: 72px;margin: 0 20px;}
+.content .playlist .nom_pl {float: left;font-size:18px;font-weight:bold;color:#3f3f3f;margin:0 10px 0 0;}
+.content .playlist .detail_pl {float: left;font-size:12px;color:#888d95;margin:5px 2px;}
+.content .playlist .edit {float: left;margin:5px 15px;}
+.content .playlist hr { width:400px; border-top: 2px dashed #7a7a7a;margin:0;clear:none;}
+.content .playlist .lecture_pl {margin:12px 0;}
+.content .playlist .ecouter_pl {font-size:12px;color:#888d95;}
+
+.content  .playlist tr{border-bottom:1px solid #cbcbcb;}
+.content  .playlist .titres tr{background:#fafafa;}
+.content .playlist .en_tete{width:500px;height:60px;background:#e9ebec;border:1px solid #cbcbcb;border-bottom:none;margin:10px auto 0;border-top-left-radius:2px;border-top-right-radius:2px}
+.content .playlist   .en_tete tr{border:none;text-align:center;font-weight:bold;font-size:14px;color:#666666;}
+.content .playlist   .en_tete tr span{text-align:center;font-weight:normal;font-size:10px;color:#666666;}
+.content .playlist   .en_tete .check{width:23px;height:21px;padding:20px 0;}
+.content .playlist   .en_tete .le_titre{width:261px;height:21px;padding:20px 0;}
+.content .playlist   .en_tete .artiste{width:100px;height:21px;}
+.content .playlist   .en_tete .album{width:142px;height:21px;}
+.content .playlist   .en_tete .duree{width:77px;height:21px;}
+.content .cadis_pl{float:right;width:93px;height:30px;background:url('../images/common/bt_cadis.png');border:none;color:white;padding:0 0 0 25px;font-weight:bold;font-size:14px;margin:10px 0;}
+.content .bt_supp_playlist{float:right;width:108px;height:30px;background:url('../images/common/bt_supp_pl.png');border:none;color:white;padding:0 0 0 17px;font-weight:bold;font-size:13px;margin:10px;}
+
+.content .playlist   .titres{width:500px;border:1px solid #cbcbcb;border-bottom-left-radius:2px;border-bottom-right-radius:2px;margin:0 auto 15px;border-bottom: none}
+
+.content .playlist   .titres .check{width:23px;height:15px;padding:6px 0;border-right:1px solid #cbcbcb;color:#555555; font-size:12px;text-align:center;}
+
+.content .playlist   .titres .le_titre{width:255px;height:15px;padding:6px 5px;border-right:1px solid #cbcbcb;color:#555555; font-size:12px;}
+
+.content .playlist   .titres .artiste{width:100px;height:21px;color:#555555; font-size:12px;border-right:1px solid #cbcbcb;text-align:center;}
+
+.content .playlist   .titres .album{width:140px;height:21px;color:#555555; font-size:12px;text-align:center;border-right:1px solid #cbcbcb;}
+
+.content .playlist   .titres .duree{width:80px;height:21px;color:#555555; font-size:12px;text-align:center;}
+
+.content .playlist .titres .le_titre .miniat_titre {display:none;}
+.content .playlist .titres .le_titre .miniat_titre a{width:17px;height:13px;display:inline;margin:0 6px 0 0;display:block;float:right;}
+.content .playlist .titres .le_titre .miniat_titre span{display:inline-block; text-indent: -5000px;}
+.content .playlist .titres .le_titre .miniat_titre .cam{background:url('../images/common/sprite_edit_titre.png') 0px -2px;}
+.content .playlist .titres .le_titre .miniat_titre .coeur{background:url('../images/common/sprite_edit_titre.png') -20px -2px;}
+.content .playlist .titres .le_titre .miniat_titre .edit{background:url('../images/common/sprite_edit_titre.png') -37px -2px;}
+.content .playlist .titres .le_titre .miniat_titre .add{background:url('../images/common/sprite_edit_titre.png') -56px -2px;}
+.content .playlist .titres .le_titre .miniat_titre .cadis{background:url('../images/common/sprite_edit_titre.png') -76px -3px;}
+
+.content .playlist .titres .le_titre .miniat_titre .cam:hover{background-position:0px -22px;}
+.content .playlist .titres .le_titre .miniat_titre .coeur:hover{background-position:-20px -22px;}
+.content .playlist .titres .le_titre .miniat_titre .edit:hover{background-position:-37px -22px;}
+.content .playlist .titres .le_titre .miniat_titre .add:hover{background-position:-56px -22px;}
+.content .playlist .titres .le_titre .miniat_titre .cadis:hover{background-position:-76px -23px;}
+/*----------------- FIN MELO PLAYLIST ---------------------*/
+
+
+/*-------------------- MELO ACHATS -----------------------*/
+.content .panier .nom_pl {float: left;font-size:18px;font-weight:bold;color:#3f3f3f;margin:0 20px;}
+.content .panier .detail_pl {float: right;font-size:12px;color:#888d95;margin:5px 22px 10px -15px;}
+.content .panier hr {width:500px;}
+
+.content  .panier tr{border-bottom:1px solid #cbcbcb;}
+.content  .panier .titres tr{background:#fafafa;}
+.content .panier .en_tete{width:500px;height:60px;background:#e9ebec;border:1px solid #cbcbcb;border-bottom:none;margin:10px auto 0;border-top-left-radius:2px;border-top-right-radius:2px}
+.content .panier   .en_tete tr{border:none;font-weight:bold;font-size:14px;color:#666666;}
+.content .panier   .en_tete tr span{font-weight:normal;font-size:10px;color:#666666;}
+.content .panier   .en_tete .check{width:23px;height:21px;padding:20px 0;}
+.content .panier   .en_tete .le_titre{width:234px;height:21px;padding:20px 0 0 20px;}
+.content .panier   .en_tete .artiste{width:94px;height:21px;}
+.content .panier   .en_tete .type{width:141px;height:21px;}
+.content .panier   .en_tete .prix{width:77px;height:21px;}
+
+.content .panier   .titres{width:500px;border:1px solid #cbcbcb;border-bottom-left-radius:2px;border-bottom-right-radius:2px;margin:0 auto 15px;border-bottom: none}
+
+.content .panier   .titres .check{width:23px;height:15px;padding:6px 0;border-right:1px solid #cbcbcb;color:#555555; font-size:12px;}
+.content .panier   .titres .le_titre{width:255px;height:15px;padding:6px 5px;border-right:1px solid #cbcbcb;color:#555555; font-size:12px;}
+.content .panier   .titres .artiste{width:95px;height:21px;color:#555555; font-size:12px;border-right:1px solid #cbcbcb;padding:0 0 0 5px;}
+.content .panier   .titres .type{width:135px;height:21px;color:#555555; font-size:12px;border-right:1px solid #cbcbcb;padding:0 0 0 5px;}
+.content .panier   .titres .prix{width:75px;height:21px;color:#555555; font-size:12px;padding:0 0 0 5px;}
+
+.content .panier .total_panier{float:right;margin:5px 25px 0;font-size:14px;color:#3f3f3f;}
+.content .panier .total_panier span{margin:0 0 0 30px;color:#666666;}
+.content .cadis_panier{float:right;width:159px;height:30px;background:url('../images/common/bt_achat_panier.png');border:none;color:white;padding:0 0 0 25px;font-weight:bold;font-size:13px;margin:10px 25px 0 0;}
+
+.content .historique {margin-top:15px;}
+.content .historique .nom_pl {float: left;font-size:18px;font-weight:bold;color:#3f3f3f;margin:0 20px;}
+.content .historique .detail_pl {float: right;font-size:12px;color:#888d95;margin:5px 22px 10px -15px;}
+.content .historique hr {width:500px;}
+
+.content  .historique tr{border-bottom:1px solid #cbcbcb;}
+.content  .historique .titres tr{background:#fafafa;}
+.content .historique .en_tete{width:500px;height:60px;background:#e9ebec;border:1px solid #cbcbcb;border-bottom:none;margin:10px auto 0;border-top-left-radius:2px;border-top-right-radius:2px}
+.content .historique   .en_tete tr{border:none;font-weight:bold;font-size:14px;color:#666666;}
+.content .historique   .en_tete tr span{font-weight:normal;font-size:10px;color:#666666;}
+.content .historique   .en_tete .check{width:23px;height:21px;padding:20px 0;}
+.content .historique   .en_tete .le_titre{width:175px;height:21px;padding:20px 0 0 20px;}
+.content .historique   .en_tete .artiste{width:80px;height:21px;}
+.content .historique   .en_tete .type{width:115px;height:21px;}
+.content .historique   .en_tete .prix{width:87px;height:21px;}
+
+.content .historique   .titres{width:500px;border:1px solid #cbcbcb;border-bottom-left-radius:2px;border-bottom-right-radius:2px;margin:0 auto 15px;border-bottom: none}
+
+.content .historique   .titres .check{width:23px;height:15px;padding:6px 0;border-right:1px solid #cbcbcb;color:#555555; font-size:12px;}
+.content .historique   .titres .le_titre{width:185px;height:15px;padding:6px 5px;border-right:1px solid #cbcbcb;color:#555555; font-size:12px;}
+.content .historique   .titres .artiste{width:75px;height:21px;color:#555555; font-size:12px;border-right:1px solid #cbcbcb;padding:0 0 0 5px;}
+.content .historique   .titres .type{width:105px;height:21px;color:#555555; font-size:12px;border-right:1px solid #cbcbcb;padding:0 0 0 5px;}
+.content .historique   .titres .prix{width:88px;height:21px;color:#555555; font-size:12px;padding:0 0 0 5px;background: url("../images/common/download.png") no-repeat center;cursor: pointer;}
+
+.content .historique .total_panier{float:right;margin:5px 25px 0;font-size:14px;color:#3f3f3f;}
+.content .historique .total_panier span{margin:0 0 0 30px;color:#666666;}
+.content .telecharge_select{float:right;width:124px;height:30px;background:url('../images/common/bt_download.png');border:none;color:white;padding:0 0 0 25px;font-weight:bold;font-size:13px;margin:0 25px 10px 0;}
+/*------------------- FIN MELO ACHATS -------------------*/
+
+
+/*------------------- ADMIN -------------------*/
+#message-notification{ margin:2px 0 10px 0; padding:20px; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; font-family:"Myriad Pro", Arial, sans-serif; font-size:16px; font-weight:normal; line-height:20px; text-align:left; color:#FFFFFF; background:rgba(233, 68, 68, 0.6); float:left; clear:both; }
+#message-notification .ico-msg{ display:inline-block; width:47px; height:45px; background:url('../images/admin/sprite_chiffres.png') no-repeat 0 0 transparent; float:left; }
+#message-notification p{ margin:0 0 0 20px; display:inline-block; width:663px; float:left; }
+
+.contentAdmin{ padding:0 40px 20px 0; width:100%; }
+.contentAdmin p{ font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; line-height:18px; font-weight:normal; color:#464646; }
+.contentAdmin h3, .contentAdmin h3:before{ margin:0 0 20px 0; font-family:"Trebuchet MS", Arial, sans-serif; font-size:18px; font-weight:normal; color: #464646; }
+.contentAdmin h3:before{ content: '>'; }
+.contentAdmin label{ font-family:"Myriad Pro", Arial, sans-serif; font-size:17px; font-weight:normal; color:#878d95; }
+
+#admin_notification{ margin:30px 0 0 20px; width:100%; float:left; clear:both; }
+#admin_notification textarea{ margin:10px 0 0 0; padding:20px; display:block; width:727px; height:115px; font-family:"Myriad Pro", Arial, sans-serif; font-size:17px; font-weight:normal; border:1px solid #b0d4cc; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px; outline:none; color:#717171; float:left; clear:both; }
+#admin_notification [type='submit']{ margin:12px 0 0 0; display:block; width:124px; height:41px; line-height:41px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:17px; font-weight:bold; text-align:center; color:#2ba086; background:url('../images/admin/btn_enregistrer.png') no-repeat 0 0 transparent; float:right; clear:both; }
+
+#admin_chiffres{ margin:45px 0 0 20px; width:100%; float:left; clear:both; }
+#admin_chiffres .admin_chiffre{ margin:0 10px 0 0; display:inline-block; width:132px; height:132px; float:left; -webkit-box-shadow:1px 1px 1px 0px rgba(0, 0, 0, 0.2); box-shadow:1px 1px 1px 0px rgba(0, 0, 0, 0.2); }
+#admin_chiffres .admin_chiffre .count{ font-family:"Trebuchet MS", Arial, sans-serif; font-size:20px; font-weight:normal; text-align:center; color:#FFFFFF; }
+#admin_chiffres .admin_chiffre .raison{ font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:normal; text-align:center; color:#FFFFFF; }
+#admin_chiffres .admin_chiffre.abuse_attente{ background-color:#f05f4c; }
+#admin_chiffres .admin_chiffre.abuse_attente .ico{ margin:25px auto 0 auto; width:47px; height:51px; background:url('../images/admin/sprite_chiffres.png') no-repeat 0 0 transparent; }
+
+#admin_chiffres .admin_chiffre.abuse_suspension{ background-color:#57b8db; }
+#admin_chiffres .admin_chiffre.abuse_suspension .ico{ margin:25px auto 0 auto; width:61px; height:51px; background:url('../images/admin/sprite_chiffres.png') no-repeat -48px 0 transparent; }
+
+.admin_links{ margin:0 0 0 10px; float:left; }
+.admin_links a, .admin_links a:before{ font-family:"Myriad Pro", Arial, sans-serif; font-size:16px; font-weight:normal; text-decoration:none; color:#888d95; float:left; clear:both; }
+.admin_links a:before{ content:'>'; }
+.admin_links a:hover{ text-decoration:underline;}
+
+
+
+.admin-articles a.btn_admin{ margin:25px 0 0 18px; padding:0 7px; display:block; height:41px; line-height:41px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:17px; font-weight:bold; text-align:center; text-decoration:none; outline:none; border:none; color:#eb5440; background:url('../images/admin/btn_enregistrer.png') no-repeat 0 0 transparent; float:left; clear:both; }
+.admin-articles a.btn_admin#back-articles{ background:url('../images/admin/btn_admin-action.png') no-repeat 0 0 transparent; background-size:contain; }
+.admin-articles #wysiwyg-block h2{ margin:20px 20px 0 20px; }
+.admin-articles #wysiwyg-block, .admin-articles #edit-block{ margin:20px 0 0 20px; display:block; width:748px; border:1px solid #CCCCCC; float:left; clear:both; }
+.admin-articles #wysiwyg-block form, .admin-articles #edit-block form{ margin:25px 20px; width:688px; float:left; clear:both; }
+.admin-articles #wysiwyg-block input[type="text"], .admin-articles #edit-block input[type="text"]{ margin:0 0 20px 0; padding:0 10px; display:block; width:390px; height:40px; position:relative; font-size:17px; font-family:'Myriad Pro'; border:1px solid #cccccc; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; outline:none; color:#999999; background:#FFFFFF; float:left; clear:both; }
+.admin-articles #wysiwyg-block .redactor_box, .admin-articles #edit-block .redactor_box{ width: 100%; -moz-box-shadow:0px 0px 5px 0px #cbcefb; -webkit-box-shadow:0px 0px 5px 0px #cbcefb; -o-box-shadow:0px 0px 5px 0px #cbcefb; box-shadow:0px 0px 5px 0px #cbcefb; filter:progid:DXImageTransform.Microsoft.Shadow(color=#cbcefb, Direction=NaN, Strength=5); float:left; clear:both; }
+.admin-articles #wysiwyg-block .redactor_editor, .admin-articles #edit-block .redactor_editor{ height:200px; }
+.admin-articles #wysiwyg-block input[type="submit"], .admin-articles #edit-block input[type="submit"]{ margin:12px 0 0 0; padding:0 5px; display:block; height:41px; line-height:41px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:17px; font-weight:bold; text-align:center; color:#eb5440; background:url('../images/admin/btn_enregistrer.png') no-repeat 0 0 transparent; background-size:cover; float:right; clear:both; }
+
+.admin-articles #articles-tab{ margin:20px 0 20px 20px; float:left; clear:both; }
+.admin-articles #articles-tab table{ margin:0 0 20px 0; border:1px solid #cccfd1; -moz-box-shadow:0px 2px 3px 0px #999999;
+-webkit-box-shadow:0px 2px 3px 0px #999999; -o-box-shadow:0px 2px 3px 0px #999999; box-shadow:0px 2px 3px 0px #999999; filter:progid:DXImageTransform.Microsoft.Shadow(color=#999999, Direction=180, Strength=3);}
+.admin-articles #articles-tab tr{ }
+.admin-articles #articles-tab th{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:left; color:#666666; }
+.admin-articles #articles-tab td{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:left; text-align:left; border:1px solid #ebebeb; color:#555555; }
+.admin-articles #articles-tab tr{ height:28px; background:#fafafa; }
+.admin-articles #articles-tab tr.tab-head{ height:60px; border:1px solid #cccfd1; background:#e9ebec !important; }
+.admin-articles #articles-tab tr.tab-head + tr td{ border-top:1px solid #cccfd1; }
+.admin-articles #articles-tab tr.tab-head th{ border:none; }
+.admin-articles #articles-tab tr.row-color-1{ background:#fafafa; }
+.admin-articles #articles-tab tr.row-color-2{ background:#f7f7f7; }
+
+.admin-articles input[type="checkbox"] + label span{ margin:-3px 0 0 0; }
+.admin-articles #articles-tab .article-checkbox{ padding:0 6px; }
+.admin-articles #articles-tab .article-title{ padding:0 12px 0 25px; width:577px; }
+.admin-articles #articles-tab .article-date{ padding:0 10px; width:115px; }
+
+.admin-articles #articles-tab th.article-title{ cursor:pointer; }
+.admin-articles #articles-tab th.article-date{ cursor:pointer; }
+.admin-articles #articles-tab .article-actions{ display:none; }
+.admin-articles #articles-tab tr:hover .article-actions, .admin-articles #articles-tab tr:hover .article-actions{ display:inline-block; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:right; text-align:left; color:#555555; float:right; opacity:1; }
+.admin-articles #articles-tab .article-actions a{ display:inline-block; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:right; text-align:left; color:#555555; text-decoration:none; }
+.admin-articles #articles-tab .article-actions a:hover{ text-decoration:none; color:#eb5440; }
+
+.admin-articles #articles-tab .filter{ margin:0 0 0 8px; display:inline-block; width:11px; height:7px; cursor:pointer; background:url('../images/common/filters.png') no-repeat 0 0 transparent; }
+.admin-articles #articles-tab input[type="submit"]{ margin:0 0 0 0; padding:0 5px; display:block; width:94px; height:32px; line-height:32px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:center; color:#FFFFFF; background:url('../images/admin/btn_supprimer.png') no-repeat 0 0 transparent; float:right; clear:both; }
+.admin-articles #articles-tab input[type="submit"]:hover{ font-size:15px; }
+/*------------------- FIN ADMIN -------------------*/
+
+/*--------------------PAGES STATIQUE---------------------------*/
+.content_static{ margin:1px 0 10px 0; padding:0; width:770px; background:#e6e6e6; float:left; clear:both;border-top:1px solid #3f3f3f }
+.content_static .page_static{font-size:24px;color:#3f3f3f;}
+.content_static h2{ font-size:20px; margin:25px 20px; clear:both; }
+.content_static p{ font-size:14px; margin:0 20px 0 20px;}
+.content_static .section_faq{ font-size:18px; margin-bottom:25px;}
+.content_static .titre_mention{font-size:18px;color:#3f3f3f;}
+.content_static .txt_mention{font-size:14px;color:#3f3f3f;}
+.content_static .menu_faq{height:135px;margin:0 0 20px 0;}
+.content_static .menu_faq ul{margin:10px 0 30px 20px;}
+.content_static .menu_faq .left{float:left;width:375px;border-right:1px solid #a5a9ae;}
+.content_static .menu_faq .left p{font-size:16px;color:#2da288;font-weight:bold;}
+.content_static .menu_faq .left li{font-size:14px;color:#3f3f3f;}
+.content_static .menu_faq .right{float:left;width:375px;}
+.content_static .menu_faq .right p{font-size:16px;color:#2da288;font-weight:bold;}
+.content_static .menu_faq .right li{font-size:14px;color:#3f3f3f;}
+/*-------------------- FIN PAGES STATIQUE---------------------------*/
