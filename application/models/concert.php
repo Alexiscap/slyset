@@ -61,32 +61,19 @@ class concert extends CI_Model
 	}
 	
 	
-    public function get_one_concert($id_concert)
-	{
-   		
-
-		return $this->db->select('date,titre,seconde_partie,salle,ville,prix')        				
-                        ->from ('concerts')
-                        ->join ('adresse','concerts.Adresse_id=adresse.id')
-                        ->where(array('concerts.id' => $id_concert))
-                        ->get()
-                        ->result();               
-	}
-	
-	
 	//ajouter adresse -> recuperer id adresse pour ajouter dans table concert
 	
-	public function ajout_concert_data ($ville,$pays,$code_postal,$route,$street_number,$artiste,$snd_partie,$salle,$prix,$heure,$date,$user,$phone,$website)
+	public function ajout_concert_data ($ville,$pays,$code_postal,$route,$street_number,$artiste,$snd_partie,$salle,$prix,$heure,$date,$user)
 		{
 		
-  		 $this->db->set(array('ville'=>$ville,'pays'=>$pays,'code_postal'=>$code_postal,'voie_adresse'=>$route,'numero_adresse'=>$street_number,'phone_number'=>$phone,'website'=>$website))
+  		 $this->db->set(array('ville'=>$ville,'pays'=>$pays,'code_postal'=>$code_postal,'voie_adresse'=>$route,'numero_adresse'=>$street_number))
                 		->insert($this->table_addresse);
 
     	 $last_id_addresse =  $this->db->insert_id();
 
 	
 		 $prix = !empty($prix) ? "$prix" : NULL;
-    	  $snd_partie = !empty($snd_partie) ? "$snd_partie" : NULL;
+    	 $snd_partie = !empty($snd_partie) ? "$snd_partie" : NULL;
 
     	 $date_concert = $date.' '.$heure.':00';
   		
@@ -95,7 +82,7 @@ class concert extends CI_Model
         
     }
     	     
-	public function update_concert_data ($ville,$pays,$code_postal,$route,$street_number,$artiste,$snd_partie,$salle,$prix,$heure,$date,$id_concert,$adresse_id,$phone,$website)
+	public function update_concert_data ($ville,$pays,$code_postal,$route,$street_number,$artiste,$snd_partie,$salle,$prix,$heure,$date,$id_concert,$adresse_id)
 		{
   			 $date_concert = $date.' '.$heure;
   			 
@@ -117,7 +104,7 @@ class concert extends CI_Model
                   
 		}
 		
-	public function delete_concert_data($id_concert,$id_adresse)
+		public function delete_concert_data($id_concert,$id_adresse)
 	
 	{
 	

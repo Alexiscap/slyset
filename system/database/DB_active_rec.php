@@ -2039,33 +2039,6 @@ class CI_DB_active_record extends CI_DB_driver {
 
 		$this->_reset_run($ar_reset_items);
 	}
-	
-	
-	  function select_as($select = '', $alias = '')
-    {        
-        if ( ! is_string($select) OR $select == '')
-        {
-            $this->display_error('db_invalid_query');
-        }
-
-        if ( ! is_string($alias) OR $alias == '')
-        {
-            $this->display_error('db_invalid_query');
-        }        
-
-        $sql = $this->_protect_identifiers(trim($select)).' AS '.$this->_protect_identifiers(trim($alias));
-
-        $this->ar_select[] = $sql;
-        
-        if ($this->ar_caching === TRUE)
-        {
-            $this->ar_cache_select[] = $sql;
-            $this->ar_cache_exists[] = 'select';
-        }        
-
-        return $this;
-    } 
-	
 }
 
 /* End of file DB_active_rec.php */

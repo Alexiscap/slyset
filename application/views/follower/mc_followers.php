@@ -1,9 +1,5 @@
 <div id="contentAll">
-<<<<<<< HEAD
 <?php $user_id = $this->session->userdata('uid');?>
-=======
-
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
   <div id="breadcrumbs">
     <ul>
       <li><a href="#">Accueil</a></li>
@@ -38,7 +34,6 @@
   </div>
   <div class="content">
 	<div id="btn_tmp_follow">
-<<<<<<< HEAD
        <a href="<?php echo base_url('index.php/follower/'.$user_id) ?>" class="tous">Tous</a>
        <a href="<?php echo base_url('index.php/mc_followers/musicien/'.$user_id) ?>" class="musiciens">Musiciens</a>
        <a href="<?php echo base_url('index.php/mc_followers/melomane/'.$user_id) ?>" class="melomanes">Mélomanes</a>
@@ -93,13 +88,6 @@
 	endif;
 	?>
 	<!--
-=======
-       <a href="#" class="tous">Tous</a>
-       <a href="#" class="musiciens">Musiciens</a>
-       <a href="#" class="melomanes">Mélomanes</a>
-   </div>
-	<h2>Mes 6 abonnés</h2>
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
 	<div class="follower">
 		<div class="photo_follow">
 			<img src="<?php print img_url('common/photo_follower.png'); ?>" />
@@ -114,11 +102,8 @@
 		</div>
 	</div>
 	<hr/>
-<<<<<<< HEAD
 	
 	
-=======
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
 	<div class="follower">
 		<div class="photo_follow">
 			<img src="<?php print img_url('common/photo_follower2.png'); ?>" />
@@ -145,11 +130,7 @@
 		<div class="bouton">
 			<a href="#" class="participer"><span class="button_left_non"></span><span class="button_center_non">Ne plus suivre</span><span class="button_right_non"></span></a>
 		</div>
-<<<<<<< HEAD
 	</div>-->
-=======
-	</div>
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
   </div>
 
 

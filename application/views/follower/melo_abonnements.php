@@ -32,7 +32,6 @@
     </div>
   </div>
   <div class="content">
-<<<<<<< HEAD
   
 	
 		<?php
@@ -72,24 +71,6 @@
 	endif;
 	?>
 	<!--<div class="follower">
-=======
-	<h2>Mes 6 abonnements</h2>
-	<div class="follower">
-		<div class="photo_follow">
-			<img src="<?php print img_url('common/photo_follower.png'); ?>" />
-		</div>
-		<div class="description">
-			<p class="nom_follow">Skip the use</p>
-			<p class="text_follow">Du rock, des tatouages, des kilowatts, de la sueur ! Notre album est enfin dans les bacs !</p>
-			<img src="<?php print img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
-		</div>
-		<div class="bouton">
-			<a href="#" class="participer"><span class="button_left_abonne"></span><span class="button_center_abonne">Abonné</span><span class="button_right_abonne"></span></a>
-		</div>
-	</div>
-	<hr/>
-	<div class="follower">
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
 		<div class="photo_follow">
 			<img src="<?php print img_url('common/photo_follower2.png'); ?>" />
 		</div>
@@ -158,11 +139,7 @@
 			<a href="#" class="participer"><span class="button_left_non"></span><span class="button_center_non">Ne plus suivre</span><span class="button_right_non"></span></a>
 		</div>
 	</div>
-<<<<<<< HEAD
 	<hr/>-->
-=======
-	<hr/>
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
   </div>
 
 

@@ -1,10 +1,7 @@
-<?php setlocale (LC_TIME, 'fr_FR.utf8','fra'); ?>
+<?php setlocale (LC_TIME, 'fr_FR.utf8', 'fra'); ?>
 
-<<<<<<< HEAD
-=======
 <div id="contentAll">
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
-  <script>
+   <script>
   
 var events = [ <?php echo $all_date_calendar ?>
 ]; 
@@ -13,11 +10,7 @@ var events = [ <?php echo $all_date_calendar ?>
     ?> ;*/
   </script>
 
-
-<div id="contentAll">
-  <!--<img src="<?php echo files('titre_objectifs.png') ?>" />-->
-
- <div id="breadcrumbs">
+  <div id="breadcrumbs">
     <ul>
       <li><a href="#" title="#">Accueil</a></li>
     </ul>
@@ -31,12 +24,21 @@ var events = [ <?php echo $all_date_calendar ?>
   <?php endif; ?>
 
   <div id="coverflowContainer">
-    <div id="coverflow2">
-      <a href="#"><img class="coverflow-img" src="<?php echo img_url('portail/bh.png') ?>"><span class="coverflow_artist">Name Artist 1</span></a>
+    <div id="coverflowRuban"></div>
+    <div id="coverflow">
+      <?php foreach($coverflow_covers as $coverflow_cover): ?>
+        <?php if(!empty($coverflow_cover)): ?>
+          <?php // print_r($coverflow_cover); ?>
+          <a href="<?php print site_url('home/'.$coverflow_cover[0]->idU); ?>"><img class="coverflow-img" src="<?php print $thumb = (!empty($coverflow_cover[0]->thumbU)) ? files('profiles/'.$coverflow_cover[0]->thumbU) : img_url('sidebar-right/default-photo-profil.png'); ?>"><span class="coverflow_artist"><?php print $coverflow_cover[0]->loginU; ?></span></a>
+        <?php endif; ?>
+      <?php endforeach; ?>
+      
+      
+<!--      <a href="#"><img class="coverflow-img" src="<?php echo img_url('portail/bh.png') ?>"><span class="coverflow_artist">Name Artist 1</span></a>
       <a href="#" class="coverflow-img2"><img class="coverflow-img2" src="<?php echo img_url('portail/bandone.png') ?>"><span class="coverflow_artist">Name Artist 2</span></a>
       <a href="#"><img class="coverflow-img" src="<?php echo img_url('portail/foals.png') ?>"><span class="coverflow_artist">Name Artist 3</span></a>
       <a href="#" class="coverflow-img2"><img class="coverflow-img2" src="<?php echo img_url('portail/bh.png') ?>"><span class="coverflow_artist">Name Artist 4</span></a>
-      <a href="#"><img class="coverflow-img2" src="<?php echo img_url('portail/bandone.png') ?>"><span class="coverflow_artist">Name Artist 5</span></a>
+      <a href="#"><img class="coverflow-img2" src="<?php echo img_url('portail/bandone.png') ?>"><span class="coverflow_artist">Name Artist 5</span></a>-->
     </div>
     <div id="paginationContainer">
       <div id="pagination-prev"></div>
@@ -44,7 +46,6 @@ var events = [ <?php echo $all_date_calendar ?>
       <div id="pagination-next"></div>
     </div>
   </div>
-
 
   <div id="first-line">
     <div id="first-line-top-song">
@@ -200,61 +201,9 @@ var events = [ <?php echo $all_date_calendar ?>
       <div id="datepicker"></div>
 
       </div>
-    
     </div>
 
     <div id="first-line-newbies">
-<<<<<<< HEAD
-      <div id="newbies-title">
-        <span class="title-img"><img src="<?php echo img_url('portail/etoile.png') ?>"></span>
-        Les <span class="title-color"> newbies</span>
-      </div>
-
-       <div id="newbies-content">
-            <?php foreach($newbies as $newbie): ?>
-                <?php // print_r($newbie);
-                 ?>
-                <div class="newbies-peoples">
-                    <p class="newbies-picture">
-                        <a href="<?php print site_url('actualite/'.$newbie->id); ?>">
-                            <img src="<?php print $thumb = (!empty($newbie->thumb)) ? files('profiles/'.$newbie->thumb) : img_url('sidebar-right/defaultphoto-profil.png'); ?>" height="38px" alt="Photo Profil" />
-                        </a>
-                    </p>
-                    <div class="newbies-people">
-                        <a href="<?php print site_url('actualite/'.$newbie->id); ?>">
-                            <?php print $newbie->login; ?>
-                        </a>
-                        </br>
-                        <span class="newbies-people-type"><?php print $type = ($newbie->type == 1)? 'Musicien' : 'Mélomane'; ?></span>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-          
-<!--            <div class="newbies-peoples">
-                <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>" height="38px" alt="Photo Profil" /></p>
-                <div class="newbies-people">
-                    Skip the Use</br>
-                    <span class="newbies-people-type">Musicien</span>
-                </div>
-            </div>
-
-            <div class="newbies-peoples">
-                <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>"  height="38px" alt="Photo Profil" /></p>
-                <div class="newbies-people">
-                    Yannis P</br>
-                    <span class="newbies-people-type">Mélomane</span>
-                </div>
-            </div>
-
-            <div class="newbies-peoples">
-                <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>"  height="38px" alt="Photo Profil" /></p>
-                <div class="newbies-people">
-                    Alison Mosshart</br>
-                    <span class="newbies-people-type">Mélomane</span>
-                </div>
-            </div>
-
-=======
         <div id="newbies-title">
             <span class="title-img"><img src="<?php echo img_url('portail/etoile.png') ?>"></span>
             Les <span class="title-color">newbies</span>
@@ -304,7 +253,6 @@ var events = [ <?php echo $all_date_calendar ?>
                 </div>
             </div>
 
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
           <div class="newbies-peoples">
               <p class="newbies-picture"><img src="<?php echo img_url('sidebar-left/photo-profil.png') ?>"  height="38px" alt="Photo Profil" /></p>
               <div class="newbies-people">

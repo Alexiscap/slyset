@@ -8,13 +8,8 @@
                     <span>Voir mon profil</span>
                 </a>
             </div>
-<<<<<<< HEAD
-            
-             <?php if($this->session->userdata('account') == 0): ?>
-=======
           
             <?php if($this->session->userdata('account') == 0): ?>
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
                 <div id="admin-generale">
                     <a href="<?php print site_url('admin'); ?>">
                         <span>Accès administration</span>
@@ -22,10 +17,6 @@
                 </div>
             <?php endif; ?>
           
-<<<<<<< HEAD
-
-=======
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
             <div id="listen-playlist">
                 <a href="#">
                     <img src="<?php print img_url('sidebar-left/btn-play.png'); ?>" alt="Lecture Playlist" />
@@ -36,18 +27,12 @@
 
         <div id="menu-account">
             <ul>
-<<<<<<< HEAD
-                <li class="head_menu row row-0">
                 <li class="head_menu row row-0"><a href="<?php print site_url('home/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Mon compte</span></a></li>
                 <li class="first-row row row-1"><a href="<?php print site_url('my-wall/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Fil d'actualité</span></a></li>
-=======
-                <li class="head_menu row row-0"><a href="<?php print site_url('home/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Mon compte</span></a></li>
-                <li class="first-row row row-1"><a href="#"><span class="icon"></span><span class="menu-text">Fil d'actualité</span></a></li>
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
-                <li class="row row-2"><a href="#"><span class="icon"></span><span class="menu-text">Modifier mon profil</span></a></li>
-                <li class="row row-3"><a href="#"><span class="icon"></span><span class="menu-text">Mes achats</span></a></li>
-                <li class="row row-4"><a href="#"><span class="icon"></span><span class="menu-text">Mes playlists</span></a></li>
-                <li class="row row-5"><a href="<?php echo site_url('my-concert/'.$this->session->userdata('uid')) ?>"><span class="icon"></span><span class="menu-text">Mes concerts</span></a></li>
+                <li class="row row-2"><a href="<?php print site_url('my-reglages/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Modifier mon profil</span></a></li>
+                <li class="row row-3"><a href="<?php print site_url('my-shopping/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Mes achats</span></a></li>
+                <li class="row row-4"><a href="<?php print site_url('my-playlists/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Mes playlists</span></a></li>
+                 <li class="row row-5"><a href="<?php echo site_url('my-concert/'.$this->session->userdata('uid')) ?>"><span class="icon"></span><span class="menu-text">Mes concerts</span></a></li>
                 <li class="last-row row row-6"><a href="<?php echo site_url('my-follower/'.$this->session->userdata('uid')) ?>"><span class="icon"></span><span class="menu-text">Mes abonnements</span></a></li>
             </ul>
         </div>
@@ -59,43 +44,26 @@
                 <ul>
                     <li class="head_menu row row-7"><a href="<?php print site_url('home/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Ma page musicien</span></a></li>
                     <li class="first-row row row-8"><a href="<?php print site_url('actualite/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Actualités</span></a></li>
-                    <li class="row row-9"><a href="<?php print site_url('mc_concerts/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Concerts</span></a></li>
+                    <li class="row row-9"><a href="<?php print site_url('concert/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Concerts</span></a></li>
                     <li class="row row-10"><a href="<?php print site_url('musique/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Musique</span></a></li>
                     <li class="row row-11"><a href="<?php print site_url('media/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Photos et vidéos</span></a></li>
-<<<<<<< HEAD
-                    <li class="row row-12"><a href="<?php print site_url('document/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Livrets et partitions</span></a></li>
+                    <li class="row row-12"><a href="<?php print site_url('document/'.$this->session->userdata('uid'));?>"><span class="icon"></span><span class="menu-text">Livrets et partitions</span></a></li>
                     <li class="row row-13"><a href="<?php print site_url('mc_stats/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Statistiques</span></a></li>
-                    <li class="row row-14"><a href="<?php echo site_url('follower/'.$this->session->userdata('uid')) ?>"><span class="icon"></span><span class="menu-text">Mes abonnés</span></a></li>
-=======
-                    <li class="row row-12"><a href="<?php print site_url('mc_partitions/'.$this->session->userdata('uid'));?>"><span class="icon"></span><span class="menu-text">Livrets et partitions</span></a></li>
-                    <li class="row row-13"><a href="<?php print site_url('mc_stats/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Statistiques</span></a></li>
-                    <li class="row row-14"><a href="<?php print site_url('mc_followers/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Mes abonnés</span></a></li>
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
+                    <li class="row row-14"><a href="<?php print site_url('follower/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Mes abonnés</span></a></li>
                     <li class="row row-15"><a href="<?php print site_url('personnaliser/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Personnaliser</span></a></li>
                     <li class="last-row row row-16"><a href="<?php print site_url('reglages/'.$this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Réglages</span></a></li>
                 </ul>
             </div>
-<<<<<<< HEAD
-           <?php elseif($user_id != $this->session->userdata('uid')): ?>
-=======
         <?php elseif($user_id != $this->session->userdata('uid')): ?>
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
             <?php $user_info = $this->user_infos->profile_user($user_id) ?>
             <div id="menu-profile" class="active">
                 <ul>
                     <li class="head_menu row row-7"><a href="<?php print site_url('home/'.$user_id); ?>"><span class="icon"></span><span class="menu-text"><?php print $user_info->login; ?></span></a></li>
                     <li class="first-row row row-8"><a href="<?php print site_url('actualite/'.$user_id); ?>"><span class="icon"></span><span class="menu-text">Actualités</span></a></li>
-<<<<<<< HEAD
-                    <li class="row row-9"><a href="<?php print site_url('mc_concerts/'.$user_id); ?>"><span class="icon"></span><span class="menu-text">Concerts</span></a></li>
-                    <li class="row row-10"><a href="<?php print site_url('musique/'.$user_id); ?>"><span class="icon"></span><span class="menu-text">Musique</span></a></li>
-                    <li class="row row-11"><a href="<?php print site_url('media/'.$user_id); ?>"><span class="icon"></span><span class="menu-text">Photos et vidéos</span></a></li>
-                    <li class="row row-12"><a href="<?php print site_url('document/'.$user_id);?>"><span class="icon"></span><span class="menu-text">Livrets et partitions</span></a></li>
-=======
                     <li class="row row-9"><a href="<?php print site_url('concert/'.$user_id); ?>"><span class="icon"></span><span class="menu-text">Concerts</span></a></li>
                     <li class="row row-10"><a href="<?php print site_url('musique/'.$user_id); ?>"><span class="icon"></span><span class="menu-text">Musique</span></a></li>
                     <li class="row row-11"><a href="<?php print site_url('media/'.$user_id); ?>"><span class="icon"></span><span class="menu-text">Photos et vidéos</span></a></li>
-                    <li class="row row-12"><a href="<?php print site_url('mc_partitions/'.$user_id);?>"><span class="icon"></span><span class="menu-text">Livrets et partitions</span></a></li>
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
+                    <li class="row row-12"><a href="<?php print site_url('document/'.$user_id);?>"><span class="icon"></span><span class="menu-text">Livrets et partitions</span></a></li>
                 </ul>
             </div>
         <?php endif; ?>
@@ -141,25 +109,18 @@
       
         <?php
           $user_id = $this->uri->segment(2);
-          $test = 'login';
+          $profile = $this->user_infos->profile_user($user_id);
           if(!empty($user_id)):
               //$infos_user = $this->user_infos->profile_user($user_id, $stdclass); ?>
       
               <div id="menu-profile" class="active">
                   <ul>
-                      <li class="head_menu row row-7"><a href="<?php print site_url('home/'.$user_id); ?>"><span class="icon"></span><span class="menu-text"><?php print $this->user_infos->profile_user($user_id); ?></span></a></li>
+                      <li class="head_menu row row-7"><a href="<?php print site_url('home/'.$user_id); ?>"><span class="icon"></span><span class="menu-text"><?php print $profile->login; ?></span></a></li>
                       <li class="first-row row row-8"><a href="<?php print site_url('actualite/'.$user_id); ?>"><span class="icon"></span><span class="menu-text">Actualités</span></a></li>
-<<<<<<< HEAD
-                      <li class="row row-9"><a href="<?php print site_url('mc_concerts/'.$user_id); ?>"><span class="icon"></span><span class="menu-text">Concerts</span></a></li>
-                      <li class="row row-10"><a href="<?php print site_url('musique/'.$user_id); ?>"><span class="icon"></span><span class="menu-text">Musique</span></a></li>
-                      <li class="row row-11"><a href="<?php print site_url('media/'.$user_id); ?>"><span class="icon"></span><span class="menu-text">Photos et vidéos</span></a></li>
-                      <li class="row row-12"><a href="<?php print site_url('document/'.$user_id);?>"><span class="icon"></span><span class="menu-text">Livrets et partitions</span></a></li>
-=======
                       <li class="row row-9"><a href="<?php print site_url('concert/'.$user_id); ?>"><span class="icon"></span><span class="menu-text">Concerts</span></a></li>
                       <li class="row row-10"><a href="<?php print site_url('musique/'.$user_id); ?>"><span class="icon"></span><span class="menu-text">Musique</span></a></li>
                       <li class="row row-11"><a href="<?php print site_url('media/'.$user_id); ?>"><span class="icon"></span><span class="menu-text">Photos et vidéos</span></a></li>
-                      <li class="row row-12"><a href="<?php print site_url('mc_partitions/'.$user_id);?>"><span class="icon"></span><span class="menu-text">Livrets et partitions</span></a></li>
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
+                      <li class="row row-12"><a href="<?php print site_url('document/'.$user_id);?>"><span class="icon"></span><span class="menu-text">Livrets et partitions</span></a></li>
                   </ul>
               </div>
           <?php endif; ?>

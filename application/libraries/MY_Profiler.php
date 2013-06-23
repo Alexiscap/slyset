@@ -4,7 +4,7 @@ class MY_Profiler extends CI_Profiler
 {   
   function run()
   {
-     $output = "<div id='codeigniter_profiler' style='clear:both;background-color:#fff;padding:10px;'>";
+    $output = "<div id='codeigniter_profiler' style='clear:both;background-color:#fff;padding:10px;'>";
          
     $output .= '<div style="margin-left: 2%; margin-right: 1%; float: left; width: 47%;">';
     $output .= $this->_compile_uri_string();

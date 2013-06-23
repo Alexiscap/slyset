@@ -4,7 +4,7 @@ class Mc_actus_model extends CI_Model
 {
     protected $table = 'wall';
     
-    public function insert_actus($message, $lien, $photo, $user_visited)
+    public function insert_actus($message, $lien, $photo, $user_id)
     {
 //        $this->db->set('auteur',  $auteur);
 //        $this->db->set('titre',   $titre);
@@ -16,7 +16,7 @@ class Mc_actus_model extends CI_Model
 //        return $this->db->insert($this->table);
         
         $data['Utilisateur_id'] = $this->session->userdata('uid');
-        $data['wallto_utilisateur_id'] = $user_visited;
+        $data['wallto_utilisateur_id'] = $user_id;
         $data['markup_message'] = $message;
         $data['photo'] = $photo;
         $data['video'] = $lien;

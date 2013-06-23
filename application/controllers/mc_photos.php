@@ -2,41 +2,29 @@
 
 class Mc_photos extends CI_Controller 
 {
-
+    
     public function __construct()
     {
-<<<<<<< HEAD
-      parent::__construct();
-      
-      $this->layout->ajouter_css('slyset');
-      $this->layout->ajouter_css('colorbox');
-
-      
-      $this->layout->ajouter_js('jquery.imagesloaded.min');
-      $this->layout->ajouter_js('jquery.masonry.min');
-      $this->layout->ajouter_js('jquery.stapel');
-      $this->layout->ajouter_js('jquery.colorbox');
-      $this->layout->ajouter_js('combobox');
-      $this->layout->ajouter_js('jquery-ui');
-  	  
-  	  $this->load->model('photos');
-        $this->load->model(array('perso_model', 'user_model'));
-    $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
-=======
         parent::__construct();
 
         $this->layout->ajouter_css('slyset');
+      	$this->layout->ajouter_css('colorbox');
 
         $this->layout->ajouter_js('jquery.imagesloaded.min');
         $this->layout->ajouter_js('jquery.masonry.min');
         $this->layout->ajouter_js('jquery.stapel');
-        
+        $this->layout->ajouter_js('jquery.colorbox');
+      	$this->layout->ajouter_js('combobox');
+      	$this->layout->ajouter_js('jquery-ui');
+  	  
+  	  	$this->load->model('photos');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
         $this->load->model(array('perso_model', 'user_model'));
       
         $this->layout->set_id_background('photos_videos');
         
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
         $output = $this->perso_model->get_perso($this->user_id);
         
         $sub_data = array();
@@ -52,166 +40,133 @@ class Mc_photos extends CI_Controller
             'sidebar_left'  => $this->load->view('sidebars/sidebar_left', '', TRUE),
             'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
         );
-<<<<<<< HEAD
-        
-    $this->load->helper('form');
-    $this->load->library('form_validation');
-    $this->layout->set_id_background('photos_videos');
-
-=======
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
     }
-   
   
-    public function index()
+    public function index($user_id)
     {
-<<<<<<< HEAD
-      $this->page();
-      
-=======
-        $this->page();
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
+        $uid = $this->session->userdata('uid');
+        
+        if($user_id != $uid && !empty($user_id)){
+            $user_id = $this->user_infos->uri_user();
+            $infos_profile = $this->user_model->getUser($user_id);
+            $this->page($infos_profile);
+        } else {
+            redirect('home/'.$uid, 'refresh');
+        }
     }
-  	
-  	
-  	
-    public function page()
+  
+    public function page($infos_profile)
     {
-<<<<<<< HEAD
-
-		$datas = array();
-		$datas['user_id'] =  $this->session->userdata('uid');
-		$datas['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-		$datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
-     // $datas['all_media_user_result'] = $this->photos->get_media_user(30);
+        $datas = array();
+        $datas['user_id'] =  $this->session->userdata('uid');
+        $datas['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
+        $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
+//        $datas['all_media_user_result'] = $this->photos->get_media_user(30);
         $datas['all_media_user_result'] = $this->photos->liste_photos();
         $datas['commentaires'] = $this->photos->liste_comments();
         $datas['commentaires_albums'] = $this->photos->liste_comments_album();
         $datas['commentaires_video'] = $this->photos->liste_comments_video();
 
         $datas['all_photos'] = $this->photos->all_photos();
-		$datas['all_photos_albums'] = $this->photos->all_photos_album();
-	//	$datas['all_video_user'] = $this->photos->get_video($datas['user_id']) ;
+        $datas['all_photos_albums'] = $this->photos->all_photos_album();
+//        $datas['all_video_user'] = $this->photos->get_video($datas['user_id']) ;
         $datas['like_photo'] = $this->photos->get_like_user($datas['user_id']);
-      		$datas['all_photo_like'] ="";
-      					$datas['all_album_like'] ="";
-      					$datas['all_video_like'] ="";
+        $datas['all_photo_like'] = "";
+        $datas['all_album_like'] = "";
+        $datas['all_video_like'] = "";
 
-      		foreach($datas['like_photo'] as $datas['likes_photo'])
-      		{
-      		  	$datas['all_photo_like'] .=
-				$datas['likes_photo']->Photo_id."/";
-			
-      		  	$datas['all_album_like'] .=
-				$datas['likes_photo']->Album_media_file_name."/";
-				
-				 	$datas['all_video_like'] .=
-				$datas['likes_photo']->Video_id."/";
-			}
+        foreach($datas['like_photo'] as $datas['likes_photo']){
+            $datas['all_photo_like'] .= $datas['likes_photo']->Photo_id."/";
 
-            $this->layout->view('photos/mc_photos', $datas,false);
+            $datas['all_album_like'] .= $datas['likes_photo']->Album_media_file_name."/";
 
-//doit faire passer name album en requete 2
+            $datas['all_video_like'] .= $datas['likes_photo']->Video_id."/";
+        }
 
-=======
-      $datas = array();
-      $datas['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-      $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
-      
-      //$this->layout->views('3');
-      $this->layout->view('photos/mc_photos', $datas);
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
+        $this->layout->view('photos/mc_photos', $datas, false);
+        //doit faire passer name album en requete 2
     }
 	
-	// page album
-	public function album($user_id,$album_name)
-	{
+    // page album
+    public function album($user_id,$album_name)
+    {
+        $datas = array();
+        $datas['user_id'] = $this->session->userdata('uid');
+        $datas['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
+        $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
+        $datas['all_media_user_result'] = $this->photos->get_photos_by_album($user_id, $album_name);
+        $datas['commentaires_video'] = $this->photos->liste_comments_video();
+
+        $datas['commentaires'] = $this->photos->liste_comments();
+
+//        $datas['all_media_user_result'] = $this->photos->all_photos();
+
+      
+//        $datas['commentaires_albums'] = $this->photos->liste_comments_album();
+//        $datas['all_photos'] = $this->photos->all_photos();
+//        $datas['all_photos_albums'] = $this->photos->all_photos_album();
+
+        $this->layout->view('photos/album', $datas, false);
+    }
 	
-		$datas = array();
-	  	$datas['user_id'] =  $this->session->userdata('uid');
-      	$datas['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-      	$datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
-      	$datas['all_media_user_result'] = $this->photos->get_photos_by_album($user_id,$album_name);
-      	        $datas['commentaires_video'] = $this->photos->liste_comments_video();
-
-      	$datas['commentaires'] = $this->photos->liste_comments();
-
-      //  $datas['all_media_user_result'] = $this->photos->all_photos();
-
-      /*
-        $datas['commentaires_albums'] = $this->photos->liste_comments_album();
-        $datas['all_photos'] = $this->photos->all_photos();
-		$datas['all_photos_albums'] = $this->photos->all_photos_album();
-*/
-      $this->layout->view('photos/album', $datas,false);
-    
-	}
-	
-	public function zoom_photo($id_photo)
+    public function zoom_photo($id_photo)
 		{
-			$datas=array();
-		  	$this->load->view('photos/zoom_photo', $datas);
-
+        $datas = array();
+        $this->load->view('photos/zoom_photo', $datas);
 		}
 		
-  
   	public function upload_photo($user_id)
   	{ 
-  		$this->load->model('photos');
-		$this->load->helper('form');
+        $this->load->model('photos');
+        $this->load->helper('form');
 
-  		$datas = array();
-  		$datas = array('error' => ' ' );
-  	  		$datas['options'] = array(	
-					''=>'',
-  	  		);
-  		$datas['album_by_user'] = $this->photos->get_album($user_id);
-  		//specifier $i en fonction du nombre de ligne retourner
-  		//marche pas avec tableaux multidimension :
+        $datas = array();
+        $datas = array('error' => ' ');
+        $datas['options'] = array(	
+            '' =>'',
+        );
+        $datas['album_by_user'] = $this->photos->get_album($user_id);
+        
+//        specifier $i en fonction du nombre de ligne retourner
+//        marche pas avec tableaux multidimension :
   		
-  		 $datas['max_album_user'] = count($datas['album_by_user']);
-  		//for($i=0;$i<$max_album_user;$i++)
-  		//{	
-  		//$datas['options'][$album_by_user[$i]->{'nom'}] = $album_by_user[$i]->{'nom'};  
-		//}
-		//$datas['options']['nouveau']="Creer un nouvel album";
+        $datas['max_album_user'] = count($datas['album_by_user']);
+//        for($i=0; $i<$max_album_user; $i++){	
+//            $datas['options'][$album_by_user[$i]->{'nom'}] = $album_by_user[$i]->{'nom'};  
+//        }
+//        $datas['options']['nouveau']="Creer un nouvel album";
 
-  		
-  		$this->load->helper('form',$datas);
-  		
-		
-		$this->load->view('photos/ajouter_photos',$datas);
+        $this->load->helper('form',$datas);
+        $this->load->view('photos/ajouter_photos',$datas);
+    }
 
-	}
+    public function do_upload($user_id)
+    {
 
-
-	function do_upload($user_id)
-	{
-
-		$noespace_filename_album = str_replace(' ','_',$this->input->post('albums'));
-		$dynamic_path = './files/'.$this->session->userdata('uid').'/photos/'.$noespace_filename_album;
-        if (is_dir($dynamic_path) == false)
-        {
+        $noespace_filename_album = str_replace(' ','_',$this->input->post('albums'));
+        $dynamic_path = './files/'.$this->session->userdata('uid').'/photos/'.$noespace_filename_album;
+        
+        if(is_dir($dynamic_path) == false){
             mkdir($dynamic_path, 0755, true);
         }
         
-        $cover_photo = (count(scandir ($dynamic_path)));
-		//print 
+        $cover_photo = (count(scandir($dynamic_path)));
         
-        $config['upload_path']   = $dynamic_path;
+        $config['upload_path'] = $dynamic_path;
         if($cover_photo<=2){
-       		$config['file_name'] = "cover";
+            $config['file_name'] = "cover";
        	}
-		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '1000';
-		// a definir
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
+        
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size']	= '1000';
+        // a definir
+        $config['max_width']  = '1024';
+        $config['max_height']  = '768';
         $photo = $this->input->post('photo_up');
 
-		$this->load->library('upload', $config);
+        $this->load->library('upload', $config);
 		
-			if ( ! $this->upload->do_upload('photo_up'))
+			if(!$this->upload->do_upload('photo_up'))
 			{
 				$error = array('error' => $this->upload->display_errors());
 				$this->load->view('photos/ajouter_photos', $error);
@@ -501,7 +456,7 @@ class Mc_photos extends CI_Controller
     				$this->load->view('success-concert');
 				}
 				
-				if($type_media==2)
+				if($type_media == 2)
 			 	{
 
     				$this->photos->delete_album($media_id);

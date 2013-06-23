@@ -2,7 +2,7 @@
     <div id="breadcrumbs">
         <ul>
             <li><a href="#">Accueil</a></li>
-            <li><a href="#">Artistes</a></li>
+            <li><a href="#">Ma page musicien</a></li>
             <li><a href="#"><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></a></li>
             <li><a href="#">Réglages</a></li>
         </ul>
@@ -84,7 +84,7 @@
             echo form_input('twitter',$profile->twitter,'placeholder="URL Twitter"');
             echo form_error('twitter', '<span class="error-form">', '</span>');
 
-            echo form_label('Facebook','Facebook',$label_attributes);
+            echo form_label('Facebook','facebook',$label_attributes);
             echo form_input('facebook',$profile->facebook,'placeholder="URL Facebook"');
             echo form_error('facebook', '<span class="error-form">', '</span>');
 
@@ -158,7 +158,7 @@
             echo '</div>';
             echo form_error('stylemusicjoue[]', '<span class="error-form">', '</span>');
 
-            echo form_submit('submit','Valider');
+            echo form_submit('submit', 'Valider');
             echo form_error('submit', '<span class="error-form">', '</span>');
 
         echo form_close();

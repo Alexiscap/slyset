@@ -2,7 +2,6 @@
 
 class Mc_partitions extends CI_Controller 
 {
-<<<<<<< HEAD
     protected $path_img_upload_folder;
 	protected $path_img_thumb_upload_folder;
 	protected $path_url_img_upload_folder;
@@ -10,9 +9,6 @@ class Mc_partitions extends CI_Controller
 
 	protected $delete_img_url;
 
-=======
-    
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
     public function __construct()
     {
       parent::__construct();
@@ -22,7 +18,6 @@ class Mc_partitions extends CI_Controller
       $this->layout->ajouter_js('jquery.imagesloaded.min');
       $this->layout->ajouter_js('jquery.masonry.min');
       $this->layout->ajouter_js('jquery.stapel');
-<<<<<<< HEAD
       $this->load->helper('form');
       $this->load->model('document');
         $this->layout->set_id_background('partitions');
@@ -43,31 +38,27 @@ class Mc_partitions extends CI_Controller
   
     public function index($user_id)
     {
-      $this->page($user_id);
+        $uid = $this->session->userdata('uid');
+        $type_account = $this->session->userdata('account');
+        
+        if($user_id != $uid && !empty($user_id)){
+            $user_id = $this->user_infos->uri_user();
+            $infos_profile = $this->user_model->getUser($user_id);
+            $this->page($infos_profile);
+        } else {
+            redirect('home/'.$uid, 'refresh');
+        }
     }
   //recuperer tous les morceaux qui ont 1 doc
   //les asocier par album
   //si pas d'album : undefined
   
-    public function page($user_id)
-=======
-      
-        $this->layout->set_id_background('partitions');
-    }
-  
-    public function index()
-    {
-      $this->page();
-    }
-  
-    public function page()
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
+    public function page($infos_profile)
     {
       $datas = array();
       $datas['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
       $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
       
-<<<<<<< HEAD
       $datas['get_doc'] = $this->load->document->get_all_morceau_doc($user_id);
       var_dump($datas['get_doc']);
       $datas['get_morc'] = $this->load->document-> get_morceau_album();
@@ -302,10 +293,5 @@ class Mc_partitions extends CI_Controller
 	{
 		$this->delete_img_url = $delete_img_url;
 	}
-=======
-      //$this->layout->views('3');
-      $this->layout->view('partition/mc_partitions', $datas);
-    }
->>>>>>> 0a5f106366459ee42989c8cd393a8c35e10afe2d
   
 }
