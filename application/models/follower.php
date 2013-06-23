@@ -30,6 +30,16 @@ class follower extends CI_Model
 					->result();
 	
 	}
+	
+		public function get_abonnement($user_id)
+	{
+		return $this->db->select('Utilisateur_id,communaute.type')
+					->where('Follower_id',$user_id)
+					->from($this->table_communaute)
+					->get()
+					->result();
+	
+	}
 
 
 }

@@ -8,15 +8,14 @@
 	echo $error;
 	$user = $this->uri->segment(3);
 	?>
-	
 	<?php echo form_open_multipart('mc_photos/do_upload/'.$user);?>
-
+	
 	<?php 
 	$data = array(
               'name'        => 'photo_up',
               'size'        => '20',
             );
-	echo form_upload($data) ;
+	echo form_upload($data);
 
 	?>
 	</br>

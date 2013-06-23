@@ -11,7 +11,7 @@ function playMasonry(){
     });
 }
 
-$(document).ready(function(){  
+$(document).ready(function(){
 //    Shadowbox.open({
 ////        content:    'application/views/lightbox/pi_ajout_concerts.php',
 //        player:     "iframe",
@@ -142,148 +142,7 @@ $(document).ready(function(){
         }
     });
     
-    //Utilisation du caroufredsel sur la page home
-    if($("body.home").length > 0){
-        $("#coverflow").children().filter(":eq(1)").addClass('current-item');
-        
-        $("#coverflow").carouFredSel({
-            item: 3,
-            width: 770,
-            height: 268,
-            synchronise: true,
-            scroll: {
-              items: 1,
-              fx: 'scroll',
-              pauseOnHover: true,
-              duration: 1000
-            },
-            pagination: "#pagination",
-            prev:  {
-                button: "#pagination-prev",
-                onBefore: function(data){
-                      var pos = $("#coverflow").triggerHandler("currentPosition");
-                        $(this).children().removeClass('current-item');
-                },
-                onAfter: function(data){
-                      var pos = $("#coverflow").triggerHandler("currentPosition");
-                        $(this).children().filter(":eq(1)").addClass('current-item');
-                }
-            },
-            next:  {
-                button: "#pagination-next",
-                onBefore: function(data){
-                      var pos = $("#coverflow").triggerHandler("currentPosition");
-                        $(this).children().removeClass('current-item');
-                },
-                onAfter: function(data){
-                      var pos = $("#coverflow").triggerHandler("currentPosition");
-                        $(this).children().filter(":eq(1)").toggleClass('current-item');
-                }
-            },
-            mousewheel: true,
-            auto: {
-                onBefore: function(data){
-                      var pos = $("#coverflow").triggerHandler("currentPosition");
-                        $(this).children().filter(":eq(1)").toggleClass('current-item');
-                        $(this).children().removeClass('current-item');
-                },
-                onAfter: function(data){
-                      var pos = $("#coverflow").triggerHandler("currentPosition");
-                        $(this).children().filter(":eq(1)").toggleClass('current-item');
-                }
-            }
-        });
-
-//        highlight(unhighlight($("#coverflow2 > *")));
-        
-        $("#coverflow a").hover(
-            function(){
-                $(this).append('<div class="coverflow_player" style="display:none;"><span class="coverflow_player_btn"></span></div>').fadeIn('slow');
-                $(this).find('.coverflow_player').fadeIn(250, function(){
-                        $(this).show();
-                });
-            },
-            function(){
-                $(this).find('.coverflow_player').fadeOut(250, function(){
-                        $(this).remove();
-                });
-            }
-        );
-    }
-
-    //Uniformise les placeholder pour tous les navigateurs
-    $("input[placeholder], textarea[placeholder]").each(function(){
-        $("input[placeholder]").placeHeld();
-    });
-
-    //Modifie l'affichage des checkboxs pour le choix de compte à l'inscription
-    $userType = $('.step-form #type-user label');
-    $userType.click(function(){
-        $('.step-form #type-user input:checkbox').attr('checked', false);
-        $(this).prev('.step-form #type-user input:checkbox').attr('checked', true);
-    });
-
-    //Modifie l'affichage des checkboxs pour le choix de thème perso
-    $userType = $('.personnaliser #themes label');
-    $userType.click(function(){
-        $('.personnaliser #themes input:checkbox').attr('checked', false);
-        $(this).prev('.personnaliser #themes input:checkbox').attr('checked', true);
-    });
-
-    //Modifie l'apparence des checkboxs
-    $checkboxs = $('input:checkbox');
-    $checkLabel = $('.checkbox-style label, .checkbox-style2 label');
-    $checkLabel.prepend('<span/>');
-
-
-    //Appel de la fonction masonry uniquement sur la page photos/vidéos
-    if($("body.photos_videos").length > 0){
-        playMasonry();
-    }
     
-    //Appel de la fonction
-    if($("input[type=file]").length > 0){
-        $(".upload-file-container").change(function(e){
-            $in = $(this).find("input[type=file]");
-            $(this).next(".upload_photo_name_file").html($in.val().replace(/C:\\fakepath\\/i, ''));
-        });
-    }
-    
-    //Appel de la fonction
-    if($("body.musicien_actus").length > 0){
-        $(".actus_post .actus_post_links a").click(function(e){
-            var cls = $(this).attr('href').replace('#', '');
-            var desact =  $(".actus_post .actus_post_links").find('.active').removeClass('active')
-            var act =$(this).addClass("active");
-            
-            location.hash = cls;
-            
-            var newForm = location.hash;
-            $(".actus_post form").css("display","none");
-//            $(newForm).css("display","block");
-            $(newForm).slideToggle('slow', "swing");
-            
-            window.location.hash = "";
-            e.preventDefault();
-        });
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  
     //Commentaires photos
     $('.comment-form form').submit(function(){
         var baseurl = $(this).find("#baseurl").val();
@@ -478,14 +337,6 @@ $(document).ready(function(){
                 var newe = '<a id=' + id_concert + ' href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">Je n\'y vais plus</span><span class="button_right"></span></a>';
                 $('.participer').replaceWith(newe);
                 $(newe).trigger('click');
-
-//                $('<a id='+id_concert+' href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">Je n\'y vais plus</span><span class="button_right"></span></a>').click(go));
-//                $( '<a id='+id_concert+'href="#" class="participer"><span class="button_left"></span><span  class="button_center">J\'y vais</span><span class="button_right"></span></a>' ).appendTo( "#concert_activity" );
-//
-//                $(this).hide();
-//                $('.content').append('<a id="'+id_concert+' href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">Je ny vais plus</span><span class="button_right"></span></a>');
-//
-//                $('#'+id_concert+'.noparticiper').toggle();
             }
         })
         return false;
@@ -502,7 +353,6 @@ $(document).ready(function(){
             type: "POST",
             url : baseurl + '/slyset/index.php/mc_concerts/delete_activity_concert',
             data: dataid,
-
             success: function(jego){ //afficher le bon bouton
                 $('.noparticiper').replaceWith('<a id=' + id_concert + ' href="#" class="participer"><span class="button_left"></span><span  class="button_center">J\'y vais</span><span class="button_right"></span></a>');
             }
@@ -511,16 +361,152 @@ $(document).ready(function(){
     });
     
     
-//    $('.img_cover').live({
-//        mouseenter:
-//           function(){
-//            $(this).siblings('.edit').toggle();
-//            //$(".edit").show();
-//        },
-//        mouseleave:
-//           function(){
-//           }
-//    })
+    $('.top').click(function(){
+      var baseurl = $(this).find("#baseurl").val();
+   		var id_wall = $(this).attr('id');
+    	var data_id_wall = 'id_wall='+id_wall;
+    	
+    	$.ajax({
+    		type: "POST",
+            url :  baseurl + '/slyset/index.php/melo_wall/delete_from_wall',
+            data: data_id_wall,
+                success: function(){
+        	$('#'+id_wall).slideUp();
+    }
+    	});
+});
+
+    var one = '<a href="#" class="participer"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>';
+  var two ='<div class="bouton" id="suivre"><a href="#" class="participer"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a></div>';
+    $('.bouton #suivre').hover(function(){$(this).replaceWith(one).show()},
+    function(){$(this).replaceWith(two).show()})
+    
+    
+    //Utilisation du caroufredsel sur la page home
+    if($("body.home").length > 0){
+        $("#coverflow").children().filter(":eq(1)").addClass('current-item');
+        
+        $("#coverflow").carouFredSel({
+            item: 3,
+            width: 770,
+            height: 268,
+            synchronise: true,
+            scroll: {
+              items: 1,
+              fx: 'scroll',
+              pauseOnHover: true,
+              duration: 1000
+            },
+            pagination: "#pagination",
+            prev:  {
+                button: "#pagination-prev",
+                onBefore: function(data){
+                      var pos = $("#coverflow").triggerHandler("currentPosition");
+                        $(this).children().removeClass('current-item');
+                },
+                onAfter: function(data){
+                      var pos = $("#coverflow").triggerHandler("currentPosition");
+                        $(this).children().filter(":eq(1)").addClass('current-item');
+                }
+            },
+            next:  {
+                button: "#pagination-next",
+                onBefore: function(data){
+                      var pos = $("#coverflow").triggerHandler("currentPosition");
+                        $(this).children().removeClass('current-item');
+                },
+                onAfter: function(data){
+                      var pos = $("#coverflow").triggerHandler("currentPosition");
+                        $(this).children().filter(":eq(1)").toggleClass('current-item');
+                }
+            },
+            mousewheel: true,
+            auto: {
+                onBefore: function(data){
+                      var pos = $("#coverflow").triggerHandler("currentPosition");
+                        $(this).children().filter(":eq(1)").toggleClass('current-item');
+                        $(this).children().removeClass('current-item');
+                },
+                onAfter: function(data){
+                      var pos = $("#coverflow").triggerHandler("currentPosition");
+                        $(this).children().filter(":eq(1)").toggleClass('current-item');
+                }
+            }
+        });
+
+//        highlight(unhighlight($("#coverflow2 > *")));
+        
+        $("#coverflow a").hover(
+            function(){
+                $(this).append('<div class="coverflow_player" style="display:none;"><span class="coverflow_player_btn"></span></div>').fadeIn('slow');
+                $(this).find('.coverflow_player').fadeIn(250, function(){
+                        $(this).show();
+                });
+            },
+            function(){
+                $(this).find('.coverflow_player').fadeOut(250, function(){
+                        $(this).remove();
+                });
+            }
+        );
+    }
+
+    //Uniformise les placeholder pour tous les navigateurs
+    $("input[placeholder], textarea[placeholder]").each(function(){
+        $("input[placeholder]").placeHeld();
+    });
+
+    //Modifie l'affichage des checkboxs pour le choix de compte à l'inscription
+    $userType = $('.step-form #type-user label');
+    $userType.click(function(){
+        $('.step-form #type-user input:checkbox').attr('checked', false);
+        $(this).prev('.step-form #type-user input:checkbox').attr('checked', true);
+    });
+
+    //Modifie l'affichage des checkboxs pour le choix de thème perso
+    $userType = $('.personnaliser #themes label');
+    $userType.click(function(){
+        $('.personnaliser #themes input:checkbox').attr('checked', false);
+        $(this).prev('.personnaliser #themes input:checkbox').attr('checked', true);
+    });
+
+    //Modifie l'apparence des checkboxs
+    $checkboxs = $('input:checkbox');
+    $checkLabel = $('.checkbox-style label, .checkbox-style2 label');
+    $checkLabel.prepend('<span/>');
+
+
+    //Appel de la fonction masonry uniquement sur la page photos/vidéos
+    if($("body.photos_videos").length > 0){
+        playMasonry();
+    }
+    
+    //Appel de la fonction
+    if($("input[type=file]").length > 0){
+        $(".upload-file-container").change(function(e){
+            $in = $(this).find("input[type=file]");
+            $(this).next(".upload_photo_name_file").html($in.val().replace(/C:\\fakepath\\/i, ''));
+        });
+    }
+    
+    //Appel de la fonction
+    if($("body.musicien_actus").length > 0){
+        $(".actus_post .actus_post_links a").click(function(e){
+            var cls = $(this).attr('href').replace('#', '');
+            var desact =  $(".actus_post .actus_post_links").find('.active').removeClass('active')
+            var act =$(this).addClass("active");
+            
+            location.hash = cls;
+            
+            var newForm = location.hash;
+            $(".actus_post form").css("display","none");
+//            $(newForm).css("display","block");
+            $(newForm).slideToggle('slow', "swing");
+            
+            window.location.hash = "";
+            e.preventDefault();
+        });
+    }
     
     if($("body.personnaliser").length > 0){
         $('#colorpickerField1').ColorPicker({
@@ -599,9 +585,26 @@ $(document).ready(function(){
             $(this).ColorPickerSetColor(this.value);
         });
     }
-
+    
 });
 
+function bt_edit(){
+    document.getElementById('select').getElementsByClassName('miniat_titre')[0].style.display="inline";
+}
+
+function cache_edit(){
+    document.getElementById('select').getElementsByClassName('miniat_titre')[0].style.display="none";
+}
+
+function edit_photo(){
+    document.getElementById('select').getElementsByClassName('edit')[0].style.visibility="visible";
+    document.getElementById('select').getElementsByClassName('open_alb')[0].style.visibility="visible";
+}
+
+function cache_photo(){
+		document.getElementById('select').getElementsByClassName('edit')[0].style.visibility="hidden";
+    document.getElementById('select').getElementsByClassName('open_alb')[0].style.visibility="hidden";
+}
 
 function showComment(divid) {
     var divid = document.getElementById(divid);
@@ -614,22 +617,4 @@ function showComment(divid) {
         divid.style.display = 'none';
         $(".content").masonry('reload');
     }
-}
-
-function bt_edit(){
-    document.getElementById('select').getElementsByClassName('miniat_titre')[0].style.display = "inline";
-}
-
-function cache_edit(){
-    document.getElementById('select').getElementsByClassName('miniat_titre')[0].style.display = "none";
-}
-
-function edit_photo(){
-    document.getElementById('select').getElementsByClassName('edit')[0].style.visibility = "visible";
-    document.getElementById('select').getElementsByClassName('open_alb')[0].style.visibility = "visible";
-}
-
-function cache_photo(){
-		document.getElementById('select').getElementsByClassName('edit')[0].style.visibility = "hidden";
-    document.getElementById('select').getElementsByClassName('open_alb')[0].style.visibility = "hidden";
 }

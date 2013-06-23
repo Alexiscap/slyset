@@ -82,7 +82,9 @@ class melo_concert extends CI_Model
 	{
 	 $this->db->set(array('Utilisateur_id'=>$uid,'Concerts_id'=>$id_concert))
                 		->insert('concerts_activite');
-                		
+     
+	$this->db->set(array('Utilisateur_id'=>$uid,'concerts_id'=>$id_concert,'type'=>"ME"))
+                		->insert('wall_melo_component');               		
     return $this->returnMarkup($id_concert);
 
 
@@ -107,6 +109,9 @@ class melo_concert extends CI_Model
 	{
 	 $data_delete_act = array('Utilisateur_id'=>$uid,'Concerts_id'=>$id_concert); 
 	 $this->db->delete('concerts_activite', $data_delete_act); 
+
+	$data_delete_acte_cmty = array('Utilisateur_id'=>$uid,'concerts_id'=>$id_concert,'type'=>'ME'); 
+	 $this->db->delete('wall_melo_component', $data_delete_acte_cmty); 
 
 
 	}

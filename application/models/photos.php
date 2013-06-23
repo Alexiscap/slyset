@@ -59,7 +59,7 @@ WHERE album_media.Photos_id IS NULL
 //select 2 : select des dossier : selectionner en plus les photos associer au dossier
 return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,album_media.id,album_media.Photos_id
 							FROM album_media 
-								WHERE album_media.Utilisateur_id = 30 	
+								WHERE album_media.Utilisateur_id = '.$user_id.'	
 								GROUP BY album_media.nom 
 								HAVING album_media.Photos_id
 							ORDER BY date DESC')		
@@ -68,18 +68,18 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
                     // a partir de album_id : select all photo
                         }
    //ne pas oblier de changer le 30 en variable$user id !!!
-      public function liste_photos()
+      public function liste_photos($user_id)
     {
         return $this->db->query('(SELECT photos.file_name,photos.nom,photos.date,photos.id,photos.like_total,1 as type
 								FROM photos 
    						  		 LEFT OUTER JOIN album_media ON photos.id = album_media.Photos_id 
-             						AND photos.Utilisateur_id = 30 
-									WHERE album_media.Photos_id IS NULL
+             						WHERE photos.Utilisateur_id = '.$user_id.'	 
+									AND album_media.Photos_id IS NULL
 									)
 									UNION
 								(SELECT album_media.file_name,album_media.nom,album_media.date,album_media.Photos_id,album_media.like_total,2
 							FROM album_media 
-								WHERE album_media.Utilisateur_id = 30 	
+								WHERE album_media.Utilisateur_id = '.$user_id.'	 	
 								GROUP BY album_media.file_name
 								)
 								UNION
@@ -87,8 +87,8 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
 								SELECT videos.nom,videos.description,videos.date,videos.id,videos.like_total,3
 								FROM videos
 								 LEFT OUTER JOIN album_media ON videos.id = album_media.Videos_id 
-								AND videos.Utilisateur_id = 30 
-									WHERE album_media.Videos_id IS NULL								)
+								WHERE videos.Utilisateur_id = '.$user_id.'	 
+									AND album_media.Videos_id IS NULL								)
 								ORDER BY date DESC
 									')
         
@@ -245,10 +245,13 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
    		  $this->db->set(array('Utilisateur_id'=>$user_name,'file_name'=>$filename,'nom'=>$photo_name))
         	        ->insert($this->table_photos);
     	  $last_id_photos =  $this->db->insert_id();
-    	  
+    	      		$photo_last_id =  $this->db->insert_id();
+
     	      $this->db->set(array('Photos_id'=>$last_id_photos,'like_value'=>"0"))
                 	->insert('ilike');
-    
+
+			$data_add_cmty_photo = array('Utilisateur_id'=>$user_name,'photos_id'=>$photo_last_id,'type'=>"MU"); 
+	 	$this->db->insert('wall_melo_component', $data_add_cmty_photo); 
     	  if ($album_name != null||$album_name != '')
     		{
      			$this->db->set(array('Utilisateur_id'=>$user_name,'file_name'=>$album_file_name,'nom'=>$album_name,'Photos_id'=>$last_id_photos))
@@ -256,6 +259,7 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
                 
             
 			}
+		
     }
     
     public function update_photo($user_id,$id_photos,$nom_photo,$album_name,$file_name_a,$file_name_photo)
@@ -410,13 +414,16 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
 
 //+1
 		$requete_photo ='UPDATE photos SET like_total = like_total +1 WHERE id= ?';
-     $this->db->query($requete_photo,array($id_photo));
+     	$this->db->query($requete_photo,array($id_photo));
      
 		$requet_like = 'UPDATE ilike SET like_value = like_value +1 WHERE Photos_id= ?';
-	 $this->db->query($requet_like,array($id_photo));
+	 	$this->db->query($requet_like,array($id_photo));
 	 
-	  $this->db->set(array('Photo_id'=>$id_photo,'Utilisateur_id'=>$id_user))
+	  	$this->db->set(array('Photo_id'=>$id_photo,'Utilisateur_id'=>$id_user))
                 	->insert('like_activity_pav');
+                	
+        $data_delete_act = array('Utilisateur_id'=>$id_user,'photos_id'=>$id_photo,'type'=>"ME"); 
+	 	$this->db->insert('wall_melo_component', $data_delete_act); 
 	
     }
     
@@ -442,13 +449,16 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
 
 //+1
 		$requete_photo ='UPDATE videos SET like_total = like_total +1 WHERE id= ?';
-     $this->db->query($requete_photo,array($video_id));
+     	$this->db->query($requete_photo,array($video_id));
      
 		$requet_like = 'UPDATE ilike SET like_value = like_value +1 WHERE Videos_id= ?';
-	 $this->db->query($requet_like,array($video_id));
+	 	$this->db->query($requet_like,array($video_id));
 	 
-	  $this->db->set(array('Video_id'=>$video_id,'Utilisateur_id'=>$id_user))
+	  	$this->db->set(array('Video_id'=>$video_id,'Utilisateur_id'=>$id_user))
                 	->insert('like_activity_pav');
+                	
+   	  	$data_delete_act = array('Utilisateur_id'=>$id_user,'videos_id'=>$video_id,'type'=>"ME"); 
+	 	$this->db->insert('wall_melo_component', $data_delete_act); 
 	
     }
     
@@ -459,13 +469,17 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
 
 //+1
 		$requete_photo ='UPDATE photos SET like_total = like_total -1 WHERE id= ?';
-     $this->db->query($requete_photo,array($id_photo));
+    	$this->db->query($requete_photo,array($id_photo));
      
 		$requet_like = 'UPDATE ilike SET like_value = like_value -1 WHERE Photos_id= ?';
-	 $this->db->query($requet_like,array($id_photo));
+		$this->db->query($requet_like,array($id_photo));
 	 
-	  $this->db->where(array('Photo_id'=>$id_photo,'Utilisateur_id'=>$id_user))
+		$this->db->where(array('Photo_id'=>$id_photo,'Utilisateur_id'=>$id_user))
                 	->delete('like_activity_pav');
+        
+        $data_delete_act = array('Utilisateur_id'=>$id_user,'photos_id'=>$id_photo,'type'=>"ME"); 
+	 	$this->db->delete('wall_melo_component', $data_delete_act); 
+
 	
     }
     
@@ -492,13 +506,17 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
 
 //+1
 		$requete_photo ='UPDATE videos SET like_total = like_total -1 WHERE id= ?';
-     $this->db->query($requete_photo,array($video_id));
+     	$this->db->query($requete_photo,array($video_id));
      
 		$requet_like = 'UPDATE ilike SET like_value = like_value -1 WHERE Videos_id= ?';
-	 $this->db->query($requet_like,array($video_id));
+	 	$this->db->query($requet_like,array($video_id));
 	 
-	  $this->db->where(array('Video_id'=>$video_id,'Utilisateur_id'=>$id_user))
+	  	$this->db->where(array('Video_id'=>$video_id,'Utilisateur_id'=>$id_user,))
                 	->delete('like_activity_pav');
+                	
+     	$data_delete_act = array('Utilisateur_id'=>$id_user,'videos_id'=>$video_id,'type'=>"ME"); 
+	 	$this->db->delete('wall_melo_component', $data_delete_act); 
+
 	
     }
     
@@ -509,12 +527,18 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
                         ->where(array('Utilisateur_id' => $user_id))
                         ->get()
                         ->result();
+                        
+        
     }
     
     public function add_video ($id_video,$user_id,$description)
     {
     	$this->db->set(array('nom'=>$id_video,'Utilisateur_id'=>$user_id,'description'=>$description))
     			->insert('videos');
+    	
+    	$data_delete_act = array('Utilisateur_id'=>$user_id,'videos_id'=>$id_video,'type'=>"MU"); 
+	 	$this->db->insert('wall_melo_component', $data_delete_act); 
+	
     }
     
     public function delete_photo($id_photo)
@@ -542,6 +566,8 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
 	
     
     }
+    
+    
     
 
 }

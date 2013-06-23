@@ -1,4 +1,5 @@
 
+$( document ).ready(function() {
 
 $('#datepicker').datepicker({ 
     inline: true,  
@@ -34,10 +35,14 @@ $('#datepicker').datepicker({
             document.getElementById('calendar_alert').innerHTML = event.Title;
 
   if(document.getElementById('calendar_alert').style.display =='none') { 
-    document.getElementById('calendar_alert').style.display  = 'block'; 
+      $('#calendar_alert').fadeIn(200)
+
   } else { 
+  
     document.getElementById('calendar_alert').style.display  = 'none'; 
+
   }
+  
 
         	//document.getElementById('calendar_alert').style.display = "block";
             //alert(event.Title);
@@ -46,4 +51,18 @@ $('#datepicker').datepicker({
     
 });
  
-   
+ 
+ $('body').click(function()
+ { 
+
+  if(document.getElementById('calendar_alert').style.display =='block') { 
+   $('#calendar_alert').fadeOut(200)
+  } else { 
+    document.getElementById('calendar_alert').style.display  = 'none'; 
+  }
+ }
+ 
+ 
+ 
+ )
+   });

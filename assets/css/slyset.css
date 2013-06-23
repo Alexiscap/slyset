@@ -3,6 +3,7 @@
 input[type='file'], input[type='button'], input[type='submit']{ cursor:pointer; }
 
 #codeigniter_profiler{ overflow:scroll; }
+
 /* --------- FIN DE GENERAL CI  --------- */
 
 
@@ -131,8 +132,8 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .content .infos_concert{ width:302px; margin:0 0 0 20px; float:left; }
 .content .calendrier{ background:url("../images/musicien/calendrier.png") no-repeat; width:50px; height:50px; float:left; }
 .content .infos_concert p{ margin:3px; color:#5d5d5b; font-size:14px; }
-.content .infos_concert .mois{ margin:5px 17px; font-size:9px; color:white; position:absolute; }
-.content .infos_concert .jour{ margin:20px 9px; font-size:24px; font-family:georgia; position:absolute; }
+.content .infos_concert .mois{ margin:7px 15px; font-size:9px; color:white; position:absolute; text-align : center; }
+.content .infos_concert .jour{ margin:20px 9px; font-size:24px; font-family:georgia; position:absolute; text-align : center; width : 31px; }
 .content .infos_concert img{ float:left; }
 .content .adr_concert{ width:196px; float:left; margin:0 0px; }
 .content .adr_concert p{ margin:3px; color:#5d5d5b; font-size:14px; }
@@ -146,8 +147,15 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .content .participer .button_center{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_participer.png") repeat-x 0 -31px; float:left; }
 .content .participer .button_right{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_participer.png") no-repeat -77px -1px; float:left; }
 
+.content .noparticiper{ margin:25px 30px 0 150px; padding:0; font-family:Arial, "Trebuchet MS"; font-size:14px; text-decoration:none; color:#ffffff; float:left; }
+.content .noparticiper .button_left{ display:block; width:22px; height:30px; background:url("../images/common/sprite_btn_suivre.png") no-repeat 0 -61px; float:left; }
+.content .noparticiper .button_center{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_suivre.png") repeat-x 0 -31px; float:left; }
+.content .noparticiper .button_right{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_suivre.png") no-repeat -77px -1px; float:left; }
+
+
+
 .bt_ajout_concert{ width:125px; height:30px; float:left; margin:3px 0 0 198px; }
-.content .info_sup{ width:539px; margin:10px 0 0 0; float:left; clear:both; background:#d3d3d3; padding:5px 0 0 0; border:1px solid #c3c3c3; }
+.content .info_sup{ width:539px; margin:10px 0 10px 0; float:left; clear:both; background:#d3d3d3; padding:5px 0 0 0; border:1px solid #c3c3c3; }
 .content .info_sup .informations{ width:287px; float:left; margin-bottom : 10px; }
 .content .info_sup .nom_date{ font-size:16px; font-family:'Trebuchet MS'; margin:5px 0 0 20px; color:#4e4e4e; }
 .content .info_sup .lieu_salle{ font-size:14px; font-family:'Trebuchet MS'; margin:15px 0 0 20px; color:#4e4e4e; }
@@ -174,6 +182,9 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .pagination .page{ background-position:-38px 0px; color:#7e7e7e; text-decoration:none; }
 .pagination #suivant{ background-position:-79px 0px; }
 .pagination .page:hover{ background-position:-38px -49px; color:white; }
+
+.allcomment {display: none;}
+
 /* --------- FIN  DE MUSICIEN - CONCERTS  --------- */
 
 
@@ -181,7 +192,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .content .col1{ width:160px; }
 .content .col1 .img_cover{width:160px;}
 .content .box{ margin:5px; padding:5px 5px 0; /*max-width:150px; */ background:#D8D5D2; font-size:11px; line-height:1.4em; float:left; display:block; }
-.content .photo{ background:white; margin:5px; text-align:center;box-shadow: 2px 2px 1px rgba(155,155,155,1);}
+.content .photo{ background:white; margin:5px; text-align:left;-moz-box-shadow: 1px 1px 1px 1px #9b9b9b;-webkit-box-shadow: 1px 1px 1px 1px #aaa;-o-box-shadow: 1px 1px 1px 1px #9b9b9b;box-shadow: 1px 1px 1px 1px #9b9b9b; }
 .content .photo .pochette{ width:139px; margin:10px 10px 5px 10px; min-height:214px; }
 .content .photo .img_miniat{ width:51px; margin:0; }
 .content .photo a{ text-decoration:none; }
@@ -190,17 +201,18 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .content .photo .bord_photo{ background:#f2f0f0; margin:0 -5px; height:25px; text-align:left;}
 .content .photo .bord_photo p{ margin:0 10px 0; display:inline; font-size:10px; color:#878d95; }
 .content .photo .bord_photo a:hover{ text-decoration:none; }
-.content .photo .nom_photo{ width:138px; text-align:left; }
-.content .photo .bord_photo img{ margin:8px 5px 0 40px; display:inline; }
+.content .photo .nom_photo{ width:138px; text-align:left; word-wrap : break-word }
+.content .photo .bord_photo img{ margin:0 5px 0 15px; display:inline; }
+.nolike {background-color : pink;}
 .content .photo .bord_photo .nb_like{ margin:0; }
-.content .photo .comm{ width:170px; margin:0 -5px; background:#f2f0f0; border-bottom:1px solid #cdcdcd; border-top:none; min-height:34px; }
-.content .photo .comm img{ float:left; margin:5px; height:24px; }
-.content .photo .comm .del{ float:right; margin:5px 5px; height:14px; }
-.content .photo .comm p{ margin:0; text-align:left; }
-.content .photo .comm .name_comm{ font-size:10px; color:#595959; }
-.content .photo .comm .commentaire{ font-size:10px; color:#888d95; }
-.content .photo .comm input[type=text]{ float:left; width:112px; border:1px solid #dfdede; margin:5px 0; }
-.content .photo .comm input[type=image]{ clear:both; width:48px; margin:0 0 0 58px; }
+.content .photo .comm,.content .photo .comment-form,.content .photo .comment-form-album{ width:170px; margin:0 -5px; background:#f2f0f0; border-bottom:1px solid #cdcdcd; border-top:none; min-height:34px; }
+.content .photo .comm img,.content .photo .comment-form img, .content .photo .comment-form-album img{ float:left; margin:5px; height:24px; }
+.content .photo .comm .del,.content .photo .comment-form .del, .content .photo .comment-form-album .del{ float:right; margin:5px 5px; height:14px; }
+.content .photo .comm p,.content .photo .comment-form p,.content .photo .comment-form-album p{ margin:0; text-align:left; }
+.content .photo .comm .name_comm,.content .photo .comment-form .name_comm, .content .photo .comment-form-album .name_comm{ font-size:10px; color:#595959; }
+.content .photo .comm .commentaire,.content .photo .comment-form .commentaire, .content .photo .comment-form-album .commentaire{ font-size:10px; color:#888d95; }
+.content .photo .comm input[type=text],.content .photo .comment-form input[type=text], .content .photo .comment-form-album input[type=text]{ float:left; width:112px; border:1px solid #dfdede; margin:5px 0; }
+.content .photo .comm input[type=image],.content .photo .comment-form input[type=submit], .content .photo .comment-form-album input[type=submit]{ clear:both; width:48px; margin:0 0 0 58px; }
 .content .photo .edit{ background:rgba(36, 36, 36, 0.7); width:160px; height:22px; position:absolute; margin:0;visibility:hidden;}
 .content .photo .edit img{ float:right; margin:4px 8px 0 0; }
 .content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:160px; position:absolute; margin:22px 0;visibility:hidden;}
@@ -208,6 +220,63 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .content .sepa_comm {width:170px;height:5px;background:#e6e6e6;margin-left:-5px;}
 
 /*.box .img_cover, #tumblelog .img_cover{ display:block; width:100%; }*/
+
+/*  -----CSS TMP AJOUTER PHOTO -------- */
+
+#test, ul#test_two li, input#album_select, input#create{
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+-ms-border-radius: 3px;
+-o-border-radius: 3px;
+border-radius: 3px;
+width : 150px;
+background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #f0f0f0));
+background: -webkit-linear-gradient(#ffffff,#f0f0f0);
+background: -moz-linear-gradient(#ffffff,#f0f0f0);
+background: -o-linear-gradient(#ffffff,#f0f0f0);
+background: linear-gradient(#ffffff,#f0f0f0);
+border: 1px solid #c1c1c1;
+cursor: pointer;
+font-size: 13px;
+padding: 7px 12px;
+position: relative;
+list-style-type : none;
+}
+
+#test_one{
+visibility : hidden;
+}
+
+ul#test_two{
+cursor: pointer;
+padding : 0px;
+margin : 0px;
+}
+
+ul#test_two li:hover{
+background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #2AB395), color-stop(100%, #2AB395));
+background: -webkit-linear-gradient(#ffffff,#2AB395);
+background: -moz-linear-gradient(#ffffff,#2AB395);
+background: -o-linear-gradient(#ffffff,#2AB395);
+background: linear-gradient(#ffffff,#2AB395);
+}
+#create {
+
+}
+
+input #album_select, input #create
+{
+padding: 18px;
+width : 177px;
+}
+
+#create_ok{margin-top : -27px;
+margin-left : 190px;
+cursor : pointer;}
+/*  ----- FIN CSS TMP AJOUTER PHOTO -------- */
+
+
+
 /* --------- FIN MUSICIEN PHOTO ET VIDEO --------- */
 
 
@@ -253,8 +322,53 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .pop-in_big .content-pi .ajout_comm img{width:34px;float:left;margin:0 10px 0 40px;}
 .pop-in_big .content-pi .ajout_comm input[type=text]{width:405px;height:25px;border:1px solid #cccccc;outline:none;padding:0 5px;}
 .pop-in_big .content-pi .ajout_comm input[type=image]{float:right;margin:10px 40px;}
-/* --------------- FIN POP IN ----------- */
 
+.pop-in_ta{width:557px;padding:16px 0 75px;border:1px solid #bbbbbb;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;margin:10px auto;background:#eff4f3 url('../images/common/etapes_1.png')no-repeat 0 -4px;}
+.pop_in2{width:557px;padding:16px 0 75px;border:1px solid #bbbbbb;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;margin:10px auto;background:#eff4f3 url('../images/common/etapes_2.png')no-repeat -12px -8px;}
+.pop_in3{width:557px;padding:16px 0 75px;border:1px solid #bbbbbb;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;margin:10px auto;background:#eff4f3 url('../images/common/etapes_3.png')no-repeat -12px -8px;}
+.pop-in_ta span{margin:0;float:left;font-size:16px;color:#cdcdcd;width:140px;min-height:15px;}
+.pop-in_ta span.info{margin:6px 0 0 50px;}
+.pop-in_ta span.paiement{margin:6px 0 0 26px;}
+.pop-in_ta span.telechargement{margin:6px 0 0 10px;}
+.pop-in_ta span.et_active{color:#2ab395;}
+.pop-in_ta img{margin:10px 0 21px 20px;width:16px;float:left;cursor:pointer;}
+.pop-in_ta .content-pi {background:#fafafa;width:557px;padding: 25px 0;border:1px solid #e0e4e6;border-left:none;border-right:none;clear:both;}
+.pop-in_ta .content-pi h2{color:#4e4e4e;font-size:18px;font-weight:bold;margin:0 50px 20px;}
+.pop-in_ta .content-pi span{color:#4e4e4e;font-size:16px;margin:0 30px 0 35px;width:75px;text-align:right;}
+.pop-in_ta .content-pi input[type=text]{width:295px;margin:0 0 5px;outline-color:#2ab395;padding:0 5px;}
+.pop-in_ta .content-pi .espace{width:100%;height:40px;}
+.pop-in_ta .content-pi .clear{clear:both;}
+.pop-in_ta .content-pi .en_tete{width:500px;height:60px;background:#e5e7e8;border:1px solid #cccfd1;;border-bottom:none;border-top-left-radius:5px;border-top-right-radius:5px;margin:0 auto;font-size:14px;font-weight:bold;color:#666666;}
+.pop-in_ta .content-pi .en_tete .le_titre{width:135px;padding:20px 0 0 20px;}
+.pop-in_ta .content-pi .en_tete .artiste{width:85px;padding:20px 0 0 10px;}
+.pop-in_ta .content-pi .en_tete .type{width:65px;padding:20px 0 0 10px;}
+.pop-in_ta .content-pi .en_tete .format{width:90px;padding:20px 0 0 10px;}
+.pop-in_ta .content-pi .en_tete .prix{width:60px;padding:20px 0 0 10px;}
+
+.pop-in_ta .content-pi .achats{width:500px;background:#fafafa;border:1px solid #cccfd1;border-bottom:none;margin:0 auto;border-bottom-left-radius:5px;border-bottom-right-radius:5px;}
+.pop-in_ta .content-pi .achats td{border-right:1px solid #cccfd1;border-bottom:1px solid #cccfd1;font-size:12px;color:#555555;height:25px;}
+.pop-in_ta .content-pi .achats .le_titre{width:135px;padding:5px 0 0 20px;}
+.pop-in_ta .content-pi .achats .artiste{width:85px;padding:5px 0 0 10px;}
+.pop-in_ta .content-pi .achats .type{width:65px;padding:5px 0 0 10px;}
+.pop-in_ta .content-pi .achats .format{width:90px;padding:5px 0 0 10px;}
+.pop-in_ta .content-pi .achats .prix{width:60px;padding:5px 0 0 10px;border-right:none;}
+
+.pop-in_ta .content-pi p {float:right;margin:10px 30px 20px 0;}
+.pop-in_ta .content-pi .total {color:#666666;font-weight:bold;font-size:14px;}
+.pop-in_ta .content-pi p:last-child {color:#3f3f3f;font-weight:bold;font-size:14px;}
+.pop-in_ta .content-pi input[type=submit]{width:148px;margin:0 30px 5px;padding:0 5px;background:url("../images/common/bt_paiment.png") no-repeat;float:right;color:#ffffff;font-weight:bold;font-size:15px;}
+
+.pop-in_ta .content-pi .moyen_pmt {margin:0 0 50px 0;height:140px;}
+.pop-in_ta .content-pi .moyen_pmt img{width:210px;margin:0 0 0 45px;float:left;}
+.pop-in_ta .content-pi .moyen_pmt span{width:210px;margin:0 0 0 52px;font-size:14px;color:#4e4e4e;text-align:left;}
+
+.pop-in_ta .content-pi .infos_cb span {width:130px;margin:15px 20px 0 25px;}
+.pop-in_ta .content-pi .infos_cb span:first-child {width:130px;margin:20px 20px 0 25px;}
+.pop-in_ta .content-pi .infos_cb img {width:53px;margin:6px 8px 10px 5px;float:none;}
+.pop-in_ta .content-pi .infos_cb input[type=text] {margin:20px 0 5px;}
+.pop-in_ta .content-pi .infos_cb select {margin:15px 0 5px;}
+.pop-in_ta .content-pi .infos_cb input[type=submit] {margin:25px 30px 5px;width:100px;}
+/* --------------- FIN POP IN ----------- */
 
 /* --------- PORTAIL  --------- */
 #coverflow{ background:none; height:364px; }
@@ -364,6 +478,17 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .ui-datepicker-calendar .ui-state-hover{ color:#D1D1D1; }
 .ui-datepicker-calendar .ui-state-active{ color:#EF7363; }
 .css_jour_evenement{ background-image:url('../images/calendar/red_arrow.png'); background-repeat:no-repeat ; background-position:top right }
+
+
+/* ----------- TEMPORAIRE -------------- */
+
+#calendar_alert{ position: absolute; margin-top: 40px; margin-left: -7px; width: 100%; border: 1px solid #dedede; box-shadow: 1px 0 1px 1px #EDEDED; padding: 5px; line-height: 25px; display: none; position: absolute; background-color:#f6f6f6; font-family:"Trebuchet MS"; font-size: 12px; color: #7f7d7d; text-decoration: none; z-index: +1;}
+#calendar_alert a {color: #2ab395;}
+#calendar_alert span {text-decoration: underline;font-size: 14px;}
+/* --------- FIN  DE PORTAIL  --------- */
+
+
+
 /* --------- FIN  DE PORTAIL  --------- */
 
 
@@ -649,6 +774,7 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 
 /*-------- MUSICIEN FOLLOWERS------*/
 .content .follower .photo_follow {width:64px;float:left;margin:0 10px 10px 20px;}
+.content .follower .photo_follow img {width : 63px; border-radius : 10px;}
 .content .follower .description {width:220px;float:left;margin:0 10px}
 .content .follower .description span {font-size:12px;color:#888d95;}
 .content .follower .description .nom_follow {font-size:14px;font-weight:bold;color:#3f3f3f;margin:0;}

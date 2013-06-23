@@ -12,23 +12,57 @@ class melo_achats extends CI_Controller
       $this->layout->ajouter_js('jquery.imagesloaded.min');
       $this->layout->ajouter_js('jquery.masonry.min');
       $this->layout->ajouter_js('jquery.stapel');
-      
+       $this->load->model('achat');
         $this->layout->set_id_background('achats');
     }
   
-    public function index()
+    public function index($user_id)
     {
-      $this->page();
+      $this->page($user_id);
     }
   
-    public function page()
+    public function page($user_id)
     {
-      $datas = array();
-      $datas['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-      $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
+      $data = array();
+      $data['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
+      $data['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
+      $data['cmd'] = $this->achat->get_achat($user_id);
+      foreach ($data['cmd'] as $commande)
+      {
+					if($commande->status=="P"&&$commande->Albums_id!=null)
+					{
+					$data['total_album_panier'] =  count($commande);
+					
+					} 
+					if($commande->status=="P"&&$commande->Morceaux_id!=null)
+					{
+					$data['total_morceaux_panier'] =  count($commande);
+					
+					} 
+					if($commande->status=="P"&&$commande->Documents_id!=null)
+					{
+					$data['total_document_panier'] =  count($commande);
+					
+					} 
+						if($commande->status=="V"&&$commande->Albums_id!=null)
+					{
+					$data['total_album_history'] =  count($commande);
+					
+					} 
+					if($commande->status=="V"&&$commande->Morceaux_id!=null)
+					{
+					$data['total_morceaux_history'] =  count($commande);
+					
+					} 
+					if($commande->status=="V"&&$commande->Documents_id!=null)
+					{
+					$data['total_document_history'] =  count($commande);
+					
+					} 
       
+      }
       //$this->layout->views('3');
-      $this->layout->view('achat/melo_achats', $datas);
+      $this->layout->view('achat/melo_achats', $data);
     }
   
 }

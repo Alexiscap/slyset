@@ -56,7 +56,7 @@
 	<div class="follower">
 		<div class="photo_follow">
 		<!-- dossier de la cover pour un user ? -->
-			<img src="<?php echo './files/'.$follower->Follower_id ?>" />
+			<img src="<?php echo base_url('files/profiles/'.$follower->cover) ?>" />
 		</div>
 		<div class="description">
 			<p class="nom_follow"><?php echo $follower->login ?></p>
@@ -67,19 +67,12 @@
 			{?>
 			<img src="<?php print img_url('common/casque.png'); ?>" /><span><?php echo $follower->style_ecoute ?></span>
 			</div>
-		<div class="bouton">
-			<a href="#" class="participer"><span class="button_left_abonne"></span><span class="button_center_abonne">Abonné</span><span class="button_right_abonne"></span></a>
+		<div class="bouton" id="voir">
+			<a href="#" class="participer"><span class="button_left"></span><span class="button_center">Voir le profil</span><span class="button_right"></span></a>
 		</div>
 			<?php }
 	
-		if($follower->type==2)
-			{?>
-			<img src="<?php print img_url('common/casque.png'); ?>" /><span><?php echo $follower->style_joue ?></span>
-			</div>
-		<div class="bouton">
-			<a href="#" class="participer"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
-		</div>
-			<?php }
+	
 		?>
 	
 	</div>

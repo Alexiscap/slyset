@@ -66,7 +66,7 @@ if($nbr_concert_par_melo!=0)
     
     	    	<div id="concert_activity>">
 	<?php 
-	var_dump($all_concert_act);
+	//var_dump($all_concert_act);
     	$count = substr_count($all_concert_act,$concert_unit->id.'/');
     	if ($count>=1)
     	{?>

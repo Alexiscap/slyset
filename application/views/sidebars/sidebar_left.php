@@ -111,7 +111,8 @@
           $user_id = $this->uri->segment(2);
           $profile = $this->user_infos->profile_user($user_id);
           if(!empty($user_id)):
-              //$infos_user = $this->user_infos->profile_user($user_id, $stdclass); ?>
+              //$infos_user = $this->user_infos->profile_user($user_id, $stdclass);
+               ?>
       
               <div id="menu-profile" class="active">
                   <ul>
