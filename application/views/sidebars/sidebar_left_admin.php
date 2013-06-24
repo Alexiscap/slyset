@@ -20,7 +20,7 @@
             <ul>
                 <li class="head_menu row row-0"><a href="<?php print site_url('admin'); ?>"><span class="icon"></span><span class="menu-text">Gestion du portail</span></a></li>
                 <li class="first-row row row-1"><a href="<?php print site_url('admin_articles'); ?>"><span class="icon"></span><span class="menu-text">Actualités à la une</span></a></li>
-                <li class="row row-2"><a href="#"><span class="icon"></span><span class="menu-text">Artistes à la une</span></a></li>
+                <li class="row row-2"><a href="<?php print site_url('admin_artistes'); ?>"><span class="icon"></span><span class="menu-text">Artistes à la une</span></a></li>
                 <!--<li class="row row-3"><a href="#"><span class="icon"></span><span class="menu-text">Calendrier concerts</span></a></li>-->
             </ul>
         </div>

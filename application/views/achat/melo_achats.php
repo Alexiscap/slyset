@@ -79,7 +79,7 @@
 		</div>
 		<p class="total_panier">Montant total <span>10,00€</span></p>
 			<div class="clear"></div>
-			<a href ="<?php echo base_url('index.php/recapitulatif-commande/'.$this->session->userdata('uid')) ?>"><input type="button" value="Paiement sécurisé" class="cadis_panier"></a>
+			<input type="button" value="Paiement sécurisé" class="cadis_panier">
 			<input type="button" value="Supprimer" class="bt_supp_playlist">
 	</div>
 	

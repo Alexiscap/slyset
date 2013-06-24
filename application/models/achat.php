@@ -34,10 +34,6 @@ class achat extends CI_Model
                         ->result();		
 	}
 
-	public function panier_to_achat()
-	{
-	
-	}
 
 
 }

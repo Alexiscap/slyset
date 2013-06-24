@@ -109,8 +109,8 @@
                   <div class="comment-form">
       <img src="<?php echo img_url('common/avatar_comm.png'); ?>" />
       <form  action="" method="post">
-           <input type="text" name="usercomment" id="usercomment"/>
-        <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
+          <input type="text" name="usercomment" id="usercomment"/>
+          <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
         	<input type="hidden" name="messageid" value="<?php print $media_user_result_unit->id; ?>" id="messageid" />
 
         <input src= "<?php echo img_url('common/valider_comm.png'); ?>" type="submit" value="Valider"/>
@@ -152,7 +152,7 @@
       							endif;
                      		endforeach;
                           
-    					;endif; 
+    					;endif;
     				endforeach; ?>
      				<p class="nom_photo"><?php echo $media_user_result_unit->nom ?></p>
      				

@@ -1,15 +1,10 @@
-<?php
-echo $this->input->post('format');
-
-echo form_open('pi_ta_paiement/validation_paiement');
-
- ?><div class="pop-in_ta pop_in2">
+<div class="pop-in_ta pop_in2">
   <span class="info">Informations</span><span  class="paiement et_active">Paiement</span><span  class="telechargement">Téléchargements</span>
   <img src="<?php echo img_url('musicien/pop_close.png'); ?>" alt="Fermer" />
   <div class="content-pi">
     <h2>Choisissez votre moyen de paiement</h2>
 	<div class="moyen_pmt">
-		<img class="select" src="<?php echo img_url('common/pmt_cb.png'); ?>" alt="CB" />
+		<img src="<?php echo img_url('common/pmt_cb.png'); ?>" alt="CB" />
 		<img src="<?php echo img_url('common/pmt_ppal.png'); ?>" alt="Paypal" />
 		<span>Payer avec une carte bancaire</span>
 		<span>Payer avec un compte Paypal</span>
@@ -35,11 +30,7 @@ echo form_open('pi_ta_paiement/validation_paiement');
 		<div class="clear"></div>
 		<span>Code de sécurité</span>
 		<input type="text">
-
-	<?php
-				echo form_submit('submit', 'Continuer');
-
-	 echo form_close(); ?>	
+		<input type="submit" value="Continuer">
 	</div>
 	<div class="clear"></div>
   </div>

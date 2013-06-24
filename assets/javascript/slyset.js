@@ -11,53 +11,7 @@ function playMasonry(){
     });
 }
 
-function highlight(items) {    
-//    items.filter(":eq(1)").css({
-//        paddingTop: 0,
-//        width   : 238,
-//        height  : 238,
-//        display  : "block"
-//    });
-    
-    items.filter(":eq(1)").animate({
-        "paddingTop": "0",
-        "width"   : "238",
-        "height"  : "238",
-        "display"  : "block",
-        "opacity": "1",
-        "filter": "alpha(opacity=100)"
-    }, 500);
-    
-    $("#coverflow2 a").first().css("marginLeft", -5);
-    return items;
-}
-
-function unhighlight(items) {
-//    items.css({
-//      paddingTop: 22,
-//      marginLeft: 10,
-//      width   : 188,
-//      height  : 188,
-//      display  : "block"
-//    });
-    
-    items.animate({
-        "paddingTop": "22",
-        "marginLeft": "10",
-        "width"   : "188",
-        "height"  : "188",
-        "display"  : "block",
-        "opacity": "0.6",
-        "filter": "alpha(opacity=60)",
-        "box-shadow": "0 0 7px 3px #2B2B2B"
-    }, 500);
-    
-    return items;
-}
-
 $(document).ready(function(){
-  
-  
 //    Shadowbox.open({
 ////        content:    'application/views/lightbox/pi_ajout_concerts.php',
 //        player:     "iframe",
@@ -70,7 +24,6 @@ $(document).ready(function(){
             skipSetup: true
         });
 
-    //    window.onload = function() {
         $("#shadowbox").click(function(){
             Shadowbox.open({
                 content: '#shadow',
@@ -97,18 +50,8 @@ $(document).ready(function(){
         }
     });
     
-//    $('.check_all').toggle(
-//        function() {
-//            $('.article-checkbox input[type="checkbox"]').prop('checked', true);
-//        },
-//        function() {
-//            $('.article-checkbox input[type="checkbox"]').prop('checked', false);
-//        }
-//    );
-    
     //Utilisation du caroufredsel sur la page home
     if($("body.admin-articles").length > 0){
-      
         $('#redactor').redactor();
 
         $('#articles-tab th.article-title, #articles-tab th.article-date').click(function(e){
@@ -166,12 +109,12 @@ $(document).ready(function(){
         $('#articles-tab table tr:nth-child(odd)').addClass('odd row-color-2');
     }
     
-    var baseurl = $('#baseurl').val();
     $('.form_comments form').submit(function(){
+        var baseurl = $(this).find("#baseurl").val();
         var usercomment = $(this).find("#usercomment").val();
         var messageid = $(this).find("#messageid").val();
         var thisParent = $(this).parent();
-        var dataString = 'usercomment='+usercomment+'&messageid='+messageid;
+        var dataString = 'usercomment=' + usercomment + '&messageid=' + messageid;
 
         if(usercomment == '' || messageid == ''){
             alert('Veuillez renseigner un message !');
@@ -199,12 +142,255 @@ $(document).ready(function(){
         }
     });
     
+    
+    //Commentaires photos
+    $('.comment-form form').submit(function(){
+        var baseurl = $(this).find("#baseurl").val();
+        var comment = $(this).find("#usercomment").val();
+        var messageid = $(this).find("#messageid").val();
+        var thisParent = $(this).parent();
+        var dataString = 'usercomment=' + usercomment + '&messageid=' + messageid;
+
+        if(usercomment == '' || messageid == ''){
+            alert('Veuillez renseigner un message !');
+        } else {
+            var ajaxLoader = $(this).parent().find(".ajax_loader");
+            
+            ajaxLoader.show();
+            $.ajax({
+                type: "POST",
+                url : baseurl + 'index.php/mc_photos/form_photo_user_comment',
+                data: dataString,
+                success: function(comment){
+                    $(comment).hide().insertBefore(thisParent).slideDown('slow');
+                    ajaxLoader.fadeOut(1000);
+                    $(".content").masonry('reload');
+               }
+            })
+            return false;
+        }
+    });
+    
+    //Commentaires albums
+    $('.comment-form-album form').submit(function(){
+        var baseurl = $(this).find("#baseurl").val();
+        var usercomment = $(this).find("#usercomment").val();
+        var messageid = $(this).find("#messageid").val();
+        var thisParent = $(this).parent();
+        var dataString = 'usercomment=' + usercomment + '&messageid=' + messageid;
+
+        if(usercomment == '' || messageid == ''){
+            alert('Veuillez renseigner un message !');
+        } else {
+            var ajaxLoader = $(this).parent().find(".ajax_loader");
+            ajaxLoader.show();
+            
+            $.ajax({
+                type: "POST",
+                url : baseurl + 'index.php/mc_photos/form_album_user_comment',
+                data: dataString,
+                success: function(comment){
+                    $(comment).hide().insertBefore(thisParent).slideDown('slow');
+                    ajaxLoader.fadeOut(1000);
+                    $(".content").masonry( 'reload');
+               }
+            })
+            return false;
+        }
+    });
+    
+    $('.comment-form-video form').submit(function(){
+        var baseurl = $(this).find("#baseurl").val();
+        var usercomment = $(this).find("#usercomment").val();
+        var messageid = $(this).find("#messageid").val();
+        var thisParent = $(this).parent();
+        var dataString = 'usercomment=' + usercomment + '&messageid=' + messageid;
+
+        if(usercomment == '' || messageid == ''){
+            alert('Veuillez renseigner un message !');
+        } else {
+            var ajaxLoader = $(this).parent().find(".ajax_loader");
+            ajaxLoader.show();
+            
+            $.ajax({
+                type: "POST",
+                url : baseurl + 'index.php/mc_photos/form_video_user_comment',
+                data: dataString,
+                success: function(comment){
+                    $(comment).hide().insertBefore(thisParent).slideDown('slow');
+                    ajaxLoader.fadeOut(1000);
+                    $(".content").masonry( 'reload');
+               }
+            })
+            return false;
+        }
+    });
+    
+    //like photo
+    //1 incrementer de 1
+    // select du login connecté
+    // changement classe du couer pour rose !
+  	$('.like').click(function(){
+        var baseurl = $(this).find("#baseurl").val();
+        var baseurl = $(this).find("#baseurl").val();
+  	    var id_photo = $(this).attr('id');
+       	var dataid = 'id_photo=' + id_photo;
+        
+        $.ajax({
+            type: "POST",
+            url : baseurl + '/index.php/mc_photos/add_like',
+            data: dataid,
+            success: function(jelike){
+                alert('ok executé');
+            }
+        })
+    });
+    
+    $('.nolike').click(function(){
+        var baseurl = $(this).find("#baseurl").val();
+  	    var id_photo = $(this).attr('id');
+       	var dataid = 'id_photo=' + id_photo;
+        
+        $.ajax({
+            type: "POST",
+            url : baseurl + '/slyset/index.php/mc_photos/minus_like',
+            data: dataid,
+            success: function(jelike){
+                alert('ok executé');
+            }
+        })
+    });
+    
+    $('.like-album ').click(function(){
+        var baseurl = $(this).find("#baseurl").val();
+  	    var fn_album = $(this).attr('id');
+       	var dataid = 'album_file_name=' + fn_album;
+        
+        $.ajax({
+            type: "POST",
+            url : baseurl + '/slyset/index.php/mc_photos/add_like_a',
+            data: dataid,
+            success: function(jelike){
+                alert('ok executé');
+            }
+        })
+    });
+    
+    $('.nolike-album').click(function(){
+        var baseurl = $(this).find("#baseurl").val();
+  	    var file_name_album = $(this).attr('id');
+       	var dataid = 'file_name_album='+file_name_album;
+        
+        $.ajax({
+            type: "POST",
+            url : baseurl + '/slyset/index.php/mc_photos/minus_like_a',
+            data: dataid,
+            success: function(jelike){
+                alert('ok executé');
+            }
+        })
+    });
+    
+    $('.like-video').click(function(){
+        var baseurl = $(this).find("#baseurl").val();
+  	    var video_nom = $(this).attr('id');
+       	var dataid = 'video_nom=' + video_nom;
+        
+        $.ajax({
+            type: "POST",
+            url : baseurl + '/slyset/index.php/mc_photos/add_like_v',
+            data: dataid,
+            success: function(jelike){
+                alert('ok executé');
+            }
+        })
+    });
+    
+    $('.nolike-video').click(function(){
+        var baseurl = $(this).find("#baseurl").val();
+        var video_nom = $(this).attr('id');
+       	var dataid = 'video_nom=' + video_nom;
+        
+        $.ajax({
+            type: "POST",
+            url : baseurl + '/slyset/index.php/mc_photos/minus_like_v',
+            data: dataid,
+            success: function(jelike){
+                alert('ok executé');
+            }
+        })
+    });
+    
+    //assister a un concert
+    $('.participer').click(function(){
+        var baseurl = $(this).find("#baseurl").val();
+        var id_concert = $(this).attr('id');
+        var dataid = 'id_concert=' + id_concert;
+        var divid = "#" + id_concert;
+            
+        $.ajax({
+            type: "POST",
+            url : baseurl + '/slyset/index.php/mc_concerts/add_activity_concert',
+            data: dataid,
+          
+            success: function(dataid){ //afficher le bon bouton
+                var newe = '<a id=' + id_concert + ' href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">Je n\'y vais plus</span><span class="button_right"></span></a>';
+                $('.participer').replaceWith(newe);
+                $(newe).trigger('click');
+            }
+        })
+        return false;
+    });
+      
+    //Ne plus assister a un concert
+    $('.noparticiper').click(function(){
+        var baseurl = $(this).find("#baseurl").val();
+        var id_concert = $(this).attr('id');
+        var dataid = 'id_concert=' + id_concert;
+        var divid = "#" + id_concert;
+          
+        $.ajax({
+            type: "POST",
+            url : baseurl + '/slyset/index.php/mc_concerts/delete_activity_concert',
+            data: dataid,
+            success: function(jego){ //afficher le bon bouton
+                $('.noparticiper').replaceWith('<a id=' + id_concert + ' href="#" class="participer"><span class="button_left"></span><span  class="button_center">J\'y vais</span><span class="button_right"></span></a>');
+            }
+        })
+        return false
+    });
+    
+    
+    $('.top').click(function(){
+      var baseurl = $(this).find("#baseurl").val();
+   		var id_wall = $(this).attr('id');
+    	var data_id_wall = 'id_wall='+id_wall;
+    	
+    	$.ajax({
+    		type: "POST",
+            url :  baseurl + '/slyset/index.php/melo_wall/delete_from_wall',
+            data: data_id_wall,
+                success: function(){
+        	$('#'+id_wall).slideUp();
+    }
+    	});
+});
+
+    var one = '<a href="#" class="participer"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>';
+  var two ='<div class="bouton" id="suivre"><a href="#" class="participer"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a></div>';
+    $('.bouton #suivre').hover(function(){$(this).replaceWith(one).show()},
+    function(){$(this).replaceWith(two).show()})
+    
+    
     //Utilisation du caroufredsel sur la page home
     if($("body.home").length > 0){
-        $("#coverflow2").carouFredSel({
+        $("#coverflow").children().filter(":eq(1)").addClass('current-item');
+        
+        $("#coverflow").carouFredSel({
             item: 3,
             width: 770,
             height: 268,
+            synchronise: true,
             scroll: {
               items: 1,
               fx: 'scroll',
@@ -212,55 +398,58 @@ $(document).ready(function(){
               duration: 1000
             },
             pagination: "#pagination",
-            prev: "#pagination-prev",
-            next: "#pagination-next",
+            prev:  {
+                button: "#pagination-prev",
+                onBefore: function(data){
+                      var pos = $("#coverflow").triggerHandler("currentPosition");
+                        $(this).children().removeClass('current-item');
+                },
+                onAfter: function(data){
+                      var pos = $("#coverflow").triggerHandler("currentPosition");
+                        $(this).children().filter(":eq(1)").addClass('current-item');
+                }
+            },
+            next:  {
+                button: "#pagination-next",
+                onBefore: function(data){
+                      var pos = $("#coverflow").triggerHandler("currentPosition");
+                        $(this).children().removeClass('current-item');
+                },
+                onAfter: function(data){
+                      var pos = $("#coverflow").triggerHandler("currentPosition");
+                        $(this).children().filter(":eq(1)").toggleClass('current-item');
+                }
+            },
             mousewheel: true,
             auto: {
-                onBefore: function(data) {
-                    unhighlight(data.items.old);
+                onBefore: function(data){
+                      var pos = $("#coverflow").triggerHandler("currentPosition");
+                        $(this).children().filter(":eq(1)").toggleClass('current-item');
+                        $(this).children().removeClass('current-item');
                 },
-                onAfter: function(data) {
-                    highlight(data.items.visible);
+                onAfter: function(data){
+                      var pos = $("#coverflow").triggerHandler("currentPosition");
+                        $(this).children().filter(":eq(1)").toggleClass('current-item');
                 }
             }
         });
 
-        highlight(unhighlight($("#coverflow2 > *")));
+//        highlight(unhighlight($("#coverflow2 > *")));
         
-        $("#coverflow2 a").hover(
+        $("#coverflow a").hover(
             function(){
-                $(this).append('<span class="coverflow_player"></span>');
-                
-                //$('.coverflow_player').css("top", $(this).find('.coverflow-img').height("-=60"));
-//                alert($(this).height());
-//                alert($(this).height() + ' + ' + $(this).height("-=60"));
+                $(this).append('<div class="coverflow_player" style="display:none;"><span class="coverflow_player_btn"></span></div>').fadeIn('slow');
+                $(this).find('.coverflow_player').fadeIn(250, function(){
+                        $(this).show();
+                });
             },
             function(){
-                $('.coverflow_player').remove();
+                $(this).find('.coverflow_player').fadeOut(250, function(){
+                        $(this).remove();
+                });
             }
         );
     }
-
-//    $("#coverflow2 a:nth-child(2)").addClass("testt");
-//    $("#coverflow2 a + a").css("width","300");
-//    $("#coverflow2 a + a img").css("width","300");
-
-//      var items = $("#coverflow2").triggerHandler("currentVisible");
-//      items.addClass("foo");
-//      if ( items ) {
-//          items.addClass("foo");
-//      } else {
-//          items.removeClass("foo");
-//      }
-//
-//      
-//      var scrolling = $("#coverflow2").triggerHandler("isScrolling");
-//      if ( scrolling ) {
-//          $("#coverflow2").addClass( "scrolling" );
-//      } else {
-//          $("#coverflow2").removeClass("scrolling");
-//      }
-
 
     //Uniformise les placeholder pour tous les navigateurs
     $("input[placeholder], textarea[placeholder]").each(function(){
@@ -301,7 +490,7 @@ $(document).ready(function(){
     }
     
     //Appel de la fonction
-    if($("body.musicien_actus").length > 0){      
+    if($("body.musicien_actus").length > 0){
         $(".actus_post .actus_post_links a").click(function(e){
             var cls = $(this).attr('href').replace('#', '');
             var desact =  $(".actus_post .actus_post_links").find('.active').removeClass('active')
@@ -417,329 +606,15 @@ function cache_photo(){
     document.getElementById('select').getElementsByClassName('open_alb')[0].style.visibility="hidden";
 }
 
-
- 
-$(document).ready(function(){
-  
-    var baseurl = $('#baseurl').val();
-    //commentaire photo
-    $('.comment-form form').submit(function(){
-//        dataString2 = $(this).serialize();
-//         alert(dataString2);
-//        $.ajax({
-//            url : baseurl + 'index.php/mc_actus/form_wall_user_comment',
-//            data : $('.form_comments form').serialize(),
-//            type: "POST",
-//            success : function(usercomment){
-//                alert($('form').serialize());
-//                alert(usercomment);
-//                $(usercomment).hide().insertBefore('#insertbeforMe').slideDown('slow');
-//            }
-//        })
-
-        var usercomment = $(this).find("#usercomment").val();
-        var messageid = $(this).find("#messageid").val();
-        var thisParent = $(this).parent();
-        var dataString = 'usercomment='+usercomment+'&messageid='+messageid;
-    //            var dataString = 'usercomment='+usercomment;
-
-        if(usercomment == '' || messageid == ''){
-            alert('Veuillez renseigner un message !');
-        } else {
-            var ajaxLoader = $(this).parent().find(".ajax_loader");
-            
-            ajaxLoader.show();
-          //  ajaxLoader.fadeIn(500).html('<img src="'+baseurl+'assets/images/common/ajax-loader.gif" />Loading Comment...');
-            $.ajax({
-
-                type: "POST",
-                url : baseurl + 'index.php/mc_photos/form_photo_user_comment',
-                data: dataString,
-
-                success: function(comment){
-                    $(comment).hide().insertBefore(thisParent).slideDown('slow');
-                    ajaxLoader.fadeOut(1000);
-                    jQuery(".content").masonry( 'reload' );
-
-//                    ajaxLoader.hide();
-               }
-            })
-            return false;
-        }
-    });
-    //commentaire album
-    $('.comment-form-album form').submit(function(){
-//        dataString2 = $(this).serialize();
-//         alert(dataString2);
-//        $.ajax({
-//            url : baseurl + 'index.php/mc_actus/form_wall_user_comment',
-//            data : $('.form_comments form').serialize(),
-//            type: "POST",
-//            success : function(usercomment){
-//                alert($('form').serialize());
-//                alert(usercomment);
-//                $(usercomment).hide().insertBefore('#insertbeforMe').slideDown('slow');
-//            }
-//        })
-
-        var usercomment = $(this).find("#usercomment").val();
-        var messageid = $(this).find("#messageid").val();
-        var thisParent = $(this).parent();
-        var dataString = 'usercomment='+usercomment+'&messageid='+messageid;
-    //            var dataString = 'usercomment='+usercomment;
-
-        if(usercomment == '' || messageid == ''){
-            alert('Veuillez renseigner un message !');
-        } else {
-            var ajaxLoader = $(this).parent().find(".ajax_loader");
-            
-            ajaxLoader.show();
-          //  ajaxLoader.fadeIn(500).html('<img src="'+baseurl+'assets/images/common/ajax-loader.gif" />Loading Comment...');
-            $.ajax({
-
-                type: "POST",
-                url : baseurl + 'index.php/mc_photos/form_album_user_comment',
-                data: dataString,
-
-                success: function(comment){
-                    $(comment).hide().insertBefore(thisParent).slideDown('slow');
-                    ajaxLoader.fadeOut(1000);
-                    jQuery(".content").masonry( 'reload' );
-
-//                    ajaxLoader.hide();
-               }
-            })
-            return false;
-        }
-    });
-      $('.comment-form-video form').submit(function(){
-
-        var usercomment = $(this).find("#usercomment").val();
-        var messageid = $(this).find("#messageid").val();
-        var thisParent = $(this).parent();
-        var dataString = 'usercomment='+usercomment+'&messageid='+messageid;
-    //            var dataString = 'usercomment='+usercomment;
-
-        if(usercomment == '' || messageid == ''){
-            alert('Veuillez renseigner un message !');
-        } else {
-            var ajaxLoader = $(this).parent().find(".ajax_loader");
-            
-            ajaxLoader.show();
-          //  ajaxLoader.fadeIn(500).html('<img src="'+baseurl+'assets/images/common/ajax-loader.gif" />Loading Comment...');
-            $.ajax({
-
-                type: "POST",
-                url : baseurl + 'index.php/mc_photos/form_video_user_comment',
-                data: dataString,
-
-                success: function(comment){
-                    $(comment).hide().insertBefore(thisParent).slideDown('slow');
-                    ajaxLoader.fadeOut(1000);
-                    jQuery(".content").masonry( 'reload' );
-
-//                    ajaxLoader.hide();
-               }
-            })
-            return false;
-        }
-    });
-    //like photo
-    //1 incrementer de 1
-    // select du login connecté
-    // changement classe du couer pour rose !
-  	$('.like').click(function(){
-  	    var id_photo = $(this).attr('id');
-       	var dataid = 'id_photo='+id_photo;
-            $.ajax({
-
-                type: "POST",
-                url : 'http://127.0.0.1/slyset/index.php/mc_photos/add_like',
-                data: dataid,
-                success: function(jelike){
-                
-              alert('ok executé')
-                   
-                    }
-
-           
-            })
-    });
-    $('.nolike').click(function(){
-  	    var id_photo = $(this).attr('id');
-       	var dataid = 'id_photo='+id_photo;
-            $.ajax({
-
-                type: "POST",
-                url : 'http://127.0.0.1/slyset/index.php/mc_photos/minus_like',
-                data: dataid,
-                success: function(jelike){
-                
-              alert('ok executé')
-                   
-                    }
-
-           
-            })
-    });
-    $('.like-album ').click(function(){
-  	    var fn_album = $(this).attr('id');
-       	var dataid = 'album_file_name='+fn_album;
-            $.ajax({
-            
-
-                type: "POST",
-                url : 'http://127.0.0.1/slyset/index.php/mc_photos/add_like_a',
-                data: dataid,
-                success: function(jelike){
-                
-              alert('ok executé')
-                   
-                    }
-
-           
-            })
-    });
-    $('.nolike-album').click(function(){
-  	    var file_name_album = $(this).attr('id');
-       	var dataid = 'file_name_album='+file_name_album;
-            $.ajax({
-
-                type: "POST",
-                url : 'http://127.0.0.1/slyset/index.php/mc_photos/minus_like_a',
-                data: dataid,
-                success: function(jelike){
-                
-              alert('ok executé')
-                   
-                    }
-
-           
-            })
-    });
-    $('.like-video ').click(function(){
-  	    var video_nom = $(this).attr('id');
-       	var dataid = 'video_nom='+video_nom;
-            $.ajax({
-            
-
-                type: "POST",
-                url : 'http://127.0.0.1/slyset/index.php/mc_photos/add_like_v',
-                data: dataid,
-                success: function(jelike){
-                
-              alert('ok executé')
-                   
-                    }
-
-           
-            })
-    });
-    $('.nolike-video').click(function(){
-  	    var video_nom = $(this).attr('id');
-       	var dataid = 'video_nom='+video_nom;
-            $.ajax({
-
-                type: "POST",
-                url : 'http://127.0.0.1/slyset/index.php/mc_photos/minus_like_v',
-                data: dataid,
-                success: function(jelike){
-                
-              alert('ok executé')
-                   
-                    }
-
-           
-            })
-    });
-    //assister a un concert
-    $('.participer').click(function(){
-
-    	var id_concert = $(this).attr('id');
-    	var dataid = 'id_concert='+id_concert;
-		var divid = "#"+id_concert;
-            $.ajax({
-
-                type: "POST",
-                url : 'http://127.0.0.1/slyset/index.php/mc_concerts/add_activity_concert',
-                data: dataid,
-                //afficher le bon bouton
-                success: function(){
-                alert('ee');
-                var newe = '<a id='+id_concert+' href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">Je n\'y vais plus</span><span class="button_right"></span></a>';
-                $('.participer').replaceWith(newe);
-		
-                    }
-
-           
-            })
-          return false;
-
-        
-    });
-    //ne plus assister a un concert
-        $('.noparticiper').click(function(){
-
-    	var id_concert = $(this).attr('id');
-    	var dataid = 'id_concert='+id_concert;
-		var divid = "#"+id_concert;
-            $.ajax({
-
-                type: "POST",
-                url : 'http://127.0.0.1/slyset/index.php/mc_concerts/delete_activity_concert',
-                data: dataid,
-                //afficher le bon bouton
-                success: function(jego){
-                
-                $('#'+id_concert+'.noparticiper').replaceWith('<a id='+id_concert+' href="#" class="participer"><span class="button_left"></span><span  class="button_center">J\'y vais</span><span class="button_right"></span></a>');
-
-                   
-                    }
-
-           
-            })
-        return false
-    });
-
-    $('.top').click(function(){
-   		var id_wall = $(this).attr('id');
-    	var data_id_wall = 'id_wall='+id_wall;
-    	
-    	$.ajax({
-    		type: "POST",
-            url : 'http://127.0.0.1/slyset/index.php/melo_wall/delete_from_wall',
-            data: data_id_wall,
-                success: function(){
-        	$('#'+id_wall).slideUp();
-    }
-    	});
-});
-
-	var one = '<a href="#" class="participer"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>';
-var two ='<div class="bouton" id="suivre"><a href="#" class="participer"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a></div>';
-	$('.bouton #suivre').hover(function(){$(this).replaceWith(one).show()},
-	function(){$(this).replaceWith(two).show()})
-
-
-	
-
-});
-
-
 function showComment(divid) {
-  var divid = document.getElementById(divid); 
-  if(divid.style.display=='none') { 
-    divid.style.display = 'block'; 
-	jQuery(".content").masonry( 'reload' );
+    var divid = document.getElementById(divid);
+    
+    if(divid.style.display == 'none'){ 
+        divid.style.display = 'block'; 
+        $(".content").masonry('reload');
 
-  } else { 
-    divid.style.display = 'none';
-    jQuery(".content").masonry( 'reload' );
-
-  }
+    } else { 
+        divid.style.display = 'none';
+        $(".content").masonry('reload');
+    }
 }
-
-
-
-
-

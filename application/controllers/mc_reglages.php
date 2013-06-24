@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Mc_reglages extends CI_Controller 
 {
@@ -9,6 +9,7 @@ class Mc_reglages extends CI_Controller
     {
         parent::__construct();
 
+//        $this->output->enable_profiler(true);
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_js('jquery.placeheld.min');
 
@@ -36,22 +37,32 @@ class Mc_reglages extends CI_Controller
         );
     }
   
-    public function index($user_id, $uid = NULL)
+    public function index($user_id)
     {
 //        $user_id = $this->user_infos->uri_user();
         $uid = $this->session->userdata('uid');
+        $type_account = $this->session->userdata('account');
 
-        if($user_id == $uid){
+//        if(($user_id == $uid) && $type_account != 1){
+//            $this->page();
+////        }	elseif($user_id != $uid && !empty($user_id)){
+////            $user_id = $this->user_infos->uri_user();
+//            
+////            $infos_profile = $this->user_model->getUser($user_id);
+////            $this->page($infos_profile);
+//          
+////            redirect('/home/'.$uid, 'refresh');
+//        } elseif($user_id == NULL && isset($uid) && $type_account != 1){
+//            redirect('reglages/'.$uid, 'refresh');
+//        } else {
+//            redirect('home/'.$uid, 'refresh');
+////            show_404();
+//        }
+        
+        if(($user_id == $uid) && $type_account != 1){
             $this->page();
-        }	elseif($user_id != $uid && !empty($user_id)){
-//            $user_id = $this->user_infos->uri_user();
-            
-//            $infos_profile = $this->user_model->getUser($user_id);
-//            $this->page($infos_profile);
-          
-            redirect('/home/'.$uid, 'refresh');
         } else {
-            show_404();
+            redirect('home/'.$uid, 'refresh');
         }
     }	
   
@@ -120,7 +131,7 @@ class Mc_reglages extends CI_Controller
             $this->session->set_userdata('instrument', $stylemusicinstru);
             
 
-            $this->user_model->update_user($login, $description, $website, $twitter, $facebook, $googleplus, $stylemusicjoue, $stylemusicinstru, $cover, $thumb);
+            $this->user_model->update_musicien($login, $description, $website, $twitter, $facebook, $googleplus, $stylemusicjoue, $stylemusicinstru, $cover, $thumb);
 
             redirect('reglages/'.$uid, 'refresh');
 //            print_r($this->session->all_userdata());

@@ -42,7 +42,7 @@ class User_model extends CI_Model {
         if($query->num_rows() == 1){
 //            $data = $query->result();
             $result = $query->result();
-            $data = $result[0]; 
+            $data = $result[0];
             return $data;
         } else {
            return false;
@@ -68,9 +68,9 @@ class User_model extends CI_Model {
     
     public function getUserByName($nid)
     {
-        $this->db->select('id, login');
+        $this->db->select('login, type');
         $this->db->from('utilisateur');
-        $this->db->where('login = '."'".$nid."'");
+        $this->db->where('type = 2 AND login = '."'".$nid."'");
         $this->db->limit(1);
 
         $query = $this->db->get();
@@ -141,7 +141,7 @@ class User_model extends CI_Model {
         $this->db->insert('utilisateur', $data);
     }
     
-    public function update_user($login, $description, $website, $twitter, $facebook, $googleplus, $stylemusicjoue, $stylemusicinstru, $cover, $thumb)
+    public function update_musicien($login, $description, $website, $twitter, $facebook, $googleplus, $stylemusicjoue, $stylemusicinstru, $cover, $thumb)
     {
         $data['login'] = $login;
         $data['description'] = $description;
@@ -151,6 +151,21 @@ class User_model extends CI_Model {
         $data['googleplus'] = $googleplus;
         $data['style_joue'] = $stylemusicjoue;
         $data['instrument'] = $stylemusicinstru;
+        $data['cover'] = $cover;
+        $data['thumb'] = $thumb;
+        $data['updated'] = Date('Y-m-d H:i:s');
+        
+        $this->db->update('utilisateur', $data, "id = ".$this->session->userdata('uid'));
+    }
+    
+    public function update_melomane($login, $description, $nom, $prenom, $email, $stylemusicecoute, $cover, $thumb)
+    {
+        $data['login'] = $login;
+        $data['prenom'] = $prenom;
+        $data['nom'] = $nom;
+        $data['mail'] = $email;
+        $data['description'] = $description;
+        $data['style_ecoute'] = $stylemusicecoute;
         $data['cover'] = $cover;
         $data['thumb'] = $thumb;
         $data['updated'] = Date('Y-m-d H:i:s');
