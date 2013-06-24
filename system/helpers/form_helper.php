@@ -226,7 +226,7 @@ if ( ! function_exists('form_time'))
 
 
 /**
- * Text Time Field
+ * Text Int Field
  *
  * @access public
  * @param mixed
@@ -269,6 +269,32 @@ if ( ! function_exists('form_password'))
 		}
 
 		$data['type'] = 'password';
+		return form_input($data, $value, $extra);
+	}
+}
+
+
+/**
+ * Email Field
+ *
+ * Identical to the input function but adds the "password" type
+ *
+ * @access	public
+ * @param	mixed
+ * @param	string
+ * @param	string
+ * @return	string
+ */
+if ( ! function_exists('form_email'))
+{
+	function form_email($data = '', $value = '', $extra = '')
+	{
+		if ( ! is_array($data))
+		{
+			$data = array('name' => $data);
+		}
+
+		$data['type'] = 'email';
 		return form_input($data, $value, $extra);
 	}
 }

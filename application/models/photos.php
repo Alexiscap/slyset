@@ -411,7 +411,6 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
     public function insert_like($id_photo,$id_user)
     {
         	  //$data_album =  array('like_total'=> like_total+1);
-
 //+1
 		$requete_photo ='UPDATE photos SET like_total = like_total +1 WHERE id= ?';
      	$this->db->query($requete_photo,array($id_photo));

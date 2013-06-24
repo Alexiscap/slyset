@@ -92,5 +92,11 @@ $route['mc_concerts/ajouter_concert'] = "welcome";
 $route['mc_concerts'] = "mc_concerts/index";
 $route['mc_concerts/(:num)'] = "mc_concerts/index/$1";
 
+
+$route['my-shopping/(:num)'] = "melo_achats/index/$1";
+$route['my-shopping-recap/(:num)'] = "melo_achats/index/$1";
+
+
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

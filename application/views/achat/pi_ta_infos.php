@@ -1,13 +1,15 @@
+<link rel="stylesheet" type="text/css" href="http://127.0.0.1/slyset/assets/css/slyset.css" media="screen" />
 <div class="pop-in_ta">
   <span class="info et_active">Informations</span><span  class="paiement">Paiement</span><span  class="telechargement">Téléchargements</span>
   <img src="<?php echo img_url('musicien/pop_close.png'); ?>" alt="Fermer" />
   <div class="content-pi">
-  <?php echo form_open(base_url('index'));
-  $nom= $this->session->userdata('nom');
- $prenom= $this->session->userdata('prenom');
-  $email=  $this->session->userdata('mail');
+		<?php echo form_open('pi_ta_infos/index');
+	  	$nom= $this->session->userdata('nom');
+ 		$prenom= $this->session->userdata('prenom');
+  		$email=  $this->session->userdata('mail');
   
   ?>
+<?php echo validation_errors(); ?>
 
     <h2>Vérifiez vos informations</h2>
 	<span>Prénom</span>
@@ -15,7 +17,7 @@
 	<span>Nom</span>
 	<?php echo form_input('nom',$nom) ?>
 	<span>Email</span>
-	<?php echo form_input('email',$email) ?>
+	<?php echo form_email('email',$email) ?>
 	
 	<div class="espace"></div>
 	<h2>Vérifiez votre panier et choisissez le format </h2>
@@ -43,21 +45,16 @@
 				<td class="artiste"><?php echo $commande->user_login ?></td>
 				<td class="type"><?php echo $commande->type ?></td>
 				<td class="format">
-					<?php $formats = ( explode('/',$commande->format))
-					
+					<?php $formats = ( explode('/',$commande->format))					
 					 ?>
-					 <select>
+					 <select name="format">
 					 <?php foreach ($formats as $format)
 						{ ?>
 						<option value="320Kbps"><?php echo $format ?></option>
 						<?php
 						}			
 					 ?>
-
-					
-						
-
-						
+		
 					</select>
 				</td>
 				<td class="prix"><?php echo $commande->prix ?> €</td>

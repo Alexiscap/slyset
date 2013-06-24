@@ -1026,7 +1026,8 @@
 }(jQuery, document, window));
 
 
-  
+  $( document ).ready(function() {
+
 				$(".iframe").colorbox(
 					{
 						iframe:true, width:"45%", height:"65%",
@@ -1036,3 +1037,14 @@
 						
 				   
 					});
+					
+				$(".bigiframe").colorbox(
+					{
+						iframe:true, width:"65%", height:"85%",
+						onClosed:function(){
+						//$('.content').load('30 .content');
+						}
+						
+				   
+					});
+});
