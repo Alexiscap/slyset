@@ -41,18 +41,19 @@ class Mc_actus extends CI_Controller
         );
     }
   
-    public function index($user_id)
+    public function index($user_id, $uid = NULL)
     {
+//        $user_id = $this->user_infos->uri_user();
         $uid = $this->session->userdata('uid');
-        $type_account = $this->session->userdata('account');
-        $infos_profile = $this->user_model->getUser($this->user_id);
-        
-        if($user_id != $uid && !empty($user_id) && $infos_profile->type != 1){
-            $this->page($infos_profile);
-        } elseif($user_id == $uid && !empty($user_id) && $infos_profile->type != 1){
+
+        if($user_id == $uid){
+            $this->page();
+        }	elseif($user_id != $uid && !empty($user_id)){
+//            $user_id = $this->user_infos->uri_user();
+            $infos_profile = $this->user_model->getUser($user_id);
             $this->page($infos_profile);
         } else {
-            redirect('home/'.$uid, 'refresh');
+            show_404();
         }
     }	
   
@@ -73,8 +74,8 @@ class Mc_actus extends CI_Controller
     public function form_wall_musicien_message($user_id)
     {
         $data = $this->data;
-//        $user_visited = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id;
-        $data['messages'] = $this->mc_actus_model->liste_actus(10, 0, $user_id);
+        $user_visited = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id;
+        $data['messages'] = $this->mc_actus_model->liste_actus(10, 0, $user_visited);
         
         if(!empty($infos_profile)){
             $data['infos_profile'] = $infos_profile;
@@ -89,8 +90,8 @@ class Mc_actus extends CI_Controller
             $lien = '';
             $photo = '';
             
-            $this->mc_actus_model->insert_actus($message, $lien, $photo, $user_id);
-            redirect('actualite/'.$user_id, 'refresh');
+            $this->mc_actus_model->insert_actus($message, $lien, $photo, $user_visited);
+            redirect('actualite/'.$user_visited, 'refresh');
         }
     }
     

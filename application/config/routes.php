@@ -41,56 +41,40 @@
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 
-$route['home'] = "home/index";
+//$route['(:num)'] = "$1";
 $route['home/(:num)'] = "home/index/$1";
 //$route['admin/(:num)'] = "admin/index/$1";
-
-$route['concert'] = "mc_concerts/index";
 $route['concert/(:num)'] = "mc_concerts/index/$1";
-
-$route['actualite'] = "mc_actus/index";
 $route['actualite/(:num)'] = "mc_actus/index/$1";
 //$route['actualite/(:num)'] = "mc_actus/form_wall_musicien_message/$1";
-
-$route['media'] = "mc_photos/index";
 $route['media/(:num)'] = "mc_photos/index/$1";
-
-$route['musique'] = "mc_musique/index";
 $route['musique/(:num)'] = "mc_musique/index/$1";
-
-$route['reglages'] = "mc_reglages/index";
 $route['reglages/(:num)'] = "mc_reglages/index/$1";
 $route['reglages/update_user/(:num)'] = "mc_reglages/update_user/$1";
-
-$route['personnaliser'] = "mc_perso/index";
 $route['personnaliser/(:num)'] = "mc_perso/index/$1";
 $route['personnaliser/update/(:num)'] = "mc_perso/update_perso/$1";
 $route['personnaliser/delete/(:num)'] = "mc_perso/delete_perso/$1";
 $route['personnaliser/theme-1/(:num)'] = "mc_perso/theme1/$1";
 
-$route['follower'] = "mc_followers/index";
 $route['follower/(:num)'] = "mc_followers/index/$1";
-
-$route['my-reglages'] = "melo_reglages/index";
-$route['my-reglages/(:num)'] = "melo_reglages/index/$1";
-$route['my-reglages/update_user/(:num)'] = "melo_reglages/update_user/$1";
-
-$route['my-concert'] = "/melo_concerts/index";
 $route['my-concert/(:num)'] = "/melo_concerts/index/$1";
-
-$route['my-follower'] = "/melo_abonnements/index";
 $route['my-follower/(:num)'] = "/melo_abonnements/index/$1";
-
-$route['document'] = "/mc_partitions/index";
 $route['document/(:num)'] = "/mc_partitions/index/$1";
-
-$route['my-wall'] = "/melo_wall/index";
 $route['my-wall/(:num)'] = "/melo_wall/index/$1";
+
 
 $route['mc_concerts'] = "home"; 
 $route['mc_concerts/ajouter_concert'] = "welcome"; 
-$route['mc_concerts'] = "mc_concerts/index";
-$route['mc_concerts/(:num)'] = "mc_concerts/index/$1";
+$route['mc_concerts/(:num)'] = "mc_concerts/index/$1"; 
+$route['mes-achats/(:num)'] = "melo_achats/index/$1"; 
+$route['recapitulatif-commande/(:num)'] = "pi_ta_infos/index/$1"; 
+$route['paiement-commande/(:num)'] = "pi_ta_paiement/index/$1"; 
+
+//$route['home/(:num)'] = "home/$1";
+//$route['home/(:any)/(:num)'] = "home/$1";
+//$route['home/index/(:num)'] = "home/$1";
+//$route['mc_concerts/index/(:num)'] = "mc_concerts/$1";
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

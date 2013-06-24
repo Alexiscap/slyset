@@ -2,7 +2,8 @@
   <span class="info et_active">Informations</span><span  class="paiement">Paiement</span><span  class="telechargement">Téléchargements</span>
   <img src="<?php echo img_url('musicien/pop_close.png'); ?>" alt="Fermer" />
   <div class="content-pi">
-  <?php echo form_open(base_url('index'));
+
+					<?php echo form_open('pi_ta_infos/validation_commande');
   $nom= $this->session->userdata('nom');
  $prenom= $this->session->userdata('prenom');
   $email=  $this->session->userdata('mail');
@@ -33,23 +34,24 @@
 	<div class="achats">
 		<table>
 
-		
 			<?php
 			 foreach ($cmd as $commande):
 					if($commande->status=="P"): ?>
 		
 			<tr>
+
 				<td class="le_titre"><?php echo $commande->nom ?></td>
 				<td class="artiste"><?php echo $commande->user_login ?></td>
 				<td class="type"><?php echo $commande->type ?></td>
 				<td class="format">
-					<?php $formats = ( explode('/',$commande->format))
+			<?php
+				 $formats = ( explode('/',$commande->format))
 					
 					 ?>
-					 <select>
+					 <select name="format">
 					 <?php foreach ($formats as $format)
 						{ ?>
-						<option value="320Kbps"><?php echo $format ?></option>
+						<option value="<?php echo $format ?>"><?php echo $format ?></option>
 						<?php
 						}			
 					 ?>

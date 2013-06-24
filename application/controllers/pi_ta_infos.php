@@ -29,9 +29,23 @@ class pi_ta_infos extends CI_Controller
     {
       $data = array();
      $data['cmd'] = $this->achat->get_achat($user_id);
+   
+//paiement-commande
 //var_dump($data['cmd']);
       //$this->layout->views('3');
       $this->layout->view('achat/pi_ta_infos', $data);
     }
   
+  	public function validation_commande()
+  	{
+  	  $format = $this->input->post('format');
+  	    	  $email = $this->input->post('email');
+  	    	  $nom = $this->input->post('nom');
+
+  //  $this->session->set_flashdata('format', $format);
+  $this->session->set_flashdata('email', $email);
+  $this->session->set_flashdata('nom', $nom);
+
+		$this->layout->view('achat/pi_ta_paiement');
+  	}
 }

@@ -357,11 +357,9 @@ cursor : pointer;}
 .pop-in_ta .content-pi .total {color:#666666;font-weight:bold;font-size:14px;}
 .pop-in_ta .content-pi p:last-child {color:#3f3f3f;font-weight:bold;font-size:14px;}
 .pop-in_ta .content-pi input[type=submit]{width:148px;margin:0 30px 5px;padding:0 5px;background:url("../images/common/bt_paiment.png") no-repeat;float:right;color:#ffffff;font-weight:bold;font-size:15px;}
-
 .pop-in_ta .content-pi .moyen_pmt {margin:0 0 50px 0;height:140px;}
 .pop-in_ta .content-pi .moyen_pmt img{width:210px;margin:0 0 0 45px;float:left;}
 .pop-in_ta .content-pi .moyen_pmt span{width:210px;margin:0 0 0 52px;font-size:14px;color:#4e4e4e;text-align:left;}
-
 .pop-in_ta .content-pi .infos_cb span {width:130px;margin:15px 20px 0 25px;}
 .pop-in_ta .content-pi .infos_cb span:first-child {width:130px;margin:20px 20px 0 25px;}
 .pop-in_ta .content-pi .infos_cb img {width:53px;margin:6px 8px 10px 5px;float:none;}
@@ -371,20 +369,26 @@ cursor : pointer;}
 /* --------------- FIN POP IN ----------- */
 
 /* --------- PORTAIL  --------- */
-#coverflow{ background:none; height:364px; }
-#coverflowContainer{ padding:40px 0 10px 0; background:url("../images/portail/bg-coverflow.png") no-repeat; width:100%; height:308px; position:relative; float:left; clear:both; }
-#coverflowRuban{ margin:0; padding:0; width:110px; height:110px; position:absolute; top:0; left:0; background:url("../images/portail/alaune.png") no-repeat 0 0 transparent; z-index:10; }
+#coverflow{ background:url("../images/portail/bg-coverflow.png") no-repeat; height:364px; }
+
+#coverflow #coverflow-alaune{ position:absolute; }
+#coverflow #coverflow-left{ float:left; position:absolute; margin-top:60px; margin-left:55px; }
+#coverflow #coverflow-center{ float:left; position:absolute; margin-top:32px; margin-left:274px; }				 
+#coverflow-right{ float:left; position:absolute; margin-top:60px; margin-left:544px; }
+#coverflow .coverflow-img{ opacity:0.6; filter:alpha(opacity=60); box-shadow:0 0 7px 3px #2B2B2B; }
+#coverflow .coverflow-img2{ box-shadow:0 0 7px 3px #2B2B2B; }
+#coverflow .coverflow-img-player{ background-color:#737373; opacity:0.5; margin-top:177px; height:60px; position:absolute; width:238px; }
+#coverflow .coverflow-center-artiste{ text-align:center; margin-top:10px; font-family:'Myriad Pro'; font-size:13px; text-shadow:0px -2px #000000; color:white; }
+#coverflow .coverflow-center-slide{ margin-top:7px; margin-right:5px; }
+
+#coverflowContainer{ padding:45px 0 10px 0; background:url("../images/portail/bg-coverflow2.png") no-repeat; width:100%; height:308px; float:left; clear:both; }
 .caroufredsel_wrapper{ margin:0 auto !important; }
-#coverflow{ width:770px; height:364px; position:relative; z-index:1; }
-#coverflow a{ display:block; float:left; width:188px; height:188px; margin:25px 15px 0 15px; text-decoration:none; text-align:center; position:relative; -webkit-transition:width 0.5s ease, height 0.5s ease; -moz-transition:width 0.5s ease, height 0.5s ease; -o-transition:width 0.5s ease, height 0.5s ease; ms-transition:width 0.5s ease, height 0.5s ease; transition:width 0.5s ease, height 0.5s; }
-#coverflow a.current-item{ margin-top:0; width:238px; height:238px; }
-#coverflow a img{ display:block; float:left; width:100%; height:100%; }
-#coverflow a .coverflow_artist{ margin:8px 0 !important; display:inline-block; text-align:center; margin-top:10px; font-family:'Myriad Pro'; font-weight:bold; font-size:13px; text-transform:uppercase; color:white; }
-#coverflow a .coverflow_player{ background:rgba(115, 115, 115, 0.7); width:100%; height:60px; position:absolute; top:128px; left:0; z-index:50; }
-#coverflow a.current-item .coverflow_player{ top:178px; }
-#coverflow a .coverflow_player_btn{ width:40px; height:40px; position:absolute; top:10px; left:72px; background:url("../images/portail/player.png") no-repeat -47px -12px transparent; }
-#coverflow a.current-item .coverflow_player_btn{ left:98px; }
-#paginationContainer{ display:block; width:100%; margin:8px auto 0 auto; text-align:center; }
+#coverflow2{ width:770px; height:364px; }
+#coverflow2 a{ display:block; float:left; width:188px; height:188px; margin:0 15px; text-decoration:none; text-align:center; position:relative; }
+#coverflow2 a img{ display:block; float:left; width:100%; height:100%; }
+#coverflow2 a .coverflow_artist{ text-align:center; margin-top:10px; font-family:'Myriad Pro'; font-size:13px; color:white; }
+#coverflow2 a .coverflow_player{ background-color:#737373; opacity:0.5; width:100%; height:60px; position:absolute; left:0; }
+#paginationContainer{ display:block; width:100%; margin:0 auto; text-align:center; }
 #paginationContainer #pagination{ display:inline-block; margin:0 auto; text-align:center; }
 #paginationContainer #pagination-prev{ display:inline-block; width:12px; height:12px; color:transparent; background:url("../images/portail/slide.png") no-repeat 0 0; cursor:pointer; }
 #paginationContainer #pagination-next{ display:inline-block; width:12px; height:12px; color:transparent; background:url("../images/portail/slide.png") no-repeat -95px 0; cursor:pointer; }
@@ -452,9 +456,7 @@ cursor : pointer;}
 .wall-flux-content .wall-flux-content-title{ font-size:18px; color:#3f3f3f; margin:5px 19px 5px 19px; padding-top:20px; word-wrap:break-word; }
 .wall-flux-content .wall-flux-content-subtitle{ font-size:13px; color:#8d8c80; margin:0px 19px 19px 19px; word-wrap:break-word; }
 .wall-flux-content .wall-flux-content-titre-artiste{ margin:19px 19px 5px 19px; color:#535353 ; padding-top:15px; font-size:13px; }
-/*.wall-flux-content .wall-flux-content-text{ font-size:14px; line-height:21px; color:#555555; margin:10px 19px 19px 19px; word-wrap:break-word; }*/
-.wall-flux-content .wall-flux-content-text * { margin:0 19px; }
-.wall-flux-content .wall-flux-content-text ol, .wall-flux-content .wall-flux-content-text li, .wall-flux-content .wall-flux-content-text img{ margin:0 !important; width:100%; }
+.wall-flux-content .wall-flux-content-text{ font-size:14px; line-height:21px; color:#555555; margin:10px 19px 19px 19px; word-wrap:break-word; }
 .wall-flux-content .wall-flux-content-text .wall-flux-content-text-chapeau{ font-weight:bold; }
 .wall-flux-content .wall-flux-content-right-text{ margin-left:185px; padding-bottom:20px; }
 .wall-flux-content .wall-flux-content-left-picture .img-blog-artiste-carre{ position:absolute; margin :19px 15px 15px 15px; }
@@ -482,9 +484,9 @@ cursor : pointer;}
 
 /* ----------- TEMPORAIRE -------------- */
 
-#calendar_alert{ position: absolute; margin-top: 40px; margin-left: -7px; width: 100%; border: 1px solid #dedede; box-shadow: 1px 0 1px 1px #EDEDED; padding: 5px; line-height: 25px; display: none; position: absolute; background-color:#f6f6f6; font-family:"Trebuchet MS"; font-size: 12px; color: #7f7d7d; text-decoration: none; z-index: +1;}
+#calendar_alert{ position: absolute; margin-top: 40px; margin-left: -7px; width: 100%; border: 1px solid #dedede; box-shadow: 1px 0 1px 1px #EDEDED; padding: 5px; line-height: 23px; display: none; position: absolute; background-color:#f6f6f6; font-family:"Trebuchet MS"; font-size: 12px; color: #7f7d7d; text-decoration: none; z-index: +1;text-indent:10px;}
 #calendar_alert a {color: #2ab395;}
-#calendar_alert span {text-decoration: underline;font-size: 14px;}
+#calendar_alert span {font-size: 14px;}
 /* --------- FIN  DE PORTAIL  --------- */
 
 
@@ -1107,11 +1109,6 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 .admin-articles #articles-tab .filter{ margin:0 0 0 8px; display:inline-block; width:11px; height:7px; cursor:pointer; background:url('../images/common/filters.png') no-repeat 0 0 transparent; }
 .admin-articles #articles-tab input[type="submit"]{ margin:0 0 0 0; padding:0 5px; display:block; width:94px; height:32px; line-height:32px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:center; color:#FFFFFF; background:url('../images/admin/btn_supprimer.png') no-repeat 0 0 transparent; float:right; clear:both; }
 .admin-articles #articles-tab input[type="submit"]:hover{ font-size:15px; }
-
-.admin-artistes #artistes-fields{ margin:20px 0 0 20px; width:100%; float:left; clear:both; }
-.admin-artistes label{ margin:0; display:inline-block; height:28px; line-height:28px; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; font-weight:bold; color:#4e4e4e; float:left; }
-.admin-artistes input[type="text"]{ margin:0 0 10px 25px; padding:0 10px; display:inline-block; width:520px; height:28px; position:relative; font-size:14px; font-weight:normal; font-family:'Trebuchet MS'; border:1px solid #cccccc; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; outline-color:rgba(42, 179, 149, 0.6); color:#7f7d7d; background:#FFFFFF; float:left; }
-.admin-artistes [type='submit']{ margin:30px 0 0 0; display:block; width:124px; height:41px; line-height:41px; position:relative; right:121px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:17px; font-weight:bold; text-align:center; color:#2ba086; background:url('../images/admin/btn_enregistrer.png') no-repeat 0 0 transparent; float:right; clear:both; }
 /*------------------- FIN ADMIN -------------------*/
 
 /*--------------------PAGES STATIQUE---------------------------*/

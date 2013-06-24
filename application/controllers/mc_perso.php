@@ -41,29 +41,22 @@ class Mc_perso extends CI_Controller
         );
     }
   
-    public function index($user_id)
+    public function index($user_id, $uid = NULL)
     {
 //        $user_id = $this->user_infos->uri_user();
         $uid = $this->session->userdata('uid');
-        $type_account = $this->session->userdata('account');
-        
-//        if($user_id == $uid){
-//            $this->page();
-//        }	elseif($user_id != $uid && !empty($user_id)){
-////            $user_id = $this->user_infos->uri_user();
-//            
-////            $infos_profile = $this->user_model->getUser($user_id);
-////            $this->page($infos_profile);
-//          
-//            redirect('/home/'.$uid, 'refresh');
-//        } else {
-//            show_404();
-//        }
-        
-        if(($user_id == $uid) && $type_account != 1){
+
+        if($user_id == $uid){
             $this->page();
+        }	elseif($user_id != $uid && !empty($user_id)){
+//            $user_id = $this->user_infos->uri_user();
+            
+//            $infos_profile = $this->user_model->getUser($user_id);
+//            $this->page($infos_profile);
+          
+            redirect('/home/'.$uid, 'refresh');
         } else {
-            redirect('home/'.$uid, 'refresh');
+            show_404();
         }
     }	
   
