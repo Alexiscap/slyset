@@ -38,7 +38,7 @@ class Mc_partitions extends CI_Controller {
     $uid = $this->session->userdata('uid');
     $type_account = $this->session->userdata('account');
 
-    if ($user_id != $uid && !empty($user_id)) {
+    if(($user_id != $uid && !empty($user_id)) || ($user_id == $uid && !empty($user_id))) {
       $user_id = $this->user_infos->uri_user();
       $infos_profile = $this->user_model->getUser($user_id);
       $this->page($infos_profile);

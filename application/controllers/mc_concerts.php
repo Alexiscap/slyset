@@ -4,6 +4,7 @@ class Mc_concerts extends CI_Controller {
 
   public function __construct() {
     parent::__construct();
+//    $this->output->enable_profiler(true);
 
 //        $this->user_authentication->musicien_user_validation();
     $this->layout->ajouter_css('slyset');
@@ -36,10 +37,11 @@ class Mc_concerts extends CI_Controller {
   public function index($user_id) {
     $uid = $this->session->userdata('uid');
 
-    if ($user_id != $uid && !empty($user_id)) {
+    if(($user_id != $uid && !empty($user_id)) || ($user_id == $uid && !empty($user_id))) {
       $user_id = $this->user_infos->uri_user();
       $infos_profile = $this->user_model->getUser($user_id);
       $this->page_main($infos_profile, "mc_concerts", ">");
+      
     } else {
       redirect('home/' . $uid, 'refresh');
     }
@@ -63,6 +65,9 @@ class Mc_concerts extends CI_Controller {
     $this->load->helper('url');
     $this->load->helper('date');
     $datas = array();
+    
+    $user_id = $user_id->id; //Ajout de cette ligne par Alexis car bug, $user_id ne correspondait plus à un entier mais à un stdclass, toutes les requêtes étaient foirées
+    
     $datas['user_id'] = $user_id;
     $datas['info_user'] = $this->concert->get_user($user_id);
     if ($datas['info_user'] == null) {
