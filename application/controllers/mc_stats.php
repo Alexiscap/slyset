@@ -16,16 +16,9 @@ class Mc_stats extends CI_Controller
         $this->layout->set_id_background('stats');
     }
   
-    public function index($user_id)
+    public function index()
     {
-        $uid = $this->session->userdata('uid');
-        $type_account = $this->session->userdata('account');
-        
-        if(($user_id == $uid) && $type_account != 1){
-            $this->page();
-        } else {
-            redirect('home/'.$uid, 'refresh');
-        }
+      $this->page();
     }
   
     public function page()

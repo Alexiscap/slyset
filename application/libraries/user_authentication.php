@@ -11,11 +11,9 @@ class User_authentication
 
     function basic_user_validation()
     {
-      $t = $this->obj->session->userdata('logged_in');
         // Not logged in, then redirect to the Home Page.
-        if(!isset($t) || empty($t))
-            redirect('home');
-//              return false;
+        if(!$this->obj->session->userdata('logged_in'))
+            redirect('');
     }
 
     function musicien_user_validation()
