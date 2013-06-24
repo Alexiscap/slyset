@@ -42,8 +42,12 @@ class Mc_photos extends CI_Controller {
 
   public function index($user_id) {
     $uid = $this->session->userdata('uid');
-
-    if ($user_id != $uid && !empty($user_id)) {
+//
+//      print 'ONE - '.$user_id.'<br />';
+//      print 'TWO - '.$uid.'<br />';
+//      print 'THREE - '.$infos_profile.'<br />';
+      
+    if(($user_id != $uid && !empty($user_id)) || ($user_id == $uid && !empty($user_id))) {
       $user_id = $this->user_infos->uri_user();
       $infos_profile = $this->user_model->getUser($user_id);
       $this->page($infos_profile);
