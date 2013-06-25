@@ -1,42 +1,58 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 
-class Mc_musique extends CI_Controller 
-{
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
+
+class Mc_musique extends CI_Controller {
+
+    var $data;
     
-    public function __construct()
-    {
-      parent::__construct();
-      
-      $this->layout->ajouter_css('slyset');
-      
-      $this->layout->ajouter_js('jquery.imagesloaded.min');
-      $this->layout->ajouter_js('jquery.masonry.min');
-      $this->layout->ajouter_js('jquery.stapel');
-      
+    public function __construct() {
+        parent::__construct();
+
+        $this->layout->ajouter_css('slyset');
+        $this->load->model(array('perso_model', 'user_model'));
+
         $this->layout->set_id_background('musique');
-    }
-  
-    public function index($user_id)
-    {
-        $uid = $this->session->userdata('uid');
         
-    if(($user_id != $uid && !empty($user_id)) || ($user_id == $uid && !empty($user_id))) {
-            $user_id = $this->user_infos->uri_user();
-            $infos_profile = $this->user_model->getUser($user_id);
+        $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
+        $output = $this->perso_model->get_perso($this->user_id);
+
+        $sub_data = array();
+        $sub_data['profile'] = $this->user_model->getUser($this->user_id);
+        $sub_data['perso'] = $output;
+
+        if (!empty($output)) {
+            $this->layout->ajouter_dynamique_css($output->theme_css);
+            write_css($output);
+        }
+
+        $this->data = array(
+            'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
+            'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
+        );
+    }
+    
+    public function index($user_id) {
+        $uid = $this->session->userdata('uid');
+        $infos_profile = $this->user_model->getUser($user_id);
+
+        if ((($user_id != $uid && !empty($user_id)) || ($user_id == $uid && !empty($user_id))) && $infos_profile->type != 1) {
             $this->page($infos_profile);
         } else {
-            redirect('home/'.$uid, 'refresh');
+            redirect('home/' . $uid, 'refresh');
         }
     }
-  
-    public function page($infos_profile)
-    {
-      $datas = array();
-      $datas['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-      $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
-      
-      //$this->layout->views('3');
-      $this->layout->view('musique/mc_musique', $datas);
+
+    public function page($infos_profile) {
+        $data = $this->data;
+        $user_visited = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id;
+
+        if (!empty($infos_profile)) {
+            $data['infos_profile'] = $infos_profile;
+        }
+
+        $this->layout->view('musique/mc_musique', $data);
     }
-  
+
 }

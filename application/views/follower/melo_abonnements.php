@@ -1,34 +1,34 @@
 <div id="contentAll">
-
   <div id="breadcrumbs">
     <ul>
       <li><a href="#">Accueil</a></li>
       <li><a href="#">Artistes</a></li>
-      <li><a href="#">Bob Dylan</a></li>
-      <li><a href="#">Photos & Vidéos</a></li>
+      <li><a href="#"><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></a></li>
+      <li><a href="#">Fil d'actualité</a></li>
     </ul>
   </div>
 
-  <div id="cover">
+  <div id="cover" style="background-image:url(<?php print files('profiles/'.$cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
     <div id="infos-cover">
-      <h2>Bob Dylan</h2>
+          <h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
+      <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
     </div>
   </div>
 
-  <div id="stats-cover_melo">
+  <div id="stats-cover">
     <div class="stats_cover_block">
       <span class="stats_number">489</span>
-      <span class="stats_title">écoutes</span>
+      <span class="stats_title">abonnés</span>
     </div>
 
     <div class="stats_cover_block">
       <span class="stats_number">18</span>
-      <span class="stats_title">playlists</span>
+      <span class="stats_title">albums</span>
     </div>
 
     <div class="stats_cover_block">
       <span class="stats_number">278</span>
-      <span class="stats_title">abonnements</span>
+      <span class="stats_title">morceaux</span>
     </div>
   </div>
   <div class="content">
@@ -49,7 +49,7 @@
 	foreach($all_follower as $follower): ?>
 	<div class="follower">
 		<div class="photo_follow">
-					<img src="<?php echo base_url('/files/profiles/'.$follower->cover) ?>" />
+					<img src="<?php echo files('profiles/'.$follower->cover) ?>" />
 
 		</div>
 		<div class="description">

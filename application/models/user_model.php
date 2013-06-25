@@ -38,7 +38,6 @@ class User_model extends CI_Model {
         $this->db->limit(1);
 
         $query = $this->db->get();
-
         if($query->num_rows() == 1){
 //            $data = $query->result();
             $result = $query->result();

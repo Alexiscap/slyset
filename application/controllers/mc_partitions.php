@@ -2,6 +2,7 @@
 
 class Mc_partitions extends CI_Controller {
 
+  var $data;
   protected $path_img_upload_folder;
   protected $path_img_thumb_upload_folder;
   protected $path_url_img_upload_folder;
@@ -13,15 +14,28 @@ class Mc_partitions extends CI_Controller {
 
     $this->layout->ajouter_css('slyset');
 
-    $this->layout->ajouter_js('jquery.imagesloaded.min');
-    $this->layout->ajouter_js('jquery.masonry.min');
-    $this->layout->ajouter_js('jquery.stapel');
     $this->load->helper('form');
-    $this->load->model('document');
+    $this->load->model(array('perso_model', 'user_model', 'document'));
+    
     $this->layout->set_id_background('partitions');
 
-    $this->load->helper(array('form', 'url'));
+    $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
+    $output = $this->perso_model->get_perso($this->user_id);
 
+    $sub_data = array();
+    $sub_data['profile'] = $this->user_model->getUser($this->user_id);
+    $sub_data['perso'] = $output;
+
+    if (!empty($output)) {
+      $this->layout->ajouter_dynamique_css($output->theme_css);
+      write_css($output);
+    }
+
+    $this->data = array(
+        'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
+        'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
+    );
+    
     //Set relative Path with CI Constant
     $this->setPath_img_upload_folder("assets/img/articles/");
     $this->setPath_img_thumb_upload_folder("assets/img/articles/thumbnails/");
@@ -33,34 +47,38 @@ class Mc_partitions extends CI_Controller {
     $this->setPath_url_img_upload_folder(base_url() . "assets/img/articles/");
     $this->setPath_url_img_thumb_upload_folder(base_url() . "assets/img/articles/thumbnails/");
   }
+  
+    public function index($user_id) {
+        $uid = $this->session->userdata('uid');
+        $infos_profile = $this->user_model->getUser($user_id);
 
-  public function index($user_id) {
-    $uid = $this->session->userdata('uid');
-    $type_account = $this->session->userdata('account');
-
-    if(($user_id != $uid && !empty($user_id)) || ($user_id == $uid && !empty($user_id))) {
-      $user_id = $this->user_infos->uri_user();
-      $infos_profile = $this->user_model->getUser($user_id);
-      $this->page($infos_profile);
-    } else {
-      redirect('home/' . $uid, 'refresh');
+        if ((($user_id != $uid && !empty($user_id)) || ($user_id == $uid && !empty($user_id))) && $infos_profile->type != 1) {
+            $this->page($infos_profile);
+        } else {
+            redirect('home/' . $uid, 'refresh');
+        }
     }
-  }
+
 
   //recuperer tous les morceaux qui ont 1 doc
   //les asocier par album
   //si pas d'album : undefined
-  public function page($user_id) {
-    $datas = array();
-    $datas['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-    $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
+  public function page($infos_profile) {
+    $data = $this->data;
+    $uid = $this->session->userdata('uid');
+        
+    $user_visited = (empty($infos_profile)) ? $uid : $infos_profile->id;
 
-    $datas['get_doc'] = $this->load->document->get_all_morceau_doc($user_id);
-    //  var_dump($datas['get_doc']);
-    $datas['get_morc'] = $this->load->document->get_morceau_album();
-    //    var_dump($datas['get_morc']);
+    if (!empty($infos_profile)) {
+        $data['infos_profile'] = $infos_profile;
+    }
 
-    $this->layout->view('partition/mc_partitions', $datas);
+    $data['get_doc'] = $this->load->document->get_all_morceau_doc($user_visited);
+    //  var_dump($data['get_doc']);
+    $data['get_morc'] = $this->load->document->get_morceau_album();
+    //    var_dump($data['get_morc']);
+
+    $this->layout->view('partition/mc_partitions', $data);
   }
 
   public function add_part() {

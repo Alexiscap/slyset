@@ -1,7 +1,4 @@
 <div id="contentAll">
-
-<?php print_r($infos_profile); 
-?>
   <div id="breadcrumbs">
     <ul>
       <li><a href="#">Accueil</a></li>

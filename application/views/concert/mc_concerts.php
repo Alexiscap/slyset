@@ -1,5 +1,4 @@
 <div id="contentAll">
-
   <div id="breadcrumbs">
     <ul>
       <li><a href="#">Accueil</a></li>
@@ -34,8 +33,8 @@
   </div>
   <div class="bt_ajout_concert">
    <?php $uid = $this->session->userdata('uid');
-  		 if($user_id == $uid){ ?>
-   <a class="iframe" href="<?php echo base_url('index.php/mc_concerts/ajouter_concert/'.$user_id)?>"> <img href="" src="<?php echo img_url('musicien/ajout_concert.png'); ?>" alt="ajout concert"/></a>
+  		 if($infos_profile->id == $uid){ ?>
+   <a class="iframe" href="<?php echo base_url('index.php/mc_concerts/ajouter_concert/'.$infos_profile->id)?>"> <img href="" src="<?php echo img_url('musicien/ajout_concert.png'); ?>" alt="ajout concert"/></a>
   <?php } 
   else
     		{
@@ -45,14 +44,14 @@
 
   <div class="content">
     <div id="btn_tmp">
-       <a href="<?php echo base_url('index.php/mc_concerts/'.$user_id) ?>"><img src="<?php echo img_url('musicien/filtre_avenir.png'); ?>" alt="A venir"/></a>
-       <a href="<?php echo base_url('index.php/mc_concerts/concert_passe/'.$user_id) ?>"><img src="<?php echo img_url('musicien/filtre_passe.png'); ?>" alt="Concert passé"/></a>
+       <a href="<?php echo base_url('index.php/mc_concerts/'.$infos_profile->id) ?>"><img src="<?php echo img_url('musicien/filtre_avenir.png'); ?>" alt="A venir"/></a>
+       <a href="<?php echo base_url('index.php/mc_concerts/concert_passe/'.$infos_profile->id) ?>"><img src="<?php echo img_url('musicien/filtre_passe.png'); ?>" alt="Concert passé"/></a>
    </div>
-    <h2>Les concerts de <?php echo $info_user[0]->{'login'}; ?> &agrave; venir</h2>
+    <h2>Les concerts de <?php echo $infos_profile->login; ?> &agrave; venir</h2>
    
      <!-- Boucle : tous les concerts pour un artiste -->
    	  <?php 
-if($nbr_concert_par_artiste!=0)
+if($nbr_concert_par_artiste != 0)
    { 
    	   foreach($concert_all as $concert_unit): ?>
  		
@@ -61,7 +60,7 @@ if($nbr_concert_par_artiste!=0)
 		</p>
 <?php
   		 if( $user_id ==$uid){ ?>
-   		 <div class="edition"><a class="iframe" href="<?php echo base_url('index.php/mc_concerts/modifier_concert/'.$user_id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>"><span class="edit">editer</span></a><a class="iframe" href="<?php echo base_url('index.php/mc_concerts/suppression_concert/'.$user_id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>"><span class="suppr">supprimer</span></a></div>
+   		 <div class="edition"><a class="iframe" href="<?php echo base_url('index.php/mc_concerts/modifier_concert/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>"><span class="edit">editer</span></a><a class="iframe" href="<?php echo base_url('index.php/mc_concerts/suppression_concert/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>"><span class="suppr">supprimer</span></a></div>
    		<?php }?> <hr/>	 
    			 <div class="infos_concert">
       			 <div class="calendrier"><p class="mois"><?php
@@ -119,7 +118,9 @@ if($nbr_concert_par_artiste!=0)
   else 
  {
  
- echo "Pas de concerts à venir pour ".$info_user[0]->{'login'};
+ echo "Pas de concerts à venir pour ".$infos_profile->login;
+// echo "Pas de concerts à venir pour ".$info_user[0]->{'login'};
+
  }
  ?>
   

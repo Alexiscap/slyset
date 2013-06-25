@@ -36,8 +36,8 @@
 
   <div class="content">
     <div id="btn_tmp">
-       <a href="<?php echo base_url('index.php/melo_concerts/'.$user_id) ?>"><img src="<?php echo img_url('musicien/filtre_avenir.png'); ?>" alt="A venir"/></a>
-       <a href="<?php echo base_url('index.php/melo_concerts/concert_passe/'.$user_id) ?>"><img src="<?php echo img_url('musicien/filtre_passe.png'); ?>" alt="Concert passé"/></a>
+       <a href="<?php echo base_url('index.php/melo_concerts/'.$infos_profile->id) ?>"><img src="<?php echo img_url('musicien/filtre_avenir.png'); ?>" alt="A venir"/></a>
+       <a href="<?php echo base_url('index.php/melo_concerts/concert_passe/'.$infos_profile->id) ?>"><img src="<?php echo img_url('musicien/filtre_passe.png'); ?>" alt="Concert passé"/></a>
    </div>
     <h2>Mes prochains concerts</h2>
    
@@ -105,7 +105,7 @@ if($nbr_concert_par_melo!=0)
   else 
  {
  
- echo "Pas de concerts à venir pour ".$info_user[0]->{'login'};
+ echo "Pas de concerts à venir pour ".$infos_profile->login;
  }
  ?>
   

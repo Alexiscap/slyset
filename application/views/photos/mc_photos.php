@@ -1,17 +1,16 @@
 <div id="contentAll">
-
   <div id="breadcrumbs">
     <ul>
       <li><a href="#">Accueil</a></li>
       <li><a href="#">Artistes</a></li>
-      <li><a href="#">Bob Dylan</a></li>
-      <li><a href="#">Photos & Vidéos</a></li>
+      <li><a href="#"><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></a></li>
+      <li><a href="#">Fil d'actualité</a></li>
     </ul>
   </div>
 
-  <div id="cover">
+  <div id="cover" style="background-image:url(<?php print files('profiles/'.$cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
     <div id="infos-cover">
-      <h2>Bob Dylan</h2>
+          <h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
       <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
     </div>
   </div>
@@ -34,10 +33,10 @@
   </div>
     <div class="bts_noir_photo">
 	 <div class="bt_noir">
-    <a class="iframe" href="<?php echo base_url('index.php/mc_photos/upload_photo/'.$user_id) ?>" ><span class="bt_left"></span><span class="bt_middle">Ajouter une photo/vidéo</span><span class="bt_right"></span></a>
+    <a class="iframe" href="<?php echo base_url('index.php/mc_photos/upload_photo/'.$infos_profile->id) ?>" ><span class="bt_left"></span><span class="bt_middle">Ajouter une photo/vidéo</span><span class="bt_right"></span></a>
   </div>
   <div class="bt_noir">
-    <a class="iframe" href="<?php echo base_url('index.php/mc_photos/add_video/'.$user_id) ?>"><span class="bt_left"></span><span class="bt_middle">Supprimer la sélection</span><span class="bt_right"></span></a>
+    <a class="iframe" href="<?php echo base_url('index.php/mc_photos/add_video/'.$infos_profile->id) ?>"><span class="bt_left"></span><span class="bt_middle">Supprimer la sélection</span><span class="bt_right"></span></a>
   </div>
 	</div>
   <div class="content">
@@ -55,10 +54,10 @@
     		<div onclick="displayHover" class="photo box col1">
     		<!--  edition : HOVER *******************-->
   				 	<div class="edit">
-      					<a href="<?php echo base_url('/index.php/mc_photos/update_photo/'.$user_id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      					<a href="<?php echo base_url('/index.php/mc_photos/update_photo/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
      					 <!--  edition : SUPPRESSION *******************-->
 
-     					<a href="<?php echo base_url('/index.php/mc_photos/suppression_media/'.$user_id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+     					<a href="<?php echo base_url('/index.php/mc_photos/suppression_media/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
    					</div>
     		<!-- image -->
       		<a href="<?php echo base_url('/index.php/mc_photos/zoom_photo/'.$media_user_result_unit->id)?>"><img src="http://127.0.0.1/slyset/files/30/photos/<?php echo  $media_user_result_unit->file_name?>" class="img_cover" /></a>
@@ -135,14 +134,14 @@
     			
   				 	<!--  edition : HOVER *******************-->
   				 	<div class="edit">
-      					<a href="<?php echo base_url('/index.php/mc_photos/update_photo/'.$user_id.'/'.$media_user_result_unit->file_name.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
-     					<a href="<?php echo base_url('/index.php/mc_photos/suppression_media/'.$user_id.'/'.$media_user_result_unit->file_name.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+      					<a href="<?php echo base_url('/index.php/mc_photos/update_photo/'.$infos_profile->id.'/'.$media_user_result_unit->file_name.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+     					<a href="<?php echo base_url('/index.php/mc_photos/suppression_media/'.$infos_profile->id.'/'.$media_user_result_unit->file_name.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
    					</div>
 					<div class="open_alb">
-      					<a href="<?php echo base_url('index.php/mc_photos/album/'.$user_id.'/'.$media_user_result_unit->file_name)?>"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+      					<a href="<?php echo base_url('index.php/mc_photos/album/'.$infos_profile->id.'/'.$media_user_result_unit->file_name)?>"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
     				</div>
     				
-   					<a href="http://127.0.0.1/slyset/index.php/mc_photos/album/<?php echo $user_id ?>/<?php echo $media_user_result_unit->file_name ?>"><img src="http://127.0.0.1/slyset/files/30/photos/<?php echo $media_user_result_unit->file_name?>/cover" class="img_cover" /></a>
+   					<a href="http://127.0.0.1/slyset/index.php/mc_photos/album/<?php echo $infos_profile->id ?>/<?php echo $media_user_result_unit->file_name ?>"><img src="http://127.0.0.1/slyset/files/30/photos/<?php echo $media_user_result_unit->file_name?>/cover" class="img_cover" /></a>
    					<?php foreach($all_photos as $al_photo): 
                     	if($media_user_result_unit->file_name == $al_photo->file_name): 
                      		foreach ($all_photos_albums as $all_photos_album):
@@ -241,10 +240,10 @@
     			-->
    						<!--  edition : HOVER *******************-->
   				 	<div class="edit">
-      					<a href="<?php echo base_url('/index.php/mc_photos/update_photo/'.$user_id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+      					<a href="<?php echo base_url('/index.php/mc_photos/update_photo/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
      				 <!--  edition : SUPPRESSION *******************-->
 
-     					<a href="<?php echo base_url('/index.php/mc_photos/suppression_media/'.$user_id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+     					<a href="<?php echo base_url('/index.php/mc_photos/suppression_media/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
    					</div>
    					
    					<a href="http://www.youtube.com/v/<?php echo $media_user_result_unit->file_name ?>?version=3"><img src="http://i.ytimg.com/vi/<?php echo $media_user_result_unit->file_name?>/hqdefault.jpg" class="img_cover" /></a>

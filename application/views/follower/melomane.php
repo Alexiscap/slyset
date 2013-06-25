@@ -1,18 +1,16 @@
 <div id="contentAll">
-<?php $user_id = $this->session->userdata('uid');?>
-
   <div id="breadcrumbs">
     <ul>
       <li><a href="#">Accueil</a></li>
       <li><a href="#">Artistes</a></li>
-      <li><a href="#">Bob Dylan</a></li>
-      <li><a href="#">Photos & Vidéos</a></li>
+      <li><a href="#"><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></a></li>
+      <li><a href="#">Fil d'actualité</a></li>
     </ul>
   </div>
 
-  <div id="cover">
+  <div id="cover" style="background-image:url(<?php print files('profiles/'.$cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
     <div id="infos-cover">
-      <h2>Bob Dylan</h2>
+          <h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
       <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
     </div>
   </div>
@@ -34,10 +32,10 @@
     </div>
   </div>
   <div class="content">
-		<div id="btn_tmp_follow">
-       <a href="<?php echo base_url('index.php/follower/'.$user_id) ?>" class="tous">Tous</a>
-       <a href="<?php echo base_url('index.php/mc_followers/musicien/'.$user_id) ?>" class="musiciens">Musiciens</a>
-       <a href="<?php echo base_url('index.php/mc_followers/melomane/'.$user_id) ?>" class="melomanes">Mélomanes</a>
+	<div id="btn_tmp_follow">
+       <a href="<?php echo site_url('follower/'.$infos_profile->id) ?>" class="tous">Tous</a>
+       <a href="<?php echo site_url('mc_followers/musicien/'.$infos_profile->id) ?>" class="musiciens">Musiciens</a>
+       <a href="<?php echo site_url('mc_followers/melomane/'.$infos_profile->id) ?>" class="melomanes">Mélomanes</a>
    </div>
  	<?php
  		if (count($all_follower)==1):?>
@@ -56,7 +54,7 @@
 	<div class="follower">
 		<div class="photo_follow">
 		<!-- dossier de la cover pour un user ? -->
-			<img src="<?php echo base_url('files/profiles/'.$follower->cover) ?>" />
+			<img src="<?php echo files('profiles/'.$follower->cover) ?>" />
 		</div>
 		<div class="description">
 			<p class="nom_follow"><?php echo $follower->login ?></p>

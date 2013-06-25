@@ -2,6 +2,8 @@
 
 class Mc_photos extends CI_Controller {
 
+  var $data;  
+    
   public function __construct() {
     parent::__construct();
 
@@ -39,113 +41,110 @@ class Mc_photos extends CI_Controller {
         'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
     );
   }
+  
+    public function index($user_id) {
+        $uid = $this->session->userdata('uid');
+        $infos_profile = $this->user_model->getUser($user_id);
 
-  public function index($user_id) {
+        if ((($user_id != $uid && !empty($user_id)) || ($user_id == $uid && !empty($user_id))) && $infos_profile->type != 1) {
+            $this->page($infos_profile);
+        } else {
+            redirect('home/' . $uid, 'refresh');
+        }
+    }
+
+  public function page($infos_profile) {
+    $data = $this->data;
     $uid = $this->session->userdata('uid');
+    // $data['all_media_user_result'] = $this->photos->get_media_user(30);
+        
+    $user_visited = (empty($infos_profile)) ? $uid : $infos_profile->id;
 
-//
-//      print 'ONE - '.$user_id.'<br />';
-//      print 'TWO - '.$uid.'<br />';
-//      print 'THREE - '.$infos_profile.'<br />';
-      
-    if(($user_id != $uid && !empty($user_id)) || ($user_id == $uid && !empty($user_id))) {
-      $user_id = $this->user_infos->uri_user();
-      $infos_profile = $this->user_model->getUser($user_id);
-      $this->page($infos_profile);
-    } else {
-      redirect('home/' . $uid, 'refresh');
+    if (!empty($infos_profile)) {
+        $data['infos_profile'] = $infos_profile;
     }
-  }
+        
+    $data['all_media_user_result'] = $this->photos->liste_photos($user_visited);
+    $data['commentaires'] = $this->photos->liste_comments();
+    $data['commentaires_albums'] = $this->photos->liste_comments_album();
+    $data['commentaires_video'] = $this->photos->liste_comments_video();
 
-  public function page($user_id) {
-    $datas = array();
-    $datas['user_id'] = $this->session->userdata('uid');
-    $datas['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-    $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
-    // $datas['all_media_user_result'] = $this->photos->get_media_user(30);
-    $datas['all_media_user_result'] = $this->photos->liste_photos($user_id);
-    $datas['commentaires'] = $this->photos->liste_comments();
-    $datas['commentaires_albums'] = $this->photos->liste_comments_album();
-    $datas['commentaires_video'] = $this->photos->liste_comments_video();
+    $data['all_photos'] = $this->photos->all_photos();
+    $data['all_photos_albums'] = $this->photos->all_photos_album();
+    //	$data['all_video_user'] = $this->photos->get_video($data['user_id']) ;
+    $data['like_photo'] = $this->photos->get_like_user($user_visited);
+    $data['all_photo_like'] = "";
+    $data['all_album_like'] = "";
+    $data['all_video_like'] = "";
 
-    $datas['all_photos'] = $this->photos->all_photos();
-    $datas['all_photos_albums'] = $this->photos->all_photos_album();
-    //	$datas['all_video_user'] = $this->photos->get_video($datas['user_id']) ;
-    $datas['like_photo'] = $this->photos->get_like_user($user_id);
-    $datas['all_photo_like'] = "";
-    $datas['all_album_like'] = "";
-    $datas['all_video_like'] = "";
+    foreach ($data['like_photo'] as $data['likes_photo']) {
+      $data['all_photo_like'] .=
+              $data['likes_photo']->Photo_id . "/";
 
-    foreach ($datas['like_photo'] as $datas['likes_photo']) {
-      $datas['all_photo_like'] .=
-              $datas['likes_photo']->Photo_id . "/";
+      $data['all_album_like'] .=
+              $data['likes_photo']->Album_media_file_name . "/";
 
-      $datas['all_album_like'] .=
-              $datas['likes_photo']->Album_media_file_name . "/";
-
-      $datas['all_video_like'] .=
-              $datas['likes_photo']->Video_id . "/";
+      $data['all_video_like'] .=
+              $data['likes_photo']->Video_id . "/";
     }
 
-    foreach ($datas['like_photo'] as $datas['likes_photo']) {
-      $datas['all_photo_like'] .= $datas['likes_photo']->Photo_id . "/";
+    foreach ($data['like_photo'] as $data['likes_photo']) {
+      $data['all_photo_like'] .= $data['likes_photo']->Photo_id . "/";
 
-      $datas['all_album_like'] .= $datas['likes_photo']->Album_media_file_name . "/";
+      $data['all_album_like'] .= $data['likes_photo']->Album_media_file_name . "/";
 
-      $datas['all_video_like'] .= $datas['likes_photo']->Video_id . "/";
+      $data['all_video_like'] .= $data['likes_photo']->Video_id . "/";
     }
 
 
-    $this->layout->view('photos/mc_photos', $datas, false);
+    $this->layout->view('photos/mc_photos', $data, false);
     //doit faire passer name album en requete 2
   }
 
   // page album
   public function album($user_id, $album_name) {
-    $datas = array();
-    $datas['user_id'] = $this->session->userdata('uid');
-    $datas['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-    $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
-    $datas['all_media_user_result'] = $this->photos->get_photos_by_album($user_id, $album_name);
-    $datas['commentaires_video'] = $this->photos->liste_comments_video();
+    $data = $this->data;
+    $data['user_id'] = $this->session->userdata('uid');
+    $data['all_media_user_result'] = $this->photos->get_photos_by_album($user_id, $album_name);
+    $data['commentaires_video'] = $this->photos->liste_comments_video();
 
-    $datas['commentaires'] = $this->photos->liste_comments();
+    $data['commentaires'] = $this->photos->liste_comments();
 
-//        $datas['all_media_user_result'] = $this->photos->all_photos();
-//        $datas['commentaires_albums'] = $this->photos->liste_comments_album();
-//        $datas['all_photos'] = $this->photos->all_photos();
-//        $datas['all_photos_albums'] = $this->photos->all_photos_album();
+//        $data['all_media_user_result'] = $this->photos->all_photos();
+//        $data['commentaires_albums'] = $this->photos->liste_comments_album();
+//        $data['all_photos'] = $this->photos->all_photos();
+//        $data['all_photos_albums'] = $this->photos->all_photos_album();
 
-    $this->layout->view('photos/album', $datas, false);
+    $this->layout->view('photos/album', $data, false);
   }
 
   public function zoom_photo($id_photo) {
-    $datas = array();
-    $this->load->view('photos/zoom_photo', $datas);
+    $data = array();
+    $this->load->view('photos/zoom_photo', $data);
   }
 
   public function upload_photo($user_id) {
     $this->load->model('photos');
     $this->load->helper('form');
 
-    $datas = array();
-    $datas = array('error' => ' ');
-    $datas['options'] = array(
+    $data = array();
+    $data = array('error' => ' ');
+    $data['options'] = array(
         '' => '',
     );
-    $datas['album_by_user'] = $this->photos->get_album($user_id);
+    $data['album_by_user'] = $this->photos->get_album($user_id);
 
 //        specifier $i en fonction du nombre de ligne retourner
 //        marche pas avec tableaux multidimension :
 
-    $datas['max_album_user'] = count($datas['album_by_user']);
+    $data['max_album_user'] = count($data['album_by_user']);
 //        for($i=0; $i<$max_album_user; $i++){	
-//            $datas['options'][$album_by_user[$i]->{'nom'}] = $album_by_user[$i]->{'nom'};  
+//            $data['options'][$album_by_user[$i]->{'nom'}] = $album_by_user[$i]->{'nom'};  
 //        }
-//        $datas['options']['nouveau']="Creer un nouvel album";
+//        $data['options']['nouveau']="Creer un nouvel album";
 
-    $this->load->helper('form', $datas);
-    $this->load->view('photos/ajouter_photos', $datas);
+    $this->load->helper('form', $data);
+    $this->load->view('photos/ajouter_photos', $data);
   }
 
   public function do_upload($user_id) {
@@ -166,7 +165,6 @@ class Mc_photos extends CI_Controller {
 
     $config['allowed_types'] = 'gif|jpg|png';
     $config['max_size'] = '1000';
-    // a definir
     $config['max_width'] = '1024';
     $config['max_height'] = '768';
     $photo = $this->input->post('photo_up');
@@ -206,17 +204,17 @@ class Mc_photos extends CI_Controller {
     // changer l'album d'une photo
     //supprimer la photo d'un album
     //supprimer une video d'un album
-    $datas = array();
-    $datas['album_by_user'] = $this->photos->get_album($user_id);
-    $datas['max_album_user'] = count($datas['album_by_user']);
+    $data = array();
+    $data['album_by_user'] = $this->photos->get_album($user_id);
+    $data['max_album_user'] = count($data['album_by_user']);
     if ($type == 1) {
-      $datas['info_album_photo'] = $this->photos->get_abum_for_photo($id_media);
-      $datas['info_photo'] = $this->photos->get_photo_by_id($id_media);
+      $data['info_album_photo'] = $this->photos->get_abum_for_photo($id_media);
+      $data['info_photo'] = $this->photos->get_photo_by_id($id_media);
     }
     if ($this->form_validation->run() == FALSE) {
       $this->load->helper(array('form', 'url'));
 
-      $this->load->view('photos/update_photo', $datas);
+      $this->load->view('photos/update_photo', $data);
     } else {
       if ($type == 1) {
         //info de l'album renseigné : donc changement album pour photo
@@ -238,31 +236,31 @@ class Mc_photos extends CI_Controller {
         //mise a jour en bdd des infos photos + album
         //definition des changement de paths des fichiers
 
-        if (isset($datas['info_album_photo'][0]->file_name)) {
-          $file_base = './files/' . $user_id . '/photos/' . $datas['info_album_photo'][0]->file_name . '/' . $datas['info_photo'][0]->file_name;
+        if (isset($data['info_album_photo'][0]->file_name)) {
+          $file_base = './files/' . $user_id . '/photos/' . $data['info_album_photo'][0]->file_name . '/' . $data['info_photo'][0]->file_name;
         } else {
-          $file_base = './files/' . $user_id . '/photos/' . $datas['info_photo'][0]->file_name;
+          $file_base = './files/' . $user_id . '/photos/' . $data['info_photo'][0]->file_name;
         }
         if (isset($dynamic_path)) {
-          $datas['info_photo'][0]->file_name = "cover.jpg";
+          $data['info_photo'][0]->file_name = "cover.jpg";
         }
         if ($file_name_album != null) {
-          $file_obj = './files/' . $user_id . '/photos/' . $file_name_album . '/' . $datas['info_photo'][0]->file_name;
+          $file_obj = './files/' . $user_id . '/photos/' . $file_name_album . '/' . $data['info_photo'][0]->file_name;
         } else {
-          $file_obj = './files/' . $user_id . '/photos/' . '/' . $datas['info_photo'][0]->file_name;
+          $file_obj = './files/' . $user_id . '/photos/' . '/' . $data['info_photo'][0]->file_name;
         }
 
         //changement de paths du fichiers
         rename($file_base, $file_obj);
-        $datas['update_photos'] = $this->photos->update_photo($user_id, $id_media, $this->input->post('description'), $this->input->post('albums'), $file_name_album, $datas['info_photo'][0]->file_name);
+        $data['update_photos'] = $this->photos->update_photo($user_id, $id_media, $this->input->post('description'), $this->input->post('albums'), $file_name_album, $data['info_photo'][0]->file_name);
 
-        $this->load->view('photos/mc_photos', $datas);
+        $this->load->view('photos/mc_photos', $data);
       }
 
 
       if ($type == 2) {
-        $datas['update_photos'] = $this->photos->update_album($user_id, $id_media, $this->input->post('description'));
-        $this->load->view('photos/mc_photos', $datas);
+        $data['update_photos'] = $this->photos->update_album($user_id, $id_media, $this->input->post('description'));
+        $this->load->view('photos/mc_photos', $data);
       }
       if ($type == 3) {
 
@@ -284,8 +282,8 @@ class Mc_photos extends CI_Controller {
 
 
 
-        $datas['update_photos'] = $this->photos->update_video($user_id, $id_media, $this->input->post('description'), $this->input->post('albums'), $file_name_album);
-        $this->load->view('photos/mc_photos', $datas);
+        $data['update_photos'] = $this->photos->update_video($user_id, $id_media, $this->input->post('description'), $this->input->post('albums'), $file_name_album);
+        $this->load->view('photos/mc_photos', $data);
 
         //$user_id,$id_video,$nom_video,$album_name,$file_name_a
       }
@@ -295,10 +293,10 @@ class Mc_photos extends CI_Controller {
   /*
     public function update_album($user_id,$filename_album)
     {
-    $datas['album_by_user'] = $this->photos->get_album($user_id);
-    $datas['max_album_user'] = count($datas['album_by_user']);
-    $datas['update_album'] = $this->photos->update_album($user_id,$this->input->post('album_select'),$filename_album);
-    $this->load->view('photos/update_album', $datas);
+    $data['album_by_user'] = $this->photos->get_album($user_id);
+    $data['max_album_user'] = count($data['album_by_user']);
+    $data['update_album'] = $this->photos->update_album($user_id,$this->input->post('album_select'),$filename_album);
+    $this->load->view('photos/update_album', $data);
 
 
     } */
@@ -394,7 +392,7 @@ class Mc_photos extends CI_Controller {
     $this->load->model('photos');
     $this->load->helper('form');
     $this->load->library('form_validation');
-    $datas = array();
+    $data = array();
     print $type_media;
     if ($user_id != $this->session->userdata('uid')) {
       show_404();
@@ -425,7 +423,7 @@ class Mc_photos extends CI_Controller {
       //CLOSE POP UP
     }
 
-    $this->load->view('photos/delete_photos', $datas);
+    $this->load->view('photos/delete_photos', $data);
   }
 
 }

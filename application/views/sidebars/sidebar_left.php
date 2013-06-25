@@ -38,7 +38,7 @@
         </div>
 
         <?php
-          $user_id = $this->uri->segment(2);        
+          $user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);        
           if(($this->session->userdata('account') == 2 || $this->session->userdata('account') == 0) && ($user_id == $this->session->userdata('uid'))): ?>
             <div id="menu-profile">
                 <ul>

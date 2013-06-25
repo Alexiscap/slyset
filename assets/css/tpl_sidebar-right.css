@@ -1,4 +1,4 @@
-#right{ width:200px; height:100%; font-family:"Trebuchet MS"; -webkit-border-top-left-radius:5px; -webkit-border-top-right-radius:5px; -moz-border-radius-topleft:5px; -moz-border-radius-topright:5px; border-top-left-radius:5px; border-top-right-radius:5px; color:white; background-color:#f9f9f9; float:right; margin:-202px 10px 0 0;/*-345px*/ position:relative;}
+#right{ width:200px; height:100%; font-family:"Trebuchet MS"; -webkit-border-top-left-radius:5px; -webkit-border-top-right-radius:5px; -moz-border-radius-topleft:5px; -moz-border-radius-topright:5px; border-top-left-radius:5px; border-top-right-radius:5px; color:white; background-color:#f9f9f9; float:right; margin:-202px 10px 50px 0;/*-345px*/ position:relative;}
 
 /* AVATAR */
 #right #avatar #photo { margin:4px 3px 3px 3px; width:200px;height:195px;}

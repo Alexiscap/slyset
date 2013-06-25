@@ -1,21 +1,20 @@
 <div id="contentAll">
-
   <div id="breadcrumbs">
     <ul>
       <li><a href="#">Accueil</a></li>
       <li><a href="#">Artistes</a></li>
-      <li><a href="#">Bob Dylan</a></li>
-      <li><a href="#">Photos & Vidéos</a></li>
+      <li><a href="#"><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></a></li>
+      <li><a href="#">Fil d'actualité</a></li>
     </ul>
   </div>
 
-  <div id="cover">
+  <div id="cover" style="background-image:url(<?php print files('profiles/'.$cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
     <div id="infos-cover">
-      <h2>Bob Dylan</h2>
+          <h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
       <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
     </div>
   </div>
-
+    
   <div id="stats-cover">
     <div class="stats_cover_block">
       <span class="stats_number">489</span>
@@ -48,7 +47,7 @@
 	?>
 	<div class="a_la_une">
 	<?php if($doc->img_cover!=null){ ?>
-		<img src="<?php echo base_url('./files/'.$this->session->userdata('uid').'/albums/'.$doc->Albums_id.'/'.$doc->img_cover) ?>"/>
+		<img src="<?php echo base_url('./files/'.$infos_profile->id.'/albums/'.$doc->Albums_id.'/'.$doc->img_cover) ?>"/>
 		<?php }
 		else
 		{
@@ -95,7 +94,7 @@
 						<!--ajouter type-->
 						<?php if ($morceau->path!=null)
 						{ ?>
-						<td class="paroles"><a href="<?php echo base_url('./files/'.$this->session->userdata('uid').'/albums/'.$doc->Albums_id.'/partition/'.$morceau->path) ?>">Voir</a>
+						<td class="paroles"><a href="<?php echo base_url('./files/'.$infos_profile->id.'/albums/'.$doc->Albums_id.'/partition/'.$morceau->path) ?>">Voir</a>
 							<div class="miniat_titre">
 								<a href="#" class="edit"><span>edit</span></a>
 							</div>
