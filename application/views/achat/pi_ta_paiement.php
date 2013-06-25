@@ -1,10 +1,18 @@
-<div class="pop-in_ta pop_in2">
+<link rel="stylesheet" type="text/css" href="http://127.0.0.1/slyset/assets/css/slyset.css" media="screen" />
+
+<?php
+echo $this->input->post('format');
+
+echo form_open('pi_ta_paiement/index');
+ echo validation_errors();
+
+ ?><div class="pop-in_ta pop_in2">
   <span class="info">Informations</span><span  class="paiement et_active">Paiement</span><span  class="telechargement">Téléchargements</span>
   <img src="<?php echo img_url('musicien/pop_close.png'); ?>" alt="Fermer" />
   <div class="content-pi">
     <h2>Choisissez votre moyen de paiement</h2>
 	<div class="moyen_pmt">
-		<img src="<?php echo img_url('common/pmt_cb.png'); ?>" alt="CB" />
+		<img class="select" src="<?php echo img_url('common/pmt_cb.png'); ?>" alt="CB" />
 		<img src="<?php echo img_url('common/pmt_ppal.png'); ?>" alt="Paypal" />
 		<span>Payer avec une carte bancaire</span>
 		<span>Payer avec un compte Paypal</span>
@@ -18,7 +26,7 @@
 		<img src="<?php echo img_url('common/mastercard.png'); ?>" alt="Mastercard" onClick="this.src='<?php echo img_url('common/mastercard_select.png'); ?>'"/>
 		<img src="<?php echo img_url('common/amex.png'); ?>" alt="American express" onClick="this.src='<?php echo img_url('common/amex_select.png'); ?>'"/>
 		<span>Numéro de carte bancaire</span>
-		<input type="text">
+		<?php echo form_input('code_carte');?>
 		<div class="clear"></div>
 		<span>Date d’expiration</span>
 		<select>
@@ -29,8 +37,11 @@
 		</select>
 		<div class="clear"></div>
 		<span>Code de sécurité</span>
-		<input type="text">
-		<input type="submit" value="Continuer">
+		<?php echo form_input('code_secu');?>
+	<?php
+				echo form_submit('submit', 'Continuer');
+
+	 echo form_close(); ?>	
 	</div>
 	<div class="clear"></div>
   </div>

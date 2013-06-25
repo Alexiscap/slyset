@@ -1,3 +1,4 @@
+
 <div id="contentAll">
 
   <div id="breadcrumbs">
@@ -8,7 +9,6 @@
       <li><a href="#">Photos & Vidéos</a></li>
     </ul>
   </div>
-<?php var_dump($cmd);?>
   <div id="cover">
     <div id="infos-cover">
       <h2>Bob Dylan</h2>
@@ -79,7 +79,7 @@
 		</div>
 		<p class="total_panier">Montant total <span>10,00€</span></p>
 			<div class="clear"></div>
-			<input type="button" value="Paiement sécurisé" class="cadis_panier">
+			<a class="bigiframe" href="<?php echo base_url('index.php/pi_ta_infos/index/'.$this->session->userdata('uid')) ?>"><input type="button" value="Paiement sécurisé" class="cadis_panier"></a>
 			<input type="button" value="Supprimer" class="bt_supp_playlist">
 	</div>
 	
@@ -130,6 +130,10 @@
 		</div>
 			<input type="button" value="Télécharger" class="telecharge_select">
 	</div>
+
+	
+	
+	
   </div>
 
   <?php if(isset($sidebar_right)) echo $sidebar_right; ?>

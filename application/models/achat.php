@@ -33,7 +33,15 @@ class achat extends CI_Model
 		  return $this->db->query($sql,array($user_id,$user_id,$user_id))
                         ->result();		
 	}
-
-
+	
+	
+	public function panier_to_achat($id_commande)
+	{
+		$data = array(
+               'status' => "V",
+            );	
+		$this->db->where('id', $id_commande);
+		$this->db->update($this->table_cmd, $data); 
+	}
 
 }

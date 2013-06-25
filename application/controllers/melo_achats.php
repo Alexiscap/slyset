@@ -8,11 +8,20 @@ class melo_achats extends CI_Controller
       parent::__construct();
       
       $this->layout->ajouter_css('slyset');
-      
-      $this->layout->ajouter_js('jquery.imagesloaded.min');
-      $this->layout->ajouter_js('jquery.masonry.min');
-      $this->layout->ajouter_js('jquery.stapel');
-       $this->load->model('achat');
+      	
+    	//	$this->layout->ajouter_css('shadowbox');
+     	//   $this->layout->ajouter_js('shadowbox/shadowbox');
+            	      	$this->layout->ajouter_js('jquery-1.7.1.min');
+
+        $this->layout->ajouter_js('jquery.colorbox');
+    	$this->layout->ajouter_css('colorbox');
+      	$this->layout->ajouter_js('jquery.imagesloaded.min');
+      	$this->layout->ajouter_js('jquery.masonry.min');
+      	$this->layout->ajouter_js('jquery.stapel');
+       	$this->load->model('achat');
+       	      $this->load->helper('form');
+      	$this->layout->ajouter_css('popin');
+
         $this->layout->set_id_background('achats');
     }
   
@@ -23,6 +32,10 @@ class melo_achats extends CI_Controller
   
     public function page($user_id)
     {
+    
+   // $data = array(
+     //      'popin'  => $this->load->view('achat/pi_ta_infos', '', TRUE) 
+       //    );
       $data = array();
       $data['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
       $data['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
@@ -62,6 +75,9 @@ class melo_achats extends CI_Controller
       
       }
       //$this->layout->views('3');
+      
+      
+      
       $this->layout->view('achat/melo_achats', $data);
     }
   
