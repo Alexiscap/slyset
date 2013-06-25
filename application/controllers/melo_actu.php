@@ -3,6 +3,8 @@
 class melo_actu extends CI_Controller
 {
     
+    var $data;
+    
     public function __construct()
     {
         parent::__construct();
@@ -15,24 +17,42 @@ class melo_actu extends CI_Controller
         $this->layout->ajouter_js('jquery.easing.min');
         
         $this->load->helper('form');
-        $this->load->model('mc_actus_model');
+        $this->load->model(array('user_model', 'mc_actus_model'));
         $this->load->library('form_validation');
-        $this->load->library('layout');
         
         $this->layout->set_id_background('melo_actu');
-        
-        $data = array();
+
+        $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
+
+        $sub_data = array();
+        $sub_data['profile'] = $this->user_model->getUser($this->user_id);
+
+        $this->data = array(
+            'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
+            'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
+        );
     }
-  
-    public function index()
-    {
-        $this->page();
+
+    public function index($user_id) {
+        $uid = $this->session->userdata('uid');
+        $infos_profile = $this->user_model->getUser($user_id);
+
+        if ($user_id == $uid) {
+            $this->page($infos_profile);
+        } else {
+            show_404();
+        }
     }
-  
-    public function page()
-    {
-        $data['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-        $data['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
+
+    public function page($infos_profile) {
+        $data = $this->data;
+        $uid = $this->session->userdata('uid');
+
+        $user_visited = (empty($infos_profile)) ? $uid : $infos_profile->id;
+        if (!empty($infos_profile)) {
+            $data['infos_profile'] = $infos_profile;
+        }
+
         $data['messages'] = $this->mc_actus_model->liste_actus();
         $data['commentaires'] = $this->mc_actus_model->liste_comments();
         
@@ -43,8 +63,7 @@ class melo_actu extends CI_Controller
     
     public function form_wall_musicien_message()
     {   
-        $data['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-        $data['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
+        $data = $this->data;
         $data['messages'] = $this->mc_actus_model->liste_actus();
         $data['commentaires'] = $this->mc_actus_model->liste_comments();
       
@@ -64,8 +83,7 @@ class melo_actu extends CI_Controller
     
     public function form_wall_musicien_photo()
     {   
-        $data['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-        $data['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
+        $data = $this->data;
         $data['messages'] = $this->mc_actus_model->liste_actus();
         $data['commentaires'] = $this->mc_actus_model->liste_comments();
         
@@ -98,8 +116,7 @@ class melo_actu extends CI_Controller
     
     public function form_wall_musicien_link()
     {   
-        $data['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-        $data['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
+        $data = $this->data;
         $data['messages'] = $this->mc_actus_model->liste_actus();
         $data['commentaires'] = $this->mc_actus_model->liste_comments();
       
