@@ -52,7 +52,7 @@
         <div id="connexion">
           <div id="identification">
             <?php if($this->session->userdata('logged_in') == 1): ?>
-              <a href="#"><?php echo $this->session->userdata('login'); ?></a> | <a href="<?php echo site_url('login/logout'); ?>">Se déconnecter</a>
+              <a href="<?php echo site_url('home/'.$this->session->userdata('uid')) ?>"><?php echo $this->session->userdata('login'); ?></a> | <a href="<?php echo site_url('login/logout'); ?>">Se déconnecter</a>
             <?php else: ?>
               <a href="<?php echo site_url('login'); ?>">Se connecter</a>
             <?php endif; ?>

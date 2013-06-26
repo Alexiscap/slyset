@@ -1,5 +1,4 @@
 <div id="contentAll">
-
   <div id="breadcrumbs">
     <ul>
       <li><a href="#">Accueil</a></li>

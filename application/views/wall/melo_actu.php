@@ -6,19 +6,19 @@ sort big array by date
 
 -->
 <div id="contentAll">
-
   <div id="breadcrumbs">
     <ul>
       <li><a href="#">Accueil</a></li>
       <li><a href="#">Artistes</a></li>
-      <li><a href="#">Bob Dylan</a></li>
+      <li><a href="#"><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></a></li>
       <li><a href="#">Fil d'actualité</a></li>
     </ul>
   </div>
 
-  <div id="cover">
+  <div id="cover" style="background-image:url(<?php print files('profiles/'.$cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
     <div id="infos-cover">
-      <h2>Bob Dylan</h2>
+          <h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
+      <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
     </div>
   </div>
 
@@ -62,11 +62,11 @@ sort big array by date
       </div>
       <div class="left">
 
-        <img src="<?php echo base_url('./files/profiles/'.$entity_wall->thumb); ?>" alt="Photo Profil" />
+        <img src="<?php echo files('profiles/'.$entity_wall->thumb); ?>" alt="Photo Profil" />
       </div>
       <div class="right">
         <span class="ico_citation"></span>
-        <p class="msg_post"><?php echo $entity_wall->login ?> viens d’ajouter une photo :  <a href="<?php echo base_url('index.php/mc_photos/zoom_photo/'.$entity_wall->idproduit) ?>"><?php echo $entity_wall->main_nom?></a></p>
+        <p class="msg_post"><?php echo $entity_wall->login ?> viens d’ajouter une photo :  <a href="<?php echo site_url('mc_photos/zoom_photo/'.$entity_wall->idproduit) ?>"><?php echo $entity_wall->main_nom?></a></p>
         <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
       </div>
       <div class="bottom">
@@ -160,15 +160,13 @@ sort big array by date
       </div>
       <div class="left">
 
-        <img src="<?php echo base_url('./files/profiles/'.$entity_wall->thumb); ?>" alt="Photo Profil" />
+        <img src="<?php echo files('profiles/'.$entity_wall->thumb); ?>" alt="Photo Profil" />
       </div>
       <div class="right">
         <span class="ico_citation"></span>
-        <p class="msg_post"><a href="<?php echo base_url('index.php/actualite/'.$entity_wall->Utilisateur_id)?>" ><?php echo $entity_wall->login ?></a> viens d’ajouter une video :  <a href="<?php echo 'http://www.youtube.com/v/'.$entity_wall->file_name.'?version=3' ?>"><?php echo $entity_wall->main_nom?></a></p>
+        <p class="msg_post"><a href="<?php echo site_url('actualite/'.$entity_wall->Utilisateur_id)?>" ><?php echo $entity_wall->login ?></a> viens d’ajouter une video :  <a href="<?php echo 'http://www.youtube.com/v/'.$entity_wall->file_name.'?version=3' ?>"><?php echo $entity_wall->main_nom?></a></p>
       	 
-      	 <iframe id="ytplayer" type="document" width="455" height="350"
-  		src="http://www.youtube.com/v/<?php echo $entity_wall->file_name ?>?version=3"
-  			/></iframe>
+      	 <iframe id="ytplayer" type="document" width="455" height="350" src="http://www.youtube.com/v/<?php echo $entity_wall->file_name ?>?version=3" /></iframe>
       
       </div>
       <div class="bottom">
@@ -268,13 +266,13 @@ sort big array by date
      					
      				<div class="left">
 
-        				<img src="<?php echo base_url('./files/profiles/'.$entity_wall->thumb); ?>" alt="Photo Profil" />
+        				<img src="<?php echo files('profiles/'.$entity_wall->thumb); ?>" alt="Photo Profil" />
       				</div>
       					
       				<div class="right">
       					<span class="ico_citation"></span>
-        				<p class="msg_post"><a href="<?php echo base_url('index.php/actualite/'.$entity_wall->walltouser) ?>"><?php echo $entity_wall->login ?> </a>vient de poster un message sur son mur : 
-      					<!--  <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
+        				<p class="msg_post"><a href="<?php echo site_url('actualite/'.$entity_wall->walltouser) ?>"><?php echo $entity_wall->login ?> </a>vient de poster un message sur son mur : 
+      					<!--  <img src="<?php echo files($entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
    						-->  
    						</br></br>
    						" <?php echo $entity_wall->main_nom?> "</p>
@@ -302,7 +300,7 @@ sort big array by date
      					
      				<div class="left">
 
-        				<img src="<?php echo base_url('./files/profiles/'.$entity_wall->thumb); ?>" alt="Photo Profil" />
+        				<img src="<?php echo files('profiles/'.$entity_wall->thumb); ?>" alt="Photo Profil" />
       				</div>
       					
       				<div class="right">
