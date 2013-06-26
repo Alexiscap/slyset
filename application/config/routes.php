@@ -85,7 +85,7 @@ $route['document'] = "/mc_partitions/index";
 $route['document/(:num)'] = "/mc_partitions/index/$1";
 
 $route['my-wall'] = "/melo_actu/index";
-$route['my-wall/(:num)'] = "/melo_actu/index/$1";
+$route['my-wall/(:num)'] = "/melo_wall/index/$1";
 
 $route['mc_concerts'] = "home"; 
 $route['mc_concerts/ajouter_concert'] = "welcome"; 
