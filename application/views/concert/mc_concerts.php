@@ -33,7 +33,8 @@
   </div>
   <div class="bt_ajout_concert">
    <?php $uid = $this->session->userdata('uid');
-  		 if($infos_profile->id == $uid){ ?>
+  	  		 if( $this->uri->segment(2) ==$this->session->userdata('uid')){ ?>
+
    <a class="iframe" href="<?php echo base_url('index.php/mc_concerts/ajouter_concert/'.$infos_profile->id)?>"> <img href="" src="<?php echo img_url('musicien/ajout_concert.png'); ?>" alt="ajout concert"/></a>
   <?php } 
   else
@@ -59,8 +60,15 @@ if($nbr_concert_par_artiste != 0)
 		get_date($concert_unit->date,'complete');?> <?php if(isset($concert_unit->prix))echo ' - '.$concert_unit->prix.'&euro;'?></span>
 		</p>
 <?php
-  		 if( $user_id ==$uid){ ?>
-   		 <div class="edition"><a class="iframe" href="<?php echo base_url('index.php/mc_concerts/modifier_concert/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>"><span class="edit">editer</span></a><a class="iframe" href="<?php echo base_url('index.php/mc_concerts/suppression_concert/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>"><span class="suppr">supprimer</span></a></div>
+  		 if( $this->uri->segment(2) ==$this->session->userdata('uid')){ ?>
+   		 <div class="edition">
+   		 	<a class="iframe" href="<?php echo base_url('index.php/mc_concerts/modifier_concert/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>">
+   		 	<span class="edit">editer</span>
+   		 	</a>
+   		 	<a class="iframe" href="<?php echo base_url('index.php/mc_concerts/suppression_concert/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>">
+   		 	<span class="suppr">supprimer</span>
+   		 	</a>
+   		 </div>
    		<?php }?> <hr/>	 
    			 <div class="infos_concert">
       			 <div class="calendrier"><p class="mois"><?php

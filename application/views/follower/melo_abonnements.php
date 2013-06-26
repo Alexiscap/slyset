@@ -47,7 +47,7 @@
 	
 		if(isset($all_follower)):
 	foreach($all_follower as $follower): ?>
-	<div class="follower">
+	<div class="follower" id="my-follower-melo-<?php echo $follower->id ?>">
 		<div class="photo_follow">
 					<img src="<?php echo files('profiles/'.$follower->cover) ?>" />
 
@@ -57,15 +57,16 @@
 			<p class="text_follow"><?php echo $follower->description ?></p>
 				<img src="<?php print img_url('common/casque.png'); ?>" /><span><?php echo $follower->style_joue ?></span>
 		</div>
-		<div class="bouton">
-			<a href="#" class="participer">
+		<div class="bouton" class ="myfollow" id="<?php echo $follower->id ?>">
+			<a href="#" class="my-follow">
 			<span class="button_left_abonne"></span>
 			<span class="button_center_abonne">Abonné</span>
 			<span class="button_right_abonne"></span></a>
 		</div>
-	</div>
+			
 	<hr/>
-	
+
+	</div>
 		<?php
 	endforeach;
 	endif;

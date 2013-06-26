@@ -48,7 +48,8 @@
    { 
 
    	    foreach($concert_all as $concert_unit): ?>
- 
+  		<div id="concert_id_<?php echo $concert_unit->concerts_id ;?>" >
+
   		<p  class="date-heure"><span><?php
 		get_date($concert_unit->date,'complete');?> <?php if(isset($concert_unit->prix))echo ' - '.$concert_unit->prix.'&euro;'?></span></p>
    		 <hr/>
@@ -66,9 +67,13 @@
       			 <p class="adr_ville"><?php echo $concert_unit->ville.", ".$concert_unit->pays ?></p>
    		 	</div>
    		 <a href="javascript:void(0);" class="more" id="more_<?php echo $concert_unit->id ?>" onclick='showInfo(more_<?php echo $concert_unit->id ?>,more_info_<?php echo $concert_unit->id ?>)' >Voir plus d'informations</a>
-    	 <a href="#" class="participer"><span class="button_left"></span><span class="button_center">J'y vais</span><span class="button_right"></span></a>
+    	 	<div id="concert_activity>">
+	
+    	    		<a id="<?php echo $concert_unit->concerts_id;?>" href="#" class="noparticiper_melo" ><span class="button_left"></span><span  class="button_center">Je n'y vais plus</span><span class="button_right"></span></a>
+
     
-   
+    	 </div>
+    	 </div>
     
     
     <div class="info_sup" id="more_info_<?php echo $concert_unit->id ?>" style="display:none">
