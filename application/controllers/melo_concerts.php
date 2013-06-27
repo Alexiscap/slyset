@@ -15,7 +15,7 @@ class melo_concerts extends CI_Controller {
         $this->layout->ajouter_js('maps_api');
         $this->layout->ajouter_js('maps-google');
 
-        $this->load->model(array('user_model', 'concert'));
+        $this->load->model(array('user_model', 'concert','melo_concert'));
         $this->load->helper('date');
 
         $this->user_authentication->musicien_user_validation();
@@ -66,8 +66,7 @@ class melo_concerts extends CI_Controller {
 //        $data['info_user'] = $this->concert->get_user($user_id);
 
         $data['nbr_concert_par_melo'] = $this->concert->count_artiste_concert($user_visited, $inf_sup);
-        $data['concert_all'] = $this->concert->get_concert($data['nbr_concert_par_melo'], 0, $user_visited, $inf_sup);
-
+        $data['concert_all'] = $this->melo_concert->get_concert($data['nbr_concert_par_melo'], 0, $user_visited, $inf_sup);
         function get_date($date_concert, $test) {
             //gestion des differents formats d'affichage des dates
             $date_format = (date_create($date_concert, timezone_open('Europe/Paris')));

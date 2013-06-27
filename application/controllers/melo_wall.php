@@ -65,17 +65,68 @@ class melo_wall extends CI_Controller
     	$result = $this->wallm->difference($listforin_sql,$user_id);
    		if(isset($result))
    		{
-   		foreach ($result as $id)
-   		{    
-   			if($id->id>$this->input->post('id_last'))
-    		{
-			$id_new = $id->id;
-   			 $result_total = $this->wallm->get_new_item($id_new);
+   			foreach ($result as $id)
+   			{    
+   				if($id->id>$this->input->post('id_last'))
+    			{
+					$id_new = $id->id;
+   					$result_total = $this->wallm->get_new_item($id_new,$id->type,$id->photos_id,$id->videos_id,$id->message_id,$id->concerts_id);
+					//var_dump($result_total);
+					
+   					if(isset($result_total))
+   					{
+						echo	'<div id ="'.$result_total[0][0]->id.'" class="artist_post photo_message">
+     								<div class="top"  class="top" id="'.$result_total[0][0]->id.'">
+        										<a href="#"><img src="'.img_url('musicien/btn_suppr.png').'" alt="Suppression" /></a>
 
-		
-   		if(isset($result_total))
-   		{
-    			echo '<div id ="'.$id->id.'" class="artist_post photo_message">
+     								</div>
+      								<div class="left">
+        								<img src="'.base_url('/files/profiles/'.$result_total[0][0]->thumb).'" alt="Photo Profil" />
+      								</div>
+     								<div class="right">'.$result_total[2].'
+        								</div>
+									<div class="bottom">
+        								<span class="infos_publi">'.$result_total[0][0]->login.' - '.$result_total[0][0]->date.'<!--Le 26 Septembre 2013--></span>
+      								</div>
+   								</div>';
+
+		 			}
+ /*
+ 			if($entity_wall->type =='ME'):
+
+		<!-- ******* ******* ***** LIKE D'UNE PHOTO  ******* ******* **** -->
+
+  				<div id ="<?php echo $entity_wall->id?>" class="artist_post photo_message">
+      			<div class="top"   class="top" id="<?php echo $entity_wall->id?>">
+        				<?php if($this->uri->segment(2)==$this->session->userdata('uid')):
+
+    						<a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+         				<?php endif;?>
+
+      				</div>
+     					
+     				<div class="left">
+
+        				<img src="<?php echo base_url('./files/profiles/'.$info_user[0]->thumb); ?>" alt="Photo Profil" />
+      				</div>
+      					
+      				<div class="right">
+      					<span class="ico_citation"></span>
+        				<p class="msg_post">Je viens de liker la photo de <?php echo $entity_wall->login ?> :  <a href="<?php echo base_url('index.php/mc_photos/zoom_photo/'.$entity_wall->idproduit) ?>"><?php echo $entity_wall->main_nom?></a></p>
+      					<!--  <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
+   						-->  
+    				</div>
+      					
+      				<div class="bottom">
+    					<span class="infos_publi"><?php echo $this->uri->segment('')?><!--  - --> <?php echo $entity_wall->date ?><!--Le 26 Septembre 2013--></span>
+  					</div>
+   				</div>
+ 
+ 		<?php
+ 		*/
+ 			//}}
+   		
+    		/*	echo '<div id ="'.$id->id.'" class="artist_post photo_message">
      						<div class="top">
 
     							<a href="#"><img src="" alt="Suppression" /></a>
@@ -104,11 +155,11 @@ class melo_wall extends CI_Controller
    				
    				
       					
-      			';
-      			}
+      			';*/
+      		//	}
 
-    }
-    	}
+    //}
+    	}}
     	}
     	
     	}

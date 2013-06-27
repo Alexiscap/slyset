@@ -1,6 +1,20 @@
 $( document ).ready(function() 
 {
+   $('.top').click(function(){
+      	var baseurl = window.location.host;
 
+   		var id_wall = $(this).attr('id');
+    	var data_id_wall = 'id_wall='+id_wall;
+    	
+    	$.ajax({
+    		type: "POST",
+            url :  '/slyset/index.php/melo_wall/delete_from_wall',
+            data: data_id_wall,
+                success: function(){
+        			$('#'+id_wall).slideUp();
+  	 		 	}
+    	});
+	});
    setInterval(function() {
 var url = window.location.pathname.split( '/' );
 

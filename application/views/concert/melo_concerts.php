@@ -40,12 +40,12 @@
    </div>
     <h2>Mes prochains concerts</h2>
    
-     <!-- Boucle : tous les concerts pour un artiste -->
+     <!-- Boucle : tous les concerts pour un artiste  -->
    	  <?php 
 if($nbr_concert_par_melo!=0)
    { 
    	   foreach($concert_all as $concert_unit): ?>
- 
+ 		<div id="concert_id_<?php echo $concert_unit->concerts_id ;?>" >
   		<p  class="date-heure"><span><?php
 		get_date($concert_unit->date,'complete');?> <?php if(isset($concert_unit->prix))echo ' - '.$concert_unit->prix.'&euro;'?></span></p>
    		 <hr/>	 
@@ -62,26 +62,17 @@ if($nbr_concert_par_melo!=0)
       	 		<p class="adr_rue"><?php if(isset($concert_unit->numero_adresse,$concert_unit->voie_adresse))echo $concert_unit->numero_adresse." ".$concert_unit->voie_adresse ?> <!--Bis Rue de Bagnolet--></p>
       			 <p class="adr_ville"><?php echo $concert_unit->ville.", ".$concert_unit->pays ?></p>
    		 	</div>
-   		 <a href="javascript:void(0);" class="more" id="more_<?php echo $concert_unit->id ?>" onclick='showInfo(more_<?php echo $concert_unit->id ?>,more_info_<?php echo $concert_unit->id ?>)' >Voir plus d'informations</a>
+   		 <a href="javascript:void(0);" class="more" id="more_<?php echo $concert_unit->concerts_id ?>" onclick='showInfo(more_<?php echo $concert_unit->concerts_id ?>,more_info_<?php echo $concert_unit->concerts_id ?>)' >Voir plus d'informations</a>
     
     	    	<div id="concert_activity>">
-	<?php 
-	//var_dump($all_concert_act);
-    	$count = substr_count($all_concert_act,$concert_unit->id.'/');
-    	if ($count>=1)
-    	{?>
-    	    		<a id="<?php echo $concert_unit->id;?>" href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">Je n'y vais plus</span><span class="button_right"></span></a>
+	
+    	    		<a id="<?php echo $concert_unit->concerts_id;?>" href="#" class="noparticiper_melo" ><span class="button_left"></span><span  class="button_center">Je n'y vais plus</span><span class="button_right"></span></a>
 
-    	<?php
-    	}
-    	else{?>
-    	    	 <a id="<?php echo $concert_unit->id;?>" href="#" class="participer"><span class="button_left"></span><span  class="button_center">J'y vais</span><span class="button_right"></span></a>
-
-		<?php }
-    	 ?> 
-    	 </div>
     
-    <div class="info_sup" id="more_info_<?php echo $concert_unit->id ?>" style="display:none">
+    	 </div>
+        </div>
+
+    <div class="info_sup" id="more_info_<?php echo $concert_unit->concerts_id ?>" style="display:none">
       <div class="informations">
         <p class="nom_date"><?php echo $concert_unit->titre.',' ?> <!--le 28/11/13 &agrave; 20h30--></p>
         <p class="lieu_salle"><?php echo $concert_unit->salle.',' ?></p>

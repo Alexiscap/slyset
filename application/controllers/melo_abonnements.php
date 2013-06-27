@@ -51,5 +51,14 @@ class melo_abonnements extends CI_Controller {
         
         $this->layout->view('follower/melo_abonnements', $data);
     }
+    
+    public function delete_community_wall()
+    
+    {
+   $id_community =  $this->input->post('idwall_community');
+     $delete_wall_community = $this->myfollower->delete_wall_community($id_community);
+    
+    }
+  
 
 }

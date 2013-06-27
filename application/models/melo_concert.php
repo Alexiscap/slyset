@@ -52,7 +52,7 @@ class melo_concert extends CI_Model
       	
 
 		//return $this->db->select('concerts.id,Utilisateur_id,Adresse_id,date,titre,seconde_partie,numero_adresse,salle,voie_adresse,ville,code_postal,pays,prix,phone_number,website')        				
-          return $this->db->select('concerts_activite.id,concerts.titre,adresse.ville,concerts.date,concerts.Adresse_id,concerts.salle,adresse.pays,concerts.prix,concerts.seconde_partie,adresse.numero_adresse,adresse.voie_adresse,adresse.ville,adresse.code_postal,adresse.phone_number,adresse.website')
+          return $this->db->select('concerts_activite.id,concerts.id AS concerts_id,concerts.titre,adresse.ville,concerts.date,concerts.Adresse_id,concerts.salle,adresse.pays,concerts.prix,concerts.seconde_partie,adresse.numero_adresse,adresse.voie_adresse,adresse.ville,adresse.code_postal,adresse.phone_number,adresse.website')
                         ->from ('concerts_activite')
                         ->join ('concerts','concerts.id=concerts_activite.Concerts_id')
                         ->join ('adresse','adresse.id=concerts.Adresse_id')

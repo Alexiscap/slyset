@@ -19,7 +19,7 @@ class Mc_concerts extends CI_Controller {
         $this->layout->ajouter_js('maps-google');
         $this->layout->ajouter_js('jquery.colorbox');
         $this->load->model(array('perso_model', 'user_model', 'concert'));
-
+		$this->load->helper('url');
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
         $output = $this->perso_model->get_perso($this->user_id);
 
@@ -155,7 +155,7 @@ class Mc_concerts extends CI_Controller {
             if (isset($data['concert_lieu_ville'])) {
                 $cpr = curl_init();
 
-                curl_setopt($cpr, CURLOPT_URL, "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" . $data['concert_lieu_salle'] . "+" . $data['concert_lieu_ville'] . "&sensor=true&key=AIzaSyCcssc_1iHiNjx3tub8qJ3L3WmpCn-ea5Y");
+                curl_setopt($cpr, CURLOPT_URL, "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" . $data['concert_lieu_salle_plus'] . "+" . $data['concert_lieu_ville'] . "&sensor=true&key=AIzaSyCcssc_1iHiNjx3tub8qJ3L3WmpCn-ea5Y");
                 curl_setopt($cpr, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
                 curl_setopt($cpr, CURLOPT_RETURNTRANSFER, TRUE);
 
@@ -213,7 +213,7 @@ class Mc_concerts extends CI_Controller {
     }
 
     public function modifier_concert($infos_profile = NULL, $concert_id, $adresse_id) {
-        if ($infos_profile->id != $this->session->userdata('uid')) {
+        if ($infos_profile != $this->session->userdata('uid')) {
             show_404();
         }
 
@@ -343,8 +343,8 @@ class Mc_concerts extends CI_Controller {
     }
 
     public function delete_activity_concert() {
-        $uid = $this->session->userdata('uid');
-        $id_concert = $this->input->post('id_concert');
+       $uid = $this->session->userdata('uid');
+      print  $id_concert = $this->input->post('id_concert');
         $this->concert->delete_activity($id_concert, $uid);
     }
 
