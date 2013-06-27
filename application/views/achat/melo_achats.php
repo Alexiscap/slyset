@@ -55,18 +55,13 @@
 				</tr>
 			</table>
 		</div>
-						<form>
-
 		<div class="titres">
 			<table>
 				<?php foreach ($cmd as $commande):
 					if($commande->status=="P"): ?>
 					
 				<tr>
-					<td class="check">
-					<input type="checkbox" class="check_all">
-					<label>
-					<span></span></label></td>
+					<td class="check"><input type="checkbox"></td>
 					<td class="le_titre">
 						<img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
 						<?php echo $commande->nom ?>
@@ -75,7 +70,7 @@
 					<td class="type"><?php echo $commande->type ?></td>
 					<td class="prix"><?php echo $commande->prix ?> €</td>
 				</tr>
-	</form>
+	
 				<?php 
 					endif;
 				endforeach;?>

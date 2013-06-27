@@ -33,8 +33,7 @@
   </div>
   <div class="bt_ajout_concert">
    <?php $uid = $this->session->userdata('uid');
-  	  		 if( $this->uri->segment(2) ==$this->session->userdata('uid')){ ?>
-
+  		 if($infos_profile->id == $uid){ ?>
    <a class="iframe" href="<?php echo base_url('index.php/mc_concerts/ajouter_concert/'.$infos_profile->id)?>"> <img href="" src="<?php echo img_url('musicien/ajout_concert.png'); ?>" alt="ajout concert"/></a>
   <?php } 
   else
@@ -45,8 +44,8 @@
 
   <div class="content">
     <div id="btn_tmp">
-       <a href="<?php echo base_url('index.php/mc_concerts/'.$infos_profile->id) ?>"><img src="<?php echo img_url('musicien/filtre_avenir.png'); ?>" alt="A venir"/></a>
-       <a href="<?php echo base_url('index.php/mc_concerts/concert_passe/'.$infos_profile->id) ?>"><img src="<?php echo img_url('musicien/filtre_passe.png'); ?>" alt="Concert passé"/></a>
+       <a href="<?php echo base_url('index.php/mc_concerts/'.$infos_profile->id) ?>"><div class="avenir actif">A venir</div></a>
+       <a href="<?php echo base_url('index.php/mc_concerts/concert_passe/'.$infos_profile->id) ?>"><div class="cpasse">Concerts passés</div></a>
    </div>
     <h2>Les concerts de <?php echo $infos_profile->login; ?> &agrave; venir</h2>
    
@@ -60,15 +59,8 @@ if($nbr_concert_par_artiste != 0)
 		get_date($concert_unit->date,'complete');?> <?php if(isset($concert_unit->prix))echo ' - '.$concert_unit->prix.'&euro;'?></span>
 		</p>
 <?php
-  		 if( $this->uri->segment(2) ==$this->session->userdata('uid')){ ?>
-   		 <div class="edition">
-   		 	<a class="iframe" href="<?php echo base_url('index.php/mc_concerts/modifier_concert/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>">
-   		 	<span class="edit">editer</span>
-   		 	</a>
-   		 	<a class="iframe" href="<?php echo base_url('index.php/mc_concerts/suppression_concert/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>">
-   		 	<span class="suppr">supprimer</span>
-   		 	</a>
-   		 </div>
+  		 if( $user_id ==$uid){ ?>
+   		 <div class="edition"><a class="iframe" href="<?php echo base_url('index.php/mc_concerts/modifier_concert/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>"><span class="edit">editer</span></a><a class="iframe" href="<?php echo base_url('index.php/mc_concerts/suppression_concert/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>"><span class="suppr">supprimer</span></a></div>
    		<?php }?> <hr/>	 
    			 <div class="infos_concert">
       			 <div class="calendrier"><p class="mois"><?php
@@ -111,7 +103,7 @@ if($nbr_concert_par_artiste != 0)
         <p class="lieu_ville"><?php if(isset($concert_unit->code_postal))echo $concert_unit->code_postal." ".$concert_unit->ville;?></p>
         <p class="tel"><?php if (isset($concert_unit->phone_number)) echo "Tel. : ".$concert_unit->phone_number ;?> </p>
         <p class="site"><?php if (isset($concert_unit->website)) echo "Site web :<a href='.$concert_unit->website.'> ".$concert_unit->website."</a>" ;?></p>
-        <p class="partager">partager l'&eacute;v&egrave;nement :</p>
+        <p class="partager">PARTAGER L'EVENEMENT :</p>
         <div class="partage_reseaux">
           <a href="#"><span class="twitter">twitter</span></a>
           <a href="#"><span class="facebook">fb</span></a>

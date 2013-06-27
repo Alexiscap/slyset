@@ -64,22 +64,18 @@
 				<p> Acheter l'album</p>
 			</a>
 		</div>
-		<div class="liste_titres">
-			<div class="en_tete">
-				<table>
-					<tr>
-						<td class="check"><input type="checkbox"></td>
-						<td class="le_titre">Titre de la chanson</td>
-						<td class="duree">Durée</td>
+	<div id="articles-tab">
+		<form action="http://127.0.0.1/slyset/index.php/admin_articles/delete_multi_article" method="post" accept-charset="utf-8">          
+			<table>
+				<tbody>
+					<tr class="tab-head odd row-color-2">
+						<th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"><span></span></label></th>
+						<th class="article-title">Titre de la chanson<span id="titre" class="filter filter-bottom"></span></th>
+						<th class="article-date">Durée<span id="created" class="filter filter-bottom"></span></th>
 					</tr>
-				</table>
-			</div>
-			<div class="titres">
-				<table>
-					<tr>
-						<td class="check"><input type="checkbox"></td>
-						<td class="le_titre" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
-							<a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
+					<tr class="even row-color-1">
+						<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="18" id="article-18" class="checkbox-article"><label for="article-18"><span></span></label></td>
+						<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id=''";><a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
 							<p> Rainy Day Women </p>
 							<div class="miniat_titre">
 								<a href="#" class="add"><span>add</span></a>
@@ -88,13 +84,12 @@
 								<a href="#" class="cam"><span>cam</span></a>
 							</div>
 						</td>
-						<td class="duree">4:19</td>
+						<td class="article-date">4:19</td>
 					</tr>
-					<tr>
-						<td class="check"><input type="checkbox"></td>
-						<td class="le_titre" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
-							<a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
-							<p> Hurricane </p>
+					<tr class="even row-color-2">
+						<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="19" id="article-19" class="checkbox-article"><label for="article-19"><span></span></label></td>
+						<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id=''";><a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
+							<p> Rainy Day Women </p>
 							<div class="miniat_titre">
 								<a href="#" class="add"><span>add</span></a>
 								<a href="#" class="edit"><span>edit</span></a>
@@ -102,28 +97,15 @@
 								<a href="#" class="cam"><span>cam</span></a>
 							</div>
 						</td>
-						<td class="duree">4:19</td>
+						<td class="article-date">4:19</td>
 					</tr>
-					<tr>
-						<td class="check"><input type="checkbox"></td>
-						<td class="le_titre" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
-							<a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
-							<p> I Want You </p>
-							<div class="miniat_titre">
-								<a href="#" class="add"><span>add</span></a>
-								<a href="#" class="cadis"><span>edit</span></a>
-								<a href="#" class="coeur"><span>cadis</span></a>
-								<a href="#" class="cam"><span>cam</span></a>
-							</div>
-						</td>
-						<td class="duree">2:14</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-		<input type="button" value="Acheter" class="bt_cadis">
-		<input type="button" value="Dans ma playlist" class="bt_playlist">
-	</div>
+				</tbody>
+			</table>
+			<input type="button" value="Acheter" class="bt_cadis">
+			<input type="button" value="Dans ma playlist" class="bt_playlist">
+		</form>
+    </div>
+</div>
 	<hr />
 	<div class="tout_titre">
 		<input type="button" value="Acheter" class="bt_cadis"/>
@@ -132,141 +114,46 @@
 			<img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
 			<p> Ecouter l'album</p>
 		</a>
-		<div class="liste_titres">
-			<div class="en_tete">
+		<div id="articles-tab">
+			<form action="http://127.0.0.1/slyset/index.php/admin_articles/delete_multi_article" method="post" accept-charset="utf-8">          
 				<table>
-					<tr>
-						<td class="check"><input type="checkbox"></td>
-						<td class="le_titre">Titre de la chanson</td>
-						<td class="duree">Durée</td>
-						<td class="album">Album</td>
-					</tr>
+					<tbody>
+						<tr class="tab-head odd row-color-2">
+							<th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"><span></span></label></th>
+							<th class="article-title">Titre de la chanson<span id="titre" class="filter filter-bottom"></span></th>
+							<th class="article-date">Durée<span id="created" class="filter filter-bottom"></span></th>
+						</tr>
+						<tr class="even row-color-1">
+							<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"><span></span></label></td>
+							<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id=''";><a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
+								<p> Rainy Day Women </p>
+								<div class="miniat_titre">
+									<a href="#" class="add"><span>add</span></a>
+									<a href="#" class="edit"><span>edit</span></a>
+									<a href="#" class="coeur"><span>coeur</span></a>
+									<a href="#" class="cam"><span>cam</span></a>
+								</div>
+							</td>
+							<td class="article-date">4:19</td>
+						</tr>
+						<tr class="even row-color-2">
+							<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="21" id="article-21" class="checkbox-article"><label for="article-21"><span></span></label></td>
+							<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id=''";><a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
+								<p> Rainy Day Women </p>
+								<div class="miniat_titre">
+									<a href="#" class="add"><span>add</span></a>
+									<a href="#" class="edit"><span>edit</span></a>
+									<a href="#" class="coeur"><span>coeur</span></a>
+									<a href="#" class="cam"><span>cam</span></a>
+								</div>
+							</td>
+							<td class="article-date">4:19</td>
+						</tr>
+					</tbody>
 				</table>
-			</div>
-			<div class="titres">
-				<table>
-					<tr>
-						<td class="check"><input type="checkbox"></td>
-						<td class="le_titre"  onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
-							<a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
-							<p> Rainy Day Women </p>
-							<div class="miniat_titre">
-								<a href="#" class="add"><span>add</span></a>
-								<a href="#" class="edit"><span>edit</span></a>
-								<a href="#" class="coeur"><span>coeur</span></a>
-								<a href="#" class="cam"><span>cam</span></a>
-							</div>
-						</td>
-						<td class="duree">4:19</td>
-						<td class="album">Blonde on blonde</td>
-					</tr>
-					<tr>
-						<td class="check"><input type="checkbox"></td>
-						<td class="le_titre"  onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
-							<a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
-							<p> Rainy Day Women </p>
-							<div class="miniat_titre">
-								<a href="#" class="add"><span>add</span></a>
-								<a href="#" class="edit"><span>edit</span></a>
-								<a href="#" class="coeur"><span>coeur</span></a>
-								<a href="#" class="cam"><span>cam</span></a>
-							</div>
-						</td>
-						<td class="duree">4:19</td>
-						<td class="album">Blonde on blonde</td>
-					</tr>
-					<tr>
-						<td class="check"><input type="checkbox"></td>
-						<td class="le_titre"  onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
-							<a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
-							<p> Rainy Day Women </p>
-							<div class="miniat_titre">
-								<a href="#" class="add"><span>add</span></a>
-								<a href="#" class="edit"><span>edit</span></a>
-								<a href="#" class="coeur"><span>coeur</span></a>
-								<a href="#" class="cam"><span>cam</span></a>
-							</div>
-						</td>
-						<td class="duree">4:19</td>
-						<td class="album">Blonde on blonde</td>
-					</tr>
-					<tr>
-						<td class="check"><input type="checkbox"></td>
-						<td class="le_titre"  onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
-							<a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
-							<p> Rainy Day Women </p>
-							<div class="miniat_titre">
-								<a href="#" class="add"><span>add</span></a>
-								<a href="#" class="edit"><span>edit</span></a>
-								<a href="#" class="coeur"><span>coeur</span></a>
-								<a href="#" class="cam"><span>cam</span></a>
-							</div>
-						</td>
-						<td class="duree">4:19</td>
-						<td class="album">Blonde on blonde</td>
-					</tr>
-					<tr>
-						<td class="check"><input type="checkbox"></td>
-						<td class="le_titre"  onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
-							<a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
-							<p> Rainy Day Women </p>
-							<div class="miniat_titre">
-								<a href="#" class="add"><span>add</span></a>
-								<a href="#" class="edit"><span>edit</span></a>
-								<a href="#" class="coeur"><span>coeur</span></a>
-								<a href="#" class="cam"><span>cam</span></a>
-							</div>
-						</td>
-						<td class="duree">4:19</td>
-						<td class="album">Blonde on blonde</td>
-					</tr>
-					<tr>
-						<td class="check"><input type="checkbox"></td>
-						<td class="le_titre"  onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
-							<a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
-							<p> Rainy Day Women </p>
-							<div class="miniat_titre">
-								<a href="#" class="add"><span>add</span></a>
-								<a href="#" class="edit"><span>edit</span></a>
-								<a href="#" class="coeur"><span>coeur</span></a>
-								<a href="#" class="cam"><span>cam</span></a>
-							</div>
-						</td>
-						<td class="duree">4:19</td>
-						<td class="album">Blonde on blonde</td>
-					</tr>
-					<tr>
-						<td class="check"><input type="checkbox"></td>
-						<td class="le_titre"  onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
-							<a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
-							<p> Rainy Day Women </p>
-							<div class="miniat_titre">
-								<a href="#" class="add"><span>add</span></a>
-								<a href="#" class="edit"><span>edit</span></a>
-								<a href="#" class="coeur"><span>coeur</span></a>
-								<a href="#" class="cam"><span>cam</span></a>
-							</div>
-						</td>
-						<td class="duree">4:19</td>
-						<td class="album">Blonde on blonde</td>
-					</tr>
-					<tr>
-						<td class="check"><input type="checkbox"></td>
-						<td class="le_titre"  onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
-							<a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
-							<p> Rainy Day Women </p>
-							<div class="miniat_titre">
-								<a href="#" class="add"><span>add</span></a>
-								<a href="#" class="edit"><span>edit</span></a>
-								<a href="#" class="coeur"><span>coeur</span></a>
-								<a href="#" class="cam"><span>cam</span></a>
-							</div>
-						</td>
-						<td class="duree">4:19</td>
-						<td class="album">Blonde on blonde</td>
-					</tr>
-				</table>
-			</div>
+				<input type="button" value="Acheter" class="bt_cadis">
+				<input type="button" value="Dans ma playlist" class="bt_playlist">
+			</form>
 		</div>
 	</div>
   </div>

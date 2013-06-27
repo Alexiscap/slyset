@@ -37,9 +37,9 @@
 
   <div class="content">
     <div id="btn_tmp">
-      <a href="<?php echo site_url('melo_concerts/index/'.$infos_profile->id) ?>"><img src="<?php echo img_url('musicien/filtre_avenir.png'); ?>" alt="A venir"/></a>
-      <a href="<?php echo site_url('melo_concerts/concert_passe/'.$infos_profile->id) ?>"><img src="<?php echo img_url('musicien/filtre_passe.png'); ?>" alt="A venir"/></a>
-    </div>
+       <a href="<?php echo base_url('index.php/mc_concerts/'.$infos_profile->id) ?>"><div class="avenir">A venir</div></a>
+       <a href="<?php echo base_url('index.php/mc_concerts/concert_passe/'.$infos_profile->id) ?>"><div class="cpasse actif">Concerts passés</div></a>
+   </div>
     <h2>Mes concerts passés </h2>
    
      <!-- Boucle : tous les concerts pour un artiste -->
@@ -48,8 +48,7 @@
    { 
 
    	    foreach($concert_all as $concert_unit): ?>
-  		<div id="concert_id_<?php echo $concert_unit->concerts_id ;?>" >
-
+ 
   		<p  class="date-heure"><span><?php
 		get_date($concert_unit->date,'complete');?> <?php if(isset($concert_unit->prix))echo ' - '.$concert_unit->prix.'&euro;'?></span></p>
    		 <hr/>
@@ -67,13 +66,9 @@
       			 <p class="adr_ville"><?php echo $concert_unit->ville.", ".$concert_unit->pays ?></p>
    		 	</div>
    		 <a href="javascript:void(0);" class="more" id="more_<?php echo $concert_unit->id ?>" onclick='showInfo(more_<?php echo $concert_unit->id ?>,more_info_<?php echo $concert_unit->id ?>)' >Voir plus d'informations</a>
-    	 	<div id="concert_activity>">
-	
-    	    		<a id="<?php echo $concert_unit->concerts_id;?>" href="#" class="noparticiper_melo" ><span class="button_left"></span><span  class="button_center">Je n'y vais plus</span><span class="button_right"></span></a>
-
+    	 <a href="#" class="participer"><span class="button_left"></span><span class="button_center">J'y vais</span><span class="button_right"></span></a>
     
-    	 </div>
-    	 </div>
+   
     
     
     <div class="info_sup" id="more_info_<?php echo $concert_unit->id ?>" style="display:none">
@@ -84,7 +79,7 @@
         <p class="lieu_ville"><?php if(isset($concert_unit->code_postal))echo $concert_unit->code_postal." ".$concert_unit->ville;?></p>
         <p class="tel"><?php if (isset($concert_unit->phone_number)) echo "Tel. : ".$concert_unit->phone_number ;?> </p>
         <p class="site"><?php if (isset($concert_unit->website)) echo "Site web :<a href='".$concert_unit->website."'> ".$concert_unit->website."</a>" ;?></p>
-        <p class="partager">partager l'&eacute;v&egrave;nement :</p>
+        <p class="partager">PARTAGER L'EVENEMENT :</p>
         <div class="partage_reseaux">
           <a href="#"><span class="twitter">twitter</span></a>
           <a href="#"><span class="facebook">fb</span></a>
