@@ -377,7 +377,7 @@ cursor : pointer;}
 .caroufredsel_wrapper{ margin:0 auto !important; }
 #coverflow{ width:770px; height:364px; position:relative; z-index:1; }
 #coverflow a{ display:block; float:left; width:188px; height:188px; margin:25px 15px 0 15px; text-decoration:none; text-align:center; position:relative; -webkit-transition:width 0.5s ease, height 0.5s ease; -moz-transition:width 0.5s ease, height 0.5s ease; -o-transition:width 0.5s ease, height 0.5s ease; ms-transition:width 0.5s ease, height 0.5s ease; transition:width 0.5s ease, height 0.5s; }
-#coverflow a.current-item{ margin-top:0; width:238px; height:238px; }
+#coverflow a.current-item{ margin-top:0px; width:238px; height:238px; }
 #coverflow a img{ display:block; float:left; width:100%; height:100%; }
 #coverflow a .coverflow_artist{ margin:8px 0 !important; display:inline-block; text-align:center; margin-top:10px; font-family:'Myriad Pro'; font-weight:bold; font-size:13px; text-transform:uppercase; color:white; }
 #coverflow a .coverflow_player{ background:rgba(115, 115, 115, 0.7); width:100%; height:60px; position:absolute; top:128px; left:0; z-index:50; }
