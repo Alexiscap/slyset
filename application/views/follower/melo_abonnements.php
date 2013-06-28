@@ -36,13 +36,13 @@
 	
 		<?php
  	if (count($all_follower)==1):?>
-	<h2>Mon abonnement</h2>
+	<h2>Mes abonnements</h2>
 	<?php endif;
 	if (count($all_follower)==0):?>
 	<h2>Aucun abonnement</h2>
 	<?php endif;
 	if (count($all_follower)>1):?>
-	<h2>Mes <?php echo count($all_follower);?> abonnements</h2>
+	<h2>Mes<span class="green_text"> <?php echo count($all_follower);?></span> abonnements</h2>
 	<?php endif;
 	
 		if(isset($all_follower)):

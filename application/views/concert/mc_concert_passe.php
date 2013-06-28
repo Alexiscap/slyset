@@ -110,12 +110,14 @@
         <p class="site"><?php if (isset($concert_unit->website)) echo "Site web :<a href='".$concert_unit->website."'> ".$concert_unit->website."</a>" ;?></p>
         <p class="partager">partager l'&eacute;v&egrave;nement :</p>
         <div class="partage_reseaux">
-          <a href="#"><span class="twitter">twitter</span></a>
-          <a href="#"><span class="facebook">fb</span></a>
-          <a href="#"><span class="google">g+</span></a>
+         	<a href="https://twitter.com/share?text=Je vais participer au concert de <?php echo $concert_unit->titre ?>"  data-lang="en"><span class="twitter">twitter</span></a>
+        	<a href="#"><span class="facebook">fb</span></a>
+          	<a href="https://plus.google.com/share?url=http://127.0.0.1/slyset/index.php/concert/ <?php echo $concert_unit->id ?>" ><span class="google">g+</span></a>
+          
         </div>
       </div>
       <div class="plan_google">
+			<img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php echo $concert_unit->numero_adresse."+".$concert_unit->voie_adresse."+".$concert_unit->ville ?>&zoom=16&size=233x198&maptype=roadmap&markers=size:mid%7Ccolor:red%7C<?php echo $concert_unit->numero_adresse."+".$concert_unit->voie_adresse."+".$concert_unit->ville ?>&sensor=false">
 
       </div>
     </div>

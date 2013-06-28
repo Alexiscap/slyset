@@ -3,7 +3,7 @@
 input[type='file'], input[type='button'], input[type='submit']{ cursor:pointer; }
 
 #codeigniter_profiler{ overflow:scroll; }
-
+.green_text {color : #31a58c;}
 /* --------- FIN DE GENERAL CI  --------- */
 
 
@@ -165,9 +165,14 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .content .my-follow .button_right_abonne{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_suivre.png") no-repeat -77px -1px; float:left; }
 
 .content .my-follow{ margin:25px 30px 0 150px; padding:0; font-family:Arial, "Trebuchet MS"; font-size:14px; text-decoration:none; color:#ffffff; float:left; }
-.content .my-follow .button_left{ display:block; width:22px; height:30px; background:url("../images/common/sprite_btn_participer.png") no-repeat 0 -61px; float:left; }
-.content .my-follow .button_center{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_participer.png") repeat-x 0 -31px; float:left; }
-.content .my-follow .button_right{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_participer.png") no-repeat -77px -1px; float:left; }
+.content .my-follow .button_left{ display:block; width:22px; height:30px; background:url("../images/common/sprite_btn_pas_suivre.png") no-repeat 0 -61px; float:left; }
+.content .my-follow .button_center{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_pas_suivre.png") repeat-x 0 -31px; float:left; }
+.content .my-follow .button_right{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_pas_suivre.png") no-repeat -77px -1px; float:left; }
+
+.content .my-follow_red{ margin:25px 30px 0 150px; padding:0; font-family:Arial, "Trebuchet MS"; font-size:14px; text-decoration:none; color:#ffffff; float:left; }
+.content .my-follow .button_left_red{ display:block; width:22px; height:30px; background:url("../images/common/sprite_btn_participer.png") no-repeat 0 -61px; float:left; }
+.content .my-follow .button_center_red{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_participer.png") repeat-x 0 -31px; float:left; }
+.content .my-follow .button_right_red{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_participer.png") no-repeat -77px -1px; float:left; }
 
 
 
@@ -797,7 +802,7 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 .content .follower .description span {font-size:12px;color:#888d95;}
 .content .follower .description .nom_follow {font-size:14px;font-weight:bold;color:#3f3f3f;margin:0;}
 .content .follower .description .text_follow {font-size:14px;color:#5d5b5b;font-weight:normal;width:220px;margin:0;}
-.content .follower .bouton .participer {margin:20px 0 0 30px;}
+.content .follower .bouton .participer,.content .follower .bouton .my-follow {margin:20px 0 0 30px;}
 
 .content .participer .button_left_abonne{ display:block; width:22px; height:30px; background:url("../images/common/sprite_btn_suivre.png") no-repeat 0 -61px; float:left; }
 .content .participer .button_center_abonne{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_suivre.png") repeat-x 0 -31px; float:left; }
