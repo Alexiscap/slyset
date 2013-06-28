@@ -44,43 +44,33 @@
 		</div>
 		<hr />
 		<div class="clear"></div>
-		<div class="en_tete">
-			<table>
-				<tr>
-					<td class="check"><input type="checkbox"></td>
-					<td class="le_titre">Titre</td>
-					<td class="artiste">Artiste</td>
-					<td class="type">Type</td>
-					<td class="prix">Prix</td>
-				</tr>
-			</table>
-		</div>
-						<form>
-
-		<div class="titres">
-			<table>
-				<?php foreach ($cmd as $commande):
-					if($commande->status=="P"): ?>
-					
-				<tr>
-					<td class="check">
-					<input type="checkbox" class="check_all">
-					<label>
-					<span></span></label></td>
-					<td class="le_titre">
-						<img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
-						<?php echo $commande->nom ?>
-					</td>
-					<td class="artiste"><?php echo $commande->user_login ?></td>
-					<td class="type"><?php echo $commande->type ?></td>
-					<td class="prix"><?php echo $commande->prix ?> €</td>
-				</tr>
-	</form>
-				<?php 
-					endif;
-				endforeach;?>
-			</table>
-			<div class="clear"></div>
+		<div id="articles-tab">
+			<form action="http://127.0.0.1/slyset/index.php/admin_articles/delete_multi_article" method="post" accept-charset="utf-8">          
+				<table>
+					<tbody>
+						<tr class="tab-head odd row-color-2">
+							<th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"><span></span></label></th>
+							<th class="article-title">Titre<span id="titre" class="filter filter-bottom"></span></th>
+							<th class="article-artiste">Artiste<span id="titre" class="filter filter-bottom"></span></th>
+							<th class="article-type">Type<span id="titre" class="filter filter-bottom"></span></th>
+							<th class="article-prix">Prix<span id="created" class="filter filter-bottom"></span></th>
+						</tr>
+						<?php foreach ($cmd as $commande):
+						if($commande->status=="P"): ?>
+							<tr class="even row-color-1">
+								<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"><span></span></label></td>
+								<td class="article-title"><a href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
+								<?php echo $commande->nom ?></td>
+								<td class="article-artiste"><?php echo $commande->user_login ?></td>
+								<td class="article-type"><?php echo $commande->type ?></td>
+								<td class="article-prix"><?php echo $commande->prix ?> €</td>
+							</tr>
+						<?php 
+						endif;
+						endforeach;?>
+					</tbody>
+				</table>
+			</form>
 		</div>
 		<p class="total_panier">Montant total <span>10,00€</span></p>
 			<div class="clear"></div>
@@ -99,39 +89,33 @@
 		</div>
 		<hr />
 		<div class="clear"></div>
-		<div class="en_tete">
-			<table>
-				<tr>
-					<td class="check"><input type="checkbox"></td>
-					<td class="le_titre">Titre</td>
-					<td class="artiste">Artiste</td>
-					<td class="type">Type</td>
-					<td class="prix">Télécharger</td>
-				</tr>
-			</table>
-		</div>
-		<div class="titres">
-			<table>
-			<?php foreach ($cmd as $commande):
-					if($commande->status=="V"): ?>
-					
-				<tr>
-					<td class="check"><input type="checkbox"></td>
-					<td class="le_titre">
-						<img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
-						<?php echo $commande->nom ?>
-					</td>
-					<td class="artiste"><?php echo $commande->user_login ?></td>
-					<td class="type"><?php echo $commande->type ?></td>
-					<td class="prix"></td>
-				</tr>
-	
-				<?php 
-					endif;
-				endforeach;?>
-			
-			</table>
-			<div class="clear"></div>
+		<div id="articles-tab">
+			<form action="http://127.0.0.1/slyset/index.php/admin_articles/delete_multi_article" method="post" accept-charset="utf-8">          
+				<table>
+					<tbody>
+						<tr class="tab-head odd row-color-2">
+							<th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"><span></span></label></th>
+							<th class="article-title">Titre<span id="titre" class="filter filter-bottom"></span></th>
+							<th class="article-artiste">Artiste<span id="titre" class="filter filter-bottom"></span></th>
+							<th class="article-type">Type<span id="titre" class="filter filter-bottom"></span></th>
+							<th class="article-prix">Prix<span id="created" class="filter filter-bottom"></span></th>
+						</tr>
+						<?php foreach ($cmd as $commande):
+						if($commande->status=="P"): ?>
+							<tr class="even row-color-1">
+								<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"><span></span></label></td>
+								<td class="article-title"><a href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
+								<?php echo $commande->nom ?></td>
+								<td class="article-artiste"><?php echo $commande->user_login ?></td>
+								<td class="article-type"><?php echo $commande->type ?></td>
+								<td class="article-prix"><?php echo $commande->prix ?> €</td>
+							</tr>
+						<?php 
+						endif;
+						endforeach;?>
+					</tbody>
+				</table>
+			</form>
 		</div>
 			<input type="button" value="Télécharger" class="telecharge_select">
 	</div>

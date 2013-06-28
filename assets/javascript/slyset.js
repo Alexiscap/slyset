@@ -479,35 +479,37 @@ $(document).ready(function(){
             prev:  {
                 button: "#pagination-prev",
                 onBefore: function(data){
-                      var pos = $("#coverflow").triggerHandler("currentPosition");
-                        $(this).children().removeClass('current-item');
+                    var pos = $("#coverflow").triggerHandler("currentPosition");
+                    $(this).children().removeClass('current-item');
                 },
                 onAfter: function(data){
-                      var pos = $("#coverflow").triggerHandler("currentPosition");
-                        $(this).children().filter(":eq(1)").addClass('current-item');
+                    var pos = $("#coverflow").triggerHandler("currentPosition");
+                    $(this).children().filter(":eq(1)").addClass('current-item');
                 }
             },
             next:  {
                 button: "#pagination-next",
                 onBefore: function(data){
-                      var pos = $("#coverflow").triggerHandler("currentPosition");
-                        $(this).children().removeClass('current-item');
+                    var pos = $("#coverflow").triggerHandler("currentPosition");
+//                    $(this).children('.current-item').delay(2000).css("marginTop","25px");
+                    $(this).children().removeClass('current-item');
                 },
                 onAfter: function(data){
-                      var pos = $("#coverflow").triggerHandler("currentPosition");
-                        $(this).children().filter(":eq(1)").toggleClass('current-item');
+                    var pos = $("#coverflow").triggerHandler("currentPosition");
+                    $(this).children().filter(":eq(1)").toggleClass('current-item');
+//                    $(this).children('.current-item').delay(2000).css("marginTop","0");
                 }
             },
             mousewheel: true,
             auto: {
                 onBefore: function(data){
-                      var pos = $("#coverflow").triggerHandler("currentPosition");
-                        $(this).children().filter(":eq(1)").toggleClass('current-item');
-                        $(this).children().removeClass('current-item');
+                    var pos = $("#coverflow").triggerHandler("currentPosition");
+                    $(this).children().filter(":eq(1)").toggleClass('current-item');
+                    $(this).children().removeClass('current-item');
                 },
                 onAfter: function(data){
-                      var pos = $("#coverflow").triggerHandler("currentPosition");
-                        $(this).children().filter(":eq(1)").toggleClass('current-item');
+                    var pos = $("#coverflow").triggerHandler("currentPosition");
+                    $(this).children().filter(":eq(1)").toggleClass('current-item');
                 }
             }
         });
@@ -518,12 +520,12 @@ $(document).ready(function(){
             function(){
                 $(this).append('<div class="coverflow_player" style="display:none;"><span class="coverflow_player_btn"></span></div>').fadeIn('slow');
                 $(this).find('.coverflow_player').fadeIn(250, function(){
-                        $(this).show();
+                    $(this).show();
                 });
             },
             function(){
                 $(this).find('.coverflow_player').fadeOut(250, function(){
-                        $(this).remove();
+                    $(this).remove();
                 });
             }
         );

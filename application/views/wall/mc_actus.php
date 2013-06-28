@@ -134,7 +134,7 @@
               
                 <div class="form_comments">
                     <form action="" method="post">
-                        <input type="text" name="usercomment" id="usercomment" placeholder="Ajouter votre commentaire..." />
+                        <input type="text" name="usercomment" id="usercomment" placeholder="Ajoutez votre commentaire..." />
                         <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
                         <input type="hidden" name="messageid" value="<?php print $message->id; ?>" id="messageid" />
 
