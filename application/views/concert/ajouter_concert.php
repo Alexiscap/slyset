@@ -9,7 +9,7 @@
 	  $user = $this->uri->segment(3);
 
       echo form_open('mc_concerts/ajouter_concert/'.$user);
-      		?><div class="label">Artiste principal</div>
+      		?><div class="label"><label>Artiste principal</label></div>
       				<div class="champs">
 
 <?php
@@ -17,26 +17,26 @@
       echo form_error('artiste', '<div>', '</div>');
 
       echo form_input('snd_partie',set_value('snd_partie'),'placeholder="Ex : Lower Dens"')."<pre>";
-      ?></div><div class="label">Date</div>
+      ?></div><div class="label"><label>Date</label></div>
       		<div class="champs">
 
 <?php
       echo form_date('date_concert',set_value(''))."<pre>";
       
       echo form_error('date_concert', '<div class="error-form" >', '</div>');
-?></div><div class="label">Heure</div><div class="champs">
+?></div><div class="label"><label>Heure</label></div><div class="champs">
 <?php
       echo form_time('heure_concert',set_value(''))."<pre>";
       ?>	</div>	
-<div class="label">Salle</div><div class="champs">
+<div class="label"><label>Salle</label></div><div class="champs">
 <?php
       echo form_input('salle',set_value('salle'),'placeholder="Ex : Le Grand Mix"')."<pre>";
       echo form_error('salle', '<div class="error-form" >', '</div>');
-?></div><div class="label">Ville</div><div class="champs">
+?></div><div class="label"><label>Ville</label></div><div class="champs">
 <?php
       echo form_input('ville',set_value('ville'),'placeholder="Ex : Lille"')."<pre>";
       echo form_error('ville', '<div class="error-form" >', '</div>');
-	?></div><div class="label">Prix</div><div class="champs_prix">
+	?></div><div class="label"><label>Prix</label></div><div class="champs_prix">
 
 <?php
       echo form_int('prix',set_value('prix'),'placeholder="Ex : 12"')."<pre>";

@@ -333,6 +333,7 @@ $(document).ready(function(){
     
     //assister a un concert
     $('.participer').click(function(){
+       var thisconcert = $(this);
         var baseurl = $(this).find("#baseurl").val();
         var id_concert = $(this).attr('id');
         var dataid = 'id_concert=' + id_concert;
@@ -344,9 +345,33 @@ $(document).ready(function(){
             data: dataid,
           
             success: function(dataid){ //afficher le bon bouton
-                var newe = '<a id=' + id_concert + ' href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">Je n\'y vais plus</span><span class="button_right"></span></a>';
-                $('.participer').replaceWith(newe);
-                $(newe).trigger('click');
+                $(thisconcert).addClass('noparticiper');
+                $(thisconcert).removeClass('participer');
+                $(thisconcert).children('.button_center').text('Je n\'y vais plus');
+            }
+        })
+        return false;
+    });
+    
+    
+        //assister a un concert
+    $('.noparticiper').click(function(){
+       var thisconcert = $(this);
+        var baseurl = $(this).find("#baseurl").val();
+        var id_concert = $(this).attr('id');
+        var dataid = 'id_concert=' + id_concert;
+        var divid = "#" + id_concert;
+            
+        $.ajax({
+            type: "POST",
+            url :'/slyset/index.php/mc_concerts/delete_activity_concert',
+            data: dataid,
+          
+            success: function(dataid){ //afficher le bon bouton
+                $(thisconcert).addClass('participer');
+                $(thisconcert).removeClass('noparticiper');
+                $(thisconcert).children('.button_center').text('J\'y vais');
+                
             }
         })
         return false;
@@ -375,6 +400,7 @@ $(document).ready(function(){
     
     // - my follower -
     // hover bouton
+    
     $('.bouton .my-follow').hover(
     
 	 function () {
@@ -397,7 +423,8 @@ $(document).ready(function(){
     //function(){$(this).replaceWith(two).show()
     
     );
-    
+    if($('body.abonnements').length>0)
+    {
      $('.bouton .my-follow').click(function(){
      	var idwall_community = $(this).parents('.bouton').attr('id');
      	var datawall = 'idwall_community=' + idwall_community;
@@ -412,7 +439,32 @@ $(document).ready(function(){
         })
         return false
      });
-    
+	}	
+	
+	
+	 if($('body.followers').length>0)
+    {
+	 $('.bouton .my-follow').click(function(){
+	 var button_click =  $(this);
+     	var idwall_community = $(this).parents('.bouton').attr('id');
+     	var datawall = 'idwall_community=' + idwall_community;
+
+     	 $.ajax({
+            type: "POST",
+            url :'/slyset/index.php/melo_abonnements/delete_community_wall',
+            data: datawall,
+            success: function(){ //afficher le bon bouton
+				//$(button_click).addClass('unfollow');
+   				$(button_click).children('.button_center_abonne').text('Suivre');
+   				$(button_click).removeClass('.my-follow');
+   				$(button_click).children('.button_left_abonne').addClass('button_left_red');		
+   				$(button_click).children('.button_center_abonne').addClass('button_center_red');
+   				$(button_click).children('.button_right_abonne').addClass('button_right_red');
+            }
+        })
+        return false
+     });
+	}
     
     //Utilisation du caroufredsel sur la page home
     if($("body.home").length > 0){
