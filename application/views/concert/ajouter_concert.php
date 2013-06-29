@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="http://127.0.0.1/slyset/assets/css/slyset.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="<?php print base_url('/assets/css/slyset.css'); ?>" media="screen" />
  	 <div class="pop-in">
 
  	<p> Ajouter un concert </p>

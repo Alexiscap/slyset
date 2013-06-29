@@ -6,7 +6,7 @@
       <li><a href="#">Accueil</a></li>
       <li><a href="#">Artistes</a></li>
       <li><a href="#"><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></a></li>
-      <li><a href="#">Fil d'actualité</a></li>
+      <li><a href="<?php print site_url('actualite/'.$uid = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id); ?>">Fil d'actualité</a></li>
     </ul>
   </div>
 

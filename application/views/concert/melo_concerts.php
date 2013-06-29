@@ -1,19 +1,26 @@
-<div id="contentAll">
-  <div id="breadcrumbs">
-    <ul>
-      <li><a href="#">Accueil</a></li>
-      <li><a href="#">Artistes</a></li>
-      <li><a href="#"><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></a></li>
-      <li><a href="#">Fil d'actualité</a></li>
-    </ul>
-  </div>
+<?php
+    $session_id = $this->session->userdata('uid');
+    $uid = (empty($session_id)) ? '' : $session_id;
+    $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
+    $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
+?>
 
-  <div id="cover" style="background-image:url(<?php print files('profiles/'.$cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
-    <div id="infos-cover">
-          <h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
-      <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
+<div id="contentAll">
+    <div id="breadcrumbs">
+        <ul>
+            <li><a href="<?php print site_url('home/' . $uid); ?>">Accueil</a></li>
+            <li><a href="<?php print site_url('my-wall/' . $uid_visit); ?>">Mon compte</a></li>
+            <li><a href="<?php print site_url($this->uri->segment(1). '/'. $uid_visit); ?>">Mes concerts</a></li>
+        </ul>
     </div>
-  </div>
+  
+    <div id="cover" style="background-image:url(<?php print files('profiles/'.$cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
+        <div id="infos-cover">
+            <h2><?php print $login; ?></h2>
+            <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
+        </div>
+    </div>
+
 
   <div id="stats-cover">
     <div class="stats_cover_block">
@@ -35,8 +42,8 @@
 
   <div class="content">
     <div id="btn_tmp">
-       <a href="<?php echo base_url('index.php/melo_concerts/'.$infos_profile->id) ?>"><img src="<?php echo img_url('musicien/filtre_avenir.png'); ?>" alt="A venir"/></a>
-       <a href="<?php echo base_url('index.php/melo_concerts/concert_passe/'.$infos_profile->id) ?>"><img src="<?php echo img_url('musicien/filtre_passe.png'); ?>" alt="Concert passé"/></a>
+       <a href="<?php print site_url('my-concert/'.$infos_profile->id) ?>"><img src="<?php echo img_url('musicien/filtre_avenir.png'); ?>" alt="A venir"/></a>
+       <a href="<?php print site_url('my-concert/concert-archive/'.$infos_profile->id) ?>"><img src="<?php echo img_url('musicien/filtre_passe.png'); ?>" alt="Concert passé"/></a>
    </div>
     <h2>Mes prochains concerts</h2>
    

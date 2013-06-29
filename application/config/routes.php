@@ -75,17 +75,19 @@ $route['my-reglages'] = "melo_reglages/index";
 $route['my-reglages/(:num)'] = "melo_reglages/index/$1";
 $route['my-reglages/update_user/(:num)'] = "melo_reglages/update_user/$1";
 
-$route['my-concert'] = "/melo_concerts/index";
-$route['my-concert/(:num)'] = "/melo_concerts/index/$1";
+$route['my-concert'] = "melo_concerts/index";
+$route['my-concert/(:num)'] = "melo_concerts/index/$1";
+$route['my-concert/concert-archive'] = "melo_concerts/concert_passe";
+$route['my-concert/concert-archive/(:num)'] = "melo_concerts/concert_passe/$1";
 
-$route['my-follower'] = "/melo_abonnements/index";
-$route['my-follower/(:num)'] = "/melo_abonnements/index/$1";
+$route['my-follower'] = "melo_abonnements/index";
+$route['my-follower/(:num)'] = "melo_abonnements/index/$1";
 
-$route['document'] = "/mc_partitions/index";
-$route['document/(:num)'] = "/mc_partitions/index/$1";
+$route['document'] = "mc_partitions/index";
+$route['document/(:num)'] = "mc_partitions/index/$1";
 
-$route['my-wall'] = "/melo_actu/index";
-$route['my-wall/(:num)'] = "/melo_actu/index/$1";
+$route['my-wall'] = "melo_actu/index";
+$route['my-wall/(:num)'] = "melo_actu/index/$1";
 
 $route['mc_concerts'] = "home"; 
 $route['mc_concerts/ajouter_concert'] = "welcome"; 
@@ -96,7 +98,8 @@ $route['mc_concerts/(:num)'] = "mc_concerts/index/$1";
 $route['my-shopping/(:num)'] = "melo_achats/index/$1";
 $route['my-shopping-recap/(:num)'] = "melo_achats/index/$1";
 
-
+$route['mentions-legales'] = "pages_statiques/mentions_legales";
+$route['mentions-legales/(:num)'] = "pages_statiques/mentions_legales/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

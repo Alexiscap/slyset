@@ -1,16 +1,22 @@
+<?php
+    $session_id = $this->session->userdata('uid');
+    $uid = (empty($session_id)) ? '' : $session_id;
+    $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
+    $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
+?>
+
 <div id="contentAll">
     <div id="breadcrumbs">
         <ul>
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#">Mon compte</a></li>
-            <li><a href="#"><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></a></li>
-            <li><a href="#">Modifier mon profil</a></li>
+            <li><a href="<?php print site_url('home/' . $uid); ?>">Accueil</a></li>
+            <li><a href="<?php print site_url('my-wall/' . $uid_visit); ?>">Mon compte</a></li>
+            <li><a href="<?php print site_url($this->uri->segment(1) . '/' . $uid_visit); ?>">Mes réglages</a></li>
         </ul>
     </div>
   
     <div id="cover" style="background-image:url(<?php print files('profiles/'.$cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
         <div id="infos-cover">
-            <h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
+            <h2><?php print $login; ?></h2>
             <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
         </div>
     </div>
@@ -38,7 +44,7 @@
         <p class="detail_reglages">Cette page vous permet d’ajouter et/ou de modifier les informations qui figurent sur votre profil.</p>
 
         <?php
-            echo form_open_multipart('my-reglages/update_user/'.$this->session->userdata('uid'));
+            echo form_open_multipart('my-reglages/update_user/'.$session_uid);
         ?>
         
         

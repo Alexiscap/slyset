@@ -106,7 +106,7 @@
           <span>Informations</span>
           <ul>
             <li><a href="#">CGU & CGV</a></li>
-            <li><a href="#">Mentions légales</a></li>
+            <li><a href="<?php print site_url('mentions-legales/'.$this->session->userdata('uid')); ?>">Mentions légales</a></li>
             <li><a href="#">Annonceurs</a></li>
           </ul>
         </div>
