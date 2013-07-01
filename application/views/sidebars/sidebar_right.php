@@ -1,12 +1,12 @@
 <aside id="right">
   <div id="avatar">
     <div id="photo">
-      <img src="<?php print $thumb = (!empty($profile->thumb)) ? files('profiles/'.$profile->thumb) : img_url('sidebar-right/default-photo-profil.png'); ?>" alt="Photo de profil"/>
+      <img src="<?php echo $thumb = (!empty($profile->thumb)) ? files('profiles/'.$profile->thumb) : img_url('sidebar-right/default-photo-profil.png'); ?>" alt="Photo de profil"/>
     </div>
     <div id="description">
-      <p id="texte_description"><?php if(!empty($profile->description)) print ucfirst($profile->description); else print 'Aucune description n\'a été remplie pour le moment.'; ?></p>
-      <p id="style"><?php if(!empty($profile->style_ecoute)) print ucfirst($profile->style_joue); ?></p>
-      <p id="instruments"><?php if(!empty($profile->instrument)) print ucfirst($profile->instrument); ?></p>
+      <p id="texte_description"><?php if(!empty($profile->description)) echo ucfirst($profile->description); else echo 'Aucune description n\'a été remplie pour le moment.'; ?></p>
+      <p id="style"><?php if(!empty($profile->style_ecoute)) echo ucfirst($profile->style_joue); ?></p>
+      <p id="instruments"><?php if(!empty($profile->instrument)) echo ucfirst($profile->instrument); ?></p>
     </div>
   </div>
   <div id="top_titre">
@@ -49,19 +49,19 @@
             <p class="head-title">Ailleurs <span>sur la toile</span></p>
             
             <?php if(!empty($profile->twitter)): ?>
-                <a href="<?php print $profile->twitter; ?>" class="twitter"><span>Twitter</span></a>
+                <a href="<?php echo $profile->twitter; ?>" class="twitter"><span>Twitter</span></a>
             <?php endif; ?>
 
             <?php if(!empty($profile->facebook)): ?>
-                <a href="<?php print $profile->facebook; ?>" class="fb"><span>Facebook</span></a>
+                <a href="<?php echo $profile->facebook; ?>" class="fb"><span>Facebook</span></a>
             <?php endif; ?>
 
             <?php if(!empty($profile->googleplus)): ?>
-                <a href="<?php print $profile->googleplus; ?>" class="google"><span>Google+</span></a>
+                <a href="<?php echo $profile->googleplus; ?>" class="google"><span>Google+</span></a>
             <?php endif; ?>
 
             <?php if(!empty($profile->siteweb)): ?>
-                <a href="<?php print $profile->siteweb; ?>" class="site"><span>Site</span></a>
+                <a href="<?php echo $profile->siteweb; ?>" class="site"><span>Site</span></a>
             <?php endif; ?>
         <?php endif; ?>
     </div>

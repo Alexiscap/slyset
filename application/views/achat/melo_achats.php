@@ -8,15 +8,15 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 <div id="contentAll">
     <div id="breadcrumbs">
         <ul>
-            <li><a href="<?php print site_url('home/' . $uid); ?>">Accueil</a></li>
-            <li><a href="<?php print site_url('my-wall/' . $uid_visit); ?>">Mon compte</a></li>
-            <li><a href="<?php print site_url($this->uri->segment(1) . '/' . $uid_visit); ?>">Mes achats</a></li>
+            <li><a href="<?php echo site_url('home/' . $uid); ?>">Accueil</a></li>
+            <li><a href="<?php echo site_url('my-wall/' . $uid_visit); ?>">Mon compte</a></li>
+            <li><a href="<?php echo site_url($this->uri->segment(1) . '/' . $uid_visit); ?>">Mes achats</a></li>
         </ul>
     </div>
 
-    <div id="cover" style="background-image:url(<?php print files('profiles/' . $cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
+    <div id="cover" style="background-image:url(<?php echo files('profiles/' . $cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
         <div id="infos-cover">
-            <h2><?php print $login; ?></h2>
+            <h2><?php echo $login; ?></h2>
             <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
         </div>
     </div>
@@ -75,7 +75,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
             <hr />
             <div class="clear"></div>
             <div id="articles-tab">
-                <form action="<?php print site_url('admin_articles/delete_multi_article'); ?>" method="post" accept-charset="utf-8">          
+                <form action="<?php echo site_url('admin_articles/delete_multi_article'); ?>" method="post" accept-charset="utf-8">          
                     <table>
                         <tbody>
                             <tr class="tab-head odd row-color-2">
@@ -106,7 +106,7 @@ endforeach;
             </div>
             <p class="total_panier">Montant total <span>10,00€</span></p>
             <div class="clear"></div>
-            <a class="bigiframe" href="<?php print site_url('pi_ta_infos/index/' . $session_id) ?>"><input type="button" value="Paiement sécurisé" class="cadis_panier"></a>
+            <a class="bigiframe" href="<?php echo site_url('pi_ta_infos/index/' . $session_id) ?>"><input type="button" value="Paiement sécurisé" class="cadis_panier"></a>
             <input type="button" value="Supprimer" class="bt_supp_playlist">
         </div>
 
@@ -146,7 +146,7 @@ endforeach;
             <hr />
             <div class="clear"></div>
             <div id="articles-tab">
-                <form action="<?php print site_url('admin_articles/delete_multi_article'); ?>" method="post" accept-charset="utf-8">          
+                <form action="<?php echo site_url('admin_articles/delete_multi_article'); ?>" method="post" accept-charset="utf-8">          
                     <table>
                         <tbody>
                             <tr class="tab-head odd row-color-2">

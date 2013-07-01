@@ -5,8 +5,8 @@ if (!defined('BASEPATH'))
 
 class Mc_followers extends CI_Controller {
 
-    var $datas;
-  
+    var $data;
+
     public function __construct() {
         parent::__construct();
 
@@ -23,8 +23,8 @@ class Mc_followers extends CI_Controller {
         $sub_data['perso'] = $output;
 
         if (!empty($output)) {
-          $this->layout->ajouter_dynamique_css($output->theme_css);
-          write_css($output);
+            $this->layout->ajouter_dynamique_css($output->theme_css);
+            write_css($output);
         }
 
         $this->data = array(
@@ -53,13 +53,12 @@ class Mc_followers extends CI_Controller {
         if (!empty($infos_profile)) {
             $data['infos_profile'] = $infos_profile;
         }
-        
+
         $data['all_follower'] = $this->follower->get_all_follower_user($user_visited);
         $ifollow = $this->follower->get_abonnement($user_visited);
         $data['allifollow'] = "";
-        foreach ($ifollow as $allmy)
-            ; {
-            $data['allifollow'] .=$allmy->Utilisateur_id . ',';
+        foreach ($ifollow as $allmy){
+            $data['allifollow'] .= $allmy->Utilisateur_id . ',';
         }
         //$this->layout->views('3');
         $this->layout->view('follower/mc_followers', $data);
@@ -67,17 +66,17 @@ class Mc_followers extends CI_Controller {
 
     public function musicien($user_id) {
         $data = $this->data;
-        
+
         $infos_profile = $this->user_model->getUser($user_id);
         if (!empty($infos_profile)) {
             $data['infos_profile'] = $infos_profile;
         }
-        
+
         $data['all_follower'] = $this->follower->get_follower_bytype($user_id, 2);
         //$this->layout->views('3');
         $ifollow = $this->follower->get_abonnement($user_id);
         $data['allifollow'] = "";
-        foreach ($ifollow as $allmy){
+        foreach ($ifollow as $allmy) {
             $data['allifollow'] .=$allmy->Utilisateur_id . ',';
         }
         $this->layout->view('follower/musicien', $data);
@@ -85,14 +84,13 @@ class Mc_followers extends CI_Controller {
 
     public function melomane($user_id) {
         $data = $this->data;
-        
+
         $infos_profile = $this->user_model->getUser($user_id);
         if (!empty($infos_profile)) {
             $data['infos_profile'] = $infos_profile;
         }
-        
+
         $data['all_follower'] = $this->follower->get_follower_bytype($user_id, 1);
-        //$this->layout->views('3');
         $this->layout->view('follower/melomane', $data);
     }
 

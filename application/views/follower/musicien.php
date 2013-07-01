@@ -1,19 +1,26 @@
-<div id="contentAll">
-  <div id="breadcrumbs">
-    <ul>
-      <li><a href="#">Accueil</a></li>
-      <li><a href="#">Artistes</a></li>
-      <li><a href="#"><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></a></li>
-      <li><a href="#">Fil d'actualité</a></li>
-    </ul>
-  </div>
+<?php
+$session_id = $this->session->userdata('uid');
+$uid = (empty($session_id)) ? '' : $session_id;
+$uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
+$login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
+?>
 
-  <div id="cover" style="background-image:url(<?php print files('profiles/'.$cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
-    <div id="infos-cover">
-          <h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
-      <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
+<div id="contentAll">
+    <div id="breadcrumbs">
+        <ul>
+            <li><a href="<?php echo site_url('home/' . $uid); ?>">Accueil</a></li>
+            <li><a href="<?php echo site_url('actualite/' . $uid_visit); ?>"><?php echo 'Artiste : ' . $login; ?></a></li>
+            <li><a href="<?php echo site_url($this->uri->segment(1) . '/' . $uid_visit); ?>">Abonnements</a></li>
+            <li><a href="<?php echo site_url($this->uri->segment(1) . '/' . $this->uri->segment(2) . '/' . $uid_visit); ?>">Abonnements Musiciens</a></li>
+        </ul>
     </div>
-  </div>
+
+    <div id="cover" style="background-image:url(<?php echo files('profiles/' . $cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
+        <div id="infos-cover">
+            <h2><?php echo $login; ?></h2>
+            <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
+        </div>
+    </div>
 
   <div id="stats-cover">
     <div class="stats_cover_block">
@@ -34,8 +41,8 @@
   <div class="content">
 	<div id="btn_tmp_follow">
        <a href="<?php echo site_url('follower/'.$infos_profile->id) ?>" class="tous">Tous</a>
-       <a href="<?php echo site_url('mc_followers/musicien/'.$infos_profile->id) ?>" class="musiciens">Musiciens</a>
-       <a href="<?php echo site_url('mc_followers/melomane/'.$infos_profile->id) ?>" class="melomanes">Mélomanes</a>
+       <a href="<?php echo site_url('follower/musicien/'.$infos_profile->id) ?>" class="musiciens active">Musiciens</a>
+       <a href="<?php echo site_url('follower/melomane/'.$infos_profile->id) ?>" class="melomanes">Mélomanes</a>
    </div>
  	<?php
  		if (count($all_follower)==1):?>
@@ -65,7 +72,7 @@
 	
 		if($follower->type==2)
 			{?>
-			<img src="<?php print img_url('common/casque.png'); ?>" /><span><?php echo $follower->style_joue ?></span>
+			<img src="<?php echo img_url('common/casque.png'); ?>" /><span><?php echo $follower->style_joue ?></span>
 			</div>
 		<?php if(substr_count($allifollow,$follower->Follower_id)>=1)
 			{?>
@@ -93,12 +100,12 @@
 	<!--
 	<div class="follower">
 		<div class="photo_follow">
-			<img src="<?php print img_url('common/photo_follower.png'); ?>" />
+			<img src="<?php echo img_url('common/photo_follower.png'); ?>" />
 		</div>
 		<div class="description">
 			<p class="nom_follow">Skip the use</p>
 			<p class="text_follow">Du rock, des tatouages, des kilowatts, de la sueur ! Notre album est enfin dans les bacs !</p>
-			<img src="<?php print img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
+			<img src="<?php echo img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
 		</div>
 		<div class="bouton">
 			<a href="#" class="participer"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
@@ -109,12 +116,12 @@
 	
 	<div class="follower">
 		<div class="photo_follow">
-			<img src="<?php print img_url('common/photo_follower2.png'); ?>" />
+			<img src="<?php echo img_url('common/photo_follower2.png'); ?>" />
 		</div>
 		<div class="description">
 			<p class="nom_follow">Skip the use</p>
 			<p class="text_follow">Du rock, des tatouages, des kilowatts, de la sueur ! Notre album est enfin dans les bacs !</p>
-			<img src="<?php print img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
+			<img src="<?php echo img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
 		</div>
 		<div class="bouton">
 			<a href="#" class="participer"><span class="button_left_abonne"></span><span class="button_center_abonne">Abonné</span><span class="button_right_abonne"></span></a>
@@ -123,12 +130,12 @@
 	<hr/>
 	<div class="follower">
 		<div class="photo_follow">
-			<img src="<?php print img_url('common/photo_follower.png'); ?>" />
+			<img src="<?php echo img_url('common/photo_follower.png'); ?>" />
 		</div>
 		<div class="description">
 			<p class="nom_follow">Skip the use</p>
 			<p class="text_follow">Du rock, des tatouages, des kilowatts, de la sueur ! Notre album est enfin dans les bacs !</p>
-			<img src="<?php print img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
+			<img src="<?php echo img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
 		</div>
 		<div class="bouton">
 			<a href="#" class="participer"><span class="button_left_non"></span><span class="button_center_non">Ne plus suivre</span><span class="button_right_non"></span></a>

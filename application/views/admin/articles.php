@@ -1,10 +1,13 @@
-<div id="contentAll">
+<?php
+$session_id = $this->session->userdata('uid');
+?>
 
+<div id="contentAll">
     <div id="breadcrumbs">
         <ul>
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#">Administration</a></li>
-            <li><a href="#">Actualités à la une</a></li>
+            <li><a href="<?php echo site_url('home'); ?>">Accueil</a></li>
+            <li><a href="<?php echo site_url('admin'); ?>">Administration</a></li>
+            <li><a href="<?php echo site_url($this->uri->segment(1)); ?>">Actualités à la une</a></li>
         </ul>
     </div>
 
@@ -48,9 +51,9 @@
 
                     <?php foreach($articles as $article): ?>
                         <tr>
-                            <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php print $article->id ?>" id="article-<?php print $article->id ?>" class="checkbox-article" /><?php echo form_label('', "article-$article->id") ?></td>
-                            <td class="article-title"><?php print $article->titre ?><div class="article-actions"><a href="<?php print site_url('admin_articles/update_article/'.$article->id); ?>">Modifier</a> | <a href="<?php print site_url('admin_articles/delete_article/'.$article->id); ?>">Supprimer</a></div></td>
-                            <td class="article-date"><?php print date('d-m-Y H:i', strtotime(str_replace('-', '/', $article->updated)))?></td>
+                            <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $article->id ?>" id="article-<?php echo $article->id ?>" class="checkbox-article" /><?php echo form_label('', "article-$article->id") ?></td>
+                            <td class="article-title"><?php echo $article->titre ?><div class="article-actions"><a href="<?php echo site_url('admin_articles/update_article/'.$article->id); ?>">Modifier</a> | <a href="<?php echo site_url('admin_articles/delete_article/'.$article->id); ?>">Supprimer</a></div></td>
+                            <td class="article-date"><?php echo date('d-m-Y H:i', strtotime(str_replace('-', '/', $article->updated)))?></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>

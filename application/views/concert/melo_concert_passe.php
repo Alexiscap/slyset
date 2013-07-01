@@ -8,15 +8,15 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 <div id="contentAll">
     <div id="breadcrumbs">
         <ul>
-            <li><a href="<?php print site_url('home/' . $uid); ?>">Accueil</a></li>
-            <li><a href="<?php print site_url('my-wall/' . $uid_visit); ?>">Mon compte</a></li>
-            <li><a href="<?php print site_url($this->uri->segment(1) . '/' . $this->uri->segment(2) . '/' . $uid_visit); ?>">Mes anciens concerts</a></li>
+            <li><a href="<?php echo site_url('home/' . $uid); ?>">Accueil</a></li>
+            <li><a href="<?php echo site_url('my-wall/' . $uid_visit); ?>">Mon compte</a></li>
+            <li><a href="<?php echo site_url($this->uri->segment(1) . '/' . $this->uri->segment(2) . '/' . $uid_visit); ?>">Mes anciens concerts</a></li>
         </ul>
     </div>
 
-    <div id="cover" style="background-image:url(<?php print files('profiles/' . $cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
+    <div id="cover" style="background-image:url(<?php echo files('profiles/' . $cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
         <div id="infos-cover">
-            <h2><?php print $login; ?></h2>
+            <h2><?php echo $login; ?></h2>
             <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
         </div>
     </div>
@@ -42,7 +42,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
     <div class="content">
         <div id="btn_tmp">
             <a href="<?php echo site_url('my-concert/' . $infos_profile->id) ?>"><div class="avenir">A venir</div></a>
-            <a href="<?php echo site_url('my-concert/concert-archive/' . $infos_profile->id) ?>"><div class="cpasse actif">Concerts passés</div></a>
+            <a href="<?php echo site_url('my-concert/archive/' . $infos_profile->id) ?>"><div class="cpasse actif">Concerts passés</div></a>
         </div>
         <h2>Mes concerts passés </h2>
 
@@ -84,7 +84,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                         <div class="partage_reseaux">
                             <a href="https://twitter.com/share?text=Je vais participer au concert de <?php echo $concert_unit->titre ?>"  data-lang="en"><span class="twitter">twitter</span></a>
                             <a href="#"><span class="facebook">fb</span></a>
-                            <a href="https://plus.google.com/share?url=<?php print site_url('concert/' . $concert_unit->id) ?>" ><span class="google">g+</span></a>
+                            <a href="https://plus.google.com/share?url=<?php echo site_url('concert/' . $concert_unit->id) ?>" ><span class="google">g+</span></a>
 
                         </div>
                     </div>
@@ -93,14 +93,14 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 
                     </div>
                 </div>
-    <?php
-    endforeach;
-}
-else {
+                <?php
+            endforeach;
+        }
+        else {
 
-    echo "Pas de concerts passés pour " . $infos_profile->login;
-}
-?>
+            echo "<div class='text-empty'>Vous n'avez aucun concert à votre actif.</div>";
+        }
+        ?>
 
 
 
@@ -108,7 +108,7 @@ else {
 
     </div>
 
-<?php if (isset($sidebar_right)) echo $sidebar_right; ?>
+    <?php if (isset($sidebar_right)) echo $sidebar_right; ?>
 
     <div class="pagination">
         <a href="#" id="precedent"><span><</span></a>

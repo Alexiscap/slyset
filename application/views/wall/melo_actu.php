@@ -16,15 +16,15 @@ sort big array by date
 <div id="contentAll">
     <div id="breadcrumbs">
         <ul>
-            <li><a href="<?php print site_url('home/' . $uid); ?>">Accueil</a></li>
-            <li><a href="<?php print site_url('my-wall/' . $uid_visit); ?>"><?php print 'Mon compte'; ?></a></li>
-            <li><a href="<?php print site_url($this->uri->segment(1) . '/' . $uid_visit); ?>">Fil d'actualité</a></li>
+            <li><a href="<?php echo site_url('home/' . $uid); ?>">Accueil</a></li>
+            <li><a href="<?php echo site_url('my-wall/' . $uid_visit); ?>"><?php echo 'Mon compte'; ?></a></li>
+            <li><a href="<?php echo site_url($this->uri->segment(1) . '/' . $uid_visit); ?>">Fil d'actualité</a></li>
         </ul>
     </div>
 
-    <div id="cover" style="background-image:url(<?php print files('profiles/' . $cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
+    <div id="cover" style="background-image:url(<?php echo files('profiles/' . $cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
         <div id="infos-cover">
-            <h2><?php print $login; ?></h2>
+            <h2><?php echo $login; ?></h2>
             <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
         </div>
     </div>

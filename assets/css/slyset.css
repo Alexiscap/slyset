@@ -4,6 +4,7 @@ input[type='file'], input[type='button'], input[type='submit']{ cursor:pointer; 
 
 #codeigniter_profiler{ overflow:scroll; }
 .green_text {color : #31a58c;}
+a{ outline:none; }
 /* --------- FIN DE GENERAL CI  --------- */
 
 
@@ -126,6 +127,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .content #btn_tmp a{ float:left;color:#666666;font-size:12px;text-decoration:none;}
 .content #btn_tmp a:hover{color:#f05f4c;}
 .content h2{ font-size:20px; margin:25px 20px; clear:both; }
+.content .text-empty{ margin:25px 20px 15px 20px; color:#f05f4c; clear:both; }
 
 .content p{ font-size:14px; margin:0 0 0 20px; font-weight:bold; }
 .content .date-heure{ clear:both; }
@@ -875,7 +877,7 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 .content #btn_tmp_follow .musiciens{ width:65px;height:22px;background:url("../images/common/fd_music.png");text-align:center;padding-top:8px;}
 .content #btn_tmp_follow .melomanes{ width:82px;height:22px;background:url("../images/common/fd_melo.png");text-align:center;padding-top:8px;}
 .content #btn_tmp_follow a{ float:left;color:#666666;font-size:12px;text-decoration:none;}
-.content #btn_tmp_follow a:hover{color:#f05f4c;}
+.content #btn_tmp_follow a:hover, .content #btn_tmp_follow a.active{color:#f05f4c;}
 /* ---------- FIN MUSICIEN FOLLOWERS --------- */
 
 

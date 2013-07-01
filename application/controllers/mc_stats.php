@@ -1,41 +1,60 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 
-class Mc_stats extends CI_Controller 
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
+
+class Mc_stats extends CI_Controller
 {
-    
-    public function __construct()
-    {
-      parent::__construct();
-      
-      $this->layout->ajouter_css('slyset');
-      
-      $this->layout->ajouter_js('jquery.imagesloaded.min');
-      $this->layout->ajouter_js('jquery.masonry.min');
-      $this->layout->ajouter_js('jquery.stapel');
-      
+    var $data;
+    var $user_id;
+
+    public function __construct() {
+        parent::__construct();
+
+        $this->layout->ajouter_css('slyset');
+
+        $this->load->model(array('perso_model', 'user_model'));
+        $this->load->library(array('layout'));
+
         $this->layout->set_id_background('stats');
+        $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
+        $output = $this->perso_model->get_perso($this->user_id);
+
+        $sub_data = array();
+        $sub_data['profile'] = $this->user_model->getUser($this->user_id);
+        $sub_data['perso'] = $output;
+
+        if (!empty($output)) {
+            $this->layout->ajouter_dynamique_css($output->theme_css);
+            write_css($output);
+        }
+
+        $this->data = array(
+            'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
+            'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
+        );
     }
-  
+
     public function index($user_id)
     {
         $uid = $this->session->userdata('uid');
         $type_account = $this->session->userdata('account');
-        
-        if(($user_id == $uid) && $type_account != 1){
-            $this->page();
-        } else {
+
+        if (($user_id == $uid) && $type_account != 1) {
+            $this->page($user_id);
+        } elseif(isset($uid)) {
             redirect('home/'.$uid, 'refresh');
+        } else {
+            redirect('home', 'refresh');
         }
     }
-  
+
     public function page()
     {
-      $datas = array();
-      $datas['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-      $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
-      
-      //$this->layout->views('3');
-      $this->layout->view('statistique/mc_stats', $datas);
+        $data = $this->data;
+        $data['profile'] = $this->user_model->getUser($this->user_id);
+        
+        $this->layout->view('statistique/mc_stats', $data);
     }
-  
+
 }

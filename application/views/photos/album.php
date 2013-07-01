@@ -1,19 +1,25 @@
-<div id="contentAll">
-  <div id="breadcrumbs">
-    <ul>
-      <li><a href="#">Accueil</a></li>
-      <li><a href="#">Artistes</a></li>
-      <li><a href="#"><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></a></li>
-      <li><a href="#">Fil d'actualité</a></li>
-    </ul>
-  </div>
+<?php
+$session_id = $this->session->userdata('uid');
+$uid = (empty($session_id)) ? '' : $session_id;
+$uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
+$login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
+?>
 
-  <div id="cover" style="background-image:url(<?php print files('profiles/'.$cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
-    <div id="infos-cover">
-          <h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
-      <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
+<div id="contentAll">
+    <div id="breadcrumbs">
+        <ul>
+            <li><a href="<?php echo site_url('home/' . $uid); ?>">Accueil</a></li>
+            <li><a href="<?php echo site_url('actualite/' . $uid_visit); ?>"><?php echo 'Artiste : ' . $login; ?></a></li>
+            <li><a href="<?php echo site_url($this->uri->segment(1) . '/' . $uid_visit); ?>">Photos & Vidéos</a></li>
+        </ul>
     </div>
-  </div>
+
+    <div id="cover" style="background-image:url(<?php echo files('profiles/' . $cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
+        <div id="infos-cover">
+            <h2><?php echo $login; ?></h2>
+            <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
+        </div>
+    </div>
 
   <div id="stats-cover">
     <div class="stats_cover_block">
@@ -31,12 +37,12 @@
       <span class="stats_title">morceaux</span>
     </div>
   </div>
-  <div class="bt_noir">
-    <a class="iframe" href="<?php echo base_url('index.php/mc_photos/upload_photo/'.$infos_profile->id) ?>" ><span class="bt_left"></span><span class="bt_middle">Ajouter une photo/vidéo</span><span class="bt_right"></span></a>
-  </div>
-  <div class="bt_noir">
-    <a href="#"><span class="bt_left"></span><span class="bt_middle">Supprimer la sélection</span><span class="bt_right"></span></a>
-  </div>
+        <div class="bt_noir">
+            <a class="iframe" href="<?php echo site_url('media/ajouter-photo/' . $infos_profile->id) ?>" ><span class="bt_left"></span><span class="bt_middle">Ajouter une photo</span><span class="bt_right"></span></a>
+        </div>
+        <div class="bt_noir">
+            <a class="iframe" href="<?php echo site_url('media/ajouter-video/' . $infos_profile->id) ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter une vidéo</span><span class="bt_right"></span></a>
+        </div>
 
   <div class="content">
   	
@@ -64,7 +70,7 @@
             ?>
       		
       		<div class="bord_photo">
-       			 <a href="#"><p><?php if ($cpt_comment==0)print "0 commentaire"; if($cpt_comment==1)print "1 commentaire"; if ($cpt_comment>1)print $cpt_comment."commentaires"  ?></p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like"><?php echo $media_user_result_unit->like_total ?></p>
+       			 <a href="#"><p><?php if ($cpt_comment==0)echo "0 commentaire"; if($cpt_comment==1)echo "1 commentaire"; if ($cpt_comment>1)echo $cpt_comment."commentaires"  ?></p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like"><?php echo $media_user_result_unit->like_total ?></p>
       		</div> 
      
         	
@@ -125,7 +131,7 @@
            						 ?>
      				
       			<div class="bord_photo">
-        				 <a onclick='showComment("comm<?php echo $media_user_result_unit->file_name?>")' href="javascript:void(0);"><p><?php if($cpt_comment==0)print "0 commentaire"; if($cpt_comment==1)print "1 commentaire"; if($cpt_comment>1)print $cpt_comment."commentaires"; ?></p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like"><?php echo $media_user_result_unit->like_total ?></p>
+        				 <a onclick='showComment("comm<?php echo $media_user_result_unit->file_name?>")' href="javascript:void(0);"><p><?php if($cpt_comment==0)echo "0 commentaire"; if($cpt_comment==1)echo "1 commentaire"; if($cpt_comment>1)echo $cpt_comment."commentaires"; ?></p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like"><?php echo $media_user_result_unit->like_total ?></p>
       				</div>
             		    	<div class="allcomment" id="comm<?php echo $media_user_result_unit->file_name ?>">
 
@@ -147,7 +153,7 @@
       <form  action="" method="post">
            <input type="text" name="usercomment" id="usercomment"/>
         <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
-        	<input type="hidden" name="messageid" value="<?php print $media_user_result_unit->id; ?>" id="messageid" />
+        	<input type="hidden" name="messageid" value="<?php echo $media_user_result_unit->id; ?>" id="messageid" />
 
         <input src= "<?php echo img_url('common/valider_comm.png'); ?>" type="submit" value="Valider"/>
       </form>
