@@ -34,13 +34,11 @@ class Mc_photos extends CI_Controller {
     if (!empty($output)) {
       $this->layout->ajouter_dynamique_css($output->theme_css);
       write_css($output);
-    }
- 	
+    } 	
  	//--bouton suivre un musicien
     $community_follower=  $this->user_model->get_community($this->user_id);
     $my_abonnement_head = "";
-        
-        
+             
     foreach($community_follower as $my_following_head)
     {
     	$my_abonnement_head .= $my_following_head->Utilisateur_id.'/';

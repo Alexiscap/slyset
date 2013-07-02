@@ -1,16 +1,19 @@
-<div id="contentAll">
+<?php
+$session_id = $this->session->userdata('uid');
+?>
 
+<div id="contentAll">
     <div id="breadcrumbs">
         <ul>
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#">Administration</a></li>
+            <li><a href="<?php echo site_url('home'); ?>">Accueil</a></li>
+            <li><a href="<?php echo site_url($this->uri->segment(1)); ?>">Administration</a></li>
         </ul>
     </div>
 
     <div class="content contentAdmin">
         <h2 id="title-dashboard">Administration générale</h2>
         
-        <a href="#shadow" rel="shadowbox" id="shadowbox">Open shadowbox</a>
+        <!--<a href="#shadow" rel="shadowbox" id="shadowbox">Open shadowbox</a>-->
         
         <p>Grâce à l’administration de Slyset (le “back-office”), vous pouvez gérer l’ensemble du site et de ses utilisateurs, aussi bien mélomanes que musiciens. Vous pouvez intervenir sur tous les contenus présents sur Slyset et administrer les abus aux conditions générales d’utilisation.</p>
 

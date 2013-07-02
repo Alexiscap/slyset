@@ -4,6 +4,7 @@ input[type='file'], input[type='button'], input[type='submit']{ cursor:pointer; 
 
 #codeigniter_profiler{ overflow:scroll; }
 .green_text {color : #31a58c;}
+a{ outline:none; }
 /* --------- FIN DE GENERAL CI  --------- */
 
 
@@ -42,11 +43,11 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 #stats-cover .stats_number{ margin:1px 0 0 0; font-weight:bold; font-size:14px; color:#2ab395; float:left; }
 #stats-cover .stats_title{ font-size:10px; font-weight:bold; text-transform:uppercase; color:#3f3f3f; float:left; clear:both; }
 
-#stats-cover_melo{ padding:0 21px; width:201px; height:33px; -webkit-border-bottom-right-radius:10px; -webkit-border-radius-bottom-left-radius:10px; -moz-border-radius-bottomright:10px; -moz-border-radius-bottomleft:10px; border-bottom-right-radius:10px; border-bottom-left-radius:10px; background:#e6e6e6; float:left;margin: 0 0 10px; }
+/*#stats-cover_melo{ padding:0 21px; width:201px; height:33px; -webkit-border-bottom-right-radius:10px; -webkit-border-radius-bottom-left-radius:10px; -moz-border-radius-bottomright:10px; -moz-border-radius-bottomleft:10px; border-bottom-right-radius:10px; border-bottom-left-radius:10px; background:#e6e6e6; float:left; }
 #stats-cover_melo .stats_cover_block:first-child{ margin:4px 0 0 0px; }
 #stats-cover_melo .stats_cover_block{ margin:4px 0 0 18px; height:29px; float:left; }
 #stats-cover_melo .stats_number{ margin:1px 0 0 0; font-weight:bold; font-size:14px; color:#2ab395; float:left; }
-#stats-cover_melo .stats_title{ font-size:10px; font-weight:bold; text-transform:uppercase; color:#3f3f3f; float:left; clear:both; }
+#stats-cover_melo .stats_title{ font-size:10px; font-weight:bold; text-transform:uppercase; color:#3f3f3f; float:left; clear:both; }*/
 
 .actus_post{ margin:12px 0 4px 0; width:540px; /*height:134px;*/ background:#e6e6e6; float:left; clear:both; }
 .actus_post form{ clear:both; }
@@ -131,6 +132,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .content #btn_tmp a{ float:left;color:#666666;font-size:12px;text-decoration:none;}
 .content #btn_tmp a:hover{color:#f05f4c;}
 .content h2{ font-size:20px; margin:25px 20px; clear:both; }
+.content .text-empty{ margin:25px 20px 15px 20px; color:#f05f4c; clear:both; }
 
 .content p{ font-size:14px; margin:0 0 0 20px; font-weight:bold; }
 .content .date-heure{ clear:both; }
@@ -924,7 +926,7 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 .content #btn_tmp_follow .musiciens{ width:65px;height:22px;background:url("../images/common/fd_music.png");text-align:center;padding-top:8px;}
 .content #btn_tmp_follow .melomanes{ width:82px;height:22px;background:url("../images/common/fd_melo.png");text-align:center;padding-top:8px;}
 .content #btn_tmp_follow a{ float:left;color:#666666;font-size:12px;text-decoration:none;}
-.content #btn_tmp_follow a:hover{color:#f05f4c;}
+.content #btn_tmp_follow a:hover, .content #btn_tmp_follow a.active{color:#f05f4c;}
 /* ---------- FIN MUSICIEN FOLLOWERS --------- */
 
 
@@ -977,7 +979,7 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 
 
 /*------------ REGLAGES -------------*/
-#any-background-personnaliser .content, #any-background-reglages .content{ margin:10px 0 25px 0; padding:0 20px; width:499px; }
+#any-background-personnaliser .content, #any-background-reglages .content, #any-background-achats .content{ margin:10px 0 25px 0; padding:0 20px; width:499px; }
 #any-background-personnaliser .content h2, #any-background-reglages .content h2{ margin:20px 0 15px 0; }
 p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:normal; line-height:21px; color:#888d95; float:left; text-align:left; }
 .preview_upload{ margin:0 10px 0 18px; width:58px; height:58px; -webkit-border-radius:8px; -moz-border-radius:8px; border-radius:8px; overflow:hidden; background-repeat:no-repeat; background-size:cover; background-position:center center; float:left; }

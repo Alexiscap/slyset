@@ -1,10 +1,13 @@
-<div id="contentAll">
+<?php
+$session_id = $this->session->userdata('uid');
+?>
 
+<div id="contentAll">
     <div id="breadcrumbs">
         <ul>
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#">Administration</a></li>
-            <li><a href="#">Artistes à la une</a></li>
+            <li><a href="<?php echo site_url('home'); ?>">Accueil</a></li>
+            <li><a href="<?php echo site_url('admin'); ?>">Administration</a></li>
+            <li><a href="<?php echo site_url($this->uri->segment(1)); ?>">Artistes à la une</a></li>
         </ul>
     </div>
 

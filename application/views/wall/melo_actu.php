@@ -1,64 +1,64 @@
-<!--
-TODO LIST :
 
-verifier lien pour chaque post
-formater date sur chaque post
--->  			
+<?php
+    $session_id = $this->session->userdata('uid');
+    $uid = (empty($session_id)) ? '' : $session_id;
+    $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
+    $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
+?>
+
 <div id="contentAll">
-  <div id="breadcrumbs">
-    <ul>
-      <li><a href="#">Accueil</a></li>
-      <li><a href="#">Artistes</a></li>
-      <li><a href="#"><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></a></li>
-      <li><a href="#">Fil d'actualité</a></li>
-    </ul>
-  </div>
-
-  <div id="cover" style="background-image:url(<?php print files('profiles/'.$cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
-    <div id="infos-cover">
-          <h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
-      <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
-    </div>
-  </div>
-
-  <div id="stats-cover_melo">
-    <div class="stats_cover_block">
-      <span class="stats_number">489</span>
-      <span class="stats_title">écoutes</span>
+    <div id="breadcrumbs">
+        <ul>
+            <li><a href="<?php echo site_url('home/' . $uid); ?>">Accueil</a></li>
+            <li><a href="<?php echo site_url('my-wall/' . $uid_visit); ?>"><?php echo 'Mon compte'; ?></a></li>
+            <li><a href="<?php echo site_url($this->uri->segment(1) . '/' . $uid_visit); ?>">Fil d'actualité</a></li>
+        </ul>
     </div>
 
-    <div class="stats_cover_block">
-      <span class="stats_number">18</span>
-      <span class="stats_title">playlists</span>
+    <div id="cover" style="background-image:url(<?php echo files('profiles/' . $cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
+        <div id="infos-cover">
+            <h2><?php echo $login; ?></h2>
+            <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
+        </div>
     </div>
 
-    <div class="stats_cover_block">
-      <span class="stats_number">278</span>
-      <span class="stats_title">abonnements</span>
-    </div>
-  </div>
+    <div id="stats-cover">
+        <div class="stats_cover_block">
+            <span class="stats_number">489</span>
+            <span class="stats_title">écoutes</span>
+        </div>
 
+        <div class="stats_cover_block">
+            <span class="stats_number">18</span>
+            <span class="stats_title">playlists</span>
+        </div>
+        
+         <div class="stats_cover_block">
+            <span class="stats_number">278</span>
+            <span class="stats_title">abonnements</span>
+        </div>
+        
+        <div id = "content" class="content">  
 
-  <div id = "content" class="content">  
-  
- <?php 
- 	if(isset($data_all_wall)):
- 		foreach ($data_all_wall  as $entity_wall):
- 			if($entity_wall->product==1):
- 				if($entity_wall->type =='MU'):
-?>
+        <?php
+        
+        if (isset($data_all_wall)):
+            foreach ($data_all_wall as $entity_wall):
+                if ($entity_wall->product == 1):
+                    if ($entity_wall->type == 'MU'):
+                        ?>
 
-<!--  ******* ******* **** PHOTO SEULE AJOUT PAR UN MUSICIEN  ******* ******* **** -->
+ 				<div id ="<?php echo $entity_wall->id ?>" class="artist_post photo_message">
+                            <div class="top"   class="top" id="<?php echo $entity_wall->id ?>">
 
-				<div id ="<?php echo $entity_wall->id?>" class="artist_post photo_message">
-      <div class="top"   class="top" id="<?php echo $entity_wall->id?>">
+                                <?php if ($this->uri->segment(2) == $session_id):
+                                    ?>
+                                    <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                                <?php endif; ?>
 
-            <?php if($this->uri->segment(2)==$this->session->userdata('uid')):
-?>
-        <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-         <?php endif;?>
+                            </div>
 
-      </div>
+       
       <div class="left">
 
         <img src="<?php echo files('profiles/'.$entity_wall->thumb); ?>" alt="Photo Profil" />
@@ -74,17 +74,16 @@ formater date sur chaque post
     					  	$a =  date_timestamp_get($date_format);
             				echo $data['date_2'] = strftime('Le %d %B %G',$a); ?><!--Le 26 Septembre 2013--></span>
       </div>
+
     </div>
- <?php
-		 	endif;
- 
- 			if($entity_wall->type =='ME'):
-?>
-		<!-- ******* ******* ***** LIKE D'UNE PHOTO  ******* ******* **** -->
+
+			<?php
+ 			if ($entity_wall->type == 'ME'):
+                        ?>
 
   				<div id ="<?php echo $entity_wall->id?>" class="artist_post photo_message">
       			<div class="top"   class="top" id="<?php echo $entity_wall->id?>">
-        				<?php if($this->uri->segment(2)==$this->session->userdata('uid')):
+        				  <?php if ($this->uri->segment(2) == $session_id):
 ?>
     						<a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
          				<?php endif;?>
@@ -401,87 +400,20 @@ if($entity_wall->product==5):
 <?php
   			endif;
   			endif;
+  				endif;
  endforeach;
  endif;
  ?>
    </div>
 
- <!--
-    <div class="artist_post photo_message">
-      <div class="top">
-        <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-      </div>
-      <div class="left">
-        <img src="<?php echo img_url('sidebar-left/photo-profil.png'); ?>" alt="Photo Profil" />
-      </div>
-      <div class="right">
-        <span class="ico_citation"></span>
-        <p class="msg_post">Je viens d’ajouter une photo à <a href="#">mon album “Tournée 2013”</a></p>
-        <img src="<?php echo img_url('common/post_photo.jpg'); ?>" alt="Photo message" class="single" />
-      </div>
-      <div class="bottom">
-        <span class="infos_publi">Bob Dylan - Le 26 Septembre 2013</span>
-      </div>
+ 
+
+     
+       
+  
     </div>
 
+<?php if (isset($sidebar_right)) echo $sidebar_right; ?>
 
-
-
-    <div class="artist_post article">
-      <div class="top">
-        <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-      </div>
-      <div class="left">
-        <img src="<?php echo img_url('sidebar-left/photo-profil.png'); ?>" alt="Photo Profil" />
-      </div>
-      <div class="right">
-        <span class="ico_citation"></span>
-        <p class="msg_post">Découvrez la chronique de mon dernier album !</p>
-
-        <div class="post_article">
-          <img src="<?php echo img_url('common/article_photo.jpg'); ?>" alt="Photo d'interview" />
-
-          <a href="#">Dylan toujours à flots après la tempête</a>
-          <p>Bob Dylan revient en pleine lumière avec une collection de ballades country-blues-jazz crépusculaires. Tirés par la swinguante locomotive Duquesne Whistle...</p>
-        </div>
-      </div>
-      <div class="bottom">
-        <span class="infos_publi">Jim Morisson - Le 24 Septembre 2013</span>
-      </div>
-    </div>
-
-    <div class="artist_post news_song">
-      <div class="top">
-        <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-      </div>
-      <div class="left">
-        <img src="<?php echo img_url('sidebar-left/photo-profil.png'); ?>" alt="Photo Profil" />
-      </div>
-      <div class="right">
-        <span class="ico_citation"></span>
-        <p class="msg_post">Je viens d’ajouter 2 nouveaux morceaux à <a href="#">ma musique</a></p>
-
-        <div class="new_songs">
-          <a href="#"><span class="btn_play"></span>Pretty Pegy</a>
-          <a href="#"><span class="btn_play"></span>Hard Times in New York Town</a>
-        </div>
-      </div>
-      <div class="bottom">
-        <span class="infos_publi">Jim Morisson - Le 24 Septembre 2013</span>
-      </div>
-    </div>
-    -->
-
-  <?php if(isset($sidebar_right)) echo $sidebar_right; ?>
-
-  <div class="pagination">
-    <a href="#" id="precedent"><span><</span></a>
-    <a href="#" class="page">1</a>
-    <a href="#" class="page">2</a>
-    <a href="#" class="page">3</a>
-    <a href="#" class="page">4</a>
-    <a href="#" class="page">5</a>
-    <a href="#" id="suivant"><span>></span></a>
-  </div>
   
 </div>

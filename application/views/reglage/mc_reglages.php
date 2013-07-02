@@ -1,16 +1,22 @@
+<?php
+$session_id = $this->session->userdata('uid');
+$uid = (empty($session_id)) ? '' : $session_id;
+$uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
+$login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
+?>
+
 <div id="contentAll">
     <div id="breadcrumbs">
         <ul>
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#">Ma page musicien</a></li>
-            <li><a href="#"><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></a></li>
-            <li><a href="#">Réglages</a></li>
+            <li><a href="<?php echo site_url('home/' . $uid); ?>">Accueil</a></li>
+            <li><a href="<?php echo site_url('actualite/' . $uid_visit); ?>"><?php echo 'Artiste : ' . $login; ?></a></li>
+            <li><a href="<?php echo site_url($this->uri->segment(1) . '/' . $uid_visit); ?>">Réglages</a></li>
         </ul>
     </div>
-  
-    <div id="cover" style="background-image:url(<?php print files('profiles/'.$cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
+
+    <div id="cover" style="background-image:url(<?php echo files('profiles/' . $cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
         <div id="infos-cover">
-            <h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
+            <h2><?php echo $login; ?></h2>
             <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
         </div>
     </div>
@@ -38,7 +44,7 @@
         <p class="detail_reglages">Cette page vous permet d’ajouter et/ou de modifier les informations qui figurent sur votre profil musicien public.</p>
 
         <?php
-            echo form_open_multipart('reglages/update_user/'.$this->session->userdata('uid'));
+            echo form_open_multipart('reglages/update_user/'.$session_id);
         ?>
         
         
@@ -48,14 +54,14 @@
             <?php $label_attributes = array('class'=>'label_big'); ?>
             
             <?php echo form_label('Votre photo','thumb', $label_attributes); ?>
-            <div class="preview_upload thumb" style="background-image:url(<?php print files('profiles/'.$this->session->userdata('thumb')); ?>);"></div>
+            <div class="preview_upload thumb" style="background-image:url(<?php echo files('profiles/'.$this->session->userdata('thumb')); ?>);"></div>
             <div class="upload-file-container container-thumb">
                <input type="file" name="thumb" size="200" id="upload_images_thumb" />
             </div>
             <span class="upload_photo_name_file"></span>
             
             <?php echo form_label('Votre en-tête','cover', $label_attributes); ?>
-            <div class="preview_upload cover" style="background-image:url(<?php print files('profiles/'.$this->session->userdata('cover')); ?>);"></div>
+            <div class="preview_upload cover" style="background-image:url(<?php echo files('profiles/'.$this->session->userdata('cover')); ?>);"></div>
             <div class="upload-file-container container-cover">
                 <input type="file" name="cover" size="200" id="upload_images_cover" />
             </div>
