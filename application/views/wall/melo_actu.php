@@ -39,9 +39,8 @@
         </div>
         
         <div id = "content" class="content">  
-
         <?php
-        
+      
         if (isset($data_all_wall)):
             foreach ($data_all_wall as $entity_wall):
                 if ($entity_wall->product == 1):
@@ -78,6 +77,7 @@
     </div>
 
 			<?php
+			endif;
  			if ($entity_wall->type == 'ME'):
                         ?>
 
@@ -400,7 +400,7 @@ if($entity_wall->product==5):
 <?php
   			endif;
   			endif;
-  				endif;
+  			
  endforeach;
  endif;
  ?>

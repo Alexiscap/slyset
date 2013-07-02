@@ -10,15 +10,19 @@ class melo_wall extends CI_Controller
       $this->layout->ajouter_css('slyset');
       $this->load->model('wallm');
       $this->load->library('session');
+      $this->output->enable_profiler(TRUE);
+
     }
   
     public function index($user_id,$uid = NULL)
     {
+        
       $this->page($user_id);
     }
   
     public function page($user_id)
     {
+    	
         $this->layout->ajouter_js('wall');
 		
 		setlocale(LC_TIME, 'fr', 'fr_FR', 'fr_FR.ISO8859-1');
@@ -38,7 +42,6 @@ class melo_wall extends CI_Controller
    		$listforin_sql = substr($listforin,0,-1);
    		
    		$data['data_all_wall'] = $this->wallm->get_entities_id($listforin_sql,$user_id);
-    	
 
 		$a = 0;
 		foreach ($data['data_all_wall'] as $data_for_album)
