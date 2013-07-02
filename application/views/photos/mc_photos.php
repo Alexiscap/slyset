@@ -11,7 +11,13 @@
   <div id="cover" style="background-image:url(<?php print files('profiles/'.$cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
     <div id="infos-cover">
           <h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
-      <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
+     <?php 
+     		if($infos_profile->type==2&&substr_count($community_follower,$infos_profile->id)==0):?>
+      			<a href="#" class="add-follow" id="<?php echo $this->uri->segment(2)?>"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
+   			<?php endif;
+    		if($infos_profile->type==2&&substr_count($community_follower,$infos_profile->id)>0):?>
+     			<a href="#" class="delete-follow" id="<?php echo $this->uri->segment(2)?>"><span class="button_left_abonne"></span><span class="button_center_abonne">Ne plus suivre</span><span class="button_right_abonne"></span></a>
+    		<?php endif;?>
     </div>
   </div>
 
@@ -80,7 +86,7 @@
        			<?php $count = substr_count($all_photo_like,$media_user_result_unit->id.'/');
     	if ($count>=1)
     	{ ?>
-    	       			 <img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="nolike" />
+    	       			 <img src="<?php echo img_url('musicien/pink_heart.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="nolike" />
 
        			<?php }
        			else
@@ -94,7 +100,8 @@
         	
     	<div class="allcomment" id="comm<?php echo $media_user_result_unit->id ?>">
 
-    		<?php foreach($commentaires as $commentaire): ?>
+    		<?php foreach($commentaires as $commentaire): 
+    		?>
         		<?php if($media_user_result_unit->id == $commentaire->photos_id): ?>      
                 	<div class="comm">
 						<img src="<?php echo img_url('common/del.png'); ?>" class="del"/>
@@ -134,12 +141,15 @@
     			
   				 	<!--  edition : HOVER *******************-->
   				 	<div class="edit">
+      					
       					<a href="<?php echo base_url('/index.php/mc_photos/update_photo/'.$infos_profile->id.'/'.$media_user_result_unit->file_name.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
      					<a href="<?php echo base_url('/index.php/mc_photos/suppression_media/'.$infos_profile->id.'/'.$media_user_result_unit->file_name.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
-   					</div>
-					<div class="open_alb">
+   					<div class="open_alb">
       					<a href="<?php echo base_url('index.php/mc_photos/album/'.$infos_profile->id.'/'.$media_user_result_unit->file_name)?>"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
-    				</div>
+    					</div>
+   					
+   					</div>
+					
     				
    					<a href="http://127.0.0.1/slyset/index.php/mc_photos/album/<?php echo $infos_profile->id ?>/<?php echo $media_user_result_unit->file_name ?>"><img src="http://127.0.0.1/slyset/files/30/photos/<?php echo $media_user_result_unit->file_name?>/cover" class="img_cover" /></a>
    					<?php foreach($all_photos as $al_photo): 

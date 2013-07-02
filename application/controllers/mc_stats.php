@@ -7,13 +7,22 @@ class Mc_stats extends CI_Controller
     {
       parent::__construct();
       
-      $this->layout->ajouter_css('slyset');
+      	$this->layout->ajouter_css('slyset');
       
-      $this->layout->ajouter_js('jquery.imagesloaded.min');
-      $this->layout->ajouter_js('jquery.masonry.min');
-      $this->layout->ajouter_js('jquery.stapel');
+      	$this->layout->ajouter_js('jquery.imagesloaded.min');
+      	$this->layout->ajouter_js('jquery.masonry.min');
+     	$this->layout->ajouter_js('jquery.stapel');
       
         $this->layout->set_id_background('stats');
+     	//--bouton suivre un musicien
+        $community_follower=  $this->user_model->get_community($this->user_id);
+        $my_abonnement_head = "";
+        
+        
+        foreach($community_follower as $my_following_head)
+        {
+       	 	$my_abonnement_head .= $my_following_head->Utilisateur_id.'/';
+        }
     }
   
     public function index($user_id)

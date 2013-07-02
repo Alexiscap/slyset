@@ -1,4 +1,4 @@
-      <?php 
+     <?php 
             //appel à la function "register" du controller "user"
       $user = $this->uri->segment(3);
 	  $concert = $this->uri->segment(4);

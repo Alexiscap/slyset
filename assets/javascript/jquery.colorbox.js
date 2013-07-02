@@ -411,7 +411,7 @@
 				$next = $('<button type="button"/>').attr({id:prefix+'Next'}),
 				$slideshow = $tag('button', "Slideshow"),
 				$loadingOverlay,
-				$close = $('<button type="button"/>').attr({id:prefix+'Close'})
+				$close = $(' <img id ="cboxClose" src="http://127.0.0.1/slyset/assets/images/musicien/pop_close.png" alt="Fermer" />')
 			);
 			
 			$wrap.append( // The 3x3 Grid that makes up Colorbox
@@ -1031,6 +1031,8 @@
 				$(".iframe").colorbox(
 					{
 						iframe:true, width:"45%", height:"65%",
+						
+					
 						onClosed:function(){
 						//$('.content').load('30 .content');
 						}
@@ -1038,9 +1040,11 @@
 				   
 					});
 					
+
 				$(".bigiframe").colorbox(
 					{
 						iframe:true, width:"65%", height:"85%",
+						
 						onClosed:function(){
 						//$('.content').load('30 .content');
 						}

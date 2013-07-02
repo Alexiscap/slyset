@@ -23,6 +23,9 @@ class melo_achats extends CI_Controller
       	$this->layout->ajouter_css('popin');
 
         $this->layout->set_id_background('achats');
+        
+        
+        
     }
   
     public function index($user_id)

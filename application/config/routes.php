@@ -77,6 +77,7 @@ $route['my-reglages/update_user/(:num)'] = "melo_reglages/update_user/$1";
 
 $route['my-concert'] = "/melo_concerts/index";
 $route['my-concert/(:num)'] = "/melo_concerts/index/$1";
+$route['my-concert-passe/(:num)'] = "/melo_concerts/concert_passe/$1";
 
 $route['my-follower'] = "/melo_abonnements/index";
 $route['my-follower/(:num)'] = "/melo_abonnements/index/$1";
