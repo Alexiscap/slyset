@@ -139,4 +139,30 @@ class Admin_articles extends CI_Controller
         }
     }
     
+    public function uploadImg()
+    {
+        print 'okkkkkk';
+        $dynamic_path = './files/articles/';
+        if (is_dir($dynamic_path) == false){
+            mkdir($dynamic_path, 0755, true);
+        }
+        
+        $config['upload_path']   = $dynamic_path;
+        $config['allowed_types'] = 'gif|jpg|jpeg|png';
+        $config['encrypt_name']  = true;
+        
+        $this->load->library('upload', $config);
+        
+        if($this->upload->do_upload('file')){
+            $data = $this->upload->data();
+            $array = array(
+                'filelink' => uploaded_dir_img($data['file_name'])
+            );
+            
+            $this->output
+                 ->set_content_type('application/json')
+                 ->set_output(stripcslashes(json_encode($array)));
+        }
+    }
+    
 }

@@ -10,8 +10,6 @@ class melo_wall extends CI_Controller
       $this->layout->ajouter_css('slyset');
       $this->load->model('wallm');
       $this->load->library('session');
-
-	//$this->load->helper('url');
     }
   
     public function index($user_id,$uid = NULL)

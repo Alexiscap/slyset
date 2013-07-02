@@ -58,7 +58,9 @@ $(document).ready(function(){
     
     //Utilisation du caroufredsel sur la page home
     if($("body.admin-articles").length > 0){
-        $('#redactor').redactor();
+        $('#redactor').redactor({
+            imageUpload: '/admin_articles/uploadImg'
+        });
 
         $('#articles-tab th.article-title, #articles-tab th.article-date').click(function(e){
             e.preventDefault();

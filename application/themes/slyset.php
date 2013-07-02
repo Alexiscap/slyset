@@ -59,9 +59,11 @@
           </div>
             
           <div id="recherche">
-            <form>
-              <input type="text" value="Chercher un artiste ..." onfocus="javascript:this.value=''" onblur="if (this.value==''){this.value='Chercher un artiste ...';}" name="recherche" />
-              <input src="<?php echo img_url('header/loupe.png') ?>" type="image" value="submit" align="middle"/>
+            <?php $val = (!empty($_POST['recherche'])) ? $_POST['recherche'] : ''; ?>
+            <form action="<?php echo site_url('search/search_keyword/'.$this->session->userdata('uid')); ?>" method="post">
+                <input type="text" value="<?php print $val; ?>" placeholder="Chercher un artiste ..." name="recherche" />
+                <input src="<?php echo img_url('header/loupe.png') ?>" type="image" value="submit" align="middle"/>
+            <?php // echo form_close(); ?>
             </form>
           </div>
         </div>
