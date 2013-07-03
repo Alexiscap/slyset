@@ -29,6 +29,17 @@ class Mc_actus extends CI_Controller
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
         $sub_data['perso'] = $output;
         
+        //--bouton suivre un musicien
+        $community_follower=  $this->user_model->get_community($this->user_id);
+        $my_abonnement_head = "";
+        
+        
+        foreach($community_follower as $my_following_head)
+        {
+        $my_abonnement_head .= $my_following_head->Utilisateur_id.'/';
+        }
+
+        
         if(!empty($output)){
             $this->layout->ajouter_dynamique_css($output->theme_css);
             write_css($output);
@@ -37,7 +48,9 @@ class Mc_actus extends CI_Controller
         $this->data = array(
             'sidebar_left'  => $this->load->view('sidebars/sidebar_left', '', TRUE),
             'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE),
-            'commentaires'  => $this->mc_actus_model->liste_comments()
+            'commentaires'  => $this->mc_actus_model->liste_comments(),
+            'community_follower'=>$my_abonnement_head
+
         );
     }
   

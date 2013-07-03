@@ -5,18 +5,22 @@ if (!defined('BASEPATH'))
 
 class Mc_stats extends CI_Controller
 {
-    var $data;
-    var $user_id;
-
-    public function __construct() {
-        parent::__construct();
-
-        $this->layout->ajouter_css('slyset');
-
+    
+    public function __construct()
+    {
+      parent::__construct();
+      
+      	$this->layout->ajouter_css('slyset');
+      
+      	$this->layout->ajouter_js('jquery.imagesloaded.min');
+      	$this->layout->ajouter_js('jquery.masonry.min');
+     	$this->layout->ajouter_js('jquery.stapel');
+      
+        $this->layout->set_id_background('stats');
+    
         $this->load->model(array('perso_model', 'user_model'));
         $this->load->library(array('layout'));
 
-        $this->layout->set_id_background('stats');
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
         $output = $this->perso_model->get_perso($this->user_id);
 
@@ -28,7 +32,15 @@ class Mc_stats extends CI_Controller
             $this->layout->ajouter_dynamique_css($output->theme_css);
             write_css($output);
         }
-
+ 	//--bouton suivre un musicien
+        $community_follower=  $this->user_model->get_community($this->user_id);
+        $my_abonnement_head = "";
+        
+        
+        foreach($community_follower as $my_following_head)
+        {
+       	 	$my_abonnement_head .= $my_following_head->Utilisateur_id.'/';
+        }
         $this->data = array(
             'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
             'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)

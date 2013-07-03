@@ -1,1 +1,5 @@
-Le concert a bien été ajouté !
+
+le concert a bien été 
+<?php
+echo $status;
+?>

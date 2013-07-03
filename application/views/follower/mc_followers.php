@@ -14,11 +14,17 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
         </ul>
     </div>
 
-    <div id="cover" style="background-image:url(<?php echo files('profiles/' . $cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
-        <div id="infos-cover">
-            <h2><?php echo $login; ?></h2>
-            <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
-        </div>
+   <div id="cover" style="background-image:url(<?php print files('profiles/'.$cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
+    <div id="infos-cover">
+          <h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
+     
+    <?php 
+     		if($infos_profile->type==2&&substr_count($community_follower,$infos_profile->id)==0):?>
+      			<a href="#" class="add-follow" id="<?php echo $this->uri->segment(2)?>"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
+   			<?php endif;
+    		if($infos_profile->type==2&&substr_count($community_follower,$infos_profile->id)>0):?>
+     			<a href="#" class="delete-follow" id="<?php echo $this->uri->segment(2)?>"><span class="button_left_abonne"></span><span class="button_center_abonne">Ne plus suivre</span><span class="button_right_abonne"></span></a>
+    		<?php endif;?>       </div>
     </div>
 
     <div id="stats-cover">
@@ -106,50 +112,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
         endforeach;
     endif;
     ?>
-    <!--
-    <div class="follower">
-      <div class="photo_follow">
-        <img src="<?php echo img_url('common/photo_follower.png'); ?>" />
-      </div>
-      <div class="description">
-        <p class="nom_follow">Skip the use</p>
-        <p class="text_follow">Du rock, des tatouages, des kilowatts, de la sueur ! Notre album est enfin dans les bacs !</p>
-        <img src="<?php echo img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
-      </div>
-      <div class="bouton">
-        <a href="#" class="participer"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
-      </div>
-    </div>
-    <hr/>
-    
-    
-    <div class="follower">
-      <div class="photo_follow">
-        <img src="<?php echo img_url('common/photo_follower2.png'); ?>" />
-      </div>
-      <div class="description">
-        <p class="nom_follow">Skip the use</p>
-        <p class="text_follow">Du rock, des tatouages, des kilowatts, de la sueur ! Notre album est enfin dans les bacs !</p>
-        <img src="<?php echo img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
-      </div>
-      <div class="bouton">
-        <a href="#" class="participer"><span class="button_left_abonne"></span><span class="button_center_abonne">Abonné</span><span class="button_right_abonne"></span></a>
-      </div>
-    </div>
-    <hr/>
-    <div class="follower">
-      <div class="photo_follow">
-        <img src="<?php echo img_url('common/photo_follower.png'); ?>" />
-      </div>
-      <div class="description">
-        <p class="nom_follow">Skip the use</p>
-        <p class="text_follow">Du rock, des tatouages, des kilowatts, de la sueur ! Notre album est enfin dans les bacs !</p>
-        <img src="<?php echo img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
-      </div>
-      <div class="bouton">
-        <a href="#" class="participer"><span class="button_left_non"></span><span class="button_center_non">Ne plus suivre</span><span class="button_right_non"></span></a>
-      </div>
-    </div>-->
+
 </div>
 
 

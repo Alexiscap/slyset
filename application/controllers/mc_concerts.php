@@ -15,8 +15,10 @@ class Mc_concerts extends CI_Controller {
         $this->layout->ajouter_css('colorbox');
 
         $this->layout->ajouter_js('concert');
+       	$this->layout->ajouter_js('social_media');
+
         $this->layout->ajouter_js('maps_api');
-        $this->layout->ajouter_js('maps-google');
+       // $this->layout->ajouter_js('maps-google');
         $this->layout->ajouter_js('jquery.colorbox');
         $this->load->model(array('perso_model', 'user_model', 'concert'));
 		$this->load->helper('url');
@@ -26,6 +28,16 @@ class Mc_concerts extends CI_Controller {
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
         $sub_data['perso'] = $output;
+        
+        //--bouton suivre un musicien
+        $community_follower=  $this->user_model->get_community($this->user_id);
+        $my_abonnement_head = "";
+        
+        
+        foreach($community_follower as $my_following_head)
+        {
+        $my_abonnement_head .= $my_following_head->Utilisateur_id.'/';
+        }
 
         if (!empty($output)) {
             $this->layout->ajouter_dynamique_css($output->theme_css);
@@ -34,7 +46,8 @@ class Mc_concerts extends CI_Controller {
 
         $this->data = array(
             'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
-            'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
+            'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE),
+            'community_follower'=>$my_abonnement_head
         );
     }
 
@@ -205,8 +218,8 @@ class Mc_concerts extends CI_Controller {
 
                 $this->concert->ajout_concert_data($this->input->post('ville'), $pays, $code_postal, $route, $street_number, $this->input->post('artiste'), $this->input->post('snd_partie'), $this->input->post('salle'), $this->input->post('prix'), $this->input->post('heure_concert'), $this->input->post('date_concert'), $user_id, $phone, $website);
             }
-
-            $this->load->view('concert/success-concert');
+			$data_success['status'] = 'ajouté';
+            $this->load->view('concert/success-concert',$data_success);
 
             //redirect('mc_concerts','refresh');
         }
@@ -311,7 +324,9 @@ class Mc_concerts extends CI_Controller {
 
             //$this->layout->view('mc_concerts');
 
-            $this->load->view('concert/success-concert');
+         			$data_success['status'] = 'modifié';
+            $this->load->view('concert/success-concert',$data_success);
+
         }
     }
 
@@ -327,7 +342,8 @@ class Mc_concerts extends CI_Controller {
 
         if ($this->input->post("delete")) {
             $this->concert->delete_concert_data($concert_id, $adresse_id);
-            $this->load->view('concert/success-concert');
+          $data_succes['status'] = 'supprimé';
+            $this->load->view('concert/success-concert',$data_succes);
         }
         echo $this->input->post("no_delete"); {
             //CLOSE POP UP

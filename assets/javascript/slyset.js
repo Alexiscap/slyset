@@ -160,8 +160,7 @@ $(document).ready(function(){
         var comment = $(this).find("#usercomment").val();
         var messageid = $(this).find("#messageid").val();
         var thisParent = $(this).parent();
-        var dataString = 'usercomment=' + usercomment + '&messageid=' + messageid;
-
+        var dataString = 'usercomment=' + comment + '&messageid=' + messageid;
         if(usercomment == '' || messageid == ''){
             alert('Veuillez renseigner un message !');
         } else {
@@ -173,6 +172,7 @@ $(document).ready(function(){
                 url : baseurl + 'index.php/mc_photos/form_photo_user_comment',
                 data: dataString,
                 success: function(comment){
+
                     $(comment).hide().insertBefore(thisParent).slideDown('slow');
                     ajaxLoader.fadeOut(1000);
                     $(".content").masonry('reload');
@@ -250,7 +250,7 @@ $(document).ready(function(){
         
         $.ajax({
             type: "POST",
-            url : baseurl + '/add_like',
+            url : '/slyset/index.php/mc_photos/add_like',
             data: dataid,
             success: function(jelike){
                 alert('ok executé');
@@ -265,7 +265,7 @@ $(document).ready(function(){
         
         $.ajax({
             type: "POST",
-            url : baseurl + '/slyset/index.php/mc_photos/minus_like',
+            url : '/slyset/index.php/mc_photos/minus_like',
             data: dataid,
             success: function(jelike){
                 alert('ok executé');
@@ -280,7 +280,7 @@ $(document).ready(function(){
         
         $.ajax({
             type: "POST",
-            url : baseurl + '/slyset/index.php/mc_photos/add_like_a',
+            url :  '/slyset/index.php/mc_photos/add_like_a',
             data: dataid,
             success: function(jelike){
                 alert('ok executé');
@@ -295,7 +295,7 @@ $(document).ready(function(){
         
         $.ajax({
             type: "POST",
-            url : baseurl + '/slyset/index.php/mc_photos/minus_like_a',
+            url : '/slyset/index.php/mc_photos/minus_like_a',
             data: dataid,
             success: function(jelike){
                 alert('ok executé');
@@ -310,7 +310,7 @@ $(document).ready(function(){
         
         $.ajax({
             type: "POST",
-            url : baseurl + '/slyset/index.php/mc_photos/add_like_v',
+            url : '/slyset/index.php/mc_photos/add_like_v',
             data: dataid,
             success: function(jelike){
                 alert('ok executé');
@@ -325,7 +325,7 @@ $(document).ready(function(){
         
         $.ajax({
             type: "POST",
-            url : baseurl + '/slyset/index.php/mc_photos/minus_like_v',
+            url : '/slyset/index.php/mc_photos/minus_like_v',
             data: dataid,
             success: function(jelike){
                 alert('ok executé');
@@ -355,6 +355,15 @@ $(document).ready(function(){
         return false;
     });
     
+    $('.photo.box.col1').hover(
+    function(){
+    
+    	$(this).children('.edit').show();
+    },
+    function(){
+    $(this).children('.edit').hide();
+    }
+    );
     
         //assister a un concert
     $('.noparticiper').click(function(){
@@ -467,6 +476,63 @@ $(document).ready(function(){
         return false
      });
 	}
+    
+      $('.add-follow').click(function(){
+      
+      	var button = $(this);
+        var id_user = $(this).attr('id');
+        var dataid = 'id_user=' + id_user;
+
+        $.ajax({
+            type: "POST",
+            url :'/slyset/index.php/mc_followers/add_follow',
+            data: dataid,
+            success: function(){ //afficher le bon bouton
+
+   				$(button).children('.button_left').addClass('button_left_abonne');	
+   				$(button).addClass('delete-follow');		
+	
+   				$(button).children('.button_center').addClass('button_center_abonne');
+   				$(button).children('.button_right').addClass('button_right_abonne'); 
+   				$(button).children('.button_center').text('Ne plus suivre');
+  
+   				$(button).children('.button_left').removeClass('button_left');		
+   				$(button).children('.button_center').removeClass('button_center');
+   				$(button).children('.button_right').removeClass('button_right');
+   				$(button).removeClass('add-follow');		
+            }
+        })
+        return false
+    });
+    
+       $('.delete-follow').click(function(){
+      
+      	var button = $(this);
+        var id_user = $(this).attr('id');
+        var dataid = 'id_user=' + id_user;
+
+        $.ajax({
+            type: "POST",
+            url :'/slyset/index.php/mc_followers/delete_follow',
+            data: dataid,
+            success: function(){ //afficher le bon bouton
+
+   				$(button).children('.button_left_abonne').addClass('button_left');	
+   				$(button).addClass('delete-follow');		
+	
+   				$(button).children('.button_center_abonne').addClass('button_center');
+   				$(button).children('.button_right_abonne').addClass('button_right'); 
+   				$(button).children('.button_center').text('Suivre');
+  
+   				$(button).children('.button_left_abonne').removeClass('button_left_abonne');		
+   				$(button).children('.button_center_abonne').removeClass('button_center_abonne');
+   				$(button).children('.button_right_abonne').removeClass('button_right_abonne');
+   				$(button).removeClass('add-follow');		
+            }
+        })
+        return false
+    });
+    
     
     //Utilisation du caroufredsel sur la page home
     if($("body.home").length > 0){
@@ -595,6 +661,10 @@ $(document).ready(function(){
             e.preventDefault();
         });
     }
+    
+     
+    
+    
     
     if($("body.personnaliser").length > 0){
         $('#colorpickerField1').ColorPicker({

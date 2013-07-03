@@ -105,6 +105,7 @@ $route['my-reglages'] = "melo_reglages/index";
 $route['my-reglages/(:num)'] = "melo_reglages/index/$1";
 $route['my-reglages/update_user/(:num)'] = "melo_reglages/update_user/$1";
 
+
 $route['my-concert'] = "melo_concerts/index";
 $route['my-concert/(:num)'] = "melo_concerts/index/$1";
 $route['my-concert/archive'] = "melo_concerts/concert_passe";
@@ -116,8 +117,8 @@ $route['my-follower/(:num)'] = "melo_abonnements/index/$1";
 $route['document'] = "mc_partitions/index";
 $route['document/(:num)'] = "mc_partitions/index/$1";
 
-$route['my-wall'] = "melo_actu/index";
-$route['my-wall/(:num)'] = "melo_actu/index/$1";
+$route['my-wall'] = "melo_wall/index";
+$route['my-wall/(:num)'] = "melo_wall/index/$1";
 
 $route['my-playlists'] = "melo_playlist/index";
 $route['my-playlists/(:num)'] = "melo_playlist/index/$1";

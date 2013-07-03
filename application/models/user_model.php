@@ -171,6 +171,15 @@ class User_model extends CI_Model {
         
         $this->db->update('utilisateur', $data, "id = ".$this->session->userdata('uid'));
     }
+    
+    public function get_community($user_follower_id)
+    {
+    	return $this->db->select('id,Utilisateur_id')
+     				->from('communaute')
+       				->where(array('Follower_id' => $user_follower_id))
+        			->get()
+           			->result();
+    }
 
 }
 	

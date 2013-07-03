@@ -25,6 +25,7 @@ class melo_achats extends CI_Controller {
 
         $this->layout->set_id_background('achats');
 
+
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
 
         $sub_data = array();
