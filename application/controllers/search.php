@@ -11,9 +11,11 @@ class Search extends CI_Controller {
         parent::__construct();
 //        $this->output->enable_profiler(true);
         $this->layout->ajouter_css('slyset');
+        $this->layout->ajouter_js('infinite_scroll');
 
         $this->load->helper(array('cookie', 'form'));
         $this->load->model(array('search_model', 'user_model'));
+        $this->load->library(array('form_validation'));
 
         $this->layout->set_id_background('search');
         $this->layout->set_description('Slyset');
@@ -53,10 +55,33 @@ class Search extends CI_Controller {
         $data = $this->data;
         $session_id = $this->session->userdata('uid');
         
-        $keyword = $this->input->post('recherche');
-        $data['results'] = $this->search_model->search($keyword);
+        $this->form_validation->set_rules('recherche', 'Recherche', 'trim|require|xss_clean');
+             
+        if($this->form_validation->run() == FALSE){
+//            $this->layout->view('search_result', $data);
+        } else {
+            $keyword = $this->input->post('recherche');
+            $data['results'] = $this->search_model->search($keyword, 2, 0);
+            $data['keyword'] = $keyword;
 
-        $this->layout->view('search_result', $data);
+            $this->layout->view('search_result', $data);
+        }
     }
+    
+    public function ajax_search_result($uid, $offset = null) {
+//        $this->load->library('my_layout');
+        $keyword = $this->input->post('recherche');
+        print 'du ajax controller fonction : '.$keyword;    
+        print 'donc offset : '.$offset;    
+        
+        if ($this->search_model->search($keyword, 2, $offset)) {
+            $data['results'] = $this->search_model->search($keyword, 2, $offset);
+            $data['keyword'] = $keyword;
 
+            $this->load->view('search_result_ajax', $data);
+        }
+        else {
+          echo 'End';
+        }
+    }
 }

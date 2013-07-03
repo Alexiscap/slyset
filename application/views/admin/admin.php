@@ -5,7 +5,7 @@ $session_id = $this->session->userdata('uid');
 <div id="contentAll">
     <div id="breadcrumbs">
         <ul>
-            <li><a href="<?php echo site_url('home'); ?>">Accueil</a></li>
+            <li><a href="<?php echo site_url('home/'.$session_id); ?>">Accueil</a></li>
             <li><a href="<?php echo site_url($this->uri->segment(1)); ?>">Administration</a></li>
         </ul>
     </div>
