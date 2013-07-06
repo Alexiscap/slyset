@@ -24,6 +24,7 @@ class Mc_concerts extends CI_Controller {
 		$this->load->helper('url');
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
         $output = $this->perso_model->get_perso($this->user_id);
+        $this->layout->set_id_background('concert_mu');
 
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
@@ -126,7 +127,7 @@ class Mc_concerts extends CI_Controller {
         $data['activity'] = $this->concert->get_activity($uid);
         $data['all_concert_act'] = "";
         foreach ($data['activity'] as $data['activite']) {
-            $data['all_concert_act'] .= $data['activite']->Concerts_id . "/";
+            $data['all_concert_act'] .=  "/".$data['activite']->Concerts_id . "/";
         }
 
         $this->layout->view('concert/' . $moment, $data);

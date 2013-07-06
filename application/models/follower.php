@@ -11,7 +11,7 @@ class follower extends CI_Model
 
 	public function get_all_follower_user($user_id)
 	{
-		return $this->db->select('communaute.id,communaute.Follower_id,utilisateur.login,communaute.type,utilisateur.style_ecoute,utilisateur.style_joue,utilisateur.cover,utilisateur.description')
+		return $this->db->select('communaute.id,communaute.Follower_id,utilisateur.login,communaute.type,utilisateur.style_ecoute,utilisateur.style_joue,utilisateur.cover,utilisateur.description,utilisateur.thumb')
 					->where('Utilisateur_id',$user_id)
 					->from($this->table_communaute)
 					->join('utilisateur','utilisateur.id=communaute.Follower_id')

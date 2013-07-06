@@ -239,11 +239,7 @@ $(document).ready(function(){
         }
     });
     
-    //like photo
 
-    //1 incrementer de 1
-    // select du login connecté
-    // changement classe du couer pour rose !
   	$('.like').click(function(){
       //  var baseurl = $(this).find("#baseurl").val();
         //var baseurl = window.location.host;
@@ -335,28 +331,8 @@ $(document).ready(function(){
         })
     });
     
-    //assister a un concert
-    $('.participer').click(function(){
-       var thisconcert = $(this);
-        var baseurl = $(this).find("#baseurl").val();
-        var id_concert = $(this).attr('id');
-        var dataid = 'id_concert=' + id_concert;
-        var divid = "#" + id_concert;
-            
-        $.ajax({
-            type: "POST",
-            url :'/slyset/index.php/mc_concerts/add_activity_concert',
-            data: dataid,
-          
-            success: function(dataid){ //afficher le bon bouton
-                $(thisconcert).addClass('noparticiper');
-                $(thisconcert).removeClass('participer');
-                $(thisconcert).children('.button_center').text('Je n\'y vais plus');
-            }
-        })
-        return false;
-    });
     
+ 
     $('.photo.box.col1').hover(
     function(){
     
@@ -367,28 +343,7 @@ $(document).ready(function(){
     }
     );
     
-        //assister a un concert
-    $('.noparticiper').click(function(){
-       var thisconcert = $(this);
-        var baseurl = $(this).find("#baseurl").val();
-        var id_concert = $(this).attr('id');
-        var dataid = 'id_concert=' + id_concert;
-        var divid = "#" + id_concert;
-            
-        $.ajax({
-            type: "POST",
-            url :'/slyset/index.php/mc_concerts/delete_activity_concert',
-            data: dataid,
-          
-            success: function(dataid){ //afficher le bon bouton
-                $(thisconcert).addClass('participer');
-                $(thisconcert).removeClass('noparticiper');
-                $(thisconcert).children('.button_center').text('J\'y vais');
-                
-            }
-        })
-        return false;
-    });
+
       
     //Ne plus assister a un concert
     $('.noparticiper_melo').click(function(){
@@ -457,29 +412,226 @@ $(document).ready(function(){
 	
 	 if($('body.followers').length>0)
     {
-	 $('.bouton .my-follow').click(function(){
-	 var button_click =  $(this);
-     	var idwall_community = $(this).parents('.bouton').attr('id');
-     	var datawall = 'idwall_community=' + idwall_community;
 
-     	 $.ajax({
-            type: "POST",
-            url :'/slyset/index.php/melo_abonnements/delete_community_wall',
-            data: datawall,
-            success: function(){ //afficher le bon bouton
-				//$(button_click).addClass('unfollow');
-   				$(button_click).children('.button_center_abonne').text('Suivre');
-   				$(button_click).removeClass('.my-follow');
-   				$(button_click).children('.button_left_abonne').addClass('button_left_red');		
-   				$(button_click).children('.button_center_abonne').addClass('button_center_red');
-   				$(button_click).children('.button_right_abonne').addClass('button_right_red');
+		/*$('.bouton .participer').hover(
+    
+			 function () {
+				$(this).addClass('unfollow');
+   				$(this).children('.button_center').text('Ne plus suivre');
+   				$(this).children('.button_left').addClass('button_left_abonne')
+   				$(this).children('.button_center').addClass('button_center_abonne')
+   				$(this).children('.button_right').addClass('button_right_abonne')
+
+  			},
+  	
+  			function () {
+  		
+   				$('.button_center_abonne').text('Abonné');
+   				$(this).children('.button_left').removeClass('button_left_abonne')
+   				$(this).children('.button_center').removeClass('button_center_abonne')
+   				$(this).children('.button_right').removeClass('button_right_abonne')
+  			}
+	
+		);*/
+		
+		$('.bouton .follow_following').live('click',function(){
+		
+			var button = $(this);
+        	var id_user = $(this).attr('id');
+        	var dataid = 'id_user=' + id_user;
+
+        	$.ajax({
+           	 	type: "POST",
+           	 	url :'/slyset/index.php/mc_followers/add_follow',
+            	data: dataid,
+            	success: function(){ //afficher le bon bouton
+
+   				$(button).children('.button_left_red').addClass('button_left');	
+   				$(button).addClass('participer');		
+	
+   				$(button).children('.button_center_red').addClass('button_center');
+   				$(button).children('.button_right_red').addClass('button_right'); 
+   				$(button).children('.button_center_red').text('Abonné');
+  
+   				$(button).children('.button_left_red').removeClass('button_left_red');		
+   				$(button).children('.button_center_red').removeClass('button_center_red');
+   				$(button).children('.button_right_red').removeClass('button_right_red');
+   				
+
+   				$(button).removeClass('follow_following');		
+
+   			//	$(button).trigger('mouseenter');
+   			//		$(button).trigger('mouseleave');
             }
         })
         return false
-     });
+    });
+		
+		
+	
+		$('.bouton .participer').live({
+  		click: function(){
+ 		//alert('ok');  
+ 		  // $(this).children('.button_left').addClass('button_left_red')
+ 		     $(this).children('.button_center').text('Suivre');
+
+ 		  
+ 		   	$(this).children('.button_left.button_left_abonne').addClass('button_left_red')
+ 		   	$(this).children('.button_left.button_left_abonne').removeClass('button_left_abonne')
+  			$(this).children('.button_left').removeClass('button_left')
+
+  			$(this).children('.button_center.button_center_abonne').addClass('button_center_red')
+ 		   	$(this).children('.button_center.button_center_abonne').removeClass('button_center_abonne')
+ 			$(this).children('.button_center').removeClass('button_center')
+
+ 			$(this).children('.button_right.button_right_abonne').addClass('button_right_red')
+ 		   	$(this).children('.button_right.button_right_abonne').removeClass('button_right_abonne')
+ 		   	$(this).children('.button_right').removeClass('button_right')
+
+ 		   	$(this).addClass('follow_following');		
+   			$(this).removeClass('participer');		
+
+
+		 	var button = $(this);
+       	 var id_user = $(this).attr('id');
+        var dataid = 'id_user=' + id_user;
+
+        $.ajax({
+            type: "POST",
+            url :'/slyset/index.php/mc_followers/delete_follow',
+            data: dataid,
+            success: function(){ //afficher le bon bouton
+
+   				$(button).children('.button_left_abonne').addClass('button_left');	
+	
+   				$(button).children('.button_center_abonne').addClass('button_center');
+   				$(button).children('.button_right_abonne').addClass('button_right'); 
+   				$(button).children('.button_center').text('Suivre');
+  
+   				$(button).children('.button_left_abonne').removeClass('button_left_abonne');		
+   				$(button).children('.button_center_abonne').removeClass('button_center_abonne');
+   				$(button).children('.button_right_abonne').removeClass('button_right_abonne');
+            }
+        })
+        return false
+  		},
+  		
+  		mouseenter:  function () {
+   				$(this).children('.button_center').text('Ne plus suivre');
+   				$(this).children('.button_left').addClass('button_left_abonne')
+   				$(this).children('.button_center').addClass('button_center_abonne')
+   				$(this).children('.button_right').addClass('button_right_abonne')
+
+  			},
+  	
+  		mouseleave:	function () {
+  		
+   				$('.button_center_abonne').text('Abonné');
+   				$(this).children('.button_left').removeClass('button_left_abonne')
+   				$(this).children('.button_center').removeClass('button_center_abonne')
+   				$(this).children('.button_right').removeClass('button_right_abonne')
+  			}
+  
+});
+		
 	}
+ 
+ 
+ 	if($("body.concert_mu").length > 0){
+    //assister a un concert
     
-      $('.add-follow').click(function(){
+    	$('.participer').live('click',function(){
+       		var thisconcert = $(this);
+        	var baseurl = $(this).find("#baseurl").val();
+        	var id_concert = $(this).attr('id');
+        	var dataid = 'id_concert=' + id_concert;
+        	var divid = "#" + id_concert;
+            
+        	$.ajax({
+            	type: "POST",
+            	url :'/slyset/index.php/mc_concerts/add_activity_concert',
+            	data: dataid,
+          
+            	success: function(dataid){ //afficher le bon bouton
+            	 	$(thisconcert).children('.button_center_red').text('J\'y vais');
+
+                	$(thisconcert).children('.button_left_red').addClass('button_left'); 
+
+                	$(thisconcert).children('.button_center_red').addClass('button_center');
+   					$(thisconcert).children('.button_right_red').addClass('button_right'); 
+  
+  	 				$(thisconcert).children('.button_left_red').removeClass('button_left_red');		
+   					$(thisconcert).children('.button_center_red').removeClass('button_center_red');
+   					$(thisconcert).children('.button_right_red').removeClass('button_right_red');
+   					
+                	$(thisconcert).addClass('noparticiper');
+                	$(thisconcert).removeClass('participer');
+            	}
+        	})
+        	return false;
+    	});
+    
+        // ne plus assister a un concert
+    	$('.noparticiper').live({
+    		click: function(){
+       		var thisconcert = $(this);
+        	var baseurl = $(this).find("#baseurl").val();
+        	var id_concert = $(this).attr('id');
+        	var dataid = 'id_concert=' + id_concert;
+        	var divid = "#" + id_concert;
+            
+        	$.ajax({
+            	type: "POST",
+            	url :'/slyset/index.php/mc_concerts/delete_activity_concert',
+            	data: dataid,
+          
+            	success: function(dataid){ //afficher le bon bouton
+            	  	$(thisconcert).children('.button_center').text('Je veux y aller');
+
+
+  
+ 		   	$(thisconcert).children('.button_left.button_left_abonne').addClass('button_left_red')
+ 		   	$(thisconcert).children('.button_left.button_left_abonne').removeClass('button_left_abonne')
+  			$(thisconcert).children('.button_left').removeClass('button_left')
+
+  			$(thisconcert).children('.button_center.button_center_abonne').addClass('button_center_red')
+ 		   	$(thisconcert).children('.button_center.button_center_abonne').removeClass('button_center_abonne')
+ 			$(thisconcert).children('.button_center').removeClass('button_center')
+
+ 			$(thisconcert).children('.button_right.button_right_abonne').addClass('button_right_red')
+ 		   	$(thisconcert).children('.button_right.button_right_abonne').removeClass('button_right_abonne')
+ 		   	$(thisconcert).children('.button_right').removeClass('button_right')
+ 		   	$(thisconcert).addClass('participer')
+			$(thisconcert).removeClass('noparticiper')
+
+            	}
+        	})
+        	return false;
+        	},
+        	
+        	
+  		
+  		mouseenter:  function () {
+   				$(this).children('.button_center').text('Je n\'y vais plus');
+   				$(this).children('.button_left').addClass('button_left_abonne')
+   				$(this).children('.button_center').addClass('button_center_abonne')
+   				$(this).children('.button_right').addClass('button_right_abonne')
+
+  			},
+  	
+  		mouseleave:	function () {
+  		
+   				$('.button_center_abonne').text('J\'y vais');
+   				$(this).children('.button_left').removeClass('button_left_abonne')
+   				$(this).children('.button_center').removeClass('button_center_abonne')
+   				$(this).children('.button_right').removeClass('button_right_abonne')
+  			}
+    	});
+    
+    }
+    
+    
+    $('.add-follow').live('click',function(){
       
       	var button = $(this);
         var id_user = $(this).attr('id');
@@ -507,7 +659,7 @@ $(document).ready(function(){
         return false
     });
     
-       $('.delete-follow').click(function(){
+    $('.delete-follow').live('click',function(){
       
       	var button = $(this);
         var id_user = $(this).attr('id');
@@ -529,7 +681,9 @@ $(document).ready(function(){
    				$(button).children('.button_left_abonne').removeClass('button_left_abonne');		
    				$(button).children('.button_center_abonne').removeClass('button_center_abonne');
    				$(button).children('.button_right_abonne').removeClass('button_right_abonne');
-   				$(button).removeClass('add-follow');		
+   				$(button).removeClass('delete-follow');	
+   				 $(button).addClass('add-follow');		
+	
             }
         })
         return false

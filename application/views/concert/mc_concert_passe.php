@@ -60,10 +60,10 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 
   <div class="content">
     <div id="btn_tmp">
-       <a href="<?php echo base_url('index.php/mc_concerts/'.$infos_profile->id) ?>"><div class="avenir">A venir</div></a>
-       <a href="<?php echo base_url('index.php/mc_concerts/concert_passe/'.$infos_profile->id) ?>"><div class="cpasse actif">Concerts passés</div></a>
-  	 </div>
-      <h2>Les concerts passés de <?php echo $infos_profile->id ?> </h2>
+            <a href="<?php echo site_url('concert/' . $infos_profile->id) ?>"><div class="avenir">A venir</div></a>
+            <a href="<?php echo site_url('concert/archive/' . $infos_profile->id) ?>"><div class="cpasse actif">Concerts passés</div></a>
+		</div>
+      <h2>Les concerts passés de <?php echo $infos_profile->login ?> </h2>
    
      <!-- Boucle : tous les concerts pour un artiste -->
    	  <?php 
@@ -97,15 +97,15 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
   	<div id="concert_activity>">
 
     	<?php 
-    	$count = substr_count($all_concert_act,$concert_unit->id.'/');
+    	$count = substr_count($all_concert_act,'/'.$concert_unit->id.'/');
     	if ($count>=1)
     	{?>
-    	    		<a id="<?php echo $concert_unit->id;?>" href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">Je n'y vais plus</span><span class="button_right"></span></a>
+    	    		<a id="<?php echo $concert_unit->id;?>" href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">J'y vais</span><span class="button_right"></span></a>
 
     	<?php
     	}
     	else{?>
-    	    	 <a id="<?php echo $concert_unit->id;?>" href="#" class="participer"><span class="button_left"></span><span  class="button_center">J'y vais</span><span class="button_right"></span></a>
+    	    	 <a id="<?php echo $concert_unit->id;?>" href="#" class="participer"><span class="button_left_red"></span><span  class="button_center_red">Je veux y aller</span><span class="button_right_red"></span></a>
 
 		<?php }
     	 ?> 

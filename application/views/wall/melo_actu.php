@@ -37,7 +37,7 @@
             <span class="stats_number">278</span>
             <span class="stats_title">abonnements</span>
         </div>
-        
+       </div> 
         <div id = "content" class="content">  
         <?php
       
@@ -60,7 +60,7 @@
        
       <div class="left">
 
-        <img src="<?php echo files('profiles/'.$entity_wall->thumb); ?>" alt="Photo Profil" />
+        <img src="<?php echo files('profiles/'.$profile->thumb ); ?>" alt="Photo Profil" />
       </div>
       <div class="right">
         <span class="ico_citation"></span>
@@ -79,8 +79,8 @@
 			<?php
 			endif;
  			if ($entity_wall->type == 'ME'):
-                        ?>
-
+      
+            ?>
   				<div id ="<?php echo $entity_wall->id?>" class="artist_post photo_message">
       			<div class="top"   class="top" id="<?php echo $entity_wall->id?>">
         				  <?php if ($this->uri->segment(2) == $session_id):
@@ -92,12 +92,12 @@
      					
      				<div class="left">
 
-        				<img src="<?php echo base_url('./files/profiles/'.$entity_wall->thumb); ?>" alt="Photo Profil" />
+        				<img src="<?php echo base_url('./files/profiles/'.$profile->thumb); ?>" alt="Photo Profil" />
       				</div>
       					
       				<div class="right">
       					<span class="ico_citation"></span>
-        				<p class="msg_post">Je viens de liker la photo de <?php echo $entity_wall->login ?> :  <a href="<?php echo base_url('index.php/mc_photos/zoom_photo/'.$entity_wall->idproduit) ?>"><?php echo $entity_wall->main_nom?></a></p>
+        				<p class="msg_post">Je viens de liker la photo de <?php echo $profile->thumb ?> :  <a href="<?php echo base_url('index.php/mc_photos/zoom_photo/'.$entity_wall->idproduit) ?>"><?php echo $entity_wall->main_nom?></a></p>
       					<!--  <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
    						-->  
     				</div>
@@ -130,7 +130,7 @@
      				</div>
       				<div class="left">
 
-       					<img src="<?php echo base_url('./files/profiles/'.$entity_wall->thumb); ?>" alt="Photo Profil" />
+       					<img src="<?php echo base_url('./files/profiles/'.$profile->thumb); ?>" alt="Photo Profil" />
      				</div>
       				<div class="right">
         				<span class="ico_citation"></span>
@@ -204,7 +204,7 @@
      					
      				<div class="left">
 
-        				<img src="<?php echo base_url('./files/profiles/'.$entity_wall->thumb); ?>" alt="Photo Profil" />
+        				<img src="<?php echo base_url('./files/profiles/'.$profile->thumb); ?>" alt="Photo Profil" />
       				</div>
       					
       				<div class="right">
@@ -383,7 +383,7 @@ if($entity_wall->product==5):
      				</div>
       				<div class="left">
 
-       					<img src="<?php echo base_url('./files/profiles/'.$entity_wall->thumb); ?>" alt="Photo Profil" />
+       					<img src="<?php echo base_url('./files/profiles/'.$profile->thumb); ?>" alt="Photo Profil" />
      				</div>
       				<div class="right">
         				<span class="ico_citation"></span>
@@ -408,10 +408,7 @@ if($entity_wall->product==5):
 
  
 
-     
-       
-  
-    </div>
+
 
 <?php if (isset($sidebar_right)) echo $sidebar_right; ?>
 

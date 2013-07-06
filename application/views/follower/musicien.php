@@ -21,7 +21,6 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
     <div id="infos-cover">
           <h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
      <?php 
-     var_dump($community_follower);
      		if($infos_profile->type==2&&substr_count($community_follower,$infos_profile->id)==0):?>
       			<a href="#" class="add-follow" id="<?php echo $this->uri->segment(2)?>"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
    			<?php endif;
@@ -76,28 +75,26 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 			<p class="nom_follow"><?php echo $follower->login ?></p>
 			<p class="text_follow"><?php echo $follower->description ?></p>
 			
-			<?php 
 			
-	
-		if($follower->type==2)
-			{?>
 			<img src="<?php echo img_url('common/casque.png'); ?>" /><span><?php echo $follower->style_joue ?></span>
 			</div>
-		<?php if(substr_count($allifollow,$follower->Follower_id)>=1)
-			{?>
-		<div class="bouton">
-			<a href="#" class="participer" id="suivre"><span class="button_left_abonne"></span><span class="button_center_abonne">Abonné</span><span class="button_right_abonne"></span></a>
-		<a href="#" class="participer" id="notfollow" style="display:none"><span class="button_left"></span><span class="button_center">Ne plus suivre</span><span class="button_right"></span></a>
-		</div>
-			<?php }
-			 if(substr_count($allifollow,$follower->Follower_id) == 0 )
-			{?>
-		<div class="bouton">
-			<a href="#" class="participer"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
-		</div>
-			<?php }
+		 	<?php if (substr_count($allifollow, $follower->Follower_id) >= 1) {
+                            ?>
+                        <div class="bouton" >
+                            <a href="#" id="<?php echo $follower->Follower_id ?>" class="participer" ><span class="button_left"></span><span class="button_center">Abonné</span><span class="button_right"></span></a>
+                        </div>
+                    <?php
+                    }
+                    if (substr_count($allifollow, $follower->Follower_id) == 0) {
+                        ?>
+                        <div class="bouton" >
+                            <a id="<?php echo $follower->Follower_id ?>" href="#" class="follow_following" ><span class="button_left_red"></span><span class="button_center_red">Suivre</span><span class="button_right_red"></span></a>
+                        </div>
+                    <?php
+                    }
+		
 			
-			}
+			
 		?>
 	
 	</div>
