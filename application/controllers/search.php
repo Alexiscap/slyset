@@ -71,8 +71,8 @@ class Search extends CI_Controller {
     public function ajax_search_result($uid, $offset = null) {
 //        $this->load->library('my_layout');
         $keyword = $this->input->post('recherche');
-        print 'du ajax controller fonction : '.$keyword;    
-        print 'donc offset : '.$offset;    
+//        print 'du ajax controller fonction : '.$keyword;    
+//        print 'donc offset : '.$offset;    
         
         if ($this->search_model->search($keyword, 2, $offset)) {
             $data['results'] = $this->search_model->search($keyword, 2, $offset);
@@ -81,7 +81,7 @@ class Search extends CI_Controller {
             $this->load->view('search_result_ajax', $data);
         }
         else {
-          echo 'End';
+//          echo 'End';
         }
     }
 }

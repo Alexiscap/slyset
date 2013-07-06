@@ -279,7 +279,7 @@ if (isset($all_date_calendar))
           </p>
 
           <div class="wall-flux-content-text">
-        <?php echo $article->article; ?>
+        <?php echo htmlspecialchars_decode($article->article); ?>
           </div>
         </div>
 <?php endforeach; ?>

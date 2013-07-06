@@ -64,7 +64,9 @@ class Admin_articles extends CI_Controller
                 $this->layout->view('admin/articles', $data);
             } else {
                 $title   = $this->input->post('title');
+                
                 $article = $this->input->post('article');
+//                $article = mysql_real_escape_string($article_html);
 
                 $this->article_model->insert_article($title, $article);
 
@@ -102,7 +104,9 @@ class Admin_articles extends CI_Controller
                 $this->layout->view('admin/articles_edit', $data);
             } else {
                 $title   = $this->input->post('title');
+                
                 $article = $this->input->post('article');
+//                $article = mysql_real_escape_string($article_html);
 
                 $this->article_model->update_article($article_id, $title, $article);
                 redirect('admin_articles', 'refresh');

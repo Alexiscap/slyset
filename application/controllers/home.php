@@ -15,6 +15,7 @@ class Home extends CI_Controller {
     $this->layout->ajouter_js('jsdate');
     $this->layout->ajouter_js('calendar');
     $this->layout->ajouter_js('carouFredSel');
+    $this->layout->ajouter_js('jquery.placeheld.min');
 
     $this->layout->set_id_background('home');
     $this->layout->set_description('Slyset');

@@ -16,35 +16,67 @@ $session_id = $this->session->userdata('uid');
         <hr>
         
         <div class="search_results_wrapper">
-            <?php foreach ($results as $row): ?>
+            <?php // foreach ($results as $row): ?>
 <!--                <tr>
-                    <td><?php echo $row->id ?></td>
-                    <td><a href="<?php echo site_url('home/' . $row['id']); ?>"><?php echo $row['login'] ?></a></td>
-                    <td><?php echo $row->mail ?></td>
-                    <td><?php echo $row->type ?></td>
-                    <td><?php echo $row->created ?></td>
-                    <td><?php echo $row->updated ?></td>
+                    <td><?php // echo $row->id ?></td>
+                    <td><a href="<?php // echo site_url('home/' . $row['id']); ?>"><?php // echo $row['login'] ?></a></td>
+                    <td><?php // echo $row->mail ?></td>
+                    <td><?php // echo $row->type ?></td>
+                    <td><?php // echo $row->created ?></td>
+                    <td><?php // echo $row->updated ?></td>
                 </tr>-->
             
-                <div class="search_result">
+            
+            
+            
+            <table>
+                    <tr class="tab-head">
+                        <th class="result-photo"></th>
+                        <th class="result-title">Titre de l'article<span id="titre" class="filter filter-bottom"></span></th>
+                        <th class="result-type">Date</th>
+                    </tr>
+
+                    <?php foreach($results as $row): ?>
+                        <tr class="search_result">
+                            <td class="result-photo">
+                                <a href="<?php echo site_url('actualite/' . $row['id']); ?>">
+                                    <img src="<?php echo $thumb = (!empty($row['thumb'])) ? files('profiles/' . $row['thumb']) : img_url('sidebar-right/defaultphoto-profil.png'); ?>" height="38" alt="Photo Profil" />
+                                </a>
+                            </td>
+                            <td class="result-title">
+                                <a href="<?php echo site_url('actualite/' . $row['id']); ?>">
+                                    <?php echo $row['login']; ?>
+                                </a>
+                            </td>
+                            <td class="result-type"><?php echo $type = ($row['type'] == 1) ? 'Musicien' : 'Mélomane'; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            
+            
+            
+            
+            
+<!--                <div class="search_result">
                     <p class="newbies-picture">
-                      <a href="<?php echo site_url('actualite/' . $row['id']); ?>">
-                        <img src="<?php echo $thumb = (!empty($row['thumb'])) ? files('profiles/' . $row['thumb']) : img_url('sidebar-right/defaultphoto-profil.png'); ?>" height="38px" alt="Photo Profil" />
+                      <a href="<?php // echo site_url('actualite/' . $row['id']); ?>">
+                        <img src="<?php // echo $thumb = (!empty($row['thumb'])) ? files('profiles/' . $row['thumb']) : img_url('sidebar-right/defaultphoto-profil.png'); ?>" height="38px" alt="Photo Profil" />
                       </a>
                     </p>
                     <div class="newbies-people">
-                      <a href="<?php echo site_url('actualite/' . $row['id']); ?>">
-        <?php echo $row['login']; ?>
+                      <a href="<?php // echo site_url('actualite/' . $row['id']); ?>">
+        <?php // echo $row['login']; ?>
                       </a>
                       </br>
-                      <span class="newbies-people-type"><?php echo $type = ($row['type'] == 1) ? 'Musicien' : 'Mélomane'; ?></span>
+                      <span class="newbies-people-type"><?php // echo $type = ($row['type'] == 1) ? 'Musicien' : 'Mélomane'; ?></span>
                     </div>
-                  </div>
-            <?php endforeach; ?>
+                  </div>-->
+            <?php // endforeach; ?>
+            
         </div>   
     </div>
 
-    <div class="pagination">
+<!--    <div class="pagination">
         <a href="#" id="precedent"><span><</span></a>
         <a href="#" class="page">1</a>
         <a href="#" class="page">2</a>
@@ -52,7 +84,7 @@ $session_id = $this->session->userdata('uid');
         <a href="#" class="page">4</a>
         <a href="#" class="page">5</a>
         <a href="#" id="suivant"><span>></span></a>
-    </div>
+    </div>-->
 
 </div>
 </div>
