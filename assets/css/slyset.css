@@ -1135,7 +1135,7 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 
 .content .historique {margin-top:15px;}
 .content .historique .nom_pl {float: left;font-size:18px;font-weight:bold;color:#3f3f3f;margin:0 20px;}
-.content .historique .detail_pl {float: right;font-size:12px;color:#888d95;margin:5px 22px 10px -15px;}
+.content .historique .detail_pl,.content .panier .detail_pl {float: right;font-size:12px;color:#888d95;margin:5px 22px 10px -15px;}
 .content .historique span.detail_pl {padding-top:3px;}
 .content .historique hr {width:500px;}
 
@@ -1199,24 +1199,24 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 .content .panier a{color:#888d95;font-size:12px;text-decoration:none;}
 
 .content .historique #articles-tab{ margin:20px auto; float:left; clear:both; }
-.content .historique #articles-tab table{ margin:0 0 20px 0; border:1px solid #cccfd1; -moz-box-shadow:0px 2px 3px 0px #999999;
+.content .historique #articles-tab table,.content .liste_partitions table{ margin:0 0 20px 0; border:1px solid #cccfd1; -moz-box-shadow:0px 2px 3px 0px #999999;
 -webkit-box-shadow:0px 2px 3px 0px #999999; -o-box-shadow:0px 2px 3px 0px #999999; box-shadow:0px 2px 3px 0px #999999; filter:progid:DXImageTransform.Microsoft.Shadow(color=#999999, Direction=180, Strength=3);}
-.content .historique #articles-tab tr{ }
-.content .historique #articles-tab th{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:left; color:#666666; }
-.content .historique #articles-tab td{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:left; text-align:left; border:1px solid #ebebeb; color:#555555; }
-.content .historique #articles-tab tr{ height:28px; background:#fafafa; }
-.content .historique #articles-tab tr.tab-head{ height:60px; border:1px solid #cccfd1; background:#e9ebec !important; }
-.content .historique #articles-tab tr.tab-head + tr td{ border-top:1px solid #cccfd1; }
-.content .historique #articles-tab tr.tab-head th{ border:none; }
-.content .historique #articles-tab tr.row-color-1{ background:#fafafa; }
-.content .historique #articles-tab tr.row-color-2{ background:#f7f7f7; }
+.content .historique #articles-tab tr, .content .liste_partitions tr{ }
+.content .historique #articles-tab th, .content .liste_partitions th{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:left; color:#666666; }
+.content .historique #articles-tab td, .content .liste_partitions td{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:left; text-align:left; border:1px solid #ebebeb; color:#555555; }
+.content .historique #articles-tab tr, .content .liste_partitions tr{ height:28px; background:#fafafa; }
+.content .historique #articles-tab tr.tab-head, .content .liste_partitions tr.tab-head{ height:60px; border:1px solid #cccfd1; background:#e9ebec !important; }
+.content .historique #articles-tab tr.tab-head + tr td, .content .liste_partitions tr.tab-head + tr td{ border-top:1px solid #cccfd1; }
+.content .historique #articles-tab tr.tab-head th, .content .liste_partitions tr.tab-head th{ border:none; }
+.content .historique #articles-tab tr.row-color-1, .content .liste_partitions tr.row-color-1{ background:#fafafa; }
+.content .historique #articles-tab tr.row-color-2, .content .liste_partitions tr.row-color-2{ background:#f7f7f7; }
 
-.content .historique input[type="checkbox"] + label span{ margin:-3px 0 0 0; }
-.content .historique #articles-tab .article-checkbox{ padding:0 6px; }
-.content .historique #articles-tab .article-title{ padding:0 12px 0 25px;width:152px;}
-.content .historique #articles-tab .article-artiste{ padding:0 12px 0 15px;width:67px;}
-.content .historique #articles-tab .article-type{ padding:0 12px 0 25px;width:62px;}
-.content .historique #articles-tab .article-prix{ padding:0 12px 0 25px;width:50px;}
+.content .historique input[type="checkbox"] + label span ,.content .liste_partitions input[type="checkbox"] + label span { margin:-3px 0 0 0; }
+.content .historique #articles-tab .article-checkbox, .content .liste_partitions .article-checkbox{ padding:0 6px; }
+.content .historique #articles-tab .article-title, .content .liste_partitions .article-titre{ padding:0 12px 0 25px;width:152px;}
+.content .historique #articles-tab .article-artiste, .content .liste_partitions  .article-artiste{ padding:0 12px 0 15px;width:67px;}
+.content .historique #articles-tab .article-type, .content .liste_partitions .article-type{ padding:0 12px 0 25px;width:62px;}
+.content .historique #articles-tab .article-prix, .content .liste_partitions  .article-prix{ padding:0 12px 0 25px;width:50px;}
 
 .content .historique #articles-tab th.article-title{ cursor:pointer; }
 .content .historique #articles-tab th.article-date{ cursor:pointer; }

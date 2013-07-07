@@ -84,15 +84,25 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 		<div class="liste_partitions">
 			<div class="en_tete">
 				<table>
-					<tr>
-						<td class="le_titre">Titre de la chanson</td>
-						<td class="paroles">Paroles</td>
-						<td class="partitions">Partitions</td>
-					</tr>
-				</table>
+				
+					 <tbody>
+                      
+					<tr class="tab-head odd row-color-2">
+                                <th class="article-checkbox checkbox-style2">
+                                	<input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all">
+                                		<label for="article-all">
+                                		
+                                		</label>
+                                		</th>
+                                <th class="article-title">Titre  de la chanson<span id="titre" class="filter filter-bottom"></span></th>
+                                <th class="article-artiste">Paroles<span id="titre" class="filter filter-bottom"></span></th>
+                                <th class="article-type">Partition<span id="titre" class="filter filter-bottom"></span></th>
+                                <th class="article-prix">Prix<span id="created" class="filter filter-bottom"></span></th>
+                            </tr>
+				
 			</div>
 			<div class="titres">
-				<table>
+				
 				<?php 
 
 				foreach($get_morc as $morceau):

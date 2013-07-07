@@ -393,7 +393,8 @@ $(document).ready(function(){
     );
     if($('body.abonnements').length>0)
     {
-     $('.bouton .my-follow').click(function(){
+     $('.bouton .participer').click(function(){
+     	var a = $(this);
      	var idwall_community = $(this).parents('.bouton').attr('id');
      	var datawall = 'idwall_community=' + idwall_community;
 
@@ -402,7 +403,7 @@ $(document).ready(function(){
             url :'/slyset/index.php/melo_abonnements/delete_community_wall',
             data: datawall,
             success: function(){ //afficher le bon bouton
-				$('#my-follower-melo-'+idwall_community).slideUp();
+				$(a).parents('.follower').slideUp();
             }
         })
         return false
@@ -631,6 +632,30 @@ $(document).ready(function(){
     }
     
     
+    
+ 	if($("body.concert_melo").length > 0){
+    
+     $('.participer').click(function(){
+        var baseurl = $(this).find("#baseurl").val();
+        var id_concert = $(this).attr('id');
+        var dataid = 'id_concert=' + id_concert;
+        var divid = "#" + id_concert;
+
+        $.ajax({
+            type: "POST",
+            url :'/slyset/index.php/mc_concerts/delete_activity_concert',
+            data: dataid,
+            success: function(jego){ //afficher le bon bouton
+
+              $('#concert_id_'+id_concert).slideUp();
+            }
+        })
+        return false
+    });
+    
+    }
+    
+    
     $('.add-follow').live('click',function(){
       
       	var button = $(this);
@@ -820,7 +845,24 @@ $(document).ready(function(){
     
      
     
-    
+     if($("body.achats").length > 0){
+     
+     	$('.bt_supp_playlist').click(function(){
+    		$('.checkbox-article:checked').each(function(){
+     			var a =  $(this).val();
+     			
+ 				var dataid = 'commande=' + a;
+   	 			$.ajax({
+            		type: "POST",
+            		url :'/slyset/index.php/melo_achats/delete_panier',
+            		data: dataid,
+            		success: function(){ //afficher le bon bouton
+						$('.even.row-color-'+a).slideUp();
+     				}
+     			});
+     		});
+		});        
+     }
     
     if($("body.personnaliser").length > 0){
         $('#colorpickerField1').ColorPicker({

@@ -14,6 +14,7 @@ class melo_concerts extends CI_Controller {
         $this->layout->ajouter_js('concert');
         $this->layout->ajouter_js('maps_api');
        // $this->layout->ajouter_js('maps-google');
+        $this->layout->set_id_background('concert_melo');
 
         $this->load->model(array('user_model', 'concert','melo_concert'));
         $this->load->helper('date');

@@ -35,7 +35,7 @@ class wallm extends CI_Model
 	       //  $this->db->join('photos as b','true');
 	if($list_id!=null)
 	{
-$sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,photos_id as idproduit,photos.nom AS main_nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser, 1 as product
+$sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,photos_id as idproduit,photos.nom AS main_nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser,"null" AS date_concert, 1 as product
 				FROM wall_melo_component
 				JOIN photos
 						ON photos.id = wall_melo_component.Photos_id
@@ -46,7 +46,7 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
 					AND wall_melo_component.type = "MU"
 					AND wall_melo_component.albums_media_file_name IS NULL)		
 					UNION
-			(SELECT MAX(wall_melo_component.id),wall_melo_component.type,wall_melo_component.date,wall_melo_component.albums_media_file_name,album_media.nom AS main_nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser, 5 as product
+			(SELECT MAX(wall_melo_component.id),wall_melo_component.type,wall_melo_component.date,wall_melo_component.albums_media_file_name,album_media.nom AS main_nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser,"null", 5 as product
 				FROM wall_melo_component
 				JOIN photos
 						ON photos.id = wall_melo_component.Photos_id
@@ -60,7 +60,7 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
 					AND wall_melo_component.albums_media_file_name IS NOT NULL
 					GROUP BY wall_melo_component.albums_media_file_name)		
 			UNION
-			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,wall_melo_component.albums_media_file_name,album_media.nom AS main_nom,album_media.file_name,album_media.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser, 5 as product
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,wall_melo_component.albums_media_file_name,album_media.nom AS main_nom,album_media.file_name,album_media.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser,"null", 5 as product
 				FROM wall_melo_component
 				JOIN album_media
 						ON album_media.file_name = wall_melo_component.albums_media_file_name
@@ -71,7 +71,7 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
 					AND wall_melo_component.albums_media_file_name IS NOT NULL
 					)
 			UNION
-			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,videos_id,videos.description,videos.nom,videos.Utilisateur_id,utilisateur.thumb,utilisateur.login,"null","null" ,"null", 2 as product
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,videos_id,videos.description,videos.nom,videos.Utilisateur_id,utilisateur.thumb,utilisateur.login,"null","null" ,"null","null", 2 as product
 				FROM wall_melo_component
 				JOIN videos
 						ON videos.id = wall_melo_component.Videos_id
@@ -81,7 +81,7 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
 						IN ('.$list_id.') 
 					AND wall_melo_component.type = "MU")
 			UNION
-			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,concerts_id,concerts.titre,concerts.seconde_partie,utilisateur.id,Utilisateur.thumb,utilisateur.login,adresse.ville,concerts.salle,"null", 3 as product
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,concerts_id,concerts.titre,concerts.seconde_partie,utilisateur.id,Utilisateur.thumb,utilisateur.login,adresse.ville,concerts.salle,"null",concerts.date, 3 as product
 				FROM wall_melo_component
 				JOIN concerts
 						ON concerts.id = wall_melo_component.concerts_id
@@ -93,7 +93,7 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
 						IN ('.$list_id.') 
 					AND wall_melo_component.type = "MU")
 			UNION
-			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,message_id,wall.markup_message,"null",utilisateur.id,utilisateur.thumb,utilisateur.login,"null","null",wall.wallto_utilisateur_id,  4 as product
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,message_id,wall.markup_message,"null",utilisateur.id,utilisateur.thumb,utilisateur.login,"null","null",wall.wallto_utilisateur_id,"null",  4 as product
 				FROM wall_melo_component
 				JOIN wall
 						ON wall.id = wall_melo_component.message_id
@@ -104,7 +104,7 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
 					AND wall_melo_component.type = "MU")
 			UNION
 			
-			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,message_id,wall.markup_message,"null",utilisateur.id,utilisateur.thumb,utilisateur.login,"null","null",wall.wallto_utilisateur_id,  4 as product
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,message_id,wall.markup_message,"null",utilisateur.id,utilisateur.thumb,utilisateur.login,"null","null",wall.wallto_utilisateur_id,"null",  4 as product
 				FROM wall_melo_component
 				JOIN wall
 						ON wall.id = wall_melo_component.message_id
@@ -115,19 +115,19 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
 					AND wall_melo_component.type = "ME")
 			
 			UNION 
-			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,photos_id,photos.nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login,"null","null","null", 1 as product
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,photos_id,photos.nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login,"null","null","null","null", 1 as product
 				FROM wall_melo_component
 				JOIN photos
 						ON photos.id = wall_melo_component.Photos_id
 				JOIN utilisateur
-						ON utilisateur.id = photos.Utilisateur_id
+						ON utilisateur.id = wall_melo_component.Utilisateur_id
 					WHERE wall_melo_component.Utilisateur_id = '.$user_id.'
 					AND wall_melo_component.type = "ME"
 					AND wall_melo_component.albums_media_file_name IS NULL)			
 
 			UNION
 
-			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,videos_id,videos.description,videos.nom,videos.Utilisateur_id,utilisateur.thumb,utilisateur.login,"null","null","null",  2 as product
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,videos_id,videos.description,videos.nom,videos.Utilisateur_id,utilisateur.thumb,utilisateur.login,"null","null","null","null",  2 as product
 				FROM wall_melo_component
 				JOIN videos
 						ON videos.id = wall_melo_component.Videos_id
@@ -138,7 +138,7 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
 					
 			UNION
 
-			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,concerts_id,concerts.titre,concerts.seconde_partie,concerts.Utilisateur_id,Utilisateur.thumb,Utilisateur.login,adresse.ville,concerts.salle,"null" ,3 as product
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,concerts_id,concerts.titre,concerts.seconde_partie,concerts.Utilisateur_id,Utilisateur.thumb,Utilisateur.login,adresse.ville,concerts.salle,"null",concerts.date,3 as product
 				FROM wall_melo_component
 				JOIN concerts
 						ON concerts.id = wall_melo_component.concerts_id
@@ -192,32 +192,38 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
 	
 	public function get_new_item($id_component,$type,$id_photo,$id_video,$id_message,$id_concert,$id_follower)
 	{
+		setlocale(LC_TIME, 'fr', 'fr_FR', 'fr_FR.ISO8859-1');
+		date_default_timezone_set('Europe/Paris');
+      	
 		if($id_photo !=null)
 		{
 			$sql_new_item = 
-				'(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,photos_id as idproduit,photos.nom AS main_nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser, 1 as product
+				'(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,photos_id as idproduit,photos.nom AS main_nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser, UM.thumb AS user_me, 1 as product
 				FROM wall_melo_component
 				JOIN photos
 						ON photos.id = wall_melo_component.Photos_id
 				JOIN utilisateur
 						ON utilisateur.id = photos.Utilisateur_id
+				JOIN utilisateur as UM
+						ON UM.id = wall_melo_component.Utilisateur_id
 				WHERE wall_melo_component.id = '.$id_component.')';
 			
 			$product = 'une photo';
 			
 			$result_req = $this->db->query($sql_new_item)
 					->result();	
-			if ($result_req[0]->type="MU")
+			if ($result_req[0]->type=="MU")
 			{
 				$right = 	'<span class="ico_citation"></span>
        					<p class="msg_post">'.$result_req[0]->login.' viens d’ajouter '.$product.' :  <a href="'.base_url('index.php/mc_photos/zoom_photo/'.$result_req[0]->idproduit).'">'.$result_req[0]->main_nom.'</a></p>
      					<img src="'.base_url('./files/'.$result_req[0]->Utilisateur_id.'/photos/'.$result_req[0]->file_name).'" alt="Photo message" class="single" />';
   			}
-  			if ($result_req[0]->type="ME")
+  			if ($result_req[0]->type=="ME")
   			{
   				$right = '<span class="ico_citation"></span>
-        				<p class="msg_post">Je viens de liker la photo de'.$result_req[0]->login.' :  <a href="'.base_url('index.php/mc_photos/zoom_photo/'.$result_req[0]->idproduit).'">'.$result_req[0]->main_nom.'</a></p>';
-      				
+        				<p class="msg_post">Je viens de liker la photo de '.$result_req[0]->login.' :  <a href="'.base_url('index.php/mc_photos/zoom_photo/'.$result_req[0]->idproduit).'">'.$result_req[0]->main_nom.'</a></p>
+      				  	<img src="'.base_url('./files/'.$result_req[0]->Utilisateur_id.'/photos/'.$result_req[0]->file_name).'" alt="Photo message" class="single" />';
+
   			}	
   				return array($result_req,$product,$right);		
 		}
@@ -226,30 +232,33 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
 		if($id_video !=null)
 		{
 			$sql_new_item = 			
-				'SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,videos_id as idproduit,videos.description AS main_nom,videos.nom,videos.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser, 2 as product
+				'SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,videos_id as idproduit,videos.description AS main_nom,videos.nom,videos.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser, UM.thumb AS user_me, 2 as product
 				FROM wall_melo_component
 				JOIN videos
 						ON videos.id = wall_melo_component.Videos_id
 				JOIN utilisateur
 						ON utilisateur.id = videos.Utilisateur_id
+				JOIN utilisateur as UM
+						ON UM.id = wall_melo_component.Utilisateur_id
 				WHERE wall_melo_component.id = '.$id_component;
 		
 			$product = 'une video';
 					
 			$result_req = $this->db->query($sql_new_item)
 									->result();	
-			if ($result_req[0]->type="MU")
+			if ($result_req[0]->type=="MU")
 			{		
 				$right = '<span class="ico_citation"></span>
         			  <p class="msg_post"><a href="'.base_url('index.php/actualite/'.$result_req[0]->Utilisateur_id).'">'.$result_req[0]->login.'</a> viens d’ajouter une video :  <a href="http://www.youtube.com/v/'.$result_req[0]->nom.'?version=3"> '.$result_req[0]->main_nom.'</a></p>
       				 <iframe id="ytplayer" type="document" width="455" height="350" src="http://www.youtube.com/v/'.$result_req[0]->nom.'?version=3"/>
       				 </iframe>';
       		}
-      		if ($result_req[0]->type="ME")
+      		if ($result_req[0]->type=="ME")
 			{	
 			$right = '<span class="ico_citation"></span>
         				<p class="msg_post">Je viens de liker la video de '.$result_req[0]->login.' :  <a href="http://www.youtube.com/v/'.$result_req[0]->nom.'?version=3">'.$result_req[0]->main_nom.'</a></p>
-     				';
+     				<iframe id="ytplayer" type="document" width="455" height="350" src="http://www.youtube.com/v/'.$result_req[0]->nom.'?version=3"/>
+      				 </iframe>';
 			
 			}
       			return array($result_req,$product,$right);
@@ -259,18 +268,20 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
 		if($id_message !=null)
 		{
 			$sql_new_item = 			
-				'SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,message_id as idproduit,wall.markup_message AS main_nom,"null",utilisateur.id,utilisateur.thumb,utilisateur.login,"null"  AS ville,"null" AS salle,wall.wallto_utilisateur_id AS walltouser, 4 as product
+				'SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,message_id as idproduit,wall.markup_message AS main_nom,"null",utilisateur.id AS Utilisateur_id,utilisateur.thumb,utilisateur.login,"null"  AS ville,"null" AS salle,wall.wallto_utilisateur_id AS walltouser, UM.thumb AS user_me, 4 as product
 				FROM wall_melo_component
 				JOIN wall
 						ON wall.id = wall_melo_component.message_id
 				JOIN Utilisateur
 						ON Utilisateur.id = wall.wallto_utilisateur_id
+				JOIN utilisateur as UM
+						ON UM.id = wall_melo_component.Utilisateur_id
 				WHERE wall_melo_component.id = '.$id_component;
 			
 			$product = 'un message';
 			$result_req = $this->db->query($sql_new_item)
 					->result();	
-			if ($result_req[0]->type="MU")
+			if ($result_req[0]->type=="MU")
 			{
 			
 		
@@ -278,7 +289,7 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
         				<p class="msg_post">'.$result_req[0]->main_nom.'</p>';
 			}
 			
-			if ($result_req[0]->type="ME")
+			if ($result_req[0]->type=="ME")
 			{
 			    $right = '<span class="ico_citation"></span>
 							<p class="msg_post">Je vient de poster un message sur le mur de <a href="'.base_url('index.php/actualite/'.$result_req[0]->walltouser).'">'.$result_req[0]->login.'</a>: 
@@ -287,12 +298,13 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
 
 			}
 			
+			
 				return array($result_req,$product,$right);
 		}
 		
-		if($id_concert !=null&&$type="ME")
+		if($id_concert !=null&&$type=="ME")
 		{
-					$sql_new_item ='SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,concerts_id,concerts.titre,concerts.seconde_partie,utilisateur.id AS Utilisateur_id,Utilisateur.thumb,utilisateur.login,adresse.ville,concerts.salle,"null", 3 as product
+					$sql_new_item ='SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,concerts_id,concerts.titre,concerts.seconde_partie,utilisateur.id AS Utilisateur_id,Utilisateur.thumb,utilisateur.login,adresse.ville,concerts.salle,"null",concerts.date AS concert_date, UM.thumb AS user_me, 3 as product
 				FROM wall_melo_component
 				JOIN concerts
 						ON concerts.id = wall_melo_component.concerts_id
@@ -300,21 +312,48 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
 						ON adresse.id = concerts.Adresse_id
 				JOIN Utilisateur
 						ON Utilisateur.id = concerts.Utilisateur_id
-					WHERE wall_melo_component.id ='.$id_component;	
+				JOIN utilisateur as UM
+						ON UM.id = wall_melo_component.Utilisateur_id
+				WHERE wall_melo_component.id ='.$id_component;	
 						$result_req = $this->db->query($sql_new_item)
 					->result();	
 				$product = '';
+
+				$date_jour = $date_format = (date_create($result_req[0]->concert_date, timezone_open('Europe/Paris')));
+    					  		$a =  date_timestamp_get($date_format);
+            					$date_j = '<a>'.strtoupper(strftime('%b',$a)).'</a>';
+            	$date_mois = $date_format = (date_create($result_req[0]->concert_date, timezone_open('Europe/Paris')));
+    					  		$a =  date_timestamp_get($date_format);
+            					 $date_m = '<a>'.strtoupper(strftime('%d',$a)).'</a>';
+            	$date_complete = $date_format = (date_create($result_req[0]->concert_date, timezone_open('Europe/Paris')));
+    					  		$a =  date_timestamp_get($date_format);
+            					 $date_c = '<a>'.strftime('Le %d %B %G',$a).'</a>';
+            				
 			    $right = '	
 	   					<span class="ico_citation"></span>
-        				<p class="msg_post">Je vais participer au concert de  <a href="'.base_url('/index.php/actualite/'.$result_req[0]->Utilisateur_id).'">'.$result_req[0]->login.'</a>
+        				<p class="msg_post">Je participe au concert de  <a href="'.base_url('/index.php/actualite/'.$result_req[0]->Utilisateur_id).'">'.$result_req[0]->login.'</a>
 
    						</br></br>
-   						<a href="'.base_url("index.php/mc_concerts/".$result_req[0]->Utilisateur_id.'/#'.$result_req[0]->concerts_id).'">'.$result_req[0]->salle.' - '.$result_req[0]->ville.'</a></p>';
-    				
+   						<div id="concert_detail_calendar">
+   							<div class="calendar">
+   							   '.$date_j.$date_m.'
+            					
+   							</div>
+   							<div class="calendar-content">
+   								'.$result_req[0]->login.'
+   								</br>
+   								<a href="'.base_url("index.php/concert/".$result_req[0]->Utilisateur_id.'/#'.$result_req[0]->concerts_id).'">
+   									'.$result_req[0]->salle.' - '.$result_req[0]->ville.'
+   								</a>
+   								</br>
+   								'.$date_c.'   					
+    						</div>
+    					</div>
+    					</p>';    				
 			return array($result_req,$product,$right);
 		}
 		
-		if($id_concert !=null&&$type="MU")
+		if($id_concert !=null&&$type=="MU")
 		{
 		$sql_new_item ='SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,concerts_id,concerts.titre,concerts.seconde_partie,utilisateur.id AS Utilisateur_id,Utilisateur.thumb,utilisateur.login,adresse.ville,concerts.salle,"null", 3 as product
 				FROM wall_melo_component

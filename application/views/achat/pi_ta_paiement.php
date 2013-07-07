@@ -1,7 +1,6 @@
 <link rel="stylesheet" type="text/css" href="http://127.0.0.1/slyset/assets/css/slyset.css" media="screen" />
 
 <?php
-echo $this->input->post('format');
 
 echo form_open('pi_ta_paiement/index');
  echo validation_errors();

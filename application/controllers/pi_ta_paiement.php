@@ -50,16 +50,19 @@ class pi_ta_paiement extends CI_Controller
   	//print $this->session->flashdata('format');
   	     $data['cmd'] = $this->achat->get_achat($this->session->userdata('uid'));
   	     
+  	     $number_last_commande = $this->achat->number_commande();
+		 $data['numero_cmd'] =  $number_last_commande[0]->last_cmd;
+
 			foreach ($data['cmd'] as $commande)
 			{
 				if($commande->status=="P")
 				{
-				  	 $this->achat->panier_to_achat($commande->id);
+				  	 $this->achat->panier_to_achat($commande->id,$number_last_commande[0]->last_cmd);
 
 				}
 			}
   	     //$this->achat->panier_to_achat();
-/*
+
   	$email =  $this->session->flashdata('email');
   	$nom =  $this->session->flashdata('nom');
 
@@ -93,9 +96,15 @@ class pi_ta_paiement extends CI_Controller
      $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
 
+
      mail($to, $subject, $message, $headers);
-     
-*/
+  
+    
+      $data['cmd_download'] = $this->achat->cmd_valider( $data['numero_cmd']);
+      var_dump($data['cmd_download']);
+    
+		$this->load->view('achat/pi_ta_dl',$data);
+
 	
 
   	}

@@ -111,18 +111,33 @@ class melo_wall extends CI_Controller
 					
    					if(isset($result_total))
    					{
-						echo	'<div id ="'.$result_total[0][0]->id.'" class="artist_post photo_message">
+   					if($id->type=='ME')
+   					{
+   					$result_total[0][0]->login = "";
+   					}
+   					else
+   					{
+   					$result_total[0][0]->login = $result_total[0][0]->login.' - ';
+   					}
+   					
+   				
+   					setlocale(LC_TIME, 'fr', 'fr_FR', 'fr_FR.ISO8859-1');
+   					date_default_timezone_set('Europe/Paris');
+   					$date_format = (date_create($result_total[0][0]->date, timezone_open('Europe/Paris')));
+    				$a =  date_timestamp_get($date_format);
+            		$data['date_2'] = strftime('Le %d %B %G',$a);
+					echo	'<div id ="'.$result_total[0][0]->id.'" class="artist_post photo_message">
      								<div class="top"  class="top" id="'.$result_total[0][0]->id.'">
         										<a href="#"><img src="'.img_url('musicien/btn_suppr.png').'" alt="Suppression" /></a>
 
      								</div>
       								<div class="left">
-        								<img src="'.base_url('/files/profiles/'.$result_total[0][0]->thumb).'" alt="Photo Profil" />
+        								<img src="'.base_url('/files/profiles/'.$result_total[0][0]->user_me).'" alt="Photo Profil" />
       								</div>
      								<div class="right">'.$result_total[2].'
         								</div>
 									<div class="bottom">
-        								<span class="infos_publi">'.$result_total[0][0]->login.' - '.$result_total[0][0]->date.'<!--Le 26 Septembre 2013--></span>
+        								<span class="infos_publi">'.$result_total[0][0]->login.$data['date_2'].'<!--Le 26 Septembre 2013--></span>
       								</div>
    								</div>';
 

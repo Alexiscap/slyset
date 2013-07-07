@@ -63,11 +63,11 @@
 			<p class="text_follow"><?php echo $follower->description ?></p>
 				<img src="<?php echo img_url('common/casque.png'); ?>" /><span><?php echo $follower->style_joue ?></span>
 		</div>
-		<div class="bouton">
+		<div class="bouton" id="<?php echo $follower->id ?>">
 			<a href="#" class="participer">
-			<span class="button_left_abonne"></span>
-			<span class="button_center_abonne">Abonné</span>
-			<span class="button_right_abonne"></span></a>
+			<span class="button_left"></span>
+			<span class="button_center">Abonné</span>
+			<span class="button_right"></span></a>
 		</div>
 	</div>
 	<hr/>
