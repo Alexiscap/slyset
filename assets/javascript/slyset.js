@@ -275,9 +275,10 @@ if($("body.achats").length > 0)
     
 
   	$('.like').click(function(){
-      //  var baseurl = $(this).find("#baseurl").val();
-        //var baseurl = window.location.host;
+       //var baseurl = $(this).find("#baseurl").val();
+        var baseurl = window.location.host;
   	    var id_photo = $(this).attr('id');
+  	    var coeur = $(this);
        	var dataid = 'id_photo=' + id_photo;
         
         $.ajax({
@@ -285,7 +286,8 @@ if($("body.achats").length > 0)
             url : '/slyset/index.php/mc_photos/add_like',
             data: dataid,
             success: function(jelike){
-                alert('ok executé');
+           	$(coeur).attr('src','../assets/images/musicien/pink_heart.png');
+
             }
         })
     });
