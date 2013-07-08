@@ -64,9 +64,7 @@ class Admin_articles extends CI_Controller
                 $this->layout->view('admin/articles', $data);
             } else {
                 $title   = $this->input->post('title');
-                
                 $article = $this->input->post('article');
-//                $article = mysql_real_escape_string($article_html);
 
                 $this->article_model->insert_article($title, $article);
 
@@ -104,9 +102,7 @@ class Admin_articles extends CI_Controller
                 $this->layout->view('admin/articles_edit', $data);
             } else {
                 $title   = $this->input->post('title');
-                
                 $article = $this->input->post('article');
-//                $article = mysql_real_escape_string($article_html);
 
                 $this->article_model->update_article($article_id, $title, $article);
                 redirect('admin_articles', 'refresh');
@@ -140,32 +136,6 @@ class Admin_articles extends CI_Controller
             }
         } else {
             redirect('login', 'refresh');
-        }
-    }
-    
-    public function uploadImg()
-    {
-        print 'okkkkkk';
-        $dynamic_path = './files/articles/';
-        if (is_dir($dynamic_path) == false){
-            mkdir($dynamic_path, 0755, true);
-        }
-        
-        $config['upload_path']   = $dynamic_path;
-        $config['allowed_types'] = 'gif|jpg|jpeg|png';
-        $config['encrypt_name']  = true;
-        
-        $this->load->library('upload', $config);
-        
-        if($this->upload->do_upload('file')){
-            $data = $this->upload->data();
-            $array = array(
-                'filelink' => uploaded_dir_img($data['file_name'])
-            );
-            
-            $this->output
-                 ->set_content_type('application/json')
-                 ->set_output(stripcslashes(json_encode($array)));
         }
     }
     

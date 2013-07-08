@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class pi_ta_dl extends CI_Controller 
+class ml extends CI_Controller 
 {
     
     public function __construct()
@@ -13,7 +13,7 @@ class pi_ta_dl extends CI_Controller
       $this->layout->ajouter_js('jquery.masonry.min');
       $this->layout->ajouter_js('jquery.stapel');
       
-        $this->layout->set_id_background('Tunnel d\'achats téléchargements');
+        $this->layout->set_id_background('mentions');
     }
   
     public function index()
@@ -24,9 +24,11 @@ class pi_ta_dl extends CI_Controller
     public function page()
     {
       $datas = array();
+      $datas['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
+      $datas['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
       
       //$this->layout->views('3');
-      $this->layout->view('achat/pi_ta_dl', $datas);
+      $this->layout->view('ml', $datas);
     }
   
 }

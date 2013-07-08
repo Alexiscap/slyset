@@ -1,25 +1,20 @@
-<?php
-$session_id = $this->session->userdata('uid');
-$uid = (empty($session_id)) ? '' : $session_id;
-$uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
-$login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
-?>
-
 <div id="contentAll">
-    <div id="breadcrumbs">
-        <ul>
-            <li><a href="<?php echo site_url('home/' . $uid); ?>">Accueil</a></li>
-            <li><a href="<?php echo site_url('actualite/' . $uid_visit); ?>"><?php echo 'Artiste : ' . $login; ?></a></li>
-            <li><a href="<?php echo site_url($this->uri->segment(1) . '/' . $uid_visit); ?>">Statistiques</a></li>
-        </ul>
-    </div>
 
-    <div id="cover" style="background-image:url(<?php echo files('profiles/' . $cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
-        <div id="infos-cover">
-            <h2><?php echo $login; ?></h2>
-            <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
-        </div>
+  <div id="breadcrumbs">
+    <ul>
+      <li><a href="#">Accueil</a></li>
+      <li><a href="#">Artistes</a></li>
+      <li><a href="#">Bob Dylan</a></li>
+      <li><a href="#">Photos & Vidéos</a></li>
+    </ul>
+  </div>
+
+  <div id="cover">
+    <div id="infos-cover">
+      <h2>Bob Dylan</h2>
+      <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
     </div>
+  </div>
 
   <div id="stats-cover">
     <div class="stats_cover_block">

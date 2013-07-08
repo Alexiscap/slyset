@@ -30,24 +30,12 @@ class Mc_partitions extends CI_Controller {
       $this->layout->ajouter_dynamique_css($output->theme_css);
       write_css($output);
     }
-    
-    $community_follower=  $this->user_model->get_community($this->user_id);
-    $my_abonnement_head = "";
-        
-        
-    foreach($community_follower as $my_following_head)
-    {
-        $my_abonnement_head .= $my_following_head->Utilisateur_id.'/';
-    }
-
 
     $this->data = array(
         'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
-        'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE),
-        'community_follower'=>$my_abonnement_head
-
+        'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
     );
-    /*
+    
     //Set relative Path with CI Constant
     $this->setPath_img_upload_folder("assets/img/articles/");
     $this->setPath_img_thumb_upload_folder("assets/img/articles/thumbnails/");
@@ -58,7 +46,6 @@ class Mc_partitions extends CI_Controller {
     //Set url img with Base_url()
     $this->setPath_url_img_upload_folder(base_url() . "assets/img/articles/");
     $this->setPath_url_img_thumb_upload_folder(base_url() . "assets/img/articles/thumbnails/");
-    */
   }
   
     public function index($user_id) {
@@ -94,45 +81,6 @@ class Mc_partitions extends CI_Controller {
     $this->layout->view('partition/mc_partitions', $data);
   }
 
-
-public function upload()
-    {
-        error_reporting(E_ALL | E_STRICT);
- 
-        $this->load->helper("upload.class");
- 
-        $upload_handler = new UploadHandler();
- 
-        header('Pragma: no-cache');
-        header('Cache-Control: no-store, no-cache, must-revalidate');
-        header('Content-Disposition: inline; filename="files.json"');
-        header('X-Content-Type-Options: nosniff');
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Methods: OPTIONS, HEAD, GET, POST, PUT, DELETE');
-        header('Access-Control-Allow-Headers: X-File-Name, X-File-Type, X-File-Size');
- 
-        switch ($_SERVER['REQUEST_METHOD']) {
-            case 'OPTIONS':
-                break;
-            case 'HEAD':
-            case 'GET':
-                $upload_handler->get();
-                break;
-            case 'POST':
-                if (isset($_REQUEST['_method']) && $_REQUEST['_method'] === 'DELETE') {
-                    $upload_handler->delete();
-                } else {
-                    $upload_handler->post();
-                }
-                break;
-            case 'DELETE':
-                $upload_handler->delete();
-                break;
-            default:
-                header('HTTP/1.1 405 Method Not Allowed');
-        }
-}
-/*
   public function add_part() {
     $this->layout->view('partition/pi_ajout_partition');
 
@@ -320,7 +268,5 @@ public function upload()
   public function setDelete_img_url($delete_img_url) {
     $this->delete_img_url = $delete_img_url;
   }
-  
-  */
 
 }

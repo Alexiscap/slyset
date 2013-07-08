@@ -5,8 +5,8 @@ if (!defined('BASEPATH'))
 
 class Mc_followers extends CI_Controller {
 
-    var $data;
-
+    var $datas;
+  
     public function __construct() {
         parent::__construct();
 
@@ -21,26 +21,16 @@ class Mc_followers extends CI_Controller {
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
         $sub_data['perso'] = $output;
-        
-        //--bouton suivre un musicien
-        $community_follower=  $this->user_model->get_community($this->user_id);
-        $my_abonnement_head = "";
-                
-        foreach($community_follower as $my_following_head)
-        {
-        $my_abonnement_head .= $my_following_head->Utilisateur_id.'/';
-        }
+
         if (!empty($output)) {
-            $this->layout->ajouter_dynamique_css($output->theme_css);
-            write_css($output);
+          $this->layout->ajouter_dynamique_css($output->theme_css);
+          write_css($output);
         }
 
         $this->data = array(
             'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
-            'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE),
-            'community_follower'=>$my_abonnement_head
+            'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
         );
-      
     }
 
     public function index($user_id) {
@@ -55,8 +45,6 @@ class Mc_followers extends CI_Controller {
     }
 
     public function page($infos_profile) {
-       
-
         $data = $this->data;
         $uid = $this->session->userdata('uid');
 
@@ -65,15 +53,13 @@ class Mc_followers extends CI_Controller {
         if (!empty($infos_profile)) {
             $data['infos_profile'] = $infos_profile;
         }
-        $data['ifollow'] = $this->follower->ifollow($infos_profile->id,$this->session->userdata('uid'));
-
+        
         $data['all_follower'] = $this->follower->get_all_follower_user($user_visited);
         $ifollow = $this->follower->get_abonnement($user_visited);
         $data['allifollow'] = "";
         foreach ($ifollow as $allmy)
-    	 {
+            ; {
             $data['allifollow'] .=$allmy->Utilisateur_id . ',';
-
         }
         //$this->layout->views('3');
         $this->layout->view('follower/mc_followers', $data);
@@ -81,17 +67,17 @@ class Mc_followers extends CI_Controller {
 
     public function musicien($user_id) {
         $data = $this->data;
-
+        
         $infos_profile = $this->user_model->getUser($user_id);
         if (!empty($infos_profile)) {
             $data['infos_profile'] = $infos_profile;
         }
-
+        
         $data['all_follower'] = $this->follower->get_follower_bytype($user_id, 2);
         //$this->layout->views('3');
         $ifollow = $this->follower->get_abonnement($user_id);
         $data['allifollow'] = "";
-        foreach ($ifollow as $allmy) {
+        foreach ($ifollow as $allmy){
             $data['allifollow'] .=$allmy->Utilisateur_id . ',';
         }
         $this->layout->view('follower/musicien', $data);
@@ -99,32 +85,15 @@ class Mc_followers extends CI_Controller {
 
     public function melomane($user_id) {
         $data = $this->data;
-
+        
         $infos_profile = $this->user_model->getUser($user_id);
         if (!empty($infos_profile)) {
             $data['infos_profile'] = $infos_profile;
         }
-
+        
         $data['all_follower'] = $this->follower->get_follower_bytype($user_id, 1);
+        //$this->layout->views('3');
         $this->layout->view('follower/melomane', $data);
-    }
-    
-    public function add_follow()
-    {
-     	$user_id =  $this->input->post('id_user');
-     	$id_follower = $this->session->userdata('uid');
-		$type = $this->session->userdata('account');
-
-    $this->follower->add_follow($user_id,$id_follower,$type);
-    }
-    
-     public function delete_follow()
-    {
-     	$user_id =  $this->input->post('id_user');
-     	$id_follower = $this->session->userdata('uid');
-		$type = $this->session->userdata('account');
-
-    	$this->follower->delete_follow($user_id,$id_follower);
     }
 
 }

@@ -1,9 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class User_model extends CI_Model
-{
-    protected $table = 'utilisateur';
-    
+class User_model extends CI_Model {
+
     public function __construct()
     {
         parent::__construct();
@@ -13,7 +11,7 @@ class User_model extends CI_Model
     public function getAll()
     {
         $this->db->select('id');
-        $this->db->from($this->table);
+        $this->db->from('utilisateur');
         $this->db->where('facebook_id = ' . "'" . $facebook_id . "'" . ' AND facebook_id != 0');
         $this->db->limit(1);
 
@@ -35,7 +33,7 @@ class User_model extends CI_Model
     public function getUser($user_id)
     {
         $this->db->select('*');
-        $this->db->from($this->table);
+        $this->db->from('utilisateur');
         $this->db->where('id = '."'".$user_id."'");
         $this->db->limit(1);
 
@@ -53,7 +51,7 @@ class User_model extends CI_Model
     public function getNewbies()
     {
         $this->db->select('id, type, login, thumb');
-        $this->db->from($this->table);
+        $this->db->from('utilisateur');
         $this->db->order_by('id', 'desc');
         $this->db->limit(4);
 
@@ -70,7 +68,7 @@ class User_model extends CI_Model
     public function getUserByName($nid)
     {
         $this->db->select('login, type');
-        $this->db->from($this->table);
+        $this->db->from('utilisateur');
         $this->db->where('type = 2 AND login = '."'".$nid."'");
         $this->db->limit(1);
 
@@ -87,7 +85,7 @@ class User_model extends CI_Model
     public function facebook_register($facebook_id)
     {
         $this->db->select('facebook_id');
-        $this->db->from($this->table);
+        $this->db->from('utilisateur');
         $this->db->where('facebook_id = ' . "'" . $facebook_id . "'" . ' AND facebook_id != 0');
         $this->db->limit(1);
 
@@ -103,7 +101,7 @@ class User_model extends CI_Model
     public function mail_register($mail)
     {
         $this->db->select('mail');
-        $this->db->from($this->table);
+        $this->db->from('utilisateur');
         $this->db->where('mail = ' . "'" . $mail . "'");
         $this->db->limit(1);
 
@@ -139,7 +137,7 @@ class User_model extends CI_Model
         $data['created'] = Date('Y-m-d H:i:s');
         $data['updated'] = Date('Y-m-d H:i:s');
         
-        $this->db->insert($this->table, $data);
+        $this->db->insert('utilisateur', $data);
     }
     
     public function update_musicien($login, $description, $website, $twitter, $facebook, $googleplus, $stylemusicjoue, $stylemusicinstru, $cover, $thumb)
@@ -156,7 +154,7 @@ class User_model extends CI_Model
         $data['thumb'] = $thumb;
         $data['updated'] = Date('Y-m-d H:i:s');
         
-        $this->db->update($this->table, $data, "id = ".$this->session->userdata('uid'));
+        $this->db->update('utilisateur', $data, "id = ".$this->session->userdata('uid'));
     }
     
     public function update_melomane($login, $description, $nom, $prenom, $email, $stylemusicecoute, $cover, $thumb)
@@ -171,23 +169,7 @@ class User_model extends CI_Model
         $data['thumb'] = $thumb;
         $data['updated'] = Date('Y-m-d H:i:s');
         
-        $this->db->update($this->table, $data, "id = ".$this->session->userdata('uid'));
-    }
-    
-    public function get_community($user_follower_id)
-    {
-    	return $this->db->select('id, Utilisateur_id')
-                      ->from('communaute')
-                      ->where(array('Follower_id' => $user_follower_id))
-                      ->get()
-                      ->result();
-    }
-    
-    public function count_suspend()
-    {
-        return (int) $this->db->where('suspendu', '1')
-                              ->from($this->table)
-                              ->count_all_results();
+        $this->db->update('utilisateur', $data, "id = ".$this->session->userdata('uid'));
     }
 
 }

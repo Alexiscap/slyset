@@ -13,8 +13,7 @@ class melo_concerts extends CI_Controller {
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_js('concert');
         $this->layout->ajouter_js('maps_api');
-       // $this->layout->ajouter_js('maps-google');
-        $this->layout->set_id_background('concert_melo');
+        $this->layout->ajouter_js('maps-google');
 
         $this->load->model(array('user_model', 'concert','melo_concert'));
         $this->load->helper('date');
@@ -74,7 +73,7 @@ class melo_concerts extends CI_Controller {
             $data['date_2'] = date_format($date_format, "N-j-n-Y-G-i");
             $nom_jour_fr = array("", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche",);
             $mois_fr = array("", "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "Decembre");
-            $mois_fr_trois = array("", "JAN", "FEV", "MAR", "AVR", "MAI", "JUIN", "JUIL", "AOUT", "SEPT", "OCT", "NOV", "DEC");
+            $mois_fr_trois = array("", "DEC", "jan", "fév", "mar", "avr", "mai", "JUIN", "juil", "août", "sept", "oct", "nov", "DEC");
             list($nom_jour, $jour_chiffre, $mois_text, $annee, $heure, $minutes) = explode('-', $data['date_2']);
             $date['complete'] = $nom_jour_fr[$nom_jour] . ' ' . $jour_chiffre . ' ' . $mois_fr[$mois_text] . ' ' . $annee . ' - ' . $heure . 'h' . $minutes;
             $date['mois_trois'] = $mois_fr_trois[$mois_text];
