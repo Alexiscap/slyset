@@ -13,7 +13,7 @@ class Search_model extends CI_Model {
 //        return $query->result();
 //    }
 
-    public function search($keyword, $limit = 2, $offset = 0) {
+    public function search($keyword, $limit = 20, $offset = 0) {
         $this->db->select('*')
                  ->from($this->table)
                  ->like('login', $keyword)
@@ -27,5 +27,12 @@ class Search_model extends CI_Model {
         } else {
             return false;
         }
+    }
+    
+    public function count_results($keyword)
+    {
+        return (int) $this->db->from($this->table)
+                              ->like('login', $keyword)
+                              ->count_all_results();
     }
 }

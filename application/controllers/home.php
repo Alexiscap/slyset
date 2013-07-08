@@ -16,6 +16,7 @@ class Home extends CI_Controller {
     $this->layout->ajouter_js('calendar');
     $this->layout->ajouter_js('carouFredSel');
     $this->layout->ajouter_js('jquery.placeheld.min');
+    $this->layout->ajouter_js('infinite_scroll');
 
     $this->layout->set_id_background('home');
     $this->layout->set_description('Slyset');
@@ -53,7 +54,7 @@ class Home extends CI_Controller {
     $data['notification'] = $this->input->cookie('notification');
     $data['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
     $data['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
-    $data['articles'] = $this->article_model->liste_article('updated', 'desc');
+    $data['articles'] = $this->article_model->liste_article(2, 0);
     $data['newbies'] = $this->user_model->getNewbies();
     $data['coverflow_covers'] = $this->admin_model->get_cover_artistes();
     $data['concert_date'] = $this->homepage->get_concert();
@@ -95,6 +96,14 @@ class Home extends CI_Controller {
     $this->layout->view('homepage', $data);
   }
 
+    public function ajax_articles($uid, $offset = null) {
+        if ($this->article_model->liste_article(2, $offset)) {
+            $data['articles'] = $this->article_model->liste_article(2, $offset);
+
+            $this->load->view('homepage_ajax', $data);
+        }
+    }
+  
   public function _remap($method, $params = array()) {
     if (method_exists($this, $method)) {
       return call_user_func_array(array($this, $method), $params);

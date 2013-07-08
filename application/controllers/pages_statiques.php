@@ -32,15 +32,17 @@ class Pages_statiques extends CI_Controller {
             redirect('home/'.$this->session_uid, 'refresh');
         }
     }
-
-    public function test() {
-        print 'ok test';
-    }
-
+    
     public function mentions_legales() {
         $data = $this->data;
 
         $this->layout->view('mentions_legales', $data);
+    }
+
+    public function faq() {
+        $data = $this->data;
+
+        $this->layout->view('faq', $data);
     }
 
 }

@@ -1,4 +1,4 @@
-aside{ width:170px; height:100%; font-family:"Trebuchet MS"; color:white; background-color:#f9f9f9; float:left; }
+aside{ margin:0 0 50px 0; width:170px; height:100%; font-family:"Trebuchet MS"; color:white; background-color:#f9f9f9; float:left; }
 
 aside .row{ width:168px; height:35px; border:1px solid #d9dadb; border-top:none; }
 aside .row.head_menu{ background:url("../images/sidebar-left/sprite_bkg_menu-compte.png") no-repeat 0 0; }

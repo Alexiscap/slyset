@@ -60,7 +60,7 @@
             
           <div id="recherche">
             <?php $val = (!empty($_POST['recherche'])) ? $_POST['recherche'] : ''; ?>
-            <form action="<?php echo site_url('search/search_keyword/'.$this->session->userdata('uid')); ?>" method="post">
+            <form action="<?php echo site_url('search/'.$this->session->userdata('uid')); ?>" method="post">
                 <input type="text" value="<?php print $val; ?>" placeholder="Chercher un artiste ..." name="recherche" />
                 <input src="<?php echo img_url('header/loupe.png') ?>" type="image" value="submit" align="middle"/>
             <?php // echo form_close(); ?>
@@ -98,7 +98,7 @@
         <div class="aide">
           <span>Obtenir de l'aide</span>
           <ul>
-            <li><a href="#">FAQ</a></li>
+            <li><a href="<?php echo site_url('faq/'.$this->session->userdata('uid')); ?>">FAQ</a></li>
             <li><a href="#">Nous contacter</a></li>
             <li><a href="#">Paiement sécurisé</a></li>
           </ul>

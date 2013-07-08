@@ -47,10 +47,16 @@ $route['admin-article'] = "admin_articles/index";
 $route['admin-article/(:num)'] = "admin_articles/index/$1";
 $route['admin-artiste'] = "admin_artistes/index";
 $route['admin-artiste/(:num)'] = "admin_artistes/index/$1";
+$route['admin-melomanes'] = "admin_melomanes/index";
+$route['admin-melomanes/(:num)'] = "admin_melomanes/index/$1";
+$route['admin-musiciens'] = "admin_musiciens/index";
+$route['admin-musiciens/(:num)'] = "admin_musiciens/index/$1";
+
+$route['search'] = "search/search_keyword";
+$route['search/(:num)'] = "search/search_keyword/$1";
 
 $route['home'] = "home/index";
 $route['home/(:num)'] = "home/index/$1";
-//$route['admin/(:num)'] = "admin/index/$1";
 
 $route['concert'] = "mc_concerts/index";
 $route['concert/(:num)'] = "mc_concerts/index/$1";
@@ -128,6 +134,9 @@ $route['my-shopping-recap/(:num)'] = "melo_achats/index/$1";
 
 $route['mentions-legales'] = "pages_statiques/mentions_legales";
 $route['mentions-legales/(:num)'] = "pages_statiques/mentions_legales/$1";
+
+$route['faq'] = "pages_statiques/faq";
+$route['faq/(:num)'] = "pages_statiques/faq/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

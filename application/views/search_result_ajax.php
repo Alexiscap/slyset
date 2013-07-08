@@ -14,8 +14,8 @@ $session_id = $this->session->userdata('uid');
                 <?php echo $row['login']; ?>
             </a>
         </td>
-        <td class="result-type"><?php echo $type = ($row['type'] == 1) ? 'Musicien' : 'Mélomane'; ?></td>
+        <td class="result-middle"><?php echo $style_ecoute = (!empty($row['style_ecoute'])) ? $row['style_ecoute'] : '-'; ?></td>
+        <td class="result-middle"><?php echo $style_joue = (!empty($row['style_joue'])) ? $row['style_joue'] : '-'; ?></td>
+        <td class="result-middle"><?php echo $type = ($row['type'] == 1) ? 'Musicien' : 'Mélomane'; ?></td>
     </tr>
 <?php endforeach; ?>
-
-<div class="ajax_loader"></div>

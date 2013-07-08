@@ -267,29 +267,31 @@ if (isset($all_date_calendar))
     </div>
 
 
-    <div id="wall-flux">
+      <div id="wall-flux">
           <?php foreach ($articles as $article): ?>
-        <div class="wall-flux-content" >
-          <p class="wall-flux-content-title">
-  <?php echo $article->titre; ?>
-          </p>
-
-          <p class="wall-flux-content-subtitle">
-            Publié par Slyset, le <?php echo strftime("%A %d %B %Y à %Hh%M ", strtotime($article->updated)); ?>
-          </p>
-
-          <div class="wall-flux-content-text">
-        <?php echo htmlspecialchars_decode($article->article); ?>
-          </div>
-        </div>
-<?php endforeach; ?>
-
-
-
-
+              <div class="wall-flux-content" >
+                  <p class="wall-flux-content-title">
+                      <?php echo $article->titre; ?>
+                  </p>
+                  
+                  <p class="wall-flux-content-subtitle">
+                      Publié par Slyset, le <?php echo strftime("%A %d %B %Y à %Hh%M ", strtotime($article->updated)); ?>
+                  </p>
+                  
+                  <div class="wall-flux-content-text">
+                      <?php echo htmlspecialchars_decode($article->article); ?>
+                  </div>
+              </div>
+          <?php endforeach; ?>
+          
+          <div class="ajax_loader"></div>
 
 
-      <div class="wall-flux-content" >
+
+
+
+
+<!--      <div class="wall-flux-content" >
         <p class="wall-flux-content-title">Le rock de Foals investit l’Hôtel de Ville de Paris
         </p>
 
@@ -340,11 +342,11 @@ if (isset($all_date_calendar))
           <p class="wall-flux-content-text">Chaque année depuis trois ans, Lille Métropole organise une course sur le Grand Boulevard, suivie d’un concert gratuit en plein air. Cette fois, l’Aéronef, le Grand Mix et La Cave aux Poètes ont conjointement pensé la programmation du plateau Place Mitterrand.
           </p>
           <p class="wall-flux-content-goto-profile">Voir le concert &rarr;</p>
-        </div>
+        </div>-->
       </div>
 
     </div>
-    <div class="pagination">
+<!--    <div class="pagination">
       <a href="#" id="precedent"><span><</span></a>
       <a href="#" class="page">1</a>
       <a href="#" class="page">2</a>
@@ -352,7 +354,7 @@ if (isset($all_date_calendar))
       <a href="#" class="page">4</a>
       <a href="#" class="page">5</a>
       <a href="#" id="suivant"><span>></span></a>
-    </div>
+    </div>-->
 
   </div>
 </div>

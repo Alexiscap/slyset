@@ -13,8 +13,6 @@ $session_id = $this->session->userdata('uid');
     <div class="content contentAdmin">
         <h2 id="title-dashboard">Administration générale</h2>
         
-        <!--<a href="#shadow" rel="shadowbox" id="shadowbox">Open shadowbox</a>-->
-        
         <p>Grâce à l’administration de Slyset (le “back-office”), vous pouvez gérer l’ensemble du site et de ses utilisateurs, aussi bien mélomanes que musiciens. Vous pouvez intervenir sur tous les contenus présents sur Slyset et administrer les abus aux conditions générales d’utilisation.</p>
 
         <div id="admin_notification">
@@ -48,61 +46,24 @@ $session_id = $this->session->userdata('uid');
             
             <div class="admin_chiffre abuse_suspension">
                 <div class="ico"></div>
-                <div class="count">12</div>
-                <div class="raison">comptes suspendus</div>
+                <div class="count"><?php echo $nb_suspension; ?></div>
+                <div class="raison">
+                    <?php if($nb_suspension == 0): ?>
+                        compte suspendu
+                    <?php elseif($nb_suspension == 1): ?>
+                        compte suspendu
+                    <?php else: ?>
+                        comptes suspendus
+                    <?php endif; ?>
+                </div>
             </div>
             
             <div class="admin_links">
                 <a href="#">Voir et gérer les abus signalés</a>
                 <br /><br />
-                <a href="#">Gérer les comptes mélomanes</a>
-                <a href="#">Gérer les comptes musiciens</a>
+                <a href="<?php echo site_url('admin-melomanes'); ?>">Gérer les comptes mélomanes</a>
+                <a href="<?php echo site_url('admin-musiciens'); ?>">Gérer les comptes musiciens</a>
             </div>
-            
-            <?php // print_r($this->session->all_userdata()); ?>
         </div>
     </div>
-</div>
-
- <div id="shadow" class="pop-in"style="display:none;">
-  <p> Ajouter un concert </p>
-  <img src="<?php echo img_url('musicien/pop_close.png'); ?>" alt="Fermer" />
-  <div class="content-pi">
-    <form>
-		<div class="label">
-			<label>Artistes</label>
-		</div>
-		<div class="champs">
-			<input type="text">
-			<input type="text">
-		</div>
-		<div class="label">
-			<label>Date</label>
-		</div>
-		<div class="champs">
-			<input type="date">
-		</div>
-		<div class="label">
-			<label>Heure</label>
-		</div>
-		<div class="champs_heure">
-			<input type="text">
-			<input type="text">
-		</div>
-		<div class="label">
-			<label>Lieu</label>
-		</div>
-		<div class="champs_lieu">
-			<input type="text">
-			<input type="text">
-		</div>
-		<div class="label">
-			<label>Prix</label>
-		</div>
-		<div class="champs_prix">
-			<input type="text"> &euro;
-		</div>
-		<input type="submit" value="valider">
-	</form>
-  </div>
 </div>
