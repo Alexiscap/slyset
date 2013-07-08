@@ -1,9 +1,9 @@
 
 <?php
-    $session_id = $this->session->userdata('uid');
-    $uid = (empty($session_id)) ? '' : $session_id;
-    $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
-    $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
+$session_id = $this->session->userdata('uid');
+$uid = (empty($session_id)) ? '' : $session_id;
+$uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
+$login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
 ?>
 
 <div id="contentAll">
@@ -32,22 +32,21 @@
             <span class="stats_number">18</span>
             <span class="stats_title">playlists</span>
         </div>
-        
-         <div class="stats_cover_block">
+
+        <div class="stats_cover_block">
             <span class="stats_number">278</span>
             <span class="stats_title">abonnements</span>
         </div>
-       </div> 
-        <div id = "content" class="content">  
+    </div> 
+    <div id = "content" class="content">  
         <?php
-      
         if (isset($data_all_wall)):
             foreach ($data_all_wall as $entity_wall):
                 if ($entity_wall->product == 1):
                     if ($entity_wall->type == 'MU'):
                         ?>
 
- 				<div id ="<?php echo $entity_wall->id ?>" class="artist_post photo_message">
+                        <div id ="<?php echo $entity_wall->id ?>" class="artist_post photo_message">
                             <div class="top"   class="top" id="<?php echo $entity_wall->id ?>">
 
                                 <?php if ($this->uri->segment(2) == $session_id):
@@ -57,360 +56,366 @@
 
                             </div>
 
-       
-      <div class="left">
 
-        <img src="<?php echo files('profiles/'.$profile->thumb ); ?>" alt="Photo Profil" />
-      </div>
-      <div class="right">
-        <span class="ico_citation"></span>
-        <p class="msg_post"><?php echo $entity_wall->login ?> viens d’ajouter une photo :  <a href="<?php echo site_url('mc_photos/zoom_photo/'.$entity_wall->idproduit) ?>"><?php echo $entity_wall->main_nom?></a></p>
-        <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
-      </div>
-      <div class="bottom">
-        <span class="infos_publi"><?php echo $entity_wall->login ?> - 
-        <?php	$date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
-    					  	$a =  date_timestamp_get($date_format);
-            				echo $data['date_2'] = strftime('Le %d %B %G',$a); ?><!--Le 26 Septembre 2013--></span>
-      </div>
+                            <div class="left">
 
-    </div>
+                                <img src="<?php echo files('profiles/' . $profile->thumb); ?>" alt="Photo Profil" />
+                            </div>
+                            <div class="right">
+                                <span class="ico_citation"></span>
+                                <p class="msg_post"><?php echo $entity_wall->login ?> viens d’ajouter une photo :  <a href="<?php echo site_url('mc_photos/zoom_photo/' . $entity_wall->idproduit) ?>"><?php echo $entity_wall->main_nom ?></a></p>
+                                <img src="<?php echo base_url('./files/' . $entity_wall->Utilisateur_id . '/photos/' . $entity_wall->file_name); ?>" alt="Photo message" class="single" />
+                            </div>
+                            <div class="bottom">
+                                <span class="infos_publi"><?php echo $entity_wall->login ?> - 
+                                    <?php
+                                    $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
+                                    $a = date_timestamp_get($date_format);
+                                    echo $data['date_2'] = strftime('Le %d %B %G', $a);
+                                    ?><!--Le 26 Septembre 2013--></span>
+                            </div>
 
-			<?php
-			endif;
- 			if ($entity_wall->type == 'ME'):
-      
-            ?>
-  				<div id ="<?php echo $entity_wall->id?>" class="artist_post photo_message">
-      			<div class="top"   class="top" id="<?php echo $entity_wall->id?>">
-        				  <?php if ($this->uri->segment(2) == $session_id):
-?>
-    						<a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-         				<?php endif;?>
+                        </div>
 
-      				</div>
-     					
-     				<div class="left">
+                        <?php
+                    endif;
+                    if ($entity_wall->type == 'ME'):
+                        ?>
+                        <div id ="<?php echo $entity_wall->id ?>" class="artist_post photo_message">
+                            <div class="top"   class="top" id="<?php echo $entity_wall->id ?>">
+                                <?php if ($this->uri->segment(2) == $session_id):
+                                    ?>
+                                    <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                                <?php endif; ?>
 
-        				<img src="<?php echo base_url('./files/profiles/'.$profile->thumb); ?>" alt="Photo Profil" />
-      				</div>
-      					
-      				<div class="right">
-      					<span class="ico_citation"></span>
-        				<p class="msg_post">Je viens de liker la photo de <?php echo $profile->thumb ?> :  <a href="<?php echo base_url('index.php/mc_photos/zoom_photo/'.$entity_wall->idproduit) ?>"><?php echo $entity_wall->main_nom?></a></p>
-      					<!--  <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
-   						-->  
-    				</div>
-      					
-      				<div class="bottom">
-    					<span class="infos_publi"><?php echo $this->uri->segment('')?><!--  - -->  <?php	$date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
-    					  	$a =  date_timestamp_get($date_format);
-            				echo $data['date_2'] = strftime('Le %d %B %G',$a);?><!--Le 26 Septembre 2013--></span>
-  					</div>
-   				</div>
- 
- 		<?php
- 			endif;
-		endif;
+                            </div>
 
-		if($entity_wall->product==2):
-			if($entity_wall->type =='ME'):
+                            <div class="left">
 
- 		
- 		?>
- 		<!-- ******* ******* ***** LIKE D'UNE VIDEO  ******* ******* **** -->
+                                <img src="<?php echo base_url('./files/profiles/' . $profile->thumb); ?>" alt="Photo Profil" />
+                            </div>
 
-				<div id ="<?php echo $entity_wall->id?>" class="artist_post photo_message">
-      <div class="top"   class="top" id="<?php echo $entity_wall->id?>">
-            			<?php if($this->uri->segment(2)==$this->session->userdata('uid')):
-?>
-        					<a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-         				<?php endif;?>
+                            <div class="right">
+                                <span class="ico_citation"></span>
+                                <p class="msg_post">Je viens de liker la photo de <?php echo $profile->thumb ?> :  <a href="<?php echo base_url('index.php/mc_photos/zoom_photo/' . $entity_wall->idproduit) ?>"><?php echo $entity_wall->main_nom ?></a></p>
+                                <!--  <img src="<?php echo base_url('./files/' . $entity_wall->Utilisateur_id . '/photos/' . $entity_wall->file_name); ?>" alt="Photo message" class="single" />
+                                -->  
+                            </div>
 
-     				</div>
-      				<div class="left">
+                            <div class="bottom">
+                                <span class="infos_publi"><?php echo $this->uri->segment('') ?><!--  - -->  <?php
+                $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
+                $a = date_timestamp_get($date_format);
+                echo $data['date_2'] = strftime('Le %d %B %G', $a);
+                ?><!--Le 26 Septembre 2013--></span>
+                            </div>
+                        </div>
 
-       					<img src="<?php echo base_url('./files/profiles/'.$profile->thumb); ?>" alt="Photo Profil" />
-     				</div>
-      				<div class="right">
-        				<span class="ico_citation"></span>
-        				<p class="msg_post">Je viens de liker la video de <?php echo $entity_wall->login ?> :  <a href="<?php echo 'http://www.youtube.com/v/'.$entity_wall->file_name.'?version=3' ?>"><?php echo $entity_wall->main_nom?></a></p>
-     					 <!--  <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
-    					-->  
-    				</div>
-      				<div class="bottom">
-        				<span class="infos_publi"><!--<?php echo $this->session->userdata('login') ?> ---> <?php 	$date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
-    					  	$a =  date_timestamp_get($date_format);
-            				echo $data['date_2'] = strftime('Le %d %B %G',$a); ?><!--Le 26 Septembre 2013--></span>
-     				</div>
-   				</div>
+                        <?php
+                    endif;
+                endif;
 
- <?php
-				
-   			endif;
-   			
-   			if($entity_wall->type =='MU'):
+                if ($entity_wall->product == 2):
+                    if ($entity_wall->type == 'ME'):
+                        ?>
+                        <!-- ******* ******* ***** LIKE D'UNE VIDEO  ******* ******* **** -->
 
- 		
- ?>
- 			<!-- ******* ******* ***** AJOUT D'UNE VIDEO  ******* ******* **** -->
+                        <div id ="<?php echo $entity_wall->id ?>" class="artist_post photo_message">
+                            <div class="top"   class="top" id="<?php echo $entity_wall->id ?>">
+                                <?php if ($this->uri->segment(2) == $this->session->userdata('uid')):
+                                    ?>
+                                    <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                                <?php endif; ?>
 
-								<div id ="<?php echo $entity_wall->id?>" class="artist_post photo_message">
-      <div class="top"   class="top" id="<?php echo $entity_wall->id?>">
-            <?php if($this->uri->segment(2)==$this->session->userdata('uid')):
-?>
-        <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-         <?php endif;?>
+                            </div>
+                            <div class="left">
 
-      </div>
-      <div class="left">
+                                <img src="<?php echo base_url('./files/profiles/' . $profile->thumb); ?>" alt="Photo Profil" />
+                            </div>
+                            <div class="right">
+                                <span class="ico_citation"></span>
+                                <p class="msg_post">Je viens de liker la video de <?php echo $entity_wall->login ?> :  <a href="<?php echo 'http://www.youtube.com/v/' . $entity_wall->file_name . '?version=3' ?>"><?php echo $entity_wall->main_nom ?></a></p>
+                               <!--  <img src="<?php echo base_url('./files/' . $entity_wall->Utilisateur_id . '/photos/' . $entity_wall->file_name); ?>" alt="Photo message" class="single" />
+                                -->  
+                            </div>
+                            <div class="bottom">
+                              <span class="infos_publi"><!--<?php echo $this->session->userdata('login') ?> ---> <?php
+                $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
+                $a = date_timestamp_get($date_format);
+                echo $data['date_2'] = strftime('Le %d %B %G', $a);
+                ?><!--Le 26 Septembre 2013--></span>
+                            </div>
+                        </div>
 
-        <img src="<?php echo files('profiles/'.$entity_wall->thumb); ?>" alt="Photo Profil" />
-      </div>
-      <div class="right">
-        <span class="ico_citation"></span>
-        <p class="msg_post"><a href="<?php echo site_url('actualite/'.$entity_wall->Utilisateur_id)?>" ><?php echo $entity_wall->login ?></a> viens d’ajouter une video :  <a href="<?php echo 'http://www.youtube.com/v/'.$entity_wall->file_name.'?version=3' ?>"><?php echo $entity_wall->main_nom?></a></p>
-      	 
-      	 <iframe id="ytplayer" type="document" width="455" height="350" src="http://www.youtube.com/v/<?php echo $entity_wall->file_name ?>?version=3" /></iframe>
-      
-      </div>
-      <div class="bottom">
-        <span class="infos_publi"><?php echo $entity_wall->login ?> - <?php 	$date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
-    					  	$a =  date_timestamp_get($date_format);
-            				echo $data['date_2'] = strftime('Le %d %B %G',$a); ?><!--Le 26 Septembre 2013--></span>
-      </div>
-    </div>
+                        <?php
+                    endif;
 
- <?php
-				
-   			endif;
+                    if ($entity_wall->type == 'MU'):
+                        ?>
+                        <!-- ******* ******* ***** AJOUT D'UNE VIDEO  ******* ******* **** -->
 
-  		endif;
-  		
-  		if($entity_wall->product==3):
-  			if($entity_wall->type =='ME'):
-  			?>
-  			
-  			 			<!-- ******* ******* ***** CONCERT Je vais participer  ******* ******* **** -->
+                        <div id ="<?php echo $entity_wall->id ?>" class="artist_post photo_message">
+                            <div class="top"   class="top" id="<?php echo $entity_wall->id ?>">
+                                <?php if ($this->uri->segment(2) == $this->session->userdata('uid')):
+                                    ?>
+                                    <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                                <?php endif; ?>
 
-  				<div  id ="<?php echo $entity_wall->id?>" class="artist_post photo_message">
-      <div class="top"   class="top" id="<?php echo $entity_wall->id?>">
-        				<?php if($this->uri->segment(2)==$this->session->userdata('uid')):
-?>
-    						<a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-         				<?php endif;?>
+                            </div>
+                            <div class="left">
 
-      				</div>
-     					
-     				<div class="left">
+                                <img src="<?php echo files('profiles/' . $entity_wall->thumb); ?>" alt="Photo Profil" />
+                            </div>
+                            <div class="right">
+                                <span class="ico_citation"></span>
+                                <p class="msg_post"><a href="<?php echo site_url('actualite/' . $entity_wall->Utilisateur_id) ?>" ><?php echo $entity_wall->login ?></a> viens d’ajouter une video :  <a href="<?php echo 'http://www.youtube.com/v/' . $entity_wall->file_name . '?version=3' ?>"><?php echo $entity_wall->main_nom ?></a></p>
 
-        				<img src="<?php echo base_url('./files/profiles/'.$profile->thumb); ?>" alt="Photo Profil" />
-      				</div>
-      					
-      				<div class="right">
-      					<span class="ico_citation"></span>
-        				<p class="msg_post">Je participe au concert de  <a href="<?php echo base_url('/index.php/actualite/'.$entity_wall->Utilisateur_id) ?>"><?php echo $entity_wall->login ?>, à <?php echo $entity_wall->ville ?>   </a>
-      					<!--  <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
-   						-->  
-   						</br></br>
-   						<div id="concert_detail_calendar">
-   							<div class="calendar">
-   							
-   							</div>
-   							<div class="calendar-content">
-   								<?php echo $entity_wall->login ?></br><a href="<?php echo base_url("index.php/mc_concerts/".$entity_wall->Utilisateur_id.'/#'.$entity_wall->idproduit)?>"><?php echo $entity_wall->salle?> - <?php echo $entity_wall->ville?></a>
-    						</div>
-    					</div>
-    					</p>
-    				</div>
-      					
-      				<div class="bottom">
-    					<span class="infos_publi"><!--<?php echo $this->session->userdata('login')?> - --><?php 	$date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
-    					  	$a =  date_timestamp_get($date_format);
-            				echo $data['date_2'] = strftime('Le %d %B %G',$a); ?><!--Le 26 Septembre 2013--></span>
-  					</div>
-   				</div>
-  			
-  			<?php
-  			endif;
-  			
-  			if($entity_wall->type =='MU'):
-  			?>
-  				<div id ="<?php echo $entity_wall->id?>" class="artist_post photo_message">
-      <div class="top"   class="top" id="<?php echo $entity_wall->id?>">
-        				<?php if($this->uri->segment(2)==$this->session->userdata('uid')):
-?>
-    						<a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-         				<?php endif;?>
+                                <iframe id="ytplayer" type="document" width="455" height="350" src="http://www.youtube.com/v/<?php echo $entity_wall->file_name ?>?version=3" /></iframe>
 
-      				</div>
-     					
-     				<div class="left">
+                            </div>
+                            <div class="bottom">
+                                <span class="infos_publi"><?php echo $entity_wall->login ?> - <?php
+                                $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
+                                $a = date_timestamp_get($date_format);
+                                echo $data['date_2'] = strftime('Le %d %B %G', $a);
+                                ?><!--Le 26 Septembre 2013--></span>
+                            </div>
+                        </div>
 
-        				<img src="<?php echo base_url('./files/profiles/'.$entity_wall->thumb); ?>" alt="Photo Profil" />
-      				</div>
-      					
-      				<div class="right">
-      					<span class="ico_citation"></span>
-        				<p class="msg_post"><a href="<?php echo base_url('/index.php/actualite/'.$entity_wall->Utilisateur_id) ?>"><?php echo $entity_wall->main_nom ?></a> vient d'ajouter un concert  :
-      					<!--  <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
-   						-->  
-   						</br></br>
-   						<a href="<?php echo base_url("index.php/mc_concerts/".$entity_wall->Utilisateur_id.'/#'.$entity_wall->idproduit)?>"><?php echo $entity_wall->salle?> - <?php echo $entity_wall->ville?></a></p>
-    				</div>
-      					
-      				<div class="bottom">
-    					<span class="infos_publi"><?php echo $entity_wall->login?> - <?php 	$date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
-    					  	$a =  date_timestamp_get($date_format);
-            				echo $data['date_2'] = strftime('Le %d %B %G',$a); ?><!--Le 26 Septembre 2013--></span>
-  					</div>
-   				</div>
-  			
-  			<?php
-  			endif;
-  		endif;
-  		
-  		if($entity_wall->product==4):
-  			if($entity_wall->type =='MU'):
-  			?>
-  				<div id ="<?php echo $entity_wall->id?>" class="artist_post photo_message">
-      <div class="top"   class="top" id="<?php echo $entity_wall->id?>">
-        				<?php 
-        				if($this->uri->segment(2)==$this->session->userdata('uid')):
-?>
-    						<a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-         				<?php endif;?>
+                        <?php
+                    endif;
 
-      				</div>
-     					
-     				<div class="left">
+                endif;
 
-        				<img src="<?php echo files('profiles/'.$entity_wall->thumb); ?>" alt="Photo Profil" />
-      				</div>
-      					
-      				<div class="right">
-      					<span class="ico_citation"></span>
-        				<p class="msg_post">
-   						 <?php echo $entity_wall->main_nom?> </p>
-    				</div>
-      					
-      				<div class="bottom">
-    					<span class="infos_publi"><?php echo $entity_wall->login?> - <?php 
-  							$date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
-    					  	$a =  date_timestamp_get($date_format);
-            				echo $data['date_2'] = strftime('Le %d %B %G',$a);
+                if ($entity_wall->product == 3):
+                    if ($entity_wall->type == 'ME'):
+                        ?>
 
-        ?><!--Le 26 Septembre 2013--></span>
-  					</div>
-   				</div>
-  			
-  			<?php
-  			endif;
-  			
-  	
-  			
-  			
-  		endif;
-if($entity_wall->product==5):
+                        <!-- ******* ******* ***** CONCERT Je vais participer  ******* ******* **** -->
 
-  			if($entity_wall->type =='MU'):
-  			//var_dump($photo_by_album);
-  			foreach($photo_by_album as $photo_album):
-  			//var_dump($photo_album);
-  			if($photo_album[0]->albums_media_file_name == $entity_wall->idproduit):
-?>
-  			
-    <div class="artist_post photo_message">
-      <div class="top">
-        <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-      </div>
-      <div class="left">
-        <img src="<?php echo files('profiles/'.$entity_wall->thumb); ?>" alt="Photo Profil" />
-      </div>
-      <?php if (count($photo_album)>1): ?>
-      <div class="right">
-        <span class="ico_citation"></span>
-        <p class="msg_post"><?php echo $entity_wall->login;
-       ?> vient d’ajouter <?php echo count($photo_album) ?> photos à <a href="#">son album “<?php echo $entity_wall->main_nom ?>”</a></p>
-        <div class="content-mosaic">
-        <?php  foreach($photo_album as $photo):
+                        <div  id ="<?php echo $entity_wall->id ?>" class="artist_post photo_message">
+                            <div class="top"   class="top" id="<?php echo $entity_wall->id ?>">
+                                <?php if ($this->uri->segment(2) == $this->session->userdata('uid')):
+                                    ?>
+                                    <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                                <?php endif; ?>
 
+                            </div>
+
+                            <div class="left">
+
+                                <img src="<?php echo base_url('./files/profiles/' . $profile->thumb); ?>" alt="Photo Profil" />
+                            </div>
+
+                            <div class="right">
+                                <span class="ico_citation"></span>
+                                <p class="msg_post">Je participe au concert de  <a href="<?php echo base_url('/index.php/actualite/' . $entity_wall->Utilisateur_id) ?>"><?php echo $entity_wall->login ?>, à <?php echo $entity_wall->ville ?>   </a>
+                                <!--  <img src="<?php echo base_url('./files/' . $entity_wall->Utilisateur_id . '/photos/' . $entity_wall->file_name); ?>" alt="Photo message" class="single" />
+                                    -->  
+                                    </br></br>
+                                <div id="concert_detail_calendar">
+                                    <div class="calendar">
+
+                                    </div>
+                                    <div class="calendar-content">
+                                        <?php echo $entity_wall->login ?></br><a href="<?php echo base_url("index.php/mc_concerts/" . $entity_wall->Utilisateur_id . '/#' . $entity_wall->idproduit) ?>"><?php echo $entity_wall->salle ?> - <?php echo $entity_wall->ville ?></a>
+                                    </div>
+                                </div>
+                                </p>
+                            </div>
+
+                            <div class="bottom">
+                            <span class="infos_publi"><!--<?php echo $this->session->userdata('login') ?> - --><?php
+                        $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
+                        $a = date_timestamp_get($date_format);
+                        echo $data['date_2'] = strftime('Le %d %B %G', $a);
+                        ?><!--Le 26 Septembre 2013--></span>
+                            </div>
+                        </div>
+
+                        <?php
+                    endif;
+
+                    if ($entity_wall->type == 'MU'):
+                        ?>
+                        <div id ="<?php echo $entity_wall->id ?>" class="artist_post photo_message">
+                            <div class="top"   class="top" id="<?php echo $entity_wall->id ?>">
+                                <?php if ($this->uri->segment(2) == $this->session->userdata('uid')):
+                                    ?>
+                                    <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                <?php endif; ?>
+
+                            </div>
+
+                            <div class="left">
+
+                                <img src="<?php echo base_url('./files/profiles/' . $entity_wall->thumb); ?>" alt="Photo Profil" />
+                            </div>
+
+                            <div class="right">
+                                <span class="ico_citation"></span>
+                                <p class="msg_post"><a href="<?php echo base_url('/index.php/actualite/' . $entity_wall->Utilisateur_id) ?>"><?php echo $entity_wall->main_nom ?></a> vient d'ajouter un concert  :
+                                <!--  <img src="<?php echo base_url('./files/' . $entity_wall->Utilisateur_id . '/photos/' . $entity_wall->file_name); ?>" alt="Photo message" class="single" />
+                                    -->  
+                                    </br></br>
+                                    <a href="<?php echo base_url("index.php/mc_concerts/" . $entity_wall->Utilisateur_id . '/#' . $entity_wall->idproduit) ?>"><?php echo $entity_wall->salle ?> - <?php echo $entity_wall->ville ?></a></p>
+                            </div>
+
+                            <div class="bottom">
+                                <span class="infos_publi"><?php echo $entity_wall->login ?> - <?php
+                    $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
+                    $a = date_timestamp_get($date_format);
+                    echo $data['date_2'] = strftime('Le %d %B %G', $a);
+                    ?><!--Le 26 Septembre 2013--></span>
+                            </div>
+                        </div>
+
+                        <?php
+                    endif;
+                endif;
+
+                if ($entity_wall->product == 4):
+                    if ($entity_wall->type == 'MU'):
+                        ?>
+                        <div id ="<?php echo $entity_wall->id ?>" class="artist_post photo_message">
+                            <div class="top"   class="top" id="<?php echo $entity_wall->id ?>">
+                                <?php
+                                if ($this->uri->segment(2) == $this->session->userdata('uid')):
+                                    ?>
+                                    <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                <?php endif; ?>
+
+                            </div>
+
+                            <div class="left">
+
+                                <img src="<?php echo files('profiles/' . $entity_wall->thumb); ?>" alt="Photo Profil" />
+                            </div>
+
+                            <div class="right">
+                                <span class="ico_citation"></span>
+                                <p class="msg_post">
+                                    <?php echo $entity_wall->main_nom ?> </p>
+                            </div>
+
+                            <div class="bottom">
+                                <span class="infos_publi"><?php echo $entity_wall->login ?> - <?php
+                    $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
+                    $a = date_timestamp_get($date_format);
+                    echo $data['date_2'] = strftime('Le %d %B %G', $a);
+                                    ?><!--Le 26 Septembre 2013--></span>
+                            </div>
+                        </div>
+
+                        <?php
+                    endif;
+
+
+
+
+                endif;
+                if ($entity_wall->product == 5):
+
+                    if ($entity_wall->type == 'MU'):
+                        //var_dump($photo_by_album);
+                        foreach ($photo_by_album as $photo_album):
+                            //var_dump($photo_album);
+                            if ($photo_album[0]->albums_media_file_name == $entity_wall->idproduit):
+                                ?>
+
+                                <div class="artist_post photo_message">
+                                    <div class="top">
+                                        <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                                    </div>
+                                    <div class="left">
+                                        <img src="<?php echo files('profiles/' . $entity_wall->thumb); ?>" alt="Photo Profil" />
+                                    </div>
+                                            <?php if (count($photo_album) > 1): ?>
+                                        <div class="right">
+                                            <span class="ico_citation"></span>
+                                            <p class="msg_post"><?php echo $entity_wall->login;
+                                                ?> vient d’ajouter <?php echo count($photo_album) ?> photos à <a href="#">son album “<?php echo $entity_wall->main_nom ?>”</a></p>
+                                            <div class="content-mosaic">
+                                                <?php foreach ($photo_album as $photo):
+                                                    ?>
+                                                    <img src="<?php echo base_url('files/' . $entity_wall->Utilisateur_id . '/photos/' . $entity_wall->idproduit . '/' . $photo->file_name); ?>" alt="<?php echo $photo->nom ?>" class="mosaic first" />
+                            <?php endforeach; ?>
+                                            </div>
+                                        </div>
+
+                                    <?php
+                                    endif;
+                                    if (count($photo_album) == 1):
+                                        ?>
+                                        <div class="right">
+
+                                            <span class="ico_citation"></span>
+
+
+                                            <p class="msg_post"><?php echo $entity_wall->login;
+                                        ?> vient d’ajouter <?php echo count($photo_album) ?> photo à <a href="#">son album “<?php echo $entity_wall->main_nom ?>”</a></p>
+
+                                            <img src="<?php echo base_url('./files/' . $entity_wall->Utilisateur_id . '/photos/' . $photo_album[0]->file_name); ?>" alt="Photo message" class="single" />
+
+
+                                        </div>
+                                        <?
+                                    endif;
+                                    ?>
+                                    <div class="bottom">
+                                        <span class="infos_publi"><?php echo $entity_wall->login ?> - <?php
+                        $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
+                        $a = date_timestamp_get($date_format);
+                        echo $data['date_2'] = strftime('Le %d %B %G', $a);
+                                    ?></span>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+            <?php endif; ?>
+
+                            <?php if ($entity_wall->type == 'ME'):
+                                ?>
+                        <div id ="<?php echo $entity_wall->id ?>" class="artist_post photo_message">
+                            <div class="top"   class="top" id="<?php echo $entity_wall->id ?>">
+                <?php if ($this->uri->segment(2) == $this->session->userdata('uid')):
+                    ?>
+                                    <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                <?php endif; ?>
+
+                            </div>
+                            <div class="left">
+
+                                <img src="<?php echo base_url('./files/profiles/' . $profile->thumb); ?>" alt="Photo Profil" />
+                            </div>
+                            <div class="right">
+                                <span class="ico_citation"></span>
+                                <p class="msg_post">Je viens de liker l'album de <?php echo $entity_wall->login ?> :  <a href="#"><?php echo $entity_wall->main_nom ?></a></p>
+                               <!--  <img src="<?php echo base_url('./files/' . $entity_wall->Utilisateur_id . '/photos/' . $entity_wall->file_name); ?>" alt="Photo message" class="single" />
+                                -->  
+                            </div>
+                            <div class="bottom">
+                              <span class="infos_publi"><!--<?php echo $this->session->userdata('login') ?> ---> <?php
+                $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
+                $a = date_timestamp_get($date_format);
+                echo $data['date_2'] = strftime('Le %d %B %G', $a);
+                ?><!--Le 26 Septembre 2013--></span>
+                            </div>
+                        </div>
+                        <?php
+                    endif;
+                endif;
+
+            endforeach;
+        endif;
         ?>
-        <img src="<?php echo base_url('files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->idproduit.'/'.$photo->file_name); ?>" alt="<?php echo $photo->nom ?>" class="mosaic first" />
-          <?php endforeach; ?>
-          </div>
-      </div>
-      
-      <?php endif;
-        if (count($photo_album)==1):
-        ?>
-         <div class="right">
-         
-          <span class="ico_citation"></span>
-    
-         
-        <p class="msg_post"><?php echo $entity_wall->login;
-       
-?> vient d’ajouter <?php echo count($photo_album) ?> photo à <a href="#">son album “<?php echo $entity_wall->main_nom ?>”</a></p>
-        
-                <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$photo_album[0]->file_name); ?>" alt="Photo message" class="single" />
-
-          
-      </div>
-        <?
-      endif;
-      ?>
-      <div class="bottom">
-        <span class="infos_publi"><?php echo $entity_wall->login?> - <?php 	$date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
-    					  	$a =  date_timestamp_get($date_format);
-            				echo $data['date_2'] = strftime('Le %d %B %G',$a);?></span>
-      </div>
     </div>
-  			<?php
-  			endif;
-  			endforeach;
-  			endif;
-  			
-  				if($entity_wall->type =='ME'):
-  			?>
-  						<div id ="<?php echo $entity_wall->id?>" class="artist_post photo_message">
-      <div class="top"   class="top" id="<?php echo $entity_wall->id?>">
-            			<?php if($this->uri->segment(2)==$this->session->userdata('uid')):
-?>
-        					<a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-         				<?php endif;?>
 
-     				</div>
-      				<div class="left">
 
-       					<img src="<?php echo base_url('./files/profiles/'.$profile->thumb); ?>" alt="Photo Profil" />
-     				</div>
-      				<div class="right">
-        				<span class="ico_citation"></span>
-        				<p class="msg_post">Je viens de liker l'album de <?php echo $entity_wall->login ?> :  <a href="#"><?php echo $entity_wall->main_nom?></a></p>
-     					 <!--  <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
-    					-->  
-    				</div>
-      				<div class="bottom">
-        				<span class="infos_publi"><!--<?php echo $this->session->userdata('login') ?> ---> <?php $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
-    					  	$a =  date_timestamp_get($date_format);
-            				echo $data['date_2'] = strftime('Le %d %B %G',$a); ?><!--Le 26 Septembre 2013--></span>
-     				</div>
-   				</div>
-<?php
-  			endif;
-  			endif;
-  			
- endforeach;
- endif;
- ?>
-   </div>
-
- 
 
 
 
 <?php if (isset($sidebar_right)) echo $sidebar_right; ?>
 
-  
+
 </div>

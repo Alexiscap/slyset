@@ -80,7 +80,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                         <tbody>
                             <tr class="tab-head odd row-color-2">
                                 <th class="article-checkbox checkbox-style2">
-                                	<input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all">
+                                	<input type="checkbox" name="panier[]" value="all" class="check_all checkbox-article" id="article-all">
                                 		<label for="article-all">
                                 		
                                 		</label>
@@ -94,7 +94,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
     if ($commande->status == "P"):
         ?>
                                     <tr class="even row-color-1">
-                                        <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"><span></span></label></td>
+                                        <td class="article-checkbox checkbox-style2"><input type="checkbox" name="panier[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"><span></span></label></td>
                                         <td class="article-title"><a href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
         <?php echo $commande->nom ?></td>
                                         <td class="article-artiste"><?php echo $commande->user_login ?></td>
@@ -155,7 +155,7 @@ endforeach;
                     <table>
                         <tbody>
                             <tr class="tab-head odd row-color-2">
-                                <th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"><span></span></label></th>
+                                <th class="article-checkbox checkbox-style2"><input type="checkbox" name="histoachat[]" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
                                 <th class="article-title">Titre<span id="titre" class="filter filter-bottom"></span></th>
                                 <th class="article-artiste">Artiste<span id="titre" class="filter filter-bottom"></span></th>
                                 <th class="article-type">Type<span id="titre" class="filter filter-bottom"></span></th>
