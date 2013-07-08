@@ -83,7 +83,7 @@ $route['media/editer/(:num)/(:num)/(:num)'] = "mc_photos/update_photo/$1/$2/$3";
 $route['media/zoom'] = "mc_photos/zoom_photo";
 $route['media/zoom/(:num)'] = "mc_photos/zoom_photo/$1";
 $route['media/album'] = "mc_photos/album";
-$route['media/album/(:num)'] = "mc_photos/album/$1";
+$route['album/(:num)/(:any)'] = "mc_photos/album/$1/$2";
 
 $route['musique'] = "mc_musique/index";
 $route['musique/(:num)'] = "mc_musique/index/$1";
