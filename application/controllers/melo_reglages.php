@@ -9,13 +9,13 @@ class melo_reglages extends CI_Controller
     {
         parent::__construct();
 
-//        $this->output->enable_profiler(true);
+        $this->output->enable_profiler(true);
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_js('jquery.placeheld.min');
 
         $this->load->helper(array('form', 'comments_helper'));
         $this->load->model(array('mc_actus_model', 'perso_model', 'user_model'));
-        $this->load->library(array('form_validation'));
+        $this->load->library(array('form_validation', 'layout'));
 
         $this->layout->set_id_background('reglages');
         

@@ -1,5 +1,5 @@
 <div class="pop-in">
-  <p> Ajouter une vidÃ©o </p>
+  <p> Ajouter une vidéo </p>
   <img src="<?php echo img_url('musicien/pop_close.png'); ?>" alt="Fermer" />
   <div class="content-pi">
     <form>

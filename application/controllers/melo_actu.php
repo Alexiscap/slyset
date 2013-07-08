@@ -34,7 +34,6 @@ class melo_actu extends CI_Controller
     }
 
     public function index($user_id) {
-  
         $uid = $this->session->userdata('uid');
         $infos_profile = $this->user_model->getUser($user_id);
 

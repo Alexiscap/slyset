@@ -34,21 +34,11 @@ class Mc_photos extends CI_Controller {
     if (!empty($output)) {
       $this->layout->ajouter_dynamique_css($output->theme_css);
       write_css($output);
-    } 	
- 	//--bouton suivre un musicien
-    $community_follower=  $this->user_model->get_community($this->user_id);
-    $my_abonnement_head = "";
-             
-    foreach($community_follower as $my_following_head)
-    {
-    	$my_abonnement_head .= $my_following_head->Utilisateur_id.'/';
     }
 
     $this->data = array(
         'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
-        'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE),
-        'community_follower'=>$my_abonnement_head
-
+        'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
     );
   }
   
@@ -173,10 +163,10 @@ class Mc_photos extends CI_Controller {
       $config['file_name'] = "cover";
     }
 
-    $config['allowed_types'] = 'gif|jpg|png|jpeg';
-    /*$config['max_size'] = '1000';
+    $config['allowed_types'] = 'gif|jpg|png';
+    $config['max_size'] = '1000';
     $config['max_width'] = '1024';
-    $config['max_height'] = '768';*/
+    $config['max_height'] = '768';
     $photo = $this->input->post('photo_up');
 
     $this->load->library('upload', $config);

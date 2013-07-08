@@ -261,7 +261,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .content .photo .edit{ background:rgba(36, 36, 36, 0.7); width:160px; height:22px; position:absolute; margin:0;display:none;}
 .content .photo .edit img{ float:right; margin:4px 8px 0 0; }
 .content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:160px; position:absolute; margin:22px 0;}
-.content .photo .open_alb img{ margin:35% 10%; }
+.content .photo .open_alb img{ margin:35% 36%; }
 .content .sepa_comm {width:170px;height:5px;background:#e6e6e6;margin-left:-5px;}
 
 /*.box .img_cover, #tumblelog .img_cover{ display:block; width:100%; }*/
@@ -286,6 +286,7 @@ font-size: 13px;
 padding: 7px 12px;
 position: relative;
 list-style-type : none;
+width:270px;
 }
 
 #test_one{
@@ -315,8 +316,8 @@ padding: 18px;
 width : 177px;
 }
 
-#create_ok{margin-top : -27px;
-margin-left : 190px;
+#create_ok{margin-top : -24px;
+margin-left : 290px;
 cursor : pointer;}
 /*  ----- FIN CSS TMP AJOUTER PHOTO -------- */
 
@@ -326,10 +327,11 @@ cursor : pointer;}
 
 
 /* ---------- POP IN ------------- */
-.pop-in{width:510px;background:#eff4f3;padding:31px 0 75px;border:1px solid #bbbbbb;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;margin:10px auto;}
+.pop-in{width:100%;background:#eff4f3;padding:31px 0 75px;border:1px solid #bbbbbb;border-radius:5px;}
+.pop-in span{text-indent : 20px;height : 45px;margin-top:-6px; width : 100%; border-bottom:1px solid #e0e4e6;float:left;font-size:18px;color:#4e4e4e;}
 .pop-in p{margin:0 0 31px 15px;float:left;font-size:18px;color:#4e4e4e;width:210px;}
 .pop-in img{margin-left:255px;float:left;cursor:pointer;}
-.content-pi {background:#fafafa;width:510px;padding: 25px 0;border:1px solid #e0e4e6;border-left:none;border-right:none;clear:both;}
+.content-pi {width:100%; height:100%;border-left:none;border-right:none;clear:both;background-color:white;}
 
 .content-pi .label label{width:123px;padding:0 12px 0 0;float:left;margin:15px 0 0 0;text-align:right;font-size:16px;color:#4e4e4e;}
 .content-pi .label img{width:85px;height:73px;margin:15px 12px 0 40px;}
@@ -450,7 +452,7 @@ cursor : pointer;}
 .content-pi-cent {width:100%; height:100%;border-left:none;border-right:none;clear:both;background-color:white;}
 
 .content-pi-cent .label label{background:white;width:123px;padding:0 12px 0 0;float:left;margin:15px 0 0 0;text-align:right;font-size:16px;color:#4e4e4e;}
-.content-pi-cent .label img{width:85px;height:73px;margin:15px 12px 0 40px;}
+.content-pi-cent .label img{width:85px;height:73px;margin:15px 12px 0 40px;float:left;}
 .content-pi-cent .champs img{width:85px;height:73px;margin-left:0;}
 .content-pi-cent .champs {width:306px;float:left;margin:15px 0 0 12px;}
 .content-pi-cent .champs input{width:296px;padding:0 5px;outline:none }
@@ -461,12 +463,28 @@ cursor : pointer;}
 .content-pi-cent .champs_prix input{width:50px;padding:0 5px;outline:none;margin:15px 0 0 10px;}
 .content-pi-cent .champs select{width:296px;padding:0 0 0 5px;outline:none}
 .content-pi-cent .champs .descript-vid{width:296px;padding:0 5px;height:73px;outline:none;word-break:break-word;}
-.content-pi-cent input[type="submit"]{clear:both;width: 125px;height: 30px;margin: 10px 145px;background:url('../images/common/bt-rouge2.png');color:white;}
+.content-pi-cent input[type="submit"]{clear:both;width: auto;min-width: 90px;height: 30px;margin: 10px 148px;background:url('../images/common/bt-rouge2.png');color:white;}
 .content-pi-cent .champs .bt_noir{ height:30px; float:left; margin:-5px 0 0; }
 .content-pi-cent .champs .bt_noir .bt_left{ width:10px; height:30px; float:left; background:url("../images/common/bt_noir.png") no-repeat 0px -10px; }
-.content-pi-cent .champs .bt_noir .bt_middle{ height:16px; float:left; background:url("../images/common/bt_noir.png") no-repeat 0px -60px; font-size:12px; color:white; padding:7px 0; }
+.content-pi-cent .champs .bt_noir .bt_middle{ height:16px; float:left; background:url("../images/common/bt_noir.png") no-repeat 0px -60px; font-size:12px; color:white; padding:7px 0;opacity:1;}
 .content-pi-cent .champs .bt_noir .bt_right{ width:9px; height:30px; float:left; background:url("../images/common/bt_noir.png") no-repeat -391px -107px; }
 .content-pi-cent .champs .nom_img{font-size:12px;color:#737578;margin: 7px 15px;width:130px;}
+
+.content-pi-cent .champs input.artiste {margin:0 0 5px 0;}
+.content-pi-cent .champs input.date {width:222px;}
+.content-pi-cent .champs input.heure {width:100px;}
+.content-pi-cent .champs input.salle {width:192px;margin:0 8px 0 0;}
+.content-pi-cent .champs input.ville {width:96px;}
+.content-pi-cent .champs input.prix {width:75px;}
+
+.content-pi-cent .champs .error-form { margin:2px 0; display:block; width:89%; font-family:"Trebuchet MS"; font-weight:bold; font-size:12px; color:#e04e4e; float:left;}
+
+.content-pi-cent .champs .photo_up {opacity: 1;border: none;box-shadow: none;margin: 85px 142px;}
+
+.content-pi-cent .champs #album_select{width:270px;float:none;margin:0 5px 0 0;}
+.content-pi-cent .champs .fleche_bas{width:auto;float:none;border:none;}
+.content-pi-cent .champs .fleche_bas img{width:20px;height:20px;float:none;border:none;margin:-5px 0;}
+.content-pi-cent .elem_center{width:460px;margin:0 auto;}
 
 /* --------------- FIN POP IN 100% ----------- */
 
