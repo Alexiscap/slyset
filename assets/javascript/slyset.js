@@ -273,11 +273,11 @@ if($("body.achats").length > 0)
         }
     });
     
-
-  	$('.like').click(function(){
-      //  var baseurl = $(this).find("#baseurl").val();
-        //var baseurl = window.location.host;
+ 	$('.like').live('click',function(){
+       //var baseurl = $(this).find("#baseurl").val();
+        var baseurl = window.location.host;
   	    var id_photo = $(this).attr('id');
+  	    var coeur = $(this);
        	var dataid = 'id_photo=' + id_photo;
         
         $.ajax({
@@ -285,12 +285,17 @@ if($("body.achats").length > 0)
             url : '/slyset/index.php/mc_photos/add_like',
             data: dataid,
             success: function(jelike){
-                alert('ok executé');
+           	$(coeur).attr('src','http://127.0.0.1/slyset/assets/images/musicien/pink_heart.png');
+           	$(coeur).next().text(parseInt($(coeur).next().text()) + 1);
+			$(coeur).addClass('nolike');
+        	$(coeur).removeClass('like');
+        	
             }
         })
     });
     
-    $('.nolike').click(function(){
+    $('.nolike').live('click',function(){
+     var coeur = $(this);
         var baseurl = $(this).find("#baseurl").val();
   	    var id_photo = $(this).attr('id');
        	var dataid = 'id_photo=' + id_photo;
@@ -300,12 +305,18 @@ if($("body.achats").length > 0)
             url : '/slyset/index.php/mc_photos/minus_like',
             data: dataid,
             success: function(jelike){
-                alert('ok executé');
+           	$(coeur).attr('src','http://127.0.0.1/slyset/assets/images/musicien/icon_coeur.png');
+           	$(coeur).addClass('like');
+           	$(coeur).next().text(parseInt($(coeur).next().text()) - 1);
+        	$(coeur).removeClass('nolike');
+
             }
         })
     });
     
-    $('.like-album ').click(function(){
+    $('.like-album').live('click',function(){
+         var coeur = $(this);
+
         var baseurl = $(this).find("#baseurl").val();
   	    var fn_album = $(this).attr('id');
        	var dataid = 'album_file_name=' + fn_album;
@@ -315,12 +326,17 @@ if($("body.achats").length > 0)
             url :  '/slyset/index.php/mc_photos/add_like_a',
             data: dataid,
             success: function(jelike){
-                alert('ok executé');
+            $(coeur).attr('src','http://127.0.0.1/slyset/assets/images/musicien/pink_heart.png');
+           	$(coeur).next().text(parseInt($(coeur).next().text()) + 1);
+			$(coeur).addClass('nolike-album');
+        	$(coeur).removeClass('like-album');
             }
         })
     });
     
-    $('.nolike-album').click(function(){
+    $('.nolike-album').live('click',function(){
+             var coeur = $(this);
+
         var baseurl = $(this).find("#baseurl").val();
   	    var file_name_album = $(this).attr('id');
        	var dataid = 'file_name_album='+file_name_album;
@@ -330,12 +346,18 @@ if($("body.achats").length > 0)
             url : '/slyset/index.php/mc_photos/minus_like_a',
             data: dataid,
             success: function(jelike){
-                alert('ok executé');
+             	$(coeur).attr('src','http://127.0.0.1/slyset/assets/images/musicien/icon_coeur.png');
+          
+           	$(coeur).next().text(parseInt($(coeur).next().text()) - 1);
+           	 	$(coeur).addClass('like-album');
+        	$(coeur).removeClass('nolike-album');
             }
         })
     });
     
-    $('.like-video').click(function(){
+    $('.like-video').live('click',function(){
+                 var coeur = $(this);
+
         var baseurl = $(this).find("#baseurl").val();
   	    var video_nom = $(this).attr('id');
        	var dataid = 'video_nom=' + video_nom;
@@ -345,12 +367,17 @@ if($("body.achats").length > 0)
             url : '/slyset/index.php/mc_photos/add_like_v',
             data: dataid,
             success: function(jelike){
-                alert('ok executé');
+                $(coeur).attr('src','http://127.0.0.1/slyset/assets/images/musicien/pink_heart.png');
+           	$(coeur).next().text(parseInt($(coeur).next().text()) + 1);
+			$(coeur).addClass('nolike-video');
+        	$(coeur).removeClass('like-video');
             }
         })
     });
     
-    $('.nolike-video').click(function(){
+    $('.nolike-video').live('click',function(){
+                 var coeur = $(this);
+
         var baseurl = $(this).find("#baseurl").val();
         var video_nom = $(this).attr('id');
        	var dataid = 'video_nom=' + video_nom;
@@ -360,12 +387,14 @@ if($("body.achats").length > 0)
             url : '/slyset/index.php/mc_photos/minus_like_v',
             data: dataid,
             success: function(jelike){
-                alert('ok executé');
+                $(coeur).attr('src','http://127.0.0.1/slyset/assets/images/musicien/icon_coeur.png');
+          
+           	$(coeur).next().text(parseInt($(coeur).next().text()) - 1);
+           	 	$(coeur).addClass('like-video');
+        	$(coeur).removeClass('nolike-video');
             }
         })
     });
-    
-    
  
     $('.photo.box.col1').hover(
     function(){
