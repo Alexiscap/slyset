@@ -160,8 +160,8 @@ endforeach;
             <div class="clear"></div>
             <div id="articles-tab">
                 <form action="<?php echo site_url('admin_articles/delete_multi_article'); ?>" method="post" accept-charset="utf-8">          
-                    <table>
-                        <tbody>
+                    <table id="test_tablesorter" class="tablesorter">
+                        <thead>
                             <tr class="tab-head odd row-color-2">
                                 <th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
                                 <th class="article-title">Titre<span id="titre" class="filter filter-bottom"></span></th>
@@ -169,6 +169,8 @@ endforeach;
                                 <th class="article-type">Type<span id="titre" class="filter filter-bottom"></span></th>
                                 <th class="article-prix">Prix<span id="created" class="filter filter-bottom"></span></th>
                             </tr>
+                            </thead>
+                            <tbody>
 <?php foreach ($cmd as $commande):
     if ($commande->status == "V"):
         ?>

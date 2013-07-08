@@ -69,10 +69,10 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 	<div class="follower">
 		<div class="photo_follow">
 		<!-- dossier de la cover pour un user ? -->
-			<img src="<?php echo files('profiles/'.$follower->cover) ?>" />
+			<a href="<?php echo base_url('index.php/actualite/'.$follower->Follower_id) ?>"><img src="<?php echo files('profiles/'.$follower->thumb) ?>" /></a>
 		</div>
 		<div class="description">
-			<p class="nom_follow"><?php echo $follower->login ?></p>
+			<p class="nom_follow"><a href="<?php echo base_url('index.php/actualite/'.$follower->Follower_id) ?>"><?php echo $follower->login ?></a></p>
 			<p class="text_follow"><?php echo $follower->description ?></p>
 			
 			

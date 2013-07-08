@@ -9,13 +9,15 @@ class Mc_photos extends CI_Controller {
 
     $this->layout->ajouter_css('slyset');
     $this->layout->ajouter_css('colorbox');
-
+    
+    $this->layout->ajouter_js('jquery.placeheld.min');
     $this->layout->ajouter_js('jquery.imagesloaded.min');
     $this->layout->ajouter_js('jquery.masonry.min');
     $this->layout->ajouter_js('jquery.stapel');
     $this->layout->ajouter_js('jquery.colorbox');
     $this->layout->ajouter_js('combobox');
     $this->layout->ajouter_js('jquery-ui');
+    
 
     $this->load->model('photos');
     $this->load->helper('form');

@@ -58,7 +58,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 if($nbr_concert_par_melo!=0)
    { 
    	   foreach($concert_all as $concert_unit): ?>
- 
+ 		<div class="all-info-concert">
   		<p  class="date-heure"><span><?php
 		get_date($concert_unit->date,'complete');?> <?php if(isset($concert_unit->prix))echo ' - '.$concert_unit->prix.'&euro;'?></span></p>
    		 <hr/>	 
@@ -79,16 +79,16 @@ if($nbr_concert_par_melo!=0)
     
     	    	<div id="concert_activity>">
 	<?php 
-	//var_dump($all_concert_act);
+	
     	$count = substr_count($all_concert_act,$concert_unit->id.'/');
     	if ($count>=1)
     	{?>
-    	    		<a id="<?php echo $concert_unit->id;?>" href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">Je n'y vais plus</span><span class="button_right"></span></a>
+    	    		<a id="<?php echo $concert_unit->concerts_id;?>" href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">Je n'y vais plus</span><span class="button_right"></span></a>
 
     	<?php
     	}
     	else{?>
-    	    	 <a id="<?php echo $concert_unit->id;?>" href="#" class="participer"><span class="button_left"></span><span  class="button_center">J'y vais</span><span class="button_right"></span></a>
+    	    	 <a id="<?php echo $concert_unit->concerts_id;?>" href="#" class="participer"><span class="button_left"></span><span  class="button_center">J'y vais</span><span class="button_right"></span></a>
 
 		<?php }
     	 ?> 
@@ -115,6 +115,7 @@ if($nbr_concert_par_melo!=0)
                         <img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php echo $concert_unit->numero_adresse . "+" . $concert_unit->voie_adresse . "+" . $concert_unit->ville ?>&zoom=16&size=233x198&maptype=roadmap&markers=size:mid%7Ccolor:red%7C<?php echo $concert_unit->numero_adresse . "+" . $concert_unit->voie_adresse . "+" . $concert_unit->ville ?>&sensor=false">
 
                     </div>
+                </div>
                 </div>
                 <?php
             endforeach;

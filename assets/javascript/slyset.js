@@ -12,6 +12,12 @@ function playMasonry(){
 }
 
 $(document).ready(function(){
+
+if($("body.achats").length > 0)
+{
+  $("#test_tablesorter").tablesorter(); 
+}
+
 //    Shadowbox.open({
 ////        content:    'application/views/lightbox/pi_ajout_concerts.php',
 //        player:     "iframe",
@@ -390,6 +396,7 @@ $(document).ready(function(){
     //function(){$(this).replaceWith(two).show()
     
     );
+    
     if($('body.abonnements').length>0)
     {
      $('.bouton .participer').click(function(){
@@ -635,6 +642,7 @@ $(document).ready(function(){
  	if($("body.concert_melo").length > 0){
     
      $('.participer').click(function(){
+     var concert = $(this);
         var baseurl = $(this).find("#baseurl").val();
         var id_concert = $(this).attr('id');
         var dataid = 'id_concert=' + id_concert;
@@ -646,7 +654,7 @@ $(document).ready(function(){
             data: dataid,
             success: function(jego){ //afficher le bon bouton
 
-              $('#concert_id_'+id_concert).slideUp();
+              $(concert).parents('.all-info-concert').slideUp();
             }
         })
         return false

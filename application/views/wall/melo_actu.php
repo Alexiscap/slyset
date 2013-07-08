@@ -220,15 +220,19 @@
    						</br></br>
    						<div id="concert_detail_calendar">
    							<div class="calendar">
+   								<div class="calendar-mois">
    							   	<?php $date_format = (date_create($entity_wall->date_concert, timezone_open('Europe/Paris')));
     					  		$a =  date_timestamp_get($date_format);
             					echo $data['date_2'] = '<a>'.strtoupper(strftime('%b',$a)).'</a>';
             					?>
+            					</div>
+            					<div class="calendar-jour">
+   							   
             					<?php $date_format = (date_create($entity_wall->date_concert, timezone_open('Europe/Paris')));
     					  		$a =  date_timestamp_get($date_format);
             					echo $data['date_2'] = '<a>'.strftime('%d',$a).'</a>';
             					?>
-   							
+   							</div>
    							</div>
    							<div class="calendar-content">
    								<?php echo $entity_wall->login ?>
@@ -276,21 +280,25 @@
       					
       				<div class="right">
       					<span class="ico_citation"></span>
-      					<p class="msg_post"><a href="<?php echo base_url('/index.php/actualite/'.$entity_wall->Utilisateur_id) ?>"><?php echo $entity_wall->main_nom ?></a> vient d'ajouter un concert  :
+      					<p class="msg_post"><a href="<?php echo base_url('/index.php/actualite/'.$entity_wall->Utilisateur_id) ?>"><?php echo $entity_wall->login ?></a> vient d'ajouter un concert  :
 
       					
       					</br></br>
    						<div id="concert_detail_calendar">
    							<div class="calendar">
+   							<div class="calendar-mois">
    							   	<?php $date_format = (date_create($entity_wall->date_concert, timezone_open('Europe/Paris')));
     					  		$a =  date_timestamp_get($date_format);
             					echo $data['date_2'] = '<a>'.strtoupper(strftime('%b',$a)).'</a>';
             					?>
+            					</div>
+            					   							<div class="calendar-jour">
+
             					<?php $date_format = (date_create($entity_wall->date_concert, timezone_open('Europe/Paris')));
     					  		$a =  date_timestamp_get($date_format);
             					echo $data['date_2'] = '<a>'.strftime('%d',$a).'</a>';
             					?>
-   							
+   							</div>
    							</div>
    							<div class="calendar-content">
    								<?php echo $entity_wall->login ?>

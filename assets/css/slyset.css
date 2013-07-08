@@ -113,9 +113,20 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .artist_post .ajax_loader{ padding:5px 0 0 0; text-align:center; clear:both; }
 .artist_post .ajax_loader img{ margin:0 10px 0 0; }
 .artist_post #concert_detail_calendar {margin: 35px 18px;}
-.artist_post #concert_detail_calendar .calendar { float : left;background-size : 58px 55px; background-image:url("../images/musicien/calendrier.png"); height :  60px; width:50px; margin : 0px; margin-bottom : 17px;}
+.artist_post #concert_detail_calendar .calendar { float : left;background-size : 111%  104%; background-image:url("../images/musicien/calendrier.png"); height :  52px; width:50px; margin : 0px; margin-bottom : 17px;}
 .artist_post #concert_detail_calendar .calendar-content{position:absolute; margin : 15px 70px;}
+.artist_post #concert_detail_calendar .calendar .calendar-mois {margin-left : 8px; width : 39px; height : 12px; margin-top : 6px;}
+.artist_post #concert_detail_calendar .calendar .calendar-mois a {margin: 2px 12px; font-size: 9px; color: white; position: absolute; text-align: center;}
 .artist_post #concert_detail_calendar .calendar-content a{ font-weight:normal; font-size:13px; color:#535353; text-decoration : none;}
+.artist_post #concert_detail_calendar .calendar .calendar-jour {margin-left : 8px; width : 39px; height : 28px; margin-top : 3px;} 
+.artist_post #concert_detail_calendar .calendar .calendar-jour a{color: #5d5d5b;
+margin: 1px 4px;
+font-size: 24px;
+font-family: georgia;
+position: absolute;
+text-align: center;
+width: 31px;
+font-weight: normal;}
 /* --------- FIN  DE MUSICIEN - ACTUS  --------- */
 
 
@@ -915,7 +926,7 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 .content .follower .photo_follow img {width : 63px; border-radius : 10px;}
 .content .follower .description {width:220px;float:left;margin:0 10px}
 .content .follower .description span {font-size:12px;color:#888d95;}
-.content .follower .description .nom_follow {font-size:14px;font-weight:bold;color:#3f3f3f;margin:0;}
+.content .follower .description .nom_follow, .content .follower .description .nom_follow a {font-size:14px;font-weight:bold;color:#3f3f3f;margin:0;text-decoration : none;}
 .content .follower .description .text_follow {font-size:14px;color:#5d5b5b;font-weight:normal;width:220px;margin:0;}
 .content .follower .bouton .participer,.content .follower .bouton .melo,.content .follower .bouton .my-follow,.content .follower .bouton .follow_following {margin:20px 0 0 30px;}
 

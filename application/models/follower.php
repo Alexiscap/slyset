@@ -22,7 +22,7 @@ class follower extends CI_Model
 	
 	public function get_follower_bytype($user_id,$type)
 	{
-		return $this->db->select('communaute.Follower_id,utilisateur.login,communaute.type,utilisateur.style_ecoute,utilisateur.style_joue,utilisateur.cover,utilisateur.description')
+		return $this->db->select('communaute.Follower_id,utilisateur.login,communaute.type,utilisateur.style_ecoute,utilisateur.style_joue,utilisateur.cover,utilisateur.thumb,utilisateur.description')
 					->where('Utilisateur_id',$user_id)
 					->where('communaute.type',$type)
 					->from($this->table_communaute)

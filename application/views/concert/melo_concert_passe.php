@@ -53,7 +53,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
    { 
 
    	    foreach($concert_all as $concert_unit): ?>
- 
+ <div class="all-info-concert">
   		<p  class="date-heure"><span><?php
 		get_date($concert_unit->date,'complete');?> <?php if(isset($concert_unit->prix))echo ' - '.$concert_unit->prix.'&euro;'?></span></p>
    		 <hr/>
@@ -71,7 +71,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
       			 <p class="adr_ville"><?php echo $concert_unit->ville.", ".$concert_unit->pays ?></p>
    		 	</div>
    		 <a href="javascript:void(0);" class="more" id="more_<?php echo $concert_unit->id ?>" onclick='showInfo(more_<?php echo $concert_unit->id ?>,more_info_<?php echo $concert_unit->id ?>)' >Voir plus d'informations</a>
-    	 <a href="#" class="participer"><span class="button_left"></span><span class="button_center">J'y vais</span><span class="button_right"></span></a>
+    	 <a href="#" class="participer" id="<?php echo $concert_unit->concerts_id; ?>"><span class="button_left"></span><span class="button_center">J'y vais</span><span class="button_right"></span></a>
     
    
     
@@ -96,6 +96,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                         <img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php echo $concert_unit->numero_adresse . "+" . $concert_unit->voie_adresse . "+" . $concert_unit->ville ?>&zoom=16&size=233x198&maptype=roadmap&markers=size:mid%7Ccolor:red%7C<?php echo $concert_unit->numero_adresse . "+" . $concert_unit->voie_adresse . "+" . $concert_unit->ville ?>&sensor=false">
 
                     </div>
+                </div>
                 </div>
                 <?php
             endforeach;
