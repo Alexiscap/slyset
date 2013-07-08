@@ -11,6 +11,10 @@ $(window).scroll(function(e) {
                 infiniteArticles();
             }
             
+            if($("#any-background-admin-articles").length > 0){
+                infiniteArticlesAdmin();
+            }
+            
             if($("#any-background-search").length > 0){
                 infiniteResults();
             }
@@ -26,7 +30,7 @@ $(window).scroll(function(e) {
 
 function infiniteArticles() {
     var trs = $('#wall-flux .wall-flux-content');
-    var count = trs.length;
+    var count = trs.length - 1;
  
     if (reachedEnd == false) {
         var ajaxLoader = $('#wall-flux').find(".ajax_loader");
@@ -55,9 +59,51 @@ function infiniteArticles() {
     }
 }
 
+function infiniteArticlesAdmin() {
+    var trs = $('#articles-tab tr');
+    var count = trs.length - 1;
+ 
+    if (reachedEnd == false) {
+        var ajaxLoader = $('#articles-tab').find(".ajax_loader");
+
+        ajaxLoader.show();
+        ajaxLoader.fadeIn(500).html('<img src="http://localhost.slyset.com/assets/images/common/ajax-loader.gif" />');
+        $.ajax({
+            url: "http://localhost.slyset.com/index.php/admin_articles/ajax_articles/1/" + count,
+            async: false,
+            dataType: "html",
+            success: function(data) {
+                if (data != "End"){
+                    $('#articles-tab table tbody').append(data);
+                    ajaxLoader.fadeOut(1000);
+          
+                    setTimeout(function(){
+                        ajaxLoader.remove();
+                    }, 1000);
+                    
+                    $('#articles-tab table tr').each(function(){
+                        var check = $(this).find('.checkbox-style2').children();
+                        var check_span = check.children();
+                        
+                        $('#articles-tab table tr:nth-child(even)').addClass('even row-color-1');
+                        $('#articles-tab table tr:nth-child(odd)').addClass('odd row-color-2');
+                        
+                        if(check_span.length == 0){
+//                            $checkLabel = $('.checkbox-style label, .checkbox-style2 label');
+                            check.prepend('<span/>');
+                        }
+                    });
+                } else {
+                    reachedEnd = true;
+                }
+            }
+        });
+    }
+}
+
 function infiniteResults() {
     var trs = $('.search_results_wrapper .search_result');
-    var count = trs.length;
+    var count = trs.length - 1;
  
     if (reachedEnd == false) {
         var ajaxLoader = $('.search_results_wrapper').find(".ajax_loader");
@@ -92,7 +138,7 @@ function infiniteResults() {
 
 function infiniteComptes() {
     var trs = $('#comptes-tab tr');
-    var count = trs.length;
+    var count = trs.length - 1;
     var typeAccount = '';
  
     if($('#comptes-tab').hasClass('comptes_melos')){

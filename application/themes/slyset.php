@@ -1,3 +1,5 @@
+<?php date_default_timezone_set('Europe/Paris'); ?>
+
 <!DOCTYPE HTML>
 <html lang="fr">
   <head>
@@ -89,8 +91,8 @@
           <span>Autour de slyset</span>
           <ul>
             <li><a href="#">Le blog</a></li>
-            <li><a href="#">Qui sommes-nous ?</a></li>
-            <li><a href="#">Fonctionnalités</a></li>
+            <li><a href="<?php echo site_url('slyset-project/'.$this->session->userdata('uid')); ?>">Qui sommes-nous ?</a></li>
+            <li><a href="<?php echo site_url('fonctionnalites/'.$this->session->userdata('uid')); ?>">Fonctionnalités</a></li>
             <li><a href="#">Kit presse</a></li>
           </ul>
         </div>
@@ -99,17 +101,17 @@
           <span>Obtenir de l'aide</span>
           <ul>
             <li><a href="<?php echo site_url('faq/'.$this->session->userdata('uid')); ?>">FAQ</a></li>
-            <li><a href="#">Nous contacter</a></li>
-            <li><a href="#">Paiement sécurisé</a></li>
+            <li><a href="<?php echo site_url('contact/'.$this->session->userdata('uid')); ?>">Nous contacter</a></li>
+            <li><a href="<?php echo site_url('paiements/'.$this->session->userdata('uid')); ?>">Paiement sécurisé</a></li>
           </ul>
         </div>
 
         <div class="infos">
           <span>Informations</span>
           <ul>
-            <li><a href="#">CGU & CGV</a></li>
+            <li><a href="<?php echo site_url('conditions-generales/'.$this->session->userdata('uid')); ?>">CGU & CGV</a></li>
             <li><a href="<?php echo site_url('mentions-legales/'.$this->session->userdata('uid')); ?>">Mentions légales</a></li>
-            <li><a href="#">Annonceurs</a></li>
+            <li><a href="<?php echo site_url('annonceurs/'.$this->session->userdata('uid')); ?>">Annonceurs</a></li>
           </ul>
         </div>
 

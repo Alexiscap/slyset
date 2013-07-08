@@ -41,7 +41,7 @@ class Admin_musiciens extends CI_Controller
                                 
 //            $data['musiciens'] = $this->comptes_model->liste_musiciens($order, $by);
             
-            $data['musiciens'] = $this->comptes_model->liste_musiciens(2, 0);
+            $data['musiciens'] = $this->comptes_model->liste_musiciens(20, 0);
             
             $this->layout->view('admin/musiciens', $data);
         } else {
@@ -118,8 +118,8 @@ class Admin_musiciens extends CI_Controller
 //        $keyword = $this->input->post('recherche');  
 //        print 'donc offset : '.$offset;
         
-        if ($this->comptes_model->liste_musiciens(2, $offset)) {
-            $data['musiciens'] = $this->comptes_model->liste_musiciens(2, $offset);
+        if ($this->comptes_model->liste_musiciens(20, $offset)) {
+            $data['musiciens'] = $this->comptes_model->liste_musiciens(20, $offset);
 
             $this->load->view('admin/musiciens_ajax', $data);
         }

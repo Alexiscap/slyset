@@ -64,15 +64,7 @@ $session_id = $this->session->userdata('uid');
                 echo form_close();
             ?>
           
-            <?php            
-//            foreach($articles as $article){
-////              print_r($article);
-//              echo $article->titre.'<br/>';
-//              echo $article->article.'<br/>';
-//              echo $article->created.'<br/>';
-//              echo '<br/><br/>';
-//            } 
-            ?>
+            <div class="ajax_loader"></div>            
         </div>
     </div>
 </div>

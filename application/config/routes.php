@@ -39,7 +39,8 @@
 */
 
 $route['default_controller'] = "home";
-$route['404_override'] = '';
+$route['404_override'] = 'page_404';
+//$route['404_override/(:num)'] = 'page_404/index/$1';
 
 $route['admin'] = "admin/index";
 $route['admin/(:num)'] = "admin/index/$1";
@@ -80,7 +81,7 @@ $route['media/supprimer/(:num)'] = "mc_photos/suppression_media/$1";
 $route['media/editer'] = "mc_photos/update_photo";
 $route['media/editer/(:num)/(:num)/(:num)'] = "mc_photos/update_photo/$1/$2/$3";
 $route['media/zoom'] = "mc_photos/zoom_photo";
-$route['media/zoom/(:num)/(:num)'] = "mc_photos/zoom_photo/$1/$2";
+$route['media/zoom/(:num)'] = "mc_photos/zoom_photo/$1";
 $route['media/album'] = "mc_photos/album";
 $route['media/album/(:num)'] = "mc_photos/album/$1";
 
@@ -132,11 +133,30 @@ $route['my-playlists/(:num)'] = "melo_playlist/index/$1";
 $route['my-shopping/(:num)'] = "melo_achats/index/$1";
 $route['my-shopping-recap/(:num)'] = "melo_achats/index/$1";
 
-$route['mentions-legales'] = "pages_statiques/mentions_legales";
-$route['mentions-legales/(:num)'] = "pages_statiques/mentions_legales/$1";
+$route['slyset-project'] = "pages_statiques/slyset";
+$route['slyset-project/(:num)'] = "pages_statiques/slyset/$1";
+
+$route['fonctionnalites'] = "pages_statiques/fonctionnalites";
+$route['fonctionnalites/(:num)'] = "pages_statiques/fonctionnalites/$1";
 
 $route['faq'] = "pages_statiques/faq";
 $route['faq/(:num)'] = "pages_statiques/faq/$1";
+
+$route['contact'] = "pages_statiques/contact";
+$route['contact/(:num)'] = "pages_statiques/contact/$1";
+
+$route['paiements'] = "pages_statiques/paiements";
+$route['paiements/(:num)'] = "pages_statiques/paiements/$1";
+
+$route['conditions-generales'] = "pages_statiques/cgu";
+$route['conditions-generales/(:num)'] = "pages_statiques/cgu/$1";
+
+$route['mentions-legales'] = "pages_statiques/mentions_legales";
+$route['mentions-legales/(:num)'] = "pages_statiques/mentions_legales/$1";
+
+$route['annonceurs'] = "pages_statiques/annonceurs";
+$route['annonceurs/(:num)'] = "pages_statiques/annonceurs/$1";
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

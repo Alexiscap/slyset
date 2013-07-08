@@ -11,7 +11,7 @@ a{ outline:none; }
 body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; background:#f9f9f9; z-index:2; }
 #page{ margin:0 auto; width:980px; }
 #contentAll{ margin:0 0 50px 20px; width:770px; float:left; }
-#breadcrumbs{ margin:0 0 0 12px; width:100%; height:23px; float:left; clear:both; }
+#breadcrumbs{ margin:5px 12px; width:100%; height:23px; float:left; clear:both; }
 #breadcrumbs ul{ display:inline-block; }
 #breadcrumbs li{ display:inline-block; line-height:20px; }
 #breadcrumbs li a{ text-decoration:none; font-size:10px; color:#858585; }
@@ -1364,20 +1364,33 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 /*------------------- FIN RECHERCHE -------------------*/
 
 
-/*--------------------PAGES STATIQUE---------------------------*/
-.content_static{ margin:0 0 10px 0; padding:0; width:770px; background:#e6e6e6; float:left; clear:both; }
+/*--------------------PAGES STATIQUE ---------------------------*/
+.content_static{ margin:0 0 10px 0; padding:0 20px 15px 20px; width:770px; text-align:justify; background:#e6e6e6; float:left; clear:both; }
 .content_static .page_static{font-size:24px;color:#3f3f3f;}
 .content_static h2{ font-size:20px; margin:25px 20px; clear:both; }
-.content_static p{ font-size:14px; margin:0 20px 0 20px;}
+.content_static p{ font-size:14px; margin:0 15px;}
 .content_static .section_faq{ font-size:18px; margin-bottom:25px;}
-.content_static .titre_mention{font-size:18px;color:#3f3f3f;}
-.content_static .txt_mention{font-size:14px;color:#3f3f3f;}
+.content_static .titre_static{margin:30px 0 10px 0; font-size:18px; font-weight:normal; color:#3f3f3f;}
+.content_static .txt_static{font-size:14px;color:#3f3f3f;}
+.content_static .img_static{ margin:15px; }
+.content_static .img_static img{ margin:0 20px 0 0; }
 .content_static .menu_faq{height:135px;margin:0 0 20px 0;}
-.content_static .menu_faq ul{margin:10px 0 30px 20px;}
+.content_static .menu_faq ul{margin:10px 20px 30px 20px;}
 .content_static .menu_faq .left{float:left;width:375px;border-right:1px solid #a5a9ae;}
 .content_static .menu_faq .left p{font-size:16px;color:#2da288;font-weight:bold;}
-.content_static .menu_faq .left li{font-size:14px;color:#3f3f3f;}
-.content_static .menu_faq .right{float:left;width:375px;}
+.content_static .menu_faq .left li{font-size:14px; text-align:left; color:#3f3f3f;}
+.content_static .menu_faq .right{ margin:0 0 0 5px; float:left;width:375px;}
 .content_static .menu_faq .right p{font-size:16px;color:#2da288;font-weight:bold;}
-.content_static .menu_faq .right li{font-size:14px;color:#3f3f3f;}
-/*-------------------- FIN PAGES STATIQUE---------------------------*/
+.content_static .menu_faq .right li{font-size:14px; text-align:left; color:#3f3f3f;}
+/*-------------------- FIN PAGES STATIQUE ---------------------------*/
+
+
+/*-------------------- PAGE 404 ---------------------------*/
+#any-background-page-404{ padding:100px 0; min-height:307px; background:#3f3f3f; }
+.page-404 .notfound_left{ margin:0 0 0 52px; width:307px; height:307px; background:url('../images/common/404_oops.png') no-repeat 0 0 transparent; float:left; }
+.page-404 .notfound_right{ margin:0 0 0 35px; padding:59px 0; width:530px; text-align:left; float:left; }
+.page-404 .notfound_right h1{ margin:0 0 15px 0; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:bold; font-size:90px; text-transform:uppercase; float:left; color:#ffffff; clear:both; }
+.page-404 .notfound_right p{ font-family:"Trebuchet MS", Arial, sans-serif; font-weight:normal; font-size:33px; float:left; color:#e6e3e3; clear:both; }
+.page-404 .notfound_right a{ font-family:"Trebuchet MS", Arial, sans-serif; font-weight:normal; font-style:italic; font-size:33px; color:#2AB395; text-decoration:none; }
+.page-404 .notfound_right a:hover{ color:#eb5440; }
+/*-------------------- FIN PAGE 404---------------------------*/
