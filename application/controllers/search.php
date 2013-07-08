@@ -61,27 +61,31 @@ class Search extends CI_Controller {
 //            $this->layout->view('search_result', $data);
         } else {
             $keyword = $this->input->post('recherche');
-            $data['results'] = $this->search_model->search($keyword, 2, 0);
+            $data['results'] = $this->search_model->search($keyword, 4, 0);
             $data['keyword'] = $keyword;
+            $data['nb_results'] = $this->search_model->count_results($keyword);
 
+            $cookie = array(
+                'name'   => 'searching',
+                'value'  => $keyword,
+                'expire' =>  99999999,
+                'secure' => false
+            );
+            $this->input->set_cookie($cookie);
+            
             $this->layout->view('search_result', $data);
         }
     }
     
-    public function ajax_search_result($uid, $offset = null) {
-//        $this->load->library('my_layout');
-        $keyword = $this->input->post('recherche');
-//        print 'du ajax controller fonction : '.$keyword;    
-//        print 'donc offset : '.$offset;    
-        
+    public function ajax_search_result($uid, $offset = null) {   
+        $keyword = $this->input->cookie('searching');
+
         if ($this->search_model->search($keyword, 2, $offset)) {
             $data['results'] = $this->search_model->search($keyword, 2, $offset);
             $data['keyword'] = $keyword;
+            $data['nb_results'] = $this->search_model->count_results($keyword);
 
             $this->load->view('search_result_ajax', $data);
-        }
-        else {
-//          echo 'End';
         }
     }
 }

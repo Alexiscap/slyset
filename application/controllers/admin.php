@@ -66,7 +66,8 @@ class Admin extends CI_Controller
     {
         if($this->login_model->isLoggedInAdmin()){
             $data = $this->data;
-        
+            $data['nb_suspension'] = $this->user_model->count_suspend();       
+            
             $this->layout->view('admin/admin', $data);
         } else {
             redirect('login', 'refresh');

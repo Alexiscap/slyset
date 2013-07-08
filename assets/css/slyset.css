@@ -10,14 +10,14 @@ a{ outline:none; }
 
 body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; background:#f9f9f9; z-index:2; }
 #page{ margin:0 auto; width:980px; }
-#contentAll{ margin:0 0 0 20px; width:770px; float:left; }
+#contentAll{ margin:0 0 50px 20px; width:770px; float:left; }
 #breadcrumbs{ margin:0 0 0 12px; width:100%; height:23px; float:left; clear:both; }
 #breadcrumbs ul{ display:inline-block; }
 #breadcrumbs li{ display:inline-block; line-height:20px; }
 #breadcrumbs li a{ text-decoration:none; font-size:10px; color:#858585; }
 #breadcrumbs li a:hover{ text-decoration:underline; color:#2ab395; }
 #breadcrumbs li:after{ margin:0px 6px; width:9px; height:23px; display:inline-block; content:''; vertical-align:middle; background:url("../images/common/breadcrumbs_arrow.png") no-repeat; }
-.content{ margin:0 0 10px 0; padding:0; width:541px; background:#e6e6e6; float:left; clear:both; }
+.content{ margin:0 0 10px 0; padding:0; width:541px; position:relative; background:#e6e6e6; float:left; clear:both; }
 .bts_noir{float:left; margin-left:15px;}
 .bts_noir_partition{float:left; margin-left:47px;}
 .bts_noir_photo{float:left; margin-left:5px;}
@@ -553,12 +553,14 @@ cursor : pointer;}
 .wall-flux-content .wall-flux-content-titre-artiste{ margin:19px 19px 5px 19px; color:#535353 ; padding-top:15px; font-size:13px; }
 /*.wall-flux-content .wall-flux-content-text{ font-size:14px; line-height:21px; color:#555555; margin:10px 19px 19px 19px; word-wrap:break-word; }*/
 .wall-flux-content .wall-flux-content-text * { margin:0 19px; }
-.wall-flux-content .wall-flux-content-text ol, .wall-flux-content .wall-flux-content-text li, .wall-flux-content .wall-flux-content-text img{ margin:0 !important; width:100%; }
+.wall-flux-content .wall-flux-content-text iframe{ margin:5px 0; width:100%; }
+.wall-flux-content .wall-flux-content-text ol, .wall-flux-content .wall-flux-content-text li, .wall-flux-content .wall-flux-content-text img{ margin:5px 0 0 0 !important; width:100%; }
 .wall-flux-content .wall-flux-content-text .wall-flux-content-text-chapeau{ font-weight:bold; }
 .wall-flux-content .wall-flux-content-right-text{ margin-left:185px; padding-bottom:20px; }
 .wall-flux-content .wall-flux-content-left-picture .img-blog-artiste-carre{ position:absolute; margin :19px 15px 15px 15px; }
 .wall-flux-content .wall-flux-content-goto-profile{ color:#f05f4c; font-size:14px; float:right; margin-top:-17px; margin-right:20px; padding:10px; } 
 /*#e6e6e6*/
+#wall-flux .ajax_loader{ text-align:center; width:100%; position:absolute; bottom:0; }
 
 /* ----- CALENDAR PORTAIL ------- */
  ui-datepicker{ width:212px; height:175px; margin:5px auto 0; font:9pt Arial, sans-serif; }  
@@ -1266,7 +1268,6 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 .admin_links a:hover{ text-decoration:underline;}
 
 
-
 .admin-articles a.btn_admin{ margin:25px 0 0 18px; padding:0 7px; display:block; height:41px; line-height:41px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:17px; font-weight:bold; text-align:center; text-decoration:none; outline:none; border:none; color:#eb5440; background:url('../images/admin/btn_enregistrer.png') no-repeat 0 0 transparent; float:left; clear:both; }
 .admin-articles a.btn_admin#back-articles{ background:url('../images/admin/btn_admin-action.png') no-repeat 0 0 transparent; background-size:contain; }
 .admin-articles #wysiwyg-block h2{ margin:20px 20px 0 20px; }
@@ -1277,34 +1278,37 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 .admin-articles #wysiwyg-block .redactor_editor, .admin-articles #edit-block .redactor_editor{ height:200px; }
 .admin-articles #wysiwyg-block input[type="submit"], .admin-articles #edit-block input[type="submit"]{ margin:12px 0 0 0; padding:0 5px; display:block; height:41px; line-height:41px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:17px; font-weight:bold; text-align:center; color:#eb5440; background:url('../images/admin/btn_enregistrer.png') no-repeat 0 0 transparent; background-size:cover; float:right; clear:both; }
 
-.admin-articles #articles-tab{ margin:20px 0 20px 20px; float:left; clear:both; }
-.admin-articles #articles-tab table{ margin:0 0 20px 0; border:1px solid #cccfd1; -moz-box-shadow:0px 2px 3px 0px #999999;
+.admin-articles #articles-tab, .admin-comptes #comptes-tab{ margin:20px 0 20px 20px; float:left; clear:both; }
+.admin-articles #articles-tab table, .admin-comptes #comptes-tab table{ margin:0 0 20px 0; border:1px solid #cccfd1; -moz-box-shadow:0px 2px 3px 0px #999999;
 -webkit-box-shadow:0px 2px 3px 0px #999999; -o-box-shadow:0px 2px 3px 0px #999999; box-shadow:0px 2px 3px 0px #999999; filter:progid:DXImageTransform.Microsoft.Shadow(color=#999999, Direction=180, Strength=3);}
-.admin-articles #articles-tab tr{ }
-.admin-articles #articles-tab th{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:left; color:#666666; }
-.admin-articles #articles-tab td{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:left; text-align:left; border:1px solid #ebebeb; color:#555555; }
-.admin-articles #articles-tab tr{ height:28px; background:#fafafa; }
-.admin-articles #articles-tab tr.tab-head{ height:60px; border:1px solid #cccfd1; background:#e9ebec !important; }
-.admin-articles #articles-tab tr.tab-head + tr td{ border-top:1px solid #cccfd1; }
-.admin-articles #articles-tab tr.tab-head th{ border:none; }
-.admin-articles #articles-tab tr.row-color-1{ background:#fafafa; }
-.admin-articles #articles-tab tr.row-color-2{ background:#f7f7f7; }
+.admin-articles #articles-tab tr, .admin-comptes #comptes-tab tr{ }
+.admin-articles #articles-tab th, .admin-comptes #comptes-tab th{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:left; color:#666666; }
+.admin-articles #articles-tab td, .admin-comptes #comptes-tab td{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:left; text-align:left; border:1px solid #ebebeb; color:#555555; }
+.admin-articles #articles-tab tr, .admin-comptes #comptes-tab tr{ height:28px; background:#fafafa; }
+.admin-articles #articles-tab tr.tab-head, .admin-comptes #comptes-tab tr.tab-head{ height:60px; border:1px solid #cccfd1; background:#e9ebec !important; }
+.admin-articles #articles-tab tr.tab-head + tr td, .admin-comptes #comptes-tab tr.tab-head + tr td{ border-top:1px solid #cccfd1; }
+.admin-articles #articles-tab tr.tab-head th, .admin-comptes #comptes-tab tr.tab-head th{ border:none; }
+.admin-articles #articles-tab tr.row-color-1, .admin-comptes #comptes-tab tr.row-color-1{ background:#fafafa; }
+.admin-articles #articles-tab tr.row-color-2, .admin-comptes #comptes-tab tr.row-color-2{ background:#f7f7f7; }
 
-.admin-articles input[type="checkbox"] + label span{ margin:-3px 0 0 0; }
-.admin-articles #articles-tab .article-checkbox{ padding:0 6px; }
-.admin-articles #articles-tab .article-title{ padding:0 12px 0 25px; width:577px; }
-.admin-articles #articles-tab .article-date{ padding:0 10px; width:115px; }
+.admin-articles input[type="checkbox"] + label span, .admin-comptes input[type="checkbox"] + label span{ margin:-3px 0 0 0; }
+.admin-articles #articles-tab .article-checkbox, .admin-comptes #comptes-tab .compte-checkbox{ padding:0 6px; }
+.admin-articles #articles-tab .article-title, .admin-comptes #comptes-tab .compte-title{ padding:0 12px 0 25px; width:577px; }
+.admin-articles #articles-tab .article-middle, .admin-comptes #comptes-tab .compte-middle{ padding:0 10px; width:180px; }
+.admin-articles #articles-tab .article-little, .admin-comptes #comptes-tab .compte-little{ padding:0 10px; width:70px; }
 
-.admin-articles #articles-tab th.article-title{ cursor:pointer; }
-.admin-articles #articles-tab th.article-date{ cursor:pointer; }
-.admin-articles #articles-tab .article-actions{ display:none; }
-.admin-articles #articles-tab tr:hover .article-actions, .admin-articles #articles-tab tr:hover .article-actions{ display:inline-block; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:right; text-align:left; color:#555555; float:right; opacity:1; }
-.admin-articles #articles-tab .article-actions a{ display:inline-block; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:right; text-align:left; color:#555555; text-decoration:none; }
-.admin-articles #articles-tab .article-actions a:hover{ text-decoration:none; color:#eb5440; }
+.admin-articles #articles-tab th.article-little, .admin-comptes #comptes-tab th.compte-little{ cursor:pointer; }
+.admin-articles #articles-tab th.article-title, .admin-comptes #comptes-tab th.compte-title{ cursor:pointer; }
+.admin-articles #articles-tab th.article-middle, .admin-comptes #comptes-tab th.compte-middle{ cursor:pointer; }
+.admin-articles #articles-tab .article-actions, .admin-comptes #comptes-tab .compte-actions{ display:none; }
+.admin-articles #articles-tab tr:hover .article-actions, .admin-comptes #comptes-tab tr:hover .compte-actions{ display:inline-block; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:right; text-align:left; color:#555555; float:right; opacity:1; }
+.admin-articles #articles-tab .article-actions a, .admin-comptes #comptes-tab .compte-actions a{ display:inline-block; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:right; text-align:left; color:#555555; text-decoration:none; }
+.admin-articles #articles-tab .article-actions a:hover, .admin-comptes #comptes-tab .compte-actions a:hover{ text-decoration:none; color:#eb5440; }
+.admin-articles .ajax_loader, .admin-comptes .ajax_loader{ text-align:center; width:75%; position:absolute; }
 
-.admin-articles #articles-tab .filter{ margin:0 0 0 8px; display:inline-block; width:11px; height:7px; cursor:pointer; background:url('../images/common/filters.png') no-repeat 0 0 transparent; }
-.admin-articles #articles-tab input[type="submit"]{ margin:0 0 0 0; padding:0 5px; display:block; width:94px; height:32px; line-height:32px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:center; color:#FFFFFF; background:url('../images/admin/btn_supprimer.png') no-repeat 0 0 transparent; float:right; clear:both; }
-.admin-articles #articles-tab input[type="submit"]:hover{ font-size:15px; }
+.admin-articles #articles-tab .filter, .admin-comptes #comptes-tab .filter{ margin:0 0 0 8px; display:inline-block; width:11px; height:7px; cursor:pointer; background:url('../images/common/filters.png') no-repeat 0 0 transparent; }
+.admin-articles #articles-tab input[type="submit"], .admin-comptes #comptes-tab input[type="submit"]{ margin:0 0 0 10px; padding:0 5px; display:block; width:94px; height:32px; line-height:32px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:center; color:#FFFFFF; background:url('../images/admin/btn_supprimer.png') no-repeat 0 0 transparent; float:right; }
+.admin-articles #articles-tab input[type="submit"]:hover, .admin-comptes #comptes-tab input[type="submit"]:hover{ font-size:15px; }
 
 .admin-artistes #artistes-fields{ margin:20px 0 0 20px; width:100%; float:left; clear:both; }
 .admin-artistes label{ margin:0; display:inline-block; height:28px; line-height:28px; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; font-weight:bold; color:#4e4e4e; float:left; }
@@ -1312,8 +1316,43 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 .admin-artistes [type='submit']{ margin:30px 0 0 0; display:block; width:124px; height:41px; line-height:41px; position:relative; right:121px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:17px; font-weight:bold; text-align:center; color:#2ba086; background:url('../images/admin/btn_enregistrer.png') no-repeat 0 0 transparent; float:right; clear:both; }
 /*------------------- FIN ADMIN -------------------*/
 
+
+/*------------------- RECHERCHE -------------------*/
+.search #results-tab{ margin:20px 0 20px 20px; float:left; clear:both; }
+.search #results-tab table{ margin:0 0 20px 0; border:1px solid #cccfd1; -moz-box-shadow:0px 2px 3px 0px #999999;
+-webkit-box-shadow:0px 2px 3px 0px #999999; -o-box-shadow:0px 2px 3px 0px #999999; box-shadow:0px 2px 3px 0px #999999; filter:progid:DXImageTransform.Microsoft.Shadow(color=#999999, Direction=180, Strength=3);}
+.search #results-tab tr{ }
+.search #results-tab th{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:left; color:#666666; }
+.search #results-tab td{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:left; text-align:left; border:1px solid #ebebeb; color:#555555; }
+.search #results-tab tr{ height:28px; background:#fafafa; }
+.search #results-tab tr.tab-head{ height:60px; border:1px solid #cccfd1; background:#e9ebec !important; }
+.search #results-tab tr.tab-head + tr td{ border-top:1px solid #cccfd1; }
+.search #results-tab tr.tab-head th{ border:none; }
+.search #results-tab tr.row-color-1{ background:#fafafa; }
+.search #results-tab tr.row-color-2{ background:#f7f7f7; }
+
+.search input[type="checkbox"] + label span{ margin:-3px 0 0 0; }
+.search #results-tab .result-checkbox{ padding:0 6px; }
+
+.search #results-tab .result-title{ padding:0 12px 0 25px; width:577px; }
+.search #results-tab .result-middle{ padding:0 10px; width:180px; }
+.search #results-tab .result-little{ padding:0 10px; width:70px; }
+.search #results-tab .result-photo{ padding:2px 10px; width:40px; text-align:center; }
+.search #results-tab .result-photo img{ -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px; }
+
+.search #results-tab th.result-little{ cursor:pointer; }
+.search #results-tab th.result-title{ cursor:pointer; }
+.search #results-tab th.result-middle{ cursor:pointer; }
+.search #results-tab .result-actions{ display:none; }
+.search #results-tab tr:hover .result-actions{ display:inline-block; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:right; text-align:left; color:#555555; float:right; opacity:1; }
+.search #results-tab a{ display:inline-block; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:right; text-align:left; color:#555555; text-decoration:none; }
+.search #results-tab a:hover{ text-decoration:none; color:#eb5440; }
+.search .ajax_loader{ text-align:center; width:75%; position:absolute; }
+/*------------------- FIN RECHERCHE -------------------*/
+
+
 /*--------------------PAGES STATIQUE---------------------------*/
-.content_static{ margin:1px 0 10px 0; padding:0; width:770px; background:#e6e6e6; float:left; clear:both;border-top:1px solid #3f3f3f }
+.content_static{ margin:0 0 10px 0; padding:0; width:770px; background:#e6e6e6; float:left; clear:both; }
 .content_static .page_static{font-size:24px;color:#3f3f3f;}
 .content_static h2{ font-size:20px; margin:25px 20px; clear:both; }
 .content_static p{ font-size:14px; margin:0 20px 0 20px;}

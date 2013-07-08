@@ -115,11 +115,10 @@ $(document).ready(function(){
     //              $(this).find('.article-actions').stop().fadeOut();
         });
         
-        $('#articles-tab table tr:nth-child(even)').addClass('even row-color-1');
-        $('#articles-tab table tr:nth-child(odd)').addClass('odd row-color-2');
     }
     
-    
+    $('#articles-tab table tr:nth-child(even), #comptes-tab table tr:nth-child(even), #results-tab table tr:nth-child(even)').addClass('even row-color-1');
+    $('#articles-tab table tr:nth-child(odd), #comptes-tab table tr:nth-child(odd), #results-tab table tr:nth-child(odd)').addClass('odd row-color-2');
     
     
     $('.form_comments form').submit(function(){

@@ -16,12 +16,12 @@ class Article_model extends CI_Model
         $this->db->insert($this->table, $data);
     }
     
-    public function liste_article($order, $by)
+    public function liste_article($limit = 20, $offset = 0)
     {
         return $this->db->select('*')
                         ->from($this->table)
-//                        ->limit($nb, $debut)
-                        ->order_by($order, $by)
+                        ->order_by('updated', 'desc')
+                        ->limit($limit, $offset)
                         ->get()
                         ->result();
     }
