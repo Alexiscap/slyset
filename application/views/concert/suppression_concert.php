@@ -1,4 +1,4 @@
-      <?php 
+     <?php 
             //appel à la function "register" du controller "user"
       $user = $this->uri->segment(3);
 	  $concert = $this->uri->segment(4);
@@ -11,4 +11,5 @@ echo "Etes vous sur de vouloir supprimer ce concert ?" ;
  echo form_submit('no_delete','Annuler');
 
       echo form_close();
+
 ?>

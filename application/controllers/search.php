@@ -61,7 +61,7 @@ class Search extends CI_Controller {
 //            $this->layout->view('search_result', $data);
         } else {
             $keyword = $this->input->post('recherche');
-            $data['results'] = $this->search_model->search($keyword, 20, 0);
+            $data['results'] = $this->search_model->search($keyword, 4, 0);
             $data['keyword'] = $keyword;
             $data['nb_results'] = $this->search_model->count_results($keyword);
 
@@ -80,8 +80,8 @@ class Search extends CI_Controller {
     public function ajax_search_result($uid, $offset = null) {   
         $keyword = $this->input->cookie('searching');
 
-        if ($this->search_model->search($keyword, 20, $offset)) {
-            $data['results'] = $this->search_model->search($keyword, 20, $offset);
+        if ($this->search_model->search($keyword, 2, $offset)) {
+            $data['results'] = $this->search_model->search($keyword, 2, $offset);
             $data['keyword'] = $keyword;
             $data['nb_results'] = $this->search_model->count_results($keyword);
 

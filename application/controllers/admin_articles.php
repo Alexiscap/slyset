@@ -7,14 +7,13 @@ class Admin_articles extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-//        $this->output->enable_profiler(true);
+        
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_css('shadowbox/shadowbox');
         $this->layout->ajouter_css('redactor');
         $this->layout->ajouter_js('jquery.placeheld.min');
         $this->layout->ajouter_js('shadowbox/shadowbox');
         $this->layout->ajouter_js('redactor/redactor.min');
-        $this->layout->ajouter_js('infinite_scroll');
         
         $this->load->helper(array('cookie', 'form'));
         $this->load->model(array('login_model', 'perso_model', 'user_model', 'article_model'));
@@ -43,7 +42,7 @@ class Admin_articles extends CI_Controller
         if($this->login_model->isLoggedInAdmin()){
             $data = $this->data;
                                 
-            $data['articles'] = $this->article_model->liste_article(20, 0);
+            $data['articles'] = $this->article_model->liste_article($order, $by);
             
             $this->layout->view('admin/articles', $data);
         } else {
@@ -55,7 +54,7 @@ class Admin_articles extends CI_Controller
     {
         if($this->login_model->isLoggedInAdmin()){
             $data = $this->data;
-            $data['articles'] = $this->article_model->liste_article(20, 0);
+            $data['articles'] = $this->article_model->liste_article('created', 'desc');
 
             $this->form_validation->set_rules('title', 'Titre', 'trim|xss_clean|required');
             $this->form_validation->set_rules('article', 'Article', 'trim|xss_clean|required');
@@ -65,7 +64,9 @@ class Admin_articles extends CI_Controller
                 $this->layout->view('admin/articles', $data);
             } else {
                 $title   = $this->input->post('title');
+                
                 $article = $this->input->post('article');
+//                $article = mysql_real_escape_string($article_html);
 
                 $this->article_model->insert_article($title, $article);
 
@@ -103,7 +104,9 @@ class Admin_articles extends CI_Controller
                 $this->layout->view('admin/articles_edit', $data);
             } else {
                 $title   = $this->input->post('title');
+                
                 $article = $this->input->post('article');
+//                $article = mysql_real_escape_string($article_html);
 
                 $this->article_model->update_article($article_id, $title, $article);
                 redirect('admin_articles', 'refresh');
@@ -117,7 +120,7 @@ class Admin_articles extends CI_Controller
     {
         if($this->login_model->isLoggedInAdmin()){
             $data = $this->data;
-            $data['articles'] = $this->article_model->liste_article(20, 0);
+            $data['articles'] = $this->article_model->liste_article('created', 'desc');
             $array_article_id = array();
 
             $this->form_validation->set_rules('checkarticle', 'Checkbox Article', 'required');
@@ -140,23 +143,9 @@ class Admin_articles extends CI_Controller
         }
     }
     
-    public function ajax_articles($uid, $offset = null)
-    { 
-//        print '<br/><br/>donc offset : '.$offset.'<br/><br/>';
-        
-        if ($this->article_model->liste_article(20, $offset)) {
-            $data['articles'] = $this->article_model->liste_article(20, $offset);
-
-            $this->load->view('admin/articles_ajax', $data);
-        }
-        else {
-//          echo 'End';
-        }
-    }
-    
     public function uploadImg()
     {
-//        print 'okkkkkk';
+        print 'okkkkkk';
         $dynamic_path = './files/articles/';
         if (is_dir($dynamic_path) == false){
             mkdir($dynamic_path, 0755, true);

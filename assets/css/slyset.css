@@ -11,7 +11,7 @@ a{ outline:none; }
 body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; background:#f9f9f9; z-index:2; }
 #page{ margin:0 auto; width:980px; }
 #contentAll{ margin:0 0 50px 20px; width:770px; float:left; }
-#breadcrumbs{ margin:5px 12px; width:100%; height:23px; float:left; clear:both; }
+#breadcrumbs{ margin:0 0 0 12px; width:100%; height:23px; float:left; clear:both; }
 #breadcrumbs ul{ display:inline-block; }
 #breadcrumbs li{ display:inline-block; line-height:20px; }
 #breadcrumbs li a{ text-decoration:none; font-size:10px; color:#858585; }
@@ -113,9 +113,20 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .artist_post .ajax_loader{ padding:5px 0 0 0; text-align:center; clear:both; }
 .artist_post .ajax_loader img{ margin:0 10px 0 0; }
 .artist_post #concert_detail_calendar {margin: 35px 18px;}
-.artist_post #concert_detail_calendar .calendar { float : left;background-size : 58px 55px; background-image:url("../images/musicien/calendrier.png"); height :  60px; width:50px; margin : 0px; margin-bottom : 17px;}
+.artist_post #concert_detail_calendar .calendar { float : left;background-size : 111%  104%; background-image:url("../images/musicien/calendrier.png"); height :  52px; width:50px; margin : 0px; margin-bottom : 17px;}
 .artist_post #concert_detail_calendar .calendar-content{position:absolute; margin : 15px 70px;}
+.artist_post #concert_detail_calendar .calendar .calendar-mois {margin-left : 8px; width : 39px; height : 12px; margin-top : 6px;}
+.artist_post #concert_detail_calendar .calendar .calendar-mois a {margin: 2px 12px; font-size: 9px; color: white; position: absolute; text-align: center;}
 .artist_post #concert_detail_calendar .calendar-content a{ font-weight:normal; font-size:13px; color:#535353; text-decoration : none;}
+.artist_post #concert_detail_calendar .calendar .calendar-jour {margin-left : 8px; width : 39px; height : 28px; margin-top : 3px;} 
+.artist_post #concert_detail_calendar .calendar .calendar-jour a{color: #5d5d5b;
+margin: 1px 4px;
+font-size: 24px;
+font-family: georgia;
+position: absolute;
+text-align: center;
+width: 31px;
+font-weight: normal;}
 /* --------- FIN  DE MUSICIEN - ACTUS  --------- */
 
 
@@ -261,7 +272,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .content .photo .edit{ background:rgba(36, 36, 36, 0.7); width:160px; height:22px; position:absolute; margin:0;display:none;}
 .content .photo .edit img{ float:right; margin:4px 8px 0 0; }
 .content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:160px; position:absolute; margin:22px 0;}
-.content .photo .open_alb img{ margin:35% 36%; }
+.content .photo .open_alb img{ margin:35% 10%; }
 .content .sepa_comm {width:170px;height:5px;background:#e6e6e6;margin-left:-5px;}
 
 /*.box .img_cover, #tumblelog .img_cover{ display:block; width:100%; }*/
@@ -286,7 +297,6 @@ font-size: 13px;
 padding: 7px 12px;
 position: relative;
 list-style-type : none;
-width:270px;
 }
 
 #test_one{
@@ -316,8 +326,8 @@ padding: 18px;
 width : 177px;
 }
 
-#create_ok{margin-top : -24px;
-margin-left : 290px;
+#create_ok{margin-top : -27px;
+margin-left : 190px;
 cursor : pointer;}
 /*  ----- FIN CSS TMP AJOUTER PHOTO -------- */
 
@@ -327,11 +337,10 @@ cursor : pointer;}
 
 
 /* ---------- POP IN ------------- */
-.pop-in{width:100%;background:#eff4f3;padding:31px 0 75px;border:1px solid #bbbbbb;border-radius:5px;}
-.pop-in span{text-indent : 20px;height : 45px;margin-top:-6px; width : 100%; border-bottom:1px solid #e0e4e6;float:left;font-size:18px;color:#4e4e4e;}
+.pop-in{width:510px;background:#eff4f3;padding:31px 0 75px;border:1px solid #bbbbbb;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;margin:10px auto;}
 .pop-in p{margin:0 0 31px 15px;float:left;font-size:18px;color:#4e4e4e;width:210px;}
 .pop-in img{margin-left:255px;float:left;cursor:pointer;}
-.content-pi {width:100%; height:100%;border-left:none;border-right:none;clear:both;background-color:white;}
+.content-pi {background:#fafafa;width:510px;padding: 25px 0;border:1px solid #e0e4e6;border-left:none;border-right:none;clear:both;}
 
 .content-pi .label label{width:123px;padding:0 12px 0 0;float:left;margin:15px 0 0 0;text-align:right;font-size:16px;color:#4e4e4e;}
 .content-pi .label img{width:85px;height:73px;margin:15px 12px 0 40px;}
@@ -452,7 +461,7 @@ cursor : pointer;}
 .content-pi-cent {width:100%; height:100%;border-left:none;border-right:none;clear:both;background-color:white;}
 
 .content-pi-cent .label label{background:white;width:123px;padding:0 12px 0 0;float:left;margin:15px 0 0 0;text-align:right;font-size:16px;color:#4e4e4e;}
-.content-pi-cent .label img{width:85px;height:73px;margin:15px 12px 0 40px;float:left;}
+.content-pi-cent .label img{width:85px;height:73px;margin:15px 12px 0 40px;}
 .content-pi-cent .champs img{width:85px;height:73px;margin-left:0;}
 .content-pi-cent .champs {width:306px;float:left;margin:15px 0 0 12px;}
 .content-pi-cent .champs input{width:296px;padding:0 5px;outline:none }
@@ -463,28 +472,12 @@ cursor : pointer;}
 .content-pi-cent .champs_prix input{width:50px;padding:0 5px;outline:none;margin:15px 0 0 10px;}
 .content-pi-cent .champs select{width:296px;padding:0 0 0 5px;outline:none}
 .content-pi-cent .champs .descript-vid{width:296px;padding:0 5px;height:73px;outline:none;word-break:break-word;}
-.content-pi-cent input[type="submit"]{clear:both;width: auto;min-width: 90px;height: 30px;margin: 10px 148px;background:url('../images/common/bt-rouge2.png');color:white;}
+.content-pi-cent input[type="submit"]{clear:both;width: 125px;height: 30px;margin: 10px 145px;background:url('../images/common/bt-rouge2.png');color:white;}
 .content-pi-cent .champs .bt_noir{ height:30px; float:left; margin:-5px 0 0; }
 .content-pi-cent .champs .bt_noir .bt_left{ width:10px; height:30px; float:left; background:url("../images/common/bt_noir.png") no-repeat 0px -10px; }
-.content-pi-cent .champs .bt_noir .bt_middle{ height:16px; float:left; background:url("../images/common/bt_noir.png") no-repeat 0px -60px; font-size:12px; color:white; padding:7px 0;opacity:1;}
+.content-pi-cent .champs .bt_noir .bt_middle{ height:16px; float:left; background:url("../images/common/bt_noir.png") no-repeat 0px -60px; font-size:12px; color:white; padding:7px 0; }
 .content-pi-cent .champs .bt_noir .bt_right{ width:9px; height:30px; float:left; background:url("../images/common/bt_noir.png") no-repeat -391px -107px; }
 .content-pi-cent .champs .nom_img{font-size:12px;color:#737578;margin: 7px 15px;width:130px;}
-
-.content-pi-cent .champs input.artiste {margin:0 0 5px 0;}
-.content-pi-cent .champs input.date {width:222px;}
-.content-pi-cent .champs input.heure {width:100px;}
-.content-pi-cent .champs input.salle {width:192px;margin:0 8px 0 0;}
-.content-pi-cent .champs input.ville {width:96px;}
-.content-pi-cent .champs input.prix {width:75px;}
-
-.content-pi-cent .champs .error-form { margin:2px 0; display:block; width:89%; font-family:"Trebuchet MS"; font-weight:bold; font-size:12px; color:#e04e4e; float:left;}
-
-.content-pi-cent .champs .photo_up {opacity: 1;border: none;box-shadow: none;margin: 85px 142px;}
-
-.content-pi-cent .champs #album_select{width:270px;float:none;margin:0 5px 0 0;}
-.content-pi-cent .champs .fleche_bas{width:auto;float:none;border:none;}
-.content-pi-cent .champs .fleche_bas img{width:20px;height:20px;float:none;border:none;margin:-5px 0;}
-.content-pi-cent .elem_center{width:460px;margin:0 auto;}
 
 /* --------------- FIN POP IN 100% ----------- */
 
@@ -933,7 +926,7 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 .content .follower .photo_follow img {width : 63px; border-radius : 10px;}
 .content .follower .description {width:220px;float:left;margin:0 10px}
 .content .follower .description span {font-size:12px;color:#888d95;}
-.content .follower .description .nom_follow {font-size:14px;font-weight:bold;color:#3f3f3f;margin:0;}
+.content .follower .description .nom_follow, .content .follower .description .nom_follow a {font-size:14px;font-weight:bold;color:#3f3f3f;margin:0;text-decoration : none;}
 .content .follower .description .text_follow {font-size:14px;color:#5d5b5b;font-weight:normal;width:220px;margin:0;}
 .content .follower .bouton .participer,.content .follower .bouton .melo,.content .follower .bouton .my-follow,.content .follower .bouton .follow_following {margin:20px 0 0 30px;}
 
@@ -1155,7 +1148,7 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 
 .content .historique {margin-top:15px;}
 .content .historique .nom_pl {float: left;font-size:18px;font-weight:bold;color:#3f3f3f;margin:0 20px;}
-.content .historique .detail_pl {float: right;font-size:12px;color:#888d95;margin:5px 22px 10px -15px;}
+.content .historique .detail_pl,.content .panier .detail_pl {float: right;font-size:12px;color:#888d95;margin:5px 22px 10px -15px;}
 .content .historique span.detail_pl {padding-top:3px;}
 .content .historique hr {width:500px;}
 
@@ -1219,24 +1212,24 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 .content .panier a{color:#888d95;font-size:12px;text-decoration:none;}
 
 .content .historique #articles-tab{ margin:20px auto; float:left; clear:both; }
-.content .historique #articles-tab table{ margin:0 0 20px 0; border:1px solid #cccfd1; -moz-box-shadow:0px 2px 3px 0px #999999;
+.content .historique #articles-tab table,.content .liste_partitions table{ margin:0 0 20px 0; border:1px solid #cccfd1; -moz-box-shadow:0px 2px 3px 0px #999999;
 -webkit-box-shadow:0px 2px 3px 0px #999999; -o-box-shadow:0px 2px 3px 0px #999999; box-shadow:0px 2px 3px 0px #999999; filter:progid:DXImageTransform.Microsoft.Shadow(color=#999999, Direction=180, Strength=3);}
-.content .historique #articles-tab tr{ }
-.content .historique #articles-tab th{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:left; color:#666666; }
-.content .historique #articles-tab td{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:left; text-align:left; border:1px solid #ebebeb; color:#555555; }
-.content .historique #articles-tab tr{ height:28px; background:#fafafa; }
-.content .historique #articles-tab tr.tab-head{ height:60px; border:1px solid #cccfd1; background:#e9ebec !important; }
-.content .historique #articles-tab tr.tab-head + tr td{ border-top:1px solid #cccfd1; }
-.content .historique #articles-tab tr.tab-head th{ border:none; }
-.content .historique #articles-tab tr.row-color-1{ background:#fafafa; }
-.content .historique #articles-tab tr.row-color-2{ background:#f7f7f7; }
+.content .historique #articles-tab tr, .content .liste_partitions tr{ }
+.content .historique #articles-tab th, .content .liste_partitions th{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:left; color:#666666; }
+.content .historique #articles-tab td, .content .liste_partitions td{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; font-weight:normal; text-align:left; text-align:left; border:1px solid #ebebeb; color:#555555; }
+.content .historique #articles-tab tr, .content .liste_partitions tr{ height:28px; background:#fafafa; }
+.content .historique #articles-tab tr.tab-head, .content .liste_partitions tr.tab-head{ height:60px; border:1px solid #cccfd1; background:#e9ebec !important; }
+.content .historique #articles-tab tr.tab-head + tr td, .content .liste_partitions tr.tab-head + tr td{ border-top:1px solid #cccfd1; }
+.content .historique #articles-tab tr.tab-head th, .content .liste_partitions tr.tab-head th{ border:none; }
+.content .historique #articles-tab tr.row-color-1, .content .liste_partitions tr.row-color-1{ background:#fafafa; }
+.content .historique #articles-tab tr.row-color-2, .content .liste_partitions tr.row-color-2{ background:#f7f7f7; }
 
-.content .historique input[type="checkbox"] + label span{ margin:-3px 0 0 0; }
-.content .historique #articles-tab .article-checkbox{ padding:0 6px; }
-.content .historique #articles-tab .article-title{ padding:0 12px 0 25px;width:152px;}
-.content .historique #articles-tab .article-artiste{ padding:0 12px 0 15px;width:67px;}
-.content .historique #articles-tab .article-type{ padding:0 12px 0 25px;width:62px;}
-.content .historique #articles-tab .article-prix{ padding:0 12px 0 25px;width:50px;}
+.content .historique input[type="checkbox"] + label span ,.content .liste_partitions input[type="checkbox"] + label span { margin:-3px 0 0 0; }
+.content .historique #articles-tab .article-checkbox, .content .liste_partitions .article-checkbox{ padding:0 6px; }
+.content .historique #articles-tab .article-title, .content .liste_partitions .article-titre{ padding:0 12px 0 25px;width:152px;}
+.content .historique #articles-tab .article-artiste, .content .liste_partitions  .article-artiste{ padding:0 12px 0 15px;width:67px;}
+.content .historique #articles-tab .article-type, .content .liste_partitions .article-type{ padding:0 12px 0 25px;width:62px;}
+.content .historique #articles-tab .article-prix, .content .liste_partitions  .article-prix{ padding:0 12px 0 25px;width:50px;}
 
 .content .historique #articles-tab th.article-title{ cursor:pointer; }
 .content .historique #articles-tab th.article-date{ cursor:pointer; }
@@ -1371,33 +1364,20 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 /*------------------- FIN RECHERCHE -------------------*/
 
 
-/*--------------------PAGES STATIQUE ---------------------------*/
-.content_static{ margin:0 0 10px 0; padding:0 20px 15px 20px; width:770px; text-align:justify; background:#e6e6e6; float:left; clear:both; }
+/*--------------------PAGES STATIQUE---------------------------*/
+.content_static{ margin:0 0 10px 0; padding:0; width:770px; background:#e6e6e6; float:left; clear:both; }
 .content_static .page_static{font-size:24px;color:#3f3f3f;}
 .content_static h2{ font-size:20px; margin:25px 20px; clear:both; }
-.content_static p{ font-size:14px; margin:0 15px;}
+.content_static p{ font-size:14px; margin:0 20px 0 20px;}
 .content_static .section_faq{ font-size:18px; margin-bottom:25px;}
-.content_static .titre_static{margin:30px 0 10px 0; font-size:18px; font-weight:normal; color:#3f3f3f;}
-.content_static .txt_static{font-size:14px;color:#3f3f3f;}
-.content_static .img_static{ margin:15px; }
-.content_static .img_static img{ margin:0 20px 0 0; }
+.content_static .titre_mention{font-size:18px;color:#3f3f3f;}
+.content_static .txt_mention{font-size:14px;color:#3f3f3f;}
 .content_static .menu_faq{height:135px;margin:0 0 20px 0;}
-.content_static .menu_faq ul{margin:10px 20px 30px 20px;}
+.content_static .menu_faq ul{margin:10px 0 30px 20px;}
 .content_static .menu_faq .left{float:left;width:375px;border-right:1px solid #a5a9ae;}
 .content_static .menu_faq .left p{font-size:16px;color:#2da288;font-weight:bold;}
-.content_static .menu_faq .left li{font-size:14px; text-align:left; color:#3f3f3f;}
-.content_static .menu_faq .right{ margin:0 0 0 5px; float:left;width:375px;}
+.content_static .menu_faq .left li{font-size:14px;color:#3f3f3f;}
+.content_static .menu_faq .right{float:left;width:375px;}
 .content_static .menu_faq .right p{font-size:16px;color:#2da288;font-weight:bold;}
-.content_static .menu_faq .right li{font-size:14px; text-align:left; color:#3f3f3f;}
-/*-------------------- FIN PAGES STATIQUE ---------------------------*/
-
-
-/*-------------------- PAGE 404 ---------------------------*/
-#any-background-page-404{ padding:100px 0; min-height:307px; background:#3f3f3f; }
-.page-404 .notfound_left{ margin:0 0 0 52px; width:307px; height:307px; background:url('../images/common/404_oops.png') no-repeat 0 0 transparent; float:left; }
-.page-404 .notfound_right{ margin:0 0 0 35px; padding:59px 0; width:530px; text-align:left; float:left; }
-.page-404 .notfound_right h1{ margin:0 0 15px 0; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:bold; font-size:90px; text-transform:uppercase; float:left; color:#ffffff; clear:both; }
-.page-404 .notfound_right p{ font-family:"Trebuchet MS", Arial, sans-serif; font-weight:normal; font-size:33px; float:left; color:#e6e3e3; clear:both; }
-.page-404 .notfound_right a{ font-family:"Trebuchet MS", Arial, sans-serif; font-weight:normal; font-style:italic; font-size:33px; color:#2AB395; text-decoration:none; }
-.page-404 .notfound_right a:hover{ color:#eb5440; }
-/*-------------------- FIN PAGE 404---------------------------*/
+.content_static .menu_faq .right li{font-size:14px;color:#3f3f3f;}
+/*-------------------- FIN PAGES STATIQUE---------------------------*/

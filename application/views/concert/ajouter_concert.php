@@ -7,80 +7,45 @@
       //appel à la function "register" du controller "user"
       
 	  $user = $this->uri->segment(3);
-	?> <div class="elem_center"> <?php
+
       echo form_open('mc_concerts/ajouter_concert/'.$user);
       		?><div class="label"><label>Artistes</label></div>
       				<div class="champs">
 
 <?php
-	$artiste = array(
-              'class'        => 'artiste',
-              'name'          => 'artiste',
-	      'value'	=> $this->session->userdata('login'),
-	      'placeholder'	=> 'Ex : Beach House'
-            );
-      echo form_input($artiste);
-      echo form_error('artiste', '<div class="erreur-form">', '</div>');
+      echo form_input('artiste', $this->session->userdata('login'),'placeholder="Ex : Beach House"');
+      echo form_error('artiste', '<div>', '</div>');
 
       echo form_input('snd_partie',set_value('snd_partie'),'placeholder="Ex : Lower Dens"');
       ?></div><div class="label"><label>Date</label></div>
       		<div class="champs">
 
 <?php
-	$date = array(
-              'class'        => 'date',
-              'name'          => 'date_concert',
-	      'value'	=> set_value('')
-            );
-      echo form_date($date);
+      echo form_date('date_concert',set_value(''));
       
       echo form_error('date_concert', '<div class="error-form" >', '</div>');
 ?></div><div class="label"><label>Heure</label></div><div class="champs">
 <?php
-	$heure = array(
-              'class'        => 'heure',
-              'name'          => 'heure_concert',
-	      'value'	=> set_value('')
-            );
-      echo form_time($heure);
+      echo form_time('heure_concert',set_value(''));
       ?>	</div>	
 <div class="label"><label>Lieu</label></div><div class="champs">
 <?php
-	$salle = array(
-              'class'        => 'salle',
-              'name'          => 'salle',
-	      'value'	=> set_value('salle'),
-	      'placeholder'	=> 'Nom du bar, de la salle'
-            );
-      echo form_input($salle);
+      echo form_input('salle',set_value('salle'),'placeholder="Nom du bar, de la salle"');
       echo form_error('salle', '<div class="error-form" >', '</div>');
 ?>
 <?php
-	$ville = array(
-              'class'        => 'ville',
-              'name'          => 'ville',
-	      'value'	=> set_value('ville'),
-	      'placeholder'	=> 'Ville'
-            );
-      echo form_input($ville);
+      echo form_input('ville',set_value('ville'),'placeholder="Ville"');
       echo form_error('ville', '<div class="error-form" >', '</div>');
 	?></div><div class="label"><label>Prix</label></div><div class="champs">
 
 <?php
-	$prix = array(
-              'class'        => 'prix',
-              'name'          => 'prix',
-	      'value'	=> set_value('prix'),
-	      'placeholder'	=> 'Ex : 12'
-            );
-      echo form_int($prix);
+      echo form_int('prix',set_value('prix'),'placeholder="Ex : 12"');
       ?>€</div><?php
-      echo form_submit('submit','Valider');
+      echo form_submit('submit','Ajouter un concert');
 
       echo form_close();
 
     ?>
-	</div>
 </div>
 
 

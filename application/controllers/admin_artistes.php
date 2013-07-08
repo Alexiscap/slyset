@@ -61,7 +61,6 @@ class Admin_artistes extends CI_Controller
 
             if($this->form_validation->run() == FALSE){
                 $this->layout->view('admin/artistes', $data);
-                echo 'pas ok';
             } else {
                 $artiste1   = $this->input->post('artiste1');
                 $artiste2   = $this->input->post('artiste2');

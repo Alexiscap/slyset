@@ -1,14 +1,12 @@
-<?php date_default_timezone_set('Europe/Paris'); ?>
-
 <!DOCTYPE HTML>
 <html lang="fr">
   <head>
-    <title><?php if(isset($titre)) { print $titre; } else { 'Slyset'; } ?></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=<?php if(isset($charset)) print $charset; ?>" />
+    <title><?php if(isset($titre)) { echo $titre; } else { 'Slyset'; } ?></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=<?php if(isset($charset)) echo $charset; ?>" />
     <meta http-equiv="Content-Language" content="fr" />
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <meta name="description" content="<?php if(isset($description)) print $description; ?>" />
+    <meta name="description" content="<?php if(isset($description)) echo $description; ?>" />
     <meta name="keywords" content="slyset, project web, social networks, music, réseau social, réseau social musical, musique, écoute, artiste, efficom, projet" />
 
     <link type="text/css" rel="stylesheet" href="<?php echo css_url('reset') ?>" />
@@ -17,15 +15,15 @@
     <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_sidebar-right') ?>" />
     
     <?php foreach($css as $url): ?>
-      <link rel="stylesheet" type="text/css" media="screen" href="<?php print $url; ?>" />
+      <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $url; ?>" />
     <?php endforeach; ?>
       
     <?php foreach($dynamic_css as $url): ?>
-      <link rel="stylesheet" type="text/css" media="screen" href="<?php print $url; ?>" />
+      <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $url; ?>" />
     <?php endforeach; ?>
       
     <!--[if IE]>
-      <link type="text/css" rel="stylesheet" href="<?php print css_url('corrections-ie') ?>" />
+      <link type="text/css" rel="stylesheet" href="<?php echo css_url('corrections-ie') ?>" />
     <![endif]-->
     
     <script type="text/javascript" src="<?php echo js_url('jquery-1.7.1.min') ?>"></script>
@@ -36,7 +34,7 @@
     <?php endforeach; ?>
   </head>
 
-  <body <?php if(isset($id_bkg)) print 'class="'.$id_bkg.'"'; ?>>
+  <body <?php if(isset($id_bkg)) echo 'class="'.$id_bkg.'"'; ?>>
     <header>
       <div id="header">
         <a href="<?php echo site_url('home/'.$this->session->userdata('uid')); ?>" class="link_logo">
@@ -61,9 +59,11 @@
           </div>
             
           <div id="recherche">
-            <form>
-              <input type="text" value="Chercher un artiste ..." onfocus="javascript:this.value=''" onblur="if (this.value==''){this.value='Chercher un artiste ...';}" name="recherche" />
-              <input src="<?php echo img_url('header/loupe.png') ?>" type="image" value="submit" align="middle"/>
+            <?php $val = (!empty($_POST['recherche'])) ? $_POST['recherche'] : ''; ?>
+            <form action="<?php echo site_url('search/'.$this->session->userdata('uid')); ?>" method="post">
+                <input type="text" value="<?php print $val; ?>" placeholder="Chercher un artiste ..." name="recherche" />
+                <input src="<?php echo img_url('header/loupe.png') ?>" type="image" value="submit" align="middle"/>
+            <?php // echo form_close(); ?>
             </form>
           </div>
         </div>
@@ -89,8 +89,8 @@
           <span>Autour de slyset</span>
           <ul>
             <li><a href="#">Le blog</a></li>
-            <li><a href="<?php echo site_url('slyset-project/'.$this->session->userdata('uid')); ?>">Qui sommes-nous ?</a></li>
-            <li><a href="<?php echo site_url('fonctionnalites/'.$this->session->userdata('uid')); ?>">Fonctionnalités</a></li>
+            <li><a href="#">Qui sommes-nous ?</a></li>
+            <li><a href="#">Fonctionnalités</a></li>
             <li><a href="#">Kit presse</a></li>
           </ul>
         </div>
@@ -99,17 +99,17 @@
           <span>Obtenir de l'aide</span>
           <ul>
             <li><a href="<?php echo site_url('faq/'.$this->session->userdata('uid')); ?>">FAQ</a></li>
-            <li><a href="<?php echo site_url('contact/'.$this->session->userdata('uid')); ?>">Nous contacter</a></li>
-            <li><a href="<?php echo site_url('paiements/'.$this->session->userdata('uid')); ?>">Paiement sécurisé</a></li>
+            <li><a href="#">Nous contacter</a></li>
+            <li><a href="#">Paiement sécurisé</a></li>
           </ul>
         </div>
 
         <div class="infos">
           <span>Informations</span>
           <ul>
-            <li><a href="<?php echo site_url('conditions-generales/'.$this->session->userdata('uid')); ?>">CGU & CGV</a></li>
+            <li><a href="#">CGU & CGV</a></li>
             <li><a href="<?php echo site_url('mentions-legales/'.$this->session->userdata('uid')); ?>">Mentions légales</a></li>
-            <li><a href="<?php echo site_url('annonceurs/'.$this->session->userdata('uid')); ?>">Annonceurs</a></li>
+            <li><a href="#">Annonceurs</a></li>
           </ul>
         </div>
 

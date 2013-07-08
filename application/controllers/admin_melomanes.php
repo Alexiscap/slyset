@@ -41,7 +41,7 @@ class Admin_melomanes extends CI_Controller
                                 
 //            $data['melos'] = $this->comptes_model->liste_melos($order, $by);
             
-            $data['melos'] = $this->comptes_model->liste_melos(20, 0);
+            $data['melos'] = $this->comptes_model->liste_melos(2, 0);
             
             $this->layout->view('admin/melomanes', $data);
         } else {
@@ -118,8 +118,8 @@ class Admin_melomanes extends CI_Controller
 //        $keyword = $this->input->post('recherche');  
 //        print 'donc offset : '.$offset;
         
-        if ($this->comptes_model->liste_melos(20, $offset)) {
-            $data['melos'] = $this->comptes_model->liste_melos(20, $offset);
+        if ($this->comptes_model->liste_melos(2, $offset)) {
+            $data['melos'] = $this->comptes_model->liste_melos(2, $offset);
 
             $this->load->view('admin/melomanes_ajax', $data);
         }

@@ -12,11 +12,11 @@ class Home extends CI_Controller {
 //        $this->load->model('user_model');
     //      $this->load->model('Facebook_Model');
 
+    $this->layout->ajouter_js('jsdate');
+    $this->layout->ajouter_js('calendar');
     $this->layout->ajouter_js('carouFredSel');
     $this->layout->ajouter_js('jquery.placeheld.min');
     $this->layout->ajouter_js('infinite_scroll');
-    $this->layout->ajouter_js('jsdate');
-    $this->layout->ajouter_js('calendar');
 
     $this->layout->set_id_background('home');
     $this->layout->set_description('Slyset');
@@ -54,7 +54,7 @@ class Home extends CI_Controller {
     $data['notification'] = $this->input->cookie('notification');
     $data['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
     $data['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
-    $data['articles'] = $this->article_model->liste_article(10, 0);
+    $data['articles'] = $this->article_model->liste_article(2, 0);
     $data['newbies'] = $this->user_model->getNewbies();
     $data['coverflow_covers'] = $this->admin_model->get_cover_artistes();
     $data['concert_date'] = $this->homepage->get_concert();
@@ -97,8 +97,8 @@ class Home extends CI_Controller {
   }
 
     public function ajax_articles($uid, $offset = null) {
-        if ($this->article_model->liste_article(10, $offset)) {
-            $data['articles'] = $this->article_model->liste_article(10, $offset);
+        if ($this->article_model->liste_article(2, $offset)) {
+            $data['articles'] = $this->article_model->liste_article(2, $offset);
 
             $this->load->view('homepage_ajax', $data);
         }

@@ -1,21 +1,31 @@
-<div id="contentAll">
-<?php // print_r($infos_profile); 
+<?php
+    $session_id = $this->session->userdata('uid');
+    $uid = (empty($session_id)) ? '' : $session_id;
+    $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
+    $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
 ?>
-  <div id="breadcrumbs">
-    <ul>
-      <li><a href="#">Accueil</a></li>
-      <li><a href="#">Artistes</a></li>
-      <li><a href="#"><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></a></li>
-      <li><a href="#">Fil d'actualité</a></li>
-    </ul>
-  </div>
 
-  <div id="cover" style="background-image:url(<?php print files('profiles/'.$cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
-    <div id="infos-cover">
-          <h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
-      <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
+<div id="contentAll">
+    <div id="breadcrumbs">
+        <ul>
+            <li><a href="<?php echo site_url('home/' . $uid); ?>">Accueil</a></li>
+            <li><a href="<?php echo site_url('actualite/' . $uid_visit); ?>"><?php echo 'Artiste : '.$login; ?></a></li>
+            <li><a href="<?php echo site_url($this->uri->segment(1) . '/' . $uid_visit); ?>">Fil d'actualité</a></li>
+        </ul>
     </div>
-  </div>
+
+    <div id="cover" style="background-image:url(<?php echo files('profiles/' . $cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
+        <div id="infos-cover">
+            <h2><?php echo $login; ?></h2>
+<?php 
+     		if($infos_profile->type==2&&substr_count($community_follower,$infos_profile->id)==0):?>
+      			<a href="#" class="add-follow" id="<?php echo $this->uri->segment(2)?>"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
+   			<?php endif;
+    		if($infos_profile->type==2&&substr_count($community_follower,$infos_profile->id)>0):?>
+     			<a href="#" class="delete-follow" id="<?php echo $this->uri->segment(2)?>"><span class="button_left_abonne"></span><span class="button_center_abonne">Ne plus suivre</span><span class="button_right_abonne"></span></a>
+    		<?php endif;?>      
+    	  </div>
+    </div>
 
   <div id="stats-cover">
     <div class="stats_cover_block">
@@ -43,7 +53,7 @@
       </div>
       <?php
         $form_comments_1 = array("id" => "comments-msg", "style" => "display:block;");
-        echo form_open('mc_actus/form_wall_musicien_message/'.$uid = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id, $form_comments_1);
+        echo form_open('mc_actus/form_wall_musicien_message/'.$uid = (empty($infos_profile)) ? $session_id : $infos_profile->id, $form_comments_1);
         
           $textarea = array("name" => "comment1", "placeholder" => "Votre message ici ...");
           echo form_textarea($textarea);
@@ -54,7 +64,7 @@
         
         
         $form_comments_2 = array("id" => "comments-photo", "style" => "display:none;");
-        echo form_open_multipart('mc_actus/form_wall_musicien_photo'.$uid = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id, $form_comments_2);
+        echo form_open_multipart('mc_actus/form_wall_musicien_photo'.$uid = (empty($infos_profile)) ? $session_id : $infos_profile->id, $form_comments_2);
           $textarea = array("name" => "comment2","placeholder" => "Votre description ici ...");
           echo form_textarea($textarea);
           echo form_error('comment2', '<span class="error-form">', '</span>');
@@ -69,7 +79,7 @@
         
         
         $form_comments_3 = array("id" => "comments-link-video", "style" => "display:none;");
-        echo form_open('mc_actus/form_wall_musicien_link'.$uid = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id, $form_comments_3);
+        echo form_open('mc_actus/form_wall_musicien_link'.$uid = (empty($infos_profile)) ? $session_id : $infos_profile->id, $form_comments_3);
         
           $textarea = array("name" => "comment3","placeholder" => "Votre description ici ...");
           echo form_textarea($textarea);
@@ -89,17 +99,17 @@
         <?php if(empty($message->photo) && empty($message->video)): ?>
             <div class="artist_post simple_message">
                 <div class="top">
-                    <a href="<?php print site_url('mc_actus/delete/'.$message->id); ?>" class="post_delete"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                    <a href="<?php echo site_url('mc_actus/delete/'.$message->id); ?>" class="post_delete"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
                 </div>
                 <div class="left">
-                    <a href="<?php print site_url('home/'.$message->idU); ?>"><img src="<?php print files('profiles/'.$message->thumbU); ?>" alt="Photo Profil" /></a>
+                    <a href="<?php echo site_url('home/'.$message->idU); ?>"><img src="<?php echo files('profiles/'.$message->thumbU); ?>" alt="Photo Profil" /></a>
                 </div>
                 <div class="right">
                     <span class="ico_citation"></span>
-                    <p class="msg_post"><?php print $message->markup_message; ?></p>
+                    <p class="msg_post"><?php echo $message->markup_message; ?></p>
                 </div>
                 <div class="bottom">
-                    <span class="infos_publi"><?php print $message->loginU; ?> - Le <?php print date('d-m-Y', strtotime(str_replace('-', '/', $message->created)))?> à <?php print date('H:i', strtotime(str_replace('-', '/', $message->created)))?></span>
+                    <span class="infos_publi"><?php echo $message->loginU; ?> - Le <?php echo date('d-m-Y', strtotime(str_replace('-', '/', $message->created)))?> à <?php echo date('H:i', strtotime(str_replace('-', '/', $message->created)))?></span>
                     
                     <?php 
                         $cpt_comment = 0;
@@ -110,22 +120,22 @@
                         }
                     ?>
                     
-                    <span class="infos_coms"><?php print count_comments($cpt_comment); ?></span>
+                    <span class="infos_coms"><?php echo count_comments($cpt_comment); ?></span>
                 </div>
               
                 <?php foreach($commentaires as $commentaire): ?>
                     <?php if($message->id == $commentaire->wallidB): ?>
                         <div class="comments">
                             <div class="com_left">
-                              <a href="<?php print site_url('home/'.$commentaire->idU); ?>"><img src="<?php print files('profiles/'.$commentaire->thumbU); ?>" alt="Photo Profil" /></a>
+                              <a href="<?php echo site_url('home/'.$commentaire->idU); ?>"><img src="<?php echo files('profiles/'.$commentaire->thumbU); ?>" alt="Photo Profil" /></a>
                             </div>
                             <div class="com_right">
                                 <div class="com_top">
-                                    <a href="<?php print site_url('mc_actus/delete_comment/'.$commentaire->idB); ?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                                    <a href="<?php echo site_url('mc_actus/delete_comment/'.$commentaire->idB); ?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
                                 </div>
                                 <div class="com_bottom">
-                                    <span class="com_publi_infos"><?php print $commentaire->loginU; ?><small> - <?php print my_time($commentaire->createdB); ?></small></span>
-                                    <span class="com_publi_msg"><?php print $commentaire->commentB; ?></span>
+                                    <span class="com_publi_infos"><?php echo $commentaire->loginU; ?><small> - <?php echo my_time($commentaire->createdB); ?></small></span>
+                                    <span class="com_publi_msg"><?php echo $commentaire->commentB; ?></span>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +146,7 @@
                     <form action="" method="post">
                         <input type="text" name="usercomment" id="usercomment" placeholder="Ajoutez votre commentaire..." />
                         <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
-                        <input type="hidden" name="messageid" value="<?php print $message->id; ?>" id="messageid" />
+                        <input type="hidden" name="messageid" value="<?php echo $message->id; ?>" id="messageid" />
 
                         <input type="submit" value="Envoyer" />
                     </form>
@@ -146,20 +156,20 @@
         <?php elseif(!empty($message->photo) && empty($message->video)): ?>
             <div class="artist_post photo_message">
                 <div class="top">
-                    <a href="<?php print site_url('mc_actus/delete/'.$message->id); ?>" class="post_delete"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                    <a href="<?php echo site_url('mc_actus/delete/'.$message->id); ?>" class="post_delete"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
                 </div>
                 <div class="left">
-                    <a href="<?php print site_url('home/'.$message->idU); ?>"><img src="<?php print files('profiles/'.$message->thumbU); ?>" alt="Photo Profil" /></a>
+                    <a href="<?php echo site_url('home/'.$message->idU); ?>"><img src="<?php echo files('profiles/'.$message->thumbU); ?>" alt="Photo Profil" /></a>
                 </div>
                 <div class="right">
                     <span class="ico_citation"></span>
-                    <p class="msg_post"><?php print $message->markup_message; ?></p>
+                    <p class="msg_post"><?php echo $message->markup_message; ?></p>
                     <div class="singleWrapper">
-                        <img src="<?php print files($this->session->userdata('uid').'/wall/'.$message->photo); ?>" alt="Photo message" class="single" />
+                        <img src="<?php echo files($session_id.'/wall/'.$message->photo); ?>" alt="Photo message" class="single" />
                     </div>
                 </div>
                 <div class="bottom">
-                    <span class="infos_publi"><?php print $message->loginU; ?> - Le <?php print date('d-m-Y', strtotime(str_replace('-', '/', $message->created)))?> à <?php print date('H:i', strtotime(str_replace('-', '/', $message->created)))?></span>
+                    <span class="infos_publi"><?php echo $message->loginU; ?> - Le <?php echo date('d-m-Y', strtotime(str_replace('-', '/', $message->created)))?> à <?php echo date('H:i', strtotime(str_replace('-', '/', $message->created)))?></span>
 
                     <?php 
                         $cpt_comment = 0;
@@ -170,22 +180,22 @@
                         }
                     ?>
                     
-                    <span class="infos_coms"><?php print count_comments($cpt_comment); ?></span>
+                    <span class="infos_coms"><?php echo count_comments($cpt_comment); ?></span>
                 </div>
 
                 <?php foreach($commentaires as $commentaire): ?>
                     <?php if($message->id == $commentaire->wallidB): ?>
                         <div class="comments">
                             <div class="com_left">
-                                <a href="<?php print site_url('home/'.$commentaire->idU); ?>"><img src="<?php print files('profiles/'.$commentaire->thumbU); ?>" alt="Photo Profil" /></a>
+                                <a href="<?php echo site_url('home/'.$commentaire->idU); ?>"><img src="<?php echo files('profiles/'.$commentaire->thumbU); ?>" alt="Photo Profil" /></a>
                             </div>
                             <div class="com_right">
                                 <div class="com_top">
-                                    <a href="<?php print site_url('mc_actus/delete_comment/'.$commentaire->idB); ?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                                    <a href="<?php echo site_url('mc_actus/delete_comment/'.$commentaire->idB); ?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
                                 </div>
                                 <div class="com_bottom">
-                                    <span class="com_publi_infos"><?php print $commentaire->loginU; ?><small> - <?php print my_time($commentaire->createdB); ?></small></span>
-                                    <span class="com_publi_msg"><?php print $commentaire->commentB; ?></span>
+                                    <span class="com_publi_infos"><?php echo $commentaire->loginU; ?><small> - <?php echo my_time($commentaire->createdB); ?></small></span>
+                                    <span class="com_publi_msg"><?php echo $commentaire->commentB; ?></span>
                                 </div>
                             </div>
                         </div>
@@ -196,7 +206,7 @@
                     <form action="" method="post">
                         <input type="text" name="usercomment" id="usercomment" placeholder="Ajouter votre commentaire..." />
                         <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
-                        <input type="hidden" name="messageid" value="<?php print $message->id; ?>" id="messageid" />
+                        <input type="hidden" name="messageid" value="<?php echo $message->id; ?>" id="messageid" />
 
                         <input type="submit" value="Envoyer" />
                     </form>
@@ -206,24 +216,24 @@
         <?php elseif(empty($message->photo) && !empty($message->video)): ?>
             <div class="artist_post video_message">
                 <div class="top">
-                    <a href="<?php print site_url('mc_actus/delete/'.$message->id); ?>" class="post_delete"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                    <a href="<?php echo site_url('mc_actus/delete/'.$message->id); ?>" class="post_delete"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
                 </div>
                 <div class="left">
-                    <a href="<?php print site_url('home/'.$message->idU); ?>"><img src="<?php print files('profiles/'.$message->thumbU); ?>" alt="Photo Profil" /></a>
+                    <a href="<?php echo site_url('home/'.$message->idU); ?>"><img src="<?php echo files('profiles/'.$message->thumbU); ?>" alt="Photo Profil" /></a>
                 </div>
                 <div class="right">
                     <span class="ico_citation"></span>
-                    <p class="msg_post"><?php print $message->markup_message; ?></p>
+                    <p class="msg_post"><?php echo $message->markup_message; ?></p>
 
                     <?php 
                         $url = $message->video;
                         $url_preg = preg_replace('#http://www.youtube.com/watch\?v=(.+)+#i', '$1', $url);
                     ?>
 
-                    <iframe width="455" height="300" src="http://www.youtube.com/embed/<?php print $url_preg; ?>" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="455" height="300" src="http://www.youtube.com/embed/<?php echo $url_preg; ?>" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="bottom">
-                    <span class="infos_publi"><?php print $message->loginU; ?> - Le <?php print date('d-m-Y', strtotime(str_replace('-', '/', $message->created)))?> à <?php print date('H:i', strtotime(str_replace('-', '/', $message->created)))?></span>
+                    <span class="infos_publi"><?php echo $message->loginU; ?> - Le <?php echo date('d-m-Y', strtotime(str_replace('-', '/', $message->created)))?> à <?php echo date('H:i', strtotime(str_replace('-', '/', $message->created)))?></span>
                     
                     <?php 
                         $cpt_comment = 0;
@@ -234,22 +244,22 @@
                         }
                     ?>
                     
-                    <span class="infos_coms"><?php print count_comments($cpt_comment); ?></span>
+                    <span class="infos_coms"><?php echo count_comments($cpt_comment); ?></span>
                 </div>
               
                 <?php foreach($commentaires as $commentaire): ?>
                     <?php if($message->id == $commentaire->wallidB): ?>
                         <div class="comments">
                             <div class="com_left">
-                                <a href="<?php print site_url('home/'.$commentaire->idU); ?>"><img src="<?php print files('profiles/'.$commentaire->thumbU); ?>" alt="Photo Profil" /></a>
+                                <a href="<?php echo site_url('home/'.$commentaire->idU); ?>"><img src="<?php echo files('profiles/'.$commentaire->thumbU); ?>" alt="Photo Profil" /></a>
                             </div>
                             <div class="com_right">
                                 <div class="com_top">
-                                    <a href="<?php print site_url('mc_actus/delete_comment/'.$commentaire->idB); ?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                                    <a href="<?php echo site_url('mc_actus/delete_comment/'.$commentaire->idB); ?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
                                 </div>
                                 <div class="com_bottom">
-                                    <span class="com_publi_infos"><?php print $commentaire->loginU; ?><small> - <?php print my_time($commentaire->createdB); ?></small></span>
-                                    <span class="com_publi_msg"><?php print $commentaire->commentB; ?></span>
+                                    <span class="com_publi_infos"><?php echo $commentaire->loginU; ?><small> - <?php echo my_time($commentaire->createdB); ?></small></span>
+                                    <span class="com_publi_msg"><?php echo $commentaire->commentB; ?></span>
                                 </div>
                             </div>
                         </div>
@@ -260,7 +270,7 @@
                     <form action="" method="post">
                         <input type="text" name="usercomment" id="usercomment" placeholder="Ajouter votre commentaire..." />
                         <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
-                        <input type="hidden" name="messageid" value="<?php print $message->id; ?>" id="messageid" />
+                        <input type="hidden" name="messageid" value="<?php echo $message->id; ?>" id="messageid" />
 
                         <input type="submit" value="Envoyer" />
                     </form>

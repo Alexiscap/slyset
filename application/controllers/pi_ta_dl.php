@@ -23,10 +23,12 @@ class pi_ta_dl extends CI_Controller
   
     public function page()
     {
-      $datas = array();
-      
-      //$this->layout->views('3');
-      $this->layout->view('achat/pi_ta_dl', $datas);
+    print 'cdcds';
+      $data = array();
+    
+      $data['cmd_download'] = $this->achat->cmd_valider();
+      var_dump($cmd_download);
+      $this->layout->view('achat/pi_ta_dl', $data);
     }
   
 }
