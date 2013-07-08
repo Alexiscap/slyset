@@ -566,6 +566,18 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
     
     }
     
+    public function get_zoom_photos($id_photo)
+    {
+    	return $this->db->query('SELECT Utilisateur_id,like_total,file_name,nom,id FROM photos WHERE id='.$id_photo)
+    					->result();
+    }
+    
+     public function get_zoom_photos_comment($id_photo)
+    {
+    	return $this->db->query('SELECT comment,utilisateur.login,Utilisateur_id,utilisateur.thumb FROM commentaires JOIN utilisateur ON utilisateur.id = commentaires.Utilisateur_id WHERE photos_id='.$id_photo)
+    					->result();
+    }
+    
     
     
 

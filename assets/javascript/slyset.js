@@ -189,6 +189,35 @@ if($("body.achats").length > 0)
         }
     });
     
+    
+	$('.ajout_comm form').submit(function(e){
+	
+  
+        var baseurl = $(this).find("#baseurl").val();
+        var comment = $(this).find("#usercomment").val();
+        var messageid = $(this).find("#messageid").val();
+        var thisParent = $(this).parent();
+        var dataString = 'usercomment=' + comment + '&messageid=' + messageid;
+        if(usercomment == '' || messageid == ''){
+            alert('Veuillez renseigner un message !');
+        } else {
+            var ajaxLoader = $(this).parent().find(".ajax_loader");
+           
+            $.ajax({
+                type: "POST",
+                url :'http://127.0.0.1/slyset/index.php/mc_photos/form_photo_user_comment',
+                data: dataString,
+                success: function(comment){
+
+                    $(comment).hide().insertBefore(thisParent).slideDown('slow');
+                    ajaxLoader.fadeOut(1000);
+                    $(".content").masonry('reload');
+               }
+            })
+            return false;
+       }
+    });
+    
     //Commentaires albums
     $('.comment-form-album form').submit(function(){
         var baseurl = $(this).find("#baseurl").val();
@@ -868,8 +897,15 @@ if($("body.achats").length > 0)
      				}
      			});
      		});
-		});        
-     }
+		});     
+		
+		$('.play_achat').hover(
+		function(){
+		$(this).hide()},
+		function() {
+		$(this).show()}
+		   
+     )};
     
     if($("body.personnaliser").length > 0){
         $('#colorpickerField1').ColorPicker({

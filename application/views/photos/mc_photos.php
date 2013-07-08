@@ -72,7 +72,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                         <a class="iframe" href="<?php echo site_url('media/supprimer/' . $infos_profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
                     </div>
                     <!-- image -->
-                    <a href="<?php echo site_url('media/zoom/' . $media_user_result_unit->id) ?>"><img src="<?php echo files($infos_profile->id.'/photos/' . $media_user_result_unit->file_name); ?>" class="img_cover" /></a>
+                    <a class="iframe" href="<?php echo site_url('media/zoom/' .$media_user_result_unit->id.'/0') ?>"><img src="<?php echo files($infos_profile->id.'/photos/' . $media_user_result_unit->file_name); ?>" class="img_cover" /></a>
                     <!-- titre -->
 
                     <p class="nom_photo"><?php echo $media_user_result_unit->nom ?></p>

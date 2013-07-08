@@ -160,7 +160,7 @@ endforeach;
             <div class="clear"></div>
             <div id="articles-tab">
                 <form action="<?php echo site_url('admin_articles/delete_multi_article'); ?>" method="post" accept-charset="utf-8">          
-                    <table id="test_tablesorter" class="tablesorter">
+                    <table id="test_tablesorter">
                         <thead>
                             <tr class="tab-head odd row-color-2">
                                 <th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
@@ -176,7 +176,7 @@ endforeach;
         ?>
                                     <tr class="even row-color-<?php echo $commande->id ?>">
                                         <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"></label></td>
-                                        <td class="article-title"><a href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
+                                        <td class="article-title"><a href="#" class ="play_achat" ><img  src="<?php echo img_url('common/btn_play2.png'); ?>"/></a>
         <?php echo $commande->nom ?></td>
                                         <td class="article-artiste"><?php echo $commande->user_login ?></td>
                                         <td class="article-type"><?php echo $commande->type ?></td>

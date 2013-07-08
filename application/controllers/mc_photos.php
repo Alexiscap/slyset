@@ -130,9 +130,13 @@ class Mc_photos extends CI_Controller {
     $this->layout->view('photos/album', $data, false);
   }
 
-  public function zoom_photo($id_photo) {
+  public function zoom_photo($id_photo,$id_album) {
     $data = array();
-    $this->load->view('photos/zoom_photo', $data);
+    
+    $data['zoom'] = $this->photos->get_zoom_photos($id_photo);
+   $data['zoom_comment'] = $this->photos->get_zoom_photos_comment($id_photo);
+    
+    $this->load->view('photos/pi_voir_photo', $data);
   }
 
   public function upload_photo($user_id) {
