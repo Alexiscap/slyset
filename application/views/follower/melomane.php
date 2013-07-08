@@ -77,8 +77,8 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 			{?>
 			<img src="<?php echo img_url('common/casque.png'); ?>" /><span><?php echo $follower->style_ecoute ?></span>
 			</div>
-		<div class="bouton" id="voir">
-			<a href="#" class="participer"><span class="button_left"></span><span class="button_center">Voir le profil</span><span class="button_right"></span></a>
+		<div class="bouton" >
+            <a href="<?php echo base_url('index.php/my-wall/'.$follower->Follower_id) ?> " onclick="location.href='<?php echo base_url('index.php/my-wall/'.$follower->Follower_id) ?>';" class="melo"><span class="button_left_red"></span><span class="button_center_red">Voir le profil</span><span class="button_right_red"></span></a>
 		</div>
 			<?php }
 	

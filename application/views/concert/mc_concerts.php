@@ -47,11 +47,13 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
         </div>
    
   </div>
+    
     <div class="bt_ajout_concert">
         <?php if ($infos_profile->id == $uid) { ?>
             <a class="iframe" href="<?php echo site_url('concert/ajouter/' . $infos_profile->id) ?>"> <img href="" src="<?php echo img_url('musicien/ajout_concert.png'); ?>" alt="ajout concert"/></a>
         <?php
-        } else {
+        } 
+        else {
             // y mettre les bouton des melomanes : suivre ect
         }
         ?>
@@ -59,27 +61,30 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 
     <div class="content">
         <div id="btn_tmp">
-            <a href="<?php echo site_url('concert/' . $infos_profile->id) ?>"><div class="avenir">A venir</div></a>
-            <a href="<?php echo site_url('concert/archive/' . $infos_profile->id) ?>"><div class="cpasse actif">Concerts passés</div></a>
- </div>
-    <h2>Les concerts de <?php echo $infos_profile->login; ?> &agrave; venir</h2>
+            <a href="<?php echo site_url('concert/' . $infos_profile->id) ?>"><div class="avenir actif">A venir</div></a>
+            <a href="<?php echo site_url('concert/archive/' . $infos_profile->id) ?>"><div class="cpasse">Concerts passés</div></a>
+		</div>
    
-     <!-- Boucle : tous les concerts pour un artiste -->
-   	  <?php 
-if($nbr_concert_par_artiste != 0)
-   { 
-   	   foreach($concert_all as $concert_unit): ?>
- 		
-  		<p id='<?php echo $concert_unit->id;?>' class="date-heure"><span><?php
-		get_date($concert_unit->date,'complete');?> <?php if(isset($concert_unit->prix))echo ' - '.$concert_unit->prix.'&euro;'?></span>
-		</p>
-<?php
-  		 if( $this->uri->segment(2) ==$this->session->userdata('uid'))
-  		 { ?>
-   		 <div class="edition">
-   		 	<a class="iframe" href="<?php echo base_url('index.php/mc_concerts/modifier_concert/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>">
-   		 	<span class="edit">editer</span>
-   		 	</a>
+   	 	<h2>Les concerts de <?php echo $infos_profile->login; ?> &agrave; venir</h2>
+   
+     	<!-- Boucle : tous les concerts pour un artiste -->
+   	  	<?php 
+		if($nbr_concert_par_artiste != 0)
+   		{ 
+   	   		foreach($concert_all as $concert_unit): ?>
+
+  				<p id='<?php echo $concert_unit->id;?>' class="date-heure">
+  					<span><?php
+						get_date($concert_unit->date,'complete');?> <?php if(isset($concert_unit->prix))echo ' - '.$concert_unit->prix.'&euro;'?>
+					</span>
+				</p>
+				<?php
+  		 		if( $this->uri->segment(2) ==$this->session->userdata('uid'))
+  		 		{ ?>
+   					<div class="edition">
+   		 				<a class="iframe" href="<?php echo base_url('index.php/mc_concerts/modifier_concert/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>">
+   		 					<span class="edit">editer</span>
+   		 				</a>
    		 	<a class="iframe" href="<?php echo base_url('index.php/mc_concerts/suppression_concert/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>">
    		 	<span class="suppr">supprimer</span>
    		 	</a>
@@ -106,12 +111,12 @@ if($nbr_concert_par_artiste != 0)
     	$count = substr_count($all_concert_act,$concert_unit->id.'/');
     	if ($count>=1)
     	{?>
-    	    		<a id="<?php echo $concert_unit->id;?>" href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">Je n'y vais plus</span><span class="button_right"></span></a>
+    	    		<a id="<?php echo $concert_unit->id;?>" href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">J'y vais</span><span class="button_right"></span></a>
 
     	<?php
     	}
     	else{?>
-    	    	 <a id="<?php echo $concert_unit->id;?>" href="#" class="participer"><span class="button_left"></span><span  class="button_center">J'y vais</span><span class="button_right"></span></a>
+    	    	 	<a id="<?php echo $concert_unit->id;?>" href="#" class="participer"><span class="button_left_red"></span><span  class="button_center_red">Je veux y aller</span><span class="button_right_red"></span></a>
 
 		<?php }
     	 ?> 

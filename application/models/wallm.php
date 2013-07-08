@@ -190,7 +190,7 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
 	}
 	
 	
-	public function get_new_item($id_component,$type,$id_photo,$id_video,$id_message,$id_concert)
+	public function get_new_item($id_component,$type,$id_photo,$id_video,$id_message,$id_concert,$id_follower)
 	{
 		if($id_photo !=null)
 		{
@@ -218,7 +218,8 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
   				$right = '<span class="ico_citation"></span>
         				<p class="msg_post">Je viens de liker la photo de'.$result_req[0]->login.' :  <a href="'.base_url('index.php/mc_photos/zoom_photo/'.$result_req[0]->idproduit).'">'.$result_req[0]->main_nom.'</a></p>';
       				
-  			}			
+  			}	
+  				return array($result_req,$product,$right);		
 		}
 	
 	
@@ -251,7 +252,7 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
      				';
 			
 			}
-      		
+      			return array($result_req,$product,$right);
 		}
 		
 		
@@ -266,15 +267,15 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
 						ON Utilisateur.id = wall.wallto_utilisateur_id
 				WHERE wall_melo_component.id = '.$id_component;
 			
-			$product = 'une message';
+			$product = 'un message';
 			$result_req = $this->db->query($sql_new_item)
 					->result();	
 			if ($result_req[0]->type="MU")
 			{
+			
+		
 				$right = 	'<span class="ico_citation"></span>
-        				<p class="msg_post"><a href="'.base_url('index.php/actualite/'.$result_req[0]->walltouser).'">'.$result_req[0]->login.'</a> vient de poster un message sur son mur :     					  
-   						</br></br>
-   						"'.$result_req[0]->main_nom.' "</p>';
+        				<p class="msg_post">'.$result_req[0]->main_nom.'</p>';
 			}
 			
 			if ($result_req[0]->type="ME")
@@ -285,6 +286,8 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
    							"'.$result_req[0]->main_nom.' "</p>';
 
 			}
+			
+				return array($result_req,$product,$right);
 		}
 		
 		if($id_concert !=null&&$type="ME")
@@ -308,7 +311,7 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
    						</br></br>
    						<a href="'.base_url("index.php/mc_concerts/".$result_req[0]->Utilisateur_id.'/#'.$result_req[0]->concerts_id).'">'.$result_req[0]->salle.' - '.$result_req[0]->ville.'</a></p>';
     				
-
+			return array($result_req,$product,$right);
 		}
 		
 		if($id_concert !=null&&$type="MU")
@@ -334,8 +337,11 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
    						</br></br>
    						<a href="'.base_url("index.php/mc_concerts/".$result_req[0]->Utilisateur_id.'/#'.$result_req[0]->concerts_id).'">'.$result_req[0]->salle.' - '. $result_req[0]->ville.'</a></p>
     			';
+			return array($result_req,$product,$right);
 
 		}
+		
+	//	if($id_folower !=null&&$type="MU")
 		
 		/*
 		
@@ -373,9 +379,9 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
 		*/
 		
 
-		$result_req = $this->db->query($sql_new_item)
-					->result();	
-		return array($result_req,$product,$right);
+	//	$result_req = $this->db->query($sql_new_item)
+	//				->result();	
+	//	return array($result_req,$product,$right);
 		}
   /*
   

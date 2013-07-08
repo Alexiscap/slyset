@@ -10,7 +10,29 @@ class melo_wall extends CI_Controller
       $this->layout->ajouter_css('slyset');
       $this->load->model('wallm');
       $this->load->library('session');
-      $this->output->enable_profiler(TRUE);
+    //  $this->output->enable_profiler(TRUE);
+
+        $this->user_authentication->musicien_user_validation();
+        
+        $this->layout->ajouter_js('jquery.placeheld.min');
+        $this->layout->ajouter_js('jquery.easing.min');
+        
+        $this->load->helper('form');
+        $this->load->model(array('user_model', 'mc_actus_model'));
+        $this->load->library('form_validation');
+        
+        $this->layout->set_id_background('melo_actu');
+
+        $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
+
+        $sub_data = array();
+        $sub_data['profile'] = $this->user_model->getUser($this->user_id);
+
+        $this->data = array(
+            'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
+            'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
+        );
+
 
     }
   
@@ -42,18 +64,20 @@ class melo_wall extends CI_Controller
    		$listforin_sql = substr($listforin,0,-1);
    		
    		$data['data_all_wall'] = $this->wallm->get_entities_id($listforin_sql,$user_id);
-
+	
 		$a = 0;
-		foreach ($data['data_all_wall'] as $data_for_album)
-			{
-
-				if($data_for_album->product==5&&$data_for_album->type=="MU")
+		if(isset($data['data_all_wall']))
+		{
+			foreach ($data['data_all_wall'] as $data_for_album)
 				{
-					$data['photo_by_album'][$a] = $this->wallm->get_photos_album($data_for_album->idproduit,$data_for_album->date);
-					$a++;
-				}
-			}
 
+					if($data_for_album->product==5&&$data_for_album->type=="MU")
+					{
+						$data['photo_by_album'][$a] = $this->wallm->get_photos_album($data_for_album->idproduit,$data_for_album->date);
+						$a++;
+					}
+				}
+		}
     	$this->layout->view('wall/melo_actu', $data);
 	}
     
@@ -83,8 +107,7 @@ class melo_wall extends CI_Controller
    				if($id->id>$this->input->post('id_last'))
     			{
 					$id_new = $id->id;
-   					$result_total = $this->wallm->get_new_item($id_new,$id->type,$id->photos_id,$id->videos_id,$id->message_id,$id->concerts_id);
-					//var_dump($result_total);
+   					$result_total = $this->wallm->get_new_item($id_new,$id->type,$id->photos_id,$id->videos_id,$id->message_id,$id->concerts_id,$id->Following_id);
 					
    					if(isset($result_total))
    					{

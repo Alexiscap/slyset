@@ -173,10 +173,10 @@ class Mc_photos extends CI_Controller {
       $config['file_name'] = "cover";
     }
 
-    $config['allowed_types'] = 'gif|jpg|png';
-    $config['max_size'] = '1000';
+    $config['allowed_types'] = 'gif|jpg|png|jpeg';
+    /*$config['max_size'] = '1000';
     $config['max_width'] = '1024';
-    $config['max_height'] = '768';
+    $config['max_height'] = '768';*/
     $photo = $this->input->post('photo_up');
 
     $this->load->library('upload', $config);
