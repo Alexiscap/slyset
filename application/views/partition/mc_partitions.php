@@ -45,10 +45,10 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
   </div>
     <div class="bts_noir_partition">
 	  <div class="bt_noir">
-		<a href="#"><span class="bt_left"></span><span class="bt_middle">Ajouter des paroles</span><span class="bt_right"></span></a>
+		<a class="iframe" href="<?php echo base_url('index.php/document/new-lyrics/') ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter des paroles</span><span class="bt_right"></span></a>
 	  </div>
 	  <div class="bt_noir">
-		<a href="#"><span class="bt_left"></span><span class="bt_middle">Ajouter une partition</span><span class="bt_right"></span></a>
+		<a class="iframe" href="<?php echo base_url('index.php/document/new-score/') ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter une partition</span><span class="bt_right"></span></a>
 	  </div>
 	</div>
 
@@ -69,9 +69,13 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 		<div class="infos">
 			<p class="title"><?php echo $doc->nom ?></p>
 			<p class="annee_crea"><?php if(isset($doc->annee))echo $doc->annee ?></p>
-			<?php if($doc->livret_path != null): ?>
+			<?php if($doc->livret_path != null){ ?>
 			<p><span>> </span><a href="#">Voir le livret d'album</a></p>
-			<?php endif;?>
+			<p><span>> </span><a href="#">Modifier le livret</a></p>
+			<?php }
+			else {?>
+			<p><span>> </span><a href="#">Ajouter le livret</a></p>
+			<?php } ?>
 		</div>
 	</div>
 	<div class="top_partition">
@@ -108,58 +112,57 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 				foreach($get_morc as $morceau):
 				
 				if($morceau->Albums_id == $doc->Albums_id):
+			
 ?>
 					<tr>
 						<td class="le_titre">
-							<p>		<?php 		echo $morceau->nom;?>
-</p>
+							<p>		
+								<?php 	echo $morceau->nom;?>
+							</p>
 						</td>
+					<?php	
+					$b = 0;
+					
+					
+					
+						foreach($all_morc as $morc=>$a):
+													var_dump($a);
+
+							if($morceau->id == $a->morceaux_id):
+							var_dump($a);
+							$b ++;
+			if($b >= 2)
+							{
+							
+							
+			
+				?>
 						<!--ajouter type-->
-						<?php if ($morceau->path!=null)
-						{ ?>
-						<td class="paroles"><a href="<?php echo files($infos_profile->id.'/albums/'.$doc->Albums_id.'/partition/'.$morceau->path) ?>">Voir</a>
-							<div class="miniat_titre">
-								<a href="#" class="edit"><span>edit</span></a>
-							</div>
-						</td>
+						<?php 
+							
+							 ?>
+									
+								<td class="paroles"><a href="<?php echo files($infos_profile->id.'/albums/'.$doc->Albums_id.'/partition/'.$morceau->path) ?>">Voir</a>
+									<div class="miniat_titre">
+										<a href="#" class="edit"><span>edit</span></a>
+									</div>
+								</td>
+								<td class="paroles"><a href="<?php echo files($infos_profile->id.'/albums/'.$doc->Albums_id.'/partition/'.$morceau->path) ?>">Voir</a>
+									<div class="miniat_titre">
+										<a href="#" class="edit"><span>edit</span></a>
+									</div>
+								</td>
+								
 						
-						<?php
-						}
-						else
-						{
-						?>
-						<td class="paroles"><a href="#"> - </a>
-							<div class="miniat_titre">
-								<a href="#" class="edit"><span>edit</span></a>
-							</div>
-						</td>
-						<?php
-						}
-						 ?>												<?php if ($morceau->prix!=null) { ?>
-
-						<td class="partitions">
-
-							Acheter
-							<div class="miniat_titre">
-								<a href="#" class="cadis"><span>cadis</span></a>
-								<a href="#" class="edit"><span>edit</span></a>
-							</div>
-							</td>
 							<?php
-							}
-							else {
-							?>						<td class="partitions">
+							
+					}
 
-							-
-							<div class="miniat_titre">
-								<a href="#" class="cadis"><span>cadis</span></a>
-								<a href="#" class="edit"><span>edit</span></a>
-							</div>
-													</td>
+							
+					endif;
+					endforeach;
+						 ?>	
 
-							<?php
-							}
-							?>
 					</tr>
 					<?php  
 									endif; 

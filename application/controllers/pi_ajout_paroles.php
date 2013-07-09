@@ -47,16 +47,31 @@ class Pi_ajout_paroles extends CI_Controller
        foreach ($data['morceaux'] as $morceau)
        {
        $all_option .= 
-       $option = '<option "value=" ">'.$morceau->nom.'</option>';
+       $option = '<option name="morceaux" value="'.$morceau->id.'">'.$morceau->nom.'</option>';
        }
-echo '			<select class="mor">'.$all_option.'</select>
+echo '			<select name="morceaux" class="mor">'.$all_option.'</select>
 ';
     }
  
 
 	function do_upload()
 	{
-		$config['upload_path'] = './files/'.$this->session->userdata('uid').'/document';
+	$album = $this->input->post('album');
+			print $morceau =  $this->input->post('morceaux');
+			$album_exp = explode('+',$album);
+			$album_name = $album_exp[0];
+			$album_id = $album_exp[1];
+	$noespace_filename_album = str_replace(' ', '_', $album_name);
+    $dynamic_path = './files/' . $this->session->userdata('uid') . '/documents/' . $noespace_filename_album;
+
+    if (is_dir($dynamic_path) == false) {
+      mkdir($dynamic_path, 0755, true);
+    }
+    
+    
+    
+    			$config['upload_path'] = $dynamic_path;
+
 		$config['allowed_types'] = 'pdf';
 	
 
@@ -70,10 +85,10 @@ echo '			<select class="mor">'.$all_option.'</select>
 		else
 		{
 			$data = array('upload_data' => $this->upload->data());
-			$album = $this->input->post('album');
-			$morceau =  $this->input->post('morceaux');
+			
 
-			//$this->document->update_doc($album,$morceau) ;
+
+			$this->document->insert_doc($album_id,$morceau,$data['file_name']) ;
 		//	$this->load->view('partition/pi_ajout_paroles', $data);
 		}
 	}

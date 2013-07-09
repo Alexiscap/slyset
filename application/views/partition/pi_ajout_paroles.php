@@ -34,7 +34,8 @@ par album : liste morceaux
 			<option  value=" "> </option>
 
 			<?php foreach($album as $one_album): ?>
-			<option name="morceaux" class = "<?php echo $one_album->id?>"value="<?php echo $one_album->nom?>"><?php echo $one_album->nom?></option>
+			<option id="" name="album" class = "<?php echo $one_album->id?>" value="<?php echo $one_album->nom?>+<?php echo $one_album->id?>"><?php echo $one_album->nom?></option>
+
 			<?php endforeach; ?>
 		</select>
 		</div>
