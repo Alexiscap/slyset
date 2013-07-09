@@ -23,6 +23,7 @@ class document extends CI_Model
 				
 	
 	}
+	
 	public function get_morceau_album()
 	{
 		return $this->db->query('SELECT morceaux.id,morceaux.nom,morceaux.Albums_id,documents.path,documents.prix
@@ -34,4 +35,17 @@ class document extends CI_Model
 					->result();
 	
 }
+
+	public function get_album($user_id)
+	{
+	return $this->db->query('SELECT nom,id FROM albums WHERE Utilisateur_id = '.$user_id)
+			->result();
+	}
+	
+	
+	public function get_morceau_by_album($album)
+	{
+	return $this->db->query('SELECT nom FROM morceaux WHERE Albums_id = '.$album)
+			->result();
+	}
 }

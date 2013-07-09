@@ -250,15 +250,21 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
     	      $this->db->set(array('Photos_id'=>$last_id_photos,'like_value'=>"0"))
                 	->insert('ilike');
 
-			$data_add_cmty_photo = array('Utilisateur_id'=>$user_name,'photos_id'=>$photo_last_id,'type'=>"MU"); 
-	 	$this->db->insert('wall_melo_component', $data_add_cmty_photo); 
+			
     	  if ($album_name != null||$album_name != '')
     		{
      			$this->db->set(array('Utilisateur_id'=>$user_name,'file_name'=>$album_file_name,'nom'=>$album_name,'Photos_id'=>$last_id_photos))
                 	->insert($this->table_album);
                 
-            
+             $data_add_cmty_photo = array('Utilisateur_id'=>$user_name,'photos_id'=>$photo_last_id,'albums_media_file_name'=>$album_file_name,'type'=>"MU"); 
+	 	$this->db->insert('wall_melo_component', $data_add_cmty_photo); 
 			}
+		else {
+		
+		$data_add_cmty_photo = array('Utilisateur_id'=>$user_name,'photos_id'=>$photo_last_id,'type'=>"MU"); 
+	 	$this->db->insert('wall_melo_component', $data_add_cmty_photo); 
+		
+		}
 		
     }
     

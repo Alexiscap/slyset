@@ -17,9 +17,9 @@
 
     <div id="cover" style="background-image:url(<?php echo files('profiles/' . $cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
         <div id="infos-cover">
-            <h2><?php echo $login; ?></h2>
+            <h2><?php echo $login; ?></h2><!--
             <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
-        </div>
+       --> </div>
     </div>
 
     <div id="stats-cover">

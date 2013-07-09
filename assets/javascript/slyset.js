@@ -13,6 +13,27 @@ function playMasonry(){
 
 $(document).ready(function(){
 
+
+$("select").change(function () {
+ $("select option:selected")
+  var str = "";
+ var id_album = $("select option:selected").attr('class');
+       	var dataid = 'id_album=' + id_album;
+        
+        $.ajax({
+            type: "POST",
+            url : '/slyset/index.php/pi_ajout_paroles/get_morceaux',
+            data: dataid,
+            success: function(datas){
+            $('.mor').remove();
+         $(datas).show().insertAfter('select').slideDown('slow');
+        	
+            }
+        })
+       
+})
+
+
 if($("body.achats").length > 0)
 {
   $("#test_tablesorter").tablesorter(); 

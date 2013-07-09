@@ -116,6 +116,8 @@ class Mc_photos extends CI_Controller {
   // page album
   public function album($user_id, $album_name) {
     $data = $this->data;
+        $uid = $this->session->userdata('uid');
+
     $data['user_id'] = $this->session->userdata('uid');
     $data['all_media_user_result'] = $this->photos->get_photos_by_album($user_id, $album_name);
     $data['commentaires_video'] = $this->photos->liste_comments_video();
@@ -126,6 +128,36 @@ class Mc_photos extends CI_Controller {
 //        $data['commentaires_albums'] = $this->photos->liste_comments_album();
 //        $data['all_photos'] = $this->photos->all_photos();
 //        $data['all_photos_albums'] = $this->photos->all_photos_album();
+     
+    $user_visited = (empty($infos_profile)) ? $uid : $infos_profile->id;
+
+    if (!empty($infos_profile)) {
+        $data['infos_profile'] = $infos_profile;
+    }
+ $data['like_photo'] = $this->photos->get_like_user($user_visited);
+    $data['all_photo_like'] = "";
+    $data['all_album_like'] = "";
+    $data['all_video_like'] = "";
+
+    foreach ($data['like_photo'] as $data['likes_photo']) {
+      $data['all_photo_like'] .=
+              $data['likes_photo']->Photo_id . "/";
+
+      $data['all_album_like'] .=
+              $data['likes_photo']->Album_media_file_name . "/";
+
+      $data['all_video_like'] .=
+              $data['likes_photo']->Video_id . "/";
+    }
+
+    foreach ($data['like_photo'] as $data['likes_photo']) {
+      $data['all_photo_like'] .= $data['likes_photo']->Photo_id . "/";
+
+      $data['all_album_like'] .= $data['likes_photo']->Album_media_file_name . "/";
+
+      $data['all_video_like'] .= $data['likes_photo']->Video_id . "/";
+    }
+
 
     $this->layout->view('photos/album', $data, false);
   }
