@@ -3,8 +3,11 @@ $session_id = $this->session->userdata('uid');
 $uid = (empty($session_id)) ? '' : $session_id;
 $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
 $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
-?>
 
+print $infos_profile->id;
+print $community_follower;
+    print substr_count($community_follower,$infos_profile->id);
+?>
 <div id="contentAll">
     <div id="breadcrumbs">
         <ul>
