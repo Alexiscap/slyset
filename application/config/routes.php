@@ -123,6 +123,9 @@ $route['my-follower/(:num)'] = "melo_abonnements/index/$1";
 
 $route['document'] = "mc_partitions/index";
 $route['document/(:num)'] = "mc_partitions/index/$1";
+$route['document/new-lyrics'] = "pi_ajout_paroles/index";
+$route['document/new-score'] = "pi_ajout_partitions/index";
+
 
 $route['my-wall'] = "melo_wall/index";
 $route['my-wall/(:num)'] = "melo_wall/index/$1";

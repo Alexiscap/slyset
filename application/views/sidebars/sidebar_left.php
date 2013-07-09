@@ -27,14 +27,14 @@
 
         <div id="menu-account">
             <ul>
-                <li class="head_menu row row-0"><a href="<?php echo site_url('home/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Mon compte</span></a></li>
-                <li class="first-row row row-1"><a href="<?php echo site_url('my-wall/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Fil d'actualité</span></a></li>
+                <li class="head_menu row row-0"><a href="#"><!--<?php echo site_url('home/' . $this->session->userdata('uid')); ?>">--><span class="icon"></span><span class="menu-text">Mon compte</span></a></li>
+             <div class="one">   <li class="first-row row row-1"><a href="<?php echo site_url('my-wall/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Fil d'actualité</span></a></li>
                 <li class="row row-2"><a href="<?php echo site_url('my-reglages/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Modifier mon profil</span></a></li>
                 <li class="row row-3"><a href="<?php echo site_url('my-shopping/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Mes achats</span></a></li>
                 <li class="row row-4"><a href="<?php echo site_url('my-playlists/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Mes playlists</span></a></li>
                 <li class="row row-5"><a href="<?php echo site_url('my-concert/' . $this->session->userdata('uid')) ?>"><span class="icon"></span><span class="menu-text">Mes concerts</span></a></li>
                 <li class="last-row row row-6"><a href="<?php echo site_url('my-follower/' . $this->session->userdata('uid')) ?>"><span class="icon"></span><span class="menu-text">Mes abonnements</span></a></li>
-            </ul>
+          </div>  </ul>
         </div>
 
         <?php
@@ -43,8 +43,8 @@
             ?>
             <div id="menu-profile">
                 <ul>
-                    <li class="head_menu row row-7"><a href="<?php echo site_url('home/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Ma page musicien</span></a></li>
-                    <li class="first-row row row-8"><a href="<?php echo site_url('actualite/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Actualités</span></a></li>
+                    <li class="head_menu row row-7"><a href="#"><!--<?php echo site_url('home/' . $this->session->userdata('uid')); ?>">--><span class="icon"></span><span class="menu-text">Ma page musicien</span></a></li>
+                 <div class="one">      <li class="first-row row row-8"><a href="<?php echo site_url('actualite/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Actualités</span></a></li>
                     <li class="row row-9"><a href="<?php echo site_url('concert/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Concerts</span></a></li>
                     <li class="row row-10"><a href="<?php echo site_url('musique/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Musique</span></a></li>
                     <li class="row row-11"><a href="<?php echo site_url('media/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Photos et vidéos</span></a></li>
@@ -53,7 +53,7 @@
                     <li class="row row-14"><a href="<?php echo site_url('follower/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Mes abonnés</span></a></li>
                     <li class="row row-15"><a href="<?php echo site_url('personnaliser/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Personnaliser</span></a></li>
                     <li class="last-row row row-16"><a href="<?php echo site_url('reglages/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Réglages</span></a></li>
-                </ul>
+              </div>  </ul>
             </div>
         <?php elseif ($user_id != $this->session->userdata('uid')): ?>
             <?php $user_info = $this->user_infos->profile_user($user_id); ?>
