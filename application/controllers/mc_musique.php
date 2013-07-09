@@ -28,7 +28,7 @@ class Mc_musique extends CI_Controller {
         }
         
         //--bouton suivre un musicien
-        $community_follower=  $this->user_model->get_community($this->user_id);
+        $community_follower=  $this->user_model->get_community($this->session->userdata('uid'));
         $my_abonnement_head = "";
         
         
