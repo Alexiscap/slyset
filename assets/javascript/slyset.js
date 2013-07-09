@@ -34,10 +34,12 @@ $(document).ready(function(){
         var str = "";
         var id_album = $("select option:selected").attr('class');
         var dataid = 'id_album=' + id_album;
+        	var l = window.location;
+			var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
         
         $.ajax({
             type: "POST",
-            url : '/slyset/index.php/pi_ajout_paroles/get_morceaux',
+            url : base_url +'/index.php/pi_ajout_paroles/get_morceaux',
             data: dataid,
             success: function(datas){
                 $('.mor').remove();
@@ -257,10 +259,12 @@ $(document).ready(function(){
             alert('Veuillez renseigner un message !');
         } else {
             var ajaxLoader = $(this).parent().find(".ajax_loader");
-           
+           	var l = window.location;
+			var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
+        
             $.ajax({
                 type: "POST",
-                url :'http://127.0.0.1/slyset/index.php/mc_photos/form_photo_user_comment',
+                url :base_url + '/index.php/mc_photos/form_photo_user_comment',
                 data: dataString,
                 success: function(comment){
 
@@ -334,13 +338,15 @@ $(document).ready(function(){
         var id_photo = $(this).attr('id');
         var coeur = $(this);
         var dataid = 'id_photo=' + id_photo;
+        	var l = window.location;
+			var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
         
         $.ajax({
             type: "POST",
-            url : '/slyset/index.php/mc_photos/add_like',
+            url : base_url + '/index.php/mc_photos/add_like',
             data: dataid,
             success: function(jelike){
-                $(coeur).attr('src','http://127.0.0.1/slyset/assets/images/musicien/pink_heart.png');
+                $(coeur).attr('src',base_url  + '/assets/images/musicien/pink_heart.png');
                 $(coeur).next().text(parseInt($(coeur).next().text()) + 1);
                 $(coeur).addClass('nolike');
                 $(coeur).removeClass('like');
@@ -354,13 +360,15 @@ $(document).ready(function(){
         var baseurl = $(this).find("#baseurl").val();
         var id_photo = $(this).attr('id');
         var dataid = 'id_photo=' + id_photo;
+        	var l = window.location;
+			var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
         
         $.ajax({
             type: "POST",
-            url : '/slyset/index.php/mc_photos/minus_like',
+            url : base_url + '/index.php/mc_photos/minus_like',
             data: dataid,
             success: function(jelike){
-                $(coeur).attr('src','http://127.0.0.1/slyset/assets/images/musicien/icon_coeur.png');
+                $(coeur).attr('src',base_url + '/assets/images/musicien/icon_coeur.png');
                 $(coeur).addClass('like');
                 $(coeur).next().text(parseInt($(coeur).next().text()) - 1);
                 $(coeur).removeClass('nolike');
@@ -375,13 +383,15 @@ $(document).ready(function(){
         var baseurl = $(this).find("#baseurl").val();
         var fn_album = $(this).attr('id');
         var dataid = 'album_file_name=' + fn_album;
+        	var l = window.location;
+			var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
         
         $.ajax({
             type: "POST",
-            url :  '/slyset/index.php/mc_photos/add_like_a',
+            url :  base_url + '/index.php/mc_photos/add_like_a',
             data: dataid,
             success: function(jelike){
-                $(coeur).attr('src','http://127.0.0.1/slyset/assets/images/musicien/pink_heart.png');
+                $(coeur).attr('src',base_url + '/assets/images/musicien/pink_heart.png');
                 $(coeur).next().text(parseInt($(coeur).next().text()) + 1);
                 $(coeur).addClass('nolike-album');
                 $(coeur).removeClass('like-album');
@@ -395,13 +405,15 @@ $(document).ready(function(){
         var baseurl = $(this).find("#baseurl").val();
         var file_name_album = $(this).attr('id');
         var dataid = 'file_name_album='+file_name_album;
+        	var l = window.location;
+			var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
         
         $.ajax({
             type: "POST",
-            url : '/slyset/index.php/mc_photos/minus_like_a',
+            url : base_url + '/index.php/mc_photos/minus_like_a',
             data: dataid,
             success: function(jelike){
-                $(coeur).attr('src','http://127.0.0.1/slyset/assets/images/musicien/icon_coeur.png');
+                $(coeur).attr('src',base_url + '/assets/images/musicien/icon_coeur.png');
           
                 $(coeur).next().text(parseInt($(coeur).next().text()) - 1);
                 $(coeur).addClass('like-album');
@@ -416,13 +428,15 @@ $(document).ready(function(){
         var baseurl = $(this).find("#baseurl").val();
         var video_nom = $(this).attr('id');
         var dataid = 'video_nom=' + video_nom;
+        	var l = window.location;
+			var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
         
         $.ajax({
             type: "POST",
-            url : '/slyset/index.php/mc_photos/add_like_v',
+            url : base_url + '/index.php/mc_photos/add_like_v',
             data: dataid,
             success: function(jelike){
-                $(coeur).attr('src','http://127.0.0.1/slyset/assets/images/musicien/pink_heart.png');
+                $(coeur).attr('src',base_url + '/assets/images/musicien/pink_heart.png');
                 $(coeur).next().text(parseInt($(coeur).next().text()) + 1);
                 $(coeur).addClass('nolike-video');
                 $(coeur).removeClass('like-video');
@@ -436,13 +450,15 @@ $(document).ready(function(){
         var baseurl = $(this).find("#baseurl").val();
         var video_nom = $(this).attr('id');
         var dataid = 'video_nom=' + video_nom;
+        	var l = window.location;
+			var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
         
         $.ajax({
             type: "POST",
-            url : '/slyset/index.php/mc_photos/minus_like_v',
+            url : base_url + '/index.php/mc_photos/minus_like_v',
             data: dataid,
             success: function(jelike){
-                $(coeur).attr('src','http://127.0.0.1/slyset/assets/images/musicien/icon_coeur.png');
+                $(coeur).attr('src',base_url + '/assets/images/musicien/icon_coeur.png');
           
                 $(coeur).next().text(parseInt($(coeur).next().text()) - 1);
                 $(coeur).addClass('like-video');
@@ -469,10 +485,12 @@ $(document).ready(function(){
         var id_concert = $(this).attr('id');
         var dataid = 'id_concert=' + id_concert;
         var divid = "#" + id_concert;
-
+	var l = window.location;
+			var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
+        
         $.ajax({
             type: "POST",
-            url :'/slyset/index.php/mc_concerts/delete_activity_concert',
+            url :base_url + '/index.php/mc_concerts/delete_activity_concert',
             data: dataid,
             success: function(jego){ //afficher le bon bouton
 
@@ -516,10 +534,11 @@ $(document).ready(function(){
             var a = $(this);
             var idwall_community = $(this).parents('.bouton').attr('id');
             var datawall = 'idwall_community=' + idwall_community;
-
+			var l = window.location;
+			var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
             $.ajax({
                 type: "POST",
-                url :'/slyset/index.php/melo_abonnements/delete_community_wall',
+                url :base_url+'/index.php/melo_abonnements/delete_community_wall',
                 data: datawall,
                 success: function(){ //afficher le bon bouton
                     $(a).parents('.follower').slideUp();
@@ -559,10 +578,12 @@ $(document).ready(function(){
             var button = $(this);
             var id_user = $(this).attr('id');
             var dataid = 'id_user=' + id_user;
-
+	var l = window.location;
+			var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
+        
             $.ajax({
                 type: "POST",
-                url :'/slyset/index.php/mc_followers/add_follow',
+                url : base_url + '/index.php/mc_followers/add_follow',
                 data: dataid,
                 success: function(){ //afficher le bon bouton
 
@@ -615,10 +636,12 @@ $(document).ready(function(){
                 var button = $(this);
                 var id_user = $(this).attr('id');
                 var dataid = 'id_user=' + id_user;
-
+	var l = window.location;
+			var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
+        
                 $.ajax({
                     type: "POST",
-                    url :'/slyset/index.php/mc_followers/delete_follow',
+                    url : base_url + '/index.php/mc_followers/delete_follow',
                     data: dataid,
                     success: function(){ //afficher le bon bouton
 
@@ -666,10 +689,12 @@ $(document).ready(function(){
             var id_concert = $(this).attr('id');
             var dataid = 'id_concert=' + id_concert;
             var divid = "#" + id_concert;
-            
+            	var l = window.location;
+			var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
+        
             $.ajax({
                 type: "POST",
-                url :'/slyset/index.php/mc_concerts/add_activity_concert',
+                url : base_url + '/index.php/mc_concerts/add_activity_concert',
                 data: dataid,
           
                 success: function(dataid){ //afficher le bon bouton
@@ -699,10 +724,12 @@ $(document).ready(function(){
                 var id_concert = $(this).attr('id');
                 var dataid = 'id_concert=' + id_concert;
                 var divid = "#" + id_concert;
-            
+            	var l = window.location;
+			var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
+        
                 $.ajax({
                     type: "POST",
-                    url :'/slyset/index.php/mc_concerts/delete_activity_concert',
+                    url : base_url + '/index.php/mc_concerts/delete_activity_concert',
                     data: dataid,
           
                     success: function(dataid){ //afficher le bon bouton
@@ -760,10 +787,12 @@ $(document).ready(function(){
             var id_concert = $(this).attr('id');
             var dataid = 'id_concert=' + id_concert;
             var divid = "#" + id_concert;
-
+	var l = window.location;
+			var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
+        
             $.ajax({
                 type: "POST",
-                url :'/slyset/index.php/mc_concerts/delete_activity_concert',
+                url : base_url + '/index.php/mc_concerts/delete_activity_concert',
                 data: dataid,
                 success: function(jego){ //afficher le bon bouton
 
@@ -781,10 +810,12 @@ $(document).ready(function(){
         var button = $(this);
         var id_user = $(this).attr('id');
         var dataid = 'id_user=' + id_user;
-
+	var l = window.location;
+			var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
+        
         $.ajax({
             type: "POST",
-            url :'/slyset/index.php/mc_followers/add_follow',
+            url : base_url + '/index.php/mc_followers/add_follow',
             data: dataid,
             success: function(){ //afficher le bon bouton
 
@@ -809,10 +840,12 @@ $(document).ready(function(){
         var button = $(this);
         var id_user = $(this).attr('id');
         var dataid = 'id_user=' + id_user;
-
+	var l = window.location;
+			var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
+        
         $.ajax({
             type: "POST",
-            url :'/slyset/index.php/mc_followers/delete_follow',
+            url : base_url + '/index.php/mc_followers/delete_follow',
             data: dataid,
             success: function(){ //afficher le bon bouton
 
@@ -970,11 +1003,13 @@ $(document).ready(function(){
         $('.bt_supp_playlist').click(function(){
             $('.checkbox-article:checked').each(function(){
                 var a =  $(this).val();
-     			
+     				var l = window.location;
+			var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
+        
                 var dataid = 'commande=' + a;
                 $.ajax({
                     type: "POST",
-                    url :'/slyset/index.php/melo_achats/delete_panier',
+                    url : base_url + '/index.php/melo_achats/delete_panier',
                     data: dataid,
                     success: function(){ //afficher le bon bouton
                         $('.even.row-color-'+a).slideUp();
