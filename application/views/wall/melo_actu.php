@@ -399,7 +399,7 @@
         						<div class="content-mosaic">
         						<?php  foreach($photo_album as $photo):
         						?>
-        							<img src="<?php echo base_url('files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->idproduit.'/'.$photo->file_name); ?>" alt="<?php echo $photo->nom ?>" class="mosaic first" />
+        							<img src="////<?php echo base_url('files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->idproduit.'/'.$photo->file_name); ?>" alt="<?php echo $photo->nom ?>" class="mosaic first" />
           						<?php endforeach; ?>
           					</div>
       					</div>
