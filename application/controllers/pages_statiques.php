@@ -68,7 +68,7 @@ class Pages_statiques extends CI_Controller {
 
     public function contact_form() {
         $this->load->helper('form');
-        $this->load->library('form_validation');
+        $this->load->library(array('form_validation', 'email'));
         
         $data = $this->data;
 
@@ -84,6 +84,31 @@ class Pages_statiques extends CI_Controller {
             $surname  = $this->input->post('prenom');
             $mail  = $this->input->post('mail');
             $message  = $this->input->post('message');
+            
+//            $this->email->from($mail, $name.' '.surname);
+//            $this->email->to('alexiscap@gmail.com'); 
+//            $this->email->cc($mail);
+//
+//            $this->email->subject('Slyset - Contact : '.$name.' '.surname);
+//            $this->email->message($message);	
+//
+//            $this->email->send();
+            
+            $to = $mail;
+            $subject = 'Slyset - Contact : '.$name.' '.surname;
+            $message = '
+            <html>
+             <head>
+              <title>Contact Form - Slyset</title>
+             </head>
+             <body>
+               '.$message.'</br></br></br>
+               Ce mail a été généré automatiquement via le formulaire de contact de Slyset, veuillez attendre une réponse de l\'équipe Slyset et ne pas répondre à cette adresse.
+             </body>
+            </html>';
+            $headers  = 'MIME-Version: 1.0' . "\r\n";
+            $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+            mail($to, $subject, $message, $headers);
             
             $this->session->set_flashdata('feedback', 'Votre message a bien été transmis à l\'équipe Slyset. Nous vous donnerons réponse aussi tôt que possible.');
             

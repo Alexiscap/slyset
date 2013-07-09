@@ -46,7 +46,6 @@ class pi_ta_paiement extends CI_Controller
   
   	public function validation_paiement()
   	{
-  	date_default_timezone_set('Europe/Paris') ;
   	//print $this->session->flashdata('format');
   	     $data['cmd'] = $this->achat->get_achat($this->session->userdata('uid'));
   	     

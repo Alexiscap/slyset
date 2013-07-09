@@ -85,9 +85,6 @@ function infiniteArticlesAdmin() {
                         var check = $(this).find('.checkbox-style2').children();
                         var check_span = check.children();
                         
-                        $('#articles-tab table tr:nth-child(even)').addClass('even row-color-1');
-                        $('#articles-tab table tr:nth-child(odd)').addClass('odd row-color-2');
-                        
                         if(check_span.length == 0){
 //                            $checkLabel = $('.checkbox-style label, .checkbox-style2 label');
                             check.prepend('<span/>');
@@ -123,11 +120,6 @@ function infiniteResults() {
                     setTimeout(function(){
                         ajaxLoader.remove();
                     }, 1000);
-                    
-                    $('#results-tab table tr').each(function(){
-                        $('#results-tab table tr:nth-child(even)').addClass('even row-color-1');
-                        $('#results-tab table tr:nth-child(odd)').addClass('odd row-color-2');
-                    });
                 } else {
                     reachedEnd = true;
                 }
@@ -170,9 +162,6 @@ function infiniteComptes() {
                     $('#comptes-tab table tr').each(function(){
                         var check = $(this).find('.checkbox-style2').children();
                         var check_span = check.children();
-                    
-                        $('#comptes-tab table tr:nth-child(even)').addClass('even row-color-1');
-                        $('#comptes-tab table tr:nth-child(odd)').addClass('odd row-color-2');
                     
                         if(check_span.length == 0){
 //                            $checkLabel = $('.checkbox-style label, .checkbox-style2 label');

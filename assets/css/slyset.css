@@ -27,6 +27,8 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .bt_noir .bt_middle{ height:16px; float:left; background:url("../images/common/bt_noir.png") no-repeat 0px -60px; font-size:12px; color:white; padding:7px 0; }
 .bt_noir .bt_right{ width:9px; height:30px; float:left; background:url("../images/common/bt_noir.png") no-repeat -391px -107px; }
 
+th.headerSortUp{ cursor:pointer; background:url('../images/common/filter_asc.png') no-repeat 10px 26px transparent } 
+th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.png') no-repeat 10px 26px transparent } 
 
 /* --------- MUSICIEN - ACTUS  --------- */
 #cover{ width:770px; height:176px; position:relative; border-top:1px solid #d9dadb; background-repeat:no-repeat; float:left; clear:both; }
@@ -747,8 +749,8 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 .content .top_album #articles-tab tr.tab-head{ height:60px; border:1px solid #cccfd1; background:#e9ebec !important; }
 .content .top_album #articles-tab tr.tab-head + tr td{ border-top:1px solid #cccfd1; }
 .content .top_album #articles-tab tr.tab-head th{ border:none; }
-.content .top_album #articles-tab tr.row-color-1{ background:#fafafa; }
-.content .top_album #articles-tab tr.row-color-2{ background:#f7f7f7; }
+.content .top_album #articles-tab tr.even{ background:#fafafa; }
+.content .top_album #articles-tab tr.odd{ background:#f7f7f7; }
 
 .content .top_album input[type="checkbox"] + label span{ margin:-3px 0 0 0; }
 .content .top_album #articles-tab .article-checkbox{ padding:0 6px; }
@@ -794,8 +796,8 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 .content .tout_titre #articles-tab tr.tab-head{ height:60px; border:1px solid #cccfd1; background:#e9ebec !important; }
 .content .tout_titre #articles-tab tr.tab-head + tr td{ border-top:1px solid #cccfd1; }
 .content .tout_titre #articles-tab tr.tab-head th{ border:none; }
-.content .tout_titre #articles-tab tr.row-color-1{ background:#fafafa; }
-.content .tout_titre #articles-tab tr.row-color-2{ background:#f7f7f7; }
+.content .tout_titre #articles-tab tr.even{ background:#fafafa; }
+.content .tout_titre #articles-tab tr.odd{ background:#f7f7f7; }
 
 .content .tout_titre input[type="checkbox"] + label span{ margin:-3px 0 0 0; }
 .content .tout_titre #articles-tab .article-checkbox{ padding:0 6px; }
@@ -846,8 +848,8 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 .content .top_partition #articles-tab tr.tab-head{ height:60px; border:1px solid #cccfd1; background:#e9ebec !important; }
 .content .top_partition #articles-tab tr.tab-head + tr td{ border-top:1px solid #cccfd1; }
 .content .top_partition #articles-tab tr.tab-head th{ border:none; }
-.content .top_partition #articles-tab tr.row-color-1{ background:#fafafa; }
-.content .top_partition #articles-tab tr.row-color-2{ background:#f7f7f7; }
+.content .top_partition #articles-tab tr.even{ background:#fafafa; }
+.content .top_partition #articles-tab tr.odd{ background:#f7f7f7; }
 
 .content .top_partition input[type="checkbox"] + label span{ margin:-3px 0 0 0; }
 .content .top_partition #articles-tab .article-checkbox{ padding:0 6px; }
@@ -1096,8 +1098,8 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 .content .playlist #articles-tab tr.tab-head{ height:60px; border:1px solid #cccfd1; background:#e9ebec !important; }
 .content .playlist #articles-tab tr.tab-head + tr td{ border-top:1px solid #cccfd1; }
 .content .playlist #articles-tab tr.tab-head th{ border:none; }
-.content .playlist #articles-tab tr.row-color-1{ background:#fafafa; }
-.content .playlist #articles-tab tr.row-color-2{ background:#f7f7f7; }
+.content .playlist #articles-tab tr.even{ background:#fafafa; }
+.content .playlist #articles-tab tr.odd{ background:#f7f7f7; }
 
 .content .playlist input[type="checkbox"] + label span{ margin:-3px 0 0 0; }
 .content .playlist #articles-tab .article-checkbox{ padding:0 6px; }
@@ -1185,8 +1187,8 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 .content .panier #articles-tab tr.tab-head{ height:60px; border:1px solid #cccfd1; background:#e9ebec !important; }
 .content .panier #articles-tab tr.tab-head + tr td{ border-top:1px solid #cccfd1; }
 .content .panier #articles-tab tr.tab-head th{ border:none; }
-.content .panier #articles-tab tr.row-color-1{ background:#fafafa; }
-.content .panier #articles-tab tr.row-color-2{ background:#f7f7f7; }
+.content .panier #articles-tab tr.even{ background:#fafafa; }
+.content .panier #articles-tab tr.odd{ background:#f7f7f7; }
 
 .content .panier input[type="checkbox"] + label span{ margin:-3px 0 0 0; }
 .content .panier #articles-tab .article-checkbox{ padding:0 6px; }
@@ -1221,8 +1223,8 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 .content .historique #articles-tab tr.tab-head, .content .liste_partitions tr.tab-head{ height:60px; border:1px solid #cccfd1; background:#e9ebec !important; }
 .content .historique #articles-tab tr.tab-head + tr td, .content .liste_partitions tr.tab-head + tr td{ border-top:1px solid #cccfd1; }
 .content .historique #articles-tab tr.tab-head th, .content .liste_partitions tr.tab-head th{ border:none; }
-.content .historique #articles-tab tr.row-color-1, .content .liste_partitions tr.row-color-1{ background:#fafafa; }
-.content .historique #articles-tab tr.row-color-2, .content .liste_partitions tr.row-color-2{ background:#f7f7f7; }
+.content .historique #articles-tab tr.even, .content .liste_partitions tr.even{ background:#fafafa; }
+.content .historique #articles-tab tr.odd, .content .liste_partitions tr.odd{ background:#f7f7f7; }
 
 .content .historique input[type="checkbox"] + label span ,.content .liste_partitions input[type="checkbox"] + label span { margin:-3px 0 0 0; }
 .content .historique #articles-tab .article-checkbox, .content .liste_partitions .article-checkbox{ padding:0 6px; }
@@ -1301,14 +1303,14 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 .admin-articles #articles-tab tr.tab-head, .admin-comptes #comptes-tab tr.tab-head{ height:60px; border:1px solid #cccfd1; background:#e9ebec !important; }
 .admin-articles #articles-tab tr.tab-head + tr td, .admin-comptes #comptes-tab tr.tab-head + tr td{ border-top:1px solid #cccfd1; }
 .admin-articles #articles-tab tr.tab-head th, .admin-comptes #comptes-tab tr.tab-head th{ border:none; }
-.admin-articles #articles-tab tr.row-color-1, .admin-comptes #comptes-tab tr.row-color-1{ background:#fafafa; }
-.admin-articles #articles-tab tr.row-color-2, .admin-comptes #comptes-tab tr.row-color-2{ background:#f7f7f7; }
+.admin-articles #articles-tab tr.even, .admin-comptes #comptes-tab tr.even{ background:#fafafa; }
+.admin-articles #articles-tab tr.odd, .admin-comptes #comptes-tab tr.odd{ background:#f7f7f7; }
 
 .admin-articles input[type="checkbox"] + label span, .admin-comptes input[type="checkbox"] + label span{ margin:-3px 0 0 0; }
 .admin-articles #articles-tab .article-checkbox, .admin-comptes #comptes-tab .compte-checkbox{ padding:0 6px; }
 .admin-articles #articles-tab .article-title, .admin-comptes #comptes-tab .compte-title{ padding:0 12px 0 25px; width:577px; }
-.admin-articles #articles-tab .article-middle, .admin-comptes #comptes-tab .compte-middle{ padding:0 10px; width:180px; }
-.admin-articles #articles-tab .article-little, .admin-comptes #comptes-tab .compte-little{ padding:0 10px; width:70px; }
+.admin-articles #articles-tab .article-middle, .admin-comptes #comptes-tab .compte-middle{ padding:0 0px 0 28px; width:180px; }
+.admin-articles #articles-tab .article-little, .admin-comptes #comptes-tab .compte-little{ padding:0 0px 0 28px; width:70px; }
 
 .admin-articles #articles-tab th.article-little, .admin-comptes #comptes-tab th.compte-little{ cursor:pointer; }
 .admin-articles #articles-tab th.article-title, .admin-comptes #comptes-tab th.compte-title{ cursor:pointer; }
@@ -1341,8 +1343,8 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 .search #results-tab tr.tab-head{ height:60px; border:1px solid #cccfd1; background:#e9ebec !important; }
 .search #results-tab tr.tab-head + tr td{ border-top:1px solid #cccfd1; }
 .search #results-tab tr.tab-head th{ border:none; }
-.search #results-tab tr.row-color-1{ background:#fafafa; }
-.search #results-tab tr.row-color-2{ background:#f7f7f7; }
+.search #results-tab tr.even{ background:#fafafa; }
+.search #results-tab tr.odd{ background:#f7f7f7; }
 
 .search input[type="checkbox"] + label span{ margin:-3px 0 0 0; }
 .search #results-tab .result-checkbox{ padding:0 6px; }

@@ -11,6 +11,7 @@ class melo_abonnements extends CI_Controller {
         parent::__construct();
 
         $this->layout->ajouter_css('slyset');
+        $this->layout->ajouter_js('jquery.placeheld.min');
 
         $this->load->model(array('user_model', 'myfollower'));
 

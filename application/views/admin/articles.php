@@ -45,8 +45,8 @@ $session_id = $this->session->userdata('uid');
                     <thead>
                         <tr class="tab-head">
                             <th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"/><?php echo form_label('', "article-all") ?></th>
-                            <th class="article-title">Titre de l'article<span id="titre" class="filter filter-bottom"></span></th>
-                            <th class="article-middle">Date<span id="created" class="filter filter-bottom"></span></th>
+                            <th class="article-title">Titre de l'article<!--<span id="titre" class="filter filter-bottom"></span>--></th>
+                            <th class="article-middle">Date<!--<span id="created" class="filter filter-bottom"></span>--></th>
                         </tr>
                     </thead>
                     
