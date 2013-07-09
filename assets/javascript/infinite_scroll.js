@@ -1,6 +1,14 @@
 var l = window.location;
-var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
-var base_url_noindex = l.protocol + "//" + l.host;
+var base_url = '';
+var base_url_noindex = '';
+
+if(l.pathname.split('/')[2] == "index.php"){
+    base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1] + "/" + l.pathname.split('/')[2];
+    base_url_noindex = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
+} else {
+    base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
+    base_url_noindex = l.protocol + "//" + l.host;
+}
 
 var reachedEnd = false;
 var objHeight = $(window).height() - 50;
