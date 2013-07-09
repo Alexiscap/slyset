@@ -10,9 +10,9 @@
     </div>
   </div>
   <div id="top_titre">
-    <img src="<?php echo img_url('sidebar-right/etoile.png'); ?>" alt="etoile"/><p class="head-title">Top <span>Titres</span></p>
-    <div id="classement">
-      <div id="num_impair">
+    <img src="<?php echo img_url('sidebar-right/etoile.png'); ?>" alt="etoile"/><p class="head-title">Mon Top <span>Titres</span></p>
+    <div id="classement"> 
+     <div id="num_impair">
         <p class="position">1</p><a href="#" class="play"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p>Blowin' in the wild</p>
       </div>
       <div id="num_pair">

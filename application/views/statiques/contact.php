@@ -2,6 +2,7 @@
 $session_id = $this->session->userdata('uid');
 $prenom = $this->session->userdata('prenom');
 $nom = $this->session->userdata('nom');
+$feedback = $this->session->userdata('flash:old:feedback');
 ?>
 
 <div id="contentAll">
@@ -12,7 +13,14 @@ $nom = $this->session->userdata('nom');
         </ul>
     </div>
 
-    <div class="content_static">
+    <?php if (isset($feedback) && !empty($feedback)): ?>
+        <div id="message-notification">
+          <div class="ico-msg"></div>
+          <p><?php echo $feedback; ?></p>
+        </div>
+    <?php endif; ?>
+    
+    <div class="content_static contact">
         <h2 class="page_static">Nous contacter</h2>
         
         <p class="txt_static">

@@ -13,10 +13,12 @@ function playMasonry(){
 
 $(document).ready(function(){
 
-if($("body.achats").length > 0)
-{
-  $("#tablesorter").tablesorter(); 
-}
+    if($('#tablesorter-cb').length > 0){
+        $('#tablesorter-cb').tablesorter({headers:{0:{sorter:false}}});; 
+    }
+    if($('#tablesorter-nocb').length > 0){
+        $('#tablesorter-nocb').tablesorter();; 
+    }
 
 //    Shadowbox.open({
 ////        content:    'application/views/lightbox/pi_ajout_concerts.php',
@@ -43,7 +45,6 @@ if($("body.achats").length > 0)
     
      $(".check_all").click(function(){
         var inputs = $("form input[type='checkbox']");
-
         for(var i = 0; i < inputs.length; i++){
             var type = inputs[i].getAttribute("type");
             if(type == "checkbox") {
@@ -70,29 +71,25 @@ if($("body.achats").length > 0)
 
         
 
-        $('#articles-tab th.article-title, #articles-tab th.article-date').click(function(e){
-            e.preventDefault();
-            var valFilter = $(this).children().attr('id');
-            var byFilter = $(this).children('span');
-            var orderBy = 'desc';
-            var lastSegment = location.href.split('/').pop();
-
-            if(lastSegment == 'desc'){
-                byFilter.removeClass().addClass('asc');
-                orderBy = 'asc';
-            } else if(lastSegment == 'asc'){
-                byFilter.removeClass().addClass('desc');
-                orderBy = 'desc';
-            } else {
-                byFilter.addClass('desc');
-            }
-
-//            var multiClass = byFilter.attr('class');
-//            var arrayClass = multiClass.split(' ');
-
-            var basePath = 'http://' + window.location.hostname + '/index.php/';
-            location.href = basePath + 'admin_articles/index/' + valFilter + '/' + orderBy;
-        });
+//        $('#articles-tab th.article-title, #articles-tab th.article-date').click(function(e){
+//            e.preventDefault();
+//            var valFilter = $(this).children().attr('id');
+//            var byFilter = $(this).children('span');
+//            var orderBy = 'desc';
+//            var lastSegment = location.href.split('/').pop();
+//
+//            if(lastSegment == 'desc'){
+//                byFilter.removeClass().addClass('asc');
+//                orderBy = 'asc';
+//            } else if(lastSegment == 'asc'){
+//                byFilter.removeClass().addClass('desc');
+//                orderBy = 'desc';
+//            } else {
+//                byFilter.addClass('desc');
+//            }
+//            var basePath = 'http://' + window.location.hostname + '/index.php/';
+//            location.href = basePath + 'admin_articles/index/' + valFilter + '/' + orderBy;
+//        });
           
         var pathname = window.location.hash;
         if(pathname.indexOf('#open') > -1){

@@ -45,7 +45,7 @@
           
         <div id="ico_menu">
           <a href="<?php echo site_url('home/'.$this->session->userdata('uid')); ?>" id="accueil"><span>Accueil</span></a>
-          <a href="#" id="explorer"><span>Explorer</span></a>
+          <a href="#" id="explorer"><span>Rechercher</span></a>
           <?php if($this->session->userdata('logged_in') != 1): ?>
             <a href="<?php echo site_url('user'); ?>" id="inscrire"><span>S'inscrire</span></a>
           <?php endif; ?>
@@ -63,7 +63,7 @@
           <div id="recherche">
             <?php $val = (!empty($_POST['recherche'])) ? $_POST['recherche'] : ''; ?>
             <form action="<?php echo site_url('search/'.$this->session->userdata('uid')); ?>" method="post">
-                <input type="text" value="<?php print $val; ?>" placeholder="Chercher un artiste ..." name="recherche" />
+                <input type="text" value="<?php print $val; ?>" placeholder="Recherche rapide" name="recherche" />
                 <input src="<?php echo img_url('header/loupe.png') ?>" type="image" value="submit" align="middle"/>
             <?php // echo form_close(); ?>
             </form>

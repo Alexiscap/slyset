@@ -1385,6 +1385,13 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 .content_static .menu_faq .right{ margin:0 0 0 5px; float:left;width:375px;}
 .content_static .menu_faq .right p{font-size:16px;color:#2da288;font-weight:bold;}
 .content_static .menu_faq .right li{font-size:14px; text-align:left; color:#3f3f3f;}
+
+.content_static.contact form{ margin:30px 0 0 30px; }
+.content_static.contact form > label{ margin:8px 0 0 0; width:100px; height:26px; line-height:26px; font-size:16px; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:bold; text-align:left; color: #4e4e4e; float:left; }
+.content_static.contact input[type="text"]{ margin:8px 0 8px 20px; padding:3px 10px; width:285px; outline-color:rgba(42, 179, 149, 0.6); color:rgb(100, 100, 100); float:left; }
+.content_static.contact textarea{ margin:8px 0 8px 20px; padding:3px 10px; width:350px; max-width:400px; height:100px; max-height:200px; font-family:"Trebuchet MS", Arial, sans-serif; word-break:break-word; outline-color:rgba(42, 179, 149, 0.6); color:rgb(100, 100, 100); float:left; }
+.content_static.contact input[type="submit"]{ margin:15px 0 10px 120px; padding:0 14px; height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; font-weight:bold; text-align:center; outline:none; color:#FFFFFF; background:url('../images/common/bt-rouge.png') no-repeat transparent; float:left; clear:both; }
+.content_static.contact span.error-form{ margin:0 0 10px 172px; }
 /*-------------------- FIN PAGES STATIQUE ---------------------------*/
 
 

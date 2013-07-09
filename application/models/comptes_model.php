@@ -16,7 +16,7 @@ class Comptes_model extends CI_Model
                         ->from($this->table)
                         ->where('type = 1')
 //                        ->limit($nb, $debut)
-//                        ->order_by($order, $by)
+                        ->order_by('login', 'asc')
                         ->limit($limit, $offset)
                         ->get()
                         ->result();

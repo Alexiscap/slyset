@@ -170,7 +170,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
             <div class="clear"></div>
             <div id="articles-tab">
                 <form action="<?php echo site_url('admin_articles/delete_multi_article'); ?>" method="post" accept-charset="utf-8">          
-                    <table id="tablesorter">
+                    <table id="tablesorter-cb">
                         <thead>
                             <tr class="tab-head odd row-color-2">
                                 <th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
