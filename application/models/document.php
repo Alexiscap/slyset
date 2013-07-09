@@ -37,7 +37,7 @@ class document extends CI_Model
 								JOIN albums ON morceaux.Albums_id = albums.id
 								JOIN documents ON morceaux.id = documents.Morceaux_id
 										WHERE morceaux.Utilisateur_id = 30
-								GROUP BY documents.morceaux_id
+								
 								')
 					->result();
 	
@@ -56,9 +56,9 @@ class document extends CI_Model
 			->result();
 	}
 
-	public function insert_doc($album,$morceau,$path)
+	public function insert_doc($album,$morceau,$path,$type)
 	{
-	$this->db->set(array('albums_id'=>$album,'Morceaux_id'=>$morceau,'path'=>$path,'Utilisateur_id'=>$this->session->userdata('uid'),'format'=>'pdf','type_document'=>'paroles'))
+	$this->db->set(array('albums_id'=>$album,'Morceaux_id'=>$morceau,'path'=>$path,'Utilisateur_id'=>$this->session->userdata('uid'),'format'=>'pdf','type_document'=>$type))
                 	->insert('documents');
                 	}
 }

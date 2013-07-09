@@ -62,7 +62,7 @@ echo '			<select name="morceaux" class="mor">'.$all_option.'</select>
 			$album_name = $album_exp[0];
 			$album_id = $album_exp[1];
 	$noespace_filename_album = str_replace(' ', '_', $album_name);
-    $dynamic_path = './files/' . $this->session->userdata('uid') . '/documents/' . $noespace_filename_album;
+    $dynamic_path = './files/' . $this->session->userdata('uid') . '/documents/' . $album_id;
 
     if (is_dir($dynamic_path) == false) {
       mkdir($dynamic_path, 0755, true);
@@ -86,9 +86,9 @@ echo '			<select name="morceaux" class="mor">'.$all_option.'</select>
 		{
 			$data = array('upload_data' => $this->upload->data());
 			
+var_dump($data);
 
-
-			$this->document->insert_doc($album_id,$morceau,$data['file_name']) ;
+			$this->document->insert_doc($album_id,$morceau,$data['upload_data']['file_name'],"partition") ;
 		//	$this->load->view('partition/pi_ajout_paroles', $data);
 		}
 	}

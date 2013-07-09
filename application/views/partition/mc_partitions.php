@@ -74,7 +74,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 			<p><span>> </span><a href="#">Modifier le livret</a></p>
 			<?php }
 			else {?>
-			<p><span>> </span><a href="#">Ajouter le livret</a></p>
+			<p><span>> </span><a class="iframe" href="<?php echo base_url('index.php/document/new-livret/') ?>">Ajouter le livret</a></p>
 			<?php } ?>
 		</div>
 	</div>
@@ -106,15 +106,16 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 				
 			</div>
 			<div class="titres">
-				
+				 
+					
 				<?php 
-
 				foreach($get_morc as $morceau):
 				
 				if($morceau->Albums_id == $doc->Albums_id):
-			
+										
+
 ?>
-					<tr>
+<tr>
 						<td class="le_titre">
 							<p>		
 								<?php 	echo $morceau->nom;?>
@@ -125,42 +126,32 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 					
 					
 					
-						foreach($all_morc as $morc=>$a):
-													var_dump($a);
+					//	foreach($all_morc as $morc=>$a):
+						//							var_dump($a);
 
-							if($morceau->id == $a->morceaux_id):
-							var_dump($a);
-							$b ++;
-			if($b >= 2)
-							{
+						//	if($morceau->id == $a->morceaux_id):
+							//var_dump($morceau);
+						//	$b ++;
+			//if($b >= 2)
+						//	{
 							
 							
 			
 				?>
-						<!--ajouter type-->
-						<?php 
-							
-							 ?>
-									
-								<td class="paroles"><a href="<?php echo files($infos_profile->id.'/albums/'.$doc->Albums_id.'/partition/'.$morceau->path) ?>">Voir</a>
+			
+								<td class="paroles"><a href="<?php echo files($infos_profile->id.'/documents/'.$doc->Albums_id.'/'.$morceau->path) ?>">Voir</a>
 									<div class="miniat_titre">
 										<a href="#" class="edit"><span>edit</span></a>
 									</div>
-								</td>
-								<td class="paroles"><a href="<?php echo files($infos_profile->id.'/albums/'.$doc->Albums_id.'/partition/'.$morceau->path) ?>">Voir</a>
-									<div class="miniat_titre">
-										<a href="#" class="edit"><span>edit</span></a>
-									</div>
-								</td>
-								
+								</td>	
 						
 							<?php
 							
-					}
+					//}
 
 							
-					endif;
-					endforeach;
+			//		endif;
+			//		endforeach;
 						 ?>	
 
 					</tr>
