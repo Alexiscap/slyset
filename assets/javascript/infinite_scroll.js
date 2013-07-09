@@ -1,6 +1,6 @@
 var l = window.location;
 var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
-var base_url_noindex = l.protocol + "//" + l.host + "/";
+var base_url_noindex = l.protocol + "//" + l.host;
 
 var reachedEnd = false;
 var objHeight = $(window).height() - 50;
@@ -40,7 +40,7 @@ function infiniteArticles() {
         var ajaxLoader = $('#wall-flux').find(".ajax_loader");
 
         ajaxLoader.show();
-        ajaxLoader.fadeIn(500).html('<img src=' + base_url_noindex + '"/assets/images/common/ajax-loader.gif" />');
+        ajaxLoader.fadeIn(500).html('<img src="' + base_url_noindex + '/assets/images/common/ajax-loader.gif" />');
       
         $.ajax({
             url: base_url + "/home/ajax_articles/1/" + count,
@@ -71,7 +71,8 @@ function infiniteArticlesAdmin() {
         var ajaxLoader = $('#articles-tab').find(".ajax_loader");
 
         ajaxLoader.show();
-        ajaxLoader.fadeIn(500).html('<img src=' + base_url_noindex + '"/assets/images/common/ajax-loader.gif" />');
+        ajaxLoader.fadeIn(500).html('<img src="' + base_url_noindex + '/assets/images/common/ajax-loader.gif" />');
+        
         $.ajax({
             url: base_url + "/admin_articles/ajax_articles/1/" + count,
             async: false,
@@ -110,7 +111,7 @@ function infiniteResults() {
         var ajaxLoader = $('.search_results_wrapper').find(".ajax_loader");
 
         ajaxLoader.show();
-        ajaxLoader.fadeIn(500).html('<img src=' + base_url_noindex + '"/assets/images/common/ajax-loader.gif" />');
+        ajaxLoader.fadeIn(500).html('<img src="' + base_url_noindex + '/assets/images/common/ajax-loader.gif" />');
       
         $.ajax({
             url: base_url + "/search/ajax_search_result/1/" + count,
@@ -148,7 +149,7 @@ function infiniteComptes() {
         var ajaxLoader = $('#comptes-tab').find(".ajax_loader");
 
         ajaxLoader.show();
-        ajaxLoader.fadeIn(500).html('<img src=' + base_url_noindex + '"/assets/images/common/ajax-loader.gif" />');
+        ajaxLoader.fadeIn(500).html('<img src="' + base_url_noindex + '/assets/images/common/ajax-loader.gif" />');
       
         $.ajax({
             url: base_url + "/admin_" + typeAccount + "/ajax_" + typeAccount + "/1/" + count,
