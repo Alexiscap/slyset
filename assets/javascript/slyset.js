@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 if($("body.achats").length > 0)
 {
-  $("#test_tablesorter").tablesorter(); 
+  $("#tablesorter").tablesorter(); 
 }
 
 //    Shadowbox.open({

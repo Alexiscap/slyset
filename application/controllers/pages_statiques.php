@@ -58,10 +58,39 @@ class Pages_statiques extends CI_Controller {
     }
 
     public function contact() {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        
         $data = $this->data;
 
         $this->layout->view('statiques/contact', $data);
     }
+
+    public function contact_form() {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        
+        $data = $this->data;
+
+        $this->form_validation->set_rules('nom', 'Nom', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('prenom', 'Prénom', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('mail', 'Email', 'trim|required|valid_email|xss_clean');
+        $this->form_validation->set_rules('message', 'Message', 'trim|required|xss_clean');
+
+        if($this->form_validation->run() == FALSE){
+            $this->layout->view('statiques/contact', $data);
+        } else {
+            $name  = $this->input->post('nom');
+            $surname  = $this->input->post('prenom');
+            $mail  = $this->input->post('mail');
+            $message  = $this->input->post('message');
+            
+            $this->session->set_flashdata('feedback', 'Votre message a bien été transmis à l\'équipe Slyset. Nous vous donnerons réponse aussi tôt que nous le pouvons.');
+            
+            redirect('home', 'refresh');
+        }
+    }
+
 
     public function paiements() {
         $data = $this->data;

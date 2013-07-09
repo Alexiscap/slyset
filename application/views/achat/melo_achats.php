@@ -40,34 +40,42 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 
     <div class="content">
         <h2>Mes achats</h2>
-        
+
         <!-- ************************ PANIER ************************ -->
         <div class="panier">
             <div class="descri_panier">
                 <span class="nom_pl">Mon panier</span>
-            	 <!-- ************************ RESUME ************************ -->
+                <!-- ************************ RESUME ************************ -->
 
                 <span class="detail_pl">
-                	<?php if ($total_document_panier == 1) { echo $total_document_panier . ' partition'; } if ($total_document_panier > 1) { echo $total_document_panier . ' partitions'; }  if ($total_document_panier == 0) { echo '0 partition'; } ?>
+                    <?php
+                    if ($total_document_panier == 1) {
+                        echo $total_document_panier . ' partition';
+                    } if ($total_document_panier > 1) {
+                        echo $total_document_panier . ' partitions';
+                    } if ($total_document_panier == 0) {
+                        echo '0 partition';
+                    }
+                    ?>
                 </span>
-                <span class="detail_pl"><?php 
-    if ($total_album_panier == 1) {
-        echo $total_album_panier . ' album,';
-    } if ($total_album_panier > 1) {
-        echo $total_album_panier . ' albums,';
-    }
- else {
-    echo '0 album,';
-} ?></span>
-                <span class="detail_pl"><?php 
-    if ($total_morceaux_panier == 1) {
-        echo $total_morceaux_panier . ' chanson,';
-    } if ($total_morceaux_panier > 1) {
-        echo $total_morceaux_panier . ' chansons,';
-    }
- else {
-    echo '0 chanson,';
-} ?> </span>
+                <span class="detail_pl"><?php
+                    if ($total_album_panier == 1) {
+                        echo $total_album_panier . ' album,';
+                    } if ($total_album_panier > 1) {
+                        echo $total_album_panier . ' albums,';
+                    } else {
+                        echo '0 album,';
+                    }
+                    ?></span>
+                <span class="detail_pl"><?php
+                    if ($total_morceaux_panier == 1) {
+                        echo $total_morceaux_panier . ' chanson,';
+                    } if ($total_morceaux_panier > 1) {
+                        echo $total_morceaux_panier . ' chansons,';
+                    } else {
+                        echo '0 chanson,';
+                    }
+                    ?> </span>
                 <img src="<?php echo img_url('common/caddis_achat.png'); ?>" class="detail_pl"/>
             </div>
             <hr />
@@ -78,89 +86,91 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                         <tbody>
                             <tr class="tab-head odd row-color-2">
                                 <th class="article-checkbox checkbox-style2">
-                                	<input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all">
-                                		<label for="article-all">
-                                		
-                                		</label>
-                                		</th>
+                                    <input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all">
+                                    <label for="article-all">
+
+                                    </label>
+                                </th>
                                 <th class="article-title">Titre<span id="titre" class="filter filter-bottom"></span></th>
                                 <th class="article-artiste">Artiste<span id="titre" class="filter filter-bottom"></span></th>
                                 <th class="article-type">Type<span id="titre" class="filter filter-bottom"></span></th>
                                 <th class="article-prix">Prix<span id="created" class="filter filter-bottom"></span></th>
                             </tr>
-                          
-<?php 
-  $total = 0;
-    $tot = "";
-foreach ($cmd as $commande):
-    if ($commande->status == "P"):
-        ?>
+
+                            <?php
+                            $total = 0;
+                            $tot = "";
+                            
+                            foreach ($cmd as $commande):
+                                if ($commande->status == "P"):
+                                    ?>
                                     <tr class="even row-color-<?php echo $commande->id ?>">
-                                        <td class="article-checkbox checkbox-style2"><input type="checkbox" name="panier[]" value="<?php echo $commande->id ?>" id="article-<?php echo $commande->id ?>" class="checkbox-article"><label for="article-<?php echo $commande->id ?>"></label></td>
+                                        <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $commande->id ?>" id="article-<?php echo $commande->id ?>" class="checkbox-article"><label for="article-<?php echo $commande->id ?>"></label></td>
                                         <td class="article-title"><a href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
         <?php echo $commande->nom ?></td>
                                         <td class="article-artiste"><?php echo $commande->user_login ?></td>
                                         <td class="article-type"><?php echo $commande->type ?></td>
                                         <td class="article-prix"><?php echo $commande->prix ?> €</td>
-                                        <?php 
-                                      
+                                        <?php
                                         $total = $total + $commande->prix;
-                                        
-                                       ?>
+                                        ?>
                                     </tr>
-        <?php
-    endif;
-endforeach;
-?>
+                                    <?php
+                                endif;
+                            endforeach;
+                            ?>
                         </tbody>
                     </table>
-                
+
             </div>
-            <p class="total_panier">Montant total <span><?php  echo $total ?> €</span></p>
+            <p class="total_panier">Montant total <span><?php echo $total ?> €</span></p>
             <div class="clear"></div>
             <a class="bigiframe" href="<?php echo site_url('pi_ta_infos/index/' . $session_id) ?>"><input type="button" value="Paiement sécurisé" class="cadis_panier"></a>
             <input type="button" value="Supprimer" class="bt_supp_playlist">
         </div>
-</form>
+        </form>
         <div class="clear"></div>
         <div class="historique">
             <div class="descri_historique">
                 <span class="nom_pl">Historique d'achats</span>
-                <span class="detail_pl"><?php 
-                                if ($total_document_history == 1) {
-                                    echo $total_document_history . ' partition';
-                                } if ($total_document_history > 1) {
-                                    echo $total_document_history . ' partitions';
-                                }
-                             if ($total_document_history == 0) {
+                <span class="detail_pl"><?php
+                            if ($total_document_history == 1) {
+                                echo $total_document_history . ' partition';
+                            } if ($total_document_history > 1) {
+                                echo $total_document_history . ' partitions';
+                            }
+                            if ($total_document_history == 0) {
                                 echo '0 partition';
-                                }
-                             ?></span>
-                <span class="detail_pl"><?php 
-                                if ($total_album_history == 1) {
-                                    echo $total_album_history . ' album,';
-                                } if ($total_album_history > 1) {
-                                    echo $total_album_history . ' albums,';
-                                }
-                             if ($total_album_history ==0) {
-                                echo '0 album,';}
-                             ?></span>
-                <span class="detail_pl"><?php if (isset($total_morceaux_history)) {
-        if ($total_morceaux_history == 1) {
-            echo $total_morceaux_history . ' chanson,';
-        } if ($total_morceaux_history > 1) {
-            echo $total_morceaux_history . ' chansons,';
-        }
-    } else {
-        echo '0 chanson,';
-    } ?> </span>
+                            }
+                            ?></span>
+                <span class="detail_pl"><?php
+                    if ($total_album_history == 1) {
+                        echo $total_album_history . ' album,';
+                    } if ($total_album_history > 1) {
+                        echo $total_album_history . ' albums,';
+                    }
+                    if ($total_album_history == 0) {
+                        echo '0 album,';
+                    }
+                            ?></span>
+                <span class="detail_pl"><?php
+                    if (isset($total_morceaux_history)) {
+                        if ($total_morceaux_history == 1) {
+                            echo $total_morceaux_history . ' chanson,';
+                        } if ($total_morceaux_history > 1) {
+                            echo $total_morceaux_history . ' chansons,';
+                        }
+                    } else {
+                        echo '0 chanson,';
+                    }
+                            ?> </span>
                 <img src="<?php echo img_url('common/sac_historique.png'); ?>" class="detail_pl"/>
             </div>
             <hr />
             <div class="clear"></div>
             <div id="articles-tab">
                 <form action="<?php echo site_url('admin_articles/delete_multi_article'); ?>" method="post" accept-charset="utf-8">          
-                    <table id="test_tablesorter">
+                    <table id="tablesorter">
                         <thead>
                             <tr class="tab-head odd row-color-2">
                                 <th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
@@ -169,23 +179,24 @@ endforeach;
                                 <th class="article-type">Type<span id="titre" class="filter filter-bottom"></span></th>
                                 <th class="article-prix">Prix<span id="created" class="filter filter-bottom"></span></th>
                             </tr>
-                            </thead>
-                            <tbody>
-<?php foreach ($cmd as $commande):
-    if ($commande->status == "V"):
-        ?>
+                        </thead>
+                        <tbody>
+                            <?php
+                            foreach ($cmd as $commande):
+                                if ($commande->status == "V"):
+                                    ?>
                                     <tr class="even row-color-<?php echo $commande->id ?>">
-                                        <td class="article-checkbox checkbox-style2"><input type="checkbox" name="histoachat[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"></label></td>
+                                        <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"></label></td>
                                         <td class="article-title"><a href="#" class ="play_achat" ><img  src="<?php echo img_url('common/btn_play2.png'); ?>"/></a>
         <?php echo $commande->nom ?></td>
                                         <td class="article-artiste"><?php echo $commande->user_login ?></td>
                                         <td class="article-type"><?php echo $commande->type ?></td>
                                         <td class="article-prix"><?php echo $commande->prix ?> €</td>
                                     </tr>
-        <?php
-    endif;
-endforeach;
-?>
+                                    <?php
+                                endif;
+                            endforeach;
+                            ?>
                         </tbody>
                     </table>
                 </form>
