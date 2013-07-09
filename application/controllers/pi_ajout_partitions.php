@@ -14,19 +14,83 @@ class Pi_ajout_partitions extends CI_Controller
       $this->layout->ajouter_js('jquery.stapel');
       
         $this->layout->set_id_background('ajout_partitions');
+          $this->load->helper(array('form', 'url'));
+
+		$this->load->model('document');
+
     }
-  
+    
     public function index()
     {
-      $this->page();
+    
+    	$this->page();
     }
-  
     public function page()
     {
-      $datas = array();
-      
+      $data = array();
+      $data['error'] = " ";
+      	
+
       //$this->layout->views('3');
-      $this->layout->view('pi_ajout_partitions', $datas);
+   		// $this->layout->view('partition/pi_ajout_paroles', $datas);
+   		$data['album'] = $this->document->get_album($this->session->userdata('uid'));
+     	$this->layout->view('partition/pi_ajout_partitions',$data);
+     	
+   
     }
+    
+    public function get_morceaux()
+    {
+    $album_id = $this->input->post('id_album');
+       $data['morceaux'] = $this->document->get_morceau_by_album($album_id);
+       $all_option = "";
+       foreach ($data['morceaux'] as $morceau)
+       {
+       $all_option .= 
+       $option = '<option name="morceaux" value="'.$morceau->id.'">'.$morceau->nom.'</option>';
+       }
+echo '			<select name="morceaux" class="mor">'.$all_option.'</select>
+';
+    }
+ 
+
+	function do_upload()
+	{
+	$album = $this->input->post('album');
+			print $morceau =  $this->input->post('morceaux');
+			$album_exp = explode('+',$album);
+			$album_name = $album_exp[0];
+			$album_id = $album_exp[1];
+	$noespace_filename_album = str_replace(' ', '_', $album_name);
+    $dynamic_path = './files/' . $this->session->userdata('uid') . '/documents/' . $noespace_filename_album;
+
+    if (is_dir($dynamic_path) == false) {
+      mkdir($dynamic_path, 0755, true);
+    }
+    
+    
+    
+    			$config['upload_path'] = $dynamic_path;
+
+		$config['allowed_types'] = 'pdf';
+	
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$error = array('error' => $this->upload->display_errors());
+			$this->load->view('partition/pi_ajout_partitions', $error);
+		}
+		else
+		{
+			$data = array('upload_data' => $this->upload->data());
+			
+
+
+			$this->document->insert_doc($album_id,$morceau,$data['file_name']) ;
+		//	$this->load->view('partition/pi_ajout_paroles', $data);
+		}
+	}
   
 }

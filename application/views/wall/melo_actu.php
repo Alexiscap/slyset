@@ -269,7 +269,7 @@
         				<?php if($this->uri->segment(2)==$this->session->userdata('uid')):
 ?>
     						<a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-         				<?php endif;?>
+         				<?php endif; ?>
 
       				</div>
      					
@@ -436,7 +436,7 @@
   				if($entity_wall->type =='ME'):
   			?>
   						<div id ="<?php echo $entity_wall->id?>" class="artist_post photo_message">
-      <div class="top"   class="top" id="<?php echo $entity_wall->id?>">
+      <div class="top"  class="top" id="<?php echo $entity_wall->id?>">
             			<?php if($this->uri->segment(2)==$this->session->userdata('uid')):
 ?>
         					<a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
@@ -463,7 +463,7 @@
   			endif;
   			endif;
   			
- endforeach;
+ 	endforeach;
  endif;
  ?>
    </div>

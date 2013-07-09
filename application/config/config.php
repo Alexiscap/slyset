@@ -14,8 +14,8 @@
 | path to your installation.
 |
 */
-//$config['base_url']	= 'http://127.0.0.1/slyset/';
-$config['base_url']	= 'http://localhost.slyset.com/';
+$config['base_url']	= 'http://127.0.0.1/slyset/';
+//$config['base_url']	= 'http://localhost.slyset.com/';
 
 /*
 |--------------------------------------------------------------------------

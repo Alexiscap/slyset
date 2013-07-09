@@ -24,6 +24,12 @@ class document extends CI_Model
 	
 	}
 	
+	public function all_doc($user_id)
+	{
+	return $this->db->query('SELECT morceaux_id FROM documents WHERE Utilisateur_id = '.$user_id)
+					->result();
+	}
+	
 	public function get_morceau_album()
 	{
 		return $this->db->query('SELECT morceaux.id,morceaux.nom,morceaux.Albums_id,documents.path,documents.prix
@@ -31,6 +37,7 @@ class document extends CI_Model
 								JOIN albums ON morceaux.Albums_id = albums.id
 								JOIN documents ON morceaux.id = documents.Morceaux_id
 										WHERE morceaux.Utilisateur_id = 30
+								GROUP BY documents.morceaux_id
 								')
 					->result();
 	
@@ -45,7 +52,13 @@ class document extends CI_Model
 	
 	public function get_morceau_by_album($album)
 	{
-	return $this->db->query('SELECT nom FROM morceaux WHERE Albums_id = '.$album)
+	return $this->db->query('SELECT nom,id FROM morceaux WHERE Albums_id = '.$album)
 			->result();
 	}
+
+	public function insert_doc($album,$morceau,$path)
+	{
+	$this->db->set(array('albums_id'=>$album,'Morceaux_id'=>$morceau,'path'=>$path,'Utilisateur_id'=>$this->session->userdata('uid'),'format'=>'pdf','type_document'=>'paroles'))
+                	->insert('documents');
+                	}
 }
