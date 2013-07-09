@@ -140,8 +140,7 @@
       </div>
     </footer>
 
-
-          
     <script type="text/javascript" src="<?php echo js_url('slyset') ?>"></script>
+    <script type="text/javascript" src="<?php echo js_url('jquery.placeheld.min') ?>"></script>
   </body>
 </html>

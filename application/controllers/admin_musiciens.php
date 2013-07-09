@@ -9,7 +9,6 @@ class Admin_musiciens extends CI_Controller
         parent::__construct();
         
         $this->layout->ajouter_css('slyset');
-        $this->layout->ajouter_js('jquery.placeheld.min');
         $this->layout->ajouter_js('infinite_scroll');
         $this->layout->ajouter_js('jquery.tablesorter');
         
