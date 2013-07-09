@@ -1369,8 +1369,11 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 .content_static .page_static{font-size:24px;color:#3f3f3f;}
 .content_static h2{ font-size:20px; margin:25px 20px; clear:both; }
 .content_static p{ font-size:14px; margin:0 15px;}
-.content_static .section_faq{ font-size:18px; margin-bottom:25px;}
+.content_static p a{text-decoration:none; font-weight:bold; color:#3f3f3f;}
+.content_static p a:hover{text-decoration:underline; color:#2AB395;}
+.content_static .section_faq{ font-size:22px; margin-bottom:0px; margin:25px 0 0 25px; clear:both; }
 .content_static .titre_static{margin:30px 0 10px 0; font-size:18px; font-weight:normal; color:#3f3f3f;}
+.content_static .bold{font-weight:bold;}
 .content_static .txt_static{font-size:14px;color:#3f3f3f;}
 .content_static .img_static{ margin:15px; }
 .content_static .img_static img{ margin:0 20px 0 0; }

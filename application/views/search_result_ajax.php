@@ -16,6 +16,6 @@ $session_id = $this->session->userdata('uid');
         </td>
         <td class="result-middle"><?php echo $style_ecoute = (!empty($row['style_ecoute'])) ? $row['style_ecoute'] : '-'; ?></td>
         <td class="result-middle"><?php echo $style_joue = (!empty($row['style_joue'])) ? $row['style_joue'] : '-'; ?></td>
-        <td class="result-middle"><?php echo $type = ($row['type'] == 1) ? 'Musicien' : 'Mélomane'; ?></td>
+        <td class="result-middle"><?php echo $type = ($row['type'] == 2) ? 'Musicien' : 'Mélomane'; ?></td>
     </tr>
 <?php endforeach; ?>

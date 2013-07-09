@@ -6,10 +6,10 @@ if (!defined('BASEPATH'))
 class melo_achats extends CI_Controller {
 
     var $data;
-    
+
     public function __construct() {
         parent::__construct();
-
+//        $this->output->enable_profiler(true);
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_css('colorbox');
         $this->layout->ajouter_css('popin');
@@ -20,7 +20,7 @@ class melo_achats extends CI_Controller {
         $this->layout->ajouter_js('jquery.tablesorter');
         $this->layout->ajouter_js('jquery.placeheld.min');
         $this->layout->ajouter_js('jquery.colorbox');
-       
+
 
         $this->load->model(array('user_model', 'mc_actus_model', 'achat'));
         $this->load->helper('form');
@@ -62,46 +62,43 @@ class melo_achats extends CI_Controller {
         if (!empty($profile)) {
             $data['infos_profile'] = $profile;
         }
-        
+
         $data['cmd'] = $this->achat->get_achat($user_visited);
         //print $this->input->post("article-all");
         $data['total_album_panier'] = 0;
         $data['total_morceaux_panier'] = 0;
-        $data['total_document_panier']= 0;
-        $data['total_album_history'] =0 ;
-        $data['total_morceaux_history'] =0 ;
-    	$data['total_document_history'] =0 ;
-        
+        $data['total_document_panier'] = 0;
+        $data['total_album_history'] = 0;
+        $data['total_morceaux_history'] = 0;
+        $data['total_document_history'] = 0;
+
         foreach ($data['cmd'] as $commande) {
             if ($commande->status == "P" && $commande->Albums_id != null) {
-                $data['total_album_panier'] =  $data['total_album_panier'] + count($commande);
+                $data['total_album_panier'] = $data['total_album_panier'] + count($commande);
             }
-           
+
             if ($commande->status == "P" && $commande->Morceaux_id != null) {
                 $data['total_morceaux_panier'] = $data['total_morceaux_panier'] + count($commande);
             }
             if ($commande->status == "P" && $commande->Documents_id != null) {
-                $data['total_document_panier'] =  $data['total_document_panier'] + count($commande);
+                $data['total_document_panier'] = $data['total_document_panier'] + count($commande);
             }
             if ($commande->status == "V" && $commande->Albums_id != null) {
-                $data['total_album_history'] = $data['total_album_history']+count($commande);
+                $data['total_album_history'] = $data['total_album_history'] + count($commande);
             }
             if ($commande->status == "V" && $commande->Morceaux_id != null) {
-                $data['total_morceaux_history'] =  $data['total_morceaux_history'] + count($commande);
-                
+                $data['total_morceaux_history'] = $data['total_morceaux_history'] + count($commande);
             }
             if ($commande->status == "V" && $commande->Documents_id != null) {
-                $data['total_document_history'] =  $data['total_document_history']+ count($commande);
+                $data['total_document_history'] = $data['total_document_history'] + count($commande);
             }
         }
         $this->layout->view('achat/melo_achats', $data);
     }
 
-	public function delete_panier()
-	{
-	
-		$this->achat->delete_panier($this->input->post("commande"));
-		      
+    public function delete_panier() {
 
-	}
+        $this->achat->delete_panier($this->input->post("commande"));
+    }
+
 }

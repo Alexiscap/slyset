@@ -1,4 +1,6 @@
 <?php setlocale(LC_TIME, 'fr_FR.utf8', 'fra'); ?>
+<?php $feedback = $this->session->flashdata('feedback'); ?>
+
 <div id="contentAll">
   <script>
   
@@ -22,6 +24,10 @@ if (isset($all_date_calendar))
       <div class="ico-msg"></div>
       <p><?php echo $notification ?></p>
     </div>
+<?php endif; ?>
+  
+<?php if (isset($feedback)): ?>
+    <?php echo $feedback; ?>
 <?php endif; ?>
 
   <div id="coverflowContainer">

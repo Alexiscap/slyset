@@ -29,8 +29,7 @@ class achat extends CI_Model
 					INNER JOIN morceaux ON infos_commande.Morceaux_id = morceaux.id
 					INNER JOIN utilisateur ON utilisateur.id = morceaux.Utilisateur_id
 
-					WHERE commande.Utilisateur_id = ? )
-					 ";
+					WHERE commande.Utilisateur_id = ? )";
 		  return $this->db->query($sql,array($user_id,$user_id,$user_id))
                         ->result();		
 	}
