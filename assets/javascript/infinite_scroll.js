@@ -1,3 +1,7 @@
+var l = window.location;
+var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
+var base_url_noindex = l.protocol + "//" + l.host + "/";
+
 var reachedEnd = false;
 var objHeight = $(window).height() - 50;
 var last_scroll_top = 0;
@@ -36,10 +40,10 @@ function infiniteArticles() {
         var ajaxLoader = $('#wall-flux').find(".ajax_loader");
 
         ajaxLoader.show();
-        ajaxLoader.fadeIn(500).html('<img src="http://localhost.slyset.com/assets/images/common/ajax-loader.gif" />');
+        ajaxLoader.fadeIn(500).html('<img src=' + base_url_noindex + '"/assets/images/common/ajax-loader.gif" />');
       
         $.ajax({
-            url: "http://localhost.slyset.com/index.php/home/ajax_articles/1/" + count,
+            url: base_url + "/home/ajax_articles/1/" + count,
             async: false,
             dataType: "html",
             success: function(data) {
@@ -67,9 +71,9 @@ function infiniteArticlesAdmin() {
         var ajaxLoader = $('#articles-tab').find(".ajax_loader");
 
         ajaxLoader.show();
-        ajaxLoader.fadeIn(500).html('<img src="http://localhost.slyset.com/assets/images/common/ajax-loader.gif" />');
+        ajaxLoader.fadeIn(500).html('<img src=' + base_url_noindex + '"/assets/images/common/ajax-loader.gif" />');
         $.ajax({
-            url: "http://localhost.slyset.com/index.php/admin_articles/ajax_articles/1/" + count,
+            url: base_url + "/admin_articles/ajax_articles/1/" + count,
             async: false,
             dataType: "html",
             success: function(data) {
@@ -84,9 +88,6 @@ function infiniteArticlesAdmin() {
                     $('#articles-tab table tr').each(function(){
                         var check = $(this).find('.checkbox-style2').children();
                         var check_span = check.children();
-                        
-                        $('#articles-tab table tr:nth-child(even)').addClass('even row-color-1');
-                        $('#articles-tab table tr:nth-child(odd)').addClass('odd row-color-2');
                         
                         if(check_span.length == 0){
 //                            $checkLabel = $('.checkbox-style label, .checkbox-style2 label');
@@ -109,10 +110,10 @@ function infiniteResults() {
         var ajaxLoader = $('.search_results_wrapper').find(".ajax_loader");
 
         ajaxLoader.show();
-        ajaxLoader.fadeIn(500).html('<img src="http://localhost.slyset.com/assets/images/common/ajax-loader.gif" />');
+        ajaxLoader.fadeIn(500).html('<img src=' + base_url_noindex + '"/assets/images/common/ajax-loader.gif" />');
       
         $.ajax({
-            url: "http://localhost.slyset.com/index.php/search/ajax_search_result/1/" + count,
+            url: base_url + "/search/ajax_search_result/1/" + count,
             async: false,
             dataType: "html",
             success: function(data) {
@@ -123,11 +124,6 @@ function infiniteResults() {
                     setTimeout(function(){
                         ajaxLoader.remove();
                     }, 1000);
-                    
-                    $('#results-tab table tr').each(function(){
-                        $('#results-tab table tr:nth-child(even)').addClass('even row-color-1');
-                        $('#results-tab table tr:nth-child(odd)').addClass('odd row-color-2');
-                    });
                 } else {
                     reachedEnd = true;
                 }
@@ -152,10 +148,10 @@ function infiniteComptes() {
         var ajaxLoader = $('#comptes-tab').find(".ajax_loader");
 
         ajaxLoader.show();
-        ajaxLoader.fadeIn(500).html('<img src="http://localhost.slyset.com/assets/images/common/ajax-loader.gif" />');
+        ajaxLoader.fadeIn(500).html('<img src=' + base_url_noindex + '"/assets/images/common/ajax-loader.gif" />');
       
         $.ajax({
-            url: "http://localhost.slyset.com/index.php/admin_" + typeAccount + "/ajax_" + typeAccount + "/1/" + count,
+            url: base_url + "/admin_" + typeAccount + "/ajax_" + typeAccount + "/1/" + count,
             async: false,
             dataType: "html",
             success: function(data) {
@@ -170,9 +166,6 @@ function infiniteComptes() {
                     $('#comptes-tab table tr').each(function(){
                         var check = $(this).find('.checkbox-style2').children();
                         var check_span = check.children();
-                    
-                        $('#comptes-tab table tr:nth-child(even)').addClass('even row-color-1');
-                        $('#comptes-tab table tr:nth-child(odd)').addClass('odd row-color-2');
                     
                         if(check_span.length == 0){
 //                            $checkLabel = $('.checkbox-style label, .checkbox-style2 label');

@@ -21,30 +21,34 @@ $session_id = $this->session->userdata('uid');
                 echo form_open('admin_melomanes/submit_multi_melos');
             ?>
           
-                <table>
-                    <tr class="tab-head">
-                        <th class="compte-checkbox checkbox-style2"><input type="checkbox" name="compte-all" value="all" class="check_all checkbox-compte" id="compte-all"/><?php echo form_label('', "compte-all") ?></th>
-                        <th class="compte-little">#ID<span id="id" class="filter filter-bottom"></span></th>
-                        <th class="compte-title">Nom d'utilisateur<span id="titre" class="filter filter-bottom"></span></th>
-                        <th class="compte-middle">Date d'inscription<span id="created" class="filter filter-bottom"></span></th>
-                        <th class="compte-little">Etat<span id="etat" class="filter filter-bottom"></span></th>
-                    </tr>
-
-                    <?php foreach($melos as $melo): ?>
-                        <tr>
-                            <td class="compte-checkbox checkbox-style2"><input type="checkbox" name="checkcompte[]" value="<?php echo $melo->id ?>" id="compte-<?php echo $melo->id ?>" class="checkbox-compte" /><?php echo form_label('', "compte-$melo->id") ?></td>
-                            <td class="compte-little"><?php echo $melo->id ?></td>
-                            <td class="compte-title"><?php echo $melo->login ?>
-                                <div class="compte-actions">
-                                    <a href="<?php echo site_url('admin_melomanes/suspend/'.$melo->id); ?>"><?php echo $etat_txt = ($melo->suspendu == 0) ? 'Suspendre' : 'Activer'; ?></a>
-                                    | 
-                                    <a href="<?php echo site_url('admin_melomanes/delete/'.$melo->id); ?>">Supprimer</a>
-                                </div>
-                            </td>
-                            <td class="compte-middle"><?php echo date('d-m-Y', strtotime(str_replace('-', '/', $melo->created)))?></td>
-                            <td class="compte-little"><?php echo $etat = ($melo->suspendu == 0) ? 'Actif' : 'Suspendu'; ?></td>
+                <table id="tablesorter-cb">
+                    <thead>
+                        <tr class="tab-head">
+                            <th class="compte-checkbox checkbox-style2"><input type="checkbox" name="compte-all" value="all" class="check_all checkbox-compte" id="compte-all"/><?php echo form_label('', "compte-all") ?></th>
+                            <th class="compte-little">#ID<!--<span id="id" class="filter filter-bottom"></span>--></th>
+                            <th class="compte-title">Nom d'utilisateur<!--<span id="titre" class="filter filter-bottom"></span>--></th>
+                            <th class="compte-middle">Date d'inscription<!--<span id="created" class="filter filter-bottom"></span>--></th>
+                            <th class="compte-little">Etat<!--<span id="etat" class="filter filter-bottom"></span>--></th>
                         </tr>
-                    <?php endforeach; ?>
+                    </thead>
+                    
+                    <tbody>
+                        <?php foreach($melos as $melo): ?>
+                            <tr>
+                                <td class="compte-checkbox checkbox-style2"><input type="checkbox" name="checkcompte[]" value="<?php echo $melo->id ?>" id="compte-<?php echo $melo->id ?>" class="checkbox-compte" /><?php echo form_label('', "compte-$melo->id") ?></td>
+                                <td class="compte-little"><?php echo $melo->id ?></td>
+                                <td class="compte-title"><?php echo $melo->login ?>
+                                    <div class="compte-actions">
+                                        <a href="<?php echo site_url('admin_melomanes/suspend/'.$melo->id); ?>"><?php echo $etat_txt = ($melo->suspendu == 0) ? 'Suspendre' : 'Activer'; ?></a>
+                                        | 
+                                        <a href="<?php echo site_url('admin_melomanes/delete/'.$melo->id); ?>">Supprimer</a>
+                                    </div>
+                                </td>
+                                <td class="compte-middle"><?php echo date('d-m-Y', strtotime(str_replace('-', '/', $melo->created)))?></td>
+                                <td class="compte-little"><?php echo $etat = ($melo->suspendu == 0) ? 'Actif' : 'Suspendu'; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
                 </table>
             <?php
                     echo form_submit('supprimer','Supprimer');
