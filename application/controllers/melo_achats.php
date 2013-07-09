@@ -57,10 +57,10 @@ class melo_achats extends CI_Controller {
         //    );
         $data = $this->data;
         $uid = $this->session->userdata('uid');
-
-        $user_visited = (empty($infos_profile)) ? $uid : $infos_profile->id;
-        if (!empty($infos_profile)) {
-            $data['infos_profile'] = $infos_profile;
+		
+        $user_visited = (empty($profile)) ? $uid : $profile->id;
+        if (!empty($profile)) {
+            $data['infos_profile'] = $profile;
         }
 
         $data['cmd'] = $this->achat->get_achat($user_visited);

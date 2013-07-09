@@ -2,25 +2,44 @@
   <p> Ajouter des paroles </p>
   <img src="<?php echo img_url('musicien/pop_close.png'); ?>" alt="Fermer" />
   <div class="content-pi">
-    <form>
+			<?php echo $error;?>
+
+<?php echo form_open_multipart('pi_ajout_paroles/do_upload');?>
+
 		<div class="label">
 			<label>Vos paroles</label>
 		</div>
 		<div class="champs">
-			<div class="bt_noir">
+		<!--	<div class="bt_noir">
 				<a href="#"><span class="bt_left"></span><span class="bt_middle">Choisir un fichier</span><span class="bt_right"></span></a>
-				<p class="nom_img">bob_dylan_lille.jpg</p>
+			<p class="nom_img">bob_dylan_lille.jpg</p>
 			</div>
+			-->
+
+<input type="file" name="userfile" size="20" />
+
+<br /><br />
+<!-- upload fichier
+par controller : list album
+par album : liste morceaux
+-->
+
+				
 		</div>
 		<div class="label">
 			<label>Album</label>
 		</div>
 		<div class="champs">
-			<select>
-			<option value="1">1</option>
+			<select name="album">
+			<option  value=" "> </option>
+
+			<?php foreach($album as $one_album): ?>
+			<option name="morceaux" class = "<?php echo $one_album->id?>"value="<?php echo $one_album->nom?>"><?php echo $one_album->nom?></option>
+			<?php endforeach; ?>
 		</select>
 		</div>
-		<input type="submit" value="valider">
-	</form>
+		<div id="morceaux"></div>
+<input type="submit" value="upload" />
+	<?php echo form_close();?>
   </div>
 </div>

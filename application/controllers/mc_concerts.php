@@ -181,8 +181,8 @@ class Mc_concerts extends CI_Controller {
 
                     //*************** AVEC LA REFERENCE : RECUP DES COORDONNEES ****************
                 }
-                $cpr2 = curl_init();
-
+                $cpr2 = curl_init(); 
+                $pays = null; $code_postal = null; $route = null; $street_number = null; $phone =null; $website = null;
                 if (isset($url_detail_place)) {
                     curl_setopt($cpr2, CURLOPT_URL, "https://maps.googleapis.com/maps/api/place/details/json?reference=" . $url_detail_place . "&sensor=true&key=AIzaSyCcssc_1iHiNjx3tub8qJ3L3WmpCn-ea5Y");
                     curl_setopt($cpr2, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
@@ -202,7 +202,6 @@ class Mc_concerts extends CI_Controller {
                             if ($adress_component[$i]->{'types'}[0] == 'street_number') {
                                 $street_number = $adress_component[$i]->{'short_name'};
                             }
-
                             if ($adress_component[$i]->{'types'}[0] == 'route') {
                                 $route = $adress_component[$i]->{'short_name'};
                             }
@@ -282,6 +281,7 @@ class Mc_concerts extends CI_Controller {
                     //*************** AVEC LA REFERENCE : RECUP DES COORDONNEES ****************
 
                     $cpr2 = curl_init();
+                	$pays = null; $code_postal = null; $route = null; $street_number = null; $phone =null; $website = null;
 
                     if (isset($url_detail_place)) {
                         curl_setopt($cpr2, CURLOPT_URL, "https://maps.googleapis.com/maps/api/place/details/json?reference=" . $url_detail_place . "&sensor=true&key=AIzaSyCcssc_1iHiNjx3tub8qJ3L3WmpCn-ea5Y");

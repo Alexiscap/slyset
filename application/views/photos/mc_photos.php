@@ -153,6 +153,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                    
                     <a href="<?php echo site_url('media/album/'.$infos_profile->id.'/'.$media_user_result_unit->file_name); ?>"><img src="<?php echo files($infos_profile->id.'/photos/'.$media_user_result_unit->file_name.'/cover'); ?>" class="img_cover" /></a>
         <?php
+        $a = 0;
         foreach ($all_photos as $al_photo):
             if ($media_user_result_unit->file_name == $al_photo->file_name):
                 foreach ($all_photos_albums as $all_photos_album):
@@ -160,10 +161,12 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                         ?>
                                     <a href="#"><img src="<?php echo files($infos_profile->id.'/photos/'.$media_user_result_unit->file_name.'/'.$all_photos_album->file_name); ?>" class="img_miniat" /></a>
                                     <?php
+                                      $a ++ ;   
                                 endif;
                             endforeach;
 
-                            ;
+                          if($a == 3)
+                    break;     
                         endif;
                     endforeach;
                     ?>
