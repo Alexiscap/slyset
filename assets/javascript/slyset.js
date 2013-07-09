@@ -12,21 +12,23 @@ function playMasonry(){
 }
 
 $(document).ready(function(){
+    var l = window.location;
+    var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
 
-	$('.head_menu').click(function(){
-	//$('.head_menu').next('.first-row').slideUp()
-	if($(this).next('.one').is(":visible")==true)
-	{
-$(this).next('.one').hide()
-}
-else
-{
-$(this).next('.one').show()
+    $('.head_menu').click(function(){
+        //$('.head_menu').next('.first-row').slideUp()
+        if($(this).next('.one').is(":visible")==true)
+        {
+            $(this).next('.one').hide()
+        }
+        else
+        {
+            $(this).next('.one').show()
 
-}
-//$(this).next('.one:hidden').show()
+        }
+    //$(this).next('.one:hidden').show()
 
-	})
+    })
     $("select").change(function () {
         $("select option:selected")
         var str = "";
@@ -163,23 +165,22 @@ $(this).next('.one').show()
         
     }
     $('#tablesorter tbody tr').live('click', function () {               
-                    if ($(this).hasClass('even')) {
-                        $(this).removeClass('even');
-                        $(this).addClass('ui-selected');
-                    }
-                    else if ($(this).hasClass('odd')) {
-                        $(this).removeClass('odd');
-                        $(this).addClass('ui-selected');
-                    }
-                    else {
-                        $(this).removeClass('ui-selected');
-                        $("#tablesorter").trigger("update");
-                        $("#tablesorter").trigger("applyWidgets");                         
-                    }
+        if ($(this).hasClass('even')) {
+            $(this).removeClass('even');
+            $(this).addClass('ui-selected');
+        }
+        else if ($(this).hasClass('odd')) {
+            $(this).removeClass('odd');
+            $(this).addClass('ui-selected');
+        }
+        else {
+            $(this).removeClass('ui-selected');
+            $("#tablesorter").trigger("update");
+            $("#tablesorter").trigger("applyWidgets");                         
+        }
     });
-//    $('#articles-tab table tr:nth-child(even), #comptes-tab table tr:nth-child(even), #results-tab table tr:nth-child(even)').addClass('even row-color-1');
-//    $('#articles-tab table tr:nth-child(odd), #comptes-tab table tr:nth-child(odd), #results-tab table tr:nth-child(odd)').addClass('odd row-color-2');
-    
+    //    $('#articles-tab table tr:nth-child(even), #comptes-tab table tr:nth-child(even), #results-tab table tr:nth-child(even)').addClass('even row-color-1');
+    //    $('#articles-tab table tr:nth-child(odd), #comptes-tab table tr:nth-child(odd), #results-tab table tr:nth-child(odd)').addClass('odd row-color-2');
     
     $('.form_comments form').submit(function(){
         var baseurl = $(this).find("#baseurl").val();
