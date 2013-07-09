@@ -30,7 +30,7 @@
                 <li class="head_menu row row-7"><a href="<?php echo site_url('admin'); ?>"><span class="icon"></span><span class="menu-text">Utilisateurs</span></a></li>
                 <li class="first-row row row-8"><a href="<?php echo site_url('admin-melomanes'); ?>"><span class="icon"></span><span class="menu-text">Mélomanes</span></a></li>
                 <li class="row row-9"><a href="<?php echo site_url('admin-musiciens'); ?>"><span class="icon"></span><span class="menu-text">Musiciens</span></a></li>
-                <li class="row row-10"><a href="<?php echo site_url('admin-signalements'); ?>"><span class="icon"></span><span class="menu-text">Signalements</span></a></li>
+<!--                <li class="row row-10"><a href="<?php echo site_url('admin-signalements'); ?>"><span class="icon"></span><span class="menu-text">Signalements</span></a></li>-->
             </ul>
         </div>
     </aside>

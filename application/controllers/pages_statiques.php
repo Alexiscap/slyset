@@ -85,9 +85,11 @@ class Pages_statiques extends CI_Controller {
             $mail  = $this->input->post('mail');
             $message  = $this->input->post('message');
             
-            $this->session->set_flashdata('feedback', 'Votre message a bien été transmis à l\'équipe Slyset. Nous vous donnerons réponse aussi tôt que nous le pouvons.');
+            $this->session->set_flashdata('feedback', 'Votre message a bien été transmis à l\'équipe Slyset. Nous vous donnerons réponse aussi tôt que possible.');
             
-            redirect('home', 'refresh');
+//            redirect('home');
+//            $this->layout->view('statiques/contact', $data);
+            redirect('contact/'.$this->session_uid);
         }
     }
 

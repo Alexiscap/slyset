@@ -11,10 +11,12 @@ class Admin_articles extends CI_Controller
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_css('shadowbox/shadowbox');
         $this->layout->ajouter_css('redactor');
+        
         $this->layout->ajouter_js('jquery.placeheld.min');
         $this->layout->ajouter_js('shadowbox/shadowbox');
         $this->layout->ajouter_js('redactor/redactor.min');
         $this->layout->ajouter_js('infinite_scroll');
+        $this->layout->ajouter_js('jquery.tablesorter');
         
         $this->load->helper(array('cookie', 'form'));
         $this->load->model(array('login_model', 'perso_model', 'user_model', 'article_model'));
@@ -38,7 +40,8 @@ class Admin_articles extends CI_Controller
         }
     }
     
-    public function dashboard($order = 'updated', $by = 'desc')
+//    public function dashboard($order = 'updated', $by = 'desc')
+    public function dashboard()
     {      
         if($this->login_model->isLoggedInAdmin()){
             $data = $this->data;
@@ -160,7 +163,7 @@ class Admin_articles extends CI_Controller
     
     public function uploadImg()
     {
-        print 'okkkkkk';
+//        print 'okkkkkk';
         $dynamic_path = './files/articles/';
         if (is_dir($dynamic_path) == false){
             mkdir($dynamic_path, 0755, true);

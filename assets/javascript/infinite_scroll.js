@@ -60,8 +60,8 @@ function infiniteArticles() {
 }
 
 function infiniteArticlesAdmin() {
-    var trs = $('#articles-tab tr');
-    var count = trs.length - 1;
+    var trs = $('#articles-tab table tbody tr');
+    var count = trs.length;
  
     if (reachedEnd == false) {
         var ajaxLoader = $('#articles-tab').find(".ajax_loader");

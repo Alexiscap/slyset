@@ -11,6 +11,7 @@ class Admin_melomanes extends CI_Controller
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_js('jquery.placeheld.min');
         $this->layout->ajouter_js('infinite_scroll');
+        $this->layout->ajouter_js('jquery.tablesorter');
         
         $this->load->helper(array('cookie', 'form'));
         $this->load->model(array('login_model', 'perso_model', 'user_model', 'comptes_model'));
@@ -24,17 +25,20 @@ class Admin_melomanes extends CI_Controller
     }
 
     
-    public function index($order = 'login', $by = 'asc')
+//    public function index($order = 'login', $by = 'asc')
+    public function index()
     {
         if($this->login_model->isLoggedInAdmin()){
 //            redirect('admin/dashboard', 'refresh');
-            $this->dashboard($order, $by);
+//            $this->dashboard($order, $by);
+            $this->dashboard();
         } else {
             redirect('login', 'refresh');
         }
     }
     
-    public function dashboard($order = 'login', $by = 'asc')
+//    public function dashboard($order = 'login', $by = 'asc')
+    public function dashboard()
     {      
         if($this->login_model->isLoggedInAdmin()){
             $data = $this->data;

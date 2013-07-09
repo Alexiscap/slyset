@@ -16,7 +16,7 @@ $session_id = $this->session->userdata('uid');
         <p>Grâce à l’administration de Slyset (le “back-office”), vous pouvez gérer l’ensemble du site et de ses utilisateurs, aussi bien mélomanes que musiciens. Vous pouvez intervenir sur tous les contenus présents sur Slyset et administrer les abus aux conditions générales d’utilisation.</p>
 
         <div id="admin_notification">
-            <h3> Publier une notification générale</h3>
+            <h3>Publier une notification générale</h3>
 
             <?php
                 $cookie = $this->input->cookie('notification', TRUE);
@@ -59,8 +59,8 @@ $session_id = $this->session->userdata('uid');
             </div>
             
             <div class="admin_links">
-                <a href="#">Voir et gérer les abus signalés</a>
-                <br /><br />
+<!--                <a href="#">Voir et gérer les abus signalés</a>
+                <br /><br />-->
                 <a href="<?php echo site_url('admin-melomanes'); ?>">Gérer les comptes mélomanes</a>
                 <a href="<?php echo site_url('admin-musiciens'); ?>">Gérer les comptes musiciens</a>
             </div>
