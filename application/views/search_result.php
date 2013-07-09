@@ -24,32 +24,36 @@ $session_id = $this->session->userdata('uid');
         <hr>
 
         <div class="search_results_wrapper" id="results-tab">
-            <table>
-                <tr class="tab-head">
-                    <th class="result-photo">Profil</th>
-                    <th class="result-title">Nom d'utilisateur<span id="titre" class="filter filter-bottom"></span></th>
-                    <th class="result-middle">Style d'écoute</th>
-                    <th class="result-middle">Style joué</th>
-                    <th class="result-middle">Type de compte</th>
-                </tr>
-
-                <?php foreach ($results as $row): ?>
-                    <tr class="search_result">
-                        <td class="result-photo">
-                            <a href="<?php echo site_url('actualite/' . $row['id']); ?>">
-                                <img src="<?php echo $thumb = (!empty($row['thumb'])) ? files('profiles/' . $row['thumb']) : img_url('sidebar-right/defaultphoto-profil.png'); ?>" height="38" alt="Photo Profil" />
-                            </a>
-                        </td>
-                        <td class="result-title">
-                            <a href="<?php echo site_url('actualite/' . $row['id']); ?>">
-                                <?php echo $row['login']; ?>
-                            </a>
-                        </td>
-                        <td class="result-middle"><?php echo $style_ecoute = (!empty($row['style_ecoute'])) ? $row['style_ecoute'] : '-'; ?></td>
-                        <td class="result-middle"><?php echo $style_joue = (!empty($row['style_joue'])) ? $row['style_joue'] : '-'; ?></td>
-                        <td class="result-middle"><?php echo $type = ($row['type'] == 2) ? 'Musicien' : 'Mélomane'; ?></td>
+            <table id="tablesorter-nocb">
+                <thead>
+                    <tr class="tab-head">
+                        <th class="result-photo">Profil</th>
+                        <th class="result-title">Nom d'utilisateur<span id="titre" class="filter filter-bottom"></span></th>
+                        <th class="result-middle">Style d'écoute</th>
+                        <th class="result-middle">Style joué</th>
+                        <th class="result-middle">Type de compte</th>
                     </tr>
-                <?php endforeach; ?>
+                </thead>
+                
+                <tbody>
+                    <?php foreach ($results as $row): ?>
+                        <tr class="search_result">
+                            <td class="result-photo">
+                                <a href="<?php echo site_url('actualite/' . $row['id']); ?>">
+                                    <img src="<?php echo $thumb = (!empty($row['thumb'])) ? files('profiles/' . $row['thumb']) : img_url('sidebar-right/defaultphoto-profil.png'); ?>" height="38" alt="Photo Profil" />
+                                </a>
+                            </td>
+                            <td class="result-title">
+                                <a href="<?php echo site_url('actualite/' . $row['id']); ?>">
+                                    <?php echo $row['login']; ?>
+                                </a>
+                            </td>
+                            <td class="result-middle"><?php echo $style_ecoute = (!empty($row['style_ecoute'])) ? $row['style_ecoute'] : '-'; ?></td>
+                            <td class="result-middle"><?php echo $style_joue = (!empty($row['style_joue'])) ? $row['style_joue'] : '-'; ?></td>
+                            <td class="result-middle"><?php echo $type = ($row['type'] == 2) ? 'Musicien' : 'Mélomane'; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
             </table>
 
             <div class="ajax_loader"></div>

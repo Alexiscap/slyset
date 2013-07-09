@@ -537,9 +537,10 @@ cursor : pointer;}
 
 /*#top-song-title .title-img{ }*/
 
-#top-song-title{ font-family:"Trebuchet MS"; font-size:20px; color:#3f3f3f; width:200px; float:left; position:absolute; width:346px; }
-#calendar-title{ font-family:"Trebuchet MS"; font-size:20px; color:#3f3f3f; width:200px; float:left; position:absolute; margin-left:370px; width:213px; }					 
-#newbies-title{ font-family:"Trebuchet MS"; font-size:20px; color:#3f3f3f; float:left; position:absolute; margin-left:599px; width:171px; }
+.home .title-img{ margin:1px 5px 1px 0; float:left; }
+#top-song-title{ font-family:"Trebuchet MS"; font-size:20px; color:#3f3f3f; width:200px; float:left; position:absolute; width:346px; line-height:25px; }
+#calendar-title{ font-family:"Trebuchet MS"; font-size:20px; color:#3f3f3f; width:200px; float:left; position:absolute; margin-left:370px; width:213px; line-height:25px; }					 
+#newbies-title{ font-family:"Trebuchet MS"; font-size:20px; color:#3f3f3f; float:left; position:absolute; margin-left:599px; width:171px; line-height:25px; }
 
 
 #top-song-play-one{ position:absolute; margin-top:33px; box-shadow:-1px 0 1px 1px #EDEDED; border-left:1px solid #dedede; border-top:1px solid #dedede; border-bottom:1px solid #dedede; width:175px; }
@@ -1367,9 +1368,9 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 .search input[type="checkbox"] + label span{ margin:-3px 0 0 0; }
 .search #results-tab .result-checkbox{ padding:0 6px; }
 
-.search #results-tab .result-title{ padding:0 12px 0 25px; width:577px; }
-.search #results-tab .result-middle{ padding:0 10px; width:180px; }
-.search #results-tab .result-little{ padding:0 10px; width:70px; }
+.search #results-tab .result-title{ padding:0 12px 0 28px; width:577px; }
+.search #results-tab .result-middle{ padding:0 0px 0 28px; width:180px; }
+.search #results-tab .result-little{ padding:0 0px 0 28px; width:70px; }
 .search #results-tab .result-photo{ padding:2px 10px; width:40px; text-align:center; }
 .search #results-tab .result-photo img{ -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px; }
 

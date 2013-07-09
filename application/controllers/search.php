@@ -12,6 +12,7 @@ class Search extends CI_Controller {
 //        $this->output->enable_profiler(true);
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_js('infinite_scroll');
+        $this->layout->ajouter_js('jquery.tablesorter');
 
         $this->load->helper(array('cookie', 'form'));
         $this->load->model(array('search_model', 'user_model'));

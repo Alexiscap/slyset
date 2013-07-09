@@ -197,7 +197,7 @@ if (isset($all_date_calendar))
 
       <div id="first-line-calendar">
         <div id="calendar-title">
-          <span class="title-img"><img src="<?php echo img_url('portail/etoile.png') ?>"></span>
+          <span class="title-img"><img src="<?php echo img_url('portail/agenda.png') ?>"></span>
           L'agenda <span class="title-color"> concert</span>
         </div>
 
@@ -212,7 +212,7 @@ if (isset($all_date_calendar))
 
       <div id="first-line-newbies">
         <div id="newbies-title">
-          <span class="title-img"><img src="<?php echo img_url('portail/etoile.png') ?>"></span>
+          <span class="title-img"><img src="<?php echo img_url('portail/newbies.png') ?>"></span>
           Les <span class="title-color">newbies</span>
         </div>
 

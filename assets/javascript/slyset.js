@@ -18,18 +18,14 @@ function playMasonry(){
 $(document).ready(function(){
     $('.head_menu').click(function(){
         //$('.head_menu').next('.first-row').slideUp()
-        if($(this).next('.one').is(":visible")==true)
-        {
+        if($(this).next('.one').is(":visible") == true){
             $(this).next('.one').hide()
-        }
-        else
-        {
+        } else {
             $(this).next('.one').show()
-
         }
     //$(this).next('.one:hidden').show()
-
-    })
+    });
+    
     $("select").change(function () {
         $("select option:selected")
         var str = "";
@@ -43,11 +39,9 @@ $(document).ready(function(){
             success: function(datas){
                 $('.mor').remove();
                 $(datas).show().insertAfter('select').slideDown('slow');
-        	
             }
         })
-       
-    })
+    });
 
     if($('#tablesorter-cb').length > 0){
         $('#tablesorter-cb').tablesorter({
@@ -63,7 +57,17 @@ $(document).ready(function(){
         });
     }
     if($('#tablesorter-nocb').length > 0){
-        $('#tablesorter-nocb').tablesorter();; 
+        $('#tablesorter-nocb').tablesorter({
+            theme: 'blue',
+            widgets: ['zebra'],
+            headers:{
+                0:{
+                    sorter:false
+                }
+            },
+            cssAsc:	"headerSortUp",
+            cssDesc: "headerSortDown"
+        });
     }
 
     //    Shadowbox.open({
