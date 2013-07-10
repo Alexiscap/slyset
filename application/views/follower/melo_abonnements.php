@@ -69,8 +69,8 @@
 			<span class="button_center">Abonné</span>
 			<span class="button_right"></span></a>
 		</div>
-	</div>
 	<hr/>
+	</div>
 	
 		<?php
 	endforeach;

@@ -12,7 +12,6 @@ class Admin_articles extends CI_Controller
         $this->layout->ajouter_css('shadowbox/shadowbox');
         $this->layout->ajouter_css('redactor');
         
-        $this->layout->ajouter_js('jquery.placeheld.min');
         $this->layout->ajouter_js('shadowbox/shadowbox');
         $this->layout->ajouter_js('redactor/redactor.min');
         $this->layout->ajouter_js('infinite_scroll');

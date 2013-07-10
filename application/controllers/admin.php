@@ -10,7 +10,6 @@ class Admin extends CI_Controller
         
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_css('shadowbox');
-        $this->layout->ajouter_js('jquery.placeheld.min');
         $this->layout->ajouter_js('shadowbox/shadowbox');
         
         $this->load->helper(array('cookie', 'form'));

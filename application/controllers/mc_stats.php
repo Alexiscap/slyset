@@ -12,10 +12,6 @@ class Mc_stats extends CI_Controller
       
       	$this->layout->ajouter_css('slyset');
       
-      	$this->layout->ajouter_js('jquery.imagesloaded.min');
-      	$this->layout->ajouter_js('jquery.masonry.min');
-     	$this->layout->ajouter_js('jquery.stapel');
-      
         $this->layout->set_id_background('stats');
     
         $this->load->model(array('perso_model', 'user_model'));

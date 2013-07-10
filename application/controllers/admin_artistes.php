@@ -7,10 +7,9 @@ class Admin_artistes extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->output->enable_profiler(true);
+//        $this->output->enable_profiler(true);
         
         $this->layout->ajouter_css('slyset');
-        $this->layout->ajouter_js('jquery.placeheld.min');
         
         $this->load->helper(array('cookie', 'form'));
         $this->load->model(array('login_model', 'perso_model', 'user_model', 'admin_model'));

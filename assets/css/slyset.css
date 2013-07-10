@@ -943,6 +943,7 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 
 
 /*-------- MUSICIEN FOLLOWERS------*/
+.content .follower:last-child hr {display:none;}
 .content .follower .photo_follow {width:64px;float:left;margin:0 10px 10px 20px;}
 .content .follower .photo_follow img {width : 63px; border-radius : 10px;}
 .content .follower .description {width:220px;float:left;margin:0 10px}

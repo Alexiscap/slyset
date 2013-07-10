@@ -29,7 +29,6 @@ class melo_actu extends CI_Controller
         $this->user_authentication->musicien_user_validation();
         
         $this->layout->ajouter_css('slyset');
-        $this->layout->ajouter_js('jquery.placeheld.min');
         $this->layout->ajouter_js('jquery.easing.min');
         
         $this->load->helper('form');

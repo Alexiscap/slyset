@@ -9,7 +9,7 @@ class Mc_concerts extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->output->enable_profiler(true);
+//        $this->output->enable_profiler(true);
 //        $this->user_authentication->musicien_user_validation();
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_css('colorbox');

@@ -9,10 +9,6 @@ class Pi_ajout_concert extends CI_Controller
       
       $this->layout->ajouter_css('slyset');
       
-      $this->layout->ajouter_js('jquery.imagesloaded.min');
-      $this->layout->ajouter_js('jquery.masonry.min');
-      $this->layout->ajouter_js('jquery.stapel');
-      
         $this->layout->set_id_background('ajout_concert');
     }
   
@@ -23,10 +19,10 @@ class Pi_ajout_concert extends CI_Controller
   
     public function page()
     {
-      $datas = array();
+      $data = array();
       
       //$this->layout->views('3');
-      $this->layout->view('pi_ajout_concerts', $datas);
+      $this->layout->view('pi_ajout_concerts', $data);
     }
   
 }

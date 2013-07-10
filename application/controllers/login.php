@@ -7,7 +7,6 @@ class Login extends CI_Controller
     {
         parent::__construct();
         $this->layout->ajouter_css('slyset');
-        $this->layout->ajouter_js('jquery.placeheld.min');
         
         $this->load->helper('form');
         $this->load->model('login_model');

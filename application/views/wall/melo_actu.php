@@ -379,7 +379,7 @@
 		// ------------------------ ALBUM MUSICIEN --------------------------
 
   			if($entity_wall->type =='MU'):
-  				foreach($photo_by_album as $photo_album):
+  				foreach($photo_by_album as $key => $photo_album):
   					if($photo_album[0]->albums_media_file_name == $entity_wall->idproduit):
 ?>	
     					<div class="artist_post photo_message">
@@ -393,8 +393,7 @@
       							<div class="right">
  							   		<span class="ico_citation"></span>
         							<p class="msg_post">
-        								<?php echo $entity_wall->login;
-       									?> vient d’ajouter <?php echo count($photo_album) ?> photos à <a href="<?php echo base_url('index.php/media/album/'.$entity_wall->Utilisateur_id.'/'.$photo_album[0]->albums_media_file_name)?>">son album “<?php echo $entity_wall->main_nom ?>”</a>
+        								<?php echo $entity_wall->login; ?> vient d’ajouter <?php echo count($photo_album) ?> photos à <a href="<?php echo base_url('index.php/media/album/'.$entity_wall->Utilisateur_id.'/'.$photo_album[0]->albums_media_file_name)?>">son album “<?php echo $entity_wall->main_nom ?>”</a>
        								</p>
         						<div class="content-mosaic">
         						<?php  foreach($photo_album as $photo):
@@ -419,23 +418,21 @@
 
           
       </div>
-        <?
-      endif;
-      ?>
+        <?php endif; ?>
+      
       <div class="bottom">
         <span class="infos_publi"><?php echo $entity_wall->login?> - <?php 	$date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
     					  	$a =  date_timestamp_get($date_format);
             				echo $data['date_2'] = strftime('Le %d %B %G',$a);?></span>
       </div>
     </div>
-  					<?php
-  					endif;
-  				endforeach;
-  			endif;
+  					
+  					<?php endif; ?>
+  				<?php endforeach; ?>
+  			<?php endif; ?>
   			
-  				if($entity_wall->type =='ME'):
-  			?>
-  						<div id ="<?php echo $entity_wall->id?>" class="artist_post photo_message">
+  				<?php if($entity_wall->type =='ME'): ?>
+  						<div id="<?php echo $entity_wall->id?>" class="artist_post photo_message">
       <div class="top"  class="top" id="<?php echo $entity_wall->id?>">
             			<?php if($this->uri->segment(2)==$this->session->userdata('uid')):
 ?>

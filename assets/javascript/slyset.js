@@ -27,9 +27,9 @@ $(document).ready(function(){
     $('.head_menu').click(function(){
         //$('.head_menu').next('.first-row').slideUp()
         if($(this).next('.one').is(":visible") == true){
-            $(this).next('.one').hide()
+            $(this).next('.one').slideToggle(500);
         } else {
-            $(this).next('.one').show()
+            $(this).next('.one').slideToggle(500);
         }
     //$(this).next('.one:hidden').show()
     });
@@ -77,13 +77,6 @@ $(document).ready(function(){
             cssDesc: "headerSortDown"
         });
     }
-
-    //    Shadowbox.open({
-    ////        content:    'application/views/lightbox/pi_ajout_concerts.php',
-    //        player:     "iframe",
-    //        height:     600,
-    //        width:      700
-    //    });
   
     if($("#shadowbox").length > 0){
         Shadowbox.init({
@@ -165,15 +158,13 @@ $(document).ready(function(){
                 location.hash = 'close';
                 $('#wysiwyg-block').slideToggle('slow');
             }
-            );
+        );
 
         $('#articles-tab td .article-actions').hide();
         $('#articles-tab tr').hover(function() {
             $(this).find('.article-actions').show();
-        //              $(this).find('.article-actions').stop().fadeIn();
         }, function(){
             $(this).find('.article-actions').hide();
-        //              $(this).find('.article-actions').stop().fadeOut();
         });
         
     }
@@ -259,8 +250,6 @@ $(document).ready(function(){
     
     
     $('.ajout_comm form').submit(function(e){
-	
-  
         var baseurl = $(this).find("#baseurl").val();
         var comment = $(this).find("#usercomment").val();
         var messageid = $(this).find("#messageid").val();
@@ -343,7 +332,6 @@ $(document).ready(function(){
     
     $('.like').live('click',function(){
         //var baseurl = $(this).find("#baseurl").val();
-        var baseurl = window.location.host;
         var id_photo = $(this).attr('id');
         var coeur = $(this);
         var dataid = 'id_photo=' + id_photo;

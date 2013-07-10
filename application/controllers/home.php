@@ -13,7 +13,6 @@ class Home extends CI_Controller {
     //      $this->load->model('Facebook_Model');
 
     $this->layout->ajouter_js('carouFredSel');
-    $this->layout->ajouter_js('jquery.placeheld.min');
     $this->layout->ajouter_js('infinite_scroll');
     $this->layout->ajouter_js('jsdate');
     $this->layout->ajouter_js('calendar');

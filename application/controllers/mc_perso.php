@@ -12,7 +12,6 @@ class Mc_perso extends CI_Controller
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_css('colorpicker');
         
-        $this->layout->ajouter_js('jquery.placeheld.min');
         $this->layout->ajouter_js('colorpicker/colorpicker');
         $this->layout->ajouter_js('colorpicker/eye');
         $this->layout->ajouter_js('colorpicker/utils');

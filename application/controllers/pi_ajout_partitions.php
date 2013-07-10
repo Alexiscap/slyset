@@ -14,7 +14,7 @@ class Pi_ajout_partitions extends CI_Controller
       $this->layout->ajouter_js('jquery.stapel');
       
         $this->layout->set_id_background('ajout_partitions');
-          $this->load->helper(array('form', 'url'));
+          $this->load->helper(array('form'));
 
 		$this->load->model('document');
 

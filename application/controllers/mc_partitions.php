@@ -9,12 +9,9 @@ class Mc_partitions extends CI_Controller {
     $this->layout->ajouter_css('slyset');
     $this->layout->ajouter_css('colorbox');
 
-
-    $this->load->helper('form');
-    
-    $this->layout->ajouter_js('jquery.placeheld.min');
     $this->layout->ajouter_js('jquery.colorbox');
     
+    $this->load->helper('form');
     $this->load->model(array('perso_model', 'user_model', 'document'));
     
     $this->layout->set_id_background('partitions');

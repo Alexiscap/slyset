@@ -13,7 +13,7 @@ class Pi_ajout_paroles extends CI_Controller
       $this->layout->ajouter_js('jquery.masonry.min');
       $this->layout->ajouter_js('jquery.stapel');
       
-      $this->load->helper(array('form', 'url'));
+      $this->load->helper(array('form'));
 
 		$this->load->model('document');
 

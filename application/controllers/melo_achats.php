@@ -18,7 +18,6 @@ class melo_achats extends CI_Controller {
         //	$this->layout->ajouter_css('shadowbox');
         //   $this->layout->ajouter_js('shadowbox/shadowbox');
         $this->layout->ajouter_js('jquery.tablesorter');
-        $this->layout->ajouter_js('jquery.placeheld.min');
         $this->layout->ajouter_js('jquery.colorbox');
 
 

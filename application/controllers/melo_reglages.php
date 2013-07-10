@@ -11,7 +11,6 @@ class melo_reglages extends CI_Controller
 
 //        $this->output->enable_profiler(true);
         $this->layout->ajouter_css('slyset');
-        $this->layout->ajouter_js('jquery.placeheld.min');
 
         $this->load->helper(array('form', 'comments_helper'));
         $this->load->model(array('mc_actus_model', 'perso_model', 'user_model'));
