@@ -24,8 +24,10 @@ class Search extends CI_Controller {
 
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
 //        $output = $this->perso_model->get_perso($this->user_id);
-        $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
-
+       if($this->user_id!=null)
+    	{
+    		$sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
+		}
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
 //        $sub_data['perso'] = $output;

@@ -211,7 +211,8 @@ $(document).ready(function(){
     });
     //    $('#articles-tab table tr:nth-child(even), #comptes-tab table tr:nth-child(even), #results-tab table tr:nth-child(even)').addClass('even row-color-1');
     //    $('#articles-tab table tr:nth-child(odd), #comptes-tab table tr:nth-child(odd), #results-tab table tr:nth-child(odd)').addClass('odd row-color-2');
-    
+       if($("body.musicien_actus").length > 0){
+ 
     $('.form_comments form').submit(function(){
         var baseurl = $(this).find("#baseurl").val();
         var usercomment = $(this).find("#usercomment").val();
@@ -244,8 +245,10 @@ $(document).ready(function(){
             return false;
         }
     });
-    
-    
+    };
+       
+         if($("body.photos_videos").length > 0){
+  
     //Commentaires photos
     $('.comment-form form').submit(function(){
         var baseurl = $(this).find("#baseurl").val();
@@ -273,7 +276,7 @@ $(document).ready(function(){
             return false;
         }
     });
-    
+    };
     
     $('.ajout_comm form').submit(function(e){
         var baseurl = $(this).find("#baseurl").val();
