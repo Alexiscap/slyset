@@ -1,4 +1,17 @@
+var l = window.location;
+var base_url = '';
+var base_url_noindex = '';
+
+if(l.pathname.split('/')[2] == "index.php"){
+    base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1] + "/" + l.pathname.split('/')[2];
+    base_url_noindex = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
+} else {
+    base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
+    base_url_noindex = l.protocol + "//" + l.host;
+}
 /*!
+
+
 	jQuery Colorbox v1.4.15 - 2013-04-22
 	(c) 2013 Jack Moore - jacklmoore.com/colorbox
 	license: http://www.opensource.org/licenses/mit-license.php
@@ -411,7 +424,7 @@
 				$next = $('<button type="button"/>').attr({id:prefix+'Next'}),
 				$slideshow = $tag('button', "Slideshow"),
 				$loadingOverlay,
-				$close = $(' <img id ="cboxClose" src="http://127.0.0.1/slyset/assets/images/musicien/pop_close.png" alt="Fermer" />')
+				$close = $(' <img id ="cboxClose" src="'+base_url_noindex+'/assets/images/musicien/pop_close.png" alt="Fermer" />')
 			);
 			
 			$wrap.append( // The 3x3 Grid that makes up Colorbox

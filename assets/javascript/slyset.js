@@ -23,7 +23,33 @@ function playMasonry(){
     });
 }
 
+
+
 $(document).ready(function(){
+
+    if($('body.followers').length>0||$('body.abonnements').length>0||$('body.melo_actu').length>0||$('body.reglages').length>0||$('body.achats').length>0||$('body.concert_melo').length>0||$('body.musicien_actus').length>0||$('body.concert_mu').length>0||$('body.partitions').length>0||$('body.stats').length>0||$('body.personnaliser').length>0)
+    {
+  		$('#top_titre').show();
+    	$('#last_photo').show();
+    	$('#reseaux_ailleur').show();
+    }
+    
+    if($('body.photos_videos').length>0)
+    {
+    	$('#top_titre').show();
+  		//  $('#last_photo').show();
+    	$('#reseaux_ailleur').show();
+    }
+
+    if($('body.playlist').length>0||$('body.musique').length>0)
+    {
+  		//  $('#top_titre').show();
+    	$('#last_photo').show();
+    	$('#reseaux_ailleur').show();
+    }
+
+
+
     $('.head_menu').click(function(){
         //$('.head_menu').next('.first-row').slideUp()
         if($(this).next('.one').is(":visible") == true){
@@ -513,7 +539,8 @@ $(document).ready(function(){
     
     if($('body.abonnements').length>0)
     {
-        $('.bouton .participer').click(function(){
+        $('.bouton .participer').live({
+        click: function(){
             var a = $(this);
             var idwall_community = $(this).parents('.bouton').attr('id');
             var datawall = 'idwall_community=' + idwall_community;
@@ -527,8 +554,28 @@ $(document).ready(function(){
                 }
             })
             return false
+            
+            },
+            
+             mouseenter:  function () {
+                $(this).children('.button_center').text('Ne plus suivre');
+                $(this).children('.button_left').addClass('button_left_abonne')
+                $(this).children('.button_center').addClass('button_center_abonne')
+                $(this).children('.button_right').addClass('button_right_abonne')
+
+            },
+  	
+            mouseleave:	function () {
+  		
+                $('.button_center_abonne').text('Abonné');
+                $(this).children('.button_left').removeClass('button_left_abonne')
+                $(this).children('.button_center').removeClass('button_center_abonne')
+                $(this).children('.button_right').removeClass('button_right_abonne')
+            }
         });
-    }	
+        
+        
+    };	
 	
 	
     if($('body.followers').length>0)
@@ -751,7 +798,8 @@ $(document).ready(function(){
     
     
     if($("body.concert_melo").length > 0){
-        $('.participer').click(function(){
+        $('.participer').live({
+        click: function(){
             var concert = $(this);
             var baseurl = $(this).find("#baseurl").val();
             var id_concert = $(this).attr('id');
@@ -768,6 +816,21 @@ $(document).ready(function(){
                 }
             })
             return false
+            },
+             mouseenter:  function () {
+                $(this).children('.button_center').text('Je n\'y vais plus');
+                $(this).children('.button_left').addClass('button_left_abonne')
+                $(this).children('.button_center').addClass('button_center_abonne')
+                $(this).children('.button_right').addClass('button_right_abonne')
+
+            },
+  	
+            mouseleave:	function () {
+                $('.button_center_abonne').text('J\'y vais');
+                $(this).children('.button_left').removeClass('button_left_abonne')
+                $(this).children('.button_center').removeClass('button_center_abonne')
+                $(this).children('.button_right').removeClass('button_right_abonne')
+            }
         });
     
     }
@@ -979,16 +1042,17 @@ $(document).ready(function(){
             });
         });     
 		
-        $('.play_achat').hover(
-            function(){
-                $(this).hide()
+        $('tr').hover(
+         function(){
+                $(this).find('.play_achat').css('visibility', 'visible');
             },
-            function() {
-                $(this).show()
+  	
+           function() {
+                $(this).find('.play_achat').css('visibility', 'hidden');
             }
-		   
-            )
-    };
+           
+  );
+  }
     
     if($("body.personnaliser").length > 0){
         $('#colorpickerField1').ColorPicker({

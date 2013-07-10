@@ -254,10 +254,10 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
           -->
                <!--  edition : HOVER *******************-->
              <div class="edit">
--                <a href="<?php echo base_url('/index.php/mc_photos/update_photo/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+-                <a class="iframe" href="<?php echo base_url('/index.php/mc_photos/update_photo/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
 -              <!--  edition : SUPPRESSION *******************-->
 -
--               <a href="<?php echo base_url('/index.php/mc_photos/suppression_media/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+-               <a class="iframe" href="<?php echo base_url('/index.php/mc_photos/suppression_media/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
 -             </div>
              
              <a href="http://www.youtube.com/v/<?php echo $media_user_result_unit->file_name ?>?version=3"><img src="http://i.ytimg.com/vi/<?php echo $media_user_result_unit->file_name?>/hqdefault.jpg" class="img_cover" /></a>

@@ -61,6 +61,8 @@ class Mc_partitions extends CI_Controller {
   //recuperer tous les morceaux qui ont 1 doc
   //les asocier par album
   //si pas d'album : undefined
+  
+  
   public function page($infos_profile) {
     $data = $this->data;
     $uid = $this->session->userdata('uid');
@@ -70,12 +72,23 @@ class Mc_partitions extends CI_Controller {
     if (!empty($infos_profile)) {
         $data['infos_profile'] = $infos_profile;
     }
+	$data['get_album'] = $this->load->document->get_all_album_user($user_visited);
+	$all_album = "";
+	foreach ($data['get_album'] as $album_id)
+	{
+	$all_album .= "'".$album_id->id."',";
+	}
+	$album_where_in =  substr($all_album,0,-1);
+	
+	$data['all_doc_paroles'] =  $this->load->document->get_document_paroles($album_where_in);
+		$data['all_doc_partition'] =  $this->load->document->get_document_partition($album_where_in);
 
-    $data['get_doc'] = $this->load->document->get_all_morceau_doc($user_visited);
+	$data['all_morceau'] = $this->load->document->get_all_album_moreceaux_user($user_visited);
+  //  $data['get_doc'] = $this->load->document->get_all_morceau_doc($user_visited);
     //  var_dump($data['get_doc']);
-    $data['get_morc'] = $this->load->document->get_morceau_album();
+   // $data['get_morc'] = $this->load->document->get_morceau_album();
     //    var_dump($data['get_morc']);
-	$data['all_morc'] = $this->load->document->all_doc($user_visited);
+	//$data['all_morc'] = $this->load->document->all_doc($user_visited);
     $this->layout->view('partition/mc_partitions', $data);
   }
 

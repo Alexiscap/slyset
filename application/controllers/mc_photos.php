@@ -194,6 +194,42 @@ class Mc_photos extends CI_Controller {
     $this->load->view('photos/ajouter_photos', $data);
   }
 
+
+	
+  public function add_video($user_id) {
+    $url_video_complete = $this->input->post('url_video');
+    $description = $this->input->post('description');
+    $id_url_v = strstr($url_video_complete, "v=");
+    $id_url = mb_strcut($id_url_v, 2, 11);
+    //envoit en bdd de l'id et la description ainsi que l'album
+    $this->form_validation->set_rules('url_video', 'url_video', 'required');
+
+	$data = array();
+    $data = array('error' => ' ');
+    $data['options'] = array(
+        '' => '',
+    );
+    $data['album_by_user'] = $this->photos->get_album($user_id);
+
+//        specifier $i en fonction du nombre de ligne retourner
+//        marche pas avec tableaux multidimension :
+
+    $data['max_album_user'] = count($data['album_by_user']);
+
+    $this->load->helper(array('form', 'url'));
+
+    $this->load->library('form_validation');
+
+    if ($this->form_validation->run() == FALSE) {
+      $this->load->view('photos/add_video',$data);
+    } else {
+      $this->photos->add_video($id_url, $user_id, $description,$this->input->post('albums'));
+    }
+    
+  }
+
+
+
   public function do_upload($user_id) {
     $noespace_filename_album = str_replace(' ', '_', $this->input->post('albums'));
    // $dynamic_path = './files/' . $this->session->userdata('uid') . '/photos/' . $noespace_filename_album;
@@ -413,25 +449,6 @@ class Mc_photos extends CI_Controller {
     $video_nom = $this->input->post('video_nom');
     $id_user = $this->session->userdata('uid');
     echo $this->photos->delete_like_v($video_nom, $id_user);
-  }
-
-  public function add_video($user_id) {
-    $url_video_complete = $this->input->post('url_video');
-    $description = $this->input->post('description');
-    $id_url_v = strstr($url_video_complete, "v=");
-    $id_url = mb_strcut($id_url_v, 2, 11);
-    //envoit en bdd de l'id et la description ainsi que l'album
-    $this->form_validation->set_rules('url_video', 'url_video', 'required');
-
-    $this->load->helper(array('form', 'url'));
-
-    $this->load->library('form_validation');
-
-    if ($this->form_validation->run() == FALSE) {
-      $this->load->view('photos/add_video');
-    } else {
-      $this->photos->add_video($id_url, $user_id, $description);
-    }
   }
 
   //delete album  :supprimer photos too !!

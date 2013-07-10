@@ -18,10 +18,10 @@
         <div id="infos-cover">
             <h2><?php echo $login; ?></h2>
 <?php 
-     		if($infos_profile->type==2&&substr_count($community_follower,$infos_profile->id)==0):?>
+     		if($infos_profile->id != $this->session->userdata('uid')&&$infos_profile->type==2&&substr_count($community_follower,$infos_profile->id)==0):?>
       			<a href="#" class="add-follow" id="<?php echo $this->uri->segment(2)?>"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
    			<?php endif;
-    		if($infos_profile->type==2&&substr_count($community_follower,$infos_profile->id)>0):?>
+    		if($infos_profile->id!=$this->session->userdata('uid')&&$infos_profile->type==2&&substr_count($community_follower,$infos_profile->id)>0):?>
      			<a href="#" class="delete-follow" id="<?php echo $this->uri->segment(2)?>"><span class="button_left_abonne"></span><span class="button_center_abonne">Ne plus suivre</span><span class="button_right_abonne"></span></a>
     		<?php endif;?>      
     	  </div>

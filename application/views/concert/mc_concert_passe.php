@@ -94,7 +94,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
       			 <p class="adr_ville"><?php echo $concert_unit->ville.", ".$concert_unit->pays ?></p>
    		 	</div>
    		 <a href="javascript:void(0);" class="more" id="more_<?php echo $concert_unit->id ?>" onclick='showInfo(more_<?php echo $concert_unit->id ?>,more_info_<?php echo $concert_unit->id ?>)' >Voir plus d'informations</a>
-  	<div id="concert_activity>">
+  <!--	<div id="concert_activity>">
 
     	<?php 
     	$count = substr_count($all_concert_act,'/'.$concert_unit->id.'/');
@@ -109,7 +109,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 
 		<?php }
     	 ?> 
-    	 </div>
+    	 </div>-->
     
    
     

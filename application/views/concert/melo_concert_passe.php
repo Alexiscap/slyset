@@ -71,8 +71,8 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
       			 <p class="adr_ville"><?php echo $concert_unit->ville.", ".$concert_unit->pays ?></p>
    		 	</div>
    		 <a href="javascript:void(0);" class="more" id="more_<?php echo $concert_unit->id ?>" onclick='showInfo(more_<?php echo $concert_unit->id ?>,more_info_<?php echo $concert_unit->id ?>)' >Voir plus d'informations</a>
-    	 <a href="#" class="participer" id="<?php echo $concert_unit->concerts_id; ?>"><span class="button_left"></span><span class="button_center">J'y vais</span><span class="button_right"></span></a>
-    
+    	<!-- <a href="#" class="participer" id="<?php echo $concert_unit->concerts_id; ?>"><span class="button_left"></span><span class="button_center">J'y vais</span><span class="button_right"></span></a>
+    -->
    
     
     

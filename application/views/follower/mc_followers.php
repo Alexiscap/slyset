@@ -52,7 +52,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
             <a href="<?php echo site_url('follower/melomane/' . $infos_profile->id) ?>" class="melomanes">Mélomanes</a>
         </div>
         <?php if (count($all_follower) == 1): ?>
-            <h2>Mon abonné</h2>
+            <h2>Mes abonnés</h2>
         <?php endif;
         if (count($all_follower) == 0):
             ?>

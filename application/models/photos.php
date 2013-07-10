@@ -536,12 +536,35 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
         
     }
     
-    public function add_video ($id_video,$user_id,$description)
+    public function add_video ($id_video,$user_id,$description,$album_nom)
     {
+   
     	$this->db->set(array('nom'=>$id_video,'Utilisateur_id'=>$user_id,'description'=>$description))
     			->insert('videos');
+    	  $last_id_video =  $this->db->insert_id();
     	
-    	$data_delete_act = array('Utilisateur_id'=>$user_id,'videos_id'=>$id_video,'type'=>"MU"); 
+    	    	  $id_video =  $this->db->insert_id();
+
+    	
+    	if ($album_nom != null||$album_nom != '')
+    		{
+     			$this->db->set(array('Utilisateur_id'=>$user_name,'nom'=>$album_nom,'Videos_id'=>$id_video))
+                	->insert($this->table_album);
+                
+             $data_add_cmty_photo = array('Utilisateur_id'=>$user_name,'videos_id'=>$id_video,'albums_media_file_name'=>$album_nom,'type'=>"MU"); 
+	 	$this->db->insert('wall_melo_component', $data_add_cmty_photo); 
+			}
+		else {
+		
+		$data_add_cmty_photo = array('Utilisateur_id'=>$user_name,'videos_id'=>$id_video,'type'=>"MU"); 
+	 	$this->db->insert('wall_melo_component', $data_add_cmty_photo); 
+		
+		}
+    	
+    	
+    	
+    	$data_delete_act = array('Utilisateur_id'=>$user_id,'videos_id'=>$last_id_video,'type'=>"MU"); 
+ 	
 	 	$this->db->insert('wall_melo_component', $data_delete_act); 
 	
     }

@@ -67,7 +67,9 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                     } else {
                         echo '0 album,';
                     }
+                 
                     ?></span>
+                
                 <span class="detail_pl"><?php
                     if ($total_morceaux_panier == 1) {
                         echo $total_morceaux_panier . ' chanson,';
@@ -81,8 +83,11 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
             </div>
             <hr />
             <div class="clear"></div>
+             <?php if($total_album_panier + $total_document_panier + $total_morceaux_panier !=0)
+                  { ?>
             <div id="articles-tab">
                 <form action="<?php echo site_url('melo_achats/delete_panier'); ?>" method="post" accept-charset="utf-8">          
+                 
                     <table>
                         <tbody>
                             <tr class="tab-head odd row-color-2">
@@ -104,7 +109,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                             
                             foreach ($cmd as $commande):
                                 if ($commande->status == "P"):
-                                    ?>
+                              ?>
                                     <tr class="even row-color-<?php echo $commande->id ?>">
                                         <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $commande->id ?>" id="article-<?php echo $commande->id ?>" class="checkbox-article"><label for="article-<?php echo $commande->id ?>"></label></td>
                                         <td class="article-title"><a href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
@@ -122,12 +127,19 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                             ?>
                         </tbody>
                     </table>
+                  
 
             </div>
-            <p class="total_panier">Montant total <span><?php echo $total ?> €</span></p>
+             
+            <p class="total_panier">Montant total <span><?php if(isset($total))echo $total; else print '0'; ?> €</span></p>
             <div class="clear"></div>
             <a class="bigiframe" href="<?php echo site_url('pi_ta_infos/index/' . $session_id) ?>"><input type="button" value="Paiement sécurisé" class="cadis_panier"></a>
             <input type="button" value="Supprimer" class="bt_supp_playlist">
+             <?php }
+                    else
+                    {
+                    echo "<div class='panier_vide'>Votre panier est vide</div>";
+                    } ?>
         </div>
         </form>
         <div class="clear"></div>
@@ -155,13 +167,12 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                     }
                             ?></span>
                 <span class="detail_pl"><?php
-                    if (isset($total_morceaux_history)) {
                         if ($total_morceaux_history == 1) {
                             echo $total_morceaux_history . ' chanson,';
                         } if ($total_morceaux_history > 1) {
                             echo $total_morceaux_history . ' chansons,';
                         }
-                    } else {
+                     else {
                         echo '0 chanson,';
                     }
                             ?> </span>
@@ -169,7 +180,10 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
             </div>
             <hr />
             <div class="clear"></div>
+             <?php if($total_album_history + $total_document_history + $total_morceaux_history !=0)
+                  { ?>
             <div id="articles-tab">
+           
                 <form action="<?php echo site_url('admin_articles/delete_multi_article'); ?>" method="post" accept-charset="utf-8">          
                     <table id="tablesorter-cb">
                         <thead>
@@ -188,7 +202,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                                     ?>
                                     <tr class="even row-color-<?php echo $commande->id ?>">
                                         <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"></label></td>
-                                        <td class="article-title"><a href="#" class ="play_achat" ><img  src="<?php echo img_url('common/btn_play2.png'); ?>"/></a>
+                                        <td class="article-title"><a href="#" class ="play_achat" style="visibility:hidden"><img  src="<?php echo img_url('common/btn_play2.png'); ?>"/></a>
         <?php echo $commande->nom ?></td>
                                         <td class="article-artiste"><?php echo $commande->user_login ?></td>
                                         <td class="article-type"><?php echo $commande->type ?></td>
@@ -203,6 +217,11 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                 </form>
             </div>
             <input type="button" value="Télécharger" class="telecharge_select">
+              <?php }
+                    else
+                    {
+                    echo "<div class='panier_vide'>Vous n'avez pas encore passé de commande</div>";
+                    } ?>
         </div>
 
 

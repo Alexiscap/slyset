@@ -9,7 +9,7 @@
       <p id="instruments"><?php if(!empty($profile->instrument)) echo ucfirst($profile->instrument); ?></p>
     </div>
   </div>
-  <div id="top_titre">
+  <div style="display:none" id="top_titre">
     <img src="<?php echo img_url('sidebar-right/etoile.png'); ?>" alt="etoile"/><p class="head-title">Mon Top <span>Titres</span></p>
     <div id="classement"> 
      <div id="num_impair">
@@ -30,7 +30,8 @@
       <a href="#">> Voir toute la musique</a>
     </div>
   </div>
-  <div id="last_photo">
+  
+  <div style="display:none" id="last_photo">
     <img src="<?php echo img_url('sidebar-right/polaroides.png'); ?>" alt="polaroides"/><p class="head-title">Derni&egrave;res <span>photos</span></p>
     <div id="encart_photos">
       <div id="miniatures">
@@ -44,7 +45,8 @@
       <a href="#">> Voir toutes les photos</a>
     </div>
   </div>
-    <div id="reseaux_ailleur">
+  
+    <div style="display:none" id="reseaux_ailleur">
         <?php if(!empty($profile->twitter) || !empty($profile->facebook) || !empty($profile->googleplus) || !empty($profile->siteweb)): ?>
             <p class="head-title">Ailleurs <span>sur la toile</span></p>
             

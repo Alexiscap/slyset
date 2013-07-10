@@ -76,10 +76,12 @@ $route['media/ajouter-photo'] = "mc_photos/upload_photo";
 $route['media/ajouter-photo/(:num)'] = "mc_photos/upload_photo/$1";
 $route['media/ajouter-video'] = "mc_photos/add_video";
 $route['media/ajouter-video/(:num)'] = "mc_photos/add_video/$1";
+
 $route['media/supprimer'] = "mc_photos/suppression_media";
 $route['media/supprimer/(:num)'] = "mc_photos/suppression_media/$1";
+$route['media/supprimer/(:num)/(:any)/(:num)'] = "mc_photos/suppression_media/$1/$2/$3";
 $route['media/editer'] = "mc_photos/update_photo";
-$route['media/editer/(:num)/(:num)/(:num)'] = "mc_photos/update_photo/$1/$2/$3";
+$route['media/editer/(:num)/(:any)/(:num)'] = "mc_photos/update_photo/$1/$2/$3";
 $route['media/zoom'] = "mc_photos/zoom_photo";
 $route['media/zoom/(:num)/(:num)'] = "mc_photos/zoom_photo/$1/$2";
 $route['media/album'] = "mc_photos/album";

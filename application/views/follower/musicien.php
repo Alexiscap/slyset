@@ -54,7 +54,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
    </div>
  	<?php
  		if (count($all_follower)==1):?>
-	<h2>Mon abonné</h2>
+	<h2>Mes abonnés</h2>
 	<?php endif;
 	if (count($all_follower)==0):?>
 	<h2>Aucun abonné</h2>

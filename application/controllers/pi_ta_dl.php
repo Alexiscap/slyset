@@ -27,7 +27,6 @@ class pi_ta_dl extends CI_Controller
       $data = array();
     
       $data['cmd_download'] = $this->achat->cmd_valider();
-      var_dump($cmd_download);
       $this->layout->view('achat/pi_ta_dl', $data);
     }
   

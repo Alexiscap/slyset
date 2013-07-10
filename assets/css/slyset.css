@@ -743,15 +743,17 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 
 /* --------- MUSICIEN MUSIQUE --------- */
 .content .a_la_une {margin:0 20px 20px;width:172px;float:left;}
-.content .a_la_une .bandeau_top{position:absolute;margin:-175px 0;}
+.content .a_la_une_parti {margin:0 20px 20px;width:112px;float:left;}
+.content .a_la_une .bandeau_top {position:absolute;margin:-175px 0;}
 .content .player{position:absolute;background:rgba(115,115,115,0.68);width: 172px;height: 42px;margin: -44px 0;}
 .content .player img{margin:8px 70px;}
-.content .a_la_une .infos{margin:0;}
-.content .a_la_une .infos p{margin:0;color:#2f2f2f;font-weight:normal;}
-.content .a_la_une .infos p span{color:#45baa0;}
-.content .a_la_une .infos .title{font-weight:bold;}
-.content .a_la_une .infos .annee_crea{margin:0;color:#888d95;font-size:12px;}
-.content .a_la_une .infos a{margin:0;color:#3c495a;font-size:12px;}
+.content .a_la_une_parti img {width : 100%}
+.content .a_la_une .infos,.content .a_la_une_parti .infos{margin:0;}
+.content .a_la_une .infos p, .content .a_la_une_parti .infos p{margin:0;color:#2f2f2f;font-weight:normal;}
+.content .a_la_une .infos p span, .content .a_la_une_parti .infos p span{color:#45baa0;}
+.content .a_la_une .infos .title, .content .a_la_une_parti .infos .title{font-weight:bold;}
+.content .a_la_une .infos .annee_crea, .content .a_la_une_parti .infos .annee_crea{margin:0;color:#888d95;font-size:12px;}
+.content .a_la_une .infos a, .content .a_la_une_parti .infos a{margin:0;color:#3c495a;font-size:12px;}
 
 .content .top_album{float:left;}
 .content .top_album a{color:#888d95;font-size:12px;text-decoration:none;}
@@ -1209,7 +1211,7 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 .content .panier #articles-tab tr.tab-head th{ border:none; }
 .content .panier #articles-tab tr.even{ background:#fafafa; }
 .content .panier #articles-tab tr.odd{ background:#f7f7f7; }
-
+.content .panier_vide {font-size : 12px; margin-bottom: 36px; margin-top: 18px;}
 .content .panier input[type="checkbox"] + label span{ margin:-3px 0 0 0; }
 .content .panier #articles-tab .article-checkbox{ padding:0 6px; }
 .content .panier #articles-tab .article-title{ padding:0 12px 0 25px;width:152px;}
