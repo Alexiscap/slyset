@@ -32,7 +32,7 @@
     #cboxContent{background:#fff; overflow:hidden; border-radius : 5px;}
         .cboxIframe{background:#fff; border-radius : 5px;}
         #cboxError{padding:50px; border:1px solid #ccc;}
-        #cboxLoadedContent{margin-bottom:28px;}
+       /* #cboxLoadedContent{margin-bottom:28px;}*/
         #cboxTitle{position:absolute; bottom:4px; left:0; text-align:center; width:100%; color:#949494;}
         #cboxCurrent{position:absolute; bottom:4px; left:58px; color:#949494;}
         #cboxLoadingOverlay{background:url(../images/colorbox/loading_background.png) no-repeat center center;}

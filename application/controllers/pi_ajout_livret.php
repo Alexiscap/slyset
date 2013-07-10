@@ -56,7 +56,7 @@ class Pi_ajout_livret extends CI_Controller {
         $album_name = $album_exp[0];
         $album_id = $album_exp[1];
         $noespace_filename_album = str_replace(' ', '_', $album_name);
-        $dynamic_path = './files/' . $this->session->userdata('uid') . '/documents/' . $noespace_filename_album;
+        $dynamic_path = './files/' . $this->session->userdata('uid') . '/documents/' . $album_id;
 
         if (is_dir($dynamic_path) == false) {
             mkdir($dynamic_path, 0755, true);
@@ -79,7 +79,7 @@ class Pi_ajout_livret extends CI_Controller {
 
 
 
-            $this->document->insert_doc($album_id, $morceau, $data['file_name']);
+            $this->document->insert_livret($album_id, $data['upload_data']['file_name']);
             //	$this->load->view('partition/pi_ajout_paroles', $data);
         }
     }

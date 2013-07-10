@@ -4,9 +4,7 @@ $uid = (empty($session_id)) ? '' : $session_id;
 $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
 $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
 
-print $infos_profile->id;
-print $community_follower;
-    print substr_count($community_follower,$infos_profile->id);
+
 ?>
 <div id="contentAll">
     <div id="breadcrumbs">
@@ -73,7 +71,7 @@ print $community_follower;
 			<p class="title"><?php echo $doc->nom ?></p>
 			<p class="annee_crea"><?php if(isset($doc->annee))echo $doc->annee ?></p>
 			<?php if($doc->livret_path != null){ ?>
-			<p><span>> </span><a href="#">Voir le livret d'album</a></p>
+			<p><span>> </span><a href="<?php echo base_url('files/'.$infos_profile->id.'/documents/'.$doc->Albums_id.'/'.$doc->livret_path) ?>">Voir le livret d'album</a></p>
 			<p><span>> </span><a href="#">Modifier le livret</a></p>
 			<?php }
 			else {?>
@@ -129,34 +127,41 @@ print $community_follower;
 					
 					
 					
-					//	foreach($all_morc as $morc=>$a):
-						//							var_dump($a);
+						foreach($all_morc as $morc=>$a):
+												
 
-						//	if($morceau->id == $a->morceaux_id):
-							//var_dump($morceau);
-						//	$b ++;
-			//if($b >= 2)
-						//	{
+							if($morceau->id == $a->morceaux_id):
+							$b ++;
 							
 							
 			
 				?>
 			
-								<td class="paroles"><a href="<?php echo files($infos_profile->id.'/documents/'.$doc->Albums_id.'/'.$morceau->path) ?>">Voir</a>
+								<td class="paroles"><a href="<?php echo files($infos_profile->id.'/documents/'.$doc->Albums_id.'/'.$a->path) ?>">Voir</a>
 									<div class="miniat_titre">
 										<a href="#" class="edit"><span>edit</span></a>
 									</div>
 								</td>	
 						
 							<?php
+						if($b > 2)
+							{ break;
+							}	
+					
 							
-					//}
+					endif;
+					endforeach;
+						
+					if($b < 2)
+							{ ?>
+							<td class="paroles"><a href="<?php echo files($infos_profile->id.'/documents/'.$doc->Albums_id.'/'.$a->path) ?>">-</a>
+									<div class="miniat_titre">
+										<a href="#" class="edit"><span>-</span></a>
+									</div>
+								</td>
+						<?php	}
 
-							
-			//		endif;
-			//		endforeach;
-						 ?>	
-
+?>
 					</tr>
 					<?php  
 									endif; 
