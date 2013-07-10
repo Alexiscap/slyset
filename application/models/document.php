@@ -26,18 +26,20 @@ class document extends CI_Model
 	
 	public function all_doc($user_id)
 	{
-	return $this->db->query('SELECT morceaux_id FROM documents WHERE Utilisateur_id = '.$user_id)
+	return $this->db->query('SELECT morceaux_id,path,type_document FROM documents WHERE Utilisateur_id = '.$user_id.' ORDER BY type_document ASC')
 					->result();
 	}
 	
 	public function get_morceau_album()
 	{
-		return $this->db->query('SELECT morceaux.id,morceaux.nom,morceaux.Albums_id,documents.path,documents.prix
+		return $this->db->query('SELECT morceaux.id,morceaux.nom,morceaux.Albums_id,documents.path,documents.prix,documents.type_document
 								FROM morceaux
 								JOIN albums ON morceaux.Albums_id = albums.id
 								JOIN documents ON morceaux.id = documents.Morceaux_id
 										WHERE morceaux.Utilisateur_id = 30
-								
+								GROUP BY documents.Albums_id
+																ORDER BY type_document ASC
+
 								')
 					->result();
 	
@@ -61,4 +63,18 @@ class document extends CI_Model
 	$this->db->set(array('albums_id'=>$album,'Morceaux_id'=>$morceau,'path'=>$path,'Utilisateur_id'=>$this->session->userdata('uid'),'format'=>'pdf','type_document'=>$type))
                 	->insert('documents');
                 	}
+
+	public function insert_livret($album,$path)
+	{
+	
+						
+						$data = array(
+               'livret_path' => $path,
+             
+            );
+
+$this->db->where('id', $album);
+$this->db->update('albums', $data); 
+
+	}
 }

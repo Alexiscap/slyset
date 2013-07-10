@@ -24,7 +24,6 @@ class Mc_concerts extends CI_Controller {
 		$this->load->helper('url');
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
         $output = $this->perso_model->get_perso($this->user_id);
-        $this->layout->set_id_background('concert_mu');
 
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
@@ -68,8 +67,10 @@ class Mc_concerts extends CI_Controller {
     public function index($user_id) {
         $uid = $this->session->userdata('uid');
         $infos_profile = $this->user_model->getUser($user_id);
+        $this->layout->set_id_background('concert_mu');
 
         if ((($user_id != $uid && !empty($user_id)) || ($user_id == $uid && !empty($user_id))) && $infos_profile->type != 1) {
+           
             $this->page_main($infos_profile, "mc_concerts", ">");
         } else {
             redirect('home/' . $uid, 'refresh');
@@ -79,6 +80,7 @@ class Mc_concerts extends CI_Controller {
     public function concert_passe($user_id) {
         $uid = $this->session->userdata('uid');
         $infos_profile = $this->user_model->getUser($user_id);
+        $this->layout->set_id_background('concert_mu');
 
         if ((($user_id != $uid && !empty($user_id)) || ($user_id == $uid && !empty($user_id))) && $infos_profile->type != 1) {
             $this->page_main($infos_profile, "mc_concert_passe", "<");
