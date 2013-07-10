@@ -189,6 +189,15 @@ class User_model extends CI_Model
                               ->from($this->table)
                               ->count_all_results();
     }
+    
+    public function last_photo($user)
+    {
+             					
+    	return $this->db->query('SELECT photos.id,photos.Utilisateur_id,photos.file_name FROM photos LEFT OUTER JOIN album_media ON photos.id = album_media.Photos_id 
+ WHERE photos.Utilisateur_id ='.$user.' AND album_media.Photos_id IS NULL ORDER BY photos.date ASC LIMIT 0, 4')
+                      ->result();
+    }
+    
 
 }
 	

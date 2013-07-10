@@ -28,7 +28,7 @@ class Mc_concerts extends CI_Controller {
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
         $sub_data['perso'] = $output;
-        
+        $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
         //--bouton suivre un musicien
         $community_follower=  $this->user_model->get_community($this->session->userdata('uid'));
         $my_abonnement_head = "";

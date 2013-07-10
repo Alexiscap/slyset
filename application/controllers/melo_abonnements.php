@@ -20,6 +20,7 @@ class melo_abonnements extends CI_Controller {
 
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
+        $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
 
         $this->data = array(
             'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),

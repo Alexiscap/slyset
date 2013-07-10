@@ -31,21 +31,22 @@
     </div>
   </div>
   
+  <?php if(isset($photo_right[0])&&isset($photo_right[1])&&isset($photo_right[2])&&isset($photo_right[3])): ?>
   <div style="display:none" id="last_photo">
     <img src="<?php echo img_url('sidebar-right/polaroides.png'); ?>" alt="polaroides"/><p class="head-title">Derni&egrave;res <span>photos</span></p>
     <div id="encart_photos">
-      <div id="miniatures">
-        <img src="<?php echo img_url('sidebar-right/photo1.png'); ?>" alt="photo1"/>
-        <img src="<?php echo img_url('sidebar-right/photo2.png'); ?>" alt="photo2"/>
-        <img src="<?php echo img_url('sidebar-right/photo3.png'); ?>" alt="photo3"/>
+     <div id="miniatures">
+        <img src="<?php echo base_url('files/'.$photo_right[0]->Utilisateur_id.'/photos/'.$photo_right[0]->file_name); ?>" alt="photo1"/>
+        <img src="<?php echo base_url('files/'.$photo_right[1]->Utilisateur_id.'/photos/'.$photo_right[1]->file_name); ?>"  alt="photo2"/>
+        <img src="<?php echo base_url('files/'.$photo_right[2]->Utilisateur_id.'/photos/'.$photo_right[2]->file_name); ?>"  alt="photo3"/>
       </div>
       <div id="thelast">
-        <img src="<?php echo img_url('sidebar-right/photo4.png'); ?>" alt="photo4"/>
+        <img  src="<?php echo base_url('files/'.$photo_right[3]->Utilisateur_id.'/photos/'.$photo_right[3]->file_name); ?>" alt="photo4"/>
       </div>
-      <a href="#">> Voir toutes les photos</a>
+      <a href="<?php echo base_url('index.php/media/'.$photo_right[0]->Utilisateur_id) ?>">> Voir toutes les photos</a>
     </div>
   </div>
-  
+  <?php endif;?>
     <div style="display:none" id="reseaux_ailleur">
         <?php if(!empty($profile->twitter) || !empty($profile->facebook) || !empty($profile->googleplus) || !empty($profile->siteweb)): ?>
             <p class="head-title">Ailleurs <span>sur la toile</span></p>
