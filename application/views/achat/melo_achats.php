@@ -92,10 +92,10 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 
                                     </label>
                                 </th>
-                                <th class="article-title">Titre<span id="titre" class="filter filter-bottom"></span></th>
-                                <th class="article-artiste">Artiste<span id="titre" class="filter filter-bottom"></span></th>
-                                <th class="article-type">Type<span id="titre" class="filter filter-bottom"></span></th>
-                                <th class="article-prix">Prix<span id="created" class="filter filter-bottom"></span></th>
+                                <th class="article-title">Titre<!--<span id="titre" class="filter filter-bottom"></span>--></th>
+                                <th class="article-artiste">Artiste<!--<span id="titre" class="filter filter-bottom"></span>--></th>
+                                <th class="article-type">Type<!--<span id="titre" class="filter filter-bottom"></span>--></th>
+                                <th class="article-prix">Prix<!--<span id="created" class="filter filter-bottom"></span>--></th>
                             </tr>
 
                             <?php
@@ -175,10 +175,10 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                         <thead>
                             <tr class="tab-head odd row-color-2">
                                 <th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
-                                <th class="article-title">Titre<span id="titre" class="filter filter-bottom"></span></th>
-                                <th class="article-artiste">Artiste<span id="titre" class="filter filter-bottom"></span></th>
-                                <th class="article-type">Type<span id="titre" class="filter filter-bottom"></span></th>
-                                <th class="article-prix">Prix<span id="created" class="filter filter-bottom"></span></th>
+                                <th class="article-title">Titre<!--<span id="titre" class="filter filter-bottom"></span>--></th>
+                                <th class="article-artiste">Artiste<!--<span id="titre" class="filter filter-bottom"></span>--></th>
+                                <th class="article-type">Type<!--<span id="titre" class="filter filter-bottom"></span>--></th>
+                                <th class="article-prix">Prix<!--<span id="created" class="filter filter-bottom"></span>--></th>
                             </tr>
                         </thead>
                         <tbody>
