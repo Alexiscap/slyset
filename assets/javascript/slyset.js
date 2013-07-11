@@ -48,6 +48,29 @@ $(document).ready(function(){
     	$('#reseaux_ailleur').show();
     }
 
+	$('.mise-panier').click(function(){
+
+ 		
+        doc_id = $(this).attr('id');
+        prix = $(this).parents('td').attr('id');
+        nom = $('.mise-panier').parents('td').attr('class')
+
+        var dataid = 'prix=' + prix + '&&doc_id=' + doc_id + '&&nom=' + nom;
+        //infos necessaire : prix  (children)
+       // prix
+        //type (partition ou parole)
+        //morceau nom (children)
+        //Utilisateur_id -> session
+	 $.ajax({
+            type: "POST",
+            url : base_url +'/mc_partitions/panier',
+            data: dataid,
+            success: function(datas){
+              	$(this).text('Au Panier');
+            }
+        })
+	
+	});
 
 
     $('.head_menu').click(function(){
@@ -59,7 +82,9 @@ $(document).ready(function(){
         }
     //$(this).next('.one:hidden').show()
     });
-    
+    //ajout_paroles ajout_partitions
+        if($("body.ajout_paroles").length > 0){
+
     $("select").change(function () {
         $("select option:selected")
         var str = "";
@@ -76,6 +101,27 @@ $(document).ready(function(){
             }
         })
     });
+}
+
+   if($("body.ajout_partitions").length > 0){
+
+    $("select").change(function () {
+        $("select option:selected")
+        var str = "";
+        var id_album = $("select option:selected").attr('class');
+        var dataid = 'id_album=' + id_album;
+        
+        $.ajax({
+            type: "POST",
+            url : base_url +'/pi_ajout_partitions/get_morceaux',
+            data: dataid,
+            success: function(datas){
+                $('.mor').remove();
+                $(datas).show().insertAfter('select').slideDown('slow');
+            }
+        })
+    });
+}
 
     if($('#tablesorter-cb').length > 0){
         $('#tablesorter-cb').tablesorter({

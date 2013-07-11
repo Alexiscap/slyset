@@ -25,7 +25,7 @@ class document extends CI_Model
 	
 	public function get_document_paroles($all_album)
 	{
-	return $this->db->query('(SELECT morceaux.id AS morceau_id,morceaux.nom AS nom_morceau,documents.Albums_id AS album_id, documents.id AS document_id,documents.path,type_document
+	return $this->db->query('(SELECT morceaux.id AS morceau_id,documents.prix,morceaux.nom AS nom_morceau,documents.Albums_id AS album_id, documents.id AS document_id,documents.path,type_document
 						FROM morceaux					
 						INNER JOIN documents
 						ON documents.morceaux_id = morceaux.id
@@ -41,7 +41,7 @@ class document extends CI_Model
 	
 		public function get_document_partition($all_album)
 	{
-	return $this->db->query('(SELECT morceaux.id AS morceau_id,morceaux.nom AS nom_morceau,documents.Albums_id AS album_id, documents.id AS document_id,documents.path,type_document
+	return $this->db->query('(SELECT morceaux.id AS morceau_id,documents.prix,morceaux.nom AS nom_morceau,documents.Albums_id AS album_id, documents.id AS document_id,documents.path,type_document
 						FROM morceaux					
 						INNER JOIN documents
 						ON documents.morceaux_id = morceaux.id

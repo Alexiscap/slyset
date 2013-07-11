@@ -43,15 +43,18 @@ $login = (empty($profile)) ? $this->session->userdata('login') : $profile->login
       <span class="stats_title">morceaux</span>
     </div>
   </div>
+          <?php if ($this->uri->segment(2) == $uid) { ?>
+<!--
         <div class="bt_noir">
+        
             <a class="iframe" href="<?php echo site_url('media/ajouter-photo/' . $profile->id) ?>" ><span class="bt_left"></span><span class="bt_middle">Ajouter une photo</span><span class="bt_right"></span></a>
         </div>
         <div class="bt_noir">
             <a class="iframe" href="<?php echo site_url('media/ajouter-video/' . $profile->id) ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter une vidéo</span><span class="bt_right"></span></a>
-        </div>
+        </div>-->
+        <?php } ?>
 
   <div class="content">
-  	
   	 <?php
 	foreach ($all_media_user_result as $media_user_result_unit):
 		if($media_user_result_unit->type == 1)
@@ -97,16 +100,16 @@ $login = (empty($profile)) ? $this->session->userdata('login') : $profile->login
                         <?php foreach ($commentaires as $commentaire): ?>
                             <?php if ($media_user_result_unit->id == $commentaire->photos_id): ?>      
                                 <div class="comm">
-                                    <img src="<?php echo img_url('common/del.png'); ?>" class="del"/>
-                                    <img src="<?php echo img_url('common/avatar_comm.png'); ?>" />
-                                    <p class="name_comm"> Jim Morrison</p>
+                                    <?php if ($profile->id == $uid) { ?> <img src="<?php echo img_url('common/del.png'); ?>" class="del"/>
+                                 <?php } ?>   <img src="<?php echo base_url('/files/profiles/'.$commentaire->thumb); ?>" />
+                                    <p class="name_comm"> <?php echo $commentaire->login ?></p>
                                     <p class="commentaire"><?php echo $commentaire->comment ?></p> 
                                 </div>
 
                             <?php endif; ?>
                         <?php endforeach; ?>
                         <div class="comment-form">
-                            <img src="<?php echo img_url('common/avatar_comm.png'); ?>" />
+                            <img src="<?php echo base_url('/files/profiles/'.$this->session->userdata('thumb')) ?>" />
                             <form  action="" method="post">
                                 <input type="text" name="usercomment" id="usercomment"/>
                                 <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
@@ -163,9 +166,10 @@ $login = (empty($profile)) ? $this->session->userdata('login') : $profile->login
     		<?php foreach($commentaires_video as $commentaire): 
 					if($media_user_result_unit->id == $commentaire->video_id): ?>  
                 	<div class="comm">
-						<img src="<?php echo img_url('common/del.png'); ?>" class="del"/>
-    					<img src="<?php echo img_url('common/avatar_comm.png'); ?>" />
-      					<p class="name_comm"> Jim Morrison</p>
+                	 <?php if ($profile->id == $uid) { ?>
+						<img src="<?php echo img_url('common/del.png'); ?>" class="del"/><?php } ?>
+    					 <img src="<?php echo base_url('/files/profiles/'.$commentaire->thumb); ?>" />
+      					<p class="name_comm"> <?php $commentaire->login ?></p>
       					<p class="commentaire"><?php echo $commentaire->comment?></p> 
     				</div>
     				
@@ -174,7 +178,7 @@ $login = (empty($profile)) ? $this->session->userdata('login') : $profile->login
        			
             <?php endforeach; ?>
                   <div class="comment-form-video">
-      <img src="<?php echo img_url('common/avatar_comm.png'); ?>" />
+                            <img src="<?php echo base_url('/files/profiles/'.$this->session->userdata('thumb')) ?>" />
       <form  action="" method="post">
            <input type="text" name="usercomment" id="usercomment"/>
         <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />

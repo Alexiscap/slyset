@@ -82,11 +82,12 @@ class Mc_partitions extends CI_Controller {
 	$all_album .= "'".$album_id->id."',";
 	}
 	$album_where_in =  substr($all_album,0,-1);
-	
-	$data['all_doc_paroles'] =  $this->load->document->get_document_paroles($album_where_in);
+	if (!empty($album_where_in)){
+		$data['all_doc_paroles'] =  $this->load->document->get_document_paroles($album_where_in);
 		$data['all_doc_partition'] =  $this->load->document->get_document_partition($album_where_in);
-
+	}
 	$data['all_morceau'] = $this->load->document->get_all_album_moreceaux_user($user_visited);
+	
   //  $data['get_doc'] = $this->load->document->get_all_morceau_doc($user_visited);
     //  var_dump($data['get_doc']);
    // $data['get_morc'] = $this->load->document->get_morceau_album();
@@ -134,5 +135,9 @@ class Mc_partitions extends CI_Controller {
         }
 }
 
+	public function panier()
+	{
+	
+	}
 
 }

@@ -45,12 +45,15 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
     </div>
   </div>
     <div class="bts_noir_partition">
+                <?php if ($infos_profile->id == $uid) { ?>
+
 	  <div class="bt_noir">
 		<a class="iframe" href="<?php echo base_url('index.php/document/new-lyrics/') ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter des paroles</span><span class="bt_right"></span></a>
 	  </div>
 	  <div class="bt_noir">
 		<a class="iframe" href="<?php echo base_url('index.php/document/new-score/') ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter une partition</span><span class="bt_right"></span></a>
 	  </div>
+	  <?php } ?>
 	</div>
 
   <div class="content">
@@ -103,8 +106,8 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                                 		</label>
                                 		</th>-->
                                 <th class="article-title">Titre  de la chanson<span id="titre" class="filter filter-bottom"></span></th>
-                                <th class="article-artiste">Paroles<span id="titre" class="filter filter-bottom"></span></th>
-                                <th class="article-type">Partition<span id="titre" class="filter filter-bottom"></span></th>
+                                <th class="article-artiste">Partition<span id="titre" class="filter filter-bottom"></span></th>
+                                <th class="article-type">Paroles<span id="titre" class="filter filter-bottom"></span></th>
                               <!--  <th class="article-prix">Prix<span id="created" class="filter filter-bottom"></span></th> -->
                             </tr>
                             	 <?php 
@@ -114,7 +117,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 			
 									?>
 										<tr>
-											<td class="le_titre">
+											<td class="le_titre" >
 							<p>		
 								<?php 	echo $morceau->nom;?>
 							</p>
@@ -127,8 +130,15 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 												if($morceau->id == $partition->morceau_id)
 												{ 
 													$b++;
+													if($partition->prix == null):
+													
 									?>
-													<td class="paroles"><a href="<?php echo files($infos_profile->id.'/albums/'.$partition->album_id.'/partition/'.$partition->path) ?>">Voir</a>
+													<td class="partitions"><a href="<?php echo files($infos_profile->id.'/documents/'.$partition->album_id.'/'.$partition->path) ?>">Voir</a>
+																								<?php endif;
+													if($partition->prix != null):
+														?>
+																	<td class="partitions" id="<?php echo $partition->prix ?>"><a id="<?php echo $partition->document_id ?>" class="mise-panier" href="javascript:void(0)">Acheter  (<?php echo $partition->prix ?> €)</a>
+<?php endif; ?>
 														<div class="miniat_titre">
 															<a href="#" class="edit"><span>edit</span></a>
 														</div>
@@ -138,10 +148,10 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 						<?php
 												}
 											endforeach;
-											if($b==0)
+											if($b == 0)
 												{
 	?>
-													<td class="paroles"><a href="#"> - </a>
+													<td class="partitions"><a href="#"> - </a>
 														<div class="miniat_titre">
 															<a href="#" class="edit"><span> - </span></a>
 														</div>
@@ -158,8 +168,14 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 												if($morceau->id == $paroles->morceau_id)
 												{ 
 													$a++;
+													if($paroles->prix == null):
 									?>
-													<td class="paroles"><a href="<?php echo files($infos_profile->id.'/albums/'.$paroles->album_id.'/partition/'.$paroles->path) ?>">Voir</a>
+													<td class="paroles"><a id="mise-panier" href="<?php echo files($infos_profile->id.'/documents/'.$paroles->album_id.'/'.$paroles->path) ?>">Voir</a>
+														<?php endif;
+													if($paroles->prix != null):
+														?>
+															<td class="paroles" id="<?php echo $paroles->prix ?>"><a id="<?php echo $paroles->document_id ?>" class='mise-panier' href="javascript:void(0)">Acheter (<?php echo $paroles->prix ?> €)</a>
+<?php endif; ?>
 														<div class="miniat_titre">
 															<a href="#" class="edit"><span>edit</span></a>
 														</div>
@@ -169,7 +185,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 						<?php
 												}
 											endforeach;
-											if($a==0)
+											if($a == 0)
 												{
 	?>
 													<td class="paroles"><a href="#"> - </a>
@@ -178,6 +194,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 														</div>
 													</td>
 								<?php				}
+								
 						?>	
 				<?php	
 						endif;	

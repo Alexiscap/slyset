@@ -104,7 +104,7 @@
       					
       						<div class="right">
       							<span class="ico_citation"></span>
-        						<p class="msg_post">Je viens de liker la photo de <?php echo $entity_wall->login ?> :  <a href="<?php echo base_url('index.php/mc_photos/zoom_photo/'.$entity_wall->idproduit) ?>"><?php echo $entity_wall->main_nom?></a></p>
+        						<p class="msg_post">Je viens d'aimer la photo de <?php echo $entity_wall->login ?> :  <a href="<?php echo base_url('index.php/mc_photos/zoom_photo/'.$entity_wall->idproduit) ?>"><?php echo $entity_wall->main_nom?></a></p>
       							<img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
 
       							<!--  <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
@@ -143,7 +143,7 @@
     	 					</div>
       						<div class="right">
         						<span class="ico_citation"></span>
-        						<p class="msg_post">Je viens de liker la video de <?php echo $entity_wall->login ?> :  <a href="<?php echo 'http://www.youtube.com/v/'.$entity_wall->file_name.'?version=3' ?>"><?php echo $entity_wall->main_nom?></a></p>
+        						<p class="msg_post">Je viens d'aimer la video de <?php echo $entity_wall->login ?> :  <a href="<?php echo 'http://www.youtube.com/v/'.$entity_wall->file_name.'?version=3' ?>"><?php echo $entity_wall->main_nom?></a></p>
      							<iframe id="ytplayer" type="document" width="455" height="350" src="http://www.youtube.com/v/<?php echo $entity_wall->file_name ?>?version=3" /></iframe>
 
 	    					</div>
@@ -446,7 +446,7 @@
      				</div>
       				<div class="right">
         				<span class="ico_citation"></span>
-        				<p class="msg_post">Je viens de liker l'album de <?php echo $entity_wall->login ?> :  <a href="#"><?php echo $entity_wall->main_nom?></a></p>
+        				<p class="msg_post">Je viens d'aimer l'album de <?php echo $entity_wall->login ?> :  <a href="#"><?php echo $entity_wall->main_nom?></a></p>
      					 <!--  <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
     					-->  
     				</div>
