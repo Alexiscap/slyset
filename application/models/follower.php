@@ -45,7 +45,7 @@ class follower extends CI_Model
 	
 	public function add_follow($user_id,$id_follower,$type)
 	{
-	
+	/*
 		$data_follow = array(
   		 	'Utilisateur_id' => $user_id ,
    			'type' => $type ,
@@ -62,6 +62,7 @@ class follower extends CI_Model
 		);
 
 		$this->db->insert($this->table_wall_melo, $data_follow_wall); 
+		*/
 	}
 
 	public function ifollow($user_id,$follower_id)

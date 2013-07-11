@@ -98,7 +98,7 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
     public function liste_comments() //$nb = 50, $debut = 0
     {
 
-        return $this->db->select('*')
+        return $this->db->select('*,commentaires.id AS comm_id')
                         ->from($this->table_photos)
                         ->join('commentaires', 'commentaires.photos_id = photos.id')
                         ->join('utilisateur','utilisateur.id = commentaires.Utilisateur_id')
@@ -110,7 +110,7 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
       public function liste_comments_album() //$nb = 50, $debut = 0
     {
    
-        return $this->db->select('*')
+        return $this->db->select('*,commentaires.id AS comm_id')
                         ->from($this->table_album)
                         ->join('commentaires', 'commentaires.album_media_file_name = album_media.file_name')
                     	->join('utilisateur','utilisateur.id = commentaires.Utilisateur_id')
@@ -123,7 +123,7 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
     public function liste_comments_video()
     	{
     	//return this->db->query('SELECT * FROM')
-    	return $this->db->select('*')
+    	return $this->db->select('*,commentaires.id AS comm_id')
     				->from($this->table_video)
     				->join('commentaires', 'commentaires.video_id = videos.id')
     				    ->join('utilisateur','utilisateur.id = commentaires.Utilisateur_id')
@@ -552,15 +552,15 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
     	
     	if ($album_nom != null||$album_nom != '')
     		{
-     			$this->db->set(array('Utilisateur_id'=>$user_name,'nom'=>$album_nom,'Videos_id'=>$id_video))
+     			$this->db->set(array('Utilisateur_id'=>$user_id,'nom'=>$album_nom,'Videos_id'=>$id_video))
                 	->insert($this->table_album);
                 
-             $data_add_cmty_photo = array('Utilisateur_id'=>$user_name,'videos_id'=>$id_video,'albums_media_file_name'=>$album_nom,'type'=>"MU"); 
+             $data_add_cmty_photo = array('Utilisateur_id'=>$user_id,'videos_id'=>$id_video,'albums_media_file_name'=>$album_nom,'type'=>"MU"); 
 	 	$this->db->insert('wall_melo_component', $data_add_cmty_photo); 
 			}
 		else {
 		
-		$data_add_cmty_photo = array('Utilisateur_id'=>$user_name,'videos_id'=>$id_video,'type'=>"MU"); 
+		$data_add_cmty_photo = array('Utilisateur_id'=>$user_id,'videos_id'=>$id_video,'type'=>"MU"); 
 	 	$this->db->insert('wall_melo_component', $data_add_cmty_photo); 
 		
 		}
@@ -592,7 +592,7 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
     }
      public function delete_album($file_name_album)
     {
-    
+    $this->db->query('DELETE photos FROM photos JOIN album_media ON album_media.photos_id = photos.id WHERE album_media.file_name = "'.$file_name_album.'"');
       $this->db->where(array('file_name'=>$file_name_album))
                 	->delete('album_media');
 	
@@ -611,7 +611,12 @@ return $one =  $this->db->query('SELECT album_media.file_name,album_media.nom,al
     					->result();
     }
     
-    
+    public function delete_comment($id_com)
+    {
+     $this->db->where(array('id'=>$id_com))
+                	->delete('commentaires');
+	
+    }
     
 
 }

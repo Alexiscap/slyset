@@ -39,6 +39,21 @@ $(document).ready(function(){
     	$('#top_titre').show();
   		//  $('#last_photo').show();
     	$('#reseaux_ailleur').show();
+    	
+    	$('.del').click(function(){
+    	var this_comm = $(this);
+    		id_comm  = $(this).attr('id');
+    		dataid = 'id_comm='+id_comm;
+    		 $.ajax({
+            type: "POST",
+            url : base_url +'/mc_photos/delete_comment',
+            data: dataid,
+            success: function(){
+    		$(this_comm).parents('.comm').slideUp();
+            }
+        });
+
+    	});
     }
 
     if($('body.playlist').length>0||$('body.musique').length>0)

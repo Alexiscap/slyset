@@ -70,7 +70,7 @@ $login = (empty($profile)) ? $this->session->userdata('login') : $profile->login
                         <a class="iframe" href="<?php echo site_url('media/supprimer/' . $profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
                     </div>
                     <?php } ?>
-      		<a href="#"><img src="http://127.0.0.1/slyset/files/30/photos/<?php echo $this->uri->segment(3) ?>/<?php echo  $media_user_result_unit->file_name?>" class="img_cover" /></a>
+      		<a href="#"><img src="<?php echo base_url('/files/'.$profile->id.'/photos/'.$this->uri->segment(3).'/'.$media_user_result_unit->file_name)?>" class="img_cover" /></a>
           	<!-- titre -->
 
       		<p class="nom_photo"><?php echo $media_user_result_unit->nom ?></p>

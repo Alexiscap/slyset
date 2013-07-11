@@ -182,7 +182,7 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
 	
 	public function difference($list_id,$user_id)
 	{
-	$sql_diff ='SELECT id,type,photos_id,message_id,videos_id,morceaux_id,concerts_id,documents_id,Following_id,albums_media_file_name,albums_id FROM wall_melo_component WHERE Utilisateur_id IN ('.$list_id.') AND type ="MU" OR (Utilisateur_id = '.$user_id.' AND type="ME")';
+	$sql_diff ='SELECT id,type,photos_id,message_id,videos_id,morceaux_id,concerts_id,documents_id,Following_id,albums_media_file_name,albums_id FROM wall_melo_component WHERE Utilisateur_id IN ('.$list_id.') AND albums_id IS NOT NULL AND type ="MU" OR (Utilisateur_id = '.$user_id.' AND type="ME")';
 	return $this->db->query($sql_diff)
 					->result();
 					
@@ -206,7 +206,8 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
 						ON utilisateur.id = photos.Utilisateur_id
 				JOIN utilisateur as UM
 						ON UM.id = wall_melo_component.Utilisateur_id
-				WHERE wall_melo_component.id = '.$id_component.')';
+				WHERE wall_melo_component.id = '.$id_component.'
+				AND wall_melo_component.albums_media_file_name IS NULL)';
 			
 			$product = 'une photo';
 			

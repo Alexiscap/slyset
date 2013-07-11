@@ -290,6 +290,7 @@ class Mc_photos extends CI_Controller {
     // changer l'album d'une photo
     //supprimer la photo d'un album
     //supprimer une video d'un album
+   
     $data = array();
     $data['album_by_user'] = $this->photos->get_album($user_id);
     $data['max_album_user'] = count($data['album_by_user']);
@@ -301,7 +302,8 @@ class Mc_photos extends CI_Controller {
       $this->load->helper(array('form', 'url'));
 
       $this->load->view('photos/update_photo', $data);
-    } else {
+    } 
+    else {
       if ($type == 1) {
         //info de l'album renseigné : donc changement album pour photo
         $file_name_a = $this->photos->get_info_album($this->input->post('albums'));
@@ -340,13 +342,13 @@ class Mc_photos extends CI_Controller {
         rename($file_base, $file_obj);
         $data['update_photos'] = $this->photos->update_photo($user_id, $id_media, $this->input->post('description'), $this->input->post('albums'), $file_name_album, $data['info_photo'][0]->file_name);
 
-        $this->load->view('photos/mc_photos', $data);
+        $this->load->view('photos/photos_success', $data);
       }
 
 
       if ($type == 2) {
         $data['update_photos'] = $this->photos->update_album($user_id, $id_media, $this->input->post('description'));
-        $this->load->view('photos/mc_photos', $data);
+        $this->load->view('photos/photos_success', $data);
       }
       if ($type == 3) {
 
@@ -369,7 +371,7 @@ class Mc_photos extends CI_Controller {
 
 
         $data['update_photos'] = $this->photos->update_video($user_id, $id_media, $this->input->post('description'), $this->input->post('albums'), $file_name_album);
-        $this->load->view('photos/mc_photos', $data);
+        $this->load->view('photos/photos_success', $data);
 
         //$user_id,$id_video,$nom_video,$album_name,$file_name_a
       }
@@ -469,21 +471,21 @@ class Mc_photos extends CI_Controller {
 
         $this->photos->delete_photo($media_id);
         // add success page photo
-        $this->load->view('success-concert');
+        $this->load->view('photos/photos_success');
       }
 
       if ($type_media == 2) {
 
         $this->photos->delete_album($media_id);
         // add success page photo
-        $this->load->view('success-concert');
+        $this->load->view('photos/photos_success');
       }
 
       if ($type_media == 3) {
 
         $this->photos->delete_video($media_id);
         // add success page photo
-        $this->load->view('success-concert');
+        $this->load->view('photos/photos_success');
       }
     }
     echo $this->input->post("no_delete"); {
@@ -491,6 +493,12 @@ class Mc_photos extends CI_Controller {
     }
 
     $this->load->view('photos/delete_photos', $data);
+  }
+  
+  public function delete_comment()
+  {
+  $id_com = $this->input->post('id_comm');
+    $this->photos->delete_comment($id_com);
   }
 
 }
