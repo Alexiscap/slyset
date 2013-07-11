@@ -174,6 +174,11 @@ class User_model extends CI_Model
         $this->db->update($this->table, $data, "id = ".$this->session->userdata('uid'));
     }
     
+    public function delete_user($uid)
+    {
+        return $this->db->where('id', (int) $uid)->delete($this->table);
+    }
+    
     public function get_community($user_follower_id)
     {
     	return $this->db->select('id, Utilisateur_id')

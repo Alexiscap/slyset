@@ -1,7 +1,7 @@
 <?php
     $session_id = $this->session->userdata('uid');
     $uid = (empty($session_id)) ? '' : $session_id;
-    $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
+    $uid_visit = $this->uri->segment(2);
     $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
 ?>
 
@@ -56,7 +56,7 @@
       </div>
       <?php
         $form_comments_1 = array("id" => "comments-msg", "style" => "display:block;");
-        echo form_open('mc_actus/form_wall_musicien_message/'.$uid = (empty($infos_profile)) ? $session_id : $infos_profile->id, $form_comments_1);
+        echo form_open('mc_actus/form_wall_musicien_message/'.$uid_form = (empty($infos_profile)) ? $session_id : $infos_profile->id, $form_comments_1);
         
           $textarea = array("name" => "comment1", "placeholder" => "Votre message ici ...");
           echo form_textarea($textarea);
@@ -67,7 +67,7 @@
         
         
         $form_comments_2 = array("id" => "comments-photo", "style" => "display:none;");
-        echo form_open_multipart('mc_actus/form_wall_musicien_photo'.$uid = (empty($infos_profile)) ? $session_id : $infos_profile->id, $form_comments_2);
+        echo form_open_multipart('mc_actus/form_wall_musicien_photo'.$uid_form2 = (empty($infos_profile)) ? $session_id : $infos_profile->id, $form_comments_2);
           $textarea = array("name" => "comment2","placeholder" => "Votre description ici ...");
           echo form_textarea($textarea);
           echo form_error('comment2', '<span class="error-form">', '</span>');
@@ -82,7 +82,7 @@
         
         
         $form_comments_3 = array("id" => "comments-link-video", "style" => "display:none;");
-        echo form_open('mc_actus/form_wall_musicien_link'.$uid = (empty($infos_profile)) ? $session_id : $infos_profile->id, $form_comments_3);
+        echo form_open('mc_actus/form_wall_musicien_link'.$uid_form3 = (empty($infos_profile)) ? $session_id : $infos_profile->id, $form_comments_3);
         
           $textarea = array("name" => "comment3","placeholder" => "Votre description ici ...");
           echo form_textarea($textarea);
@@ -102,7 +102,9 @@
         <?php if(empty($message->photo) && empty($message->video)): ?>
             <div class="artist_post simple_message">
                 <div class="top">
-                    <a href="<?php echo site_url('mc_actus/delete/'.$message->id); ?>" class="post_delete"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                    <?php if($uid_visit == $uid): ?>
+                        <a href="<?php echo site_url('mc_actus/delete/'.$message->id); ?>" class="post_delete"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                    <?php endif; ?>
                 </div>
                 <div class="left">
                     <a href="<?php echo site_url('home/'.$message->idU); ?>"><img src="<?php echo files('profiles/'.$message->thumbU); ?>" alt="Photo Profil" /></a>
@@ -134,7 +136,9 @@
                             </div>
                             <div class="com_right">
                                 <div class="com_top">
-                                    <a href="<?php echo site_url('mc_actus/delete_comment/'.$commentaire->idB); ?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                                    <?php if($uid_visit == $uid): ?>
+                                        <a href="<?php echo site_url('mc_actus/delete_comment/'.$commentaire->idB); ?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="com_bottom">
                                     <span class="com_publi_infos"><?php echo $commentaire->loginU; ?><small> - <?php echo my_time($commentaire->createdB); ?></small></span>
@@ -159,7 +163,9 @@
         <?php elseif(!empty($message->photo) && empty($message->video)): ?>
             <div class="artist_post photo_message">
                 <div class="top">
-                    <a href="<?php echo site_url('mc_actus/delete/'.$message->id); ?>" class="post_delete"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                    <?php if($uid_visit == $uid): ?>
+                        <a href="<?php echo site_url('mc_actus/delete/'.$message->id); ?>" class="post_delete"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                    <?php endif; ?>
                 </div>
                 <div class="left">
                     <a href="<?php echo site_url('home/'.$message->idU); ?>"><img src="<?php echo files('profiles/'.$message->thumbU); ?>" alt="Photo Profil" /></a>
@@ -194,7 +200,9 @@
                             </div>
                             <div class="com_right">
                                 <div class="com_top">
-                                    <a href="<?php echo site_url('mc_actus/delete_comment/'.$commentaire->idB); ?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                                    <?php if($uid_visit == $uid): ?>
+                                        <a href="<?php echo site_url('mc_actus/delete_comment/'.$commentaire->idB); ?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="com_bottom">
                                     <span class="com_publi_infos"><?php echo $commentaire->loginU; ?><small> - <?php echo my_time($commentaire->createdB); ?></small></span>
@@ -219,7 +227,9 @@
         <?php elseif(empty($message->photo) && !empty($message->video)): ?>
             <div class="artist_post video_message">
                 <div class="top">
-                    <a href="<?php echo site_url('mc_actus/delete/'.$message->id); ?>" class="post_delete"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                    <?php if($uid_visit == $uid): ?>
+                        <a href="<?php echo site_url('mc_actus/delete/'.$message->id); ?>" class="post_delete"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                    <?php endif; ?>
                 </div>
                 <div class="left">
                     <a href="<?php echo site_url('home/'.$message->idU); ?>"><img src="<?php echo files('profiles/'.$message->thumbU); ?>" alt="Photo Profil" /></a>
@@ -258,7 +268,9 @@
                             </div>
                             <div class="com_right">
                                 <div class="com_top">
-                                    <a href="<?php echo site_url('mc_actus/delete_comment/'.$commentaire->idB); ?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                                    <?php if($uid_visit == $uid): ?>
+                                        <a href="<?php echo site_url('mc_actus/delete_comment/'.$commentaire->idB); ?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="com_bottom">
                                     <span class="com_publi_infos"><?php echo $commentaire->loginU; ?><small> - <?php echo my_time($commentaire->createdB); ?></small></span>
@@ -283,7 +295,7 @@
         <?php endif; ?>
     <?php endforeach; ?>
     
-    <p>___________________________________</p>
+<!--   <p>___________________________________</p>
     
     <div class="artist_post simple_message">
       
@@ -442,19 +454,9 @@
         <span class="infos_publi">Jim Morisson - Le 24 Septembre 2013</span>
         <span class="infos_coms">Aucun commentaire - <a href="#">Commenter</a></span>
       </div>
-    </div>
+    </div>-->
   </div>
 
   <?php if(isset($sidebar_right)) echo $sidebar_right; ?>
-
-  <div class="pagination">
-    <a href="#" id="precedent"><span><</span></a>
-    <a href="#" class="page">1</a>
-    <a href="#" class="page">2</a>
-    <a href="#" class="page">3</a>
-    <a href="#" class="page">4</a>
-    <a href="#" class="page">5</a>
-    <a href="#" id="suivant"><span>></span></a>
-  </div>
   
 </div>

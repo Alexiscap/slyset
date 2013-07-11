@@ -88,7 +88,7 @@ class Admin_artistes extends CI_Controller
 //        print_r($result);
 //        print_r($mail);
 
-        if(!$result){
+        if(!$result && !empty($field_artiste)){
             $this->form_validation->set_message('check_type', 'Veuillez saisir un nom de musicien ou de groupe !');
             return false;
         } else {

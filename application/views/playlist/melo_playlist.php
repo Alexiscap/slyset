@@ -355,14 +355,14 @@
 				<table>
 					<tbody>
 						<tr class="tab-head odd row-color-2">
-							<th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"><span></span></label></th>
+							<th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
 							<th class="article-title">Titre<span id="titre" class="filter filter-bottom"></span></th>
 							<th class="article-artiste">Artiste<span id="titre" class="filter filter-bottom"></span></th>
 							<th class="article-album">Album<span id="titre" class="filter filter-bottom"></span></th>
 							<th class="article-duree">Durée<span id="created" class="filter filter-bottom"></span></th>
 						</tr>
 							<tr class="even row-color-1">
-								<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"><span></span></label></td>
+								<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"></label></td>
 								<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
 									<a href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
 									Rainy Winny
@@ -406,14 +406,14 @@
 				<table>
 					<tbody>
 						<tr class="tab-head odd row-color-2">
-							<th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"><span></span></label></th>
+							<th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
 							<th class="article-title">Titre<span id="titre" class="filter filter-bottom"></span></th>
 							<th class="article-artiste">Artiste<span id="titre" class="filter filter-bottom"></span></th>
 							<th class="article-album">Album<span id="titre" class="filter filter-bottom"></span></th>
 							<th class="article-duree">Durée<span id="created" class="filter filter-bottom"></span></th>
 						</tr>
 							<tr class="even row-color-1">
-								<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"><span></span></label></td>
+								<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"></label></td>
 								<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
 									<a href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
 									Rainy Winny
@@ -428,7 +428,7 @@
 								<td class="article-duree">2:51</td>
 							</tr>
 							<tr class="even row-color-2">
-								<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"><span></span></label></td>
+								<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"></label></td>
 								<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
 									<a href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
 									Rainy Winny
@@ -443,7 +443,7 @@
 								<td class="article-duree">2:51</td>
 							</tr>
 							<tr class="even row-color-1">
-								<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"><span></span></label></td>
+								<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"></label></td>
 								<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
 									<a href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
 									Rainy Winny
@@ -458,7 +458,7 @@
 								<td class="article-duree">2:51</td>
 							</tr>
 							<tr class="even row-color-2">
-								<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"><span></span></label></td>
+								<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"></label></td>
 								<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
 									<a href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
 									Rainy Winny

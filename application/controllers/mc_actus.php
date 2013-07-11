@@ -104,8 +104,13 @@ class Mc_actus extends CI_Controller
             $lien = '';
             $photo = '';
             
-            $this->mc_actus_model->insert_actus($message, $lien, $photo, $user_id);
-            redirect('actualite/'.$user_id, 'refresh');
+            $logged_in = $this->session->userdata('logged_in');
+            if($logged_in == 1){
+                $this->mc_actus_model->insert_actus($message, $lien, $photo, $user_id);
+                redirect('actualite/'.$user_id, 'refresh');
+            } else {
+                redirect('login', 'refresh');
+            }
         }
     }
     
@@ -136,9 +141,14 @@ class Mc_actus extends CI_Controller
             $message = ucfirst($this->input->post('comment2'));
             $lien = '';
             $photo = $this->input->post('photo');
-            
-            $this->mc_actus_model->insert_actus($message, $lien, $photo, $user_visited);
-            redirect('mc_actus/'.$user_visited, 'refresh');
+                        
+            $logged_in = $this->session->userdata('logged_in');
+            if($logged_in == 1){
+                $this->mc_actus_model->insert_actus($message, $lien, $photo, $user_visited);
+                redirect('mc_actus/'.$user_visited, 'refresh');
+            } else {
+                redirect('login', 'refresh');
+            }
         }
     }
     
@@ -158,8 +168,13 @@ class Mc_actus extends CI_Controller
             $lien = $this->input->post('linkurl');
             $photo = '';
             
-            $this->mc_actus_model->insert_actus($message, $lien, $photo, $user_visited);
-            redirect('mc_actus/'.$user_visited, 'refresh');
+            $logged_in = $this->session->userdata('logged_in');
+            if($logged_in == 1){
+                $this->mc_actus_model->insert_actus($message, $lien, $photo, $user_visited);
+                redirect('mc_actus/'.$user_visited, 'refresh');
+            } else {
+                redirect('login', 'refresh');
+            }
         }
     }
 

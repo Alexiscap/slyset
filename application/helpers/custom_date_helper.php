@@ -20,13 +20,13 @@ if ( ! function_exists('my_time'))
             else if($diff < 10800) /* moins de 3 heures */
                 return 'Il y a '.round($diff/3600, 0).' heures';
             else /*  plus de 3 heures ont affiche ajourd'hui à HH:MM:SS */
-                return 'Aujourd\'hui à '.date('H:i:s', $date);
+                return 'Aujourd\'hui à '.date('H:i', $date);
         } else if(date('Ymd', $date) == date('Ymd', strtotime('- 1 DAY')))
-            return 'Hier à '.date('H:i:s', $date);
+            return 'Hier à '.date('H:i', $date);
         else if(date('Ymd', $date) == date('Ymd', strtotime('- 2 DAY')))
-            return 'Il y a 2 jours à '.date('H:i:s', $date);
+            return 'Il y a 2 jours à '.date('H:i', $date);
         else
-            return 'Le '.date('d/m/Y à H:i:s', $date);
+            return 'Le '.date('d/m/Y à H:i', $date);
     }
 }
 

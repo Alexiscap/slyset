@@ -102,6 +102,9 @@ $route['personnaliser/(:num)'] = "mc_perso/index/$1";
 $route['personnaliser/update/(:num)'] = "mc_perso/update_perso/$1";
 $route['personnaliser/delete/(:num)'] = "mc_perso/delete_perso/$1";
 $route['personnaliser/theme-1/(:num)'] = "mc_perso/theme1/$1";
+$route['personnaliser/theme-2/(:num)'] = "mc_perso/theme2/$1";
+$route['personnaliser/theme-3/(:num)'] = "mc_perso/theme3/$1";
+$route['personnaliser/theme-4/(:num)'] = "mc_perso/theme4/$1";
 
 $route['follower'] = "mc_followers/index";
 $route['follower/(:num)'] = "mc_followers/index/$1";

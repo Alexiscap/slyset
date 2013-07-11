@@ -98,7 +98,7 @@ class Mc_reglages extends CI_Controller
         
         $config['upload_path']   = $dynamic_path;
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size']    = '100000';
+        $config['max_size']    = '2048';
         $config['max_width']  = '1024';
         $config['max_height']  = '768';
         $this->load->library('upload', $config);
@@ -148,6 +148,25 @@ class Mc_reglages extends CI_Controller
         }
     }
     
+    public function delete_user($infos_profile = NULL)
+    {
+        $uid = $this->session->userdata('uid');
+        $this->user_id = $this->uri->segment(3);
+        $data = $this->data;
+        $data['profile'] = $this->user_model->getUser($this->user_id);
+                             
+//        if($this->form_validation->run() == FALSE){
+//            $this->layout->view('reglage/mc_reglages', $data);
+//        } else {
+//            $cover            = $this->input->post('cover');            
+
+//            $this->user_model->delete_user($uid);
+//
+//            redirect('home', 'refresh');
+            print_r($this->session->all_userdata());
+//        }
+    }
+    
     function handle_upload_cover()
     {
         if (isset($_FILES['cover']) && !empty($_FILES['cover']['name'])){
@@ -156,11 +175,11 @@ class Mc_reglages extends CI_Controller
                 $_POST['cover'] = $upload_data['file_name'];
                 return true;
               } else {
-                  $this->form_validation->set_message('handle_upload', $this->upload->display_errors());
+                  $this->form_validation->set_message('handle_upload_cover', '<p>L\'image que vous tentez d\'envoyer dépasse les valeurs maximales autorisées.<br/>(Max 256 KO - 1024px x 768px)</p>');
                   return false;
             }
         } else {
-//            $this->form_validation->set_message('handle_upload', "You must upload an image!");
+            $this->form_validation->set_message('handle_upload_cover', "You must upload an image!");
             $_POST['cover'] = $this->session->userdata('cover');
             return true;
         }
@@ -174,11 +193,11 @@ class Mc_reglages extends CI_Controller
                 $_POST['thumb'] = $upload_data['file_name'];
                 return true;
             } else {
-//             $this->form_validation->set_message('handle_upload', $this->upload->display_errors());
+             $this->form_validation->set_message('handle_upload_thumb', '<p>L\'image que vous tentez d\'envoyer dépasse les valeurs maximales autorisées.<br/>(Max 256 KO - 1024px x 768px)</p>');
               return false;
             }
         } else {
-//            $this->form_validation->set_message('handle_upload', "You must upload an image!");
+            $this->form_validation->set_message('handle_upload_thumb', "You must upload an image!");
             $_POST['thumb'] = $this->session->userdata('thumb');
             return true;
         }

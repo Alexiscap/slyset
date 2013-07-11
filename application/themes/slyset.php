@@ -90,7 +90,7 @@
         <div class="slyset">
           <span>Autour de slyset</span>
           <ul>
-            <li><a href="http://slyset.wordpress.com">Le blog</a></li>
+            <li><a href="http://slyset.wordpress.com" target="_blank">Le blog</a></li>
             <li><a href="<?php echo site_url('slyset-project/'.$this->session->userdata('uid')); ?>">Qui sommes-nous ?</a></li>
             <li><a href="<?php echo site_url('fonctionnalites/'.$this->session->userdata('uid')); ?>">Fonctionnalités</a></li>
             <li><a href="#">Kit presse</a></li>

@@ -30,7 +30,7 @@ class Login_model extends CI_Model {
 
         $this->db->select('*');
         $this->db->from('utilisateur');
-        $this->db->where('login = ' . "'" . $login . "'" . ' AND password = ' . "'" . $password . "'");
+        $this->db->where('login = ' . "'" . $login . "'" . ' AND password = ' . "'" . $password . "'" . ' AND suspendu = 0');
         $this->db->limit(1);
 
         $query = $this->db->get();

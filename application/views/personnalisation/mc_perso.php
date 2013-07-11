@@ -44,7 +44,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
         <p class="detail_perso">Personnalisez l’affichage de votre page musicien. Slyset vous propose différents thèmes préconçus mais vous pouvez également créer le votre.</p>
   
         <?php 
-        print_r($perso);
+//        print_r($perso);
         
 //        echo "<link rel='stylesheet' type='text/css' media='screen' href='".css_url($perso->theme_css)."'>";
         echo form_open_multipart('personnaliser/update/'.$session_id); ?>
@@ -53,9 +53,9 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                 <p>Thèmes préconçus</p>
                 <div class="themes">
                     <a href="<?php echo site_url().'/personnaliser/theme-1/'.$session_id; ?>" class="t1"><span>t1</span></a>
-                    <a href="<?php echo site_url().'/personnaliser/theme2/'.$session_id; ?>" class="t2"><span>t2</span></a>
-                    <a href="<?php echo site_url().'/personnaliser/theme3/'.$session_id; ?>" class="t3"><span>t3</span></a>
-                    <a href="<?php echo site_url().'/personnaliser/theme4/'.$session_id; ?>" class="t4"><span>t4</span></a>
+                    <a href="<?php echo site_url().'/personnaliser/theme-2/'.$session_id; ?>" class="t2"><span>t2</span></a>
+                    <a href="<?php echo site_url().'/personnaliser/theme-3/'.$session_id; ?>" class="t3"><span>t3</span></a>
+                    <a href="<?php echo site_url().'/personnaliser/theme-4/'.$session_id; ?>" class="t4"><span>t4</span></a>
                 </div>
             </div>
 
@@ -69,13 +69,14 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                 <div class="upload-file-container container-background">
                    <input type="file" name="background" size="200" id="upload_images_background" />
                 </div>
-                <span class="upload_photo_name_file"></span>
+                <span class="upload_photo_name_file"><?php echo $background_name = (empty($perso->background)) ? '' : $perso->background; ?></span>
                 <div class="checkbox-style">
                     <?php
                         echo form_checkbox('repeat', 'repeat', set_checkbox('repeat', 'repeat', $bool = (!empty($perso->repeat)) ? true : false), 'id="repeat"');
                         echo form_label('Répéter l\'image', 'repeat');
                     ?>
                 </div>
+                <?php echo form_error('background', '<span class="error-form">', '</span>'); ?>
             </div>
 
             <div class="clear"></div>

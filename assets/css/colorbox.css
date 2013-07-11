@@ -29,8 +29,8 @@
     #cboxMiddleRight{width:21px; background:url(../images/colorbox/controls.png) right top repeat-y;}
     #cboxTopCenter{height:21px; background:url(../images/colorbox/border.png) 0 0 repeat-x;}
     #cboxBottomCenter{height:21px; background:url(../images/colorbox/border.png) 0 -29px repeat-x;}*/
-    #cboxContent{background:#fff; overflow:hidden; border-radius : 5px;}
-        .cboxIframe{background:#fff; border-radius : 5px;}
+    #cboxContent{background:transparent; overflow:hidden; border-radius : 5px;}
+        .cboxIframe{background:transparent; border-radius : 5px;}
         #cboxError{padding:50px; border:1px solid #ccc;}
        /* #cboxLoadedContent{margin-bottom:28px;}*/
         #cboxTitle{position:absolute; bottom:4px; left:0; text-align:center; width:100%; color:#949494;}

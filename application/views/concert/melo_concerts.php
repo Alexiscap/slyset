@@ -123,7 +123,7 @@ if($nbr_concert_par_melo!=0)
         }
         else {
 
-            echo "<div class='text-empty'>Vous n'avez prévue aucun nouveau concert.</div>";
+            echo "<div class='text-empty'>Vous n'avez prévu aucun nouveau concert.</div>";
         }
         ?>
 

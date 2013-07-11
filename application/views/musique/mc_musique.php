@@ -81,12 +81,12 @@
 			<table>
 				<tbody>
 					<tr class="tab-head odd row-color-2">
-						<th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"><span></span></label></th>
+						<th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
 						<th class="article-title">Titre de la chanson<span id="titre" class="filter filter-bottom"></span></th>
 						<th class="article-date">Durée<span id="created" class="filter filter-bottom"></span></th>
 					</tr>
 					<tr class="even row-color-1">
-						<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="18" id="article-18" class="checkbox-article"><label for="article-18"><span></span></label></td>
+						<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="18" id="article-18" class="checkbox-article"><label for="article-18"></label></td>
 						<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id=''";><a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
 							<p> Rainy Day Women </p>
 							<div class="miniat_titre">
@@ -99,7 +99,7 @@
 						<td class="article-date">4:19</td>
 					</tr>
 					<tr class="even row-color-2">
-						<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="19" id="article-19" class="checkbox-article"><label for="article-19"><span></span></label></td>
+						<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="19" id="article-19" class="checkbox-article"><label for="article-19"></label></td>
 						<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id=''";><a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
 							<p> Rainy Day Women </p>
 							<div class="miniat_titre">
@@ -131,12 +131,12 @@
 				<table>
 					<tbody>
 						<tr class="tab-head odd row-color-2">
-							<th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"><span></span></label></th>
+							<th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
 							<th class="article-title">Titre de la chanson<span id="titre" class="filter filter-bottom"></span></th>
 							<th class="article-date">Durée<span id="created" class="filter filter-bottom"></span></th>
 						</tr>
 						<tr class="even row-color-1">
-							<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"><span></span></label></td>
+							<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"></label></td>
 							<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id=''";><a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
 								<p> Rainy Day Women </p>
 								<div class="miniat_titre">
@@ -149,7 +149,7 @@
 							<td class="article-date">4:19</td>
 						</tr>
 						<tr class="even row-color-2">
-							<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="21" id="article-21" class="checkbox-article"><label for="article-21"><span></span></label></td>
+							<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="21" id="article-21" class="checkbox-article"><label for="article-21"></label></td>
 							<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id=''";><a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
 								<p> Rainy Day Women </p>
 								<div class="miniat_titre">

@@ -18,11 +18,11 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
     	<div id="infos-cover">
         	<h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
     		<?php 
-     		if($infos_profile->type==2&&substr_count($community_follower,$infos_profile->id)==0):?>
+     		if($profile->type==2&&substr_count($community_follower,$profile->id)==0):?>
       			<a href="#" class="add-follow" id="<?php echo $this->uri->segment(2)?>"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
    			<?php endif;
     	
-    		if($infos_profile->type==2&&substr_count($community_follower,$infos_profile->id)>0):?>
+    		if($profile->type==2&&substr_count($community_follower,$profile->id)>0):?>
      			<a href="#" class="delete-follow" id="<?php echo $this->uri->segment(2)?>"><span class="button_left_abonne"></span><span class="button_center_abonne">Ne plus suivre</span><span class="button_right_abonne"></span></a>
     		<?php endif;?>
    		</div>
@@ -70,10 +70,11 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                     <!--  edition : HOVER *******************-->
                      <?php if ($profile->id == $uid) { ?> 
                       <div class="edit">
-                        <a class="iframe" href="<?php echo site_url('media/editer/' . $infos_profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+
                         <!--  edition : SUPPRESSION *******************-->
 
                         <a class="iframe" href="<?php echo site_url('media/supprimer/' . $infos_profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+						<a class="iframe" href="<?php echo site_url('media/editer/' . $infos_profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
                     </div>
                     <?php } ?>
                     <!-- image -->
@@ -111,10 +112,10 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                     <div class="allcomment" id="comm<?php echo $media_user_result_unit->id ?>">
 
                         <?php foreach ($commentaires as $commentaire): ?>
-                            <?php if ($media_user_result_unit->id == $commentaire->photos_id): ?>      
+                            <?php if ($media_user_result_unit->id == $commentaire->photos_id): ?>  
                                 <div class="comm">
                                  <?php if ($infos_profile->id == $uid) { ?>
-                                    <img src="<?php echo img_url('common/del.png'); ?>" class="del"/>
+                                    <img id="<?php echo $commentaire->comm_id ?>" src="<?php echo img_url('common/del.png'); ?>" class="del"/>
                                  <?php } ?>   <img src="<?php echo base_url('/files/profiles/'.$commentaire->thumb); ?>"  />
 
                                     <p class="name_comm"> <?php echo $commentaire->login ?></p>
@@ -150,15 +151,27 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                     <!--  edition : HOVER *******************-->
                     <?php if ($profile->id == $uid) { ?> 
                       <div class="edit">
-                        <a class="iframe" href="<?php echo site_url('media/editer/' . $infos_profile->id . '/' . $media_user_result_unit->file_name . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+                  
                         <a class="iframe" href="<?php echo site_url('media/supprimer/' . $infos_profile->id . '/' . $media_user_result_unit->file_name . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+						<a class="iframe" href="<?php echo site_url('media/editer/' . $infos_profile->id . '/' . $media_user_result_unit->file_name . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+                      
                     	<div class="open_alb">
                         	<a href="<?php echo site_url('album/' . $infos_profile->id . '/' . $media_user_result_unit->file_name) ?>"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
                     	</div>
-
+                    	  </div>
+                    <?php } 
+				
+					else
+					{ ?>
+					   <div class="edit">
+                  
+                    	<div class="open_alb">
+                        	<a href="<?php echo site_url('album/' . $infos_profile->id . '/' . $media_user_result_unit->file_name) ?>"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+                    	</div>
+                    	  </div>
+					<?php } ?>
                     
-                    </div>
-                    <?php } ?>
+                  
                    
                     <a href="<?php echo site_url('media/album/'.$infos_profile->id.'/'.$media_user_result_unit->file_name); ?>"><img src="<?php echo files($infos_profile->id.'/photos/'.$media_user_result_unit->file_name.'/cover'); ?>" class="img_cover" /></a>
         <?php
@@ -217,7 +230,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                 ?>  
                                 <div class="comm">                                 <?php if ($infos_profile->id == $uid) { ?>
 
-                                    <img src="<?php echo img_url('common/del.png'); ?>" class="del"/>
+                                    <img id="<?php echo $commentaire->comm_id ?>"  src="<?php echo img_url('common/del.png'); ?>" class="del"/>
                                    <?php } ?> <img src="<?php echo base_url('/files/profiles/'.$commentaire->thumb); ?>" />
                                     <p class="name_comm"><?php echo $commentaire->login ?></p>
                                     <p class="commentaire"><?php echo $commentaire->comment ?></p> 
@@ -273,6 +286,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
              </div>
              <?php }
               ?>
+    
              
              <a href="http://www.youtube.com/v/<?php echo $media_user_result_unit->file_name ?>?version=3"><img src="http://i.ytimg.com/vi/<?php echo $media_user_result_unit->file_name?>/hqdefault.jpg" class="img_cover" /></a>
                 
@@ -317,7 +331,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
           if($media_user_result_unit->id == $commentaire->video_id): ?>  
                   <div class="comm">                                 <?php if ($infos_profile->id == $uid) { ?>
 
-           <img src="<?php echo img_url('common/del.png'); ?>" class="del"/>
+           <img id="<?php echo $commentaire->comm_id ?>" src="<?php echo img_url('common/del.png'); ?>" class="del"/>
             <?php } ?>  <img src="<?php echo base_url('/files/profiles/'.$commentaire->thumb); ?>" />
                 <p class="name_comm"> <?php echo $commentaire->login?></p>
                 <p class="commentaire"><?php echo $commentaire->comment?></p> 

@@ -13,7 +13,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
             <li><a href="<?php echo site_url($this->uri->segment(1) . '/' . $uid_visit); ?>">Abonnements</a></li>
         </ul>
     </div>
-
+    
    <div id="cover" style="background-image:url(<?php print files('profiles/'.$cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
     	<div id="infos-cover">
           	<h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
@@ -44,7 +44,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
             <span class="stats_title">morceaux</span>
         </div>
     </div>
-    
+
     <div class="content">
         <div id="btn_tmp_follow">
             <a href="<?php echo site_url('follower/' . $infos_profile->id) ?>" class="tous active">Tous</a>
@@ -57,12 +57,13 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
         if (count($all_follower) == 0):
             ?>
             <h2>Aucun abonné</h2>
-        <?php endif;
+            <?php
+        endif;
         if (count($all_follower) > 1):
             ?>
             <h2>Mes <?php echo count($all_follower); ?> abonnés</h2>
         <?php endif; ?>
-       
+
         <?php
         if (isset($all_follower)):
             foreach ($all_follower as $follower):
@@ -70,47 +71,46 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                 <div class="follower">
                     <div class="photo_follow">
                         <!-- dossier de la cover pour un user ? -->
-                        <a href="<?php echo base_url('index.php/actualite/'.$follower->Follower_id) ?>"><img src="<?php echo files('profiles/' . $follower->thumb) ?>" /></a>
+                        <a href="<?php echo base_url('index.php/actualite/' . $follower->Follower_id) ?>"><img src="<?php echo files('profiles/' . $follower->thumb) ?>" /></a>
                     </div>
                     <div class="description">
-                        <p class="nom_follow"><a href="<?php echo base_url('index.php/actualite/'.$follower->Follower_id) ?>"><?php echo $follower->login ?></a></p>
+                        <p class="nom_follow"><a href="<?php echo base_url('index.php/actualite/' . $follower->Follower_id) ?>"><?php echo $follower->login ?></a></p>
                         <p class="text_follow"><?php echo $follower->description ?></p>
 
                         <?php
-                        if ($follower->type == 1) {
+                        if ($follower->type == 1):
                             ?>
-                            <img src="<?php echo img_url('common/casque.png'); ?>" /><span><?php echo ' '.$follower->style_ecoute ?></span>
+                            <img src="<?php echo img_url('common/casque.png'); ?>" /><span><?php echo ' ' . $follower->style_ecoute ?></span>
                         </div>
                         <div class="bouton">
-                            <a href="<?php echo base_url('index.php/my-wall/'.$follower->Follower_id) ?> " onclick="location.href='<?php echo base_url('index.php/my-wall/'.$follower->Follower_id) ?>';" class="melo"><span class="button_left_red"></span><span class="button_center_red">Voir le profil</span><span class="button_right_red"></span></a>
+                            <a href="<?php echo base_url('index.php/my-wall/' . $follower->Follower_id) ?> " onclick="location.href='<?php echo base_url('index.php/my-wall/' . $follower->Follower_id) ?>';" class="melo"><span class="button_left_red"></span><span class="button_center_red">Voir le profil</span><span class="button_right_red"></span></a>
                         </div>
-                    <?php
-                    }
+                        <?php
+                    endif;
 
-                    if ($follower->type == 2) {
+                    if ($follower->type == 2):
                         ?>
 
-                        <img src="<?php echo img_url('common/casque.png'); ?>" /><span><?php echo ' '.$follower->style_joue ?></span>
+                        <img src="<?php echo img_url('common/casque.png'); ?>" /><span><?php echo ' ' . $follower->style_joue ?></span>
                     </div>
-                    	<?php if (substr_count($allifollow, $follower->Follower_id) >= 1) {
-                            ?>
+                    <?php if (substr_count($allifollow, $follower->Follower_id) >= 1): ?>
                         <div class="bouton" >
                             <a href="#" id="<?php echo $follower->Follower_id ?>" class="participer" ><span class="button_left"></span><span class="button_center">Abonné</span><span class="button_right"></span></a>
                         </div>
-                    <?php
-                    }
-                    if (substr_count($allifollow, $follower->Follower_id) == 0) {
+                        <?php
+                    endif;
+                    if (substr_count($allifollow, $follower->Follower_id) == 0):
                         ?>
                         <div class="bouton" >
                             <a id="<?php echo $follower->Follower_id ?>" href="#" class="follow_following" ><span class="button_left_red"></span><span class="button_center_red">Suivre</span><span class="button_right_red"></span></a>
                         </div>
-                    <?php
-                    }
-                }
+                        <?php
+                    endif;
+                endif;
                 ?>
 
+                <hr/>
             </div>
-            <hr/>
             <?php
         endforeach;
     endif;
