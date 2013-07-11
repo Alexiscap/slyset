@@ -25,6 +25,7 @@ class Mc_musique extends CI_Controller {
     	{
     		$sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
 		}
+		$this->load->helper('form');
         if (!empty($output)) {
             $this->layout->ajouter_dynamique_css($output->theme_css);
             write_css($output);

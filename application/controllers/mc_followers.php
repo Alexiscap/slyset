@@ -25,6 +25,7 @@ class Mc_followers extends CI_Controller {
     	{
     		$sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
 		}
+		$this->load->helper('form');
         //--bouton suivre un musicien
         $community_follower=  $this->user_model->get_community($this->session->userdata('uid'));
         $my_abonnement_head = "";

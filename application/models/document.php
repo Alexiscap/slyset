@@ -128,4 +128,14 @@ $this->db->where('id', $album);
 $this->db->update('albums', $data); 
 
 	}
+	
+	public function panier($prix,$doc_id,$nom)
+	{
+	$this->db->set(array('Utilisateur_id'=>$this->session->userdata('uid'),'status'=>'P'))
+                	->insert('commande');
+        $cmd_last_id =  $this->db->insert_id();
+
+                	$this->db->set(array('Commande_id'=>$cmd_last_id,'prix'=>$prix,'Documents_id'=>$doc_id))
+                	->insert('infos_commande');
+	}
 }

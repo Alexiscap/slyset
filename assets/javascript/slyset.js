@@ -65,7 +65,7 @@ $(document).ready(function(){
 
 	$('.mise-panier').click(function(){
 
- 		
+ 		var la_cmd = $(this);
         doc_id = $(this).attr('id');
         prix = $(this).parents('td').attr('id');
         nom = $('.mise-panier').parents('td').attr('class')
@@ -81,7 +81,7 @@ $(document).ready(function(){
             url : base_url +'/mc_partitions/panier',
             data: dataid,
             success: function(datas){
-              	$(this).text('Au Panier');
+              	$(la_cmd).text('Au Panier');
             }
         })
 	
