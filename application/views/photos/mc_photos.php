@@ -68,12 +68,14 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                 ?>		
                 <div class="photo box col1">
                     <!--  edition : HOVER *******************-->
-                    <div class="edit">
+                     <?php if ($profile->id == $uid) { ?> 
+                      <div class="edit">
                         <a class="iframe" href="<?php echo site_url('media/editer/' . $infos_profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
                         <!--  edition : SUPPRESSION *******************-->
 
                         <a class="iframe" href="<?php echo site_url('media/supprimer/' . $infos_profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
                     </div>
+                    <?php } ?>
                     <!-- image -->
                     <a class="iframe" href="<?php echo site_url('media/zoom/' .$media_user_result_unit->id.'/0') ?>"><img src="<?php echo files($infos_profile->id.'/photos/' . $media_user_result_unit->file_name); ?>" class="img_cover" /></a>
                     <!-- titre -->
@@ -146,7 +148,8 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                 <div class="photo box col1">
 
                     <!--  edition : HOVER *******************-->
-                    <div class="edit">
+                    <?php if ($profile->id == $uid) { ?> 
+                      <div class="edit">
                         <a class="iframe" href="<?php echo site_url('media/editer/' . $infos_profile->id . '/' . $media_user_result_unit->file_name . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
                         <a class="iframe" href="<?php echo site_url('media/supprimer/' . $infos_profile->id . '/' . $media_user_result_unit->file_name . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
                     	<div class="open_alb">
@@ -155,6 +158,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 
                     
                     </div>
+                    <?php } ?>
                    
                     <a href="<?php echo site_url('media/album/'.$infos_profile->id.'/'.$media_user_result_unit->file_name); ?>"><img src="<?php echo files($infos_profile->id.'/photos/'.$media_user_result_unit->file_name.'/cover'); ?>" class="img_cover" /></a>
         <?php
@@ -259,12 +263,16 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
            <!--<object type="text/html" data="http://www.youtube.com/v/zol2MJf6XNE?version=3" style="width:40px;height:35px;"></object>
           -->
                <!--  edition : HOVER *******************-->
-             <div class="edit">
--                <a class="iframe" href="<?php echo base_url('/index.php/mc_photos/update_photo/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
--              <!--  edition : SUPPRESSION *******************-->
--
--               <a class="iframe" href="<?php echo base_url('/index.php/mc_photos/suppression_media/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
--             </div>
+              <?php if ($profile->id == $uid) { 
+              ?> 
+               <div class="edit">
+                <a class="iframe" href="<?php echo base_url('/index.php/mc_photos/update_photo/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+              <!--  edition : SUPPRESSION *******************-->
+
+               <a class="iframe" href="<?php echo base_url('/index.php/mc_photos/suppression_media/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+             </div>
+             <?php }
+              ?>
              
              <a href="http://www.youtube.com/v/<?php echo $media_user_result_unit->file_name ?>?version=3"><img src="http://i.ytimg.com/vi/<?php echo $media_user_result_unit->file_name?>/hqdefault.jpg" class="img_cover" /></a>
                 
