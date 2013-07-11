@@ -137,6 +137,12 @@ class Mc_partitions extends CI_Controller {
 
 	public function panier()
 	{
+	$prix = $this->input->post('prix');
+	$doc_id = $this->input->post('doc_id');
+	$nom = $this->input->post('nom');
+	
+	$panier = $this->load->document->panier($prix,$doc_id,$nom);
+
 	
 	}
 

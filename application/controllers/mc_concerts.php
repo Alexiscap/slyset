@@ -35,6 +35,7 @@ class Mc_concerts extends CI_Controller {
         $community_follower=  $this->user_model->get_community($this->session->userdata('uid'));
         $my_abonnement_head = "";
         
+        $this->load->helper('form');
         
         foreach($community_follower as $my_following_head)
         {
