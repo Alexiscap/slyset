@@ -20,10 +20,10 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
     	<div id="infos-cover">
           <h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
 <?php 
-     		if($infos_profile->type==2&&substr_count($community_follower,$infos_profile->id)==0):?>
+     		if(($this->session->userdata('logged_in')!=1)&&($infos_profile->id != $this->session->userdata('uid'))&&($infos_profile->type==2)&&(substr_count($community_follower,$infos_profile->id)==0)): ?>
       			<a href="#" class="add-follow" id="<?php echo $this->uri->segment(2)?>"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
    			<?php endif;
-    		if($infos_profile->type==2&&substr_count($community_follower,$infos_profile->id)>0):?>
+     		if(($this->session->userdata('logged_in')!=1)&&($infos_profile->id != $this->session->userdata('uid'))&&($infos_profile->type==2)&&(substr_count($community_follower,$infos_profile->id)==0)): ?>
      			<a href="#" class="delete-follow" id="<?php echo $this->uri->segment(2)?>"><span class="button_left_abonne"></span><span class="button_center_abonne">Ne plus suivre</span><span class="button_right_abonne"></span></a>
     		<?php endif;?>    </div>
  
@@ -94,7 +94,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
       			 <p class="adr_ville"><?php echo $concert_unit->ville.", ".$concert_unit->pays ?></p>
    		 	</div>
    		 <a href="javascript:void(0);" class="more" id="more_<?php echo $concert_unit->id ?>" onclick='showInfo(more_<?php echo $concert_unit->id ?>,more_info_<?php echo $concert_unit->id ?>)' >Voir plus d'informations</a>
-  	<div id="concert_activity>">
+  <!--	<div id="concert_activity>">
 
     	<?php 
     	$count = substr_count($all_concert_act,'/'.$concert_unit->id.'/');
@@ -109,7 +109,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 
 		<?php }
     	 ?> 
-    	 </div>
+    	 </div>-->
     
    
     

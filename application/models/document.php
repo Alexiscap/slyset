@@ -4,10 +4,61 @@ class document extends CI_Model
 {
 
 	protected $table_doc = 'documents';
+	
+	public function get_all_album_user($user_id)
+	{
+		return $this->db->query('SELECT id,img_cover,annee,nom,livret_path 
+								FROM albums 
+								WHERE Utilisateur_id = '.$user_id.'
+								GROUP BY id')
+				->result();
+	}
+	
+	public function get_all_album_moreceaux_user($user_id)
+	{
+		return $this->db->query('SELECT id,albums_id,nom
+								FROM morceaux 
+								WHERE Utilisateur_id = '.$user_id.'
+								GROUP BY id')
+				->result();
+	}
+	
+	public function get_document_paroles($all_album)
+	{
+	return $this->db->query('(SELECT morceaux.id AS morceau_id,documents.prix,morceaux.nom AS nom_morceau,documents.Albums_id AS album_id, documents.id AS document_id,documents.path,type_document
+						FROM morceaux					
+						INNER JOIN documents
+						ON documents.morceaux_id = morceaux.id
+						WHERE morceaux.Albums_id IN ('.$all_album.') AND type_document = "paroles"
+						ORDER BY documents.Albums_id ASC, documents.morceaux_id ASC
+						)
+						
+						'
+						)
+						->result();
+	
+	}
+	
+		public function get_document_partition($all_album)
+	{
+	return $this->db->query('(SELECT morceaux.id AS morceau_id,documents.prix,morceaux.nom AS nom_morceau,documents.Albums_id AS album_id, documents.id AS document_id,documents.path,type_document
+						FROM morceaux					
+						INNER JOIN documents
+						ON documents.morceaux_id = morceaux.id
+						WHERE morceaux.Albums_id IN ('.$all_album.') AND type_document = "partition"
+						ORDER BY documents.Albums_id ASC, documents.morceaux_id ASC
+						)
+						
+						'
+						)
+						->result();
+	
+	}
+	
 	public function get_all_morceau_doc($user_id)
 	{
 		// les id morceaux sans album + les morceaux par albums
-		return $this->db->query('(SELECT Morceaux_Id,documents.Albums_id,albums.nom,albums.annee,albums.livret_path,img_cover, 1 as type
+		return $this->db->query('(SELECT Morceaux_Id,documents.Albums_id,documents.path,albums.nom,albums.annee,albums.livret_path,img_cover, 1 as type
 								FROM documents
 								JOIN albums ON documents.Albums_id = albums.id
 										WHERE documents.Utilisateur_id = 30

@@ -221,7 +221,7 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
   			if ($result_req[0]->type=="ME")
   			{
   				$right = '<span class="ico_citation"></span>
-        				<p class="msg_post">Je viens de liker la photo de '.$result_req[0]->login.' :  <a href="'.base_url('index.php/mc_photos/zoom_photo/'.$result_req[0]->idproduit).'">'.$result_req[0]->main_nom.'</a></p>
+        				<p class="msg_post">Je viens d\'aimer la photo de '.$result_req[0]->login.' :  <a href="'.base_url('index.php/mc_photos/zoom_photo/'.$result_req[0]->idproduit).'">'.$result_req[0]->main_nom.'</a></p>
       				  	<img src="'.base_url('./files/'.$result_req[0]->Utilisateur_id.'/photos/'.$result_req[0]->file_name).'" alt="Photo message" class="single" />';
 
   			}	
@@ -256,7 +256,7 @@ $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_com
       		if ($result_req[0]->type=="ME")
 			{	
 			$right = '<span class="ico_citation"></span>
-        				<p class="msg_post">Je viens de liker la video de '.$result_req[0]->login.' :  <a href="http://www.youtube.com/v/'.$result_req[0]->nom.'?version=3">'.$result_req[0]->main_nom.'</a></p>
+        				<p class="msg_post">Je viens d\'aimer la video de '.$result_req[0]->login.' :  <a href="http://www.youtube.com/v/'.$result_req[0]->nom.'?version=3">'.$result_req[0]->main_nom.'</a></p>
      				<iframe id="ytplayer" type="document" width="455" height="350" src="http://www.youtube.com/v/'.$result_req[0]->nom.'?version=3"/>
       				 </iframe>';
 			

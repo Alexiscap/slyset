@@ -32,11 +32,15 @@
 #right #last_photo img{ margin:0 0 0 5px; float:left;}
 #right #last_photo p {float:left;color:#3f3f3f;margin:0 0 10px 10px;font-size:20px;}
 #right #last_photo p span{color:#31a58c;}
-#right #last_photo #encart_photos{width:200px;height:200px;background:#e6e6e6;clear:both;}
+#right #last_photo #encart_photos{width:200px;background:#e6e6e6;clear:both; }
 #right #last_photo #encart_photos #miniatures{width:193px;margin:7px auto 0;clear:both;height:65px;}
 #right #last_photo #encart_photos img {margin:6px 4px 0;}
-#right #last_photo #encart_photos #thelast {margin:0 2px;width:188px;height:106px;}
-#right #last_photo #encart_photos a{font-size:12px;margin:10px 0 0 8px;height:auto;width:150px;}
+#right #last_photo #encart_photos #miniatures img {margin:6px 4px 0; width : 55px;}
+
+#right #last_photo #encart_photos #thelast {margin:0 2px;width:188px;}
+#right #last_photo #encart_photos #thelast img {margin:0 2px;width:188px;}
+
+#right #last_photo #encart_photos a{font-size:12px;margin:10px 0 0 8px;height:auto;width:150px;padding-bottom: 5px;}
 /* FIN LAST PHOTOS */
 
 /*AILLEUR RESEAUX*/

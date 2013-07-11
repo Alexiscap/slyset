@@ -17,16 +17,16 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
     <?php
     ?>
 
-    <div id="cover" style="background-image:url(<?php print files('profiles/' . $cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
-        <div id="infos-cover">
-            <h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
-            <?php if ($infos_profile->type == 2 && substr_count($community_follower, $infos_profile->id) == 0): ?>
-                <a href="#" class="add-follow" id="<?php echo $this->uri->segment(2) ?>"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
-            <?php endif;
-            if ($infos_profile->type == 2 && substr_count($community_follower, $infos_profile->id) > 0):
-                ?>
-                <a href="#" class="delete-follow" id="<?php echo $this->uri->segment(2) ?>"><span class="button_left_abonne"></span><span class="button_center_abonne">Ne plus suivre</span><span class="button_right_abonne"></span></a>
-            <?php endif; ?>
+  <div id="cover" style="background-image:url(<?php print files('profiles/'.$cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
+    <div id="infos-cover">
+          <h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
+     <?php 
+     		if(($this->session->userdata('logged_in')!=1)&&($infos_profile->id != $this->session->userdata('uid'))&&($infos_profile->type==2)&&(substr_count($community_follower,$infos_profile->id)==0)): ?>
+      			<a href="#" class="add-follow" id="<?php echo $this->uri->segment(2)?>"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
+   			<?php endif;
+     		if(($this->session->userdata('logged_in')!=1)&&($infos_profile->id != $this->session->userdata('uid'))&&($infos_profile->type==2)&&(substr_count($community_follower,$infos_profile->id)==0)): ?>
+     			<a href="#" class="delete-follow" id="<?php echo $this->uri->segment(2)?>"><span class="button_left_abonne"></span><span class="button_center_abonne">Ne plus suivre</span><span class="button_right_abonne"></span></a>
+    		<?php endif;?>
         </div>
     </div>
 
@@ -46,41 +46,41 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
             <span class="stats_title">morceaux</span>
         </div>
     </div>
-    <div class="content">
-        <div id="btn_tmp_follow">
-            <a href="<?php echo site_url('follower/' . $infos_profile->id) ?>" class="tous">Tous</a>
-            <a href="<?php echo site_url('follower/musicien/' . $infos_profile->id) ?>" class="musiciens active">Musiciens</a>
-            <a href="<?php echo site_url('follower/melomane/' . $infos_profile->id) ?>" class="melomanes">Mélomanes</a>
-        </div>
-        <?php if (count($all_follower) == 1): ?>
-            <h2>Mon abonné</h2>
-        <?php endif;
-        if (count($all_follower) == 0):
-            ?>
-            <h2>Aucun abonné</h2>
-        <?php endif;
-        if (count($all_follower) > 1):
-            ?>
-            <h2>Mes <?php echo count($all_follower); ?> abonnés</h2>
-        <?php endif; ?>
-        <?php
-        if (isset($all_follower)):
-            foreach ($all_follower as $follower):
-                ?>
-                <div class="follower">
-                    <div class="photo_follow">
-                        <!-- dossier de la cover pour un user ? -->
-                        <a href="<?php echo base_url('index.php/actualite/' . $follower->Follower_id) ?>"><img src="<?php echo files('profiles/' . $follower->thumb) ?>" /></a>
-                    </div>
-                    <div class="description">
-                        <p class="nom_follow"><a href="<?php echo base_url('index.php/actualite/' . $follower->Follower_id) ?>"><?php echo $follower->login ?></a></p>
-                        <p class="text_follow"><?php echo $follower->description ?></p>
-
-
-                        <img src="<?php echo img_url('common/casque.png'); ?>" /><span><?php echo $follower->style_joue ?></span>
-                    </div>
-                    <?php if (substr_count($allifollow, $follower->Follower_id) >= 1) {
-                        ?>
+  </div>
+  <div class="content">
+	<div id="btn_tmp_follow">
+       <a href="<?php echo site_url('follower/'.$infos_profile->id) ?>" class="tous">Tous</a>
+       <a href="<?php echo site_url('follower/musicien/'.$infos_profile->id) ?>" class="musiciens active">Musiciens</a>
+       <a href="<?php echo site_url('follower/melomane/'.$infos_profile->id) ?>" class="melomanes">Mélomanes</a>
+   </div>
+ 	<?php
+ 		if (count($all_follower)==1):?>
+	<h2>Mes abonnés</h2>
+	<?php endif;
+	if (count($all_follower)==0):?>
+	<h2>Aucun abonné</h2>
+	<?php endif;
+	if (count($all_follower)>1):?>
+	<h2>Mes <?php echo count($all_follower);?> abonnés</h2>
+	<?php endif;?>
+	<?php
+	if(isset($all_follower)):
+	foreach($all_follower as $follower):
+	?>
+	<div class="follower">
+		<div class="photo_follow">
+		<!-- dossier de la cover pour un user ? -->
+			<a href="<?php echo base_url('index.php/actualite/'.$follower->Follower_id) ?>"><img src="<?php echo files('profiles/'.$follower->thumb) ?>" /></a>
+		</div>
+		<div class="description">
+			<p class="nom_follow"><a href="<?php echo base_url('index.php/actualite/'.$follower->Follower_id) ?>"><?php echo $follower->login ?></a></p>
+			<p class="text_follow"><?php echo $follower->description ?></p>
+			
+			
+			<img src="<?php echo img_url('common/casque.png'); ?>" /><span><?php echo $follower->style_joue ?></span>
+			</div>
+		 	<?php if (substr_count($allifollow, $follower->Follower_id) >= 1) {
+                            ?>
                         <div class="bouton" >
                             <a href="#" id="<?php echo $follower->Follower_id ?>" class="participer" ><span class="button_left"></span><span class="button_center">Abonné</span><span class="button_right"></span></a>
                         </div>

@@ -263,14 +263,14 @@ font-weight: normal;}
 .content .photo .bord_photo img{ margin:7px 5px -1px 30px; display:inline; }
 .nolike img {margin:0 5px 0 15px; display:inline; }
 .content .photo .bord_photo .nb_like{ margin:0; }
-.content .photo .comm,.content .photo .comment-form,.content .photo .comment-form-album{ width:170px; margin:0 -5px; background:#f2f0f0; border-bottom:1px solid #cdcdcd; border-top:none; min-height:34px; }
-.content .photo .comm img,.content .photo .comment-form img, .content .photo .comment-form-album img{ float:left; margin:5px; height:24px; }
-.content .photo .comm .del,.content .photo .comment-form .del, .content .photo .comment-form-album .del{ float:right; margin:5px 5px; height:14px; }
-.content .photo .comm p,.content .photo .comment-form p,.content .photo .comment-form-album p{ margin:0; text-align:left; }
-.content .photo .comm .name_comm,.content .photo .comment-form .name_comm, .content .photo .comment-form-album .name_comm{ font-size:10px; color:#595959; }
-.content .photo .comm .commentaire,.content .photo .comment-form .commentaire, .content .photo .comment-form-album .commentaire{ font-size:10px; color:#888d95; }
-.content .photo .comm input[type=text],.content .photo .comment-form input[type=text], .content .photo .comment-form-album input[type=text]{ float:left; width:112px; border:1px solid #dfdede; margin:5px 0; }
-.content .photo .comm input[type=image],.content .photo .comment-form input[type=submit], .content .photo .comment-form-album input[type=submit]{ clear:both; width:48px; margin:0 0 0 58px; }
+.content .photo .comm,.content .photo .comment-form,.content .photo .comment-form-album,.content .photo .comment-form-video{ width:170px; margin:0 -5px; background:#f2f0f0; border-bottom:1px solid #cdcdcd; border-top:none; min-height:34px; }
+.content .photo .comm img,.content .photo .comment-form img, .content .photo .comment-form-album img, .content .photo .comment-form-video img{ float:left; margin:5px; height:24px; }
+.content .photo .comm .del,.content .photo .comment-form .del, .content .photo .comment-form-album .del, .content .photo .comment-form-video .del{ float:right; margin:5px 5px; height:14px; }
+.content .photo .comm p,.content .photo .comment-form p,.content .photo .comment-form-album p,.content .photo .comment-form-video p{ margin:0; text-align:left; }
+.content .photo .comm .name_comm,.content .photo .comment-form .name_comm, .content .photo .comment-form-album .name_comm, .content .photo .comment-form-video .name_comm{ font-size:10px; color:#595959; }
+.content .photo .comm .commentaire,.content .photo .comment-form .commentaire, .content .photo .comment-form-album .commentaire, .content .photo .comment-form-video .commentaire{ font-size:10px; color:#888d95; }
+.content .photo .comm input[type=text],.content .photo .comment-form input[type=text], .content .photo .comment-form-album input[type=text], .content .photo .comment-form-video input[type=text]{ float:left; width:112px; border:1px solid #dfdede; margin:5px 0; }
+.content .photo .comm input[type=image],.content .photo .comment-form input[type=submit], .content .photo .comment-form-album input[type=submit], .content .photo .comment-form-video input[type=submit]{ clear:both; width:48px; margin:0 0 0 58px; }
 .content .photo .edit{ background:rgba(36, 36, 36, 0.7); width:160px; height:22px; position:absolute; margin:0;display:none;}
 .content .photo .edit img{ float:right; margin:4px 8px 0 0; }
 .content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:160px; position:absolute; margin:22px 0;height:138px;}
@@ -753,15 +753,17 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 
 /* --------- MUSICIEN MUSIQUE --------- */
 .content .a_la_une {margin:0 20px 20px;width:172px;float:left;}
-.content .a_la_une .bandeau_top{position:absolute;margin:-175px 0;}
+.content .a_la_une_parti {margin:0 20px 20px;width:112px;float:left;}
+.content .a_la_une .bandeau_top {position:absolute;margin:-175px 0;}
 .content .player{position:absolute;background:rgba(115,115,115,0.68);width: 172px;height: 42px;margin: -44px 0;}
 .content .player img{margin:8px 70px;}
-.content .a_la_une .infos{margin:0;}
-.content .a_la_une .infos p{margin:0;color:#2f2f2f;font-weight:normal;}
-.content .a_la_une .infos p span{color:#45baa0;}
-.content .a_la_une .infos .title{font-weight:bold;}
-.content .a_la_une .infos .annee_crea{margin:0;color:#888d95;font-size:12px;}
-.content .a_la_une .infos a{margin:0;color:#3c495a;font-size:12px;}
+.content .a_la_une_parti img {width : 100%}
+.content .a_la_une .infos,.content .a_la_une_parti .infos{margin:0;}
+.content .a_la_une .infos p, .content .a_la_une_parti .infos p{margin:0;color:#2f2f2f;font-weight:normal;}
+.content .a_la_une .infos p span, .content .a_la_une_parti .infos p span{color:#45baa0;}
+.content .a_la_une .infos .title, .content .a_la_une_parti .infos .title{font-weight:bold;}
+.content .a_la_une .infos .annee_crea, .content .a_la_une_parti .infos .annee_crea{margin:0;color:#888d95;font-size:12px;}
+.content .a_la_une .infos a, .content .a_la_une_parti .infos a{margin:0;color:#3c495a;font-size:12px;}
 
 .content .top_album{float:left;}
 .content .top_album a{color:#888d95;font-size:12px;text-decoration:none;}
@@ -1223,7 +1225,7 @@ p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial,
 .content .panier #articles-tab tr.tab-head th{ border:none; }
 .content .panier #articles-tab tr.even{ background:#fafafa; }
 .content .panier #articles-tab tr.odd{ background:#f7f7f7; }
-
+.content .panier_vide {font-size : 12px; margin-bottom: 36px; margin-top: 18px;}
 .content .panier input[type="checkbox"] + label span{ margin:-3px 0 0 0; }
 .content .panier #articles-tab .article-checkbox{ padding:0 6px; }
 .content .panier #articles-tab .article-title{ padding:0 12px 0 25px;width:152px;}

@@ -128,24 +128,24 @@
             <?php if ($profile->type != 1): ?>
                 <div id="menu-profile" class="active">
                     <ul>
-                        <li class="head_menu row row-7"><a href="<?php echo site_url('home/' . $user_id); ?>"><span class="icon"></span><span class="menu-text"><?php echo $profile->login; ?></span></a></li>
-                        <li class="first-row row row-8"><a href="<?php echo site_url('actualite/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Actualités</span></a></li>
+                        <li class="head_menu row row-7"><a href="javascript:void(0)"><!--<?php echo site_url('home/' . $user_id); ?>">--><span class="icon"></span><span class="menu-text"><?php echo $profile->login; ?></span></a></li>
+                           <div class="one">   <li class="first-row row row-8"><a href="<?php echo site_url('actualite/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Actualités</span></a></li>
                         <li class="row row-9"><a href="<?php echo site_url('concert/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Concerts</span></a></li>
                         <li class="row row-10"><a href="<?php echo site_url('musique/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Musique</span></a></li>
                         <li class="row row-11"><a href="<?php echo site_url('media/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Photos et vidéos</span></a></li>
                         <li class="row row-12"><a href="<?php echo site_url('document/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Livrets et partitions</span></a></li>
                         <li class="row row-14"><a href="<?php echo site_url('follower/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Abonnés</span></a></li>
-                    </ul>
+                  </div>  </ul>
                 </div>
             <?php else: ?>
                 <div id="menu-profile" class="active">
                     <ul>
-                        <li class="head_menu row row-7"><a href="<?php echo site_url('home/' . $user_id); ?>"><span class="icon"></span><span class="menu-text"><?php echo $profile->login; ?></span></a></li>
-                        <li class="first-row row row-8"><a href="<?php echo site_url('my-wall/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Actualités</span></a></li>
+                        <li class="head_menu row row-7"><a href="javascript:void(0)"><!--<?php echo site_url('home/' . $user_id); ?>"><span class="icon">--></span><span class="menu-text"><?php echo $profile->login; ?></span></a></li>
+                     <div class="one">     <li class="first-row row row-8"><a href="<?php echo site_url('my-wall/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Actualités</span></a></li>
                         <li class="row row-9"><a href="<?php echo site_url('my-concert/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Concerts</span></a></li>
                         <li class="row row-10"><a href="<?php echo site_url('my-playlist/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Playlist</span></a></li>
                         <li class="row row-14"><a href="<?php echo site_url('my-follower/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Abonnements</span></a></li>
-                    </ul>
+                       </div>  </ul>
                 </div>
             <?php endif; ?>
         <?php endif; ?>
