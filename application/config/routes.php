@@ -115,6 +115,8 @@ $route['follower/melomane/(:num)'] = "mc_followers/melomane/$1";
 
 $route['my-reglages'] = "melo_reglages/index";
 $route['my-reglages/(:num)'] = "melo_reglages/index/$1";
+$route['my-reglages/confirm'] = "melo_reglages/delete_user";
+$route['my-reglages/confirm/(:num)'] = "melo_reglages/delete_user/$1";
 $route['my-reglages/update_user/(:num)'] = "melo_reglages/update_user/$1";
 
 

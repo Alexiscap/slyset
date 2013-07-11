@@ -48,8 +48,8 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
         ?>
         
         
-        <div id="subscription-upload">
-            <!--<div class="upload_images"></div>-->
+<!--        <div id="subscription-upload">
+            <div class="upload_images"></div>
 
             <?php $label_attributes = array('class'=>'label_big'); ?>
             
@@ -72,19 +72,19 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
             <?php echo form_error('cover', '<span class="error-form">', '</span>'); ?>
         </div>
 
-        <hr>
+        <hr>-->
 
     <?php
         $ph = '';
 //          print_r($profile);
         if($this->session->userdata('account') == 2) $ph = 'Nom de scène'; else $ph = 'Nom d\'utilisateur';
-            echo form_label($ph,'login',$label_attributes);
-            echo form_input('login',$profile->login,'placeholder="Votre login"');
-            echo form_error('login', '<span class="error-form">', '</span>');
-
-            echo form_label('Bio','bio',$label_attributes);
-            echo form_textarea('description',$profile->description,'placeholder="Votre description"');
-            echo form_error('description', '<span class="error-form">', '</span>');
+//            echo form_label($ph,'login',$label_attributes);
+//            echo form_input('login',$profile->login,'placeholder="Votre login"');
+//            echo form_error('login', '<span class="error-form">', '</span>');
+//
+//            echo form_label('Bio','bio',$label_attributes);
+//            echo form_textarea('description',$profile->description,'placeholder="Votre description"');
+//            echo form_error('description', '<span class="error-form">', '</span>');
 
             echo form_label('Google +','googleplus',$label_attributes);
             echo form_input('googleplus',$profile->googleplus,'placeholder="URL Google +"');
@@ -170,10 +170,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 
             echo form_submit('submit', 'Valider');
             echo form_error('submit', '<span class="error-form">', '</span>');
-        ?>
-
-            <a href="<?php echo site_url('reglage/pi_delete_user/' . $session_id); ?>" class="iframe delete_account">Supprimer mon compte</a>
-        <?php
+        
             echo form_close();
         ?>
         

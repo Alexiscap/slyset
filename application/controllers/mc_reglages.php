@@ -118,16 +118,16 @@ class Mc_reglages extends CI_Controller
         if($this->form_validation->run() == FALSE){
             $this->layout->view('reglage/mc_reglages', $data);
         } else {
-            $cover            = $this->input->post('cover');
-            $this->session->set_userdata('cover', $cover);
-            
-            $thumb            = $this->input->post('thumb');
-            $this->session->set_userdata('thumb', $thumb);
-            
-            $login            = $this->input->post('login');
-            $this->session->set_userdata('login', $login);
-            
-            $description      = $this->input->post('description');
+//            $cover            = $this->input->post('cover');
+//            $this->session->set_userdata('cover', $cover);
+//            
+//            $thumb            = $this->input->post('thumb');
+//            $this->session->set_userdata('thumb', $thumb);
+//            
+//            $login            = $this->input->post('login');
+//            $this->session->set_userdata('login', $login);
+//            
+//            $description      = $this->input->post('description');
             $website          = $this->input->post('site');
             $twitter          = $this->input->post('twitter');
             $facebook         = $this->input->post('facebook');
@@ -141,30 +141,12 @@ class Mc_reglages extends CI_Controller
             $this->session->set_userdata('instrument', $stylemusicinstru);
             
 
-            $this->user_model->update_musicien($login, $description, $website, $twitter, $facebook, $googleplus, $stylemusicjoue, $stylemusicinstru, $cover, $thumb);
+//            $this->user_model->update_musicien($login, $description, $website, $twitter, $facebook, $googleplus, $stylemusicjoue, $stylemusicinstru, $cover, $thumb);
+            $this->user_model->update_musicien($website, $twitter, $facebook, $googleplus, $stylemusicjoue, $stylemusicinstru);
 
             redirect('reglages/'.$uid, 'refresh');
 //            print_r($this->session->all_userdata());
         }
-    }
-    
-    public function delete_user($infos_profile = NULL)
-    {
-        $uid = $this->session->userdata('uid');
-        $this->user_id = $this->uri->segment(3);
-        $data = $this->data;
-        $data['profile'] = $this->user_model->getUser($this->user_id);
-                             
-//        if($this->form_validation->run() == FALSE){
-//            $this->layout->view('reglage/mc_reglages', $data);
-//        } else {
-//            $cover            = $this->input->post('cover');            
-
-//            $this->user_model->delete_user($uid);
-//
-//            redirect('home', 'refresh');
-            print_r($this->session->all_userdata());
-//        }
     }
     
     function handle_upload_cover()

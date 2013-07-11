@@ -58,14 +58,18 @@
             <div class="upload-file-container container-thumb">
                <input type="file" name="thumb" size="200" id="upload_images_thumb" />
             </div>
-            <span class="upload_photo_name_file"></span>
+            <?php $thb_name = $this->session->userdata('thumb'); ?>
+            <span class="upload_photo_name_file"><?php echo $thumb_name = (empty($thb_name)) ? '' : $thb_name; ?></span>
+            <?php echo form_error('thumb', '<span class="error-form">', '</span>'); ?>
             
             <?php echo form_label('Votre en-tête','cover', $label_attributes); ?>
             <div class="preview_upload cover" style="background-image:url(<?php echo files('profiles/'.$this->session->userdata('cover')); ?>);"></div>
             <div class="upload-file-container container-cover">
                 <input type="file" name="cover" size="200" id="upload_images_cover" />
             </div>
-            <span class="upload_photo_name_file"></span>
+            <?php $cov_name = $this->session->userdata('cover'); ?>
+            <span class="upload_photo_name_file"><?php echo $cover_name = (empty($cov_name)) ? '' : $cov_name; ?></span>
+            <?php echo form_error('cover', '<span class="error-form">', '</span>'); ?>
         </div>
 
         <hr>
@@ -129,9 +133,14 @@
 
             echo form_submit('submit', 'Valider');
             echo form_error('submit', '<span class="error-form">', '</span>');
+        ?>
 
-        echo form_close();
-      ?>
+            <a href="<?php echo site_url('my-reglages/confirm/' . $session_id); ?>" class="iframe delete_account">Supprimer mon compte</a>
+            
+        <?php
+            echo form_close();
+        ?>
+            
     </div>
   <?php if(isset($sidebar_right)) echo $sidebar_right; ?>
 

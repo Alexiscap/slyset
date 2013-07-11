@@ -739,7 +739,7 @@ input[type="checkbox"]:checked + label span{ background:url('../images/common/sp
 
 #subscription-upload{ margin:0 0 60px 0; display:block; width:100%; float:left; clear:both; }
 #subscription-upload label{ margin:-10px 0 0.4em 0; font-weight:normal; float:left; clear:none; }
-#subscription-upload .upload_photo_name_file{ clear:both; }
+.step-form #subscription-upload .upload_photo_name_file{ clear:both; }
 #subscription-upload label.last, #subscription-upload .upload_photo_name_file.last{ float:right; }
 #subscription-upload .container-cover + label{ margin:-15px 0 0.4em 0; font-weight:normal; float:right; clear:none; }
 .upload_images{ display:block; width:409px; height:150px; background:url('../images/subscription/upload_images2.png') no-repeat; float:left; clear:both; }
@@ -1032,7 +1032,7 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 /*------------ REGLAGES -------------*/
 #any-background-personnaliser .content, #any-background-reglages .content, #any-background-achats .content{ margin:10px 0 25px 0; padding:0 20px; width:499px; }
 #any-background-personnaliser .content h2, #any-background-reglages .content h2{ margin:20px 0 15px 0; }
-p.detail_perso, p.detail_reglages { margin:0; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:normal; line-height:21px; color:#888d95; float:left; text-align:left; }
+p.detail_perso, p.detail_reglages { margin:0 0 20px 0; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:normal; line-height:21px; color:#888d95; float:left; text-align:left; }
 .preview_upload{ margin:0 10px 0 18px; width:58px; height:58px; -webkit-border-radius:8px; -moz-border-radius:8px; border-radius:8px; overflow:hidden; background-repeat:no-repeat; background-size:cover; background-position:center center; float:left; }
 #any-background-reglages #subscription-upload{ margin:15px 0 0 0; clear:both; }
 #any-background-reglages #subscription-upload label{ margin:4px 0 55px 0; display:inline-block; width:150px; font-size:16px; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:bold; text-align:right; color: #4e4e4e; clear:both; }

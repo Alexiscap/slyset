@@ -291,9 +291,11 @@
                     </form>
                     <div class="ajax_loader"></div>
                 </div>
-            </div>  
+            </div>
         <?php endif; ?>
     <?php endforeach; ?>
+    
+    <div class="ajax_loader"></div>
     
 <!--   <p>___________________________________</p>
     

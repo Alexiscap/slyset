@@ -142,18 +142,19 @@ class User_model extends CI_Model
         $this->db->insert($this->table, $data);
     }
     
-    public function update_musicien($login, $description, $website, $twitter, $facebook, $googleplus, $stylemusicjoue, $stylemusicinstru, $cover, $thumb)
+//    public function update_musicien($login, $description, $website, $twitter, $facebook, $googleplus, $stylemusicjoue, $stylemusicinstru, $cover, $thumb)
+    public function update_musicien($website, $twitter, $facebook, $googleplus, $stylemusicjoue, $stylemusicinstru)
     {
-        $data['login'] = $login;
-        $data['description'] = $description;
+//        $data['login'] = $login;
+//        $data['description'] = $description;
         $data['siteweb'] = $website;
         $data['twitter'] = $twitter;
         $data['facebook'] = $facebook;
         $data['googleplus'] = $googleplus;
         $data['style_joue'] = $stylemusicjoue;
         $data['instrument'] = $stylemusicinstru;
-        $data['cover'] = $cover;
-        $data['thumb'] = $thumb;
+//        $data['cover'] = $cover;
+//        $data['thumb'] = $thumb;
         $data['updated'] = Date('Y-m-d H:i:s');
         
         $this->db->update($this->table, $data, "id = ".$this->session->userdata('uid'));

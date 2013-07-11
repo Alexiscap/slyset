@@ -11,7 +11,7 @@ class melo_reglages extends CI_Controller
 
 //        $this->output->enable_profiler(true);
         $this->layout->ajouter_css('slyset');
-
+        
         $this->load->helper(array('form', 'comments_helper'));
         $this->load->model(array('mc_actus_model', 'perso_model', 'user_model'));
         $this->load->library(array('form_validation'));
@@ -23,15 +23,15 @@ class melo_reglages extends CI_Controller
         
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
-        $sub_data['perso'] = $output;
+//        $sub_data['perso'] = $output;
     	if($this->user_id!=null)
     	{
     		$sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
 		}
-        if(!empty($output)){
-            $this->layout->ajouter_dynamique_css($output->theme_css);
-            write_css($output);
-        }
+//        if(!empty($output)){
+//            $this->layout->ajouter_dynamique_css($output->theme_css);
+//            write_css($output);
+//        }
         
         $this->data = array(
             'sidebar_left'  => $this->load->view('sidebars/sidebar_left', '', TRUE),
@@ -75,7 +75,7 @@ class melo_reglages extends CI_Controller
         
         $config['upload_path']   = $dynamic_path;
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size']    = '100000';
+        $config['max_size']    = '2048';
         $config['max_width']  = '1024';
         $config['max_height']  = '768';
         $this->load->library('upload', $config);
@@ -118,6 +118,38 @@ class melo_reglages extends CI_Controller
         }
     }
     
+    public function delete_user($user_id) {
+        $uid = $this->session->userdata('uid');
+        
+        if ($user_id != $uid) {
+            show_404();
+        }
+        
+        $this->user_id = $this->uri->segment(3);
+        $data = $this->data;
+        $data['profile'] = $this->user_model->getUser($this->user_id);
+        
+        $this->form_validation->set_rules('confirm-oui','Oui', '');
+        $this->form_validation->set_rules('confirm-non','Non', '');
+        
+        if($this->form_validation->run() == FALSE){
+//            $this->layout->view('reglage/mc_reglages', $data);
+            $this->layout->ajouter_css('colorbox');
+            $this->layout->ajouter_js('jquery.colorbox');
+            $this->load->view('reglage/pi_suppression_confirm', $data);
+        } else {
+            $confirm = $this->input->post('confirm-oui');            
+
+            if(isset($confirm)){
+//            $this->user_model->delete_user($uid);
+            } else {
+                redirect('my-reglages/'.$uid, 'refresh');
+            }
+            redirect('home', 'refresh');
+//            $this->load->view('reglage/pi_suppression_confirm', $data);
+        }
+    }
+    
     function handle_upload_cover()
     {
         if (isset($_FILES['cover']) && !empty($_FILES['cover']['name'])){
@@ -126,11 +158,11 @@ class melo_reglages extends CI_Controller
                 $_POST['cover'] = $upload_data['file_name'];
                 return true;
               } else {
-                  $this->form_validation->set_message('handle_upload', $this->upload->display_errors());
+                  $this->form_validation->set_message('handle_upload_cover', '<p>L\'image que vous tentez d\'envoyer dépasse les valeurs maximales autorisées.<br/>(Max 256 KO - 1024px x 768px)</p>');
                   return false;
             }
         } else {
-//            $this->form_validation->set_message('handle_upload', "You must upload an image!");
+            $this->form_validation->set_message('handle_upload_cover', "You must upload an image!");
             $_POST['cover'] = $this->session->userdata('cover');
             return true;
         }
@@ -144,11 +176,11 @@ class melo_reglages extends CI_Controller
                 $_POST['thumb'] = $upload_data['file_name'];
                 return true;
             } else {
-//             $this->form_validation->set_message('handle_upload', $this->upload->display_errors());
+             $this->form_validation->set_message('handle_upload_thumb', '<p>L\'image que vous tentez d\'envoyer dépasse les valeurs maximales autorisées.<br/>(Max 256 KO - 1024px x 768px)</p>');
               return false;
             }
         } else {
-//            $this->form_validation->set_message('handle_upload', "You must upload an image!");
+            $this->form_validation->set_message('handle_upload_thumb', "You must upload an image!");
             $_POST['thumb'] = $this->session->userdata('thumb');
             return true;
         }
