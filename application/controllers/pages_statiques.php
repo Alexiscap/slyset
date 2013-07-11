@@ -12,6 +12,7 @@ class Pages_statiques extends CI_Controller {
         parent::__construct();
         //        $this->output->enable_profiler(true);
         $this->layout->ajouter_css('slyset');
+        $this->load->helper('form');
 
         $this->layout->set_id_background('statics-pages');
 
@@ -58,7 +59,6 @@ class Pages_statiques extends CI_Controller {
     }
 
     public function contact() {
-        $this->load->helper('form');
         $this->load->library('form_validation');
         
         $data = $this->data;
@@ -67,7 +67,6 @@ class Pages_statiques extends CI_Controller {
     }
 
     public function contact_form() {
-        $this->load->helper('form');
         $this->load->library(array('form_validation', 'email'));
         
         $data = $this->data;

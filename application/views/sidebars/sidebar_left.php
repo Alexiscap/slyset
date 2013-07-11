@@ -2,7 +2,7 @@
     <aside>
         <div id="first-block">
             <div id="my-profil">
-                <a href="<?php echo site_url('home/' . $this->session->userdata('uid')); ?>">
+                <a href="<?php echo site_url('my-wall/' . $this->session->userdata('uid')); ?>">
                     <img src="<?php echo files('profiles/' . $this->session->userdata('thumb')); ?>" alt="Photo Profil" />
                     <h3><?php echo $this->session->userdata('login'); ?></h3>
                     <span>Voir mon profil</span>

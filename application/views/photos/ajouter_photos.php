@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="http://127.0.0.1/slyset/assets/css/slyset.css" media="screen" />
-<script  src="http://127.0.0.1/slyset/assets/javascript/combobox.js" media="screen" ></script>
+<link rel="stylesheet" type="text/css" href="<?php echo css_url('pop_in') ?>" media="screen" />
+<script  src="<?php echo js_url('combobox') ?>" media="screen" ></script>
 
 <div class="pop-in_cent">
 
@@ -53,7 +53,7 @@
                     </ul>
 
                     <div id='test_three'>
-                        <input  id="create" type="text" value="" autocomplete="off" placeholder="creer un nouvel album"/><div id="create_ok"  onclick="selectalbumcreate()">ok</div>
+                        <input  id="create" type="text" value="" autocomplete="off" placeholder="creer un nouvel album"/><div id="create_ok"  onclick="selectalbumcreate()"><img src="<?php echo img_url('common/creer_album.png'); ?>" alt="ok" /></div>
                     </div>
                 </div>
             </div>

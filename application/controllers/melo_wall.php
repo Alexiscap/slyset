@@ -12,7 +12,7 @@ class melo_wall extends CI_Controller
       $this->load->library('session');
     //  $this->output->enable_profiler(TRUE);
 
-        $this->user_authentication->musicien_user_validation();
+//        $this->user_authentication->musicien_user_validation();
         
         $this->layout->ajouter_js('jquery.easing.min');
         
@@ -35,10 +35,16 @@ class melo_wall extends CI_Controller
 
     }
   
-    public function index($user_id,$uid = NULL)
-    {
-        
-      $this->page($user_id);
+    public function index($user_id) {
+  
+//        $uid = $this->session->userdata('uid');
+//        $infos_profile = $this->user_model->getUser($user_id);
+//
+//        if ($user_id == $uid) {
+            $this->page($user_id);
+//        } else {
+//            show_404();
+//        }
     }
   
     public function page($user_id)
@@ -49,9 +55,7 @@ class melo_wall extends CI_Controller
 		setlocale(LC_TIME, 'fr', 'fr_FR', 'fr_FR.ISO8859-1');
 		date_default_timezone_set('Europe/Paris');
       	
-      	$data = array();
-      	$data['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
-      	$data['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
+      	$data = $this->data;
       
       	$data_follow = $this->wallm->get_following($user_id);
     	$listforin = "";

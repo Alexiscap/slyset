@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="http://127.0.0.1/slyset/assets/css/slyset.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="<?php echo css_url('pop_in') ?>" media="screen" />
  	 <div class="pop-in_cent">
 
  	<span> Ajouter un concert </span>
@@ -21,8 +21,9 @@
             );
       echo form_input($artiste);
       echo form_error('artiste', '<div class="erreur-form">', '</div>');
-
+	  
       echo form_input('snd_partie',set_value('snd_partie'),'placeholder="Ex : Lower Dens"');
+	  
       ?></div><div class="label"><label>Date</label></div>
       		<div class="champs">
 

@@ -99,9 +99,9 @@ class Mc_perso extends CI_Controller
         
         $config['upload_path']   = $dynamic_path;
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size']    = '100000';
-        $config['max_width']  = '1024';
-        $config['max_height']  = '768';
+        $config['max_size']    = '8192';
+        $config['max_width']  = '0';
+        $config['max_height']  = '0';
         $this->load->library('upload', $config);
         
         $this->form_validation->set_rules('background', 'Background', 'callback_handle_upload_background');
@@ -117,7 +117,14 @@ class Mc_perso extends CI_Controller
             $this->layout->view('personnalisation/mc_perso', $data);
         } else {
             $theme_css  = 'custom_user_css.php';
-            $background = $this->input->post('background');
+            
+            $background_perso = $this->input->post('background');
+            if(empty($background_perso)){
+                $background = $data['perso']->background;
+            } elseif(!empty($background_perso)){
+                $background = $background_perso;    
+            }
+            
             $repeat     = $this->input->post('repeat');
             $couleur1   = $this->input->post('couleur1');
             $couleur2   = $this->input->post('couleur2');
@@ -137,6 +144,7 @@ class Mc_perso extends CI_Controller
             redirect('personnaliser/'.$uid, 'refresh');
         }
     }
+    
     public function theme1($infos_profile = NULL)
     {
         $uid = $this->session->userdata('uid');
@@ -146,6 +154,69 @@ class Mc_perso extends CI_Controller
         $data['perso'] = $this->perso_model->get_perso($this->user_id);
         
         $theme_css  = 'theme_css_1.css';
+
+        $exist = $this->perso_model->get_perso($this->user_id);
+
+        if($exist == FALSE){
+            $this->perso_model->insert_perso($theme_css);
+        } else {
+            $this->perso_model->update_perso($theme_css);
+        }
+
+        redirect('personnaliser/'.$uid, 'refresh');
+    }
+    
+    public function theme2($infos_profile = NULL)
+    {
+        $uid = $this->session->userdata('uid');
+        $this->user_id = $this->uri->segment(3);
+        $data = $this->data;
+        $data['profile'] = $this->user_model->getUser($this->user_id);
+        $data['perso'] = $this->perso_model->get_perso($this->user_id);
+        
+        $theme_css  = 'theme_css_2.css';
+
+        $exist = $this->perso_model->get_perso($this->user_id);
+
+        if($exist == FALSE){
+            $this->perso_model->insert_perso($theme_css);
+        } else {
+            $this->perso_model->update_perso($theme_css);
+        }
+
+        redirect('personnaliser/'.$uid, 'refresh');
+    }
+    
+    public function theme3($infos_profile = NULL)
+    {
+        $uid = $this->session->userdata('uid');
+        $this->user_id = $this->uri->segment(3);
+        $data = $this->data;
+        $data['profile'] = $this->user_model->getUser($this->user_id);
+        $data['perso'] = $this->perso_model->get_perso($this->user_id);
+        
+        $theme_css  = 'theme_css_3.css';
+
+        $exist = $this->perso_model->get_perso($this->user_id);
+
+        if($exist == FALSE){
+            $this->perso_model->insert_perso($theme_css);
+        } else {
+            $this->perso_model->update_perso($theme_css);
+        }
+
+        redirect('personnaliser/'.$uid, 'refresh');
+    }
+    
+    public function theme4($infos_profile = NULL)
+    {
+        $uid = $this->session->userdata('uid');
+        $this->user_id = $this->uri->segment(3);
+        $data = $this->data;
+        $data['profile'] = $this->user_model->getUser($this->user_id);
+        $data['perso'] = $this->perso_model->get_perso($this->user_id);
+        
+        $theme_css  = 'theme_css_4.css';
 
         $exist = $this->perso_model->get_perso($this->user_id);
 
@@ -177,7 +248,7 @@ class Mc_perso extends CI_Controller
                 $_POST['background'] = $upload_data['file_name'];
                 return true;
               } else {
-                  $this->form_validation->set_message('handle_upload', $this->upload->display_errors());
+                  $this->form_validation->set_message('handle_upload_background', '<p>L\'image que vous tentez d\'envoyer dépasse les valeurs maximales autorisées. (Max 1024 KO)</p>');
                   return false;
             }
 //        } else {

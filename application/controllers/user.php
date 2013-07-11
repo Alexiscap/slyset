@@ -93,7 +93,7 @@ class User extends CI_Controller
         
         $config['upload_path']   = $dynamic_path;
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size']    = '100000';
+        $config['max_size']    = '2048';
         $config['max_width']  = '1024';
         $config['max_height']  = '768';
         $this->load->library('upload', $config);

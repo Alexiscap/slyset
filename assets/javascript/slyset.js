@@ -25,11 +25,12 @@ function playMasonry(){
 
 $(document).ready(function(){
     $('.head_menu').click(function(){
+//            $(this).next('.one').stop();
         //$('.head_menu').next('.first-row').slideUp()
         if($(this).next('.one').is(":visible") == true){
-            $(this).next('.one').slideToggle(500);
+            $(this).next('.one').stop(true).slideToggle(500);
         } else {
-            $(this).next('.one').slideToggle(500);
+            $(this).next('.one').stop(true).slideToggle(500);
         }
     //$(this).next('.one:hidden').show()
     });

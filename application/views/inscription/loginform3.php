@@ -205,11 +205,13 @@
       </div>
       <span class="upload_photo_name_file"></span>
       
-      <?php echo form_label('Votre photo de profil','thumb', $label_attributes); ?>
+      <?php 
+      $label_attributes2 = array('class'=>'label_big last');
+      echo form_label('Votre photo de profil','thumb', $label_attributes2); ?>
       <div class="upload-file-container container-thumb">
         <input type="file" name="thumb" size="200" id="upload_images_thumb" />
       </div>
-      <span class="upload_photo_name_file"></span>
+      <span class="upload_photo_name_file last"></span>
     </div>
   <?php
     endif;
@@ -221,37 +223,3 @@
   ?>
 
 </div>
-
-
-
-
-
-
-
-
-
-<?php
-//      echo form_input('nom',set_value('nom'),'placeholder="Votre nom"');
-//      echo '<div class="ico-placeholder firstname"></div>';
-//      echo form_error('nom', '<span class="error-form">', '</span>');
-
-//      echo form_input('prenom',set_value('prenom'),'placeholder="Votre prénom"');
-//      echo '<div class="ico-placeholder name"></div>';
-//      echo form_error('prenom', '<span class="error-form">', '</span>');
-
-//      echo form_input('ville',set_value('ville'),'placeholder="Votre ville"');
-//      echo '<div class="ico-placeholder ville"></div>';
-//      echo form_error('ville', '<span class="error-form">', '</span>');
-
-//      echo form_input('pays',set_value('pays'),'placeholder="Votre pays"');
-//      echo '<div class="ico-placeholder pays"></div>';
-//      echo form_error('pays', '<span class="error-form">', '</span>');
-
-//      $optionsSelect = array('genre'=>'Votre genre', 'homme'=>'Homme', 'femme'=>'Femme');
-//      echo form_dropdown('genre', $optionsSelect, 'genre');
-//      echo form_error('genre', '<span class="error-form">', '</span>');
-
-//      echo form_input('datenaissance',set_value('datenaissance'),'placeholder="Votre date de naissance au format jj/mm/aaaa"');
-//      echo '<div class="ico-placeholder datenaissance"></div>';
-//      echo form_error('datenaissance', '<span class="error-form">', '</span>');
-?>

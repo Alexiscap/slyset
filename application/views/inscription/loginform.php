@@ -35,7 +35,7 @@
     echo form_submit('submit','Créer un compte');
   ?>
 
-  <p class="sub-text-inscrit">Vous avez déjà un compte ? <a href="#">Connectez-vous</a></p>
+  <p class="sub-text-inscrit">Vous avez déjà un compte ? <a href="<?php echo site_url('login'); ?>">Connectez-vous</a></p>
 
   <?php
     echo form_close();

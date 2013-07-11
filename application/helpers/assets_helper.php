@@ -50,12 +50,12 @@ if ( ! function_exists('write_css'))
     if(!empty($output)){
         $uid = $output->idU;
         $background = (!empty($output->background)) ? "url(/files/".$uid."/perso/".$output->background.")" : '';
-        $repeat = ($output->repeat == 'repeat') ? 'repeat' : 'no-repeat';
+        $repeat = ($output->repeat == 'repeat') ? 'repeat' : 'no-repeat center';
       
         $color1 = $output->couleur1;
-        $color2 = (!empty($output->couleur2)) ? 'aside#right{ background-color: '.$output->couleur2.'; }' : null ;
-        $color3 = (!empty($output->couleur3)) ? '.content a{ color: '.$output->couleur3.'; }' : null;
-        $color4 = (!empty($output->couleur4)) ? 'p.head-title, p.head-title span{ color: '.$output->couleur4.'; }' : null;
+        $color2 = (!empty($output->couleur2)) ? 'aside#right{ background-color: '.$output->couleur2.' !important; }' : null ;
+        $color3 = (!empty($output->couleur3)) ? '#breadcrumbs li a{ color: '.$output->couleur3.' !important; }' : null;
+        $color4 = (!empty($output->couleur4)) ? 'p.head-title, p.head-title span{ color: '.$output->couleur4.' !important; }' : null;
         
         if($background != ''){
           $construct_background = $background.' '.$repeat.' '.$color1;
@@ -64,7 +64,7 @@ if ( ! function_exists('write_css'))
         }
         
         file_put_contents('assets/css/custom_user_css.php',
-                "<?php header('Content-Type: text/css'); ?> \n\n /** DO NOT EDIT ! Dynamically generated file **/ \n\n\t\n body{ background: $construct_background; } \n\t\n $color2 \n\t\n $color3 \n\t\n $color4");
+                "<?php header('Content-Type: text/css'); ?> \n\n /** DO NOT EDIT ! Dynamically generated file **/ \n\n\t\n body{ background: $construct_background; background-size:cover; } \n\t\n $color2 \n\t\n $color3 \n\t\n $color4");
     }
   }
 }

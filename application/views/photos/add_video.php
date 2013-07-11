@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="http://127.0.0.1/slyset/assets/css/slyset.css" media="screen" />
-<script  src="http://127.0.0.1/slyset/assets/javascript/combobox.js" media="screen" ></script>
+<link rel="stylesheet" type="text/css" href="<?php echo css_url('pop_in') ?>" media="screen" />
+<script  src="<?php echo js_url('combobox') ?>" media="screen" ></script>
 
 <div class="pop-in_cent">
 	

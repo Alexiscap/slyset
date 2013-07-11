@@ -11,7 +11,7 @@
 
 /* TOP TITRES */
 #right #top_titre{margin:30px 0 0 0;}
-#right #top_titre img{float:left;}
+#right #top_titre img{ margin:0 0 0 5px; float:left;}
 #right #top_titre p {float:left;color:#3f3f3f;margin:0 0 10px 10px;font-size:20px;}
 #right #top_titre p span{color:#31a58c;}
 #right #top_titre #classement{clear:both;background:#e6e6e6;width:200px;height:235px;}
@@ -29,7 +29,7 @@
 
 /* LAST PHOTOS */
 #right #last_photo {margin:30px 0 0 0;}
-#right #last_photo img{float:left;}
+#right #last_photo img{ margin:0 0 0 5px; float:left;}
 #right #last_photo p {float:left;color:#3f3f3f;margin:0 0 10px 10px;font-size:20px;}
 #right #last_photo p span{color:#31a58c;}
 #right #last_photo #encart_photos{width:200px;height:200px;background:#e6e6e6;clear:both;}
@@ -40,7 +40,7 @@
 /* FIN LAST PHOTOS */
 
 /*AILLEUR RESEAUX*/
-#right #reseaux_ailleur {margin:30px 0 0 0;width:200px;}
+#right #reseaux_ailleur {margin:30px 0 0 5px;width:200px;}
 #right #reseaux_ailleur p {float:left;color:#3f3f3f;margin:0 0 10px 0;font-size:20px;}
 #right #reseaux_ailleur p span{color:#31a58c;}
 #reseaux_ailleur a{margin:0 10px 0 0; float:left;width:90px;height:30px;background:url('../images/sidebar-right/sprite_ailleurs.png') no-repeat;padding:6px 0 0 0;}

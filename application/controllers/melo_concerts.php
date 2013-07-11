@@ -19,7 +19,7 @@ class melo_concerts extends CI_Controller {
         $this->load->model(array('user_model', 'concert','melo_concert'));
         $this->load->helper('date');
 
-        $this->user_authentication->musicien_user_validation();
+//        $this->user_authentication->musicien_user_validation();
 
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
 

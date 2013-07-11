@@ -22,7 +22,7 @@ $session_id = $this->session->userdata('uid');
         
         <h3 class="titre_static">Contact</h3>
         <p class="txt_static">
-            Vous souhaitez devenir annonceur sur Slyset ? Merci d’adresser votre demande à l’adresse e-mail suivante : annonceurs@slyset.fr ou via notre <a href="<?php echo site_url('contact'); ?>">formulaire de contact</a>.
+            Vous souhaitez devenir annonceur sur Slyset ? Merci d’adresser votre demande à l’adresse e-mail suivante : annonceurs@slyset.fr ou via notre <a href="<?php echo site_url('contact/'.$session_id); ?>">formulaire de contact</a>.
         </p>
     </div>
 </div>
