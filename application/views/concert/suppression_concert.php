@@ -8,7 +8,7 @@
 			  $concert = $this->uri->segment(4);
 			  $adresse = $this->uri->segment(5);
 
-			  echo form_open('mc_concerts/suppression_concert/'.$user.'/'.$concert.'/'.$adresse);
+			  echo form_open('concert/supprimer/'.$user.'/'.$concert.'/'.$adresse);
      
 			  echo "<p class='confirm_sup'>Etes vous sur de vouloir supprimer ce concert ?</p>" ;
 			  

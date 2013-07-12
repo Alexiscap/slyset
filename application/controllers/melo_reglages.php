@@ -118,37 +118,7 @@ class melo_reglages extends CI_Controller
         }
     }
     
-    public function delete_user($user_id) {
-        $uid = $this->session->userdata('uid');
-        
-        if ($user_id != $uid) {
-            show_404();
-        }
-        
-        $this->user_id = $this->uri->segment(3);
-        $data = $this->data;
-        $data['profile'] = $this->user_model->getUser($this->user_id);
-        
-        $this->form_validation->set_rules('confirm-oui','Oui', '');
-        $this->form_validation->set_rules('confirm-non','Non', '');
-        
-        if($this->form_validation->run() == FALSE){
-//            $this->layout->view('reglage/mc_reglages', $data);
-            $this->layout->ajouter_css('colorbox');
-            $this->layout->ajouter_js('jquery.colorbox');
-            $this->load->view('reglage/pi_suppression_confirm', $data);
-        } else {
-            $confirm = $this->input->post('confirm-oui');            
-
-            if(isset($confirm)){
-//            $this->user_model->delete_user($uid);
-            } else {
-                redirect('my-reglages/'.$uid, 'refresh');
-            }
-            redirect('home', 'refresh');
-//            $this->load->view('reglage/pi_suppression_confirm', $data);
-        }
-    }
+   
     
     function handle_upload_cover()
     {

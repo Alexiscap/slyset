@@ -8,9 +8,10 @@
 				$media = $this->uri->segment(4);
 				$type = $this->uri->segment(5);
 
-				echo form_open('mc_photos/suppression_media/'.$user.'/'.$media.'/'.$type);
-				if($type==1)
-				{
+      echo form_open('/media/supprimer/'.$user.'/'.$media.'/'.$type);
+     if($type==1)
+     {
+ 	
 					echo "<p class='confirm_sup'>Etes vous sur de vouloir supprimer cette photo ?</p>" ;
 					
 					$delete = array(

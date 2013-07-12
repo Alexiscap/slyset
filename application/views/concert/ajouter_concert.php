@@ -8,7 +8,7 @@
       
 	  $user = $this->uri->segment(3);
 	?> <div class="elem_center"> <?php
-      echo form_open('mc_concerts/ajouter_concert/'.$user);
+      echo form_open('concert/ajouter/'.$user);
       		?><div class="label"><label>Artistes</label></div>
       				<div class="champs">
 

@@ -61,10 +61,15 @@ $route['home/(:num)'] = "home/index/$1";
 
 $route['concert'] = "mc_concerts/index";
 $route['concert/(:num)'] = "mc_concerts/index/$1";
-$route['concert/ajouter'] = "mc_concerts/ajouter_concert";
-$route['concert/ajouter/(:num)'] = "mc_concerts/ajouter_concert/$1";
 $route['concert/archive'] = "mc_concerts/concert_passe";
 $route['concert/archive/(:num)'] = "mc_concerts/concert_passe/$1";
+$route['concert/ajouter'] = "pop_in_general/ajouter_concert";
+$route['concert/ajouter/(:num)'] = "pop_in_general/ajouter_concert/$1";
+$route['concert/modifier'] = "pop_in_general/modifier_concert";
+$route['concert/modifier/(:num)/(:num)/(:num)'] = "pop_in_general/modifier_concert/$1/$2/$3";
+$route['concert/supprimer'] = "pop_in_general/suppression_concert";
+$route['concert/supprimer/(:num)/(:num)/(:num)'] = "pop_in_general/suppression_concert/$1/$2/$3";
+
 
 $route['actualite'] = "mc_actus/index";
 $route['actualite/(:num)'] = "mc_actus/index/$1";
@@ -72,18 +77,17 @@ $route['actualite/(:num)'] = "mc_actus/index/$1";
 
 $route['media'] = "mc_photos/index";
 $route['media/(:num)'] = "mc_photos/index/$1";
-$route['media/ajouter-photo'] = "mc_photos/upload_photo";
-$route['media/ajouter-photo/(:num)'] = "mc_photos/upload_photo/$1";
-$route['media/ajouter-video'] = "mc_photos/add_video";
-$route['media/ajouter-video/(:num)'] = "mc_photos/add_video/$1";
-
-$route['media/supprimer'] = "mc_photos/suppression_media";
-$route['media/supprimer/(:num)'] = "mc_photos/suppression_media/$1";
-$route['media/supprimer/(:num)/(:any)/(:num)'] = "mc_photos/suppression_media/$1/$2/$3";
-$route['media/editer'] = "mc_photos/update_photo";
-$route['media/editer/(:num)/(:any)/(:num)'] = "mc_photos/update_photo/$1/$2/$3";
-$route['media/zoom'] = "mc_photos/zoom_photo";
-$route['media/zoom/(:num)/(:num)'] = "mc_photos/zoom_photo/$1/$2";
+$route['media/ajouter-photo'] = "pop_in_general/upload_photo";
+$route['media/ajouter-photo/(:num)'] = "pop_in_general/upload_photo/$1";
+$route['media/ajouter-video'] = "pop_in_general/add_video";
+$route['media/ajouter-video/(:num)'] = "pop_in_general/add_video/$1";
+$route['media/supprimer'] = "pop_in_general/suppression_media";
+$route['media/supprimer/(:num)'] = "pop_in_general/suppression_media/$1";
+$route['media/supprimer/(:num)/(:any)/(:num)'] = "pop_in_general/suppression_media/$1/$2/$3";
+$route['media/editer'] = "pop_in_general/update_photo";
+$route['media/editer/(:num)/(:any)/(:num)'] = "pop_in_general/update_photo/$1/$2/$3";
+$route['media/zoom'] = "pop_in_general/zoom_photo";
+$route['media/zoom/(:num)/(:num)'] = "pop_in_general/zoom_photo/$1/$2";
 $route['media/album'] = "mc_photos/album";
 $route['album/(:num)/(:any)'] = "mc_photos/album/$1/$2";
 
@@ -115,8 +119,8 @@ $route['follower/melomane/(:num)'] = "mc_followers/melomane/$1";
 
 $route['my-reglages'] = "melo_reglages/index";
 $route['my-reglages/(:num)'] = "melo_reglages/index/$1";
-$route['my-reglages/confirm'] = "melo_reglages/delete_user";
-$route['my-reglages/confirm/(:num)'] = "melo_reglages/delete_user/$1";
+$route['my-reglages/confirm'] = "pop_in_general/delete_user";
+$route['my-reglages/confirm/(:num)'] = "pop_in_general/delete_user/$1";
 $route['my-reglages/update_user/(:num)'] = "melo_reglages/update_user/$1";
 
 
