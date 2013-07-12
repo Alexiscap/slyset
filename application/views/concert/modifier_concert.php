@@ -77,7 +77,12 @@
             );
       echo form_int($prix, $info_concert[0]->{'prix'}) . "<pre>";
       ?>€</div><?php
-      echo form_submit('submit', 'Modifier le concert');
+       $submit = array(
+              'class'        => 'modif_concert',
+              'name'          => 'submit',
+	      'value'	=> 'Modifier le concert',
+            );
+      echo form_submit($submit);
 
       echo form_close();
 

@@ -153,7 +153,7 @@ font-weight: normal;}
 .content .infos_concert{ width:302px; margin:0 0 0 20px; float:left; }
 .content .calendrier{ background:url("../images/musicien/calendrier.png") no-repeat; width:50px; height:50px; float:left; }
 .content .infos_concert p{ margin:3px; color:#5d5d5b; font-size:14px; }
-.content .infos_concert .mois{ margin:7px 15px; font-size:9px; color:white; position:absolute; text-align : center; }
+.content .infos_concert .mois{ margin:0; width:50px; font-size:9px; color:white; position:absolute; text-align : center; }
 .content .infos_concert .jour{ margin:20px 9px; font-size:24px; font-family:georgia; position:absolute; text-align : center; width : 31px;font-weight:normal;}
 .content .infos_concert img{ float:left; }
 .content .adr_concert{ width:196px; float:left; margin:0 0px; }
@@ -269,8 +269,8 @@ font-weight: normal;}
 .content .photo .comm p,.content .photo .comment-form p,.content .photo .comment-form-album p,.content .photo .comment-form-video p{ margin:0; text-align:left; }
 .content .photo .comm .name_comm,.content .photo .comment-form .name_comm, .content .photo .comment-form-album .name_comm, .content .photo .comment-form-video .name_comm{ font-size:10px; color:#595959; }
 .content .photo .comm .commentaire,.content .photo .comment-form .commentaire, .content .photo .comment-form-album .commentaire, .content .photo .comment-form-video .commentaire{ font-size:10px; color:#888d95; }
-.content .photo .comm input[type=text],.content .photo .comment-form input[type=text], .content .photo .comment-form-album input[type=text], .content .photo .comment-form-video input[type=text]{ float:left; width:112px; border:1px solid #dfdede; margin:5px 0; }
-.content .photo .comm input[type=image],.content .photo .comment-form input[type=submit], .content .photo .comment-form-album input[type=submit], .content .photo .comment-form-video input[type=submit]{ clear:both; width:48px; margin:0 0 0 58px; }
+.content .photo .comm input[type=text],.content .photo .comment-form input[type=text], .content .photo .comment-form-album input[type=text], .content .photo .comment-form-video input[type=text]{ float:left; width:70px; border:1px solid #dfdede; margin:5px 0; }
+.content .photo .comm input[type=image],.content .photo .comment-form input[type=submit], .content .photo .comment-form-album input[type=submit], .content .photo .comment-form-video input[type=submit]{ clear:both; width:55px; margin:4px 0 0 5px; }
 .content .photo .edit{ background:rgba(36, 36, 36, 0.7); width:160px; height:22px; position:absolute; margin:0;display:none;}
 .content .photo .edit img{ float:right; margin:4px 8px 0 0; }
 .content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:160px; position:absolute; margin:22px 0;height:138px;}

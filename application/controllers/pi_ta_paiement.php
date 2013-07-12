@@ -100,7 +100,7 @@ class pi_ta_paiement extends CI_Controller
   
     
       $data['cmd_download'] = $this->achat->cmd_valider( $data['numero_cmd']);
-      var_dump($data['cmd_download']);
+//      var_dump($data['cmd_download']);
     
 		$this->load->view('achat/pi_ta_dl',$data);
 

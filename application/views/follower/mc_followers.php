@@ -111,6 +111,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 
                 <hr/>
             </div>
+</div>
             <?php
         endforeach;
     endif;
