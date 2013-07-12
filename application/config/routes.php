@@ -146,7 +146,7 @@ $route['my-playlists'] = "melo_playlist/index";
 $route['my-playlists/(:num)'] = "melo_playlist/index/$1";
 
 $route['my-shopping/(:num)'] = "melo_achats/index/$1";
-$route['my-shopping-recap/(:num)'] = "melo_achats/index/$1";
+$route['my-shopping-recap/(:num)'] = "pop_in_general/panier_infos/index/$1";
 
 $route['slyset-project'] = "pages_statiques/slyset";
 $route['slyset-project/(:num)'] = "pages_statiques/slyset/$1";

@@ -12,7 +12,7 @@
         $user = $this->uri->segment(3);
         ?>
         <div class="elem_center">
-            <?php echo form_open_multipart('pop_in_success/do_upload/' . $user); ?>
+            <?php echo form_open_multipart('pop_in_general/do_upload/' . $user); ?>
 
             <div class="label"><label>Votre photo</label></div>
             <div class="champs">

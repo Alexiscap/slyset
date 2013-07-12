@@ -8,7 +8,7 @@
 	<?php 
 	$user = $this->uri->segment(3);
 	$file_album = $this->uri->segment(4);
-	 echo form_open('mc_photos/update_album/'.$user.'/'.$file_album);
+	 echo form_open('media/update_album/'.$user.'/'.$file_album);
 	?>
 
 	</br>

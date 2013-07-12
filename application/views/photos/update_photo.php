@@ -17,7 +17,7 @@
             <?php 
 			echo validation_errors(); 
 
-			echo form_open('mc_photos/update_photo/'.$user.'/'.$photo.'/'.$type);
+			echo form_open('media/editer/'.$user.'/'.$photo.'/'.$type);
 			?>
 
             <div class="label"><label>Album</label></div>
