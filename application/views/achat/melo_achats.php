@@ -133,7 +133,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
              
             <p class="total_panier">Montant total <span><?php if(isset($total))echo $total; else print '0'; ?> €</span></p>
             <div class="clear"></div>
-            <a class="bigiframe" href="<?php echo site_url('my-shopping-recap/index/' . $session_id) ?>"><input type="button" value="Paiement sécurisé" class="cadis_panier"></a>
+            <a class="bigiframe" href="<?php echo site_url('my-shopping-recap/' . $session_id) ?>"><input type="button" value="Paiement sécurisé" class="cadis_panier"></a>
             <input type="button" value="Supprimer" class="bt_supp_playlist">
              <?php }
                     else
