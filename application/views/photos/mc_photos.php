@@ -173,7 +173,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                     
                   
                    
-                    <a href="<?php echo site_url('media/album/'.$infos_profile->id.'/'.$media_user_result_unit->file_name); ?>"><img src="<?php echo files($infos_profile->id.'/photos/'.$media_user_result_unit->file_name.'/cover'); ?>" class="img_cover" /></a>
+                    <a href="<?php echo site_url('media/album/'.$infos_profile->id.'/'.$media_user_result_unit->file_name); ?>"><img src="<?php echo files($infos_profile->id.'/photos/'.$media_user_result_unit->file_name.'/cover.jpg'); ?>" class="img_cover" /></a>
         <?php
         $a = 0;
         foreach ($all_photos as $al_photo):

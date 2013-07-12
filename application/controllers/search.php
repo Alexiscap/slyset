@@ -55,7 +55,7 @@ class Search extends CI_Controller {
         }
     }
 
-    public function search_keyword($uid) {
+    public function search_keyword($uid = NULL) {
         $data = $this->data;
         $session_id = $this->session->userdata('uid');
         

@@ -46,7 +46,6 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
             <span class="stats_title">morceaux</span>
         </div>
     </div>
-  </div>
   <div class="content">
 	<div id="btn_tmp_follow">
        <a href="<?php echo site_url('follower/'.$infos_profile->id) ?>" class="tous">Tous</a>
@@ -91,63 +90,64 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                         <div class="bouton" >
                             <a id="<?php echo $follower->Follower_id ?>" href="#" class="follow_following" ><span class="button_left_red"></span><span class="button_center_red">Suivre</span><span class="button_right_red"></span></a>
                         </div>
-                        <?php
-                    }
-                    ?>
+			<?php }
+	
+	
+		?>
+	
+	<hr/>
+	</div>
+	<?php
+	endforeach;
+	endif;
+	?>
+	<!--
+	<div class="follower">
+		<div class="photo_follow">
+			<img src="<?php echo img_url('common/photo_follower.png'); ?>" />
+		</div>
+		<div class="description">
+			<p class="nom_follow">Skip the use</p>
+			<p class="text_follow">Du rock, des tatouages, des kilowatts, de la sueur ! Notre album est enfin dans les bacs !</p>
+			<img src="<?php echo img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
+		</div>
+		<div class="bouton">
+			<a href="#" class="participer"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
+		</div>
+	</div>
+	<hr/>
+	
+	
+	<div class="follower">
+		<div class="photo_follow">
+			<img src="<?php echo img_url('common/photo_follower2.png'); ?>" />
+		</div>
+		<div class="description">
+			<p class="nom_follow">Skip the use</p>
+			<p class="text_follow">Du rock, des tatouages, des kilowatts, de la sueur ! Notre album est enfin dans les bacs !</p>
+			<img src="<?php echo img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
+		</div>
+		<div class="bouton">
+			<a href="#" class="participer"><span class="button_left_abonne"></span><span class="button_center_abonne">Abonné</span><span class="button_right_abonne"></span></a>
+		</div>
+	</div>
+	<hr/>
+	<div class="follower">
+		<div class="photo_follow">
+			<img src="<?php echo img_url('common/photo_follower.png'); ?>" />
+		</div>
+		<div class="description">
+			<p class="nom_follow">Skip the use</p>
+			<p class="text_follow">Du rock, des tatouages, des kilowatts, de la sueur ! Notre album est enfin dans les bacs !</p>
+			<img src="<?php echo img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
+		</div>
+		<div class="bouton">
+			<a href="#" class="participer"><span class="button_left_non"></span><span class="button_center_non">Ne plus suivre</span><span class="button_right_non"></span></a>
+		</div>
+	</div>-->
+  </div>
 
-                    <hr/>
-                </div>
-        <?php
-    endforeach;
-endif;
-?>
-        <!--
-        <div class="follower">
-          <div class="photo_follow">
-            <img src="<?php echo img_url('common/photo_follower.png'); ?>" />
-          </div>
-          <div class="description">
-            <p class="nom_follow">Skip the use</p>
-            <p class="text_follow">Du rock, des tatouages, des kilowatts, de la sueur ! Notre album est enfin dans les bacs !</p>
-            <img src="<?php echo img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
-          </div>
-          <div class="bouton">
-            <a href="#" class="participer"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
-          </div>
-        </div>
-        <hr/>
-        
-        
-        <div class="follower">
-          <div class="photo_follow">
-            <img src="<?php echo img_url('common/photo_follower2.png'); ?>" />
-          </div>
-          <div class="description">
-            <p class="nom_follow">Skip the use</p>
-            <p class="text_follow">Du rock, des tatouages, des kilowatts, de la sueur ! Notre album est enfin dans les bacs !</p>
-            <img src="<?php echo img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
-          </div>
-          <div class="bouton">
-            <a href="#" class="participer"><span class="button_left_abonne"></span><span class="button_center_abonne">Abonné</span><span class="button_right_abonne"></span></a>
-          </div>
-        </div>
-        <hr/>
-        <div class="follower">
-          <div class="photo_follow">
-            <img src="<?php echo img_url('common/photo_follower.png'); ?>" />
-          </div>
-          <div class="description">
-            <p class="nom_follow">Skip the use</p>
-            <p class="text_follow">Du rock, des tatouages, des kilowatts, de la sueur ! Notre album est enfin dans les bacs !</p>
-            <img src="<?php echo img_url('common/casque.png'); ?>" /><span>Pop-rock, punk, jazz et électro-rock</span>
-          </div>
-          <div class="bouton">
-            <a href="#" class="participer"><span class="button_left_non"></span><span class="button_center_non">Ne plus suivre</span><span class="button_right_non"></span></a>
-          </div>
-        </div>-->
-    </div>
 
-
-<?php if (isset($sidebar_right)) echo $sidebar_right; ?>
+  <?php if(isset($sidebar_right)) echo $sidebar_right; ?>
 
 </div>

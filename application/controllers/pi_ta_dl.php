@@ -8,11 +8,7 @@ class pi_ta_dl extends CI_Controller
       parent::__construct();
       
       $this->layout->ajouter_css('slyset');
-      
-      $this->layout->ajouter_js('jquery.imagesloaded.min');
-      $this->layout->ajouter_js('jquery.masonry.min');
-      $this->layout->ajouter_js('jquery.stapel');
-      
+            
         $this->layout->set_id_background('Tunnel d\'achats téléchargements');
     }
   
@@ -23,7 +19,7 @@ class pi_ta_dl extends CI_Controller
   
     public function page()
     {
-    print 'cdcds';
+//    print 'cdcds';
       $data = array();
     
       $data['cmd_download'] = $this->achat->cmd_valider();

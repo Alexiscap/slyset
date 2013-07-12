@@ -42,7 +42,7 @@ $(window).scroll(function(e) {
 
 function infiniteArticles() {
     var trs = $('#wall-flux .wall-flux-content');
-    var count = trs.length - 1;
+    var count = trs.length;
  
     if (reachedEnd == false) {
         var ajaxLoader = $('#wall-flux').find(".ajax_loader");
@@ -113,7 +113,7 @@ function infiniteArticlesAdmin() {
 
 function infiniteResults() {
     var trs = $('.search_results_wrapper .search_result');
-    var count = trs.length - 1;
+    var count = trs.length;
  
     if (reachedEnd == false) {
         var ajaxLoader = $('.search_results_wrapper').find(".ajax_loader");
@@ -143,7 +143,7 @@ function infiniteResults() {
 
 function infiniteComptes() {
     var trs = $('#comptes-tab tr');
-    var count = trs.length - 1;
+    var count = trs.length;
     var typeAccount = '';
  
     if($('#comptes-tab').hasClass('comptes_melos')){

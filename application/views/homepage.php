@@ -48,12 +48,6 @@ if (isset($all_date_calendar))
                 <?php endif; ?>
 <?php endforeach; ?>
 
-
-<!--      <a href="#"><img class="coverflow-img" src="<?php echo img_url('portail/bh.png') ?>"><span class="coverflow_artist">Name Artist 1</span></a>
-<a href="#" class="coverflow-img2"><img class="coverflow-img2" src="<?php echo img_url('portail/bandone.png') ?>"><span class="coverflow_artist">Name Artist 2</span></a>
-<a href="#"><img class="coverflow-img" src="<?php echo img_url('portail/foals.png') ?>"><span class="coverflow_artist">Name Artist 3</span></a>
-<a href="#" class="coverflow-img2"><img class="coverflow-img2" src="<?php echo img_url('portail/bh.png') ?>"><span class="coverflow_artist">Name Artist 4</span></a>
-<a href="#"><img class="coverflow-img2" src="<?php echo img_url('portail/bandone.png') ?>"><span class="coverflow_artist">Name Artist 5</span></a>-->
         </div>
         <div id="paginationContainer">
             <div id="pagination-prev"></div>
@@ -231,7 +225,7 @@ if (isset($all_date_calendar))
                         <div class="newbies-peoples">
                             <p class="newbies-picture">
                                 <a href="<?php echo site_url('my-wall/' . $newbie->id); ?>">
-                                    <img src="<?php echo $thumb = (!empty($newbie->thumb)) ? files('profiles/' . $newbie->thumb) : img_url('sidebar-right/defaultphoto-profil.png'); ?>" height="38px" alt="Photo Profil" />
+                                    <img src="<?php echo $thumb = (!empty($newbie->thumb)) ? files('profiles/' . $newbie->thumb) : img_url('sidebar-right/default-photo-profil.png'); ?>" height="38px" alt="Photo Profil" />
                                 </a>
                             </p>
                             <div class="newbies-people">
@@ -322,6 +316,22 @@ if (isset($all_date_calendar))
                     </div>-->
         </div>
 
+        <div id="home-sidebar-right">
+            <div class="publicity">
+                <p class="publicity-title">Découvrez la mixtape #1</p>
+                <div class="publicity-bkg"></div>
+            </div>
+            
+            <div class="publicity pub-empty">
+                <div class="pub-ico"></div>
+                <p>Votre publicité ici.</p>
+            </div>
+            
+            <div class="publicity pub-empty">
+                <div class="pub-ico"></div>
+                <p>Votre publicité ici.</p>
+            </div>
+        </div>
     </div>
 </div>
 </div>

@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="http://127.0.0.1/slyset/assets/css/slyset.css" media="screen" />
 <div class="pop-in_ta pop_in3">
   <span class="info">Informations</span><span  class="paiement">Paiement</span><span  class="telechargement et_active">Téléchargements</span>
   <img src="<?php echo img_url('musicien/pop_close.png'); ?>" alt="Fermer" />
