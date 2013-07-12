@@ -26,37 +26,5 @@ class pi_ta_infos extends CI_Controller
       $this->page();
     }
   
-    public function page()
-    {
-      $data = array();
-      $this->form_validation->set_rules('email', 'email', 'valid_email');
 
-      $user_id = $this->session->userdata('uid');
-     $data['cmd'] = $this->achat->get_achat($user_id);
-   
-//paiement-commande
-if ($this->form_validation->run() == FALSE)
-		{
-		 $this->load->view('achat/pi_ta_infos', $data);
-		 }
-		else{
-		$this-> validation_commande();
-		}
-//var_dump($data['cmd']);
-      //$this->layout->views('3');
-     
-    }
-  
-  	public function validation_commande()
-  	{
-  	  $format = $this->input->post('format');
-  	    	  $email = $this->input->post('email');
-  	    	  $nom = $this->input->post('nom');
-
-  //  $this->session->set_flashdata('format', $format);
-  $this->session->set_flashdata('email', $email);
-  $this->session->set_flashdata('nom', $nom);
-
-		$this->load->view('achat/pi_ta_paiement');
-  	}
 }
