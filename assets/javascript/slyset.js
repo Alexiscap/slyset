@@ -27,6 +27,10 @@ function playMasonry(){
 
 $(document).ready(function(){
 
+	$('.iframe').bind('contextmenu', function(e) {
+  	  	return false;
+	}); 
+
     if($('body.followers').length>0||$('body.abonnements').length>0||$('body.melo_actu').length>0||$('body.reglages').length>0||$('body.achats').length>0||$('body.concert_melo').length>0||$('body.musicien_actus').length>0||$('body.concert_mu').length>0||$('body.partitions').length>0||$('body.stats').length>0||$('body.personnaliser').length>0)
     {
   		$('#top_titre').show();

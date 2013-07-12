@@ -10,7 +10,7 @@
 	  $concert = $this->uri->segment(4);
 	  $adresse = $this->uri->segment(5);
 	?> <div class="elem_center"> <?php
-      echo form_open('mc_concerts/modifier_concert/' . $user . '/' . $concert . '/' . $adresse);
+      echo form_open('concert/modifier/' . $user . '/' . $concert . '/' . $adresse);
       		?><div class="label"><label>Artistes</label></div>
       				<div class="champs">
 

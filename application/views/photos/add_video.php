@@ -13,7 +13,7 @@
 	?><div class="elem_center"><?php
 	echo validation_errors(); 
 
-	 echo form_open('mc_photos/add_video/'.$user);
+	 echo form_open('media/ajouter-video/'.$user);
 	?>
 	
 	<div class="label">

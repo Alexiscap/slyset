@@ -279,10 +279,10 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
               <?php if ($profile->id == $uid) { 
               ?> 
                <div class="edit">
-                <a class="iframe" href="<?php echo base_url('/index.php/mc_photos/update_photo/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+                <a class="iframe" href="<?php echo base_url('/index.php/media/editer/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
               <!--  edition : SUPPRESSION *******************-->
 
-               <a class="iframe" href="<?php echo base_url('/index.php/mc_photos/suppression_media/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+               <a class="iframe" href="<?php echo base_url('/index.php/media/supprimer/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
              </div>
              <?php }
               ?>

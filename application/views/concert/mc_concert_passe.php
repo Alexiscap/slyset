@@ -77,7 +77,10 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 		</p>
    		 <?php if($infos_profile->id == $uid){ ?>
 
-   		 <div class="edition"><a class="iframe" href="<?php echo base_url('index.php/mc_concerts/modifier_concert/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>"><span class="edit">editer</span></a><a class="iframe" href="<?php echo base_url('index.php/mc_concerts/suppression_concert/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>"><span class="suppr">supprimer</span></a></div>
+   		 <div class="edition">
+   		 	<a class="iframe" href="<?php echo base_url('index.php/concert/modifier/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>"><span class="edit">editer</span></a>
+   		 	<a class="iframe" href="<?php echo base_url('index.php/concert/supprimer/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>"><span class="suppr">supprimer</span></a>
+   		 </div>
    		<?php } ?>
    		 <hr/>
    			 <div class="infos_concert">

@@ -216,7 +216,8 @@ class melo_wall extends CI_Controller
       		//	}
 
     //}
-    	}}
+    	}
+    	}
     	}
     	
     	}
