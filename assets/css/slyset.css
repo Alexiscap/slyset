@@ -2,6 +2,7 @@
 .checkbox-style input[type="checkbox"]:checked + label{  }
 input[type='file'], input[type='button'], input[type='submit']{ cursor:pointer; }
 
+#execution-times{ float:left; padding:10px; color:#F08E81; }
 #codeigniter_profiler{ overflow:scroll; }
 .green_text {color : #31a58c;}
 a{ outline:none; }

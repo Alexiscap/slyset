@@ -2,6 +2,8 @@
 setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 //$feedback = $this->session->userdata('flash:new:feedback');
 //print_r($this->session->all_userdata());
+
+
 ?>
 
 <div id="contentAll">

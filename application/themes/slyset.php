@@ -49,6 +49,11 @@
           <?php if($this->session->userdata('logged_in') != 1): ?>
             <a href="<?php echo site_url('user'); ?>" id="inscrire"><span>S'inscrire</span></a>
           <?php endif; ?>
+            
+            <div id="execution-times">
+                <p><?php echo $this->benchmark->memory_usage(); ?></p>
+                <p><?php echo $this->benchmark->elapsed_time().'ms'; ?></p>
+            </div>
         </div>
 
         <div id="connexion">
