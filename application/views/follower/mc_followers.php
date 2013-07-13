@@ -109,17 +109,17 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                 endif;
                 ?>
 
-                <hr/>
             </div>
+                <hr/>
 </div>
             <?php
         endforeach;
     endif;
     ?>
 
-</div>
+<!--</div>-->
 
 
 
 <?php if (isset($sidebar_right)) echo $sidebar_right; ?>
-</div>
+<!--</div>-->

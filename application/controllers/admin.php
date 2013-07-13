@@ -9,11 +9,9 @@ class Admin extends CI_Controller
         parent::__construct();
         
         $this->layout->ajouter_css('slyset');
-        $this->layout->ajouter_css('shadowbox');
-        $this->layout->ajouter_js('shadowbox/shadowbox');
         
         $this->load->helper(array('cookie', 'form'));
-        $this->load->model(array('login_model', 'perso_model', 'user_model'));
+        $this->load->model(array('login_model', 'user_model'));
         $this->load->library(array('form_validation', 'layout'));
         
         $this->layout->set_id_background('admin');
@@ -27,39 +25,11 @@ class Admin extends CI_Controller
     public function index($uid = NULL)
     {
         if($this->login_model->isLoggedInAdmin()){
-//            redirect('admin/dashboard', 'refresh');
             $this->dashboard();
         } else {
             redirect('login', 'refresh');
         }
     }
-    
-//    public function login()
-//    {
-//        if($this->login_model->isLoggedIn()){
-//             redirect('admin','refresh');
-//        } else {
-//             $this->load->library('form_validation');
-//             
-//             $this->form_validation->set_rules('login', 'Login', 'trim|required|xss_clean');
-//             $this->form_validation->set_rules('password', 'Mot de passe', 'trim|required|xss_clean');
-//
-//             if(!$this->form_validation->run()){
-//                  $this->load->view('login');
-//             } else {
-//                  $login            = $this->input->post('login');
-//                  $password         = $this->input->post('password');
-//                  $validCredentials = $this->login_model->validCredentials($login, $password);
-//
-//                  if($validCredentials){
-//                       redirect('admin/dashboard', 'refresh');
-//                  } else {
-//                       $data['error_credentials'] = 'Wrong Username/Password';
-//                       $this->load->view('login', $data);
-//                  }
-//             }
-//        }
-//    }
     
     public function dashboard()
     {

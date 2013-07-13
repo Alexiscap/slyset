@@ -4,12 +4,10 @@ class Home extends CI_Controller {
 
   public function __construct() {
     parent::__construct();
-//        $this->output->enable_profiler(true);
     $this->layout->ajouter_css('slyset');
 
     $this->load->helper(array('cookie', 'form'));
     $this->load->model(array('login_model', 'homepage', 'user_model', 'article_model', 'admin_model'));
-//        $this->load->model('user_model');
     //      $this->load->model('Facebook_Model');
 
     $this->layout->ajouter_js('carouFredSel');
@@ -58,7 +56,7 @@ class Home extends CI_Controller {
     $data['coverflow_covers'] = $this->admin_model->get_cover_artistes();
     $data['concert_date'] = $this->homepage->get_concert();
     $data['dates'] = $this->homepage->get_date();
-
+    
     $data['all_date_calendar'] = "";
     $data['all_info_concert'] = "";
 
