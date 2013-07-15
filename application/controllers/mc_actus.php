@@ -145,7 +145,7 @@ class Mc_actus extends CI_Controller
             $logged_in = $this->session->userdata('logged_in');
             if($logged_in == 1){
                 $this->mc_actus_model->insert_actus($message, $lien, $photo, $user_visited);
-                redirect('mc_actus/'.$user_visited, 'refresh');
+                redirect('actualite/'.$user_visited, 'refresh');
             } else {
                 redirect('login', 'refresh');
             }

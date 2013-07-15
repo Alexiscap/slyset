@@ -5,16 +5,7 @@ class Mc_actus_model extends CI_Model
     protected $table = 'wall';
     
     public function insert_actus($message, $lien, $photo, $user_id)
-    {
-//        $this->db->set('auteur',  $auteur);
-//        $this->db->set('titre',   $titre);
-//        $this->db->set('contenu', $contenu);
-//         
-//        $this->db->set('date_ajout', 'NOW()', false);
-//        $this->db->set('date_modif', 'NOW()', false);
-//         
-//        return $this->db->insert($this->table);
-        
+    {        
         $data['Utilisateur_id'] = $this->session->userdata('uid');
         $data['wallto_utilisateur_id'] = $user_id;
         $data['markup_message'] = $message;
@@ -76,7 +67,7 @@ class Mc_actus_model extends CI_Model
                         ->from('wall AS W')
                         ->join('utilisateur U', 'U.id = W.Utilisateur_id')
                         ->where('W.wallto_utilisateur_id', (int) $user_visited)
-//                        ->limit($nb, $debut)
+                        ->limit($nb, $debut)
                         ->order_by('W.id', 'desc')
                         ->get()
                         ->result();

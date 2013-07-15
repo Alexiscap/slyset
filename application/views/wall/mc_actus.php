@@ -67,7 +67,7 @@
         
         
         $form_comments_2 = array("id" => "comments-photo", "style" => "display:none;");
-        echo form_open_multipart('mc_actus/form_wall_musicien_photo'.$uid_form2 = (empty($infos_profile)) ? $session_id : $infos_profile->id, $form_comments_2);
+        echo form_open_multipart('mc_actus/form_wall_musicien_photo/'.$uid_form2 = (empty($infos_profile)) ? $session_id : $infos_profile->id, $form_comments_2);
           $textarea = array("name" => "comment2","placeholder" => "Votre description ici ...");
           echo form_textarea($textarea);
           echo form_error('comment2', '<span class="error-form">', '</span>');
@@ -82,7 +82,7 @@
         
         
         $form_comments_3 = array("id" => "comments-link-video", "style" => "display:none;");
-        echo form_open('mc_actus/form_wall_musicien_link'.$uid_form3 = (empty($infos_profile)) ? $session_id : $infos_profile->id, $form_comments_3);
+        echo form_open('mc_actus/form_wall_musicien_link/'.$uid_form3 = (empty($infos_profile)) ? $session_id : $infos_profile->id, $form_comments_3);
         
           $textarea = array("name" => "comment3","placeholder" => "Votre description ici ...");
           echo form_textarea($textarea);
