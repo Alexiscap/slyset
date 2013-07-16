@@ -3,6 +3,8 @@ $session_id = $this->session->userdata('uid');
 $uid = (empty($session_id)) ? '' : $session_id;
 $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
 $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
+$loger = $this->session->userdata('logged_in'); 
+
 ?>
 
 <div id="contentAll">
@@ -18,13 +20,13 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
     	<div id="infos-cover">
           	<h2><?php print $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login; ?></h2>
      
-    		<?php 
-     		if(($this->session->userdata('logged_in')!=1)&&($infos_profile->id != $this->session->userdata('uid'))&&($infos_profile->type==2)&&(substr_count($community_follower,$infos_profile->id)==0)): ?>
-      			<a href="#" class="add-follow" id="<?php echo $this->uri->segment(2)?>"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
+    	<?php 
+     		if($loger==1&&$infos_profile->id != $session_id&&$infos_profile->type==2&&substr_count($community_follower,$infos_profile->id)==0): ?>
+      			<a href="#" class="add-follow" id="<?php echo $infos_profile->id?>"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
    			<?php endif;
-     		if(($this->session->userdata('logged_in')!=1)&&($infos_profile->id != $this->session->userdata('uid'))&&($infos_profile->type==2)&&(substr_count($community_follower,$infos_profile->id)==0)): ?>
-     			<a href="#" class="delete-follow" id="<?php echo $this->uri->segment(2)?>"><span class="button_left_abonne"></span><span class="button_center_abonne">Ne plus suivre</span><span class="button_right_abonne"></span></a>
-    		<?php endif;?>       
+     		if($loger==1&&$infos_profile->id != $session_id&&($infos_profile->type==2)&&(substr_count($community_follower,$infos_profile->id)>0)): ?>
+     			<a href="#" class="delete-follow" id="<?php echo $infos_profile->id?>"><span class="button_left_abonne"></span><span class="button_center_abonne">Ne plus suivre</span><span class="button_right_abonne"></span></a>
+    		<?php endif;?>     
     	</div>
     </div>
 
