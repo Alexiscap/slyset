@@ -481,7 +481,6 @@ class Pop_in_general extends CI_Controller {
         $this->form_validation->set_rules('confirm-non', 'Non', '');
 
         if ($this->form_validation->run() == FALSE) {
-//            $this->layout->view('reglage/mc_reglages', $data);
             $this->layout->ajouter_css('colorbox');
             $this->layout->ajouter_js('jquery.colorbox');
             $this->load->view('reglage/pi_suppression_confirm', $data);
@@ -489,12 +488,10 @@ class Pop_in_general extends CI_Controller {
             $confirm = $this->input->post('confirm-oui');
 
             if (isset($confirm)) {
-//            $this->user_model->delete_user($uid);
             } else {
                 redirect('my-reglages/' . $uid, 'refresh');
             }
             redirect('home', 'refresh');
-//            $this->load->view('reglage/pi_suppression_confirm', $data);
         }
     }
 
@@ -522,6 +519,70 @@ class Pop_in_general extends CI_Controller {
         $this->session->set_flashdata('nom', $nom);
 
         $this->load->view('achat/pi_ta_paiement');
+    }
+
+    public function paiement() {
+        $data = array();
+
+        $this->form_validation->set_rules('code_carte', 'code_carte', 'exact_length[16]|numeric|required');
+        $this->form_validation->set_rules('code_secu', 'code_secu', 'exact_length[3]|numeric|required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('achat/pi_ta_paiement', $data);
+        } else {
+            $this->validation_paiement();
+        }
+    }
+
+    public function validation_paiement() {
+        $data = array();
+        $data['cmd'] = $this->achat->get_achat($this->session->userdata('uid'));
+
+        $number_last_commande = $this->achat->number_commande();
+        $data['numero_cmd'] = $number_last_commande[0]->last_cmd;
+
+        foreach ($data['cmd'] as $commande) {
+            if ($commande->status == "P") {
+                $this->achat->panier_to_achat($commande->id, $number_last_commande[0]->last_cmd);
+            }
+        }
+
+        $email = $this->session->flashdata('email');
+        $nom = $this->session->flashdata('nom');
+
+        $to = $email;
+
+        $subject = 'test';
+
+        $message = '<html>
+                        <head>
+                          <title>Facture Slyset</title>
+                        </head>
+                        <body>
+                          Bonjour' . $nom . ' </br></br>
+
+                      Les artistes de Slyset vous remercies de cette commande que vous venez de passer sur notre site internet. </br></br>
+
+                      Voici le récapitulatif de votre commande ___________. </br></br>
+                      Cette commande a été passée ___________date </br></br>
+
+                      Numéro de transaction : 24966070 </br></br>
+
+                      Nous vous confirmons le bon paiement suivant (Paiement paybox numéro 372-13022423362169999). </br></br>
+
+                      Montant TOTAL TTC : 51,60 € (dont 1,00 € de frais de gestion) </br></br>
+
+                        </body>
+                    </html>';
+
+        $headers = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+
+        mail($to, $subject, $message, $headers);
+
+        $data['cmd_download'] = $this->achat->cmd_valider($data['numero_cmd']);
+
+        $this->load->view('achat/pi_ta_dl', $data);
     }
 
 }

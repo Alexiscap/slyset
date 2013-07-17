@@ -41,7 +41,7 @@ class Follower_model extends CI_Model {
                         ->get()
                         ->result();
     }
-   
+
     public function get_all_abonnement($user_id) {
         return $this->db->select('communaute.id,communaute.Utilisateur_id,utilisateur.login,utilisateur.thumb,communaute.type,utilisateur.style_ecoute,utilisateur.style_joue,utilisateur.cover,utilisateur.description')
                         ->where('Follower_id', $user_id)
@@ -50,30 +50,29 @@ class Follower_model extends CI_Model {
                         ->get()
                         ->result();
     }
-    
+
     public function delete_wall_community($id_community) {
         $this->db->delete($this->table_communaute, array('id' => $id_community));
     }
 
     public function add_follow($user_id, $id_follower, $type) {
-        /*
-          $data_follow = array(
-          'Utilisateur_id' => $user_id ,
-          'type' => $type ,
-          'Follower_id' => $id_follower
-          );
 
-          $this->db->insert($this->table_communaute, $data_follow);
-          $last_id_follow = $this->db->insert_id();
+        $data_follow = array(
+            'Utilisateur_id' => $user_id,
+            'type' => $type,
+            'Follower_id' => $id_follower
+        );
 
-          $data_follow_wall = array(
-          'Utilisateur_id' => $id_follower ,
-          'type' => 'ME' ,
-          'Following_id' => $last_id_follow
-          );
+        $this->db->insert($this->table_communaute, $data_follow);
+        $last_id_follow = $this->db->insert_id();
 
-          $this->db->insert($this->table_wall_melo, $data_follow_wall);
-         */
+        $data_follow_wall = array(
+            'Utilisateur_id' => $id_follower,
+            'type' => 'ME',
+            'Following_id' => $last_id_follow
+        );
+
+        $this->db->insert($this->table_wall_melo, $data_follow_wall);
     }
 
     public function ifollow($user_id, $follower_id) {

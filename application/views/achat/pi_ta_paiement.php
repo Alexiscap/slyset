@@ -2,7 +2,7 @@
 
 <?php
 
-echo form_open('pi_ta_paiement/index');
+echo form_open('pop_in_general/paiement');
  echo validation_errors();
 
  ?><div class="pop-in_ta pop_in2">
