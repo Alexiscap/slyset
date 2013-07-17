@@ -114,13 +114,9 @@ $loger = $this->session->userdata('logged_in');
                 ?>
 
             </div>
-            <hr/>
-        </div>
         <?php
     endforeach;
 endif;
 ?>
 
 <?php if (isset($sidebar_right)) echo $sidebar_right; ?>
-
-</div>
