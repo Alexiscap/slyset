@@ -3,16 +3,16 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class melo_abonnements extends CI_Controller {
+class Melo_abonnements extends CI_Controller {
 
     var $data;
-    
+
     public function __construct() {
         parent::__construct();
 
         $this->layout->ajouter_css('slyset');
 
-        $this->load->model(array('user_model', 'myfollower'));
+        $this->load->model(array('user_model', 'follower_model'));
 
         $this->layout->set_id_background('abonnements');
 
@@ -20,10 +20,9 @@ class melo_abonnements extends CI_Controller {
 
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
-        if($this->user_id!=null)
-    	{
-    		$sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
-		}
+        if ($this->user_id != null) {
+            $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
+        }
         $this->data = array(
             'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
             'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
@@ -50,18 +49,14 @@ class melo_abonnements extends CI_Controller {
             $data['infos_profile'] = $infos_profile;
         }
 
-        $data['all_follower'] = $this->myfollower->get_all_abonnement($user_visited);
-        
+        $data['all_follower'] = $this->follower_model->get_all_abonnement($user_visited);
+
         $this->layout->view('follower/melo_abonnements', $data);
     }
-    
-    public function delete_community_wall()
-    
-    {
-   $id_community =  $this->input->post('idwall_community');
-     $delete_wall_community = $this->myfollower->delete_wall_community($id_community);
-    
+
+    public function delete_community_wall() {
+        $id_community = $this->input->post('idwall_community');
+        $delete_wall_community = $this->follower_model->delete_wall_community($id_community);
     }
-  
 
 }

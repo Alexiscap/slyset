@@ -47,7 +47,7 @@
 
       <span class="change-type"></span>
 
-      <p class="choix-text"><a href="#">Vous ne savez pas quoi choisir ?</a></p>
+      <p class="choix-text"><a href="#">Je ne sais pas quoi choisir</a></p>
   </div>
 
   <?php    

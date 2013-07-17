@@ -3,38 +3,32 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class melo_achats extends CI_Controller {
+class Melo_achats extends CI_Controller {
 
     var $data;
 
     public function __construct() {
         parent::__construct();
-//        $this->output->enable_profiler(true);
+        
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_css('colorbox');
         $this->layout->ajouter_css('popin');
 
-
-        //	$this->layout->ajouter_css('shadowbox');
-        //   $this->layout->ajouter_js('shadowbox/shadowbox');
         $this->layout->ajouter_js('jquery.tablesorter');
         $this->layout->ajouter_js('jquery.colorbox');
 
-
-        $this->load->model(array('user_model', 'mc_actus_model', 'achat'));
+        $this->load->model(array('user_model', 'mc_actus_model', 'achat_model'));
         $this->load->helper('form');
 
         $this->layout->set_id_background('achats');
-
 
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
 
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
-        if($this->user_id!=null)
-    	{
-    		$sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
-		}
+        if ($this->user_id != null) {
+            $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
+        }
         $this->data = array(
             'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
             'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
@@ -53,19 +47,15 @@ class melo_achats extends CI_Controller {
     }
 
     public function page($infos_profile) {
-
-        // $data = array(
-        //      'popin'  => $this->load->view('achat/pi_ta_infos', '', TRUE) 
-        //    );
         $data = $this->data;
         $uid = $this->session->userdata('uid');
-		
+
         $user_visited = (empty($profile)) ? $uid : $profile->id;
         if (!empty($profile)) {
             $data['infos_profile'] = $profile;
         }
 
-        $data['cmd'] = $this->achat->get_achat($user_visited);
+        $data['cmd'] = $this->achat_model->get_achat($user_visited);
         //print $this->input->post("article-all");
         $data['total_album_panier'] = 0;
         $data['total_morceaux_panier'] = 0;
@@ -78,7 +68,6 @@ class melo_achats extends CI_Controller {
             if ($commande->status == "P" && $commande->Albums_id != null) {
                 $data['total_album_panier'] = $data['total_album_panier'] + count($commande);
             }
-
             if ($commande->status == "P" && $commande->Morceaux_id != null) {
                 $data['total_morceaux_panier'] = $data['total_morceaux_panier'] + count($commande);
             }
@@ -99,8 +88,7 @@ class melo_achats extends CI_Controller {
     }
 
     public function delete_panier() {
-
-        $this->achat->delete_panier($this->input->post("commande"));
+        $this->achat_model->delete_panier($this->input->post("commande"));
     }
 
 }

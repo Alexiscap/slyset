@@ -3,19 +3,21 @@
 class Comptes_model extends CI_Model
 {
     protected $table = 'utilisateur';
+    protected $data;
+
+    public function __construct() {
+        parent::__construct();
+        $this->data = array();
+    }
     
     /**
-     *
      * Gestion ADMIN Mélomanes
-     * 
     **/
-//    public function liste_melos($order, $by)
     public function liste_melos($limit = 20, $offset = 0)
     {
         return $this->db->select('*')
                         ->from($this->table)
                         ->where('type = 1')
-//                        ->limit($nb, $debut)
                         ->order_by('login', 'asc')
                         ->limit($limit, $offset)
                         ->get()
@@ -42,6 +44,7 @@ class Comptes_model extends CI_Model
         
     public function suspend_melo($melo_id, $etat)
     {
+        $data = $this->data;
         $data['suspendu'] = $etat;
         
         $this->db->update($this->table, $data, "id = ".$melo_id);
@@ -60,6 +63,7 @@ class Comptes_model extends CI_Model
     
     public function multi_suspend_melos($array_melos_id)
     {
+        $data = $this->data;
         $data['suspendu'] = 1;
         
         return $this->db->where_in('id', $array_melos_id)
@@ -75,18 +79,14 @@ class Comptes_model extends CI_Model
     
     
     /**
-     *
      * Gestion ADMIN Musiciens
-     * 
     **/
-//    public function liste_melos($order, $by)
     public function liste_musiciens($limit = 20, $offset = 0)
     {
         return $this->db->select('*')
                         ->from($this->table)
                         ->where('type = 2')
-//                        ->limit($nb, $debut)
-//                        ->order_by($order, $by)
+                        ->order_by('login', 'asc')
                         ->limit($limit, $offset)
                         ->get()
                         ->result();
@@ -112,6 +112,7 @@ class Comptes_model extends CI_Model
         
     public function suspend_musicien($musicien_id, $etat)
     {
+        $data = $this->data;
         $data['suspendu'] = $etat;
         
         $this->db->update($this->table, $data, "id = ".$musicien_id);
@@ -130,6 +131,7 @@ class Comptes_model extends CI_Model
     
     public function multi_suspend_musiciens($array_musiciens_id)
     {
+        $data = $this->data;
         $data['suspendu'] = 1;
         
         return $this->db->where_in('id', $array_musiciens_id)

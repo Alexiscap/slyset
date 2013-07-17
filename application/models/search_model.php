@@ -6,33 +6,33 @@ if (!defined('BASEPATH'))
 class Search_model extends CI_Model {
 
     protected $table = 'utilisateur';
+    protected $data;
 
-//    public function search($keyword) {
-//        $this->db->like('login', $keyword);
-//        $query = $this->db->get($this->table);
-//        return $query->result();
-//    }
+    public function __construct() {
+        parent::__construct();
+        $data = array();
+    }
 
     public function search($keyword, $limit = 20, $offset = 0) {
         $this->db->select('*')
-                 ->from($this->table)
-                 ->like('login', $keyword)
-                 ->order_by('login')
-                 ->limit($limit, $offset);
-        
+                ->from($this->table)
+                ->like('login', $keyword)
+                ->order_by('login')
+                ->limit($limit, $offset);
+
         $query = $this->db->get();
-        
+
         if ($query->num_rows > 0) {
             return $query->result_array();
         } else {
             return false;
         }
     }
-    
-    public function count_results($keyword)
-    {
+
+    public function count_results($keyword) {
         return (int) $this->db->from($this->table)
-                              ->like('login', $keyword)
-                              ->count_all_results();
+                        ->like('login', $keyword)
+                        ->count_all_results();
     }
+
 }
