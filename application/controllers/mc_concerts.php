@@ -22,17 +22,17 @@ class Mc_concerts extends CI_Controller {
         $this->load->model(array('perso_model', 'user_model', 'concert_model'));
 
         $this->load->helper('form');
-        
+
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
         $output = $this->perso_model->get_perso($this->user_id);
 
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
         $sub_data['perso'] = $output;
-        
+
         if ($this->user_id != null) {
             $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
-        } 
+        }
         $community_follower = $this->user_model->get_community($this->session->userdata('uid'));
         $my_abonnement_head = "";
 
@@ -51,7 +51,7 @@ class Mc_concerts extends CI_Controller {
             'community_follower' => $my_abonnement_head
         );
     }
-    
+
     public function index($user_id) {
         $uid = $this->session->userdata('uid');
         $infos_profile = $this->user_model->getUser($user_id);
@@ -115,7 +115,7 @@ class Mc_concerts extends CI_Controller {
 
         $data['activity'] = $this->concert_model->get_activity($uid);
         $data['all_concert_act'] = "";
-        
+
         foreach ($data['activity'] as $data['activite']) {
             $data['all_concert_act'] .= "/" . $data['activite']->Concerts_id . "/";
         }
@@ -131,10 +131,6 @@ class Mc_concerts extends CI_Controller {
 
     public function delete_activity_concert() {
         $uid = $this->session->userdata('uid');
-        
-//        $id_concert = $this->input->post('id_concert');
-//        echo $id_concert;
-        
         $this->concert_model->delete_activity($id_concert, $uid);
     }
 

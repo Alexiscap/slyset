@@ -14,7 +14,7 @@ class Mc_followers extends CI_Controller {
 
         $this->load->model(array('perso_model', 'user_model', 'follower_model'));
         $this->load->helper('form');
-        
+
         $this->layout->set_id_background('followers');
 
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
@@ -23,11 +23,11 @@ class Mc_followers extends CI_Controller {
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
         $sub_data['perso'] = $output;
-        
+
         if ($this->user_id != null) {
             $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
         }
-        
+
         $community_follower = $this->user_model->get_community($this->session->userdata('uid'));
         $my_abonnement_head = "";
 
@@ -71,11 +71,11 @@ class Mc_followers extends CI_Controller {
         $data['all_follower'] = $this->follower_model->get_all_follower_user($user_visited);
         $ifollow = $this->follower_model->get_abonnement($user_visited);
         $data['allifollow'] = "";
-        
+
         foreach ($ifollow as $allmy) {
             $data['allifollow'] .=$allmy->Utilisateur_id . ',';
         }
-        
+
         $this->layout->view('follower/mc_followers', $data);
     }
 
@@ -88,7 +88,6 @@ class Mc_followers extends CI_Controller {
         }
 
         $data['all_follower'] = $this->follower_model->get_follower_bytype($user_id, 2);
-        //$this->layout->views('3');
         $ifollow = $this->follower_model->get_abonnement($user_id);
         $data['allifollow'] = "";
         foreach ($ifollow as $allmy) {

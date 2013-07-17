@@ -21,9 +21,8 @@ class Mc_photos extends CI_Controller {
         $this->layout->ajouter_js('jquery-ui');
 
         $this->load->helper('form');
-        $this->load->library('form_validation');
-
         $this->load->model(array('perso_model', 'user_model', 'photo_model'));
+        $this->load->library('form_validation');
 
         $this->layout->set_id_background('photos_videos');
 
@@ -33,9 +32,11 @@ class Mc_photos extends CI_Controller {
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
         $sub_data['perso'] = $output;
+        
         if ($this->user_id != null) {
             $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
         }
+        
         if (!empty($output)) {
             $this->layout->ajouter_dynamique_css($output->theme_css);
             write_css($output);
@@ -89,24 +90,16 @@ class Mc_photos extends CI_Controller {
         $data['all_video_like'] = "";
 
         foreach ($data['like_photo'] as $data['likes_photo']) {
-            $data['all_photo_like'] .=
-                    $data['likes_photo']->Photo_id . "/";
-
-            $data['all_album_like'] .=
-                    $data['likes_photo']->Album_media_file_name . "/";
-
-            $data['all_video_like'] .=
-                    $data['likes_photo']->Video_id . "/";
+            $data['all_photo_like'] .= $data['likes_photo']->Photo_id . "/";
+            $data['all_album_like'] .= $data['likes_photo']->Album_media_file_name . "/";
+            $data['all_video_like'] .= $data['likes_photo']->Video_id . "/";
         }
 
         foreach ($data['like_photo'] as $data['likes_photo']) {
             $data['all_photo_like'] .= $data['likes_photo']->Photo_id . "/";
-
             $data['all_album_like'] .= $data['likes_photo']->Album_media_file_name . "/";
-
             $data['all_video_like'] .= $data['likes_photo']->Video_id . "/";
         }
-
 
         $this->layout->view('photos/mc_photos', $data, false);
     }
@@ -126,7 +119,7 @@ class Mc_photos extends CI_Controller {
         if (!empty($infos_profile)) {
             $data['infos_profile'] = $infos_profile;
         }
-        
+
         $data['like_photo'] = $this->photo_model->get_like_user($user_visited);
         $data['all_photo_like'] = "";
         $data['all_album_like'] = "";
@@ -174,7 +167,7 @@ class Mc_photos extends CI_Controller {
 //like : ajouter dans like activity l'id de l'elmeent et de l'utilisateu
 //incrementer de 1 le total like dans table like
 // incrementer dans photos de 1 le total like
-    
+
     public function add_like() {
         $id_photo = $this->input->post('id_photo');
         $id_user = $this->session->userdata('uid');

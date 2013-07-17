@@ -6,7 +6,7 @@ if (!defined('BASEPATH'))
 class Home extends CI_Controller {
 
     var $data;
-    
+
     public function __construct() {
         parent::__construct();
         $this->layout->ajouter_css('slyset');
@@ -73,8 +73,6 @@ class Home extends CI_Controller {
                         } else {
                             $link = site_url() . "/mc_concerts/concert_passe/" . $data['concert_date_uniq']->Utilisateur_id . '/#' . $data['concert_date_uniq']->id;
                         }
-//							print $data['concert_date_uniq']->seconde_partie;
-
 
                         $title .= '<a href=' . $link . '> ' . $data['concert_date_uniq']->titre . ' + ' . $data['concert_date_uniq']->seconde_partie . ' </a> </br> ' . $data['concert_date_uniq']->salle . ' - ' . $data['concert_date_uniq']->ville . '</br>';
 

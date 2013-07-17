@@ -293,7 +293,6 @@ class Pop_in_general extends CI_Controller {
 
     public function do_upload($user_id) {
         $noespace_filename_album = str_replace(' ', '_', $this->input->post('albums'));
-        // $dynamic_path = './files/' . $this->session->userdata('uid') . '/photos/' . $noespace_filename_album;
         $dynamic_path = './files/' . $this->session->userdata('uid') . '/photos/' . $noespace_filename_album;
 
         if (is_dir($dynamic_path) == false) {

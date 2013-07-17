@@ -11,10 +11,10 @@ class Melo_wall extends CI_Controller {
         parent::__construct();
 
         $this->layout->ajouter_css('slyset');
+        
         $this->layout->ajouter_js('jquery.easing.min');
         
         $this->load->model(array('user_model', 'mc_actus_model', 'melo_actus_model'));
-
         $this->load->helper('form');
         $this->load->library('form_validation');
         

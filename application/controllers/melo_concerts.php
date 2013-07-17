@@ -11,25 +11,25 @@ class Melo_concerts extends CI_Controller {
         parent::__construct();
 
         $this->layout->ajouter_css('slyset');
-        
+
         $this->layout->ajouter_js('concert');
         $this->layout->ajouter_js('maps_api');
         // $this->layout->ajouter_js('maps-google');
-        
+
         $this->load->model(array('user_model', 'concert_model', 'melo_concert_model'));
         $this->load->helper('date');
-        
+
         $this->layout->set_id_background('concert_melo');
 
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
 
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
-        
+
         if ($this->user_id != null) {
             $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
         }
-        
+
         $this->data = array(
             'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
             'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
@@ -87,7 +87,7 @@ class Melo_concerts extends CI_Controller {
 
         $data['activity'] = $this->concert_model->get_activity($user_visited);
         $data['all_concert_act'] = "";
-        
+
         foreach ($data['activity'] as $data['activite']) {
             $data['all_concert_act'] .=
                     $data['activite']->Concerts_id . "/";
