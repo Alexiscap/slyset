@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 ** Thème personnalisé - Profil musicien
 **
@@ -18,4 +19,26 @@ aside#right{
 	
 p.head-title, p.head-title span{
     color: #f283f2;
+=======
+/*
+** Thème personnalisé - Profil musicien
+**
+** Thème 3
+*/
+
+body{
+    background: url('/assets/images/themes/theme_3.png') repeat 0 0 transparent;
+} 
+	
+aside#right{
+    background-color: rgba(255, 255, 255, 0.6);
+} 
+	
+.content a{
+    color: #8f598f;
+} 
+	
+p.head-title, p.head-title span{
+    color: #f283f2;
+>>>>>>> 288ecf8... correction de mes bugs
 }
