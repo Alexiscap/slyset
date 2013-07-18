@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Achat extends CI_Model {
+class Achat_model extends CI_Model {
 
     protected $table_cmd = 'commande';
     protected $table_cmd_info = 'infos_commande';
