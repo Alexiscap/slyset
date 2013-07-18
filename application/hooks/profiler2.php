@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 class MY_Profiler2 {
@@ -12,20 +11,3 @@ class MY_Profiler2 {
     }
 
 }
-
-=======
-<?php
-
-class MY_Profiler2 {
-
-    private $CI;
-
-    public function enable() {
-        $this->CI = & get_instance();
-
-        $this->CI->output->enable_profiler(TRUE);
-    }
-
-}
-
->>>>>>> 288ecf8... correction de mes bugs
