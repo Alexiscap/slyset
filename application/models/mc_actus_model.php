@@ -3,6 +3,12 @@
 class Mc_actus_model extends CI_Model
 {
     protected $table = 'wall';
+    protected $data;
+
+    public function __construct() {
+        parent::__construct();
+        $this->data = array();
+    }
     
     public function insert_actus($message, $lien, $photo, $user_id)
     {        

@@ -2,7 +2,7 @@
 
  	 <div class="pop-in_cent confirmation">
 		<span></span>
-	  <div class="content-pi-cent">
+	  <div class="content-pi-cent content-pi-cent_success">
 		<p class='confirm_sup'>le concert a bien été 
 		<?php
 		echo $status;

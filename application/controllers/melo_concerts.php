@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class melo_concerts extends CI_Controller {
+class Melo_concerts extends CI_Controller {
 
     var $data;
 
@@ -11,24 +11,25 @@ class melo_concerts extends CI_Controller {
         parent::__construct();
 
         $this->layout->ajouter_css('slyset');
+
         $this->layout->ajouter_js('concert');
         $this->layout->ajouter_js('maps_api');
-       // $this->layout->ajouter_js('maps-google');
-        $this->layout->set_id_background('concert_melo');
+        // $this->layout->ajouter_js('maps-google');
 
-        $this->load->model(array('user_model', 'concert','melo_concert'));
+        $this->load->model(array('user_model', 'concert_model', 'melo_concert_model'));
         $this->load->helper('date');
 
-//        $this->user_authentication->musicien_user_validation();
+        $this->layout->set_id_background('concert_melo');
 
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
 
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
-        if($this->user_id!=null)
-    	{
-    		$sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
-		}
+
+        if ($this->user_id != null) {
+            $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
+        }
+
         $this->data = array(
             'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
             'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
@@ -49,7 +50,7 @@ class melo_concerts extends CI_Controller {
     public function concert_passe($user_id) {
         $uid = $this->session->userdata('uid');
         $infos_profile = $this->user_model->getUser($user_id);
-        
+
         if ($user_id == $uid) {
             $this->page_main($infos_profile, "melo_concert_passe", "<");
         } else {
@@ -66,11 +67,9 @@ class melo_concerts extends CI_Controller {
             $data['infos_profile'] = $infos_profile;
         }
 
-//        $data['user_id'] = $user_id;
-//        $data['info_user'] = $this->concert->get_user($user_id);
+        $data['nbr_concert_par_melo'] = $this->concert_model->count_artiste_concert($user_visited, $inf_sup);
+        $data['concert_all'] = $this->melo_concert_model->get_concert($data['nbr_concert_par_melo'], 0, $user_visited, $inf_sup);
 
-        $data['nbr_concert_par_melo'] = $this->concert->count_artiste_concert($user_visited, $inf_sup);
-        $data['concert_all'] = $this->melo_concert->get_concert($data['nbr_concert_par_melo'], 0, $user_visited, $inf_sup);
         function get_date($date_concert, $test) {
             //gestion des differents formats d'affichage des dates
             $date_format = (date_create($date_concert, timezone_open('Europe/Paris')));
@@ -86,13 +85,13 @@ class melo_concerts extends CI_Controller {
             echo $date[$test];
         }
 
-        $data['activity'] = $this->concert->get_activity($user_visited);
+        $data['activity'] = $this->concert_model->get_activity($user_visited);
         $data['all_concert_act'] = "";
+
         foreach ($data['activity'] as $data['activite']) {
             $data['all_concert_act'] .=
                     $data['activite']->Concerts_id . "/";
         }
-
 
         $this->layout->view('concert/' . $moment, $data);
     }

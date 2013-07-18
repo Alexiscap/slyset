@@ -174,7 +174,7 @@
                     <span class="ico_citation"></span>
                     <p class="msg_post"><?php echo $message->markup_message; ?></p>
                     <div class="singleWrapper">
-                        <img src="<?php echo files($session_id.'/wall/'.$message->photo); ?>" alt="Photo message" class="single" />
+                        <img src="<?php echo files($uid_visit.'/wall/'.$message->photo); ?>" alt="Photo message" class="single" />
                     </div>
                 </div>
                 <div class="bottom">

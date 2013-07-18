@@ -55,10 +55,12 @@ $loger = $this->session->userdata('logged_in');
         </div>
         <?php if (count($all_follower) == 1): ?>
             <h2>Mes abonnés</h2>
-        <?php endif;
+        <?php
+        endif;
         if (count($all_follower) == 0):
             ?>
             <h2>Aucun abonné</h2>
+			</div>
             <?php
         endif;
         if (count($all_follower) > 1):
@@ -95,7 +97,7 @@ $loger = $this->session->userdata('logged_in');
 
                         <img src="<?php echo img_url('common/casque.png'); ?>" /><span><?php echo ' ' . $follower->style_joue ?></span>
                     </div>
-                    <?php if (substr_count($allifollow, $follower->Follower_id) >= 1): ?>
+            <?php if (substr_count($allifollow, $follower->Follower_id) >= 1): ?>
                         <div class="bouton" >
                             <a href="#" id="<?php echo $follower->Follower_id ?>" class="participer" ><span class="button_left"></span><span class="button_center">Abonné</span><span class="button_right"></span></a>
                         </div>
@@ -112,16 +114,9 @@ $loger = $this->session->userdata('logged_in');
                 ?>
 
             </div>
-                <hr/>
+        <?php
+    endforeach;
+endif;
+?>
 </div>
-            <?php
-        endforeach;
-    endif;
-    ?>
-
-<!--</div>-->
-
-
-
 <?php if (isset($sidebar_right)) echo $sidebar_right; ?>
-<!--</div>-->

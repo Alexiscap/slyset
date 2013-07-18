@@ -7,8 +7,8 @@ class Facebooklocal extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->load->model('Facebook_Model');
-        $this->load->helper('url');
+        
+        $this->load->model('facebook_Model');
     }
 
     public function index() {
@@ -16,10 +16,10 @@ class Facebooklocal extends CI_Controller {
 
         print_r($fb_data);
 
-            $data = array(
-                'fb_data' => $fb_data,
-            );
-            
+        $data = array(
+            'fb_data' => $fb_data,
+        );
+
         $this->load->view('inscription/loginform2', $data);
     }
 

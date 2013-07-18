@@ -11,4 +11,3 @@ class MY_Profiler2 {
     }
 
 }
-

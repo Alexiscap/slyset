@@ -3,18 +3,17 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Page_404 extends CI_Controller
-{
-    
+class Page_404 extends CI_Controller {
+
     var $data;
-    
+
     public function __construct() {
         parent::__construct();
-//        $this->output->enable_profiler(true);
+
         $this->layout->ajouter_css('slyset');
 
         $this->load->helper(array('cookie', 'form'));
-        $this->load->model(array('login_model', 'homepage', 'user_model'));
+        $this->load->model(array('login_model', 'homepage_model', 'user_model'));
 
         $this->layout->set_id_background('page-404');
         $this->layout->set_description('Page 404 : Aucun réusltat n\'a été trouvé pour votre recherche.');
@@ -25,5 +24,5 @@ class Page_404 extends CI_Controller
         $this->output->set_status_header('404');
         $this->layout->view('404');
     }
-    
+
 }

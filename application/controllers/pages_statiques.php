@@ -10,7 +10,7 @@ class Pages_statiques extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        //        $this->output->enable_profiler(true);
+        
         $this->layout->ajouter_css('slyset');
         $this->load->helper('form');
 
@@ -23,16 +23,6 @@ class Pages_statiques extends CI_Controller {
             'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE)
         );
     }
-
-//    public function index($page = NULL) {
-//        if ($page == 'mentions') {
-//            $this->mentions_legales();
-//        } elseif ($page == '') {
-//            $this->test();
-//        } else {
-//            redirect('home/'.$this->session_uid, 'refresh');
-//        }
-//    }
     
     public function mentions_legales() {
         $data = $this->data;

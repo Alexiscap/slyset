@@ -6,10 +6,11 @@ if (!defined('BASEPATH'))
 class Admin_model extends CI_Model {
 
     protected $table = 'coverflow';
+    protected $data;
 
     public function __construct() {
         parent::__construct();
-        $data = array();
+        $this->data = array();
     }
 
     public function get_cover_artistes() {

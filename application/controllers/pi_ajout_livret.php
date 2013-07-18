@@ -16,7 +16,7 @@ class Pi_ajout_livret extends CI_Controller {
 
         $this->load->helper(array('form'));
 
-        $this->load->model('document');
+        $this->load->model('document_model');
 
         $this->layout->set_id_background('ajout_livret');
     }
@@ -33,13 +33,13 @@ class Pi_ajout_livret extends CI_Controller {
 
         //$this->layout->views('3');
         // $this->layout->view('partition/pi_ajout_paroles', $datas);
-        $data['album'] = $this->document->get_album($this->session->userdata('uid'));
+        $data['album'] = $this->document_model->get_album($this->session->userdata('uid'));
         $this->layout->view('partition/pi_ajout_livret', $data);
     }
 
     public function get_morceaux() {
         $album_id = $this->input->post('id_album');
-        $data['morceaux'] = $this->document->get_morceau_by_album($album_id);
+        $data['morceaux'] = $this->document_model->get_morceau_by_album($album_id);
         $all_option = "";
         foreach ($data['morceaux'] as $morceau) {
             $all_option .=
@@ -79,7 +79,7 @@ class Pi_ajout_livret extends CI_Controller {
 
 
 
-            $this->document->insert_livret($album_id, $data['upload_data']['file_name']);
+            $this->document_model->insert_livret($album_id, $data['upload_data']['file_name']);
             //	$this->load->view('partition/pi_ajout_paroles', $data);
         }
     }

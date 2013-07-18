@@ -9,37 +9,35 @@ class Mc_concerts extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-//        $this->output->enable_profiler(true);
-//        $this->user_authentication->musicien_user_validation();
+
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_css('colorbox');
 
         $this->layout->ajouter_js('concert');
-       	$this->layout->ajouter_js('social_media');
-
+        $this->layout->ajouter_js('social_media');
         $this->layout->ajouter_js('maps_api');
-       // $this->layout->ajouter_js('maps-google');
+        // $this->layout->ajouter_js('maps-google');
         $this->layout->ajouter_js('jquery.colorbox');
-        $this->load->model(array('perso_model', 'user_model', 'concert'));
-		$this->load->helper('url');
+
+        $this->load->model(array('perso_model', 'user_model', 'concert_model'));
+
+        $this->load->helper('form');
+
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
         $output = $this->perso_model->get_perso($this->user_id);
 
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
         $sub_data['perso'] = $output;
-		if($this->user_id!=null)
-    	{
-    		$sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
-		}        //--bouton suivre un musicien
-        $community_follower=  $this->user_model->get_community($this->session->userdata('uid'));
+
+        if ($this->user_id != null) {
+            $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
+        }
+        $community_follower = $this->user_model->get_community($this->session->userdata('uid'));
         $my_abonnement_head = "";
-        
-        $this->load->helper('form');
-        
-        foreach($community_follower as $my_following_head)
-        {
-        $my_abonnement_head .= $my_following_head->Utilisateur_id.'/';
+
+        foreach ($community_follower as $my_following_head) {
+            $my_abonnement_head .= $my_following_head->Utilisateur_id . '/';
         }
 
         if (!empty($output)) {
@@ -50,22 +48,9 @@ class Mc_concerts extends CI_Controller {
         $this->data = array(
             'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
             'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE),
-            'community_follower'=>$my_abonnement_head
+            'community_follower' => $my_abonnement_head
         );
     }
-
-//  public function index($user_id) {
-//    $uid = $this->session->userdata('uid');
-//
-//    if(($user_id != $uid && !empty($user_id)) || ($user_id == $uid && !empty($user_id))) {
-//      $user_id = $this->user_infos->uri_user();
-//      $infos_profile = $this->user_model->getUser($user_id);
-//      $this->page_main($infos_profile, "mc_concerts", ">");
-//      
-//    } else {
-//      redirect('home/' . $uid, 'refresh');
-//    }
-//  }
 
     public function index($user_id) {
         $uid = $this->session->userdata('uid');
@@ -73,7 +58,6 @@ class Mc_concerts extends CI_Controller {
         $this->layout->set_id_background('concert_mu');
 
         if ((($user_id != $uid && !empty($user_id)) || ($user_id == $uid && !empty($user_id))) && $infos_profile->type != 1) {
-           
             $this->page_main($infos_profile, "mc_concerts", ">");
         } else {
             redirect('home/' . $uid, 'refresh');
@@ -100,7 +84,7 @@ class Mc_concerts extends CI_Controller {
 //    $user_id = $user_id->id; //Ajout de cette ligne par Alexis car bug, $user_id ne correspondait plus à un entier mais à un stdclass, toutes les requêtes étaient foirées
 //    
 //    $data['user_id'] = $user_id;
-//    $data['info_user'] = $this->concert->get_user($user_id);
+//    $data['info_user'] = $this->concert_model->get_user($user_id);
 //    if ($data['info_user'] == null) {
 //      //pour le moment si utilisateur inexistant : 404;
 //      show_404();
@@ -112,8 +96,8 @@ class Mc_concerts extends CI_Controller {
             $data['infos_profile'] = $infos_profile;
         }
 
-        $data['nbr_concert_par_artiste'] = $this->concert->count_artiste_concert($user_visited, $inf_sup);
-        $data['concert_all'] = $this->concert->get_concert($data['nbr_concert_par_artiste'], 0, $user_visited, $inf_sup);
+        $data['nbr_concert_par_artiste'] = $this->concert_model->count_artiste_concert($user_visited, $inf_sup);
+        $data['concert_all'] = $this->concert_model->get_concert($data['nbr_concert_par_artiste'], 0, $user_visited, $inf_sup);
 
         function get_date($date_concert, $test) {
             //gestion des differents formats d'affichage des dates
@@ -129,26 +113,25 @@ class Mc_concerts extends CI_Controller {
             echo $date[$test];
         }
 
-        $data['activity'] = $this->concert->get_activity($uid);
+        $data['activity'] = $this->concert_model->get_activity($uid);
         $data['all_concert_act'] = "";
+
         foreach ($data['activity'] as $data['activite']) {
-            $data['all_concert_act'] .=  "/".$data['activite']->Concerts_id . "/";
+            $data['all_concert_act'] .= "/" . $data['activite']->Concerts_id . "/";
         }
 
         $this->layout->view('concert/' . $moment, $data);
     }
 
-
     public function add_activity_concert() {
         $uid = $this->session->userdata('uid');
         $id_concert = $this->input->post('id_concert');
-        $this->concert->add_activity($id_concert, $uid);
+        $this->concert_model->add_activity($id_concert, $uid);
     }
 
     public function delete_activity_concert() {
-       $uid = $this->session->userdata('uid');
-      print  $id_concert = $this->input->post('id_concert');
-        $this->concert->delete_activity($id_concert, $uid);
+        $uid = $this->session->userdata('uid');
+        $this->concert_model->delete_activity($id_concert, $uid);
     }
 
 }
