@@ -313,7 +313,20 @@ $(document).ready(function(){
     });
     };
        
-         if($("body.photos_videos").length > 0){
+    if($("body.photos_videos").length > 0){
+  		$('.bord_photo').click(function(){
+  			if($(this).next('.allcomment').is(':visible') == false)
+  			{
+  			$(this).next('.allcomment').show();
+  			$(".content").masonry('reload');
+			}
+			else
+			{
+			$(this).next('.allcomment').hide();
+  			$(".content").masonry('reload');
+			}
+   
+});
   
     //Commentaires photos
     $('.comment-form form').submit(function(){
@@ -1061,8 +1074,10 @@ $(document).ready(function(){
 
     //Appel de la fonction masonry uniquement sur la page photos/vidéos
     if($("body.photos_videos").length > 0){
-        playMasonry();
-    }
+  		
+  		playMasonry();
+   
+	};
     
     //Appel de la fonction
     if($("input[type=file]").length > 0){
