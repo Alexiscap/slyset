@@ -83,6 +83,7 @@ class Mc_photos extends CI_Controller {
         $data['commentaires_video'] = $this->photo_model->liste_comments_video();
 
         $data['all_photos'] = $this->photo_model->all_photos();
+       
         $data['all_photos_albums'] = $this->photo_model->all_photos_album();
         $data['like_photo'] = $this->photo_model->get_like_user($user_visited);
         $data['all_photo_like'] = "";

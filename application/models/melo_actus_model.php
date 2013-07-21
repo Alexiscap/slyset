@@ -29,7 +29,8 @@ class Melo_actus_model extends CI_Model {
     }
 
     public function get_entities_id($list_id, $user_id) {
-        if ($list_id != null) {
+    if ($list_id == null) {$list_id = 0;}
+       // if ($list_id != null) {
             $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,photos_id as idproduit,photos.nom AS main_nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser,"null" AS date_concert, 1 as product
 				FROM wall_melo_component
 				JOIN photos
@@ -164,7 +165,7 @@ class Melo_actus_model extends CI_Model {
               '; */
             return $this->db->query($sql_mu)
                             ->result();
-        }
+      //  }
         /* $this->db->select('*')        				
           ->from ('wall_melo_component')
           ->where_in('Utilisateur_id', $user_id)
