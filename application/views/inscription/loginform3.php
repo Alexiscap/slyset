@@ -16,7 +16,8 @@
 
     // Loop through the POST variables passed from the previous page
     foreach ($_POST as $key => $value){
-      $value = htmlentities(stripslashes(strip_tags($value)));
+        print_r($value);
+//      $value = htmlentities(stripslashes(strip_tags($value)));
       echo form_hidden($key, $value);
     }
 
