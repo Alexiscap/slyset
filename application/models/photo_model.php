@@ -93,9 +93,11 @@ class Photo_model extends CI_Model {
     }
 
     public function all_photos_album() {
-        return $this->db->select('*')
-                        ->from($this->table_photos)
-                        ->get()
+    //*.id,Utilisateur_id,file_name,photos.nom AS photo_titre,date,like_total
+    $sql_all = '(SELECT "null" AS video_id,id AS photo_id,Utilisateur_id,"null" AS video_path,file_name,nom,date,like_total FROM photos) 
+    				UNION 
+    			(SELECT id,"null",Utilisateur_id,nom,"null",description,date,like_total FROM videos)';
+        return $this->db->query($sql_all)
                         ->result();
     }
 
@@ -196,8 +198,8 @@ class Photo_model extends CI_Model {
         }
     }
 
-    public function update_album($user_id, $file_name_album, $nom_album) {
-        $data_album = array('nom' => $nom_album);
+    public function update_album($user_id, $file_name_album, $nom_album,$new_path_album) {
+        $data_album = array('nom' => $nom_album,'file_name'=>$new_path_album);
         $where_para = array('file_name' => $file_name_album, 'Utilisateur_id' => $user_id);
 
         $this->db->where($where_para)
@@ -388,7 +390,7 @@ class Photo_model extends CI_Model {
                         ->result();
     }
 
-    public function add_video($id_video, $user_id, $description, $album_nom) {
+    public function add_video($id_video, $user_id, $description, $album_nom,$album_file_name) {
         $this->db->set(array('nom' => $id_video, 'Utilisateur_id' => $user_id, 'description' => $description))
                 ->insert('videos');
         $last_id_video = $this->db->insert_id();
@@ -397,16 +399,18 @@ class Photo_model extends CI_Model {
 
 
         if ($album_nom != null || $album_nom != '') {
-            $this->db->set(array('Utilisateur_id' => $user_id, 'nom' => $album_nom, 'Videos_id' => $id_video))
+            $this->db->set(array('Utilisateur_id' => $user_id,'file_name' => $album_file_name,  'nom' => $album_nom, 'Videos_id' => $id_video))
                     ->insert($this->table_album);
 
-            $data_add_cmty_photo = array('Utilisateur_id' => $user_id, 'videos_id' => $id_video, 'albums_media_file_name' => $album_nom, 'type' => "MU");
+            $data_add_cmty_photo = array('Utilisateur_id' => $user_id,'videos_id' => $id_video, 'albums_media_file_name' => $album_nom, 'type' => "MU");
             $this->db->insert('wall_melo_component', $data_add_cmty_photo);
         } else {
 
             $data_add_cmty_photo = array('Utilisateur_id' => $user_id, 'videos_id' => $id_video, 'type' => "MU");
             $this->db->insert('wall_melo_component', $data_add_cmty_photo);
         }
+        
+
 
         $data_delete_act = array('Utilisateur_id' => $user_id, 'videos_id' => $last_id_video, 'type' => "MU");
 

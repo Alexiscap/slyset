@@ -10,7 +10,7 @@ class Pop_in_general extends CI_Controller {
 
         $this->layout->ajouter_css('pop');
 
-        $this->load->model(array('concert_model', 'photos_model', 'achat_model'));
+        $this->load->model(array('concert_model', 'photo_model', 'achat_model'));
         $this->load->helper('form');
         $this->load->library('form_validation');
 
@@ -244,7 +244,7 @@ class Pop_in_general extends CI_Controller {
     }
 
     public function upload_photo($user_id) {
-        $this->load->model('photos_model');
+        $this->load->model('photo_model');
 
         $data = array('error' => ' ');
         $data['options'] = array(
@@ -286,7 +286,9 @@ class Pop_in_general extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('photos/add_video', $data);
         } else {
-            $this->photo_model->add_video($id_url, $user_id, $description, $this->input->post('albums'));
+         $noespace_filename_album = str_replace(' ', '_', $this->input->post('albums'));
+
+            $this->photo_model->add_video($id_url, $user_id, $description, $this->input->post('albums'),$noespace_filename_album);
             $this->load->view('photos/photos_success', $data);
         }
     }
@@ -302,10 +304,10 @@ class Pop_in_general extends CI_Controller {
         $cover_photo = (count(scandir($dynamic_path)));
 
         $config['upload_path'] = $dynamic_path;
-        if ($cover_photo <= 2) {
+        /*if ($cover_photo <= 2) {
             $config['file_name'] = "cover";
         }
-
+*/
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         /* $config['max_size'] = '1000';
           $config['max_width'] = '1024';
@@ -384,9 +386,9 @@ class Pop_in_general extends CI_Controller {
                 } else {
                     $file_base = './files/' . $user_id . '/photos/' . $data['info_photo'][0]->file_name;
                 }
-                if (isset($dynamic_path)) {
+                /*if (isset($dynamic_path)) {
                     $data['info_photo'][0]->file_name = "cover.jpg";
-                }
+                }*/
                 if ($file_name_album != null) {
                     $file_obj = './files/' . $user_id . '/photos/' . $file_name_album . '/' . $data['info_photo'][0]->file_name;
                 } else {
@@ -401,8 +403,21 @@ class Pop_in_general extends CI_Controller {
             }
 
             if ($type == 2) {
-                $data['update_photos'] = $this->photo_model->update_album($user_id, $id_media, $this->input->post('description'));
+            
+            	$file_name_a = $this->photo_model->get_info_album($this->input->post('description'));
+                //file name de l'album renseigné soit deja existant / soit nouveau
+                    $file_name_album = str_replace(' ', '_', $this->input->post('description'));
+                    $old_name = './files/' . $this->session->userdata('uid') . '/photos/' . $id_media;
+                    $new_name = './files/' . $this->session->userdata('uid') . '/photos/' . $file_name_album;
+
+           
+                    rename ($old_name,$new_name);
+
+            
+            
+                $data['update_photos'] = $this->photo_model->update_album($user_id, $id_media, $this->input->post('description'),$file_name_album);
                 $this->load->view('photos/photos_success', $data);
+            
             }
 
             if ($type == 3) {
@@ -431,7 +446,7 @@ class Pop_in_general extends CI_Controller {
     }
 
     public function suppression_media($user_id, $media_id, $type_media) {
-        $this->load->model('photos_model');
+        $this->load->model('photo_model');
         $uid = $this->session->userdata('uid');
 
         $data = array();
@@ -535,14 +550,14 @@ class Pop_in_general extends CI_Controller {
 
     public function validation_paiement() {
         $data = array();
-        $data['cmd'] = $this->achat->get_achat($this->session->userdata('uid'));
+        $data['cmd'] = $this->achat_model->get_achat($this->session->userdata('uid'));
 
-        $number_last_commande = $this->achat->number_commande();
+        $number_last_commande = $this->achat_model->number_commande();
         $data['numero_cmd'] = $number_last_commande[0]->last_cmd;
 
         foreach ($data['cmd'] as $commande) {
             if ($commande->status == "P") {
-                $this->achat->panier_to_achat($commande->id, $number_last_commande[0]->last_cmd);
+                $this->achat_model->panier_to_achat($commande->id, $number_last_commande[0]->last_cmd);
             }
         }
 
@@ -579,7 +594,7 @@ class Pop_in_general extends CI_Controller {
 
         mail($to, $subject, $message, $headers);
 
-        $data['cmd_download'] = $this->achat->cmd_valider($data['numero_cmd']);
+        $data['cmd_download'] = $this->achat_model->cmd_valider($data['numero_cmd']);
 
         $this->load->view('achat/pi_ta_dl', $data);
     }

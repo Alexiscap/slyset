@@ -462,6 +462,13 @@
   			
  	endforeach;
  endif;
+if(empty($data_all_wall)):
+    ?><div class="artist_post photo_message">
+    <?php echo $login; ?> n'a aucunes actualités
+    </div>
+<?php
+
+ endif;
  ?>
    </div>
 

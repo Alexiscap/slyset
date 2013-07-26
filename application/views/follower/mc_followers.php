@@ -53,26 +53,52 @@ $loger = $this->session->userdata('logged_in');
             <a href="<?php echo site_url('follower/musicien/' . $infos_profile->id) ?>" class="musiciens">Musiciens</a>
             <a href="<?php echo site_url('follower/melomane/' . $infos_profile->id) ?>" class="melomanes">Mélomanes</a>
         </div>
+        
         <?php if (count($all_follower) == 1): ?>
             <h2>Mes abonnés</h2>
         <?php
         endif;
+        
         if (count($all_follower) == 0):
             ?>
             <h2>Aucun abonné</h2>
-			</div>
+			
             <?php
         endif;
+        
         if (count($all_follower) > 1):
-            ?>
+          ?>
             <h2>Mes <?php echo count($all_follower); ?> abonnés</h2>
         <?php endif; ?>
 
+
         <?php
         if (isset($all_follower)):
+           
+           
             foreach ($all_follower as $follower):
-                ?>
-                <div class="follower">
+                if ($follower->type == 1):
+                            ?>
+        	        <div class="follower">
+            	        <div class="photo_follow">
+                	        <!-- dossier de la cover pour un user ? -->
+                    	    <a href="<?php echo base_url('index.php/actualite/' . $follower->Follower_id) ?>"><img src="<?php echo files('profiles/' . $follower->thumb) ?>" /></a>
+                   		</div>
+                    	<div class="description">
+                        	<p class="nom_follow"><a href="<?php echo base_url('index.php/actualite/' . $follower->Follower_id) ?>"><?php echo $follower->login ?></a></p>
+                        	<p class="text_follow"><?php echo $follower->description ?></p>                   
+                            <img src="<?php echo img_url('common/casque.png'); ?>" /><span><?php echo ' ' . $follower->style_ecoute ?></span>
+                    	</div>
+                    	<div class="bouton">
+                            <a href="<?php echo base_url('index.php/my-wall/' . $follower->Follower_id) ?> " onclick="location.href='<?php echo base_url('index.php/my-wall/' . $follower->Follower_id) ?>';" class="melo"><span class="button_left_red"></span><span class="button_center_red">Voir le profil</span><span class="button_right_red"></span></a>
+                    	</div>
+               		</div>
+               		   <hr/>
+                        <?php
+            	endif;
+  if ($follower->type == 2||$follower->type == 0):
+                        ?>
+                                       <div class="follower">
                     <div class="photo_follow">
                         <!-- dossier de la cover pour un user ? -->
                         <a href="<?php echo base_url('index.php/actualite/' . $follower->Follower_id) ?>"><img src="<?php echo files('profiles/' . $follower->thumb) ?>" /></a>
@@ -81,19 +107,7 @@ $loger = $this->session->userdata('logged_in');
                         <p class="nom_follow"><a href="<?php echo base_url('index.php/actualite/' . $follower->Follower_id) ?>"><?php echo $follower->login ?></a></p>
                         <p class="text_follow"><?php echo $follower->description ?></p>
 
-                        <?php
-                        if ($follower->type == 1):
-                            ?>
-                            <img src="<?php echo img_url('common/casque.png'); ?>" /><span><?php echo ' ' . $follower->style_ecoute ?></span>
-                        </div>
-                        <div class="bouton">
-                            <a href="<?php echo base_url('index.php/my-wall/' . $follower->Follower_id) ?> " onclick="location.href='<?php echo base_url('index.php/my-wall/' . $follower->Follower_id) ?>';" class="melo"><span class="button_left_red"></span><span class="button_center_red">Voir le profil</span><span class="button_right_red"></span></a>
-                        </div>
-                        <?php
-                    endif;
-
-                    if ($follower->type == 2):
-                        ?>
+                   
 
                         <img src="<?php echo img_url('common/casque.png'); ?>" /><span><?php echo ' ' . $follower->style_joue ?></span>
                     </div>
@@ -110,17 +124,17 @@ $loger = $this->session->userdata('logged_in');
                         </div>
                         <?php
                     endif;
+                    ?> </div><hr/><?php
                 endif;
-                ?>
+                
+              ?>
 
-            </div>
-            <hr/>
-        </div>
+        
         <?php
     endforeach;
 endif;
 ?>
 
+</div>
 <?php if (isset($sidebar_right)) echo $sidebar_right; ?>
-
 </div>

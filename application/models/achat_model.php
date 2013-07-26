@@ -3,15 +3,17 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Achat extends CI_Model {
+class Achat_model extends CI_Model {
 
     protected $table_cmd = 'commande';
     protected $table_cmd_info = 'infos_commande';
     protected $data;
+    protected $data_cmd;
 
     public function __construct() {
         parent::__construct();
         $this->data = array();
+        $this->data_cmd = array();
     }
     
     public function get_achat($user_id) {
@@ -44,15 +46,18 @@ class Achat extends CI_Model {
 
     public function panier_to_achat($id_commande, $last_cmd) {
         $data = $this->data;
+        $data = $this->data_cmd;
+        
+        
         $data['status'] = "V";
         
         $this->db->where('id', $id_commande);
         $this->db->update($this->table_cmd, $data);
 
-        $data['titre'] = $last_cmd + 1;
+        $data_cmd['titre'] = $last_cmd + 1;
         
         $this->db->where('Commande_id', $id_commande);
-        $this->db->update($this->table_cmd_info, $data);
+        $this->db->update($this->table_cmd_info, $data_cmd);
     }
 
     public function delete_panier($id_commande) {

@@ -50,7 +50,6 @@ class Melo_wall extends CI_Controller {
         $this->layout->ajouter_js('wall');
 
         setlocale(LC_TIME, 'fr', 'fr_FR', 'fr_FR.ISO8859-1');
-        date_default_timezone_set('Europe/Paris');
 
         $data = $this->data;
 
@@ -63,7 +62,6 @@ class Melo_wall extends CI_Controller {
         }
         
         $listforin_sql = substr($listforin, 0, -1);
-
         $data['data_all_wall'] = $this->melo_actus_model->get_entities_id($listforin_sql, $user_id);
 
         $a = 0;

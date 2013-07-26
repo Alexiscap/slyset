@@ -50,7 +50,7 @@ var segment_user = url[4];
      		});
      		
    
-}, 5000);
+}, 50000);
 /*
   document.getElementById('test').onclick(function(){
      alert('test');
