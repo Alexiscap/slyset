@@ -16,7 +16,7 @@ class Admin_model extends CI_Model {
     public function get_cover_artistes() {
         $query1 = $this->db->query('SELECT artiste_1, artiste_2, artiste_3, artiste_4, artiste_5 FROM coverflow');
         foreach ($query1->list_fields() as $field) {
-            $this->db->select('C.*, U.login AS loginU, U.id AS idU, U.thumb AS thumbU');
+            $this->db->select('C.*, U.login AS loginU, U.id AS idU, U.thumb AS thumbU, U.cover AS coverU');
             $this->db->from('coverflow AS C');
             $this->db->join('utilisateur U', 'U.login = C.' . "" . $field . "");
             $this->db->where('U.type', '2');

@@ -57,27 +57,28 @@
                 </div>
 
                 <div id="connexion">
-                    <div id="identification">
-                        <?php if ($this->session->userdata('logged_in') == 1): ?>
-                            <a href="<?php echo site_url('home/' . $this->session->userdata('uid')) ?>"><?php echo $this->session->userdata('login'); ?></a> | <a href="<?php echo site_url('login/logout'); ?>">Se déconnecter</a>
-                        <?php else: ?>
-                            <a href="<?php echo site_url('login'); ?>">Se connecter</a>
-                        <?php endif; ?>
-                    </div>
-
                     <div id="recherche">
                         <?php $val = (!empty($_POST['recherche'])) ? $_POST['recherche'] : ''; ?>
                         <form action="<?php echo site_url('search/' . $this->session->userdata('uid')); ?>" method="post">
-                            <input type="text" value="<?php print $val; ?>" placeholder="Recherche rapide" name="recherche" />
                             <input src="<?php echo img_url('header/loupe.png') ?>" type="image" value="submit" align="middle"/>
+                            <input type="text" value="<?php print $val; ?>" placeholder="Rechercher un artiste..." name="recherche" />
+                            
                         </form>
+                    </div>
+                    
+                    <div id="identification">
+                        <?php if ($this->session->userdata('logged_in') == 1): ?>
+                            <a href="<?php echo site_url('home/' . $this->session->userdata('uid')) ?>"><?php echo $this->session->userdata('login'); ?></a> | <a href="<?php echo site_url('login/logout'); ?>">Déconnexion</a>
+                        <?php else: ?>
+                            <a href="<?php echo site_url('login'); ?>">Connexion</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
         </header>
 
         <div id="any-background<?php if (isset($id_bkg)) echo '-' . $id_bkg; ?>">
-            <div id="page">
+            <div id="page">                
                 <?php if (isset($sidebar_left)) echo $sidebar_left; ?>
 
                 <?php if (isset($output)) echo $output; ?>

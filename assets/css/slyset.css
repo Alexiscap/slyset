@@ -16,7 +16,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 #breadcrumbs ul{ display:inline-block; }
 #breadcrumbs li{ display:inline-block; line-height:20px; }
 #breadcrumbs li a{ text-decoration:none; font-size:10px; color:#858585; }
-#breadcrumbs li a:hover{ text-decoration:underline; color:#2ab395; }
+#breadcrumbs li a:hover{ text-decoration:underline; color:#01adbb; }
 #breadcrumbs li:after{ margin:0px 6px; width:9px; height:23px; display:inline-block; content:''; vertical-align:middle; background:url("../images/common/breadcrumbs_arrow.png") no-repeat; }
 .content{ margin:0 0 10px 0; padding:0; width:541px; position:relative; background:#e6e6e6; float:left; clear:both; }
 .bts_noir{float:left; margin-left:15px;}
@@ -43,13 +43,13 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 #stats-cover{ margin:0 0 10px 0; padding:0 21px; /*width:201px;*/ height:33px; -webkit-border-bottom-right-radius:10px; -webkit-border-radius-bottom-left-radius:10px; -moz-border-radius-bottomright:10px; -moz-border-radius-bottomleft:10px; border-bottom-right-radius:10px; border-bottom-left-radius:10px; background:#e6e6e6; float:left; }
 #stats-cover .stats_cover_block:first-child{ margin:4px 0 0 0px; }
 #stats-cover .stats_cover_block{ margin:4px 0 0 18px; height:29px; float:left; }
-#stats-cover .stats_number{ margin:1px 0 0 0; font-weight:bold; font-size:14px; color:#2ab395; float:left; }
+#stats-cover .stats_number{ margin:1px 0 0 0; font-weight:bold; font-size:14px; color:#01adbb; float:left; }
 #stats-cover .stats_title{ font-size:10px; font-weight:bold; text-transform:uppercase; color:#3f3f3f; float:left; clear:both; }
 
 /*#stats-cover_melo{ padding:0 21px; width:201px; height:33px; -webkit-border-bottom-right-radius:10px; -webkit-border-radius-bottom-left-radius:10px; -moz-border-radius-bottomright:10px; -moz-border-radius-bottomleft:10px; border-bottom-right-radius:10px; border-bottom-left-radius:10px; background:#e6e6e6; float:left; }
 #stats-cover_melo .stats_cover_block:first-child{ margin:4px 0 0 0px; }
 #stats-cover_melo .stats_cover_block{ margin:4px 0 0 18px; height:29px; float:left; }
-#stats-cover_melo .stats_number{ margin:1px 0 0 0; font-weight:bold; font-size:14px; color:#2ab395; float:left; }
+#stats-cover_melo .stats_number{ margin:1px 0 0 0; font-weight:bold; font-size:14px; color:#01adbb; float:left; }
 #stats-cover_melo .stats_title{ font-size:10px; font-weight:bold; text-transform:uppercase; color:#3f3f3f; float:left; clear:both; }*/
 
 .actus_post{ margin:12px 0 4px 0; width:540px; /*height:134px;*/ background:#e6e6e6; float:left; clear:both; }
@@ -121,15 +121,9 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .artist_post #concert_detail_calendar .calendar .calendar-mois {margin-left : 8px; width : 39px; height : 12px; margin-top : 6px;}
 .artist_post #concert_detail_calendar .calendar .calendar-mois a {margin: 2px 12px; font-size: 9px; color: white; position: absolute; text-align: center;}
 .artist_post #concert_detail_calendar .calendar-content a{ font-weight:normal; font-size:13px; color:#535353; text-decoration : none;}
-.artist_post #concert_detail_calendar .calendar .calendar-jour {margin-left : 8px; width : 39px; height : 28px; margin-top : 3px;} 
-.artist_post #concert_detail_calendar .calendar .calendar-jour a{color: #5d5d5b;
-margin: 1px 4px;
-font-size: 24px;
-font-family: georgia;
-position: absolute;
-text-align: center;
-width: 31px;
-font-weight: normal;}
+.artist_post #concert_detail_calendar .calendar .calendar-jour {margin-left:8px; width:39px; height:28px; margin-top:3px;} 
+.artist_post #concert_detail_calendar .calendar .calendar-jour a{ color: #5d5d5b; margin:1px 4px; font-size:24px; font-family:georgia, Arial, sans-serif; position:absolute; text-align:center; width:31px; font-weight:normal; }
+.end_post{ margin:20px 0 0 0; padding:15px 0; width:100%; text-align:center; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:bold; text-transform:uppercase; font-size:16px; color:#f9f9f9; background:#cccccc; float:left; clear:both; }
 /* --------- FIN  DE MUSICIEN - ACTUS  --------- */
 
 
@@ -393,12 +387,12 @@ cursor : pointer;}
 .pop-in_ta span.info{margin:6px 0 0 50px;}
 .pop-in_ta span.paiement{margin:6px 0 0 26px;}
 .pop-in_ta span.telechargement{margin:6px 0 0 10px;}
-.pop-in_ta span.et_active{color:#2ab395;}
+.pop-in_ta span.et_active{color:#01adbb;}
 .pop-in_ta img{margin:10px 0 21px 20px;width:16px;float:left;cursor:pointer;}
 .pop-in_ta .content-pi {background:#fafafa;width:557px;padding: 25px 0;border:1px solid #e0e4e6;border-left:none;border-right:none;clear:both;}
 .pop-in_ta .content-pi h2{color:#4e4e4e;font-size:18px;font-weight:bold;margin:0 50px 20px;}
 .pop-in_ta .content-pi span{color:#4e4e4e;font-size:16px;margin:0 30px 0 35px;width:75px;text-align:right;}
-.pop-in_ta .content-pi input[type=text]{width:295px;margin:0 0 5px;outline-color:#2ab395;padding:0 5px;}
+.pop-in_ta .content-pi input[type=text]{width:295px;margin:0 0 5px;outline-color:#01adbb;padding:0 5px;}
 .pop-in_ta .content-pi .espace{width:100%;height:40px;}
 .pop-in_ta .content-pi .clear{clear:both;}
 .pop-in_ta .content-pi .en_tete{width:500px;height:60px;background:#e5e7e8;border:1px solid #cccfd1;;border-bottom:none;border-top-left-radius:5px;border-top-right-radius:5px;margin:0 auto;font-size:14px;font-weight:bold;color:#666666;}
@@ -473,7 +467,7 @@ cursor : pointer;}
 .content-pi-cent .champs {width:306px;float:left;margin:15px 0 0 12px;}
 .content-pi-cent .champs input{width:296px;padding:0 5px;outline:none }
 .content-pi-cent input { height : 25px;border:1px #C0C0C0 solid; box-shadow:0px 0px 5px #e0e4e6 ;}
-.content-pi-cent input:focus { box-shadow:0px 0px 5px #2ab395 ;}
+.content-pi-cent input:focus { box-shadow:0px 0px 5px #01adbb ;}
 .content-pi-cent .champs_heure input{width:50px;padding:0 5px;outline:none;margin:15px 0 0 10px;}
 .content-pi-cent .champs_lieu input{padding:0 5px;outline:none;margin:15px 0 0 10px;}
 .content-pi-cent .champs_prix input{width:50px;padding:0 5px;outline:none;margin:15px 0 0 10px;}
@@ -506,25 +500,24 @@ cursor : pointer;}
 
 
 /* --------- PORTAIL  --------- */
-#message-welcome{ margin:0; border-top:1px solid #afafaf; background:url('../images/portail/bkg_welcome.png') no-repeat 0 0 transparent; width:770px; height:85px; position:relative;float:left; clear:both; }
+#message-welcome{ margin:0; border-top:1px solid #afafaf; background:url('../images/portail/bkg_welcome.png') no-repeat 0 0 transparent; width:770px; height:84px; position:relative;float:left; clear:both; }
 #message-welcome h1{ margin:14px 0 14px 60px; display:inline-block; width:385px; font-family:"Trebuchet MS", Arial, sans-serif; font-size:23px; line-height:28px; font-weight:bold; color:#3f3f3f; float:left; }
-#message-welcome a{ margin:25px 0 25px 30px; display:inline-block; width:252px; height:35px; line-height:35px; font-family:"Trebuchet MS", Arial, sans-serif; font-size:18px; font-weight:bold; text-align:center; text-decoration:none; color:#ffffff; background:url('../images/portail/btn_welcome.png') no-repeat 0 0 transparent; }
-#message-welcome a:hover{ background:url('../images/portail/btn_welcome.png') no-repeat 0 -35px transparent; }
+#message-welcome a{ margin:25px 0 25px 30px; display:inline-block; width:252px; height:35px; line-height:35px; font-family:"Trebuchet MS", Arial, sans-serif; font-size:18px; font-weight:bold; text-align:center; text-decoration:none; color:#ffffff; background:url('../images/portail/btn_welcome2.png') no-repeat 0 0 transparent; }
+#message-welcome a:hover{ background:url('../images/portail/btn_welcome2.png') no-repeat 0 -35px transparent; }
 
 #coverflow{ background:none; height:364px; }
-#coverflowContainer{ padding:40px 0 10px 0; background:url("../images/portail/bg-coverflow.png") no-repeat; width:100%; height:308px; position:relative; float:left; clear:both; }
+#coverflowContainer{ padding:0; background:url("../images/portail/bg-coverflow.png") no-repeat; width:100%; height:308px; position:relative; float:left; clear:both; }
 #coverflowRuban{ margin:0; padding:0; width:110px; height:110px; position:absolute; top:0; left:0; background:url("../images/portail/alaune.png") no-repeat 0 0 transparent; z-index:10; }
 .caroufredsel_wrapper{ margin:0 auto !important; }
-#coverflow{ width:770px; height:364px; position:relative; z-index:1; }
-#coverflow a{ display:block; float:left; width:188px; height:188px; margin:25px 15px 0 15px; text-decoration:none; text-align:center; position:relative; -webkit-transition:width 0.5s ease, height 0.5s ease; -moz-transition:width 0.5s ease, height 0.5s ease; -o-transition:width 0.5s ease, height 0.5s ease; ms-transition:width 0.5s ease, height 0.5s ease; transition:width 0.5s ease, height 0.5s; }
-#coverflow a.current-item{ margin-top:0; width:238px; height:238px; }
-#coverflow a img{ display:block; float:left; width:100%; height:100%; }
-#coverflow a .coverflow_artist{ margin:8px 0 !important; display:inline-block; text-align:center; margin-top:10px; font-family:'Myriad Pro'; font-weight:bold; font-size:13px; text-transform:uppercase; color:white; }
-#coverflow a .coverflow_player{ background:rgba(115, 115, 115, 0.7); width:100%; height:60px; position:absolute; top:128px; left:0; z-index:50; }
-#coverflow a.current-item .coverflow_player{ top:178px; }
-#coverflow a .coverflow_player_btn{ width:40px; height:40px; position:absolute; top:10px; left:72px; background:url("../images/portail/player.png") no-repeat -47px -12px transparent; }
-#coverflow a.current-item .coverflow_player_btn{ left:98px; }
-#paginationContainer{ display:block; width:100%; margin:8px auto 0 auto; text-align:center; }
+#coverflow{ width:770px; height:308px !important; position:relative; z-index:1; overflow:hidden; }
+#coverflow a{ display:block; width:100%; height:100%; position: relative; }
+#coverflow > div{ width:770px; height:100%; }
+#coverflow a img{ margin:0; overflow:hidden; width:100%; display:block; }
+#coverflow a .coverflow_artist{ margin:0; display:inline-block; text-align:left; font-family:'Myriad Pro'; font-weight:bold; font-size:20px; text-transform:uppercase; color:white; position:relative; left:22px; width:115px; overflow:hidden; }
+#coverflow a .coverflow_player{ background:rgba(68, 68, 68, 0.5); width:185px; height:60px; position:absolute; top:65%; right:0; z-index:2; overflow:hidden; transition: background 0.2s ease-in-out; }
+#coverflow a .coverflow_player:hover{ background: rgba(68, 68, 68, 0.8); }
+#coverflow a .coverflow_player_btn{ display:inline-block; width:38px; height:37px; position:relative; top:12px; left:16px; background:url("../images/portail/player2.png") no-repeat 0 0 transparent; }
+#paginationContainer{ display:block; width:100%; margin:8px auto 0 auto; text-align:center; position:absolute; bottom:10px; z-index:2; }
 #paginationContainer #pagination{ display:inline-block; margin:0 auto; text-align:center; }
 #paginationContainer #pagination-prev{ display:inline-block; width:12px; height:12px; color:transparent; background:url("../images/portail/slide.png") no-repeat 0 0; cursor:pointer; }
 #paginationContainer #pagination-next{ display:inline-block; width:12px; height:12px; color:transparent; background:url("../images/portail/slide.png") no-repeat -95px 0; cursor:pointer; }
@@ -540,8 +533,8 @@ cursor : pointer;}
 #first-line-top-newbies{ float:left; position:absolute; margin-left:599px; height:180px; width:171px; }
 
 /*#top-song-title, #newbies-title, #calendar-title{ font-family:"Trebuchet MS"; font-size:20px; color:#3f3f3f; width:200px; }*/
-.title-color{ color:#2ab395; }
-.title-color-bold{ color:#2ab395; font-weight:bold; }
+.title-color{ color:#01adbb; }
+.title-color-bold{ color:#01adbb; font-weight:bold; }
 
 /*#top-song-title .title-img{ }*/
 
@@ -605,7 +598,7 @@ cursor : pointer;}
 .wall-flux-content .wall-flux-content-left-picture .img-blog-artiste-carre{ position:absolute; margin :19px 15px 15px 15px; }
 .wall-flux-content .wall-flux-content-goto-profile{ color:#f05f4c; font-size:14px; float:right; margin-top:-17px; margin-right:20px; padding:10px; } 
 /*#e6e6e6*/
-#wall-flux .ajax_loader{ text-align:center; width:100%; position:absolute; bottom:0; }
+#wall-flux .ajax_loader, .melo_actu .ajax_loader2{ text-align:center; width:100%; position:absolute; bottom:0; }
 
 /* ----- CALENDAR PORTAIL ------- */
  ui-datepicker{ width:212px; height:175px; margin:5px auto 0; font:9pt Arial, sans-serif; }  
@@ -629,7 +622,7 @@ cursor : pointer;}
 /* ----------- TEMPORAIRE -------------- */
 
 #calendar_alert{ position: absolute; margin-top: 40px; margin-left: -7px; width: 100%; border: 1px solid #dedede; box-shadow: 1px 0 1px 1px #EDEDED; padding: 5px; line-height: 25px; display: none; position: absolute; background-color:#f6f6f6; font-family:"Trebuchet MS"; font-size: 12px; color: #7f7d7d; text-decoration: none; z-index: +1;}
-#calendar_alert a {color: #2ab395;}
+#calendar_alert a {color: #01adbb;}
 #calendar_alert span {text-decoration: underline;font-size: 14px;}
 /* --------- FIN  DE PORTAIL  --------- */
 
@@ -668,6 +661,7 @@ h1#title-subscription, h1#title-identification{ padding:0; display:block; text-a
     -moz-box-shadow:1px -3px 10px 0px #999999; -webkit-box-shadow:1px -3px 10px 0px #999999; -o-box-shadow:1px -3px 10px 0px #999999; box-shadow:1px -3px 10px 0px #999999; filter:progid:DXImageTransform.Microsoft.Shadow(color=#999999, Direction=18, Strength=10);
 }
 
+.message_info{ margin:10px; padding:15px; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; font-family:"Myriad Pro", Arial, sans-serif; font-size:16px; font-weight:normal; line-height:20px; text-align:left; color:#FFFFFF; background:rgba(56, 109, 247, 0.4); float:left; clear:both; }
 .step-form .step-head{ padding:5px 0 8px 0; width:100%; background:#e9e9e9; float:left; }
 .step-form h2{ text-align:center; font-family:"Trebuchet MS"; font-weight:bold; font-size:18px; color:#3f3f3f; }
 .step-form #state-step{ margin:5px auto; width:123px; }
@@ -1048,16 +1042,18 @@ p.detail_perso, p.detail_reglages { margin:0 0 20px 0; font-family:"Trebuchet MS
 #any-background-reglages hr, #any-background-personnaliser hr{ margin:15px auto 25px auto; height:1px; border-bottom:1.5px solid rgb(184, 187, 190); background:#f8f8f8; }
 
 #any-background-reglages form > label{ margin:8px 0 0 0; width:150px; height:26px; line-height:26px; font-size:16px; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:bold; text-align:right; color: #4e4e4e; float:left; }
+#any-background-reglages form > .label_password{ margin:6px 0 0 0; line-height:15px; }
 #any-background-reglages .checkbox-style{ margin:0 0 20px 20px; width:306px; clear:none; }
-#any-background-reglages input[type="text"]{ margin:8px 0 8px 20px; padding:3px 10px; width:285px; outline-color:rgba(42, 179, 149, 0.6);-moz-outline-color:rgba(42, 179, 149, 0.6); color:rgb(100, 100, 100); float:left; }
+#any-background-reglages input[type="text"], #any-background-reglages input[type="password"]{ margin:8px 0 8px 20px; padding:3px 10px; width:285px; outline-color:rgba(42, 179, 149, 0.6);-moz-outline-color:rgba(42, 179, 149, 0.6); color:rgb(100, 100, 100); float:left; }
 #any-background-reglages textarea{ margin:8px 0 8px 20px; padding:3px 10px; width:287px; max-width:287px; height:75px; max-height:300px; font-family:"Trebuchet MS", Arial, sans-serif; word-break:break-word; outline-color:rgba(42, 179, 149, 0.6); color:rgb(100, 100, 100); float:left;font-size:13px; }
 #any-background-reglages input[type="submit"]{ margin:0 0 10px 170px; padding:0 14px; height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px;text-align:center; outline:none; color:#FFFFFF; background:url('../images/common/bt-rouge.png') no-repeat transparent; float:left; }
 #any-background-reglages input[type="submit"]:hover{font-weight:bold;}
 #any-background-reglages span.error-form, #any-background-reglages span.error-form p{ margin:3px 0 10px 0; width:250px; float:left; }
+#any-background-reglages .password + span.error-form, #any-background-reglages .password + span.error-form p{ margin:3px 0 10px 170px; width:308px; float:left; }
 
 .reglage_detail_domaine {margin:40px 0;height:115px;}
 .reglage_detail_domaine p {font-size:16px;color:#4e4e4e;float:left;width: 140px;text-align:right;margin:0 0 0 15px;}
-.reglage_detail_domaine .themes {float:left;width: 310px;height:115px;overflow-y:scroll;margin: 0 0 0 15px;border:1px solid #2ab395;background:#fff;}
+.reglage_detail_domaine .themes {float:left;width: 310px;height:115px;overflow-y:scroll;margin: 0 0 0 15px;border:1px solid #01adbb;background:#fff;}
 .reglage_detail_domaine .themes span{width: 500px;margin: 0 5px 0 0;font-size:14px;color:#7f7d7d;}
 .reglage_detail_domaine .themes input[type="checkbox"]{margin: 5px 20px 0 10px;}
 /* -------------- FIN REGLAGES ------------*/
@@ -1309,7 +1305,7 @@ p.detail_perso, p.detail_reglages { margin:0 0 20px 0; font-family:"Trebuchet MS
 
 #admin_notification{ margin:30px 0 0 20px; width:100%; float:left; clear:both; }
 #admin_notification textarea{ margin:10px 0 0 0; padding:20px; display:block; width:727px; height:115px; font-family:"Myriad Pro", Arial, sans-serif; font-size:17px; font-weight:normal; border:1px solid #b0d4cc; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px; outline:none; color:#717171; float:left; clear:both; }
-#admin_notification [type='submit']{ margin:12px 0 0 0; display:block; width:124px; height:41px; line-height:41px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:17px; font-weight:bold; text-align:center; color:#2ba086; background:url('../images/admin/btn_enregistrer.png') no-repeat 0 0 transparent; float:right; clear:both; }
+#admin_notification [type='submit']{ margin:12px 0 0 0; display:block; width:124px; height:41px; line-height:41px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:17px; font-weight:bold; text-align:center; color:#01adbb; background:url('../images/admin/btn_enregistrer.png') no-repeat 0 0 transparent; float:right; clear:both; }
 
 #admin_chiffres{ margin:45px 0 0 20px; width:100%; float:left; clear:both; }
 #admin_chiffres .admin_chiffre{ margin:0 10px 0 0; display:inline-block; width:132px; height:132px; float:left; -webkit-box-shadow:1px 1px 1px 0px rgba(0, 0, 0, 0.2); box-shadow:1px 1px 1px 0px rgba(0, 0, 0, 0.2); }
@@ -1372,7 +1368,7 @@ p.detail_perso, p.detail_reglages { margin:0 0 20px 0; font-family:"Trebuchet MS
 .admin-artistes #artistes-fields{ margin:20px 0 0 20px; width:100%; float:left; clear:both; }
 .admin-artistes label{ margin:0; display:inline-block; height:28px; line-height:28px; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; font-weight:bold; color:#4e4e4e; float:left; }
 .admin-artistes input[type="text"]{ margin:0 0 10px 25px; padding:0 10px; display:inline-block; width:520px; height:28px; position:relative; font-size:14px; font-weight:normal; font-family:'Trebuchet MS'; border:1px solid #cccccc; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; outline-color:rgba(42, 179, 149, 0.6); color:#7f7d7d; background:#FFFFFF; float:left; }
-.admin-artistes [type='submit']{ margin:30px 0 0 0; display:block; width:124px; height:41px; line-height:41px; position:relative; right:121px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:17px; font-weight:bold; text-align:center; color:#2ba086; background:url('../images/admin/btn_enregistrer.png') no-repeat 0 0 transparent; float:right; clear:both; }
+.admin-artistes [type='submit']{ margin:30px 0 0 0; display:block; width:124px; height:41px; line-height:41px; position:relative; right:121px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:17px; font-weight:bold; text-align:center; color:#01adbb; background:url('../images/admin/btn_enregistrer.png') no-repeat 0 0 transparent; float:right; clear:both; }
 /*------------------- FIN ADMIN -------------------*/
 
 

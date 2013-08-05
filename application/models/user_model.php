@@ -76,6 +76,22 @@ class User_model extends CI_Model {
             return false;
         }
     }
+    
+    public function getUserByMail($mail) {
+        $this->db->select('login, id');
+        $this->db->from($this->table);
+        $this->db->where('mail = ' . "'" . $mail . "'");
+        $this->db->limit(1);
+
+        $query = $this->db->get();
+        if ($query->num_rows() == 1) {
+            $result = $query->result();
+            $data = $result[0];
+            return $data;
+        } else {
+            return false;
+        }
+    }
 
     public function facebook_register($facebook_id) {
         $this->db->select('facebook_id');
@@ -148,8 +164,9 @@ class User_model extends CI_Model {
         $this->db->update($this->table, $data, "id = " . $this->session->userdata('uid'));
     }
 
-    public function update_melomane($login, $description, $nom, $prenom, $email, $stylemusicecoute, $cover, $thumb) {
+    public function update_melomane($login, $password, $description, $nom, $prenom, $email, $stylemusicecoute, $cover, $thumb) {        
         $data['login'] = $login;
+        $data['password'] = $password;
         $data['prenom'] = $prenom;
         $data['nom'] = $nom;
         $data['mail'] = $email;
@@ -160,6 +177,13 @@ class User_model extends CI_Model {
         $data['updated'] = Date('Y-m-d H:i:s');
 
         $this->db->update($this->table, $data, "id = " . $this->session->userdata('uid'));
+    }
+
+    public function update_password($id, $password) {
+        $data['password'] = $password;
+        $data['updated'] = Date('Y-m-d H:i:s');
+
+        $this->db->update($this->table, $data, "id = " . $id);
     }
 
     public function delete_user($uid) {
@@ -181,7 +205,6 @@ class User_model extends CI_Model {
     }
 
     public function last_photo($user) {
-
         return $this->db->query('SELECT photos.id,photos.Utilisateur_id,photos.file_name FROM photos LEFT OUTER JOIN album_media ON photos.id = album_media.Photos_id 
  WHERE photos.Utilisateur_id =' . $user . ' AND album_media.Photos_id IS NULL ORDER BY photos.date ASC LIMIT 0, 4')
                         ->result();

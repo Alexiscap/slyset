@@ -69,5 +69,14 @@ class Mc_musique extends CI_Controller {
 
         $this->layout->view('musique/mc_musique', $data);
     }
+    
+    public function test() {        
+        $this->load->library('getid3/Getid3');
+        
+        $folder = 'assets/musique/';
+        
+        $test = $this->getid3->analyze($folder.'test.mp3');
+        print_r($test);
+    }
 
 }

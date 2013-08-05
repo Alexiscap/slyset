@@ -46,10 +46,17 @@ if (isset($all_date_calendar))
                 <?php if (!empty($coverflow_cover)): ?>
                     <?php // print_r($coverflow_cover); 
                     ?>
-                    <a href="<?php echo site_url('actualite/' . $coverflow_cover[0]->idU); ?>"><img class="coverflow-img" src="<?php echo $thumb = (!empty($coverflow_cover[0]->thumbU)) ? files('profiles/' . $coverflow_cover[0]->thumbU) : img_url('sidebar-right/default-photo-profil.png'); ?>"><span class="coverflow_artist"><?php echo $coverflow_cover[0]->loginU; ?></span></a>
+            <div>
+                <a href="<?php echo site_url('actualite/' . $coverflow_cover[0]->idU); ?>">
+                    <img class="coverflow-img" src="<?php echo $thumb = (!empty($coverflow_cover[0]->coverU)) ? files('profiles/' . $coverflow_cover[0]->coverU) : img_url('sidebar-right/default-photo-profil.png'); ?>" />
+                    <div class="coverflow_player">
+                        <span class="coverflow_player_btn"></span>
+                        <span class="coverflow_artist"><?php echo $coverflow_cover[0]->loginU; ?></span>
+                    </div>
+                </a>
+            </div>
                 <?php endif; ?>
 <?php endforeach; ?>
-
         </div>
         <div id="paginationContainer">
             <div id="pagination-prev"></div>

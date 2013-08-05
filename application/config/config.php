@@ -15,9 +15,9 @@
 |
 */
 
-$config['base_url']	= "";
+//$config['base_url']	= "";
 //$config['base_url']	= 'http://127.0.0.1/slyset/';
-//$config['base_url']	= 'http://localhost.slyset.com/';
+$config['base_url']	= 'http://localhost.slyset.com/';
 
 /*
 |--------------------------------------------------------------------------
@@ -96,7 +96,7 @@ $config['charset'] = 'UTF-8';
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
-$config['enable_hooks'] = TRUE;
+$config['enable_hooks'] = FALSE;
 
 
 /*

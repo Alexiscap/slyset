@@ -24,7 +24,40 @@ function playMasonry(){
 }
 
 
+$(document).on('submit', ".form_comments form", function () {
+    alert('test');
+        var baseurl = $(this).find("#baseurl").val();
+        var usercomment = $(this).find("#usercomment").val();
+        var messageid = $(this).find("#messageid").val();
+        var thisParent = $(this).parent();
+        var dataString = 'usercomment=' + usercomment + '&messageid=' + messageid;
 
+        if(usercomment == '' || messageid == ''){
+            alert('Veuillez renseigner un message !');
+        } else {
+            var ajaxLoader = $(this).parent().find(".ajax_loader");
+            
+            ajaxLoader.show();
+            ajaxLoader.fadeIn(500).html('<img src="'+baseurl+'assets/images/common/ajax-loader.gif" />Loading Comment...');
+
+            $(this).find("#usercomment").val("");
+            
+            $.ajax({
+                type: "POST",
+                url : baseurl + 'index.php/mc_actus/form_wall_user_comment/',
+                data: dataString,
+
+                success: function(comment){
+                    $(comment).hide().insertBefore(thisParent).slideDown('slow');
+                    ajaxLoader.fadeOut(1000);
+                //                    ajaxLoader.hide();
+                }
+            })
+            
+            return false;
+        }
+    });
+    
 $(document).ready(function(){
 
 	$('.iframe').bind('contextmenu', function(e) {
@@ -205,8 +238,7 @@ $(document).ready(function(){
     //        $(".active").removeClass("active");
     //        $(this).addClass("active");
     //    });
-        
-    //Utilisation du caroufredsel sur la page home
+    
     if($("body.admin-articles").length > 0){
         $('#redactor').redactor({
             imageUpload: '/admin_articles/uploadImg'
@@ -277,9 +309,10 @@ $(document).ready(function(){
     });
     //    $('#articles-tab table tr:nth-child(even), #comptes-tab table tr:nth-child(even), #results-tab table tr:nth-child(even)').addClass('even row-color-1');
     //    $('#articles-tab table tr:nth-child(odd), #comptes-tab table tr:nth-child(odd), #results-tab table tr:nth-child(odd)').addClass('odd row-color-2');
-       if($("body.musicien_actus").length > 0){
- 
+    
+       if($("body.musicien_actus").length > 0){ 
     $('.form_comments form').submit(function(){
+        alert('test');
         var baseurl = $(this).find("#baseurl").val();
         var usercomment = $(this).find("#usercomment").val();
         var messageid = $(this).find("#messageid").val();
@@ -1007,74 +1040,111 @@ $(document).ready(function(){
     
     
     //Utilisation du caroufredsel sur la page home
+//    if($("body.home").length > 0){
+//        $("#coverflow").children().filter(":eq(1)").addClass('current-item');
+//        
+//        $("#coverflow").carouFredSel({
+//            item: 3,
+//            width: 770,
+//            height: 268,
+//            synchronise: true,
+//            scroll: {
+//                items: 1,
+//                fx: 'scroll',
+//                pauseOnHover: true,
+//                duration: 1000
+//            },
+//            pagination: "#pagination",
+//            prev:  {
+//                button: "#pagination-prev",
+//                onBefore: function(data){
+//                    var pos = $("#coverflow").triggerHandler("currentPosition");
+//                    $(this).children().removeClass('current-item');
+//                },
+//                onAfter: function(data){
+//                    var pos = $("#coverflow").triggerHandler("currentPosition");
+//                    $(this).children().filter(":eq(1)").addClass('current-item');
+//                }
+//            },
+//            next:  {
+//                button: "#pagination-next",
+//                onBefore: function(data){
+//                    var pos = $("#coverflow").triggerHandler("currentPosition");
+//                    //                    $(this).children('.current-item').delay(2000).css("marginTop","25px");
+//                    $(this).children().removeClass('current-item');
+//                },
+//                onAfter: function(data){
+//                    var pos = $("#coverflow").triggerHandler("currentPosition");
+//                    $(this).children().filter(":eq(1)").toggleClass('current-item');
+//                //                    $(this).children('.current-item').delay(2000).css("marginTop","0");
+//                }
+//            },
+//            mousewheel: true,
+//            auto: {
+//                onBefore: function(data){
+//                    var pos = $("#coverflow").triggerHandler("currentPosition");
+//                    $(this).children().filter(":eq(1)").toggleClass('current-item');
+//                    $(this).children().removeClass('current-item');
+//                },
+//                onAfter: function(data){
+//                    var pos = $("#coverflow").triggerHandler("currentPosition");
+//                    $(this).children().filter(":eq(1)").toggleClass('current-item');
+//                }
+//            }
+//        });
+//
+//        //        highlight(unhighlight($("#coverflow2 > *")));
+//        
+//        $("#coverflow a").hover(
+//            function(){
+//                $(this).append('<div class="coverflow_player" style="display:none;"><span class="coverflow_player_btn"></span></div>').fadeIn('slow');
+//                $(this).find('.coverflow_player').fadeIn(250, function(){
+//                    $(this).show();
+//                });
+//            },
+//            function(){
+//                $(this).find('.coverflow_player').fadeOut(250, function(){
+//                    $(this).remove();
+//                });
+//            }
+//            );
+//    }
+
+
     if($("body.home").length > 0){
-        $("#coverflow").children().filter(":eq(1)").addClass('current-item');
-        
         $("#coverflow").carouFredSel({
-            item: 3,
-            width: 770,
-            height: 268,
-            synchronise: true,
-            scroll: {
-                items: 1,
-                fx: 'scroll',
-                pauseOnHover: true,
-                duration: 1000
+            items: 1,
+            direction: "left",
+            height: "100%",
+//            width: 770,
+//            height: 308,
+            auto: {
+                fx : "crossfade",
+                easing : "linear",
+                duration	: 1000,
+                timeoutDuration: 3000,
+                pauseOnHover: true
             },
-            pagination: "#pagination",
+            pagination: {
+                container: "#pagination",
+                fx : "crossfade",
+                easing : "linear",
+                duration: 500
+            },
             prev:  {
                 button: "#pagination-prev",
-                onBefore: function(data){
-                    var pos = $("#coverflow").triggerHandler("currentPosition");
-                    $(this).children().removeClass('current-item');
-                },
-                onAfter: function(data){
-                    var pos = $("#coverflow").triggerHandler("currentPosition");
-                    $(this).children().filter(":eq(1)").addClass('current-item');
-                }
+                fx : "crossfade",
+                easing : "linear",
+                duration: 500
             },
             next:  {
                 button: "#pagination-next",
-                onBefore: function(data){
-                    var pos = $("#coverflow").triggerHandler("currentPosition");
-                    //                    $(this).children('.current-item').delay(2000).css("marginTop","25px");
-                    $(this).children().removeClass('current-item');
-                },
-                onAfter: function(data){
-                    var pos = $("#coverflow").triggerHandler("currentPosition");
-                    $(this).children().filter(":eq(1)").toggleClass('current-item');
-                //                    $(this).children('.current-item').delay(2000).css("marginTop","0");
-                }
+                fx : "crossfade",
+                easing : "linear",
+                duration: 500
             },
-            mousewheel: true,
-            auto: {
-                onBefore: function(data){
-                    var pos = $("#coverflow").triggerHandler("currentPosition");
-                    $(this).children().filter(":eq(1)").toggleClass('current-item');
-                    $(this).children().removeClass('current-item');
-                },
-                onAfter: function(data){
-                    var pos = $("#coverflow").triggerHandler("currentPosition");
-                    $(this).children().filter(":eq(1)").toggleClass('current-item');
-                }
-            }
+            mousewheel: true
         });
-
-        //        highlight(unhighlight($("#coverflow2 > *")));
-        
-        $("#coverflow a").hover(
-            function(){
-                $(this).append('<div class="coverflow_player" style="display:none;"><span class="coverflow_player_btn"></span></div>').fadeIn('slow');
-                $(this).find('.coverflow_player').fadeIn(250, function(){
-                    $(this).show();
-                });
-            },
-            function(){
-                $(this).find('.coverflow_player').fadeOut(250, function(){
-                    $(this).remove();
-                });
-            }
-            );
     }
 
     //Uniformise les placeholder pour tous les navigateurs

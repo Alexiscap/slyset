@@ -28,7 +28,7 @@ class Melo_actus_model extends CI_Model {
                         ->result();
     }
 
-    public function get_entities_id($list_id, $user_id) {
+    public function get_entities_id($limit = 3, $offset = 0, $list_id, $user_id) {
     if ($list_id == null) {$list_id = 0;}
        // if ($list_id != null) {
             $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,photos_id as idproduit,photos.nom AS main_nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser,"null" AS date_concert, 1 as product
@@ -145,6 +145,7 @@ class Melo_actus_model extends CI_Model {
 					WHERE wall_melo_component.Utilisateur_id= ' . $user_id . '
 					AND wall_melo_component.type = "ME")
 			ORDER BY date DESC
+      LIMIT ' . $limit . ' OFFSET ' . $offset . '
 				'; /* 	
               UNION
               (SELECT morceaux_id,morceaux.nom,3
@@ -177,9 +178,12 @@ class Melo_actus_model extends CI_Model {
     }
 
     public function difference($list_id, $user_id) {
-        $sql_diff = 'SELECT id,type,photos_id,message_id,videos_id,morceaux_id,concerts_id,documents_id,Following_id,albums_media_file_name,albums_id FROM wall_melo_component WHERE Utilisateur_id IN (' . $list_id . ') AND albums_id IS NOT NULL AND type ="MU" OR (Utilisateur_id = ' . $user_id . ' AND type="ME")';
-        return $this->db->query($sql_diff)
-                        ->result();
+//        $sql_diff = 'SELECT id,type,photos_id,message_id,videos_id,morceaux_id,concerts_id,documents_id,Following_id,albums_media_file_name,albums_id FROM wall_melo_component WHERE Utilisateur_id IN (' . $list_id . ') AND albums_id IS NOT NULL AND type ="MU" OR (Utilisateur_id = ' . $user_id . ' AND type="ME")';
+//        return $this->db->query($sql_diff)
+//                        ->result();
+        print $list_id;
+        print '----';
+        print $user_id;
     }
 
     public function get_new_item($id_component, $type, $id_photo, $id_video, $id_message, $id_concert, $id_follower) {
