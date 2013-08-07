@@ -16,6 +16,19 @@ class Mc_musique extends CI_Controller {
         parent::__construct();
 
         $this->layout->ajouter_css('slyset');
+        
+        $this->layout->ajouter_js('fileupload/vendor/jquery.ui.widget');
+        $this->layout->ajouter_js('fileupload/tmpl');
+        $this->layout->ajouter_js('fileupload/load-image');
+        $this->layout->ajouter_js('fileupload/canvas-to-blob');
+        $this->layout->ajouter_js('fileupload/bootstrap.min');
+        $this->layout->ajouter_js('fileupload/bootstrap-image-gallery.min');
+        $this->layout->ajouter_js('fileupload/jquery.iframe-transport');
+        $this->layout->ajouter_js('fileupload/jquery.fileupload');
+        $this->layout->ajouter_js('fileupload/jquery.fileupload-ip');
+        $this->layout->ajouter_js('fileupload/jquery.fileupload-ui');
+        $this->layout->ajouter_js('fileupload/locale');
+        $this->layout->ajouter_js('fileupload/main');
         $this->layout->ajouter_js('audiojs/audio.min');
         
         $this->load->model(array('perso_model', 'user_model'));
