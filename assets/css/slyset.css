@@ -588,7 +588,8 @@ cursor : pointer;}
 .wall-flux-content .wall-flux-content-subtitle{ font-size:13px; color:#8d8c80; margin:0px 19px 19px 19px; word-wrap:break-word; }
 .wall-flux-content .wall-flux-content-titre-artiste{ margin:19px 19px 5px 19px; color:#535353 ; padding-top:15px; font-size:13px; }
 /*.wall-flux-content .wall-flux-content-text{ font-size:14px; line-height:21px; color:#555555; margin:10px 19px 19px 19px; word-wrap:break-word; }*/
-.wall-flux-content .wall-flux-content-text * { margin:0 19px; }
+.wall-flux-content .wall-flux-content-text p:first-child, .wall-flux-content .wall-flux-content-text p:last-child { margin:0 19px; }
+.wall-flux-content .wall-flux-content-text p { margin:0.8em 19px; line-height: 1.1em; }
 .wall-flux-content .wall-flux-content-text table tr td { padding:5px; border:1px solid #8d8c80; }
 .wall-flux-content .wall-flux-content-text iframe{ margin:5px 0; width:100%; }
 .wall-flux-content .wall-flux-content-text{ margin:0 0 10px 0; }
