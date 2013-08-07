@@ -12,6 +12,10 @@
         <meta name="keywords" content="slyset, project web, social networks, music, réseau social, réseau social musical, musique, écoute, artiste, efficom, projet" />
 
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('reset') ?>" />
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url().'assets/css/fileupload/bootstrap.css'; ?>">
+	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url().'assets/css/fileupload/bootstrap-image-gallery.min.css'; ?>">
+	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url().'assets/css/fileupload/jquery.fileupload-ui.css'; ?>">
+	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url().'assets/css/fileupload/jquery-ui.css'; ?>">
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_header-footer') ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_sidebar-left') ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_sidebar-right') ?>" />
@@ -28,8 +32,26 @@
           <link type="text/css" rel="stylesheet" href="<?php echo css_url('corrections-ie') ?>" />
         <![endif]-->
 
-        <script type="text/javascript" src="<?php echo js_url('jquery-1.7.1.min') ?>"></script>
+        
+        <!--<script type="text/javascript" src="<?php echo js_url('jquery-1.7.1.min') ?>"></script>-->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js" ></script>-->
+        <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>-->
+        <script type="text/javascript" src="<?php echo base_url().'assets/javascript/fileupload/vendor/jquery.ui.widget.js'; ?>"></script>
+        
         <script type="text/javascript" src="<?php echo js_url('modernizr.custom.63321') ?>"></script>
+
+	<script type="text/javascript" src="<?php echo base_url().'assets/javascript/fileupload/tmpl.js'; ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url().'assets/javascript/fileupload/load-image.js'; ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url().'assets/javascript/fileupload/canvas-to-blob.js'; ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url().'assets/javascript/fileupload/bootstrap.min.js'; ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url().'assets/javascript/fileupload/bootstrap-image-gallery.min.js'; ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url().'assets/javascript/fileupload/jquery.iframe-transport.js'; ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url().'assets/javascript/fileupload/jquery.fileupload.js'; ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url().'assets/javascript/fileupload/jquery.fileupload-ip.js'; ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url().'assets/javascript/fileupload/jquery.fileupload-ui.js'; ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url().'assets/javascript/fileupload/locale.js'; ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url().'assets/javascript/fileupload/main.js'; ?>"></script>
 
         <?php foreach ($js as $url): ?>
             <script type="text/javascript" src="<?php echo $url; ?>"></script> 
