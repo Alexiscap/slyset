@@ -11,6 +11,7 @@ class Mc_musique extends CI_Controller {
         parent::__construct();
 
         $this->layout->ajouter_css('slyset');
+        $this->layout->ajouter_js('audiojs/audio.min');
         
         $this->load->model(array('perso_model', 'user_model'));
         $this->load->helper('form');
@@ -76,7 +77,14 @@ class Mc_musique extends CI_Controller {
         $folder = 'assets/musique/';
         
         $test = $this->getid3->analyze($folder.'test.mp3');
-        print_r($test);
+//        print_r($test);
+        echo '<pre>'.htmlentities(print_r($test, true)).'</pre>';
+        
+        
+        $test2 = $this->getid3->writetags($folder.'test.mp3');
+        $test2->filename = $folder.'test2.mp3';
+        print '</br></br>'.$test2->filename;
+        print_r($test2);
     }
-
+    
 }

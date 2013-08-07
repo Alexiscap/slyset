@@ -59,6 +59,12 @@ $(document).on('submit', ".form_comments form", function () {
     });
     
 $(document).ready(function(){
+    
+    if ($("audio").length > 0){
+        audiojs.events.ready(function() {
+            audiojs.createAll();
+        });
+    }
 
 	$('.iframe').bind('contextmenu', function(e) {
   	  	return false;

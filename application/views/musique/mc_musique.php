@@ -6,7 +6,7 @@
     $loger = $this->session->userdata('logged_in'); 
 
 ?>
-
+    
 <div id="contentAll">
     <div id="breadcrumbs">
         <ul>
@@ -56,6 +56,9 @@
 
   <div class="content">
     <h2>Musique de <?php echo $login; ?></h2>
+    
+    <audio src="<?php echo base_url().'/assets/musique/test.mp3'; ?>" preload="auto"></audio>
+    
 	<div class="a_la_une">
 		<img src="<?php echo img_url('musicien/album_top.jpg'); ?>"/>
 		<img src="<?php echo img_url('portail/alaune.png'); ?>" class="bandeau_top"/>
