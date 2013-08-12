@@ -11,13 +11,7 @@
         <meta name="description" content="<?php echo $desc = (isset($description)) ? $description : 'Description Slyset'; ?>" />
         <meta name="keywords" content="slyset, project web, social networks, music, réseau social, réseau social musical, musique, écoute, artiste, efficom, projet" />
 
-        <link type="text/css" rel="stylesheet" href="<?php echo css_url('reset') ?>" />
-        
-<!--        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url().'assets/css/fileupload/bootstrap.css'; ?>">
-        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url().'assets/css/fileupload/bootstrap-image-gallery.min.css'; ?>">
-        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url().'assets/css/fileupload/jquery.fileupload-ui.css'; ?>">
-        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url().'assets/css/fileupload/jquery-ui.css'; ?>">-->
-        
+        <link type="text/css" rel="stylesheet" href="<?php echo css_url('reset') ?>" />        
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_header-footer') ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_sidebar-left') ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_sidebar-right') ?>" />
@@ -33,14 +27,10 @@
         <!--[if IE]>
           <link type="text/css" rel="stylesheet" href="<?php echo css_url('corrections-ie') ?>" />
         <![endif]-->
-        
-        <!--<script type="text/javascript" src="<?php echo js_url('jquery-1.7.1.min') ?>"></script>-->
+
+<!--<script type="text/javascript" src="<?php echo js_url('jquery-1.7.1.min') ?>"></script>-->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <!--<script type="text/javascript" src="<?php echo js_url('modernizr.custom.63321') ?>"></script>-->
-        
-        <?php foreach ($js as $url): ?>
-            <!--<script type="text/javascript" src="<?php echo $url; ?>"></script>--> 
-        <?php endforeach; ?>
     </head>
 
     <body <?php if (isset($id_bkg)) echo 'class="' . $id_bkg . '"'; ?>>
@@ -53,9 +43,9 @@
                 <div id="ico_menu">
                     <a href="<?php echo site_url('home/' . $this->session->userdata('uid')); ?>" id="accueil"><span>Accueil</span></a>
                     <a href="#" id="explorer"><span>Rechercher</span></a>
-                        <?php if ($this->session->userdata('logged_in') != 1): ?>
-                            <a href="<?php echo site_url('user'); ?>" id="inscrire"><span>S'inscrire</span></a>
-                        <?php endif; ?>
+                    <?php if ($this->session->userdata('logged_in') != 1): ?>
+                        <a href="<?php echo site_url('user'); ?>" id="inscrire"><span>S'inscrire</span></a>
+                    <?php endif; ?>
 
                     <div id="execution-times">
                         <p><?php echo $this->benchmark->memory_usage(); ?></p>
@@ -69,10 +59,10 @@
                         <form action="<?php echo site_url('search/' . $this->session->userdata('uid')); ?>" method="post">
                             <input src="<?php echo img_url('header/loupe.png') ?>" type="image" value="submit" align="middle"/>
                             <input type="text" value="<?php print $val; ?>" placeholder="Rechercher un artiste..." name="recherche" />
-                            
+
                         </form>
                     </div>
-                    
+
                     <div id="identification">
                         <?php if ($this->session->userdata('logged_in') == 1): ?>
                             <a href="<?php echo site_url('home/' . $this->session->userdata('uid')) ?>"><?php echo $this->session->userdata('login'); ?></a> | <a href="<?php echo site_url('login/logout'); ?>">Déconnexion</a>
@@ -146,105 +136,12 @@
                 </div>
             </div>
         </footer>
+
         <?php foreach ($js as $url): ?>
             <script type="text/javascript" src="<?php echo $url; ?>"></script> 
         <?php endforeach; ?>
-<!--<script>
-/*jslint unparam: true, regexp: true */
-/*global window, $ */
-$(function () {
-    'use strict';
-    // Change this to the location of your server-side upload handler:
-    var url = '../upload_img',
-        uploadButton = $('<button/>')
-            .addClass('btn btn-primary')
-            .prop('disabled', true)
-            .text('Processing...')
-            .on('click', function () {
-                var $this = $(this),
-                    data = $this.data();
-                $this
-                    .off('click')
-                    .text('Abort')
-                    .on('click', function () {
-                        $this.remove();
-                        data.abort();
-                    });
-                data.submit().always(function () {
-                    $this.remove();
-                });
-            });
-    $('#fileupload').fileupload({
-        url: url,
-        dataType: 'json',
-        autoUpload: false,
-        acceptFileTypes: /(\.|\/)(gif|jpe?g|png|mp3)$/i,
-        maxFileSize: 500000000, // 5 MB
-        // Enable image resizing, except for Android and Opera,
-        // which actually support image resizing, but fail to
-        // send Blob objects via XHR requests:
-        disableImageResize: /Android(?!.*Chrome)|Opera/
-            .test(window.navigator.userAgent),
-        previewMaxWidth: 100,
-        previewMaxHeight: 100,
-        previewCrop: true
-    }).on('fileuploadadd', function (e, data) {
-        data.context = $('<div/>').appendTo('#files');
-        $.each(data.files, function (index, file) {
-            var node = $('<p/>')
-                    .append($('<span/>').text(file.name));
-            if (!index) {
-                node
-                    .append('<br>')
-                    .append(uploadButton.clone(true).data(data));
-            }
-            node.appendTo(data.context);
-        });
-    }).on('fileuploadprocessalways', function (e, data) {
-        var index = data.index,
-            file = data.files[index],
-            node = $(data.context.children()[index]);
-        if (file.preview) {
-            node
-                .prepend('<br>')
-                .prepend(file.preview);
-        }
-        if (file.error) {
-            node
-                .append('<br>')
-                .append(file.error);
-        }
-        if (index + 1 === data.files.length) {
-            data.context.find('button')
-                .text('Upload')
-                .prop('disabled', !!data.files.error);
-        }
-    }).on('fileuploadprogressall', function (e, data) {
-        var progress = parseInt(data.loaded / data.total * 100, 10);
-        $('#progress .progress-bar').css(
-            'width',
-            progress + '%'
-        );
-    }).on('fileuploaddone', function (e, data) {
-        $.each(data.result.files, function (index, file) {
-            var link = $('<a>')
-                .attr('target', '_blank')
-                .prop('href', file.url);
-            $(data.context.children()[index])
-                .wrap(link);
-        });
-    }).on('fileuploadfail', function (e, data) {
-        $.each(data.result.files, function (index, file) {
-            var error = $('<span/>').text(file.error);
-            $(data.context.children()[index])
-                .append('<br>')
-                .append(error);
-        });
-    }).prop('disabled', !$.support.fileInput)
-        .parent().addClass($.support.fileInput ? undefined : 'disabled');
-});
-</script>-->
 
+        <script type="text/javascript" src="<?php echo js_url('audiojs/audio') ?>"></script>
         <script type="text/javascript" src="<?php echo js_url('jquery.placeheld.min') ?>"></script>
         <script type="text/javascript" src="<?php echo js_url('slyset') ?>"></script>
     </body>

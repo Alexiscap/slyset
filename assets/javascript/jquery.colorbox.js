@@ -1037,31 +1037,3 @@ if(l.pathname.split('/')[2] == "index.php"){
 	publicMethod.settings = defaults;
 
 }(jQuery, document, window));
-
-
-  $( document ).ready(function() {
-
-				$(".iframe").colorbox(
-					{
-						iframe:true, width:"45%", height:"65%",
-						
-					
-						onClosed:function(){
-						//$('.content').load('30 .content');
-						}
-						
-				   
-					});
-					
-
-				$(".bigiframe").colorbox(
-					{
-						iframe:true, width:"65%", height:"85%",
-						
-						onClosed:function(){
-						//$('.content').load('30 .content');
-						}
-						
-				   
-					});
-});

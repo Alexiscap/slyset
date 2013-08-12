@@ -3,7 +3,7 @@
 
 <div class="pop-in_cent">
 
-    <span> Ajouter une photo </span>
+    <span>Ajouter une photo</span>
 
     <div class="content-pi-cent">
 

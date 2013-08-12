@@ -11,9 +11,13 @@ class Mc_musique extends CI_Controller {
         parent::__construct();
 
         $this->layout->ajouter_css('slyset');
-        
-        $this->layout->ajouter_js('audiojs/audio');
-        
+        $this->layout->ajouter_css('pop_in');
+
+        $this->layout->ajouter_css('colorbox');
+        $this->layout->ajouter_js('jquery.colorbox');
+        $this->layout->ajouter_js('jquery-ui');
+//        $this->layout->ajouter_js('audiojs/audio');
+
         $this->load->model(array('perso_model', 'user_model'));
         $this->load->helper('form');
 
@@ -49,7 +53,7 @@ class Mc_musique extends CI_Controller {
             'community_follower' => $my_abonnement_head
         );
     }
-    
+
     public function index($user_id) {
         $uid = $this->session->userdata('uid');
         $infos_profile = $this->user_model->getUser($user_id);
@@ -60,7 +64,7 @@ class Mc_musique extends CI_Controller {
             redirect('home/' . $uid, 'refresh');
         }
     }
-        
+
     public function page($infos_profile) {
         $data = $this->data;
         $user_visited = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id;
@@ -76,24 +80,24 @@ class Mc_musique extends CI_Controller {
         $this->load->library('getid3/Getid3');
 
         $folder = 'assets/musique/';
-        $test = $this->getid3->analyze($folder.'test.mp3');
+        $test = $this->getid3->analyze($folder . 'test.mp3');
 //        print_r($test);
-        echo '<pre>'.htmlentities(print_r($test, true)).'</pre>';
-        
-        
-        $test2 = $this->getid3->writetags($folder.'test.mp3');
-        $test2->filename = $folder.'test2.mp3';
-        print '</br></br>'.$test2->filename;
+        echo '<pre>' . htmlentities(print_r($test, true)) . '</pre>';
+
+
+        $test2 = $this->getid3->writetags($folder . 'test.mp3');
+        $test2->filename = $folder . 'test2.mp3';
+        print '</br></br>' . $test2->filename;
         print_r($test2);
-            
+
 //        $test = $this->getid3->analyze($folder . 'test.mp3');
 //        print_r($test);
     }
-    
+
     public function player() {
         $this->load->view('musique/player');
     }
-    
+
 ////     Function called by the form
 //    public function upload_img() { 
 //        print_r($_FILES);
@@ -239,5 +243,4 @@ class Mc_musique extends CI_Controller {
 //                                array($this, 'get_file_object'), scandir($this->getPath_img_upload_folder())
 //        )));
 //    }
-    
 }
