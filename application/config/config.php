@@ -16,7 +16,8 @@
 */
 
 //$config['base_url']	= 'http://127.0.0.1/slyset/';
-$config['base_url']	= 'http://localhost.slyset.com/';
+//$config['base_url']	= 'http://localhost.slyset.com/';
+$config['base_url']	= 'http://localhost/slyset/';
 
 /*
 |--------------------------------------------------------------------------
@@ -249,7 +250,7 @@ $config['encryption_key'] = 'F-+76Q-8?;n<3<QEn)j?bS#eT@#k~Th@';
 |
 */
 $config['sess_cookie_name']		= 'ci_session';
-$config['sess_expiration']		= 7200;
+$config['sess_expiration']		= 0;
 $config['sess_expire_on_close']	= FALSE;
 $config['sess_encrypt_cookie']	= FALSE;
 $config['sess_use_database']	= FALSE;

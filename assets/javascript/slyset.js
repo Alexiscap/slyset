@@ -23,9 +23,28 @@ function playMasonry(){
     });
 }
 
+// Keyboard shortcuts
+$(document).keydown(function(e) {
+    var unicode = e.charCode ? e.charCode : e.keyCode;
+       // right arrow
+    if (unicode == 39) {
+        var next = $('li.playing').next();
+        if (!next.length) next = $('ol li').first();
+        next.click();
+        // back arrow
+    } else if (unicode == 37) {
+        var prev = $('li.playing').prev();
+        if (!prev.length) prev = $('ol li').last();
+        prev.click();
+        // spacebar
+    } else if (unicode == 32) {
+        alert('ok');
+        audio.playPause();
+    }
+});
+
 
 $(document).on('submit', ".form_comments form", function () {
-    alert('test');
         var baseurl = $(this).find("#baseurl").val();
         var usercomment = $(this).find("#usercomment").val();
         var messageid = $(this).find("#messageid").val();
@@ -59,11 +78,60 @@ $(document).on('submit', ".form_comments form", function () {
     });
     
 $(document).ready(function(){
+                            
+     $(".open_player a").click(function(event) {
+        var href = $(this).attr('href');
+        window.open(href, 'popup', 'height=500,width=500,toolbar=no');
+//        return false;
+        event.preventDefault();
+        getPlayer();
+    });
     
     if ($("audio").length > 0){
-        audiojs.events.ready(function() {
-            audiojs.createAll();
+//        audiojs.events.ready(function() {
+//            audiojs.createAll();
+//        });
+//        
+        // Setup the player to autoplay the next track
+        var a = audiojs.createAll({
+          trackEnded: function() {
+            var next = $('ol li.playing').next();
+            if (!next.length) next = $('ol li').first();
+            next.addClass('playing').siblings().removeClass('playing');
+            audio.load($('a', next).attr('data-src'));
+            audio.play();
+          }
         });
+
+        // Load in the first track
+        var audio = a[0];
+        first = $('ol a').attr('data-src');
+        $('ol li').first().addClass('playing');
+        audio.load(first);
+
+        // Load in a track on click
+        $('ol li').click(function(e) {
+          e.preventDefault();
+          $(this).addClass('playing').siblings().removeClass('playing');
+          audio.load($('a', this).attr('data-src'));
+          audio.play();
+        });
+        
+//        audiojs.events.ready(function() {
+//        var as = audiojs.createAll(),
+//            audio = as[0],
+//            ids = ['vol-0', 'vol-10', 'vol-40', 'vol-70', 'vol-100'];
+//        for (var i = 0, ii = ids.length; i < ii; i++) {
+//          var elem = document.getElementById(ids[i]),
+//              volume = ids[i].split('-')[1];
+//          elem.setAttribute('data-volume', volume / 100)
+//          elem.onclick = function(e) {
+//            audio.setVolume(this.getAttribute('data-volume'));
+//            e.preventDefault();
+//            return false;
+//          }
+//        }
+//        });
     }
 
 	$('.iframe').bind('contextmenu', function(e) {

@@ -50,14 +50,16 @@
 		<a href="#"><span class="bt_left"></span><span class="bt_middle">Mettre un album à la une</span><span class="bt_right"></span></a>
 	  </div>
 	  <div class="bt_noir">
-		<a href="#"><span class="bt_left"></span><span class="bt_middle">Ajouter un morceau</span><span class="bt_right"></span></a>
+		<a href="<?php echo site_url().'/pop_in_general/do_upload_musique/'.$session_id; ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter un morceau</span><span class="bt_right"></span></a>
 	  </div>
 	</div>
 
   <div class="content">
     <h2>Musique de <?php echo $login; ?></h2>
     
-    <audio src="<?php echo base_url().'/assets/musique/test.mp3'; ?>" preload="auto"></audio>
+    <div class="open_player" style="float:left; clear:both; width:100%;">
+        <a href="<?php echo site_url().'/mc_musique/player/'.$session_id; ?>">OPEN FRAME</a>
+    </div>
     
 	<div class="a_la_une">
 		<img src="<?php echo img_url('musicien/album_top.jpg'); ?>"/>
