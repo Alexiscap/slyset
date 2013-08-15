@@ -38,7 +38,10 @@
 <div class="content">
     <!--<audio src="<?php echo base_url().'/assets/musique/test.mp3'; ?>" preload="auto"></audio>--> 
     <!--<div class="audiojs " classname="audiojs" id="audiojs_wrapper0">-->
+   
         <audio src="<?php echo base_url().'assets/musique/Tame Impala - Apocalypse Dreams.mp3'; ?>" type="audio/mpeg"  preload="auto" autoplay="autoplay"></audio>
+
+
 <!--        <div class="play-pause">
             <p class="play"></p>
             <p class="pause"></p>
@@ -61,12 +64,15 @@
     <p><a href="#" id="vol-40">Volume: 0.4</a></p>
     <p><a href="#" id="vol-70">Volume: 0.7</a></p>
     <p><a href="#" id="vol-100">Volume: 1.0</a></p>-->
-    <?php foreach ($playlists as $playlist): ?>
-   		<ol>Plyalist : <?php echo $playlist->nom ?>
-   			<?php foreach ($morceaux_playlist as $morceaux):
+    
+    
+    <?php foreach ($playlists[0] as $playlist): ?>
+   		<ol><?php echo ucfirst($this->uri->segment(4));?> : <?php echo $playlist->nom ?>
+   			<?php foreach ($playlists[1] as $morceaux):
    				if($morceaux->nom == $playlist->nom ): ?>
         	
-        			<li>Morceaux<a href="#" data-src="<?php echo base_url().'/assets/musique/Tame Impala - Apocalypse Dreams.mp3'; ?>"><?php echo $morceaux->title_track ?></a></li>
+        			<li>Morceaux<a href="#" data-src="<?php echo base_url().'assets/musique/Jacques Dutronc - Lopportuniste.mp3'; ?>"><?php echo $morceaux->title_track ?></a></li>
+
 				<?php endif; 
 			endforeach;?>
      	</ol>

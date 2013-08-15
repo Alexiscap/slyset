@@ -93,9 +93,11 @@ class Mc_musique extends CI_Controller {
 //        print_r($test);
     }
 
-    public function player($user_id) {
-    
-    	$data['playlists'] = $this->musique_model->get_my_playlist_player($user_id);
+    public function player($user_id,$type = null,$name = null,$name_morceau = null) {    
+    	
+    	//print $type;
+    	$data['playlists'] = $this->musique_model->get_my_playlist_player($user_id,$type,$name,$name_morceau);
+    	//var_dump($data['playlists']);
     	$data['morceaux_playlist'] = $this->musique_model->get_morceau_by_playlist_user($user_id);
 
     	//$unique_playlist = array_unique($playlist);

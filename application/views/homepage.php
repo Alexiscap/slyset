@@ -47,7 +47,8 @@ if (isset($all_date_calendar))
                     <?php // print_r($coverflow_cover); 
                     ?>
             <div>
-                <a href="<?php echo site_url('actualite/' . $coverflow_cover[0]->idU); ?>">
+                 <a href="<?php echo site_url('mc_musique/player/' . $coverflow_cover[0]->idU).'/album'; ?>" class="open_player">
+               <!-- <a href="<?php echo site_url('actualite/' . $coverflow_cover[0]->idU); ?>">-->
                     <img class="coverflow-img" src="<?php echo $thumb = (!empty($coverflow_cover[0]->coverU)) ? files('profiles/' . $coverflow_cover[0]->coverU) : img_url('sidebar-right/default-photo-profil.png'); ?>" />
                     <div class="coverflow_player">
                         <span class="coverflow_player_btn"></span>

@@ -67,5 +67,15 @@ class Melo_playlist extends CI_Controller {
  		$morceau =  $this->input->post('id_morceau');
  		$this->musique_model->add_like_morceau($user,$morceau);
  	}
+ 	
+ 	 
+ 	public function delete_like()
+ 	
+ 	{
+ 		$user = $this->session->userdata('uid');
+ 		$morceau =  $this->input->post('id_morceau');
+ 		$this->musique_model->delete_like_morceau($user,$morceau);
+ 	}
+ 	
 
 }

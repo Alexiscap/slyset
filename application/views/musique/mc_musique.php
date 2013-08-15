@@ -77,7 +77,9 @@ $loger = $this->session->userdata('logged_in');
             <div>
                 <a href="#">
                     <img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
-                    <p> Ecouter l'album</p>
+                        <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/album one'); ?>" class="open_player">
+							<p> Ecouter l'album</p>
+						</a>
                     <img src="<?php echo img_url('common/cadis.png'); ?>"/>
                     <p> Acheter l'album</p>
                 </a>

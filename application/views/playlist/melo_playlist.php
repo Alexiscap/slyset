@@ -348,7 +348,9 @@
 			<hr/>
 			<div class="lecture_pl">
 				<img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
-				<span class="ecouter_pl">Ecouter toute la playlist</span>
+				<a href="<?php echo site_url().'/mc_musique/player/'.$this->session->userdata('uid').'/playlist/'.$playlist->nom; ?>" class="open_player">
+					<span class="ecouter_pl">Ecouter toute la playlist</span>
+				</a>
 			</div>
 		</div>
 		<div class="clear"></div>
@@ -378,12 +380,12 @@
 										<?php if(substr_count($all_my_like,'/'.$morceaux->Morceaux_id.'/')==1)
 										{?>
 										
-												<a href="#" class="coeur_actif"></a>
+												<a href="javascript:void(0)" class="coeur_actif"></a>
 												
 												<?php }
 										if(substr_count($all_my_like,'/'.$morceaux->Morceaux_id.'/')==0)
 
-												{	?>	<a href="#" class="coeur"></a><?php
+												{	?>	<a href="javascript:void(0)" class="coeur"></a><?php
 												}?>
 
 										<a href="#" class="cam"></a>

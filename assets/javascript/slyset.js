@@ -204,8 +204,9 @@ $(document).ready(function(){
     
     if($('body.playlist').length>0)
     {
-    	$('.coeur').click(function()
+    	$('.coeur').live('click',function()
     	{
+    		var coeur = $(this);
     		var id_morceau = $(this).parents('tr').attr('id');
     		datalike = 'id_morceau='+id_morceau;
     		$.ajax({
@@ -213,6 +214,25 @@ $(document).ready(function(){
                 url : base_url +'/melo_playlist/add_like',
                 data: datalike,
                 success: function(){
+                   coeur.addClass('coeur_actif');
+                   coeur.removeClass('coeur')
+                   // $(this_comm).parents('.comm').slideUp();
+                }
+            });
+    	})
+    	
+    	$('.coeur_actif').live('click',function()
+    	{    
+    		var coeur = $(this);
+    		var id_morceau = $(this).parents('tr').attr('id');
+    		datalike = 'id_morceau='+id_morceau;
+    		$.ajax({
+                type: "POST",
+                url : base_url +'/melo_playlist/delete_like',
+                data: datalike,
+                success: function(){
+                  coeur.addClass('coeur');
+                   coeur.removeClass('coeur_actif')
                    // $(this_comm).parents('.comm').slideUp();
                 }
             });
