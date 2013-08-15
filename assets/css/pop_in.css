@@ -50,12 +50,12 @@ body {margin:0;overflow-x:hidden;font-family: 'Trebuchet MS';}
 .pop-in_ta span.info{margin:6px 0 0 50px;}
 .pop-in_ta span.paiement{margin:6px 0 0 26px;}
 .pop-in_ta span.telechargement{margin:6px 0 0 10px;}
-.pop-in_ta span.et_active{color:#2ab395;}
+.pop-in_ta span.et_active{color:#01adbb;}
 .pop-in_ta img{margin:10px 0 21px 20px;width:16px;float:left;cursor:pointer;}
 .pop-in_ta .content-pi {background:#fafafa;width:557px;padding: 25px 0;border:1px solid #e0e4e6;border-left:none;border-right:none;clear:both;}
 .pop-in_ta .content-pi h2{color:#4e4e4e;font-size:18px;font-weight:bold;margin:0 50px 20px;}
 .pop-in_ta .content-pi span{color:#4e4e4e;font-size:16px;margin:0 30px 0 35px;width:75px;text-align:right;}
-.pop-in_ta .content-pi input[type=text]{width:295px;margin:0 0 5px;outline-color:#2ab395;padding:0 5px;}
+.pop-in_ta .content-pi input[type=text]{width:295px;margin:0 0 5px;outline-color:#01adbb;padding:0 5px;}
 .pop-in_ta .content-pi .espace{width:100%;height:40px;}
 .pop-in_ta .content-pi .clear{clear:both;}
 .pop-in_ta .content-pi .en_tete{width:500px;height:60px;background:#e5e7e8;border:1px solid #cccfd1;;border-bottom:none;border-top-left-radius:5px;border-top-right-radius:5px;margin:0 auto;font-size:14px;font-weight:bold;color:#666666;}
@@ -122,7 +122,7 @@ body {margin:0;overflow-x:hidden;font-family: 'Trebuchet MS';}
 
 .pop-in_cent{width:100%;background:#eff4f3;border:1px solid #bbbbbb;border-radius:5px;overflow-x:hidden;margin:0;}
 .pop-in_cent span{text-indent : 20px;height : 50px;padding-top:25px; width : 100%; border-bottom:1px solid #e0e4e6;float:left;font-size:18px;color:#4e4e4e;}
-.content-pi-cent {width:100%; height:calc(100% - 78px);border-left:none;border-right:none;clear:both;background-color:white;}
+.content-pi-cent {width:100%; height:calc(100% - 78px); min-height: 340px; border-left:none;border-right:none;clear:both;background-color:white;}
 .content-pi-cent_success {text-align:center;}
 
 .content-pi-cent .label {width: 123px;float: left;margin: 15px 0 0 0;text-align: right;}
@@ -141,7 +141,7 @@ body {margin:0;overflow-x:hidden;font-family: 'Trebuchet MS';}
 .content-pi-cent .champs #create_ok{width:20px;float: left;margin: 0 0 0 10px;}
 .content-pi-cent .champs #create_ok img{width:65px;height:25px;}
 .content-pi-cent input { height : 25px;border:1px #C0C0C0 solid; box-shadow:0px 0px 5px #e0e4e6 ;}
-.content-pi-cent input:focus { box-shadow:0px 0px 5px #2ab395 ;border: 1px #2ab395 solid;}
+.content-pi-cent input:focus { box-shadow:0px 0px 5px #01adbb ;border: 1px #01adbb solid;}
 .content-pi-cent .champs_heure input{width:50px;padding:0 5px;outline:none;margin:15px 0 0 10px;}
 .content-pi-cent .champs_lieu input{padding:0 5px;outline:none;margin:15px 0 0 10px;}
 .content-pi-cent .champs_prix input{width:50px;padding:0 5px;outline:none;margin:15px 0 0 10px;}
@@ -176,7 +176,7 @@ body {margin:0;overflow-x:hidden;font-family: 'Trebuchet MS';}
 .content-pi_photo .zoom_photo{width: 100%;text-align: center;}
 
 .pop-in_cent .content-pi_photo .name_like{max-width:457px;margin:0 auto;}
-.pop-in_cent .content-pi_photo .commz:focus{box-shadow: 0px 0px 5px #2ab395;border: 1px #2ab395 solid;}
+.pop-in_cent .content-pi_photo .commz:focus{box-shadow: 0px 0px 5px #01adbb;border: 1px #01adbb solid;}
 .pop-in_cent .content-pi_photo input[type="submit"]{float:right;margin:5px 7px 0 0;clear:both;width: auto;min-width: 90px;height: 30px;background:url('../images/common/bt-rouge2.png');color:white;font-weight:bold;font-size:16px;}
 .pop-in_cent .content-pi_photo .comm{max-width:457px;margin:0 auto;}
 .pop-in_cent p.confirm_sup{width: auto;display: inline;margin: 0;padding: 30px 0;float: none;}
@@ -186,3 +186,16 @@ body {margin:0;overflow-x:hidden;font-family: 'Trebuchet MS';}
 /*.pop-in_cent .content-pi-cent form{text-align:center;}*/
 
 /* --------------- FIN POP IN 100% ----------- */
+
+/* POP IN UPLOADIFY */
+.pop-in_cent .uploadify-button-text, .pop-in_cent #userfile-queue span{
+    text-indent: inherit;
+    height: inherit;
+    padding-top: 0;
+    width: inherit;
+    border: none;
+    float: none;
+    font-size: inherit;
+    color: inherit;
+}
+/* FIN POP IN UPLOADIFY */

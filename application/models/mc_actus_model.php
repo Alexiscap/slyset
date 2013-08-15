@@ -67,14 +67,15 @@ class Mc_actus_model extends CI_Model
                               ->count_all_results();
     }
     
-    public function liste_actus($nb = 10, $debut = 0, $user_visited = null)
+//    public function liste_actus($nb = 10, $debut = 0, $user_visited = null)
+    public function liste_actus($limit = 20, $offset = 0, $user_visited = null)
     {
         return $this->db->select('W.*, U.login AS loginU, U.thumb AS thumbU, U.id AS idU')
                         ->from('wall AS W')
                         ->join('utilisateur U', 'U.id = W.Utilisateur_id')
                         ->where('W.wallto_utilisateur_id', (int) $user_visited)
-                        ->limit($nb, $debut)
                         ->order_by('W.id', 'desc')
+                        ->limit($limit, $offset)
                         ->get()
                         ->result();
     }
@@ -93,8 +94,8 @@ class Mc_actus_model extends CI_Model
                         ->from('wall AS A')
                         ->join('commentaires AS B', 'B.Wall_id = A.id')
                         ->join('utilisateur AS U', 'U.id = B.Utilisateur_id')
-//                        ->limit($nb, $debut)
                         ->order_by('B.id', 'asc')
+//                        ->limit($nb, $debut)
                         ->get()
                         ->result();
     }

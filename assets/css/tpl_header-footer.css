@@ -9,7 +9,7 @@ header + div{ padding-top:53px; }
 #header #logo{ width:170px; height:52px; float:left; }
 #header #ico_menu{ float:left; margin:0 0 0 40px; /*width:245px;*/ }
 #header #ico_menu a span{ text-indent:-50000px; display:inline-block; }
-#header #ico_menu a{ float:left; display:block; height:52px; width:60px; background:url("../images/header/menu.png") no-repeat; margin:0; border:0; border-right:2px solid #585959; padding:0 10px; }
+#header #ico_menu a{ float:left; display:block; height:52px; width:60px; background:url("../images/header/menu2.png") no-repeat; margin:0; border:0; border-right:2px solid #585959; padding:0 10px; }
 #header #ico_menu a:last-child{ border-right:none; }
 
 #header #ico_menu #accueil{ background-position:0 0; }
@@ -20,15 +20,18 @@ header + div{ padding-top:53px; }
 #header #ico_menu #explorer:hover{ background-position:-85px -50px; }
 #header #ico_menu #inscrire:hover{ background-position:-170px -50px; }
 /*#header #separe{ margin:0 10px; }*/
-#header #connexion{ height:100%; float:right; }
+#header #connexion{ height:100%; float:left; }
 #header #identification{ margin:0 25px 0 0; height:100%; float:left; }
 #header #identification a{ margin:0; padding:0; display:inline-block; height:100%; line-height:52px; font-size:14px; text-decoration:none; color:#eaebec; }
 #header #identification a:hover{ text-decoration:underline; }
-#header #recherche{ margin:11px 20px 11px 0; height:30px; border-radius:20px; background:#e9e9e9; float:right; }
+#header #recherche{ margin:14px 20px 13px 0; height:25px; border-radius:20px; background:#e9e9e9; float:left; }
 #header #recherche form{ width:100%; position:relative; }
-#header #recherche input[type=text]{ height:28px; border-radius:20px; width:170px; color:#afafaf; background:#e9e9e9; outline:none; padding-left:10px; border:0; display:inline-block; float:left; }
-#header #recherche input[type=image]{ height:30px; width:35px; padding-left:10px; margin:0; top:0; display:inline-block; float:left; }
-
+#header #recherche input[type="text"]{ padding:0 8px 0 0; height:25px; border-radius:20px; width:175px; color:#afafaf; background:transparent; font-style:italic; outline:none; padding-left:10px; border:0; display:inline-block; float:left; }
+#header #recherche input[type="image"]{ height:12px; width:12px; padding:7px 0 6px 10px; margin:0; top:0; display:inline-block; float:left; }
+#header #recherche input[type="text"]::-webkit-input-placeholder{ color:#757474; }
+#header #recherche input[type="text"]:-moz-placeholder{ color:#757474; }
+#header #recherche input[type="text"]::-moz-placeholder{ color:#757474; }
+#header #recherche input[type="text"]:-ms-input-placeholder{ color:#757474; }
 
 /*
 * FOOTER

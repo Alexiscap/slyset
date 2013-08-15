@@ -11,6 +11,7 @@ class Mc_actus extends CI_Controller {
         parent::__construct();
         
         $this->layout->ajouter_css('slyset');
+        $this->layout->ajouter_js('infinite_scroll');
         $this->layout->ajouter_js('jquery.easing.min');
 
         $this->load->helper(array('form', 'comments_helper'));
@@ -157,7 +158,7 @@ class Mc_actus extends CI_Controller {
             $logged_in = $this->session->userdata('logged_in');
             if ($logged_in == 1) {
                 $this->mc_actus_model->insert_actus($message, $lien, $photo, $user_visited);
-                redirect('mc_actus/' . $user_visited, 'refresh');
+                redirect('actualite/' . $user_visited, 'refresh');
             } else {
                 redirect('login', 'refresh');
             }
@@ -170,6 +171,20 @@ class Mc_actus extends CI_Controller {
         echo $this->mc_actus_model->insert_comments();
     }
 
+    public function ajax_actus($uid, $offset = null) {
+//        $user_visited = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id;
+       $data = $this->data; 
+        
+        if ($this->mc_actus_model->liste_actus(10, $offset, $uid)) {
+//            $data['articles'] = $this->article_model->liste_article(20, $offset);
+            $data['messages'] = $this->mc_actus_model->liste_actus(10, $offset, $uid);
+
+            $this->load->view('wall/mc_actus_ajax', $data);
+        } else {
+//          echo 'End';
+        }
+    }
+    
     public function handle_upload_photo() {
         if (isset($_FILES['photo']) && !empty($_FILES['photo']['name'])) {
             if ($this->upload->do_upload('photo')) {
@@ -199,21 +214,21 @@ class Mc_actus extends CI_Controller {
     }
 
     public function delete($message_id) {
-        $user_id = $this->user_infos->uri_user();
-        $infos_profile = $this->user_model->getUser($user_id);
-        $user_visited = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id;
+//        $user_id = $this->user_infos->uri_user();
+        $user_id = $this->session->userdata('uid');
+//        $infos_profile = $this->user_model->getUser($user_id);
+//        $user_visited = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id;
 
         $this->mc_actus_model->delete_actus($message_id);
-        redirect('actualite/' . $user_visited, 'refresh');
+        redirect('actualite/' . $user_id, 'refresh');
     }
 
-    public function delete_comment($comment_id) {
-        $user_id = $this->user_infos->uri_user();
-        $infos_profile = $this->user_model->getUser($user_id);
-        $user_visited = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id;
-
+    public function delete_comment($user_id, $comment_id) {
+//        $user_id = $this->user_infos->uri_user();
+//        $infos_profile = $this->user_model->getUser($user_id);
+//        $user_visited = (empty($infos_profile)) ? $this->session->userdata('uid') : $user_id;
         $this->mc_actus_model->delete_comments($comment_id);
-        redirect('actualite/' . $user_visited, 'refresh');
+        redirect('actualite/' . $user_id, 'refresh');
     }
 
 }

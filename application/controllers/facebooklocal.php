@@ -8,7 +8,7 @@ class Facebooklocal extends CI_Controller {
     function __construct() {
         parent::__construct();
         
-        $this->load->model('facebook_Model');
+        $this->load->model('facebook_model');
     }
 
     public function index() {

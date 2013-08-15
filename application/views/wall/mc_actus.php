@@ -3,8 +3,7 @@
     $uid = (empty($session_id)) ? '' : $session_id;
     $uid_visit = $this->uri->segment(2);
     $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
-	$loger = $this->session->userdata('logged_in'); 
-
+    $loger = $this->session->userdata('logged_in'); 
 ?>
 
 <div id="contentAll">
@@ -136,8 +135,8 @@
                             </div>
                             <div class="com_right">
                                 <div class="com_top">
-                                    <?php if($uid_visit == $uid): ?>
-                                        <a href="<?php echo site_url('mc_actus/delete_comment/'.$commentaire->idB); ?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                                    <?php if($uid_visit == $uid || $commentaire->utilisateuridB == $uid): ?>
+                                        <a href="<?php echo site_url('mc_actus/delete_comment/'.$uid_visit.'/'.$commentaire->idB); ?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
                                     <?php endif; ?>
                                 </div>
                                 <div class="com_bottom">
@@ -149,16 +148,18 @@
                     <?php endif; ?>
                 <?php endforeach; ?>
               
-                <div class="form_comments">
-                    <form action="" method="post">
-                        <input type="text" name="usercomment" id="usercomment" placeholder="Ajoutez votre commentaire..." />
-                        <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
-                        <input type="hidden" name="messageid" value="<?php echo $message->id; ?>" id="messageid" />
+                <?php if(isset($loger) && $loger == 1): ?>
+                    <div class="form_comments">
+                        <form action="" method="post">
+                            <input type="text" name="usercomment" id="usercomment" placeholder="Ajoutez votre commentaire..." />
+                            <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
+                            <input type="hidden" name="messageid" value="<?php echo $message->id; ?>" id="messageid" />
 
-                        <input type="submit" value="Envoyer" />
-                    </form>
-                    <div class="ajax_loader"></div>
-                </div>
+                            <input type="submit" value="Envoyer" />
+                        </form>
+                        <div class="ajax_loader"></div>
+                    </div>
+                <?php endif; ?>
             </div>
         <?php elseif(!empty($message->photo) && empty($message->video)): ?>
             <div class="artist_post photo_message">
@@ -200,8 +201,8 @@
                             </div>
                             <div class="com_right">
                                 <div class="com_top">
-                                    <?php if($uid_visit == $uid): ?>
-                                        <a href="<?php echo site_url('mc_actus/delete_comment/'.$commentaire->idB); ?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                                    <?php if($uid_visit == $uid || $commentaire->utilisateuridB == $uid): ?>
+                                        <a href="<?php echo site_url('mc_actus/delete_comment/'.$uid_visit.'/'.$commentaire->idB); ?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
                                     <?php endif; ?>
                                 </div>
                                 <div class="com_bottom">
@@ -213,16 +214,18 @@
                     <?php endif; ?>
                 <?php endforeach; ?>
 
-                <div class="form_comments">
-                    <form action="" method="post">
-                        <input type="text" name="usercomment" id="usercomment" placeholder="Ajouter votre commentaire..." />
-                        <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
-                        <input type="hidden" name="messageid" value="<?php echo $message->id; ?>" id="messageid" />
+                <?php if(isset($loger) && $loger == 1): ?>
+                    <div class="form_comments">
+                        <form action="" method="post">
+                            <input type="text" name="usercomment" id="usercomment" placeholder="Ajouter votre commentaire..." />
+                            <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
+                            <input type="hidden" name="messageid" value="<?php echo $message->id; ?>" id="messageid" />
 
-                        <input type="submit" value="Envoyer" />
-                    </form>
-                    <div class="ajax_loader"></div>
-                </div>
+                            <input type="submit" value="Envoyer" />
+                        </form>
+                        <div class="ajax_loader"></div>
+                    </div>
+                <?php endif; ?>
             </div>
         <?php elseif(empty($message->photo) && !empty($message->video)): ?>
             <div class="artist_post video_message">
@@ -268,8 +271,8 @@
                             </div>
                             <div class="com_right">
                                 <div class="com_top">
-                                    <?php if($uid_visit == $uid): ?>
-                                        <a href="<?php echo site_url('mc_actus/delete_comment/'.$commentaire->idB); ?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
+                                    <?php if($uid_visit == $uid || $commentaire->utilisateuridB == $uid): ?>
+                                        <a href="<?php echo site_url('mc_actus/delete_comment/'.$uid_visit.'/'.$commentaire->idB); ?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
                                     <?php endif; ?>
                                 </div>
                                 <div class="com_bottom">
@@ -281,21 +284,23 @@
                     <?php endif; ?>
                 <?php endforeach; ?>
               
-                <div class="form_comments">
-                    <form action="" method="post">
-                        <input type="text" name="usercomment" id="usercomment" placeholder="Ajouter votre commentaire..." />
-                        <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
-                        <input type="hidden" name="messageid" value="<?php echo $message->id; ?>" id="messageid" />
+                <?php if(isset($loger) && $loger == 1): ?>
+                    <div class="form_comments">
+                        <form action="" method="post">
+                            <input type="text" name="usercomment" id="usercomment" placeholder="Ajouter votre commentaire..." />
+                            <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
+                            <input type="hidden" name="messageid" value="<?php echo $message->id; ?>" id="messageid" />
 
-                        <input type="submit" value="Envoyer" />
-                    </form>
-                    <div class="ajax_loader"></div>
-                </div>
+                            <input type="submit" value="Envoyer" />
+                        </form>
+                        <div class="ajax_loader"></div>
+                    </div>
+                <?php endif; ?>
             </div>
         <?php endif; ?>
     <?php endforeach; ?>
     
-    <div class="ajax_loader"></div>
+    <div class="ajax_loader2"></div>
     
 <!--   <p>___________________________________</p>
     

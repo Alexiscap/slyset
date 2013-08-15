@@ -62,7 +62,7 @@ class User extends CI_Controller {
     }
 
     public function register_step_2fb() {
-        $this->form_validation->set_rules('typeaccount', 'Type de compte', 'required');
+        $this->form_validation->set_rules('typeaccount', 'Type de compte', '');
 
         $fb_data = $this->session->userdata('fb_data');
         print_r($fb_data);
@@ -77,7 +77,7 @@ class User extends CI_Controller {
 
     public function register_step_3() {
         $fb_data = $this->session->userdata('fb_data');
-
+        
         $dynamic_path = './files/profiles/';
         if (is_dir($dynamic_path) == false) {
             mkdir($dynamic_path, 0755, true);
@@ -91,7 +91,7 @@ class User extends CI_Controller {
         $this->load->library('upload', $config);
 
         $data = array('fb_data' => $fb_data);
-//        print_r($fb_data);
+        print_r($fb_data);
         //echo '<pre>'.print_r($fb_data).'</pre>';
 //        $this->form_validation->set_rules('nom', 'Nom', 'trim|required|xss_clean');
 //        $this->form_validation->set_rules('prenom', 'Prénom', 'trim|required|xss_clean');
@@ -185,9 +185,10 @@ class User extends CI_Controller {
                     break;
             }
 
-            $this->user_model->insert_user($facebook_id, $login, $mail, $password, $type, $nom, $prenom, $naissance, $genre, $ville, $pays, $stylemusicecoute, $stylemusicjoue, $stylemusicinstru, $cover, $thumb);
-
-            redirect('login', 'refresh');
+print 'coucou !!!';
+//            $this->user_model->insert_user($facebook_id, $login, $mail, $password, $type, $nom, $prenom, $naissance, $genre, $ville, $pays, $stylemusicecoute, $stylemusicjoue, $stylemusicinstru, $cover, $thumb);
+//
+//            redirect('login', 'refresh');
         }
     }
 

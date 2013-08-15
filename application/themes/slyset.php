@@ -11,7 +11,7 @@
         <meta name="description" content="<?php echo $desc = (isset($description)) ? $description : 'Description Slyset'; ?>" />
         <meta name="keywords" content="slyset, project web, social networks, music, réseau social, réseau social musical, musique, écoute, artiste, efficom, projet" />
 
-        <link type="text/css" rel="stylesheet" href="<?php echo css_url('reset') ?>" />
+        <link type="text/css" rel="stylesheet" href="<?php echo css_url('reset') ?>" />        
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_header-footer') ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_sidebar-left') ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_sidebar-right') ?>" />
@@ -28,12 +28,9 @@
           <link type="text/css" rel="stylesheet" href="<?php echo css_url('corrections-ie') ?>" />
         <![endif]-->
 
-        <script type="text/javascript" src="<?php echo js_url('jquery-1.7.1.min') ?>"></script>
-        <script type="text/javascript" src="<?php echo js_url('modernizr.custom.63321') ?>"></script>
-
-        <?php foreach ($js as $url): ?>
-            <script type="text/javascript" src="<?php echo $url; ?>"></script> 
-        <?php endforeach; ?>
+<!--<script type="text/javascript" src="<?php echo js_url('jquery-1.7.1.min') ?>"></script>-->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <!--<script type="text/javascript" src="<?php echo js_url('modernizr.custom.63321') ?>"></script>-->
     </head>
 
     <body <?php if (isset($id_bkg)) echo 'class="' . $id_bkg . '"'; ?>>
@@ -46,9 +43,9 @@
                 <div id="ico_menu">
                     <a href="<?php echo site_url('home/' . $this->session->userdata('uid')); ?>" id="accueil"><span>Accueil</span></a>
                     <a href="#" id="explorer"><span>Rechercher</span></a>
-                        <?php if ($this->session->userdata('logged_in') != 1): ?>
-                            <a href="<?php echo site_url('user'); ?>" id="inscrire"><span>S'inscrire</span></a>
-                        <?php endif; ?>
+                    <?php if ($this->session->userdata('logged_in') != 1): ?>
+                        <a href="<?php echo site_url('user'); ?>" id="inscrire"><span>S'inscrire</span></a>
+                    <?php endif; ?>
 
                     <div id="execution-times">
                         <p><?php echo $this->benchmark->memory_usage(); ?></p>
@@ -57,27 +54,28 @@
                 </div>
 
                 <div id="connexion">
-                    <div id="identification">
-                        <?php if ($this->session->userdata('logged_in') == 1): ?>
-                            <a href="<?php echo site_url('home/' . $this->session->userdata('uid')) ?>"><?php echo $this->session->userdata('login'); ?></a> | <a href="<?php echo site_url('login/logout'); ?>">Se déconnecter</a>
-                        <?php else: ?>
-                            <a href="<?php echo site_url('login'); ?>">Se connecter</a>
-                        <?php endif; ?>
-                    </div>
-
                     <div id="recherche">
                         <?php $val = (!empty($_POST['recherche'])) ? $_POST['recherche'] : ''; ?>
                         <form action="<?php echo site_url('search/' . $this->session->userdata('uid')); ?>" method="post">
-                            <input type="text" value="<?php print $val; ?>" placeholder="Recherche rapide" name="recherche" />
                             <input src="<?php echo img_url('header/loupe.png') ?>" type="image" value="submit" align="middle"/>
+                            <input type="text" value="<?php print $val; ?>" placeholder="Rechercher un artiste..." name="recherche" />
+
                         </form>
+                    </div>
+
+                    <div id="identification">
+                        <?php if ($this->session->userdata('logged_in') == 1): ?>
+                            <a href="<?php echo site_url('home/' . $this->session->userdata('uid')) ?>"><?php echo $this->session->userdata('login'); ?></a> | <a href="<?php echo site_url('login/logout'); ?>">Déconnexion</a>
+                        <?php else: ?>
+                            <a href="<?php echo site_url('login'); ?>">Connexion</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
         </header>
 
         <div id="any-background<?php if (isset($id_bkg)) echo '-' . $id_bkg; ?>">
-            <div id="page">
+            <div id="page">                
                 <?php if (isset($sidebar_left)) echo $sidebar_left; ?>
 
                 <?php if (isset($output)) echo $output; ?>
@@ -139,7 +137,12 @@
             </div>
         </footer>
 
-        <script type="text/javascript" src="<?php echo js_url('slyset') ?>"></script>
+        <?php foreach ($js as $url): ?>
+            <script type="text/javascript" src="<?php echo $url; ?>"></script> 
+        <?php endforeach; ?>
+
+        <script type="text/javascript" src="<?php echo js_url('audiojs/audio') ?>"></script>
         <script type="text/javascript" src="<?php echo js_url('jquery.placeheld.min') ?>"></script>
+        <script type="text/javascript" src="<?php echo js_url('slyset') ?>"></script>
     </body>
 </html>

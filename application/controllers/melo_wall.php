@@ -12,6 +12,7 @@ class Melo_wall extends CI_Controller {
 
         $this->layout->ajouter_css('slyset');
         
+        $this->layout->ajouter_js('infinite_scroll');
         $this->layout->ajouter_js('jquery.easing.min');
         
         $this->load->model(array('user_model', 'mc_actus_model', 'melo_actus_model'));
@@ -62,7 +63,7 @@ class Melo_wall extends CI_Controller {
         }
         
         $listforin_sql = substr($listforin, 0, -1);
-        $data['data_all_wall'] = $this->melo_actus_model->get_entities_id($listforin_sql, $user_id);
+        $data['data_all_wall'] = $this->melo_actus_model->get_entities_id(10, 0, $listforin_sql, $user_id);
 
         $a = 0;
         if (isset($data['data_all_wall'])) {
@@ -82,14 +83,14 @@ class Melo_wall extends CI_Controller {
         $data_follow = $this->melo_actus_model->get_following($user_id);
         
         $listforin = "";
-        $datas['info_user'] = $this->melo_actus_model->get_info_user($user_id);
+        $data['info_user'] = $this->melo_actus_model->get_info_user($user_id);
         
         foreach ($data_follow as $following) {
             $listforin .= $following->Utilisateur_id . ',';
         }
         
         $listforin_sql = substr($listforin, 0, -1);
-
+        print $listforin_sql.'__'.$user_id.'<br/>';
         $result = $this->melo_actus_model->difference($listforin_sql, $user_id);
         if (isset($result)) {
             foreach ($result as $id) {
@@ -126,6 +127,29 @@ class Melo_wall extends CI_Controller {
                     }
                 }
             }
+        }
+    }
+    
+    public function ajax_actus($uid, $offset = null) {
+        $data = $this->data; 
+        
+        $data_follow = $this->melo_actus_model->get_following($uid);
+        $listforin = "";
+        $data['info_user'] = $this->melo_actus_model->get_info_user($uid);
+        
+        foreach ($data_follow as $following) {
+            $listforin .= $following->Utilisateur_id . ',';
+        }
+        
+        $listforin_sql = substr($listforin, 0, -1);
+//        $data['data_all_wall'] = $this->melo_actus_model->get_entities_id(3, 0, $listforin_sql, $user_id);
+        
+        if ($this->melo_actus_model->get_entities_id(10, $offset, $listforin_sql, $uid)) {
+            $data['data_all_wall'] = $this->melo_actus_model->get_entities_id(10, $offset, $listforin_sql, $uid);
+
+            $this->load->view('wall/melo_actu_ajax', $data);
+        } else {
+//          echo 'End';
         }
     }
 

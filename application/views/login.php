@@ -3,6 +3,7 @@
 <div class="step-form">
 
   <?php
+    echo $this->session->flashdata('validation');
     echo form_open('login/login_all');
   ?>
 

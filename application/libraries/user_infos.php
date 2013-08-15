@@ -19,8 +19,10 @@ class User_infos
       
         if($this->obj->uri->segment(2) === FALSE && !is_numeric($this->obj->uri->segment(2))){
             $user_id = NULL;
+            print_r('coucou');
         } else {
             $user_id = $this->obj->uri->segment(2);
+            print_r('coucou2');
 //            $this->profile_user($user_id);
             
             return true;

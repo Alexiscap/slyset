@@ -52,6 +52,7 @@
             <!--<div class="upload_images"></div>-->
 
             <?php $label_attributes = array('class'=>'label_big'); ?>
+            <?php $label_attributes_password = array('class'=>'label_big label_password'); ?>
             
             <?php echo form_label('Votre photo','thumb', $label_attributes); ?>
             <div class="preview_upload thumb" style="background-image:url(<?php echo files('profiles/'.$this->session->userdata('thumb')); ?>);"></div>
@@ -97,6 +98,18 @@
             echo form_textarea('description', $profile->description,'placeholder="Votre description"');
             echo form_error('description', '<span class="error-form">', '</span>');
 
+            echo '<hr>';
+            
+            echo form_label('Nouveau mot de passe', 'password', $label_attributes_password);
+            echo form_password('password','','placeholder="Mot de passe"');
+            echo '<div class="ico-placeholder password"></div>';
+
+            echo form_label('Confirmer mot de passe', 'confpassword', $label_attributes_password);
+            echo form_password('confpassword','','placeholder="Confirmer mot de passe"');
+            echo '<div class="ico-placeholder password"></div>';
+            echo form_error('password', '<span class="error-form">', '</span>');
+            echo form_error('confpassword', '<span class="error-form">', '</span>');
+            
             echo '<hr>';
 
             $array_ecoute = explode(', ', $profile->style_ecoute);

@@ -55,12 +55,14 @@ class Melo_reglages extends CI_Controller {
     }
 
     public function update_user($infos_profile = NULL) {
+        $this->load->library('encrypt');
+        
         $uid = $this->session->userdata('uid');
         $this->user_id = $this->uri->segment(3);
         
         $data = $this->data;
-        $data['profile'] = $this->user_model->getUser($this->user_id);
-
+        $data['profile'] = $this->user_model->getUser($this->user_id);        
+        
         $dynamic_path = './files/profiles/';
         if (is_dir($dynamic_path) == false) {
             mkdir($dynamic_path, 0755, true);
@@ -81,6 +83,8 @@ class Melo_reglages extends CI_Controller {
         $this->form_validation->set_rules('email', 'Email', 'trim|xss_clean|valid_email');
         $this->form_validation->set_rules('description', 'Bio', 'trim|xss_clean');
         $this->form_validation->set_rules('stylemusicecoute', 'Genre musicaux', '');
+        $this->form_validation->set_rules('password', 'Mot de passe', 'trim|xss_clean|matches[confpassword]');
+        $this->form_validation->set_rules('confpassword', 'Confirmer mot de passe', 'trim|xss_clean');
         $this->form_validation->set_rules('submit', 'Modification du compte', '');
 
         if ($this->form_validation->run() == FALSE) {
@@ -96,15 +100,30 @@ class Melo_reglages extends CI_Controller {
             $this->session->set_userdata('login', $login);
 
             $nom = $this->input->post('nom');
+            $this->session->set_userdata('nom', $nom);
+            
             $prenom = $this->input->post('prenom');
+            $this->session->set_userdata('prenom', $prenom);
+            
             $email = $this->input->post('email');
+            $this->session->set_userdata('email', $email);
+            
             $description = $this->input->post('description');
+            $this->session->set_userdata('description', $description);
+            
+            
+            $password_input = $this->input->post('password');
+            if($password_input == ""){
+                $password = $data['profile']->password;
+            } else {
+                $password = $this->encrypt->sha1($password_input);
+                $confpassword = $this->input->post('confpassword');
+            }
 
             $array_stylemusicecoute = $this->input->post('stylemusicecoute');
             $stylemusicecoute = join(', ', $array_stylemusicecoute);
 
-
-            $this->user_model->update_melomane($login, $description, $nom, $prenom, $email, $stylemusicecoute, $cover, $thumb);
+            $this->user_model->update_melomane($login, $password, $description, $nom, $prenom, $email, $stylemusicecoute, $cover, $thumb);
 
             redirect('my-reglages/' . $uid, 'refresh');
         }

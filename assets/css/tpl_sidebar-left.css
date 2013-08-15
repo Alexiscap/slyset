@@ -4,7 +4,7 @@ aside .row{ width:168px; height:35px; border:1px solid #d9dadb; border-top:none;
 aside .row.head_menu{ background:url("../images/sidebar-left/sprite_bkg_menu-compte.png") no-repeat 0 0; }
 aside .row.head_menu:hover{ background-position:0 -36px; }
 aside .row a{ display:inline-block; width:100%; height:100%; text-decoration:none; line-height:35px; font-size:12px; color:#878d95; float:left; }
-aside .row a:hover, aside .row a.active{ color:#2ab395; }
+aside .row a:hover, aside .row a.active{ color:#01adbb; }
 aside .row.head_menu a{ font-size:14px; color:#ffffff; }
 
 /*
@@ -42,7 +42,7 @@ aside #identification-block .forgot_password{ margin:6px 0; display:block; width
 aside #identification-block .forgot_password:hover{ text-decoration:underline; }
 aside #identification-block .form_error{ margin:5px 0 0 5px; display:block; width:100%; font-family:"Myriad Pro", "Trebuchet MS", sans-serif; font-weight:normal; font-size:13px; color:#e15f4e; float:left; clear:both; }
 aside #identification-block .identification-inscrire{ margin:15px 0 6px 5px; display:block; font-family:"Myriad Pro", "Trebuchet MS", sans-serif; font-weight:normal; font-size:13px; color:#888D95; float:left; clear:both; }
-aside #identification-block .identification-inscrire a{ display:block; text-decoration:none; color:#00a69c; float:left; clear:both; }
+aside #identification-block .identification-inscrire a{ display:block; text-decoration:none; color:#01adbb; float:left; clear:both; }
 aside #identification-block .identification-inscrire a:hover{ text-decoration:underline; }
 /*
 * SIDEBAR LEFT - MENU MY PAGE

@@ -23,11 +23,140 @@ function playMasonry(){
     });
 }
 
+// Keyboard shortcuts
+$(document).keydown(function(e) {
+    var unicode = e.charCode ? e.charCode : e.keyCode;
+    // right arrow
+    if (unicode == 39) {
+        var next = $('li.playing').next();
+        if (!next.length) next = $('ol li').first();
+        next.click();
+    // back arrow
+    } else if (unicode == 37) {
+        var prev = $('li.playing').prev();
+        if (!prev.length) prev = $('ol li').last();
+        prev.click();
+    // spacebar
+    } else if (unicode == 32) {
+        alert('ok');
+        audio.playPause();
+    }
+});
 
+
+$(document).on('submit', ".form_comments form", function(){
+    var baseurl = $(this).find("#baseurl").val();
+    var usercomment = $(this).find("#usercomment").val();
+    var messageid = $(this).find("#messageid").val();
+    var thisParent = $(this).parent();
+    var dataString = 'usercomment=' + usercomment + '&messageid=' + messageid;
+
+    if(usercomment == '' || messageid == ''){
+        alert('Veuillez renseigner un message !');
+    } else {
+        var ajaxLoader = $(this).parent().find(".ajax_loader");
+            
+        ajaxLoader.show();
+        ajaxLoader.fadeIn(500).html('<img src="'+baseurl+'assets/images/common/ajax-loader.gif" />Loading Comment...');
+
+        $(this).find("#usercomment").val("");
+            
+        $.ajax({
+            type: "POST",
+            url : baseurl + 'index.php/mc_actus/form_wall_user_comment/',
+            data: dataString,
+
+            success: function(comment){
+                $(comment).hide().insertBefore(thisParent).slideDown('slow');
+                ajaxLoader.fadeOut(1000);
+            }
+        })
+            
+        return false;
+    }
+});
+   
 
 $(document).ready(function(){
+    if($(".iframe, .iframe-upload, .bigiframe").length > 0){
+        $(".iframe").colorbox({
+            iframe:true, 
+            width:"45%", 
+            height:"65%",
+            onClosed:function(){
+                //$('.content').load('30 .content');
+            }
+        });
 
-	$('.iframe').bind('contextmenu', function(e) {
+        $(".iframe-upload").colorbox({
+            iframe:false, 
+            width:"45%", 
+            height:"65%"
+        });
+
+        $(".bigiframe").colorbox({
+            iframe:true, 
+            width:"65%", 
+            height:"85%"
+        });
+    }
+                            
+    $(".open_player").click(function(event) {
+        var href = $(this).attr('href');
+        window.open(href, 'popup', 'height=500,width=500,toolbar=no');
+        //        return false;
+        event.preventDefault();
+        getPlayer();
+    });
+    
+    if ($("audio").length > 0){
+        //        audiojs.events.ready(function() {
+        //            audiojs.createAll();
+        //        });
+        //        
+        // Setup the player to autoplay the next track
+        var a = audiojs.createAll({
+            trackEnded: function() {
+                var next = $('ol li.playing').next();
+                if (!next.length) next = $('ol li').first();
+                next.addClass('playing').siblings().removeClass('playing');
+                audio.load($('a', next).attr('data-src'));
+                audio.play();
+            }
+        });
+
+       // Load in the first track
+        var audio = a[0];
+        first = $('ol a').attr('data-src');
+        $('ol li').first().addClass('playing');
+        audio.load(first);
+
+        // Load in a track on click
+        $('ol li').click(function(e) {
+            e.preventDefault();
+            $(this).addClass('playing').siblings().removeClass('playing');
+            audio.load($('a', this).attr('data-src'));
+            audio.play();
+        });
+        
+    //        audiojs.events.ready(function() {
+    //        var as = audiojs.createAll(),
+    //            audio = as[0],
+    //            ids = ['vol-0', 'vol-10', 'vol-40', 'vol-70', 'vol-100'];
+    //        for (var i = 0, ii = ids.length; i < ii; i++) {
+    //          var elem = document.getElementById(ids[i]),
+    //              volume = ids[i].split('-')[1];
+    //          elem.setAttribute('data-volume', volume / 100)
+    //          elem.onclick = function(e) {
+    //            audio.setVolume(this.getAttribute('data-volume'));
+    //            e.preventDefault();
+    //            return false;
+    //          }
+    //        }
+    //        });
+    }
+
+  $('.iframe').bind('contextmenu', function(e) {
   	  	return false;
 	}); 
 	
@@ -40,48 +169,44 @@ $(document).ready(function(){
 	var css_new = '-22px ' + css_init.slice(4,10);
 	
 	$('aside').find('#'+ class_current + ' .icon').css('background-position',css_new)
-	$('aside').find('#'+ class_current + ' a').css('color','#2ab395')
+	$('aside').find('#'+ class_current + ' a').css('color','#01adbb')
 	}
 	
 	//affichage bloc contenu side bar de droite
-    if($('body.followers').length>0||$('body.abonnements').length>0||$('body.melo_actu').length>0||$('body.reglages').length>0||$('body.achats').length>0||$('body.concert_melo').length>0||$('body.musicien_actus').length>0||$('body.concert_mu').length>0||$('body.partitions').length>0||$('body.stats').length>0||$('body.personnaliser').length>0)
+
+   if($('body.followers').length>0||$('body.abonnements').length>0||$('body.melo_actu').length>0||$('body.reglages').length>0||$('body.achats').length>0||$('body.concert_melo').length>0||$('body.musicien_actus').length>0||$('body.concert_mu').length>0||$('body.partitions').length>0||$('body.stats').length>0||$('body.personnaliser').length>0)
     {
-  		$('#top_titre').show();
-    	$('#last_photo').show();
-    	$('#reseaux_ailleur').show();
+        $('#top_titre').show();
+        $('#last_photo').show();
+        $('#reseaux_ailleur').show();
     }
     
     if($('body.photos_videos').length>0)
     {
-    	$('#top_titre').show();
-  		//  $('#last_photo').show();
-    	$('#reseaux_ailleur').show();
+        $('#top_titre').show();
+        //  $('#last_photo').show();
+        $('#reseaux_ailleur').show();
     	
-    	$('.del').click(function(){
-    	var this_comm = $(this);
-    		id_comm  = $(this).attr('id');
-    		dataid = 'id_comm='+id_comm;
-    		 $.ajax({
-            type: "POST",
-            url : base_url +'/mc_photos/delete_comment',
-            data: dataid,
-            success: function(){
-    		$(this_comm).parents('.comm').slideUp();
-            }
+        $('.del').click(function(){
+            var this_comm = $(this);
+            id_comm  = $(this).attr('id');
+            dataid = 'id_comm='+id_comm;
+            $.ajax({
+                type: "POST",
+                url : base_url +'/mc_photos/delete_comment',
+                data: dataid,
+                success: function(){
+                    $(this_comm).parents('.comm').slideUp();
+                }
+            });
         });
-
-    	});
     }
 
-    if($('body.playlist').length>0||$('body.musique').length>0)
-    {
-  		//  $('#top_titre').show();
-    	$('#last_photo').show();
-    	$('#reseaux_ailleur').show();
+    if($('body.playlist').length>0||$('body.musique').length > 0){
+        //  $('#top_titre').show();
+        $('#last_photo').show();
+        $('#reseaux_ailleur').show();
     }
-
-
-
 
 	$('.mise-panier').click(function(){
 
@@ -92,24 +217,24 @@ $(document).ready(function(){
 
         var dataid = 'prix=' + prix + '&&doc_id=' + doc_id + '&&nom=' + nom;
         //infos necessaire : prix  (children)
-       // prix
+        // prix
         //type (partition ou parole)
         //morceau nom (children)
         //Utilisateur_id -> session
-	 $.ajax({
+        $.ajax({
             type: "POST",
             url : base_url +'/mc_partitions/panier',
             data: dataid,
             success: function(datas){
-              	$(la_cmd).text('Au Panier');
+                $(la_cmd).text('Au Panier');
             }
         })
-	
-	});
-
+    });
 
     $('.head_menu').click(function(){
-          
+         
+     	//            $(this).next('.one').stop();
+        //$('.head_menu').next('.first-row').slideUp()
         if($(this).next('.one').is(":visible") == true){
             $(this).next('.one').stop(true).slideToggle(500);
         } else {
@@ -121,7 +246,7 @@ $(document).ready(function(){
     //ajout_paroles ajout_partitions
     if($("body.ajout_paroles").length > 0){
 
-    	$("select").change(function () {
+			$("select").change(function () {
         	$("select option:selected")
         	var str = "";
         	var id_album = $("select option:selected").attr('class');
@@ -140,24 +265,23 @@ $(document).ready(function(){
 	}
 
    if($("body.ajout_partitions").length > 0){
-
-    $("select").change(function () {
-        $("select option:selected")
-        var str = "";
-        var id_album = $("select option:selected").attr('class');
-        var dataid = 'id_album=' + id_album;
+        $("select").change(function () {
+            $("select option:selected")
+            var str = "";
+            var id_album = $("select option:selected").attr('class');
+            var dataid = 'id_album=' + id_album;
         
-        $.ajax({
-            type: "POST",
-            url : base_url +'/pi_ajout_partitions/get_morceaux',
-            data: dataid,
-            success: function(datas){
-                $('.mor').remove();
-                $(datas).show().insertAfter('select').slideDown('slow');
-            }
-        })
-    });
-}
+            $.ajax({
+                type: "POST",
+                url : base_url +'/pi_ajout_partitions/get_morceaux',
+                data: dataid,
+                success: function(datas){
+                    $('.mor').remove();
+                    $(datas).show().insertAfter('select').slideDown('slow');
+                }
+            })
+        });
+    }
 
     if($('#tablesorter-cb').length > 0){
         $('#tablesorter-cb').tablesorter({
@@ -221,8 +345,7 @@ $(document).ready(function(){
     //        $(".active").removeClass("active");
     //        $(this).addClass("active");
     //    });
-        
-    //Utilisation du caroufredsel sur la page home
+    
     if($("body.admin-articles").length > 0){
         $('#redactor').redactor({
             imageUpload: '/admin_articles/uploadImg'
@@ -266,7 +389,7 @@ $(document).ready(function(){
                 location.hash = 'close';
                 $('#wysiwyg-block').slideToggle('slow');
             }
-        );
+            );
 
         $('#articles-tab td .article-actions').hide();
         $('#articles-tab tr').hover(function() {
@@ -293,85 +416,87 @@ $(document).ready(function(){
     });
     //    $('#articles-tab table tr:nth-child(even), #comptes-tab table tr:nth-child(even), #results-tab table tr:nth-child(even)').addClass('even row-color-1');
     //    $('#articles-tab table tr:nth-child(odd), #comptes-tab table tr:nth-child(odd), #results-tab table tr:nth-child(odd)').addClass('odd row-color-2');
-       if($("body.musicien_actus").length > 0){
- 
-    $('.form_comments form').submit(function(){
-        var baseurl = $(this).find("#baseurl").val();
-        var usercomment = $(this).find("#usercomment").val();
-        var messageid = $(this).find("#messageid").val();
-        var thisParent = $(this).parent();
-        var dataString = 'usercomment=' + usercomment + '&messageid=' + messageid;
+    
+    if($("body.musicien_actus").length > 0){ 
+        $('.form_comments form').submit(function(){
+            alert('test');
+            var baseurl = $(this).find("#baseurl").val();
+            var usercomment = $(this).find("#usercomment").val();
+            var messageid = $(this).find("#messageid").val();
+            var thisParent = $(this).parent();
+            var dataString = 'usercomment=' + usercomment + '&messageid=' + messageid;
 
-        if(usercomment == '' || messageid == ''){
-            alert('Veuillez renseigner un message !');
-        } else {
-            var ajaxLoader = $(this).parent().find(".ajax_loader");
+            if(usercomment == '' || messageid == ''){
+                alert('Veuillez renseigner un message !');
+            } else {
+                var ajaxLoader = $(this).parent().find(".ajax_loader");
             
-            ajaxLoader.show();
-            ajaxLoader.fadeIn(500).html('<img src="'+baseurl+'assets/images/common/ajax-loader.gif" />Loading Comment...');
+                ajaxLoader.show();
+                ajaxLoader.fadeIn(500).html('<img src="'+baseurl+'assets/images/common/ajax-loader.gif" />Loading Comment...');
 
-            $(this).find("#usercomment").val("");
+                $(this).find("#usercomment").val("");
             
-            $.ajax({
-                type: "POST",
-                url : baseurl + 'index.php/mc_actus/form_wall_user_comment/',
-                data: dataString,
+                $.ajax({
+                    type: "POST",
+                    url : baseurl + 'index.php/mc_actus/form_wall_user_comment/',
+                    data: dataString,
 
-                success: function(comment){
-                    $(comment).hide().insertBefore(thisParent).slideDown('slow');
-                    ajaxLoader.fadeOut(1000);
-                //                    ajaxLoader.hide();
-                }
-            })
+                    success: function(comment){
+                        $(comment).hide().insertBefore(thisParent).slideDown('slow');
+                        ajaxLoader.fadeOut(1000);
+                    //                    ajaxLoader.hide();
+                    }
+                })
             
-            return false;
-        }
-    });
+                return false;
+            }
+        });
     };
        
     if($("body.photos_videos").length > 0){
-  		$('.bord_photo a').click(function(){
+		$('.bord_photo a').click(function(){
   			if($(this).parents('.bord_photo').next('.allcomment').is(':visible') == false)
   			{
-  			$(this).parents('.bord_photo').next('.allcomment').show();
-  			$(".content").masonry('reload');
+  				$(this).parents('.bord_photo').next('.allcomment').show();
+  				$(".content").masonry('reload');
 			}
 			else
 			{
-			$(this).parents('.bord_photo').next('.allcomment').hide();
-  			$(".content").masonry('reload');
+				$(this).parents('.bord_photo').next('.allcomment').hide();
+  				$(".content").masonry('reload');
 			}
    
-});
-  
-    //Commentaires photos
-    $('.comment-form form').submit(function(){
-        var baseurl = $(this).find("#baseurl").val();
-        var comment = $(this).find("#usercomment").val();
-        var messageid = $(this).find("#messageid").val();
-        var thisParent = $(this).parent();
-        var dataString = 'usercomment=' + comment + '&messageid=' + messageid;
-        if(usercomment == '' || messageid == ''){
-            alert('Veuillez renseigner un message !');
-        } else {
-            var ajaxLoader = $(this).parent().find(".ajax_loader");
-            
-            ajaxLoader.show();
-            $.ajax({
-                type: "POST",
-                url : baseurl + 'index.php/mc_photos/form_photo_user_comment',
-                data: dataString,
-                success: function(comment){
+		});
+	};
 
-                    $(comment).hide().insertBefore(thisParent).slideDown('slow');
-                    ajaxLoader.fadeOut(1000);
-                    $(".content").masonry('reload');
-                }
-            })
-            return false;
-        }
-    });
-    };
+        //Commentaires photos
+        $('.comment-form form').submit(function(){
+            var baseurl = $(this).find("#baseurl").val();
+            var comment = $(this).find("#usercomment").val();
+            var messageid = $(this).find("#messageid").val();
+            var thisParent = $(this).parent();
+            var dataString = 'usercomment=' + comment + '&messageid=' + messageid;
+            if(usercomment == '' || messageid == ''){
+                alert('Veuillez renseigner un message !');
+            } else {
+                var ajaxLoader = $(this).parent().find(".ajax_loader");
+            
+                ajaxLoader.show();
+                $.ajax({
+                    type: "POST",
+                    url : baseurl + 'index.php/mc_photos/form_photo_user_comment',
+                    data: dataString,
+                    success: function(comment){
+
+                        $(comment).hide().insertBefore(thisParent).slideDown('slow');
+                        ajaxLoader.fadeOut(1000);
+                        $(".content").masonry('reload');
+                    }
+                })
+                return false;
+            }
+        });
+    
     
     $('.ajout_comm form').submit(function(e){
         var baseurl = $(this).find("#baseurl").val();
@@ -389,7 +514,6 @@ $(document).ready(function(){
                 url :base_url + '/mc_photos/form_photo_user_comment',
                 data: dataString,
                 success: function(comment){
-
                     $(comment).hide().insertBefore(thisParent).slideDown('slow');
                     ajaxLoader.fadeOut(1000);
                     $(".content").masonry('reload');
@@ -547,7 +671,6 @@ $(document).ready(function(){
             data: dataid,
             success: function(jelike){
                 $(coeur).attr('src',base_url_noindex + '/assets/images/musicien/icon_coeur.png');
-          
                 $(coeur).next().text(parseInt($(coeur).next().text()) - 1);
                 $(coeur).addClass('like-album');
                 $(coeur).removeClass('nolike-album');
@@ -668,24 +791,23 @@ $(document).ready(function(){
     if($('body.abonnements').length>0)
     {
         $('.bouton .participer').live({
-        click: function(){
-            var a = $(this);
-            var idwall_community = $(this).parents('.bouton').attr('id');
-            var datawall = 'idwall_community=' + idwall_community;
-            
-            $.ajax({
-                type: "POST",
-                url :'../melo_abonnements/delete_community_wall',
-                data: datawall,
-                success: function(){ //afficher le bon bouton
-                    $(a).parents('.follower').slideUp();
-                }
+            click: function(){
+                var a = $(this);
+                var idwall_community = $(this).parents('.bouton').attr('id');
+                var datawall = 'idwall_community=' + idwall_community;
+		         $.ajax({
+              	  	type: "POST",
+                	url :'../melo_abonnements/delete_community_wall',
+                	data: datawall,
+                	success: function(){ //afficher le bon bouton
+                    	$(a).parents('.follower').slideUp();
+                	}
             })
             return false
+          
+        },
             
-            },
-            
-             mouseenter:  function () {
+            mouseenter:  function () {
                 $(this).children('.button_center').text('Ne plus suivre');
                 $(this).children('.button_left').addClass('button_left_abonne')
                 $(this).children('.button_center').addClass('button_center_abonne')
@@ -920,39 +1042,34 @@ $(document).ready(function(){
                 $(this).children('.button_right').removeClass('button_right_abonne')
             }
         });
-    
     }
-    
-    
     
     if($("body.concert_melo").length > 0){
         $('.participer').live({
-        click: function(){
-            var concert = $(this);
-            var baseurl = $(this).find("#baseurl").val();
-            var id_concert = $(this).attr('id');
-            var dataid = 'id_concert=' + id_concert;
-            var divid = "#" + id_concert;
+            click: function(){
+                var concert = $(this);
+                var baseurl = $(this).find("#baseurl").val();
+                var id_concert = $(this).attr('id');
+                var dataid = 'id_concert=' + id_concert;
+                var divid = "#" + id_concert;
         
-            $.ajax({
-                type: "POST",
-                url : base_url + '/mc_concerts/delete_activity_concert',
-                data: dataid,
-                success: function(jego){ //afficher le bon bouton
-
-                    $(concert).parents('.all-info-concert').slideUp();
-                }
-            })
-            return false
+                $.ajax({
+                    type: "POST",
+                    url : base_url + '/mc_concerts/delete_activity_concert',
+                    data: dataid,
+                    success: function(jego){ //afficher le bon bouton
+                        $(concert).parents('.all-info-concert').slideUp();
+                    }
+                })
+                return false
             },
-             mouseenter:  function () {
+            mouseenter:  function () {
                 $(this).children('.button_center').text('Je n\'y vais plus');
                 $(this).children('.button_left').addClass('button_left_abonne')
                 $(this).children('.button_center').addClass('button_center_abonne')
                 $(this).children('.button_right').addClass('button_right_abonne')
 
             },
-  	
             mouseleave:	function () {
                 $('.button_center_abonne').text('J\'y vais');
                 $(this).children('.button_left').removeClass('button_left_abonne')
@@ -960,9 +1077,7 @@ $(document).ready(function(){
                 $(this).children('.button_right').removeClass('button_right_abonne')
             }
         });
-    
     }
-    
     
     $('.add-follow').live('click',function(){
         var button = $(this);
@@ -974,7 +1089,6 @@ $(document).ready(function(){
             url : base_url + '/mc_followers/add_follow',
             data: dataid,
             success: function(){ //afficher le bon bouton
-
                 $(button).children('.button_left').addClass('button_left_abonne');	
                 $(button).addClass('delete-follow');		
 	
@@ -992,7 +1106,6 @@ $(document).ready(function(){
     });
     
     $('.delete-follow').live('click',function(){
-      
         var button = $(this);
         var id_user = $(this).attr('id');
         var dataid = 'id_user=' + id_user;
@@ -1002,7 +1115,6 @@ $(document).ready(function(){
             url : base_url + '/mc_followers/delete_follow',
             data: dataid,
             success: function(){ //afficher le bon bouton
-
                 $(button).children('.button_left_abonne').addClass('button_left');	
                 $(button).addClass('delete-follow');		
 	
@@ -1014,83 +1126,46 @@ $(document).ready(function(){
                 $(button).children('.button_center_abonne').removeClass('button_center_abonne');
                 $(button).children('.button_right_abonne').removeClass('button_right_abonne');
                 $(button).removeClass('delete-follow');	
-                $(button).addClass('add-follow');		
-	
+                $(button).addClass('add-follow');
             }
         })
         return false
     });
     
-    
-    //Utilisation du caroufredsel sur la page home
     if($("body.home").length > 0){
-        $("#coverflow").children().filter(":eq(1)").addClass('current-item');
-        
         $("#coverflow").carouFredSel({
-            item: 3,
-            width: 770,
-            height: 268,
-            synchronise: true,
-            scroll: {
-                items: 1,
-                fx: 'scroll',
-                pauseOnHover: true,
-                duration: 1000
+            items: 1,
+            direction: "left",
+            height: "100%",
+            //            width: 770,
+            //            height: 308,
+            auto: {
+                fx : "crossfade",
+                easing : "linear",
+                duration	: 1000,
+                timeoutDuration: 3000,
+                pauseOnHover: true
             },
-            pagination: "#pagination",
+            pagination: {
+                container: "#pagination",
+                fx : "crossfade",
+                easing : "linear",
+                duration: 500
+            },
             prev:  {
                 button: "#pagination-prev",
-                onBefore: function(data){
-                    var pos = $("#coverflow").triggerHandler("currentPosition");
-                    $(this).children().removeClass('current-item');
-                },
-                onAfter: function(data){
-                    var pos = $("#coverflow").triggerHandler("currentPosition");
-                    $(this).children().filter(":eq(1)").addClass('current-item');
-                }
+                fx : "crossfade",
+                easing : "linear",
+                duration: 500
             },
             next:  {
                 button: "#pagination-next",
-                onBefore: function(data){
-                    var pos = $("#coverflow").triggerHandler("currentPosition");
-                    //                    $(this).children('.current-item').delay(2000).css("marginTop","25px");
-                    $(this).children().removeClass('current-item');
-                },
-                onAfter: function(data){
-                    var pos = $("#coverflow").triggerHandler("currentPosition");
-                    $(this).children().filter(":eq(1)").toggleClass('current-item');
-                //                    $(this).children('.current-item').delay(2000).css("marginTop","0");
-                }
+                fx : "crossfade",
+                easing : "linear",
+                duration: 500
             },
-            mousewheel: true,
-            auto: {
-                onBefore: function(data){
-                    var pos = $("#coverflow").triggerHandler("currentPosition");
-                    $(this).children().filter(":eq(1)").toggleClass('current-item');
-                    $(this).children().removeClass('current-item');
-                },
-                onAfter: function(data){
-                    var pos = $("#coverflow").triggerHandler("currentPosition");
-                    $(this).children().filter(":eq(1)").toggleClass('current-item');
-                }
-            }
+            mousewheel: true
         });
-
-        //        highlight(unhighlight($("#coverflow2 > *")));
-        
-        $("#coverflow a").hover(
-            function(){
-                $(this).append('<div class="coverflow_player" style="display:none;"><span class="coverflow_player_btn"></span></div>').fadeIn('slow');
-                $(this).find('.coverflow_player').fadeIn(250, function(){
-                    $(this).show();
-                });
-            },
-            function(){
-                $(this).find('.coverflow_player').fadeOut(250, function(){
-                    $(this).remove();
-                });
-            }
-            );
     }
 
     //Uniformise les placeholder pour tous les navigateurs
@@ -1121,9 +1196,9 @@ $(document).ready(function(){
     //Appel de la fonction masonry uniquement sur la page photos/vidéos
     if($("body.photos_videos").length > 0){
   		
-  		playMasonry();
+        playMasonry();
    
-	};
+    };
     
     //Appel de la fonction
     if($("input[type=file]").length > 0){
@@ -1133,7 +1208,6 @@ $(document).ready(function(){
         });
     }
     
-    //Appel de la fonction
     if($("body.musicien_actus").length > 0){
         $(".actus_post .actus_post_links a").click(function(e){
             var cls = $(this).attr('href').replace('#', '');
@@ -1152,10 +1226,7 @@ $(document).ready(function(){
         });
     }
     
-     
-    
     if($("body.achats").length > 0){
-     
         $('.bt_supp_playlist').click(function(){
             $('.checkbox-article:checked').each(function(){
                 var a =  $(this).val();
@@ -1173,16 +1244,14 @@ $(document).ready(function(){
         });     
 		
         $('tr').hover(
-         function(){
+            function(){
                 $(this).find('.play_achat').css('visibility', 'visible');
             },
-  	
-           function() {
+            function() {
                 $(this).find('.play_achat').css('visibility', 'hidden');
             }
-           
-  );
-  }
+        );
+    }
     
     if($("body.personnaliser").length > 0){
         $('#colorpickerField1').ColorPicker({

@@ -286,9 +286,9 @@ class Pop_in_general extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('photos/add_video', $data);
         } else {
-         $noespace_filename_album = str_replace(' ', '_', $this->input->post('albums'));
+            $noespace_filename_album = str_replace(' ', '_', $this->input->post('albums'));
 
-            $this->photo_model->add_video($id_url, $user_id, $description, $this->input->post('albums'),$noespace_filename_album);
+            $this->photo_model->add_video($id_url, $user_id, $description, $this->input->post('albums'), $noespace_filename_album);
             $this->load->view('photos/photos_success', $data);
         }
     }
@@ -304,10 +304,10 @@ class Pop_in_general extends CI_Controller {
         $cover_photo = (count(scandir($dynamic_path)));
 
         $config['upload_path'] = $dynamic_path;
-        /*if ($cover_photo <= 2) {
-            $config['file_name'] = "cover";
-        }
-*/
+        /* if ($cover_photo <= 2) {
+          $config['file_name'] = "cover";
+          }
+         */
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         /* $config['max_size'] = '1000';
           $config['max_width'] = '1024';
@@ -386,9 +386,9 @@ class Pop_in_general extends CI_Controller {
                 } else {
                     $file_base = './files/' . $user_id . '/photos/' . $data['info_photo'][0]->file_name;
                 }
-                /*if (isset($dynamic_path)) {
-                    $data['info_photo'][0]->file_name = "cover.jpg";
-                }*/
+                /* if (isset($dynamic_path)) {
+                  $data['info_photo'][0]->file_name = "cover.jpg";
+                  } */
                 if ($file_name_album != null) {
                     $file_obj = './files/' . $user_id . '/photos/' . $file_name_album . '/' . $data['info_photo'][0]->file_name;
                 } else {
@@ -403,21 +403,20 @@ class Pop_in_general extends CI_Controller {
             }
 
             if ($type == 2) {
-            
-            	$file_name_a = $this->photo_model->get_info_album($this->input->post('description'));
+
+                $file_name_a = $this->photo_model->get_info_album($this->input->post('description'));
                 //file name de l'album renseigné soit deja existant / soit nouveau
-                    $file_name_album = str_replace(' ', '_', $this->input->post('description'));
-                    $old_name = './files/' . $this->session->userdata('uid') . '/photos/' . $id_media;
-                    $new_name = './files/' . $this->session->userdata('uid') . '/photos/' . $file_name_album;
+                $file_name_album = str_replace(' ', '_', $this->input->post('description'));
+                $old_name = './files/' . $this->session->userdata('uid') . '/photos/' . $id_media;
+                $new_name = './files/' . $this->session->userdata('uid') . '/photos/' . $file_name_album;
 
-           
-                    rename ($old_name,$new_name);
 
-            
-            
-                $data['update_photos'] = $this->photo_model->update_album($user_id, $id_media, $this->input->post('description'),$file_name_album);
+                rename($old_name, $new_name);
+
+
+
+                $data['update_photos'] = $this->photo_model->update_album($user_id, $id_media, $this->input->post('description'), $file_name_album);
                 $this->load->view('photos/photos_success', $data);
-            
             }
 
             if ($type == 3) {
@@ -472,8 +471,7 @@ class Pop_in_general extends CI_Controller {
                 $this->load->view('photos/photos_success');
             }
         }
-        echo $this->input->post("no_delete");
-        {
+        echo $this->input->post("no_delete"); {
             //CLOSE POP UP
         }
 
@@ -502,6 +500,7 @@ class Pop_in_general extends CI_Controller {
             $confirm = $this->input->post('confirm-oui');
 
             if (isset($confirm)) {
+                
             } else {
                 redirect('my-reglages/' . $uid, 'refresh');
             }
@@ -745,4 +744,24 @@ class Pop_in_general extends CI_Controller {
     }
 
 	
+
+    public function upload_musique($user_id) {
+//        $this->load->model('photo_model');
+
+        $data = array('error' => ' ');
+        $data['options'] = array(
+            '' => '',
+        );
+//        $data['album_by_user'] = $this->photo_model->get_album($user_id);
+//        specifier $i en fonction du nombre de ligne retourner
+//        marche pas avec tableaux multidimension :
+//        $data['max_album_user'] = count($data['album_by_user']);
+//        for($i=0; $i<$max_album_user; $i++){	
+//            $data['options'][$album_by_user[$i]->{'nom'}] = $album_by_user[$i]->{'nom'};  
+//        }
+//        $data['options']['nouveau']="Creer un nouvel album";
+
+        $this->load->view('musique/upload_musique', $data);
+    }
+    
 }
