@@ -31,17 +31,19 @@ class Melo_actus_model extends CI_Model {
     public function get_entities_id($list_id, $user_id) {
     if ($list_id == null) {$list_id = 0;}
        // if ($list_id != null) {
-            $sql_mu = '(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,photos_id as idproduit,photos.nom AS main_nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser,"null" AS date_concert, 1 as product
+       $sql_mu = 'SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,videos_id AS idproduit,videos.description AS main_nom,videos.nom AS file_name,videos.Utilisateur_id,utilisateur.thumb,utilisateur.login,"null" AS ville,"null" AS salle,"null" AS walltouser,"null" AS date_concert,  2 as product
 				FROM wall_melo_component
-				JOIN photos
-						ON photos.id = wall_melo_component.Photos_id
+				JOIN videos
+						ON videos.id = wall_melo_component.Videos_id
 				JOIN utilisateur
-						ON utilisateur.id = photos.Utilisateur_id
-					WHERE wall_melo_component.Utilisateur_id 	
-						IN (' . $list_id . ') 
-					AND wall_melo_component.type = "MU"
-					AND wall_melo_component.albums_media_file_name IS NULL)		
-					UNION
+						ON utilisateur.id = videos.Utilisateur_id
+					WHERE (wall_melo_component.Utilisateur_id=  ' . $user_id . '
+					AND wall_melo_component.type = "ME")
+                                        OR (wall_melo_component.Utilisateur_id 	
+						IN  (' . $list_id . ') 
+					AND wall_melo_component.type = "MU")
+					
+							UNION
 			(SELECT MAX(wall_melo_component.id),wall_melo_component.type,wall_melo_component.date,wall_melo_component.albums_media_file_name,album_media.nom AS main_nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser,"null", 5 as product
 				FROM wall_melo_component
 				JOIN photos
@@ -67,16 +69,33 @@ class Melo_actus_model extends CI_Model {
 					AND wall_melo_component.albums_media_file_name IS NOT NULL
 					)
 			UNION
-			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,videos_id,videos.description,videos.nom,videos.Utilisateur_id,utilisateur.thumb,utilisateur.login,"null","null" ,"null","null", 2 as product
+			
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,photos_id,photos.nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login,"null","null","null","null", 1 as product
 				FROM wall_melo_component
-				JOIN videos
-						ON videos.id = wall_melo_component.Videos_id
+				JOIN photos
+						ON photos.id = wall_melo_component.Photos_id
 				JOIN utilisateur
-						ON utilisateur.id = videos.Utilisateur_id
-					WHERE wall_melo_component.Utilisateur_id 	
+						ON utilisateur.id = wall_melo_component.Utilisateur_id
+					WHERE (wall_melo_component.Utilisateur_id = ' . $user_id . '
+					AND wall_melo_component.type = "ME"
+					AND wall_melo_component.albums_media_file_name IS NULL)
+					OR(wall_melo_component.Utilisateur_id 	
+						IN (' . $list_id . ') 
+						AND wall_melo_component.type = "MU"
+							AND wall_melo_component.albums_media_file_name IS NULL))
+			UNION
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,message_id,wall.markup_message,"null",utilisateur.id,utilisateur.thumb,utilisateur.login,"null","null",wall.wallto_utilisateur_id,"null",  4 as product
+				FROM wall_melo_component
+				JOIN wall
+						ON wall.id = wall_melo_component.message_id
+				JOIN Utilisateur
+						ON Utilisateur.id = wall.wallto_utilisateur_id
+					WHERE (wall_melo_component.Utilisateur_id 	
 						IN (' . $list_id . ') 
 					AND wall_melo_component.type = "MU")
-			UNION
+					OR(wall_melo_component.Utilisateur_id =' . $user_id . '
+					AND wall_melo_component.type = "ME"))	
+				UNION	
 			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,concerts_id,concerts.titre,concerts.seconde_partie,utilisateur.id,Utilisateur.thumb,utilisateur.login,adresse.ville,concerts.salle,"null",concerts.date, 3 as product
 				FROM wall_melo_component
 				JOIN concerts
@@ -85,84 +104,14 @@ class Melo_actus_model extends CI_Model {
 						ON adresse.id = concerts.Adresse_id
 				JOIN Utilisateur
 						ON Utilisateur.id = concerts.Utilisateur_id
-					WHERE wall_melo_component.Utilisateur_id 	
+					WHERE (wall_melo_component.Utilisateur_id 	
 						IN (' . $list_id . ') 
 					AND wall_melo_component.type = "MU")
-			UNION
-			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,message_id,wall.markup_message,"null",utilisateur.id,utilisateur.thumb,utilisateur.login,"null","null",wall.wallto_utilisateur_id,"null",  4 as product
-				FROM wall_melo_component
-				JOIN wall
-						ON wall.id = wall_melo_component.message_id
-				JOIN Utilisateur
-						ON Utilisateur.id = wall.wallto_utilisateur_id
-					WHERE wall_melo_component.Utilisateur_id 	
-						IN (' . $list_id . ') 
-					AND wall_melo_component.type = "MU")
-			UNION
-			
-			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,message_id,wall.markup_message,"null",utilisateur.id,utilisateur.thumb,utilisateur.login,"null","null",wall.wallto_utilisateur_id,"null",  4 as product
-				FROM wall_melo_component
-				JOIN wall
-						ON wall.id = wall_melo_component.message_id
-				JOIN Utilisateur
-						ON Utilisateur.id = wall.wallto_utilisateur_id
-					WHERE wall_melo_component.Utilisateur_id 	
-						IN (' . $user_id . ') 
-					AND wall_melo_component.type = "ME")
-			
-			UNION 
-			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,photos_id,photos.nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login,"null","null","null","null", 1 as product
-				FROM wall_melo_component
-				JOIN photos
-						ON photos.id = wall_melo_component.Photos_id
-				JOIN utilisateur
-						ON utilisateur.id = wall_melo_component.Utilisateur_id
-					WHERE wall_melo_component.Utilisateur_id = ' . $user_id . '
-					AND wall_melo_component.type = "ME"
-					AND wall_melo_component.albums_media_file_name IS NULL)			
+					OR(wall_melo_component.Utilisateur_id= ' . $user_id . '
+					AND wall_melo_component.type = "ME"))							
+						ORDER BY date DESC';
 
-			UNION
-
-			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,videos_id,videos.description,videos.nom,videos.Utilisateur_id,utilisateur.thumb,utilisateur.login,"null","null","null","null",  2 as product
-				FROM wall_melo_component
-				JOIN videos
-						ON videos.id = wall_melo_component.Videos_id
-				JOIN utilisateur
-						ON utilisateur.id = videos.Utilisateur_id
-					WHERE wall_melo_component.Utilisateur_id= ' . $user_id . '
-					AND wall_melo_component.type = "ME")
-					
-			UNION
-
-			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,concerts_id,concerts.titre,concerts.seconde_partie,concerts.Utilisateur_id,Utilisateur.thumb,Utilisateur.login,adresse.ville,concerts.salle,"null",concerts.date,3 as product
-				FROM wall_melo_component
-				JOIN concerts
-						ON concerts.id = wall_melo_component.concerts_id
-				JOIN adresse
-						ON adresse.id = concerts.Adresse_id
-				JOIN utilisateur
-						ON concerts.Utilisateur_id = utilisateur.id
-					WHERE wall_melo_component.Utilisateur_id= ' . $user_id . '
-					AND wall_melo_component.type = "ME")
-			ORDER BY date DESC
-				'; /* 	
-              UNION
-              (SELECT morceaux_id,morceaux.nom,3
-              FROM wall_melo_component
-              JOIN morceaux
-              ON morceaux.id = wall_melo_component.morceaux_id
-              WHERE wall_melo_component.Utilisateur_id
-              IN ('.$listforin.')
-              AND type = "MU")
-              UNION
-              (SELECT concerts_id,concerts.titre,4
-              FROM wall_melo_component
-              JOIN concerts
-              ON concerts.id = wall_melo_component.concerts_id
-              WHERE wall_melo_component.Utilisateur_id
-              IN ('.$listforin.')
-              AND type = "MU")
-              '; */
+                                       				
             return $this->db->query($sql_mu)
                             ->result();
       //  }

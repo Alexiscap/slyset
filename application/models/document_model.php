@@ -100,6 +100,7 @@ class Document_model extends CI_Model {
         $this->db->update('albums', $data);
     }
 
+	//mise au panier
     public function panier($prix, $doc_id, $nom) {
         $this->db->set(array('Utilisateur_id' => $this->session->userdata('uid'), 'status' => 'P'))
                 ->insert('commande');

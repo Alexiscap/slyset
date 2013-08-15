@@ -47,7 +47,7 @@
             // ------------------------ PHOTO --------------------------
 
                 if ($entity_wall->product == 1):
-            // -------------- PHOTO : musicient a ajoute ---------------
+            // -------------- PHOTO : musicien a ajoute ---------------
 
                     if ($entity_wall->type == 'MU'):
                         ?>
@@ -68,7 +68,7 @@
       						
       						<div class="right">
         						<span class="ico_citation"></span>
-        						<p class="msg_post"><a href="<?php echo site_url('actualite/'.$entity_wall->Utilisateur_id)?>" ><?php echo $entity_wall->login ?></a> viens d’ajouter une photo :  <a href="<?php echo site_url('mc_photos/zoom_photo/'.$entity_wall->idproduit) ?>"><?php echo $entity_wall->main_nom?></a></p>
+        						<p class="msg_post"><a class='iframe' href="<?php echo site_url('actualite/'.$entity_wall->Utilisateur_id)?>" ><?php echo $entity_wall->login ?></a> viens d’ajouter une photo :  <a href="<?php echo site_url('index.php/media/zoom/'.$entity_wall->idproduit.'/0') ?>"><?php echo $entity_wall->main_nom?></a></p>
        							<img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
       						</div>
       						
@@ -104,7 +104,7 @@
       					
       						<div class="right">
       							<span class="ico_citation"></span>
-        						<p class="msg_post">Je viens d'aimer la photo de <?php echo $entity_wall->login ?> :  <a href="<?php echo base_url('index.php/mc_photos/zoom_photo/'.$entity_wall->idproduit) ?>"><?php echo $entity_wall->main_nom?></a></p>
+        						<p class="msg_post">Je viens d'aimer la photo de <?php echo $entity_wall->login ?> :  <a href="<?php echo base_url('index.php/media/zoom/'.$entity_wall->idproduit.'/0') ?>"><?php echo $entity_wall->main_nom?></a></p>
       							<img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
 
       							<!--  <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />

@@ -1045,8 +1045,9 @@ if(l.pathname.split('/')[2] == "index.php"){
 					{
 						iframe:true, width:"45%", height:"65%",
 						
-					
+						
 						onClosed:function(){
+						 location.reload();
 						//$('.content').load('30 .content');
 						}
 						

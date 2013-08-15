@@ -54,9 +54,19 @@ class Photo_model extends CI_Model {
 								FROM videos
 								 LEFT OUTER JOIN album_media ON videos.id = album_media.Videos_id 
 								WHERE videos.Utilisateur_id = ' . $user_id . '	 
-									AND album_media.Videos_id IS NULL								)
+									AND album_media.Videos_id IS NULL								
+								)
+								UNION
+								(SELECT photo,markup_message,created,null,null,4
+									FROM wall
+									WHERE wallto_utilisateur_id = '.$user_id.'
+										AND photo IS NOT NULL
+									ORDER BY created ASC
+									LIMIT 0,4
+								)	
 								ORDER BY date DESC
-									')
+								')
+
                         ->result();
     }
 
@@ -448,6 +458,16 @@ class Photo_model extends CI_Model {
     public function delete_comment($id_com) {
         $this->db->where(array('id' => $id_com))
                 ->delete('commentaires');
+    }
+    
+
+	 public function get_album_wall_all($user_id)
+    {
+    	$this->db->select('photo')
+    			->from('wall')
+    			->where(array('wallto_utilisateur_id'=>$user_id, 'photo IS NOT NULL'=> NULL))
+    			->get()
+    			->result();
     }
 
 }

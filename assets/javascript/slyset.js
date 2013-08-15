@@ -30,7 +30,20 @@ $(document).ready(function(){
 	$('.iframe').bind('contextmenu', function(e) {
   	  	return false;
 	}); 
-
+	
+	
+	//status actif du menu de gauche
+	if ($('body').attr('class') != 'home')
+	{
+	var class_current = $('body').attr('class');
+	var css_init = $('aside').find('#'+ class_current + ' .icon').css('background-position');
+	var css_new = '-22px ' + css_init.slice(4,10);
+	
+	$('aside').find('#'+ class_current + ' .icon').css('background-position',css_new)
+	$('aside').find('#'+ class_current + ' a').css('color','#2ab395')
+	}
+	
+	//affichage bloc contenu side bar de droite
     if($('body.followers').length>0||$('body.abonnements').length>0||$('body.melo_actu').length>0||$('body.reglages').length>0||$('body.achats').length>0||$('body.concert_melo').length>0||$('body.musicien_actus').length>0||$('body.concert_mu').length>0||$('body.partitions').length>0||$('body.stats').length>0||$('body.personnaliser').length>0)
     {
   		$('#top_titre').show();
@@ -67,6 +80,9 @@ $(document).ready(function(){
     	$('#reseaux_ailleur').show();
     }
 
+
+
+
 	$('.mise-panier').click(function(){
 
  		var la_cmd = $(this);
@@ -93,8 +109,7 @@ $(document).ready(function(){
 
 
     $('.head_menu').click(function(){
-//            $(this).next('.one').stop();
-        //$('.head_menu').next('.first-row').slideUp()
+          
         if($(this).next('.one').is(":visible") == true){
             $(this).next('.one').stop(true).slideToggle(500);
         } else {
@@ -102,26 +117,27 @@ $(document).ready(function(){
         }
     //$(this).next('.one:hidden').show()
     });
+   
     //ajout_paroles ajout_partitions
-        if($("body.ajout_paroles").length > 0){
+    if($("body.ajout_paroles").length > 0){
 
-    $("select").change(function () {
-        $("select option:selected")
-        var str = "";
-        var id_album = $("select option:selected").attr('class');
-        var dataid = 'id_album=' + id_album;
+    	$("select").change(function () {
+        	$("select option:selected")
+        	var str = "";
+        	var id_album = $("select option:selected").attr('class');
+        	var dataid = 'id_album=' + id_album;
         
-        $.ajax({
-            type: "POST",
-            url : base_url +'/pi_ajout_paroles/get_morceaux',
-            data: dataid,
-            success: function(datas){
-                $('.mor').remove();
-                $(datas).show().insertAfter('select').slideDown('slow');
-            }
-        })
-    });
-}
+        	$.ajax({
+            	type: "POST",
+            	url : base_url +'/pi_ajout_paroles/get_morceaux',
+            	data: dataid,
+            	success: function(datas){
+                	$('.mor').remove();
+                	$(datas).show().insertAfter('select').slideDown('slow');
+            	}
+        	})
+   	 	});
+	}
 
    if($("body.ajout_partitions").length > 0){
 
@@ -314,15 +330,15 @@ $(document).ready(function(){
     };
        
     if($("body.photos_videos").length > 0){
-  		$('.bord_photo').click(function(){
-  			if($(this).next('.allcomment').is(':visible') == false)
+  		$('.bord_photo a').click(function(){
+  			if($(this).parents('.bord_photo').next('.allcomment').is(':visible') == false)
   			{
-  			$(this).next('.allcomment').show();
+  			$(this).parents('.bord_photo').next('.allcomment').show();
   			$(".content").masonry('reload');
 			}
 			else
 			{
-			$(this).next('.allcomment').hide();
+			$(this).parents('.bord_photo').next('.allcomment').hide();
   			$(".content").masonry('reload');
 			}
    
@@ -659,7 +675,7 @@ $(document).ready(function(){
             
             $.ajax({
                 type: "POST",
-                url :base_url+'/melo_abonnements/delete_community_wall',
+                url :'../melo_abonnements/delete_community_wall',
                 data: datawall,
                 success: function(){ //afficher le bon bouton
                     $(a).parents('.follower').slideUp();

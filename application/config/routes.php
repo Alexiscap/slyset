@@ -134,9 +134,9 @@ $route['my-follower/(:num)'] = "melo_abonnements/index/$1";
 
 $route['document'] = "mc_partitions/index";
 $route['document/(:num)'] = "mc_partitions/index/$1";
-$route['document/new-lyrics'] = "pi_ajout_paroles/index";
-$route['document/new-score'] = "pi_ajout_partitions/index";
-$route['document/new-livret'] = "pi_ajout_livret/index";
+$route['document/new-lyrics'] = "pop_in_general/paroles";
+$route['document/new-score'] = "pop_in_general/partition";
+$route['document/new-livret'] = "pop_in_general/livret";
 
 
 $route['my-wall'] = "melo_wall/index";

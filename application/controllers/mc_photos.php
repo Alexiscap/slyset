@@ -101,7 +101,9 @@ class Mc_photos extends CI_Controller {
             $data['all_album_like'] .= $data['likes_photo']->Album_media_file_name . "/";
             $data['all_video_like'] .= $data['likes_photo']->Video_id . "/";
         }
-
+			
+		//$data['album_wall'] = $this->photo_model->get_album_wall_four($user_visited);
+		//var_dump($data['album_wall'] );
         $this->layout->view('photos/mc_photos', $data, false);
     }
 

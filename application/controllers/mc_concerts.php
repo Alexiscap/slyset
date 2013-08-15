@@ -119,6 +119,7 @@ class Mc_concerts extends CI_Controller {
         foreach ($data['activity'] as $data['activite']) {
             $data['all_concert_act'] .= "/" . $data['activite']->Concerts_id . "/";
         }
+        $data['publics'] = $this->concert_model->get_public();
 
         $this->layout->view('concert/' . $moment, $data);
     }
@@ -131,6 +132,7 @@ class Mc_concerts extends CI_Controller {
 
     public function delete_activity_concert() {
         $uid = $this->session->userdata('uid');
+        $id_concert = $this->input->post('id_concert');
         $this->concert_model->delete_activity($id_concert, $uid);
     }
 

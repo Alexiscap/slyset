@@ -109,7 +109,7 @@ $loger = $this->session->userdata('logged_in');
                         <?php foreach ($commentaires as $commentaire): ?>
                             <?php if ($media_user_result_unit->id == $commentaire->photos_id): ?>      
                                 <div class="comm">
-                                    <?php if ($profile->id == $uid) { ?> <img src="<?php echo img_url('common/del.png'); ?>" class="del"/>
+                                    <?php  if ($profile->id == $uid) { ?> <img id="<?php echo $commentaire->comm_id ?>" src="<?php echo img_url('common/del.png'); ?>" class="del"/>
                                  <?php } ?>   <img src="<?php echo base_url('/files/profiles/'.$commentaire->thumb); ?>" />
                                     <p class="name_comm"> <?php echo $commentaire->login ?></p>
                                     <p class="commentaire"><?php echo $commentaire->comment ?></p> 
@@ -183,7 +183,7 @@ $loger = $this->session->userdata('logged_in');
 					if($media_user_result_unit->id == $commentaire->video_id): ?>  
                 	<div class="comm">
                 	 <?php if ($profile->id == $uid) { ?>
-						<img src="<?php echo img_url('common/del.png'); ?>" class="del"/><?php } ?>
+						<img id="<?php echo $commentaire->comm_id ?>" src="<?php echo img_url('common/del.png'); ?>" class="del"/><?php } ?>
     					 <img src="<?php echo base_url('/files/profiles/'.$commentaire->thumb); ?>" />
       					<p class="name_comm"> <?php $commentaire->login ?></p>
       					<p class="commentaire"><?php echo $commentaire->comment?></p> 
