@@ -66,23 +66,22 @@
    			<?php foreach ($morceaux_playlist as $morceaux):
    				if($morceaux->nom == $playlist->nom ): ?>
         	
-        	<li>Morceaux<a href="#" data-src="<?php echo base_url().'/assets/musique/Tame Impala - Apocalypse Dreams.mp3'; ?>"><?php echo $morceaux->title_track ?></a></li>
-
+        			<li>Morceaux<a href="#" data-src="<?php echo base_url().'/assets/musique/Tame Impala - Apocalypse Dreams.mp3'; ?>"><?php echo $morceaux->title_track ?></a></li>
+				<?php endif; 
+			endforeach;?>
      	</ol>
      	</br>
-      <?php 
-      		endif;
-      		 endforeach;
-      endforeach;?>
-    <div id="shortcuts">
-      <div>
-        <h1>Keyboard shortcuts:</h1>
-        <p><em>&rarr;</em> Next track</p>
-        <p><em>&larr;</em> Previous track</p>
-        <p><em>Space</em> Play/pause</p>
-      </div>
-    </div>
-</div>
+    <?php 
+    endforeach;?>
+    	<div id="shortcuts">
+      	<div>
+       	 	<h1>Keyboard shortcuts:</h1>
+        	<p><em>&rarr;</em> Next track</p>
+	        <p><em>&larr;</em> Previous track</p>
+    	    <p><em>Space</em> Play/pause</p>
+      	</div>
+    	</div>
+	</div>
 
         
         <script type="text/javascript" src="http://localhost/slyset/assets/javascript/audiojs/audio.js"></script> 

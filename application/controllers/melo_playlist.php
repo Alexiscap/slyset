@@ -12,7 +12,8 @@ class Melo_playlist extends CI_Controller {
 
         $this->layout->ajouter_css('slyset');
 
-        $this->load->model(array('user_model'));
+        $this->load->model(array('user_model','musique_model'));
+        $this->load->helpers(array('date'));
 
         $this->layout->set_id_background('playlist');
 
@@ -46,8 +47,12 @@ class Melo_playlist extends CI_Controller {
 
     public function page($user_id) {
         $data = $this->data;
+        $data['playlists'] = $this->musique_model->get_my_playlist($user_id);
+    	$data['morceaux_playlist'] = $this->musique_model->get_morceau_by_playlist_user($user_id);
 
-        $this->layout->view('playlist/melo_playlist', $data);
+		//$data['artistes'] = $this->musique_model->get_n_artiste($user_id);
+       
+       	$this->layout->view('playlist/melo_playlist', $data);
     }
 
 }
