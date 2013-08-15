@@ -99,6 +99,14 @@ $loger = $this->session->userdata('logged_in');
 					get_date($concert_unit->date,'jour_texte');?></p></div>
      			 <p><?php echo $concert_unit->titre ?></p>
      			 <p><?php if(isset($concert_unit->seconde_partie)) echo '+ '.$concert_unit->seconde_partie ?></p>
+     			 <?php      			 $nparticipant = '0 participant';
+
+     			 foreach($publics as $public):
+     			 if($public->concerts_id == $concert_unit->id):
+     			 if($public->nperson == 1): $nparticipant =  $public->nperson.' participant'; endif;$nparticipant =  $public->nperson.' participants';  endif;
+     			
+     			  endforeach;
+     			   ?><p> <?php echo $nparticipant;?></p>
     		 </div>
    			 <div class="adr_concert">
      	 		<img src="<?php echo img_url('musicien/localisation.png'); ?>" />

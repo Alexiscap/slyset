@@ -62,7 +62,7 @@ $loger = $this->session->userdata('logged_in');
       
         <?php
         foreach ($all_media_user_result as $media_user_result_unit):
-var_dump($media_user_result_unit);
+//var_dump($media_user_result_unit);
             /*  ------------- Bloc image orpheline -------------- */
 
             if ($media_user_result_unit->type == 1) {
