@@ -38,7 +38,7 @@
 <div class="content">
     <!--<audio src="<?php echo base_url().'/assets/musique/test.mp3'; ?>" preload="auto"></audio>--> 
     <!--<div class="audiojs " classname="audiojs" id="audiojs_wrapper0">-->
-        <audio src="<?php echo base_url().'/assets/musique/test.mp3'; ?>" type="audio/mpeg"  preload="auto" autoplay="autoplay"></audio>
+        <audio src="<?php echo base_url().'assets/musique/Tame Impala - Apocalypse Dreams.mp3'; ?>" type="audio/mpeg"  preload="auto" autoplay="autoplay"></audio>
 <!--        <div class="play-pause">
             <p class="play"></p>
             <p class="pause"></p>
@@ -61,16 +61,19 @@
     <p><a href="#" id="vol-40">Volume: 0.4</a></p>
     <p><a href="#" id="vol-70">Volume: 0.7</a></p>
     <p><a href="#" id="vol-100">Volume: 1.0</a></p>-->
-    
-    <ol>
-        <li><a href="#" data-src="<?php echo base_url().'/assets/musique/Anxiety.mp3'; ?>">Anxiety</a></li>
-        <li><a href="#" data-src="<?php echo base_url().'/assets/musique/Banquet.mp3'; ?>">Banquet</a></li>
-        <li><a href="#" data-src="<?php echo base_url().'/assets/musique/Blue_Light.mp3'; ?>">Blue_Light</a></li>
-        <li><a href="#" data-src="<?php echo base_url().'/assets/musique/Compliments.mp3'; ?>">Compliments</a></li>
-        <li><a href="#" data-src="<?php echo base_url().'/assets/musique/Helicopter.mp3'; ?>">Helicopter</a></li>
-        <li><a href="#" data-src="<?php echo base_url().'/assets/musique/Like_Eating_Glass.mp3'; ?>">Like_Eating_Glass</a></li>
-        <li><a href="#" data-src="<?php echo base_url().'/assets/musique/Luno.mp3'; ?>"></a>Luno</li></li>
-      </ol>
+    <?php foreach ($playlists as $playlist): ?>
+   		<ol>Plyalist : <?php echo $playlist->nom ?>
+   			<?php foreach ($morceaux_playlist as $morceaux):
+   				if($morceaux->nom == $playlist->nom ): ?>
+        	
+        	<li>Morceaux<a href="#" data-src="<?php echo base_url().'/assets/musique/Tame Impala - Apocalypse Dreams.mp3'; ?>"><?php echo $morceaux->title_track ?></a></li>
+
+     	</ol>
+     	</br>
+      <?php 
+      		endif;
+      		 endforeach;
+      endforeach;?>
     <div id="shortcuts">
       <div>
         <h1>Keyboard shortcuts:</h1>

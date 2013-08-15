@@ -19,7 +19,7 @@ class Mc_musique extends CI_Controller {
 //        $this->layout->ajouter_js('audiojs/audio');
 
         $this->load->library('getid3/Getid3');
-        $this->load->model(array('perso_model', 'user_model'));
+        $this->load->model(array('perso_model', 'user_model','musique_model'));
         $this->load->helper('form');
 
         $this->layout->set_id_background('musique');
@@ -93,8 +93,14 @@ class Mc_musique extends CI_Controller {
 //        print_r($test);
     }
 
-    public function player() {
-        $this->load->view('musique/player');
+    public function player($user_id) {
+    
+    	$data['playlists'] = $this->musique_model->get_my_playlist($user_id);
+    	$data['morceaux_playlist'] = $this->musique_model->get_morceau_by_playlist_user($user_id);
+
+    	//$unique_playlist = array_unique($playlist);
+    	//var_dump($morceaux_playlist);
+        $this->load->view('musique/player',$data);
     }
 
     public function do_upload_musique() {
