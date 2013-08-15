@@ -12,12 +12,13 @@ class Mc_musique extends CI_Controller {
 
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_css('pop_in');
-
         $this->layout->ajouter_css('colorbox');
+        
         $this->layout->ajouter_js('jquery.colorbox');
         $this->layout->ajouter_js('jquery-ui');
 //        $this->layout->ajouter_js('audiojs/audio');
 
+        $this->load->library('getid3/Getid3');
         $this->load->model(array('perso_model', 'user_model'));
         $this->load->helper('form');
 
@@ -77,8 +78,6 @@ class Mc_musique extends CI_Controller {
     }
 
     public function test() {
-        $this->load->library('getid3/Getid3');
-
         $folder = 'assets/musique/';
         $test = $this->getid3->analyze($folder . 'test.mp3');
 //        print_r($test);
@@ -98,6 +97,69 @@ class Mc_musique extends CI_Controller {
         $this->load->view('musique/player');
     }
 
+    public function do_upload_musique() {
+        $this->load->library('upload');
+        $image_upload_folder = 'files/uploads/';
+
+        if (!file_exists($image_upload_folder)) {
+            mkdir($image_upload_folder, DIR_WRITE_MODE, true);
+        }
+
+        $this->upload_config = array(
+            'upload_path' => $image_upload_folder,
+            'allowed_types' => 'png|jpg|jpeg|mp3',
+            'max_size' => 50000,
+            'remove_space' => TRUE,
+            'overwrite' => TRUE,
+            'encrypt_name' => FALSE,
+        );
+
+        $this->upload->initialize($this->upload_config);
+        print_r($_FILES);
+        print '<br/><br/>';
+        print_r($_POST);
+        
+        $userfile_name = str_replace(' ', '_', $_FILES['userfile']['name']);
+        print_r($userfile_name);
+        
+//        if($this->check_exists()){
+//            print_r('réussie !!');
+            if (!$this->upload->do_upload()) {
+    //            $upload_error = $this->upload->display_errors();
+    //            echo json_encode($upload_error);
+
+                $error = array('error' => $this->upload->display_errors());
+                $this->load->view('musique/upload_musique', $error);
+            } else {
+                $data['file_info'] = $this->upload->data();
+    //            print_r($data['file_info']['file_name']);
+                $this->load->view('musique/upload_musique', $data);
+            }
+//        } else {
+//            print_r('foiré !!');
+//        }
+    }
+
+    public function check_exists(){
+        $targetFolder = '/slyset/files/uploads';
+        
+        $userfile_name = str_replace(' ', '_', $_POST['filename']);
+        print_r($_SERVER['DOCUMENT_ROOT'] . $targetFolder . '/' . $userfile_name);
+        
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . $targetFolder . '/' . $userfile_name)) {
+            echo 1;
+            print_r('exist');
+//            return false;
+        } else {
+            echo 0;
+            print_r('d"ont exist');
+//            return true;
+        }
+
+//        echo json_encode($_POST['filename']);
+//        return json_encode($_POST['filename']);
+    }
+    
 ////     Function called by the form
 //    public function upload_img() { 
 //        print_r($_FILES);

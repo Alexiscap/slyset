@@ -122,7 +122,7 @@ body {margin:0;overflow-x:hidden;font-family: 'Trebuchet MS';}
 
 .pop-in_cent{width:100%;background:#eff4f3;border:1px solid #bbbbbb;border-radius:5px;overflow-x:hidden;margin:0;}
 .pop-in_cent span{text-indent : 20px;height : 50px;padding-top:25px; width : 100%; border-bottom:1px solid #e0e4e6;float:left;font-size:18px;color:#4e4e4e;}
-.content-pi-cent {width:100%; height:calc(100% - 78px);border-left:none;border-right:none;clear:both;background-color:white;}
+.content-pi-cent {width:100%; height:calc(100% - 78px); min-height: 340px; border-left:none;border-right:none;clear:both;background-color:white;}
 .content-pi-cent_success {text-align:center;}
 
 .content-pi-cent .label {width: 123px;float: left;margin: 15px 0 0 0;text-align: right;}
@@ -186,3 +186,16 @@ body {margin:0;overflow-x:hidden;font-family: 'Trebuchet MS';}
 /*.pop-in_cent .content-pi-cent form{text-align:center;}*/
 
 /* --------------- FIN POP IN 100% ----------- */
+
+/* POP IN UPLOADIFY */
+.pop-in_cent .uploadify-button-text, .pop-in_cent #userfile-queue span{
+    text-indent: inherit;
+    height: inherit;
+    padding-top: 0;
+    width: inherit;
+    border: none;
+    float: none;
+    font-size: inherit;
+    color: inherit;
+}
+/* FIN POP IN UPLOADIFY */

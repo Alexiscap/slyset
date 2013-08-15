@@ -616,36 +616,5 @@ class Pop_in_general extends CI_Controller {
 
         $this->load->view('musique/upload_musique', $data);
     }
-
-    public function do_upload_musique($user_id) {
-        $this->load->library('upload');
-        $image_upload_folder = 'files/uploads/';
-
-        if (!file_exists($image_upload_folder)) {
-            mkdir($image_upload_folder, DIR_WRITE_MODE, true);
-        }
-
-        $this->upload_config = array(
-            'upload_path' => $image_upload_folder,
-            'allowed_types' => 'png|jpg|jpeg|mp3',
-            'max_size' => 50000,
-            'remove_space' => TRUE,
-            'encrypt_name' => FALSE,
-        );
-
-        $this->upload->initialize($this->upload_config);
-
-        if (!$this->upload->do_upload()) {
-//            $upload_error = $this->upload->display_errors();
-//            echo json_encode($upload_error);
-
-            $error = array('error' => $this->upload->display_errors());
-            $this->load->view('musique/upload_musique', $error);
-        } else {
-            $data['file_info'] = $this->upload->data();
-
-            $this->load->view('musique/upload_musique', $data);
-        }
-    }
-
+    
 }

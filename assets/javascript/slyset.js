@@ -78,28 +78,30 @@ $(document).on('submit', ".form_comments form", function(){
    
 
 $(document).ready(function(){
-    $(".iframe").colorbox({
-        iframe:true, 
-        width:"45%", 
-        height:"65%",
-        onClosed:function(){
-            //$('.content').load('30 .content');
-        }
-    });
-    
-    $(".iframe-upload").colorbox({
-        iframe:false, 
-        width:"45%", 
-        height:"65%"
-    });
-		
-    $(".bigiframe").colorbox({
-        iframe:true, 
-        width:"65%", 
-        height:"85%"
-    });
+    if($(".iframe, .iframe-upload, .bigiframe").length > 0){
+        $(".iframe").colorbox({
+            iframe:true, 
+            width:"45%", 
+            height:"65%",
+            onClosed:function(){
+                //$('.content').load('30 .content');
+            }
+        });
+
+        $(".iframe-upload").colorbox({
+            iframe:false, 
+            width:"45%", 
+            height:"65%"
+        });
+
+        $(".bigiframe").colorbox({
+            iframe:true, 
+            width:"65%", 
+            height:"85%"
+        });
+    }
                             
-    $(".open_player a").click(function(event) {
+    $(".open_player").click(function(event) {
         var href = $(this).attr('href');
         window.open(href, 'popup', 'height=500,width=500,toolbar=no');
         //        return false;
