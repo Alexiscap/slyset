@@ -11,9 +11,10 @@ class Melo_playlist extends CI_Controller {
         parent::__construct();
 
         $this->layout->ajouter_css('slyset');
+        $this->layout->ajouter_js('jquery.colorbox');
 
         $this->load->model(array('user_model','musique_model'));
-        $this->load->helpers(array('date'));
+        $this->load->helpers(array('date','form'));
 
         $this->layout->set_id_background('playlist');
 
@@ -49,10 +50,22 @@ class Melo_playlist extends CI_Controller {
         $data = $this->data;
         $data['playlists'] = $this->musique_model->get_my_playlist($user_id);
     	$data['morceaux_playlist'] = $this->musique_model->get_morceau_by_playlist_user($user_id);
-
+		$my_like_morceau = $this->musique_model->get_my_like_morceau();
 		//$data['artistes'] = $this->musique_model->get_n_artiste($user_id);
-       
+		$data['all_my_like'] ="";
+      	foreach($my_like_morceau as $mlike):
+      	 $data['all_my_like'] .= '/'.$mlike->morceaux_id.'/';
+      	 endforeach;
+      
        	$this->layout->view('playlist/melo_playlist', $data);
     }
+    
+ 	public function add_like()
+ 	
+ 	{
+ 		$user = $this->session->userdata('uid');
+ 		$morceau =  $this->input->post('id_morceau');
+ 		$this->musique_model->add_like_morceau($user,$morceau);
+ 	}
 
 }

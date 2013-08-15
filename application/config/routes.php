@@ -91,8 +91,8 @@ $route['media/zoom/(:num)/(:num)'] = "pop_in_general/zoom_photo/$1/$2";
 $route['media/album'] = "mc_photos/album";
 $route['album/(:num)/(:any)'] = "mc_photos/album/$1/$2";
 
-//$route['musique'] = "mc_musique/index";
-//$route['musique/(:num)'] = "mc_musique/index/$1";
+$route['musique'] = "mc_musique/index";
+$route['musique/(:num)'] = "mc_musique/index/$1";
 
 $route['statistique'] = "mc_stats/index";
 $route['statistique/(:num)'] = "mc_stats/index/$1";
@@ -144,6 +144,8 @@ $route['my-wall/(:num)'] = "melo_wall/index/$1";
 
 $route['my-playlists'] = "melo_playlist/index";
 $route['my-playlists/(:num)'] = "melo_playlist/index/$1";
+$route['my-playlists/delete/(:any)'] = "pop_in_general/delete_playlist/$1";
+
 
 $route['my-shopping/(:num)'] = "melo_achats/index/$1";
 $route['my-shopping-recap/(:num)'] = "pop_in_general/panier_infos/index/$1";

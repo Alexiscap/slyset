@@ -10,7 +10,7 @@ class Pop_in_general extends CI_Controller {
 
         $this->layout->ajouter_css('pop');
 
-        $this->load->model(array('concert_model', 'photo_model', 'achat_model','document_model'));
+        $this->load->model(array('concert_model', 'photo_model', 'achat_model','document_model','musique_model'));
         $this->load->helper('form');
         $this->load->library('form_validation');
 
@@ -763,5 +763,21 @@ class Pop_in_general extends CI_Controller {
 
         $this->load->view('musique/upload_musique', $data);
     }
+    
+    
+       public function delete_playlist($playlist_name)
+    {
+    	$user_id = $this->session->userdata('uid');
+    	 if ($this->input->post("delete")) {
+            $this->musique_model->delete_playlist_data($playlist_name,$user_id);
+            $data_succes['status'] = 'supprimé';
+            $this->load->view('playlist/sucess-playlist', $data_succes);
+        } 
+        else 
+        {
+    	$this->load->view('playlist/suppression_playlist');
+    	}
+    }
+    
     
 }

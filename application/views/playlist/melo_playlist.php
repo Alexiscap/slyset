@@ -331,17 +331,19 @@
     </div>-->
   <div class="content">
 	<h2>Mes playlists</h2>
+	    <?php foreach ($playlists as $playlist): ?>
+
 	<div class="playlist">
 		<div class="visu_playlist">
 			<img src="<?php echo img_url('common/visu_pl.png'); ?>"/>
 		</div>
 		<div class="descri_playlist">
-			<span class="nom_pl">La bonne époque</span>
-			<span class="detail_pl">12 chansons</span>
-			<span class="detail_pl">3 artistes</span>
+			<span class="nom_pl"><?php echo $playlist->nom?></span>
+			<span class="detail_pl"><?php echo $playlist->n_morceau;  if($playlist->n_morceau > 1){echo ' chansons';} else {echo ' chanson';} ?> </span>
+			<span class="detail_pl"><?php echo $playlist ->n_artiste ;if($playlist->n_artiste > 1){echo ' artistes';} else {echo ' artiste';} ?></span>
 			<div class="edit">
 			  <a href="#"><img src="<?php echo img_url('musicien/btn_edit.png'); ?>"/></a>
-			  <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>"/></a>
+			  <a class='iframe' href="<?php echo base_url('index.php/my-playlists/delete/'.$playlist->nom)?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>"/></a>
 			</div>
 			<hr/>
 			<div class="lecture_pl">
@@ -361,27 +363,48 @@
 							<th class="article-album">Album<span id="titre" class="filter filter-bottom"></span></th>
 							<th class="article-duree">Durée<span id="created" class="filter filter-bottom"></span></th>
 						</tr>
-							<tr class="even row-color-1">
-								<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"></label></td>
-								<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
-									<a href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
-									Rainy Winny
-									<div class="miniat_titre">
-										<a href="#" class="cadis"><span>caddi</span></a>
-										<a href="#" class="coeur"><span>coeur</span></a>
-										<a href="#" class="cam"><span>cam</span></a>
+						
+						<?php 
+						foreach ($morceaux_playlist as $morceaux):
+   							if($morceaux->nom == $playlist->nom ): ?>
+        	
+								<tr class="even row-color-1" id='<?php echo $morceaux->Morceaux_id ?>'>
+									<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"></label></td>
+									<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
+										<a  href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
+										<?php echo $morceaux->title_track ?>
+										<div class="miniat_titre">
+										<a href="#" class="cadis"></a>
+										<?php if(substr_count($all_my_like,'/'.$morceaux->Morceaux_id.'/')==1)
+										{?>
+										
+												<a href="#" class="coeur_actif"></a>
+												
+												<?php }
+										if(substr_count($all_my_like,'/'.$morceaux->Morceaux_id.'/')==0)
+
+												{	?>	<a href="#" class="coeur"></a><?php
+												}?>
+
+										<a href="#" class="cam"></a>
 									</div>
-								</td>
-								<td class="article-artiste">Tom Tom</td>
-								<td class="article-album">Et Nana</td>
-								<td class="article-duree">2:51</td>
-							</tr>
+									</td>
+									<td class="article-artiste"><?php echo $morceaux->login ?></td>
+									<td class="article-album"><?php echo $morceaux->title_album ?></td>
+									
+									<td class="article-duree"><?php echo substr($morceaux->duree,10,9); ?></td>
+								</tr>
+							<?php endif;
+      					 endforeach;?>
+							
 					</tbody>
 				</table>
 			</form>
 		</div>
 	</div>
 	<hr />
+	<?php endforeach; ?>
+	<!--
 	<div class="playlist">
 		<div class="visu_playlist">
 			<img src="<?php echo img_url('common/visu_pl.png'); ?>"/>
@@ -477,7 +500,7 @@
 			</form>
 		</div>
 	</div>
-	<hr />
+	<hr />-->
   </div>
 
     <?php if (isset($sidebar_right)) echo $sidebar_right; ?>

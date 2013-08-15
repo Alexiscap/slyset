@@ -201,6 +201,24 @@ $(document).ready(function(){
             });
         });
     }
+    
+    if($('body.playlist').length>0)
+    {
+    	$('.coeur').click(function()
+    	{
+    		var id_morceau = $(this).parents('tr').attr('id');
+    		datalike = 'id_morceau='+id_morceau;
+    		$.ajax({
+                type: "POST",
+                url : base_url +'/melo_playlist/add_like',
+                data: datalike,
+                success: function(){
+                   // $(this_comm).parents('.comm').slideUp();
+                }
+            });
+    	})
+    }
+    
 
     if($('body.playlist').length>0||$('body.musique').length > 0){
         //  $('#top_titre').show();

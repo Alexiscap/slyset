@@ -58,6 +58,13 @@ class Musique_model extends CI_Model {
 	
 	
 	}
+	
+	public function delete_playlist_data($name,$user)
+	{	
+		$name = str_replace ('%20',' ',$name);
+		$this->db->delete($this->tbl_playlist, array('Utilisateur_id' => $user,'nom'=>$name)); 
+	}
+	
 	/*
 	public function get_n_artiste()
 	{
@@ -71,4 +78,30 @@ class Musique_model extends CI_Model {
 	}
 	*/
 	
+	public function add_like_morceau($user,$morceau)
+	{
+	
+		$update_like_morceau = "UPDATE morceaux SET like_total = like_total + 1 WHERE id = '".$morceau."'";
+		$this->db->query($update_like_morceau);
+		
+		$update_like_morceau_gal = 'UPDATE ilike SET like_value = like_value +1 WHERE Morceaux_id= ?';
+        $this->db->query($update_like_morceau_gal, array($morceau));
+        
+        $update_like_morceau_user = 'INSERT INTO like_activity_pav (Utilisateur_id,Morceaux_id) VALUES ( ?,?)';
+        $this->db->query($update_like_morceau_user, array($user,$morceau));
+		/*$like = 'like_total + 1' ;
+	$this->db->set('like_total', $like);
+
+$this->db->where('nom',$morceau);
+$this->db->update($this->tbl_morceaux, $data); */
+	}
+	
+	public function get_my_like_morceau()
+	{
+		return $this->db->select('morceaux_id')
+				->from('like_activity_pav')
+				->where(array('Utilisateur_id' => $this->session->userdata('uid'),'morceaux_id IS NOT NULL'=>null))
+				->get()
+				->result();
+	}
 }
