@@ -245,7 +245,7 @@ $loger = $this->session->userdata('logged_in');
 
                 </div>
 				<div class="allcomment" id="comm<?php echo $media_user_result_unit->file_name ?>">
-
+				
         				<?php 
         				foreach ($commentaires_albums as $commentaire):
             				if ($media_user_result_unit->file_name == $commentaire->file_name):
