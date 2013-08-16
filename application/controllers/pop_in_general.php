@@ -449,7 +449,7 @@ class Pop_in_general extends CI_Controller {
         $uid = $this->session->userdata('uid');
 
         $data = array();
-        print $type_media;
+        //print $type_media;
 
         if ($user_id != $uid) {
             show_404();
