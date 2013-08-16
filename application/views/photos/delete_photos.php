@@ -19,7 +19,7 @@
 					  'name'          => 'delete',
 					  'value'	=> 'Supprimer',
 					  );
-					
+					  echo '<br />';
 					  echo form_submit($delete);
 					  
 					  $nodelete = array(
@@ -39,7 +39,7 @@
 					  'name'          => 'delete',
 					  'value'	=> 'Supprimer',
 					  );
-					
+					  echo '<br />';
 					  echo form_submit($delete);
 					  
 					  $nodelete = array(
@@ -58,7 +58,7 @@
 					  'name'          => 'delete',
 					  'value'	=> 'Supprimer',
 					  );
-					
+					  echo '<br />';
 					  echo form_submit($delete);
 					  
 					  $nodelete = array(
