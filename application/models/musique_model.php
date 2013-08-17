@@ -133,12 +133,12 @@ class Musique_model extends CI_Model {
 	//-								PLAYLIST									-
 	//---------------------------------------------------------------------------
 
-	public function get_my_playlist()
+	public function get_my_playlist($user_id)
 	{
 		return $this->db->select('COUNT(Morceaux_id) AS n_morceau,Morceaux_id,playlists.nom,COUNT(Distinct morceaux.Utilisateur_id) AS n_artiste')
 				->from($this->tbl_playlist)
 				->join($this->tbl_morceaux,'morceaux.id = playlists.Morceaux_id')
-				->where(array('playlists.Utilisateur_id'=>30))
+				->where(array('playlists.Utilisateur_id'=>$user_id))
 				->group_by('nom')
 				->get()
 				->result();

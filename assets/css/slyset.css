@@ -236,9 +236,9 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .pagination #suivant{ background-position:-79px 0px; }
 .pagination .page:hover{ background-position:-38px -49px; color:white; }
 
-.allcomment {display: none;float: left;margin-left: 10px;}
+.allcomment {display: none;/*float: left;margin-left: 10px;*/}
 
-.cnt_box{position: relative;float: left;width: 180px;margin-bottom: 5px;}
+/*.cnt_box{position: relative;float: left;width: 180px;margin-bottom: 5px;}*/
 
 /* --------- FIN  DE MUSICIEN - CONCERTS  --------- */
 

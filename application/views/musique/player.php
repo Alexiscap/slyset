@@ -21,8 +21,7 @@
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_header-footer') ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_sidebar-left') ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_sidebar-right') ?>" />
-
-        <link rel="stylesheet" type="text/css" media="screen" href="http://localhost/slyset/assets/css/slyset.css" />
+        <link type="text/css" rel="stylesheet" href="<?php echo css_url('slyset') ?>" />
 
         <!--[if IE]>
           <link type="text/css" rel="stylesheet" href="<?php echo css_url('corrections-ie') ?>" />
@@ -38,8 +37,7 @@
 <div class="content">
     <!--<audio src="<?php echo base_url().'/assets/musique/test.mp3'; ?>" preload="auto"></audio>--> 
     <!--<div class="audiojs " classname="audiojs" id="audiojs_wrapper0">-->
-   
-        <audio src="<?php echo base_url().'assets/musique/Tame Impala - Apocalypse Dreams.mp3'; ?>" type="audio/mpeg"  preload="auto" autoplay="autoplay"></audio>
+        <audio src="<?php echo base_url().'assets/musique/Banquet.mp3'; ?>" type="audio/mpeg"  preload="auto" autoplay="autoplay"></audio>
 
 
 <!--        <div class="play-pause">
@@ -71,9 +69,9 @@
    			<?php foreach ($playlists[1] as $morceaux):
    				if($morceaux->nom == $playlist->nom ): ?>
         	
-        			<li>Morceaux<a href="#" data-src="<?php echo base_url().'assets/musique/Jacques Dutronc - Lopportuniste.mp3'; ?>"><?php echo $morceaux->title_track ?></a></li>
+        			<li>Morceaux <a href="#" data-src="<?php echo base_url().'assets/musique/Helicopter.mp3'; ?>"><?php echo $morceaux->title_track ?></a></li>
 
-				<?php endif; 
+				<?php endif;
 			endforeach;?>
      	</ol>
      	</br>
@@ -90,8 +88,7 @@
 	</div>
 
         
-        <script type="text/javascript" src="http://localhost/slyset/assets/javascript/audiojs/audio.js"></script> 
-            
+        <script type="text/javascript" src="<?php echo js_url('audiojs/audio') ?>"></script>
         <script type="text/javascript" src="<?php echo js_url('slyset') ?>"></script>
     </body>
 </html>
