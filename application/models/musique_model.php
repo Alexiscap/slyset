@@ -9,7 +9,8 @@ class Musique_model extends CI_Model {
 	protected $tbl_morceaux = 'morceaux';
 	protected $tbl_user = 'utilisateur';
 	protected $tbl_album = 'albums';
-
+	protected $tbl_order = 'commande';
+	protected $tbl_orderinfo = 'infos_commande';
 
 	//---------------------------------------------------------------------------
 	//-								GENERAL	MUSIQUE								-
@@ -200,5 +201,67 @@ class Musique_model extends CI_Model {
         $this->db->query($update_like_morceau_user, array($user,$morceau));
 
 	
+	}
+	
+	public function delete_morceau_playlist($user,$morceau)
+	{
+		$this->db->delete($this->tbl_playlist, array('Morceaux_id' => $morceau,'Utilisateur_id'=>$user)); 
+
+	}
+	
+	public function pl_to_panier($user_id,$morceaux_id)
+	{
+		$id_commande_user =  $this->db->select('id')
+									->from($this->tbl_order)
+									->where(array('Utilisateur_id'=>$user_id,'status'=>'P'))
+									->get()
+									->result();
+		if (empty($id_commande_user)==1)
+		{
+			$data = array(
+   				'Utilisateur_id' => $user_id ,
+   				'date' => date('Y-m-d H:i:s', now()),
+   				'status' => 'P'
+			);
+
+			$this->db->insert($this->tbl_order, $data); 
+		}
+		
+		$existing_panier =  $this->db->select('id,titre')
+									->from($this->tbl_orderinfo)
+									->where_in('Morceaux_id',$morceaux_id)
+									->where(array('Commande_id'=>$id_commande_user[0]->id))
+									->get()
+									->result();
+		if(empty($existing_panier)==1)
+		{
+			$id_commande_user =  $this->db->select('id')
+										->from($this->tbl_order)
+										->where(array('Utilisateur_id'=>$user_id,'status'=>'P'))
+										->get()
+										->result();
+		
+		
+			$info_morceaux = $this->db->select('id,nom,Albums_id,prix,format')
+									->from($this->tbl_morceaux)
+									->where_in('id',$morceaux_id)
+									->get()
+									->result();
+		
+			foreach($info_morceaux as $info_morceau)
+			{
+				$data_cmd = array(
+	   				'Commande_id' => $id_commande_user[0]->id ,
+   					'Albums_id' => $info_morceau->Albums_id ,
+   					'titre' => $info_morceau->nom,
+   					'prix' => $info_morceau->prix,
+   					'morceaux_id' => $info_morceau->id,
+   					'format' => $info_morceau->format
+				);
+
+				$this->db->insert($this->tbl_orderinfo, $data_cmd); 		
+				return 'ajout';
+			}	
+		}				
 	}
 }

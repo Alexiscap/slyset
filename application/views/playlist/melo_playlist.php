@@ -337,6 +337,7 @@
 	    	foreach ($playlists as $playlist): ?>
 
 				<div class="playlist">
+				
 					<div class="visu_playlist">
 						<img src="<?php echo img_url('common/visu_pl.png'); ?>"/>
 					</div>
@@ -373,8 +374,8 @@
 									foreach ($morceaux_playlist as $morceaux):
    										if($morceaux->nom == $playlist->nom ): ?>
         		
-											<tr class="even row-color-1" id='<?php echo $morceaux->Morceaux_id ?>'>
-												<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"></label></td>
+											<tr class="even row-color-<?php echo $morceaux->Morceaux_id ?>" id='<?php echo $morceaux->Morceaux_id ?>'>
+												<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $morceaux->Morceaux_id ?>" id="article-<?php echo $morceaux->Morceaux_id ?>" class="checkbox-article"><label for="article-<?php echo $morceaux->Morceaux_id ?>"></label></td>
 												<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
 													<a  href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
 													<?php echo $morceaux->title_track ?>
@@ -392,7 +393,7 @@
 																<a href="javascript:void(0)" class="coeur"></a><?php
 															}?>
 
-														<a href="#" class="cam"></a>
+														<!--<a href="#" class="cam"></a>-->
 													</div>
 												</td>
 												<td class="article-artiste"><?php echo $morceaux->login ?></td>
@@ -417,6 +418,8 @@
 		if(empty($playlists)==1): ?>
 			Vous n'avez aucunes playlists
 		<?php endif; ?>
+		
+	
 	<!--
 	<div class="playlist">
 		<div class="visu_playlist">
@@ -514,8 +517,21 @@
 		</div>
 	</div>
 	<hr />-->
+	
+	<div id="modal">
+		<div id="content">
+			<p>Le morceau a bien été ajouté au panier</p>
+
+			<a href="javascript:void(0)" class="button green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
+
+		</div>
+	</div>
+	
   </div>
 
     <?php if (isset($sidebar_right)) echo $sidebar_right; ?>
 
 </div>
+
+
+	

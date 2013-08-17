@@ -18,7 +18,7 @@ class Achat_model extends CI_Model {
     
     //toutes les infos produits sur une commande
     public function get_achat($user_id) {
-        $sql = "(SELECT commande.id,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,morceaux.nom AS nom,documents.type_document AS type,utilisateur.login AS user_login,infos_commande.prix,documents.format
+        $sql = "(SELECT infos_commande.id,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,morceaux.nom AS nom,documents.type_document AS type,utilisateur.login AS user_login,infos_commande.prix,documents.format,commande.id AS commande_id
 					FROM commande
 						INNER JOIN infos_commande ON infos_commande.Commande_id = commande.id
 							INNER JOIN documents ON infos_commande.Documents_id = documents.id
@@ -27,17 +27,18 @@ class Achat_model extends CI_Model {
 					WHERE commande.Utilisateur_id = ? 
 				)
 				UNION
-				(SELECT commande.id,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,albums.nom,'album',utilisateur.login,infos_commande.prix,albums.format
+				(SELECT infos_commande.id,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,albums.nom,'album',utilisateur.login,infos_commande.prix,albums.format,commande.id AS commande_id
 					FROM commande
 						INNER JOIN infos_commande ON infos_commande.Commande_id = commande.id
 							INNER JOIN albums ON infos_commande.Albums_id = albums.id
 								INNER JOIN utilisateur ON utilisateur.id = albums.Utilisateur_id
 					WHERE commande.Utilisateur_id = ? 
+					AND infos_commande.Morceaux_id IS NULL
 				)
 				UNION
-				(SELECT commande.id,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,morceaux.nom,'morceau',utilisateur.login,infos_commande.prix,morceaux.format
-					FROM commande
-						INNER JOIN infos_commande ON infos_commande.Commande_id = commande.id
+				(SELECT infos_commande.id,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,morceaux.nom,'morceau',utilisateur.login,infos_commande.prix,morceaux.format,commande.id AS commande_id
+					FROM infos_commande
+						INNER JOIN commande ON infos_commande.Commande_id = commande.id
 							INNER JOIN morceaux ON infos_commande.Morceaux_id = morceaux.id
 								INNER JOIN utilisateur ON utilisateur.id = morceaux.Utilisateur_id
 					WHERE commande.Utilisateur_id = ? )";
@@ -52,15 +53,20 @@ class Achat_model extends CI_Model {
         $data = $this->data;
         $data_cmd = $this->data_cmd;           
         $data['status'] = "V";
-        
+        $my_cmd = $this->db->select('id')
+        		->from($this->table_cmd)
+        		->where(array('Utilisateur_id'=>$this->session->userdata('uid')))
+        		->get()
+        		->result();
+
         // passage de la commande en validé
-        $this->db->where('id', $id_commande);
+        $this->db->where('Utilisateur_id', $this->session->userdata('uid'));
         $this->db->update($this->table_cmd, $data);
 
         $data_cmd['titre'] = $last_cmd + 1;
         
         //attribution d'un numero de commande
-        $this->db->where('Commande_id', $id_commande);
+        $this->db->where('Commande_id', $my_cmd[0]->id);
         $this->db->update($this->table_cmd_info, $data_cmd);
     }
 

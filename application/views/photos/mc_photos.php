@@ -148,9 +148,8 @@ $loger = $this->session->userdata('logged_in');
 
             else if ($media_user_result_unit->type == 2) {
                 ?>
-				<div class="cnt_box">
+				<!--<div class="cnt_box">-->
                 <div class="photo box col1">
-
                     <!--  edition : HOVER *******************-->
                     <?php if ($profile->id == $uid) 
                     { ?> 
@@ -243,7 +242,7 @@ $loger = $this->session->userdata('logged_in');
                         <p class="nb_like"><?php echo $media_user_result_unit->like_total ?></p>
                     </div>
 
-                </div>
+               <!-- </div>-->
 				<div class="allcomment" id="comm<?php echo $media_user_result_unit->file_name ?>">
 				
         				<?php 

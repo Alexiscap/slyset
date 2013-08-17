@@ -11,7 +11,12 @@ class Melo_playlist extends CI_Controller {
         parent::__construct();
 
         $this->layout->ajouter_css('slyset');
+        $this->layout->ajouter_css('information');
+
         $this->layout->ajouter_js('jquery.colorbox');
+    	$this->layout->ajouter_js('jquery.reveal');
+
+        
 
         $this->load->model(array('user_model','musique_model'));
         $this->load->helpers(array('date','form'));
@@ -77,5 +82,20 @@ class Melo_playlist extends CI_Controller {
  		$this->musique_model->delete_like_morceau($user,$morceau);
  	}
  	
+ 	public function delete_from_pl()
+ 	{
+ 		$user = $this->session->userdata('uid');
+ 		$morceau =  $this->input->post('track_pl');
+ 		$this->musique_model->delete_morceau_playlist($user,$morceau);
+ 	}
+ 	
+ 	public function pl_to_panier()
+ 	{
+ 		$user = $this->session->userdata('uid');
+ 		$morceau =  $this->input->post('track_pl');
+		$id_track = array($morceau);
+ 		$return = $this->musique_model->pl_to_panier($user,$id_track);
+		print $return;
+ 	}
 
 }

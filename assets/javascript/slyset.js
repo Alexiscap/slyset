@@ -365,6 +365,7 @@ $(document).ready(function(){
     }
     
     $(".check_all").click(function(){
+    	//var inputs =  $(this).parents('form').find("input[type='checkbox']")
         var inputs = $("form input[type='checkbox']");
         for(var i = 0; i < inputs.length; i++){
             var type = inputs[i].getAttribute("type");
@@ -1266,7 +1267,7 @@ $(document).ready(function(){
     
     if($("body.achats").length > 0){
         $('.bt_supp_playlist').click(function(){
-            $('.checkbox-article:checked').each(function(){
+           $(this).parents('.panier').find('.checkbox-article:checked').each(function(){
                 var a =  $(this).val();
         
                 var dataid = 'commande=' + a;
@@ -1289,6 +1290,55 @@ $(document).ready(function(){
                 $(this).find('.play_achat').css('visibility', 'hidden');
             }
         );
+    }
+    
+    //supprimer morceau playlist
+    
+    if($("body.playlist").length > 0){
+    $('.bt_supp_playlist').click(function(){
+           $(this).parents('form').find('.checkbox-article:checked').each(function(){
+                var a =  $(this).val();
+                var dataid = 'track_pl=' + a;
+                $.ajax({
+                    type: "POST",
+                    url : base_url + '/melo_playlist/delete_from_pl',
+                    data: dataid,
+                    success: function(){ //afficher le bon bouton
+
+                        $('.even.row-color-'+a).slideUp();
+                    }
+                });
+            });
+        });  
+		
+	 $('.cadis_pl').click(function(){
+           $(this).parents('form').find('.checkbox-article:checked').each(function(){
+                var a =  $(this).val();
+                var dataid = 'track_pl=' + a;
+                $.ajax({
+                    type: "POST",
+                    url : base_url + '/melo_playlist/pl_to_panier',
+                    data: dataid,
+                    success: function(data){ //afficher le bon bouton
+						if(data=='ajout')
+						{
+                        	$('#modal').reveal({ // The item which will be opened with reveal
+							animation: 'fade',                   // fade, fadeAndPop, none
+							animationspeed: 600,                       // how fast animtions are
+							closeonbackgroundclick: true,              // if you click background will modal close?
+							dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+							});
+						return false;
+                    	}
+                    	else
+                    	{
+                    	//renvoyer l'id et metrte une alert sur le tableau
+                    	alert("deja dans panier");
+                    	}
+                    }
+                });
+            });
+        }); 	
     }
     
     if($("body.personnaliser").length > 0){
