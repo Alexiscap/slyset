@@ -755,7 +755,10 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 .content .a_la_une .bandeau_top {position:absolute;margin:-175px 0;}
 .content .player{position:absolute;background:rgba(115,115,115,0.68);width: 172px;height: 42px;margin: -44px 0;}
 .content .player img{margin:8px 70px;}
-.content .a_la_une_parti img {width : 100%}
+.content .a_la_une_parti img {width : 100%; }
+.content .a_la_une img {width : 172px;}
+.content .a_la_une .player img {width : 26px;}
+
 .content .a_la_une .infos,.content .a_la_une_parti .infos{margin:0;}
 .content .a_la_une .infos p, .content .a_la_une_parti .infos p{margin:0;color:#2f2f2f;font-weight:normal;}
 .content .a_la_une .infos p span, .content .a_la_une_parti .infos p span{color:#45baa0;}

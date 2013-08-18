@@ -11,6 +11,7 @@ class Musique_model extends CI_Model {
 	protected $tbl_album = 'albums';
 	protected $tbl_order = 'commande';
 	protected $tbl_orderinfo = 'infos_commande';
+	protected $tbl_doc = 'documents';
 
 	//---------------------------------------------------------------------------
 	//-								GENERAL	MUSIQUE								-
@@ -21,13 +22,13 @@ class Musique_model extends CI_Model {
 	public function get_morceau_by_playlist_user()
 	{
 		return $this->db->select('Morceaux_id,playlists.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree')
-				->from($this->tbl_playlist)
-				->join($this->tbl_morceaux, 'morceaux.id = playlists.Morceaux_id')
-				->join($this->tbl_album, 'morceaux.albums_id = albums.id','LEFT OUTER')
-				->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
-				->where(array('playlists.Utilisateur_id'=>30))
-				->get()
-				->result();
+						->from($this->tbl_playlist)
+						->join($this->tbl_morceaux, 'morceaux.id = playlists.Morceaux_id')
+						->join($this->tbl_album, 'morceaux.albums_id = albums.id','LEFT OUTER')
+						->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
+						->where(array('playlists.Utilisateur_id'=>30))
+						->get()
+						->result();
 	
 	}
 	
@@ -138,6 +139,59 @@ class Musique_model extends CI_Model {
 	//---------------------------------------------------------------------------
 	//-								MORCEAUX									-
 	//---------------------------------------------------------------------------
+
+
+	public function get_album_une($user_id)
+	{
+		return $this->db->select('nom,img_cover,annee,livret_path,documents.id AS doc_id')
+				->from($this->tbl_album)
+				->where(array('une'=>1,'Utilisateur_id'=>$user_id))
+				->join($this->tbl_doc, 'documents.albums_id = albums.id','LEFT OUTER')
+				->get()
+				->result();
+	}
+	
+	public function get_morceau_une($user_id)
+	{
+		return $this->db->select('morceaux.id, morceaux.nom,duree')
+				->from($this->tbl_morceaux)
+				->join($this->tbl_album, 'morceaux.albums_id = albums.id','LEFT OUTER')
+				->where(array('une'=>1,'morceaux.Utilisateur_id'=>$user_id))
+				->get()
+				->result();
+	}
+
+	public function get_morceau_user($user_id)
+	{
+		return $this->db->select('morceaux.id,morceaux.nom,albums.nom AS title_alb,morceaux.duree,albums.id AS id_alb')
+				->from($this->tbl_morceaux)
+				->where(array('morceaux.Utilisateur_id'=>$user_id))
+				->join($this->tbl_album, 'morceaux.albums_id = albums.id','LEFT OUTER')
+				->get()
+				->result();
+	}
+
+	
+	public function get_album_page($id_alb)
+	{
+		return $this->db->select('nom,img_cover,annee,livret_path,documents.id AS doc_id')
+				->from($this->tbl_album)
+				->where(array('albums.id'=>$id_alb))
+				->join($this->tbl_doc, 'documents.albums_id = albums.id','LEFT OUTER')
+				->get()
+				->result();
+	}
+	
+		public function get_morceau_alb_page($user_id,$id_alb)
+	{
+		return $this->db->select('morceaux.id, morceaux.nom,duree')
+				->from($this->tbl_morceaux)
+				->join($this->tbl_album, 'morceaux.albums_id = albums.id','LEFT OUTER')
+				->where(array('albums.id'=>$id_alb,'morceaux.Utilisateur_id'=>$user_id))
+				->get()
+				->result();
+	}
+
 
 	//---------------------------------------------------------------------------
 	//-								PLAYLIST									-

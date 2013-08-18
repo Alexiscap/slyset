@@ -73,10 +73,37 @@ class Mc_musique extends CI_Controller {
         if (!empty($infos_profile)) {
             $data['infos_profile'] = $infos_profile;
         }
-
+        $data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($infos_profile->id);
+        $data['album_alaune'] = $this->musique_model->get_album_une($infos_profile->id);
+        $data['morceaux_alaune'] = $this->musique_model->get_morceau_une($infos_profile->id);
+		//var_dump($data['all_morceau_artiste']);
         $this->layout->view('musique/mc_musique', $data);
     }
 
+	public function page_album($user_id,$id_album)
+	{
+		 $uid = $this->session->userdata('uid');
+        $infos_profile = $this->user_model->getUser($user_id);
+
+        if ((($user_id != $uid && !empty($user_id)) || ($user_id == $uid && !empty($user_id))) && $infos_profile->type != 1) 
+        {
+           	$data = $this->data;
+       	 	$user_visited = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id;
+
+        	if (!empty($infos_profile)) {
+            	$data['infos_profile'] = $infos_profile;
+        	}
+        	
+        	$data['this_album']=$this->musique_model->get_album_page($id_album);
+        	$data['this_album_morceau']=$this->musique_model->get_morceau_alb_page($user_id,$id_album);
+          	$this->layout->view('musique/album',$data);
+          
+          
+        } else {
+            redirect('home/' . $uid, 'refresh');
+        }
+	}
+	
     public function test() {
         $folder = 'assets/musique/';
         $test = $this->getid3->analyze($folder . 'test.mp3');
