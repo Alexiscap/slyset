@@ -145,7 +145,7 @@ class Musique_model extends CI_Model {
 	{
 		return $this->db->select('nom,img_cover,annee,livret_path,documents.id AS doc_id')
 				->from($this->tbl_album)
-				->where(array('une'=>1,'Utilisateur_id'=>$user_id))
+				->where(array('une'=>1,'albums.Utilisateur_id'=>$user_id))
 				->join($this->tbl_doc, 'documents.albums_id = albums.id','LEFT OUTER')
 				->get()
 				->result();
