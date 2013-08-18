@@ -125,6 +125,15 @@ class Musique_model extends CI_Model {
 		
 		return array($pl_or_album,$morceaux);
 	}
+	
+	public function get_morceau($id_morceau)
+	{
+		return $this->db->select('nom')
+							->from($this->tbl_morceaux)
+							->where(array('id'=>$id_morceau))
+							->get()
+							->result();	
+	}
 		
 	//---------------------------------------------------------------------------
 	//-								MORCEAUX									-

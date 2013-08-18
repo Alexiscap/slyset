@@ -63,8 +63,17 @@
     <p><a href="#" id="vol-70">Volume: 0.7</a></p>
     <p><a href="#" id="vol-100">Volume: 1.0</a></p>-->
     
-    
-    <?php foreach ($playlists[0] as $playlist): ?>
+    <?php foreach ($playlists[0] as $playlist): 
+    	if(isset($morceau)):
+    	?>
+    	<ol>
+    	<li>Morceaux <a href="#" data-src="<?php echo base_url().'assets/musique/Helicopter.mp3'; ?>"><?php echo $morceau ?></a></li>
+		</ol>
+		</br>
+		<?php 
+    	endif;
+    ?>
+    	
    		<ol><?php echo ucfirst($this->uri->segment(4));?> : <?php echo $playlist->nom ?>
    			<?php foreach ($playlists[1] as $morceaux):
    				if($morceaux->nom == $playlist->nom ): ?>

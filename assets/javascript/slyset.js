@@ -365,7 +365,8 @@ $(document).ready(function(){
     }
     
     $(".check_all").click(function(){
-    	//var inputs =  $(this).parents('form').find("input[type='checkbox']")
+    	//var inputs =  $(this).parents('form').find("checkbox-article");  
+  	
         var inputs = $("form input[type='checkbox']");
         for(var i = 0; i < inputs.length; i++){
             var type = inputs[i].getAttribute("type");
@@ -1312,8 +1313,9 @@ $(document).ready(function(){
         });  
 		
 	 $('.cadis_pl').click(function(){
-           $(this).parents('form').find('.checkbox-article:checked').each(function(){
+           $(this).parents('form').find('.checkbox-article:checked:not(#article-all)').each(function(){
                 var a =  $(this).val();
+                var track_title = $(this).parents('tr').children('.article-title').text().trim()
                 var dataid = 'track_pl=' + a;
                 $.ajax({
                     type: "POST",
@@ -1332,12 +1334,21 @@ $(document).ready(function(){
                     	}
                     	else
                     	{
-                    	//renvoyer l'id et metrte une alert sur le tableau
-                    	alert("deja dans panier");
+                    		$('.morceau_panier_already').text(track_title+' est déja dans votre panier');
+                    		//renvoyer l'id et metrte une alert sur le tableau
+                    		$('#modal_already').reveal({ // The item which will be opened with reveal
+								animation: 'fade',                   // fade, fadeAndPop, none
+								animationspeed: 600,                       // how fast animtions are
+								closeonbackgroundclick: true,              // if you click background will modal close?
+								dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+							});
+
+							return false;
+                    	
                     	}
-                    }
+                   }
                 });
-            });
+          });
         }); 	
     }
     

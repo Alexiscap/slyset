@@ -373,11 +373,14 @@
 									<?php 
 									foreach ($morceaux_playlist as $morceaux):
    										if($morceaux->nom == $playlist->nom ): ?>
-        		
+
 											<tr class="even row-color-<?php echo $morceaux->Morceaux_id ?>" id='<?php echo $morceaux->Morceaux_id ?>'>
 												<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $morceaux->Morceaux_id ?>" id="article-<?php echo $morceaux->Morceaux_id ?>" class="checkbox-article"><label for="article-<?php echo $morceaux->Morceaux_id ?>"></label></td>
 												<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
-													<a  href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
+														<a href="<?php echo site_url().'/mc_musique/player/'.$this->session->userdata('uid').'/playlist/'.$playlist->nom.'/'.$morceaux->Morceaux_id; ?>" class="open_player">
+
+															<img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
+														</a>
 													<?php echo $morceaux->title_track ?>
 													<div class="miniat_titre">
 														<a href="#" class="cadis"></a>
@@ -522,6 +525,14 @@
 		<div id="content">
 			<p>Le morceau a bien été ajouté au panier</p>
 
+			<a href="javascript:void(0)" class="button green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
+
+		</div>
+	</div>
+	
+		<div id="modal_already">
+		<div id="content">
+			<p class="morceau_panier_already"><p>
 			<a href="javascript:void(0)" class="button green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
 
 		</div>
