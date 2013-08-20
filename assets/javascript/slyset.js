@@ -237,6 +237,35 @@ $(document).ready(function(){
                 }
             });
     	})
+    	
+    	
+    	$('.edit-pl').click(function()
+    	{
+    		var that = $(this);
+    		var value = $(this).parents('.descri_playlist').find('.nom_pl').text();
+    		$(this).parents('.descri_playlist').find('.nom_pl').replaceWith("<input class='nom_pl' value='"+value+"' type='text'/>");
+			$(document).keypress(function(e) {
+    		if(e.which == 13) {
+    			 var title_new = $(that).parents('.descri_playlist').find('input[type=text].nom_pl').val();
+				dataid = 'title_init=' + value + '&&title_new=' + title_new;
+            $.ajax({
+           
+                type: "POST",
+                url : base_url +'/melo_playlist/change_title_pl',
+                data: dataid,
+                success: function(){
+                       		$(that).parents('.descri_playlist').find('input[type=text].nom_pl').replaceWith('<span class="nom_pl">'+$(that).parents('.descri_playlist').find('input[type=text].nom_pl').val()+'</span>');
+
+                }
+            });
+    			}
+			});
+			
+		
+		
+    	}
+    	)
+    	
     }
     
 
@@ -1350,6 +1379,41 @@ $(document).ready(function(){
                 });
           });
         }); 	
+    }
+    
+    if($("body.musique").length > 0)
+    {
+    
+    	$("body").bind('click', function(ev) {
+    		var myID = ev.target.id;
+   		 	if (myID !== 'playlist_alert') {
+        		$('#playlist_alert').hide();
+    }
+});
+
+
+
+    	$('.bt_playlist').live('click',function(e){
+    		var top = $(this).offset().top;
+    		var left =  $(this).offset().left;
+    		var t = top - 30;
+    		var l = left - 230;
+    		
+    	//alert($(this).currentTarget);
+    	if($("#playlist_alert").is(':visible')==false)
+    	{
+         $("#playlist_alert").show().offset({left:l,top:t});
+		}
+		else
+		{
+		  $("#playlist_alert").hide();
+		}
+	
+       
+	});
+           	
+        // }
+    
     }
     
     if($("body.personnaliser").length > 0){

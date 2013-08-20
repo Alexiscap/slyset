@@ -197,6 +197,12 @@ $loger = $this->session->userdata('logged_in');
                     </table>
                     <input type="button" value="Acheter" class="bt_cadis">
                     <input type="button" value="Dans ma playlist" class="bt_playlist">
+                    <div id="playlist_alert"><p>Ajouter à une playlist existante</p>
+                    </br>
+                    <?php foreach($playlists as $playlist):?>
+                   <?php echo $playlist->nom;?>
+                   </br>
+                    <?php endforeach;?></div>
                 </form>
             </div>
         </div>

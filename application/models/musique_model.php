@@ -327,4 +327,16 @@ class Musique_model extends CI_Model {
 			}	
 		}				
 	}
+	
+	public function update_title($new,$old)
+	{
+	
+		$data = array(
+               'nom' => $new,
+            );
+
+		$this->db->where('nom', $old);
+		$this->db->update($this->tbl_playlist, $data); 
+	
+	}
 }

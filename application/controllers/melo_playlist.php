@@ -97,5 +97,13 @@ class Melo_playlist extends CI_Controller {
  		$return = $this->musique_model->pl_to_panier($user,$id_track);
 		print $return;
  	}
+ 	
+ 	public function change_title_pl()
+ 	{
+ 		$old =  $this->input->post('title_init');
+ 		$new =  $this->input->post('title_new');
+ 		$this->musique_model->update_title($new,$old);
+
+ 	}
 
 }

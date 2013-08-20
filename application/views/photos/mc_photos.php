@@ -229,7 +229,7 @@ $loger = $this->session->userdata('logged_in');
                         $count = substr_count($all_album_like, $media_user_result_unit->file_name . '/');
                         if ($count >= 1) {
                             ?>
-                            <img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" id="<?php echo $media_user_result_unit->file_name ?>" class="nolike-album" />
+                            <img src="<?php echo img_url('musicien/pink_heart.png'); ?>" id="<?php echo $media_user_result_unit->file_name ?>" class="nolike-album" />
                         	<?php
                         } 
                         else
@@ -323,7 +323,7 @@ $loger = $this->session->userdata('logged_in');
             			$count = substr_count($all_video_like,$media_user_result_unit->id.'/');
       					if ($count>=1)
       					{ ?>
-                      		<img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="nolike-video" />
+                      		<img src="<?php echo img_url('musicien/pink_heart.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="nolike-video" />
 							<?php 
 						}
              			else

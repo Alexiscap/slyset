@@ -342,11 +342,13 @@
 						<img src="<?php echo img_url('common/visu_pl.png'); ?>"/>
 					</div>
 					<div class="descri_playlist">
+					<form>
 						<span class="nom_pl"><?php echo $playlist->nom?></span>
+					</form>
 						<span class="detail_pl"><?php echo $playlist->n_morceau;  if($playlist->n_morceau > 1){echo ' chansons';} else {echo ' chanson';} ?> </span>
 						<span class="detail_pl"><?php echo $playlist ->n_artiste ;if($playlist->n_artiste > 1){echo ' artistes';} else {echo ' artiste';} ?></span>
 						<div class="edit">
-							<a href="#"><img src="<?php echo img_url('musicien/btn_edit.png'); ?>"/></a>
+							<a class="edit-pl" href="javascript:void(0)"><img src="<?php echo img_url('musicien/btn_edit.png'); ?>"/></a>
 			 				<a class='iframe' href="<?php echo base_url('index.php/my-playlists/delete/'.$playlist->nom)?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>"/></a>
 						</div>
 						<hr/>

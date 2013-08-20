@@ -76,6 +76,8 @@ class Mc_musique extends CI_Controller {
         $data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($infos_profile->id);
         $data['album_alaune'] = $this->musique_model->get_album_une($infos_profile->id);
         $data['morceaux_alaune'] = $this->musique_model->get_morceau_une($infos_profile->id);
+        $data['playlists'] = $this->musique_model->get_my_playlist($this->session->userdata('uid'));
+
 		//var_dump($data['all_morceau_artiste']);
         $this->layout->view('musique/mc_musique', $data);
     }
@@ -96,6 +98,8 @@ class Mc_musique extends CI_Controller {
         	
         	$data['this_album']=$this->musique_model->get_album_page($id_album);
         	$data['this_album_morceau']=$this->musique_model->get_morceau_alb_page($user_id,$id_album);
+        	$data['playlists'] = $this->musique_model->get_my_playlist($this->session->userdata('uid'));
+
           	$this->layout->view('musique/album',$data);
           
           
