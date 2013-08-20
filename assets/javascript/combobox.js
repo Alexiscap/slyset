@@ -1,12 +1,12 @@
 
 function showInfo() {
-if( document.getElementById('test_one').style.visibility == "hidden")
+if( document.getElementById('test_one').style.visibility == "visible")
 {
- document.getElementById('test_one').style.visibility = "visible";
+ document.getElementById('test_one').style.visibility = "hidden";
 }
 else
 {
- document.getElementById('test_one').style.visibility = "hidden";
+ document.getElementById('test_one').style.visibility = "visible";
 
 }
 }

@@ -49,10 +49,10 @@ $loger = $this->session->userdata('logged_in');
                 <?php if ($infos_profile->id == $uid) { ?>
 
 	  <div class="bt_noir">
-		<a class="iframe" href="<?php echo base_url('index.php/document/new-lyrics/') ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter des paroles</span><span class="bt_right"></span></a>
+		<a class="iframe" href="<?php echo base_url('index.php/documents/new-lyrics/') ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter des paroles</span><span class="bt_right"></span></a>
 	  </div>
 	  <div class="bt_noir">
-		<a class="iframe" href="<?php echo base_url('index.php/document/new-score/') ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter une partition</span><span class="bt_right"></span></a>
+		<a class="iframe" href="<?php echo base_url('index.php/documents/new-score/') ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter une partition</span><span class="bt_right"></span></a>
 	  </div>
 	  <?php } ?>
 	</div>

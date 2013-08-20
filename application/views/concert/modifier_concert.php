@@ -103,7 +103,7 @@
 	      			'placeholder'	=> 'Ex : 12'
             	);
      			
-     			echo form_int($prix) . "<pre>";
+     			echo form_int($prix) . "<span class='euro'>";
      			?>
      			€
      		</div>
