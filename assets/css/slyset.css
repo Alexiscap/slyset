@@ -1305,7 +1305,7 @@ p.detail_perso, p.detail_reglages { margin:0 0 20px 0; font-family:"Trebuchet MS
 #message-notification .ico-msg{ display:inline-block; width:47px; height:45px; background:url('../images/admin/sprite_chiffres.png') no-repeat 0 0 transparent; float:left; }
 #message-notification p{ margin:0 0 0 20px; display:inline-block; width:663px; float:left; }
 
-.contentAdmin{ padding:0 40px 20px 0; width:100%; }
+.contentAdmin{ padding:0 40px 20px 0; width:100%; margin:0;}
 .contentAdmin p{ font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; line-height:18px; font-weight:normal; color:#464646; }
 .contentAdmin h3, .contentAdmin h3:before{ margin:0 0 20px 0; font-family:"Trebuchet MS", Arial, sans-serif; font-size:18px; font-weight:normal; color: #464646; }
 .contentAdmin h3:before{ content: '>'; }
