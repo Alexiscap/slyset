@@ -3,9 +3,9 @@
 /* AVATAR */
 #right #avatar #photo { margin:4px 3px 3px 3px; width:200px;height:195px; overflow-y:hidden; }
 #right #avatar #photo img{ display:block; width:194px; }
-#right #avatar #description {padding:0 0 30px 0; background:#e6e6e6;margin:0 0 0 3px;width:194px;} 
-#right #avatar #description #texte_description {color:#3f3f3f;width:174px;margin:0;font-family:'Trebuchet MS';font-size:12px;padding:10px 10px;}
-#right #avatar #description #style {font-weight:bold;font-style:italic;color:#3f3f3f;margin:0;font-family:'Trebuchet MS';font-size:12px;padding:10px 10px;}
+#right #avatar #description {padding:0 0 15px 0; background:#e6e6e6;margin:0 0 0 3px;width:194px;} 
+#right #avatar #description #texte_description {color:#3f3f3f;width:174px;margin:0;font-family:'Trebuchet MS';font-size:12px;padding:10px 10px 0;}
+#right #avatar #description #style {font-weight:bold;font-style:italic;color:#3f3f3f;margin:0;font-family:'Trebuchet MS';font-size:12px;padding:10px 10px 8px;}
 #right #avatar #description #instruments {font-style:italic;color:#3f3f3f;margin:0;font-family:'Trebuchet MS';font-size:12px;padding:0 10px;}
 /* FIN AVATAR*/
 
@@ -14,16 +14,16 @@
 #right #top_titre img{ margin:0 0 0 5px; float:left;}
 #right #top_titre p {float:left;color:#3f3f3f;margin:0 0 10px 10px;font-size:20px;}
 #right #top_titre p span{color:#31a58c;}
-#right #top_titre #classement{clear:both;background:#e6e6e6;width:200px;height:235px;}
-#right #top_titre #classement #num_impair{background:#f6f6f6;font-size:14px;width:196px;height:38px;border:2px solid #dadada;}
+#right #top_titre #classement{clear:both;background:#e6e6e6;width:200px;height:220px;border: 2px solid #dadada;}
+#right #top_titre #classement #num_impair{background:#f6f6f6;font-size:14px;width:200px;height:38px;}
 #right #top_titre #classement #num_impair p{font-size:14px;padding:10px 0;margin:0;}
 #right #top_titre #classement #num_impair .position{width:23px;border-right:2px solid #e6e6e6;height:31px;font-size:24px;padding:7px 0 0 0;text-align: center;}
 #right #top_titre #classement #num_impair img{width:18px;height:18px;margin:9px 7px;}
-#right #top_titre #classement #num_pair{background:#e6e6e6;font-size:14px;width:196px;height:38px;border:1px solid #dadada;}
+#right #top_titre #classement #num_pair{background:#e6e6e6;font-size:14px;width:200px;height:38px;}
 #right #top_titre #classement #num_pair p{font-size:14px;padding:10px 0;margin:0;}
 #right #top_titre #classement #num_pair .position{width:23px;border-right:2px solid #dadada;height:31px;font-size:24px;padding:7px 0 0 0;text-align: center;}
 #right #top_titre #classement #num_pair img{width:18px;height:18px;margin:9px 7px;}
-#right #top_titre #classement a{font-size:12px;margin:8px 0 0 8px;height:auto;width:150px;}
+#right #top_titre #classement a{font-size:12px;margin:8px 0 0 8px;height:auto;width:150px;color: #000;}
 #right #top_titre #classement .play{margin:0;}
 /* FIN TOP TITRES */
 

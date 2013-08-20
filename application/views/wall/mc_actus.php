@@ -57,7 +57,7 @@
         $form_comments_1 = array("id" => "comments-msg", "style" => "display:block;");
         echo form_open('mc_actus/form_wall_musicien_message/'.$uid_form = (empty($infos_profile)) ? $session_id : $infos_profile->id, $form_comments_1);
         
-          $textarea = array("name" => "comment1", "placeholder" => "Votre message ici ...");
+          $textarea = array("name" => "comment1", "placeholder" => "Exprimez-vous");
           echo form_textarea($textarea);
           echo form_error('comment1', '<span class="error-form">', '</span>');
           

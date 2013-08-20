@@ -43,7 +43,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 
     <div class="content">
         <div id="btn_tmp">
-            <a href="<?php echo site_url('my-concert/' . $infos_profile->id) ?>"><div class="avenir actif">A venir</div></a>
+            <a href="<?php echo site_url('my-concert/' . $infos_profile->id) ?>"><div class="avenir actif">&Aacute; venir</div></a>
             <a href="<?php echo site_url('my-concert/archive/' . $infos_profile->id) ?>"><div class="cpasse">Concerts passés</div></a>
 
 
@@ -133,7 +133,7 @@ if($nbr_concert_par_melo!=0)
 
     <?php if (isset($sidebar_right)) echo $sidebar_right; ?>
 
-    <div class="pagination">
+    <!--<div class="pagination">
         <a href="#" id="precedent"><span><</span></a>
         <a href="#" class="page">1</a>
         <a href="#" class="page">2</a>
@@ -141,6 +141,6 @@ if($nbr_concert_par_melo!=0)
         <a href="#" class="page">4</a>
         <a href="#" class="page">5</a>
         <a href="#" id="suivant"><span>></span></a>
-    </div>
+    </div>-->
 
 </div>
