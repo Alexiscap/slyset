@@ -1,4 +1,4 @@
-<?php
+t<?php
 $session_id = $this->session->userdata('uid');
 $uid = (empty($session_id)) ? '' : $session_id;
 $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
