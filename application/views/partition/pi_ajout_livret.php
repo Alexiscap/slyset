@@ -4,7 +4,7 @@
   <div class="content-pi">
 			<?php echo $error;?>
 
-<?php echo form_open_multipart('pi_ajout_livret/do_upload');?>
+<?php echo form_open_multipart('pop_in_general/do_upload_livret');?>
 
 		<div class="label">
 			<label>Vos livrets</label>
