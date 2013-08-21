@@ -3,7 +3,7 @@
 
 
 <div class="pop-in_cent">
-	<span>Ajouter des partitions</span>
+	<span>Ajouter une partition</span>
 
     <div class="content-pi-cent">
 		<?php echo $error;?>
@@ -11,7 +11,7 @@
 		<?php echo form_open_multipart('pi_ajout_partitions/do_upload');?>
 		<div class="elem_center">
 			<div class="label">
-				<label>Vos paroles</label>
+				<label>Votre partition</label>
 			</div>
 			<div class="champs">
                 <?php
@@ -19,7 +19,7 @@
                     'name' => 'partition_up',
                     'type' => 'file',
                     'class' => 'photo_up',
-                    'value' => 'Choisir des paroles'
+                    'value' => 'Choisir une partition'
                 );
                 ?><div class="bt_noir">
                 <?php echo form_upload($data); ?>
@@ -57,7 +57,7 @@
                 </div>
             </div>
 			<div id="morceaux"></div>
-			<?php echo form_submit('submit', 'Ajouter les partitions'); ?>
+			<?php echo form_submit('submit', 'Ajouter la partition'); ?>
 			<?php echo form_close();?>
 		</div>
 	</div>
