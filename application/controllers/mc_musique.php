@@ -93,42 +93,37 @@ class Mc_musique extends CI_Controller {
 //        print_r($test);
     }
 
-    public function player($user_id,$type = null,$name = null,$name_morceau = null) {    
-    	
-    	//print $type;
-    	$data['playlists'] = $this->musique_model->get_my_playlist_player($user_id,$type,$name,$name_morceau);
-    	//var_dump($data['playlists']);
-    	$data['morceaux_playlist'] = $this->musique_model->get_morceau_by_playlist_user($user_id);
-
-    	//$unique_playlist = array_unique($playlist);
-    	//var_dump($morceaux_playlist);
-        $this->load->view('musique/player',$data);
-    }
-
     public function do_upload_musique() {
         $this->load->library('upload');
-        $image_upload_folder = 'files/uploads/';
+        $uid = $this->session->userdata('uid');
+        
+        print_r($_FILES);
+//        print_r($this->getid3->analyze($_FILES['tmp_name']));
+        
+//        $upload_folder = './files/'.$uid.'/musique/';
+        $upload_folder = 'tmp/';
 
-        if (!file_exists($image_upload_folder)) {
-            mkdir($image_upload_folder, DIR_WRITE_MODE, true);
+        if (is_dir($upload_folder) == false){
+            mkdir($upload_folder, 0755, true);
         }
-
+        
         $this->upload_config = array(
-            'upload_path' => $image_upload_folder,
-            'allowed_types' => 'png|jpg|jpeg|mp3',
-            'max_size' => 50000,
+            'upload_path' => $upload_folder,
+//            'allowed_types' => 'png|jpg|jpeg|mp3',
+            'allowed_types' => 'mp3|MP3',
+            'max_size' => 9000000,
             'remove_space' => TRUE,
             'overwrite' => TRUE,
             'encrypt_name' => FALSE,
         );
 
         $this->upload->initialize($this->upload_config);
-        print_r($_FILES);
-        print '<br/><br/>';
-        print_r($_POST);
         
         $userfile_name = str_replace(' ', '_', $_FILES['userfile']['name']);
-        print_r($userfile_name);
+        
+//        print_r($_FILES);
+//        print '<br/>';
+//        print_r($_POST);
         
 //        if($this->check_exists()){
 //            print_r('réussie !!');
@@ -139,8 +134,50 @@ class Mc_musique extends CI_Controller {
                 $error = array('error' => $this->upload->display_errors());
                 $this->load->view('musique/upload_musique', $error);
             } else {
-                $data['file_info'] = $this->upload->data();
-    //            print_r($data['file_info']['file_name']);
+                $data['file_info'] = $this->upload->data();                
+                $id3 = $this->getid3->analyze($upload_folder.$userfile_name);
+                print_r($id3);
+                
+                $filesize = $id3['filesize'];
+                $filename = $id3['filename'];
+//                $file_to_path = $id3['filepath'];
+//                $full_path = $id3['filenamepath'];
+                $format = $id3['fileformat'];
+                $bitrate = round($id3['audio']['bitrate']);
+                $track_number = $id3['tags']['id3v2']['track_number'][0];
+                $year = $id3['tags']['id3v2']['year'][0];
+                $genre = $id3['tags']['id3v2']['genre'][0];
+                $album = $id3['tags']['id3v2']['album'][0];
+                $artist = $id3['tags']['id3v2']['artist'][0];
+                $title = $id3['tags']['id3v2']['title'][0];
+                $duration = $id3['playtime_string'];
+                
+                $file_to_move = $upload_folder.''.$filename;
+                $moved_path = "";
+                $str_album = str_replace(' ', '_', strtolower($album));
+                if(!empty($album)){
+                    $moved_path = 'files/'.$uid.'/musique/'.$str_album.'/';
+                } else {
+                    $moved_path = 'files/'.$uid.'/musique/';
+                }
+                
+                if (is_dir($moved_path) == false){
+                    mkdir($moved_path, 0755, true);
+                }
+                
+                $moved_path_file = $moved_path.''.$filename;
+                    
+                print_r($str_album);
+                print_r($file_to_move);
+                print_r($moved_path_file);
+                
+                if (copy($file_to_move, $moved_path_file)) {
+                    unlink($file_to_move);
+                }
+                
+                $this->musique_model->insert_music($filename, $title, $track_number, $artist, $genre, $year, $duration, $format, $bitrate, $filesize);
+//                $this->musique_model->insert_album($str_album, $genre, $year);
+                
                 $this->load->view('musique/upload_musique', $data);
             }
 //        } else {
@@ -149,7 +186,10 @@ class Mc_musique extends CI_Controller {
     }
 
     public function check_exists(){
-        $targetFolder = '/slyset/files/uploads';
+        $uid = $this->session->userdata('uid');
+        
+        //TODO : CHANGER PATH EN FONCTION DE ALBUM OU NON
+        $targetFolder = '/slyset/'.$uid.'/musique/';
         
         $userfile_name = str_replace(' ', '_', $_POST['filename']);
         print_r($_SERVER['DOCUMENT_ROOT'] . $targetFolder . '/' . $userfile_name);
@@ -166,6 +206,18 @@ class Mc_musique extends CI_Controller {
 
 //        echo json_encode($_POST['filename']);
 //        return json_encode($_POST['filename']);
+    }
+
+    public function player($user_id,$type = null,$name = null,$name_morceau = null) {    
+    	
+    	//print $type;
+    	$data['playlists'] = $this->musique_model->get_my_playlist_player($user_id,$type,$name,$name_morceau);
+    	//var_dump($data['playlists']);
+    	$data['morceaux_playlist'] = $this->musique_model->get_morceau_by_playlist_user($user_id);
+
+    	//$unique_playlist = array_unique($playlist);
+    	//var_dump($morceaux_playlist);
+        $this->load->view('musique/player',$data);
     }
     
 ////     Function called by the form

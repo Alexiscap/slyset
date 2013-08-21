@@ -312,6 +312,8 @@ class Pop_in_general extends CI_Controller {
         /* $config['max_size'] = '1000';
           $config['max_width'] = '1024';
           $config['max_height'] = '768'; */
+        $config['remove_space'] = TRUE;
+        $config['overwrite'] = TRUE;
         $photo = $this->input->post('photo_up');
 
         $this->load->library('upload', $config);
@@ -638,7 +640,8 @@ class Pop_in_general extends CI_Controller {
 
 
         $config['upload_path'] = $dynamic_path;
-
+        $config['remove_space'] = TRUE;
+        $config['overwrite'] = TRUE;
         $config['allowed_types'] = 'pdf';
 
 
@@ -680,7 +683,8 @@ class Pop_in_general extends CI_Controller {
 
 
         $config['upload_path'] = $dynamic_path;
-
+        $config['remove_space'] = TRUE;
+        $config['overwrite'] = TRUE;
         $config['allowed_types'] = 'pdf';
 
 
@@ -724,7 +728,8 @@ class Pop_in_general extends CI_Controller {
 
 
         $config['upload_path'] = $dynamic_path;
-
+        $config['remove_space'] = TRUE;
+        $config['overwrite'] = TRUE;
         $config['allowed_types'] = 'pdf';
 
 

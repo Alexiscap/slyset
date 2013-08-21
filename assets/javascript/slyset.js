@@ -29,16 +29,15 @@ $(document).keydown(function(e) {
     // right arrow
     if (unicode == 39) {
         var next = $('li.playing').next();
-        if (!next.length) next = $('ol li').first();
+        if (!next.length) next = $('ul li').first();
         next.click();
     // back arrow
     } else if (unicode == 37) {
         var prev = $('li.playing').prev();
-        if (!prev.length) prev = $('ol li').last();
+        if (!prev.length) prev = $('ul li').last();
         prev.click();
     // spacebar
     } else if (unicode == 32) {
-        alert('ok');
         audio.playPause();
     }
 });
@@ -84,7 +83,7 @@ $(document).ready(function(){
             width:"45%", 
             height:"65%",
             onClosed:function(){
-                //$('.content').load('30 .content');
+            //$('.content').load('30 .content');
             }
         });
 
@@ -100,81 +99,166 @@ $(document).ready(function(){
             height:"85%"
         });
     }
-                            
+
     $(".open_player").click(function(event) {
         var href = $(this).attr('href');
-        window.open(href, 'popup', 'height=500,width=500,toolbar=no');
+        window.open(href, '', 'resizable=no, height=445, width=650, toolbar=no, directories=no, status=no, location=no menubar=no');
         //        return false;
         event.preventDefault();
-        getPlayer();
     });
     
     if ($("audio").length > 0){
-        //        audiojs.events.ready(function() {
-        //            audiojs.createAll();
-        //        });
-        //        
         // Setup the player to autoplay the next track
         var a = audiojs.createAll({
             trackEnded: function() {
-                var next = $('ol li.playing').next();
-                if (!next.length) next = $('ol li').first();
-                next.addClass('playing').siblings().removeClass('playing');
-                audio.load($('a', next).attr('data-src'));
-                audio.play();
+                if ($('.random').hasClass('disable')) {
+                    var next = $('ul li.playing').next();
+                    if (!next.length) next = $('ul li').first();
+                    next.addClass('playing').siblings().removeClass('playing');
+                    audio.load($('a', next).attr('data-src'));
+                    audio.play();
+                } else if($('.random').hasClass('enable')){
+                    var list = $("ul li").toArray();
+                    var elemlength = list.length;
+                    var randomnum = Math.floor(Math.random()*elemlength);
+                    var randomitem = list[randomnum];
+
+//                    randomitem.play();
+                    randomitem.addClass('playing').siblings().removeClass('playing');
+                    audio.load($('a', randomitem).attr('data-src'));
+                    audio.play();
+                }
             }
         });
 
-       // Load in the first track
+
+        $('.audiojs .play-pause .play').before('<p class="prev"></p>');
+        $('.audiojs .play-pause .pause').after('<p class="next"></p>');
+        
+        // Load in the first track
         var audio = a[0];
-        first = $('ol a').attr('data-src');
-        $('ol li').first().addClass('playing');
+        first = $('ul a').attr('data-src');
+        $('ul li').first().addClass('playing');
         audio.load(first);
 
         // Load in a track on click
-        $('ol li').click(function(e) {
+        $('ul li').click(function(e) {
             e.preventDefault();
             $(this).addClass('playing').siblings().removeClass('playing');
             audio.load($('a', this).attr('data-src'));
             audio.play();
         });
         
-    //        audiojs.events.ready(function() {
-    //        var as = audiojs.createAll(),
-    //            audio = as[0],
-    //            ids = ['vol-0', 'vol-10', 'vol-40', 'vol-70', 'vol-100'];
-    //        for (var i = 0, ii = ids.length; i < ii; i++) {
-    //          var elem = document.getElementById(ids[i]),
-    //              volume = ids[i].split('-')[1];
-    //          elem.setAttribute('data-volume', volume / 100)
-    //          elem.onclick = function(e) {
-    //            audio.setVolume(this.getAttribute('data-volume'));
-    //            e.preventDefault();
-    //            return false;
-    //          }
-    //        }
-    //        });
+        
+        // Load prev track on click
+        $('p.prev').click(function(e) {
+            e.preventDefault();
+            var prev = $('li.playing').prev();
+            if (!prev.length) prev = $('ul li').last();
+            prev.click();
+        });
+        
+        $("#vol-slider").slider({
+            orientation: "vertical",
+            range: "min",
+            min: 0,
+            max: 100,
+            value: 50,
+//            step: 1,
+            slide : function(event, ui){
+                var volume = ui.value / 100;
+                audio.setVolume(volume);
+//                $("#amount").val(ui.value);
+            }
+        });
+//        $("#amount").val($("#vol-slider").slider("value"));
+        
+        // Load next track on click
+        $('p.next').click(function(e) {
+            e.preventDefault();
+            //            var next = $('li.playing').next();
+            //            if (!next.length) next = $('ul li').first();
+            //            next.click();
+            
+            var next = $('ul li.playing').next();
+            if (!next.length) next = $('ul li').first();
+            next.addClass('playing').siblings().removeClass('playing');
+            audio.load($('a', next).attr('data-src'));
+            audio.play();
+        });
+                
+        $(".random.disable").toggle(function(e){
+            $(this).removeClass('disable').addClass('enable');
+            var list = $("ul li").toArray();
+            var elemlength = list.length;
+            var randomnum = Math.floor(Math.random()*elemlength);
+            var randomitem = list[randomnum];
+            
+            randomitem.play();
+            console.log(list);
+        },function(e){
+            $(this).removeClass('enable').addClass('disable');
+        });
+        
+        $(".loop.disable").toggle(function(e){
+            $(this).removeClass('disable').addClass('enable');
+            $('audio').attr('loop', 'loop');
+        },function(e){
+            $(this).removeClass('enable').addClass('disable');
+            $('audio').removeAttr('loop');
+        });
+        
+        $(".vol.disable").hover(function(e){
+            $(this).removeClass('disable').addClass('enable');
+            $(this).parent().find('#vol-slider').css('display', 'inline-block');
+        },function(e){
+            $(this).removeClass('enable').addClass('disable');
+            $(this).parent().find('#vol-slider').css('display', 'none');
+        });
+
+        $('audio').bind("timeupdate", function(){
+            var rem = parseInt(this.duration - this.currentTime, 10);
+            var pos = (this.currentTime / this.duration) * 100;
+            var mins = Math.floor(rem / 60, 10);
+            var secs = rem - mins * 60;
+            
+            if(!isNaN(rem)){
+//                $('.audiojs .time').hide();
+//            } else {
+//                $('.audiojs .time').show();
+                $('.audiojs .time').html('-' + mins + ':' + (secs > 9 ? secs : '0' + secs));
+            }
+             
+            
+//            var s = parseInt(this.currentTime % 60);
+//            var m = parseInt((this.currentTime / 60) % 60);
+//            console.log(m + ':' + s);
+             
+//            console.log(this.duration);
+//            console.log(this.currentTime);
+//            console.log((this.currentTime / this.duration) * 100);
+        });
     }
 
-  $('.iframe').bind('contextmenu', function(e) {
-  	  	return false;
-	}); 
+    $('.iframe').bind('contextmenu', function(e) {
+        return false;
+    }); 
 	
 	
-	//status actif du menu de gauche
-	if ($('body').attr('class') != 'home')
-	{
-	var class_current = $('body').attr('class');
-	var css_init = $('aside').find('#'+ class_current + ' .icon').css('background-position');
-	var css_new = '-22px ' + css_init.slice(4,10);
+    //status actif du menu de gauche
+    if ($('body').attr('class') != 'home' && $('body').attr('class') != 'player-audio')
+    {
+        var class_current = $('body').attr('class');
+        var css_init = $('aside').find('#'+ class_current + ' .icon').css('background-position');
+        var css_new = '-22px ' + css_init.slice(4,10);
 	
-	$('aside').find('#'+ class_current + ' .icon').css('background-position',css_new)
-	$('aside').find('#'+ class_current + ' a').css('color','#01adbb')
-	}
+        $('aside').find('#'+ class_current + ' .icon').css('background-position',css_new)
+        $('aside').find('#'+ class_current + ' a').css('color','#01adbb')
+    }
 	
-	//affichage bloc contenu side bar de droite
+    //affichage bloc contenu side bar de droite
 
-   if($('body.followers').length>0||$('body.abonnements').length>0||$('body.melo_actu').length>0||$('body.reglages').length>0||$('body.achats').length>0||$('body.concert_melo').length>0||$('body.musicien_actus').length>0||$('body.concert_mu').length>0||$('body.partitions').length>0||$('body.stats').length>0||$('body.personnaliser').length>0)
+    if($('body.followers').length>0||$('body.abonnements').length>0||$('body.melo_actu').length>0||$('body.reglages').length>0||$('body.achats').length>0||$('body.concert_melo').length>0||$('body.musicien_actus').length>0||$('body.concert_mu').length>0||$('body.partitions').length>0||$('body.stats').length>0||$('body.personnaliser').length>0)
     {
         $('#top_titre').show();
         $('#last_photo').show();
@@ -204,39 +288,39 @@ $(document).ready(function(){
     
     if($('body.playlist').length>0)
     {
-    	$('.coeur').live('click',function()
-    	{
-    		var coeur = $(this);
-    		var id_morceau = $(this).parents('tr').attr('id');
-    		datalike = 'id_morceau='+id_morceau;
-    		$.ajax({
+        $('.coeur').live('click',function()
+        {
+            var coeur = $(this);
+            var id_morceau = $(this).parents('tr').attr('id');
+            datalike = 'id_morceau='+id_morceau;
+            $.ajax({
                 type: "POST",
                 url : base_url +'/melo_playlist/add_like',
                 data: datalike,
                 success: function(){
-                   coeur.addClass('coeur_actif');
-                   coeur.removeClass('coeur')
-                   // $(this_comm).parents('.comm').slideUp();
+                    coeur.addClass('coeur_actif');
+                    coeur.removeClass('coeur')
+                // $(this_comm).parents('.comm').slideUp();
                 }
             });
-    	})
+        })
     	
-    	$('.coeur_actif').live('click',function()
-    	{    
-    		var coeur = $(this);
-    		var id_morceau = $(this).parents('tr').attr('id');
-    		datalike = 'id_morceau='+id_morceau;
-    		$.ajax({
+        $('.coeur_actif').live('click',function()
+        {    
+            var coeur = $(this);
+            var id_morceau = $(this).parents('tr').attr('id');
+            datalike = 'id_morceau='+id_morceau;
+            $.ajax({
                 type: "POST",
                 url : base_url +'/melo_playlist/delete_like',
                 data: datalike,
                 success: function(){
-                  coeur.addClass('coeur');
-                   coeur.removeClass('coeur_actif')
-                   // $(this_comm).parents('.comm').slideUp();
+                    coeur.addClass('coeur');
+                    coeur.removeClass('coeur_actif')
+                // $(this_comm).parents('.comm').slideUp();
                 }
             });
-    	})
+        })
     }
     
 
@@ -246,9 +330,9 @@ $(document).ready(function(){
         $('#reseaux_ailleur').show();
     }
 
-	$('.mise-panier').click(function(){
+    $('.mise-panier').click(function(){
 
- 		var la_cmd = $(this);
+        var la_cmd = $(this);
         doc_id = $(this).attr('id');
         prix = $(this).parents('td').attr('id');
         nom = $('.mise-panier').parents('td').attr('class')
@@ -271,7 +355,7 @@ $(document).ready(function(){
 
     $('.head_menu').click(function(){
          
-     	//            $(this).next('.one').stop();
+        //            $(this).next('.one').stop();
         //$('.head_menu').next('.first-row').slideUp()
         if($(this).next('.one').is(":visible") == true){
             $(this).next('.one').stop(true).slideToggle(500);
@@ -284,25 +368,25 @@ $(document).ready(function(){
     //ajout_paroles ajout_partitions
     if($("body.ajout_paroles").length > 0){
 
-			$("select").change(function () {
-        	$("select option:selected")
-        	var str = "";
-        	var id_album = $("select option:selected").attr('class');
-        	var dataid = 'id_album=' + id_album;
+        $("select").change(function () {
+            $("select option:selected")
+            var str = "";
+            var id_album = $("select option:selected").attr('class');
+            var dataid = 'id_album=' + id_album;
         
-        	$.ajax({
-            	type: "POST",
-            	url : base_url +'/pi_ajout_paroles/get_morceaux',
-            	data: dataid,
-            	success: function(datas){
-                	$('.mor').remove();
-                	$(datas).show().insertAfter('select').slideDown('slow');
-            	}
-        	})
-   	 	});
-	}
+            $.ajax({
+                type: "POST",
+                url : base_url +'/pi_ajout_paroles/get_morceaux',
+                data: dataid,
+                success: function(datas){
+                    $('.mor').remove();
+                    $(datas).show().insertAfter('select').slideDown('slow');
+                }
+            })
+        });
+    }
 
-   if($("body.ajout_partitions").length > 0){
+    if($("body.ajout_partitions").length > 0){
         $("select").change(function () {
             $("select option:selected")
             var str = "";
@@ -492,48 +576,48 @@ $(document).ready(function(){
     };
        
     if($("body.photos_videos").length > 0){
-		$('.bord_photo a').click(function(){
-  			if($(this).parents('.bord_photo').next('.allcomment').is(':visible') == false)
-  			{
-  				$(this).parents('.bord_photo').next('.allcomment').show();
-  				$(".content").masonry('reload');
-			}
-			else
-			{
-				$(this).parents('.bord_photo').next('.allcomment').hide();
-  				$(".content").masonry('reload');
-			}
-   
-		});
-	};
-
-        //Commentaires photos
-        $('.comment-form form').submit(function(){
-            var baseurl = $(this).find("#baseurl").val();
-            var comment = $(this).find("#usercomment").val();
-            var messageid = $(this).find("#messageid").val();
-            var thisParent = $(this).parent();
-            var dataString = 'usercomment=' + comment + '&messageid=' + messageid;
-            if(usercomment == '' || messageid == ''){
-                alert('Veuillez renseigner un message !');
-            } else {
-                var ajaxLoader = $(this).parent().find(".ajax_loader");
-            
-                ajaxLoader.show();
-                $.ajax({
-                    type: "POST",
-                    url : baseurl + 'index.php/mc_photos/form_photo_user_comment',
-                    data: dataString,
-                    success: function(comment){
-
-                        $(comment).hide().insertBefore(thisParent).slideDown('slow');
-                        ajaxLoader.fadeOut(1000);
-                        $(".content").masonry('reload');
-                    }
-                })
-                return false;
+        $('.bord_photo a').click(function(){
+            if($(this).parents('.bord_photo').next('.allcomment').is(':visible') == false)
+            {
+                $(this).parents('.bord_photo').next('.allcomment').show();
+                $(".content").masonry('reload');
             }
+            else
+            {
+                $(this).parents('.bord_photo').next('.allcomment').hide();
+                $(".content").masonry('reload');
+            }
+   
         });
+    };
+
+    //Commentaires photos
+    $('.comment-form form').submit(function(){
+        var baseurl = $(this).find("#baseurl").val();
+        var comment = $(this).find("#usercomment").val();
+        var messageid = $(this).find("#messageid").val();
+        var thisParent = $(this).parent();
+        var dataString = 'usercomment=' + comment + '&messageid=' + messageid;
+        if(usercomment == '' || messageid == ''){
+            alert('Veuillez renseigner un message !');
+        } else {
+            var ajaxLoader = $(this).parent().find(".ajax_loader");
+            
+            ajaxLoader.show();
+            $.ajax({
+                type: "POST",
+                url : baseurl + 'index.php/mc_photos/form_photo_user_comment',
+                data: dataString,
+                success: function(comment){
+
+                    $(comment).hide().insertBefore(thisParent).slideDown('slow');
+                    ajaxLoader.fadeOut(1000);
+                    $(".content").masonry('reload');
+                }
+            })
+            return false;
+        }
+    });
     
     
     $('.ajout_comm form').submit(function(e){
@@ -833,17 +917,17 @@ $(document).ready(function(){
                 var a = $(this);
                 var idwall_community = $(this).parents('.bouton').attr('id');
                 var datawall = 'idwall_community=' + idwall_community;
-		         $.ajax({
-              	  	type: "POST",
-                	url :'../melo_abonnements/delete_community_wall',
-                	data: datawall,
-                	success: function(){ //afficher le bon bouton
-                    	$(a).parents('.follower').slideUp();
-                	}
-            })
-            return false
+                $.ajax({
+                    type: "POST",
+                    url :'../melo_abonnements/delete_community_wall',
+                    data: datawall,
+                    success: function(){ //afficher le bon bouton
+                        $(a).parents('.follower').slideUp();
+                    }
+                })
+                return false
           
-        },
+            },
             
             mouseenter:  function () {
                 $(this).children('.button_center').text('Ne plus suivre');
@@ -1288,7 +1372,7 @@ $(document).ready(function(){
             function() {
                 $(this).find('.play_achat').css('visibility', 'hidden');
             }
-        );
+            );
     }
     
     if($("body.personnaliser").length > 0){

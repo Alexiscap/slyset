@@ -113,6 +113,8 @@ class melo_actu extends CI_Controller
 //        $config['max_size']      = '100000';
 //        $config['max_width']     = '1024';
 //        $config['max_height']    = '768';
+        $config['remove_space'] = TRUE;
+        $config['overwrite'] = TRUE;
         $this->load->library('upload', $config);
         
         $this->form_validation->set_rules('comment2', 'Message', 'trim|required|xss_clean');

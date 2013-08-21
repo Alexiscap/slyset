@@ -155,7 +155,9 @@ class Admin_articles extends CI_Controller {
 
         $config['upload_path'] = $dynamic_path;
         $config['allowed_types'] = 'gif|jpg|jpeg|png';
-        $config['encrypt_name'] = true;
+        $config['encrypt_name'] = TRUE;
+        $config['remove_space'] = TRUE;
+        $config['overwrite'] = TRUE;
 
         $this->load->library('upload', $config);
 

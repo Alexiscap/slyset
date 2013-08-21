@@ -88,6 +88,8 @@ class User extends CI_Controller {
         $config['max_size'] = '2048';
         $config['max_width'] = '1024';
         $config['max_height'] = '768';
+        $config['remove_space'] = TRUE;
+        $config['overwrite'] = TRUE;
         $this->load->library('upload', $config);
 
         $data = array('fb_data' => $fb_data);

@@ -88,6 +88,8 @@ class Mc_perso extends CI_Controller {
         $config['max_size'] = '8192';
         $config['max_width'] = '0';
         $config['max_height'] = '0';
+        $config['remove_space'] = TRUE;
+        $config['overwrite'] = TRUE;
         $this->load->library('upload', $config);
 
         $this->form_validation->set_rules('background', 'Background', 'callback_handle_upload_background');
