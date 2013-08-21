@@ -618,7 +618,7 @@ class Pop_in_general extends CI_Controller {
         $data['error'] = " ";
 
         $data['album'] = $this->document_model->get_album($this->session->userdata('uid'));
-        $this->layout->view('partition/pi_ajout_livret', $data);
+        $this->load->view('partition/pi_ajout_livret', $data);
 	
 	}
 	

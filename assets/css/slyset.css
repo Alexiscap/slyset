@@ -147,9 +147,9 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .content hr{ color:#888d95; width:499px; margin:10px auto;clear:both; }
 .content .infos_concert{ width:302px; margin:0 0 0 20px; float:left; }
 .content .calendrier{ background:url("../images/musicien/calendrier.png") no-repeat; width:50px; height:50px; float:left; }
-.content .infos_concert p{ margin:3px; color:#5d5d5b; font-size:14px; }
-.content .infos_concert .mois{ margin:0; width:50px; font-size:9px; color:white; position:absolute; text-align : center; }
-.content .infos_concert .jour{ margin:20px 9px; font-size:24px; font-family:georgia; position:absolute; text-align : center; width : 31px;font-weight:normal;}
+.content .infos_concert p{ margin:3px; color:#5d5d5b; font-size:14px; line-height: 12px;}
+.content .infos_concert .mois{ margin:4px 0 0; width:50px; font-size:9px; color:white; position:absolute; text-align : center; }
+.content .infos_concert .jour{ margin:23px 9px 0; font-size:24px; font-family:georgia; position:absolute; text-align : center; width : 31px;font-weight:normal;}
 .content .infos_concert img{ float:left; }
 .content .adr_concert{ width:196px; float:left; margin:0 0px; }
 .content .adr_concert p{ margin:3px; color:#5d5d5b; font-size:14px; line-height:19px;  }
