@@ -40,15 +40,15 @@
 
                 <div id='test_one'>
 
-                    <!--<ul id='test_two'>
+                    <ul id='test_two'>
                         <?php
-                        for ($i = 0; $i < $max_album_user; $i++) {
+                        /* for ($i = 0; $i < $max_album_user; $i++) {
                             ?>
                             <li onclick="selectalbum(event)"><?php echo $album_by_user[$i]->{'nom'}; ?></li>
                             <?php
-                        }
+                        } */
                         ?>
-                    </ul>-->
+                    </ul>
 
                     <div id='test_three'>
                         <input  id="create" type="text" value="" autocomplete="off" placeholder="creer un nouvel album"/><div id="create_ok"  onclick="selectalbumcreate()"><img src="<?php echo img_url('common/creer_album.png'); ?>" alt="ok" /></div>
