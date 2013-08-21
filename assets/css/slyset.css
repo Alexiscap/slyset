@@ -257,7 +257,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .content .photo .bord_photo p{ margin:0 10px 0; display:inline; font-size:10px; color:#878d95; }
 .content .photo .bord_photo a:hover{ text-decoration:none; }
 .content .photo .nom_photo{ width:138px; text-align:left; word-wrap : break-word }
-.content .photo .bord_photo img{ margin:7px 5px -1px 35px; display:inline; }
+.content .photo .bord_photo img{ margin:7px 5px -1px 30px; display:inline; }
 .nolike img {margin:0 5px 0 15px; display:inline; }
 .content .photo .bord_photo .nb_like{ margin:0; }
 .content .photo .comm,.content .photo .comment-form,.content .photo .comment-form-album,.content .photo .comment-form-video{ width:170px; margin:0 -15px; background:#f2f0f0; border-bottom:1px solid #cdcdcd; border-top:none; min-height:34px; }
@@ -268,9 +268,9 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .content .photo .comm .commentaire,.content .photo .comment-form .commentaire, .content .photo .comment-form-album .commentaire, .content .photo .comment-form-video .commentaire{ font-size:10px; color:#888d95; }
 .content .photo .comm input[type=text],.content .photo .comment-form input[type=text], .content .photo .comment-form-album input[type=text], .content .photo .comment-form-video input[type=text]{ float:left; width:70px; border:1px solid #dfdede; margin:5px 0; }
 .content .photo .comm input[type=image],.content .photo .comment-form input[type=submit], .content .photo .comment-form-album input[type=submit], .content .photo .comment-form-video input[type=submit]{ clear:both; width:55px; margin:4px 0 0 5px; }
-.content .photo .edit{ background:rgba(36, 36, 36, 0.7); width:160px; height:22px; position:absolute; margin:0;display:none;z-index:25;top:0;}
+.content .photo .edit{ background:rgba(36, 36, 36, 0.7); width:160px; height:22px; position:absolute; margin:0;display:none;}
 .content .photo .edit img{ float:right; margin:4px 8px 0 0; }
-.content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:160px; position:absolute; margin:22px 0;height:auto;}
+.content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:160px; position:absolute; margin:22px 0;height:138px;}
 .content .photo .open_alb img{ margin:35% 36%; }
 .content .sepa_comm {width:170px;height:5px;background:#e6e6e6;margin-left:-5px;}
 
