@@ -15,7 +15,6 @@ class Mc_musique extends CI_Controller {
         $this->layout->ajouter_css('colorbox');
         $this->layout->ajouter_css('information');
 
-
         $this->layout->ajouter_js('jquery.colorbox');
         $this->layout->ajouter_js('jquery-ui');
         $this->layout->ajouter_js('jquery.reveal');
@@ -112,22 +111,6 @@ class Mc_musique extends CI_Controller {
         $pl_name = $this->input->post('pl');
         $id_morceau = $this->input->post('id_track');
         $this->musique_model->to_playlist($pl_name, $id_morceau);
-    }
-
-    public function test() {
-        $folder = 'assets/musique/';
-        $test = $this->getid3->analyze($folder . 'test.mp3');
-//        print_r($test);
-        echo '<pre>' . htmlentities(print_r($test, true)) . '</pre>';
-
-
-        $test2 = $this->getid3->writetags($folder . 'test.mp3');
-        $test2->filename = $folder . 'test2.mp3';
-        print '</br></br>' . $test2->filename;
-        print_r($test2);
-
-//        $test = $this->getid3->analyze($folder . 'test.mp3');
-//        print_r($test);
     }
 
     public function player($user_id, $type = null, $name = null, $id_morceau = null) {
@@ -255,18 +238,6 @@ class Mc_musique extends CI_Controller {
 
 //        echo json_encode($_POST['filename']);
 //        return json_encode($_POST['filename']);
-    }
-
-    public function player($user_id, $type = null, $name = null, $name_morceau = null) {
-
-        //print $type;
-        $data['playlists'] = $this->musique_model->get_my_playlist_player($user_id, $type, $name, $name_morceau);
-        //var_dump($data['playlists']);
-        $data['morceaux_playlist'] = $this->musique_model->get_morceau_by_playlist_user($user_id);
-
-        //$unique_playlist = array_unique($playlist);
-        //var_dump($morceaux_playlist);
-        $this->load->view('musique/player', $data);
     }
 
 ////     Function called by the form

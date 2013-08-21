@@ -246,7 +246,7 @@ $(document).ready(function(){
 	
 	
     //status actif du menu de gauche
-    if ($('body').attr('class') != 'home' && $('body').attr('class') != 'player-audio')
+    if ($('body').attr('class') != 'home' && $('aside').length > 0)
     {
         var class_current = $('body').attr('class');
         var css_init = $('aside').find('#'+ class_current + ' .icon').css('background-position');
