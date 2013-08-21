@@ -1382,39 +1382,53 @@ $(document).ready(function(){
     }
     
     if($("body.musique").length > 0)
-    {
-    
+    {   
     	$("body").bind('click', function(ev) {
     		var myID = ev.target.id;
    		 	if (myID !== 'playlist_alert') {
         		$('#playlist_alert').hide();
-    }
-});
-
-
+    		}
+		});
 
     	$('.bt_playlist').live('click',function(e){
+    		var this_pl = $(this);
     		var top = $(this).offset().top;
     		var left =  $(this).offset().left;
     		var t = top - 30;
     		var l = left - 230;
     		
-    	//alert($(this).currentTarget);
-    	if($("#playlist_alert").is(':visible')==false)
-    	{
-         $("#playlist_alert").show().offset({left:l,top:t});
-		}
-		else
-		{
-		  $("#playlist_alert").hide();
-		}
-	
-       
-	});
+    		//alert($(this).currentTarget);
+    		if($("#playlist_alert").is(':visible')==false)
+ 		   	{
+        		 $("#playlist_alert").show().offset({left:l,top:t});
+			}
+			else
+			{
+		  		$("#playlist_alert").hide();
+			}     
+		
            	
-        // }
+        $('#playlist_alert a').click(function()
+        {
+        	var pl = ($(this).text());
+        	$(this_pl).closest('form').find('.checkbox-article:checked:not(#article-all)').each(function(){
+        		var check = $(this).val();
+        		var id_morceau = $(this).parents('tr').find('p').attr('class');
+				alert(id_morceau);
+        		dataid = 'pl='+pl+'&&id_track='+id_morceau;
+        		$.ajax({
+                    type: "POST",
+                    url : base_url + '/mc_musique/to_pl',
+                    data: dataid,
+                    success: function(data){ //afficher le bon bouton
+					
+					}
+				});
+				});
+			});
+		});
+	}
     
-    }
     
     if($("body.personnaliser").length > 0){
         $('#colorpickerField1').ColorPicker({

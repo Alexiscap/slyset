@@ -106,7 +106,7 @@ $loger = $this->session->userdata('logged_in');
 
                                 		<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
                                 	</a>
-                                    <p><?php echo $morceau_alune->nom; ?> </p>
+                                    <p class="<?php echo $morceau_alune->id; ?>"><?php echo $morceau_alune->nom; ?> </p>
                                     <div class="miniat_titre">
                                         <a href="#" class="add"><span>add</span></a>
                                         <a href="#" class="edit"><span>edit</span></a>
@@ -168,7 +168,7 @@ $loger = $this->session->userdata('logged_in');
                                 	<a href="<?php echo site_url().'/mc_musique/player/'.$uid_visit.'/album/'.$morceau_artiste->title_alb.'/'.$morceau_artiste->id; ?>" class="open_player">
 										<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
 									</a>
-                                    <p> <?php echo $morceau_artiste->nom?></p>
+                                    <p class="<?php echo $morceau_artiste->id; ?>"> <?php echo $morceau_artiste->nom?></p>
                                     <div class="miniat_titre">
                                         <a href="#" class="add"><span>add</span></a>
                                         <a href="#" class="edit"><span>edit</span></a>
@@ -200,7 +200,7 @@ $loger = $this->session->userdata('logged_in');
                     <div id="playlist_alert"><p>Ajouter à une playlist existante</p>
                     </br>
                     <?php foreach($playlists as $playlist):?>
-                   <?php echo $playlist->nom;?>
+                   <a href ="#" id="<?php echo $playlist->nom;?>"><?php echo $playlist->nom;?></a>
                    </br>
                     <?php endforeach;?></div>
                 </form>

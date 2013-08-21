@@ -108,6 +108,14 @@ class Mc_musique extends CI_Controller {
         }
 	}
 	
+	public function to_pl()
+	{
+		print $this->input->post('pl');
+		print $this->input->post('id_track');
+	}
+	
+	
+	
     public function test() {
         $folder = 'assets/musique/';
         $test = $this->getid3->analyze($folder . 'test.mp3');
