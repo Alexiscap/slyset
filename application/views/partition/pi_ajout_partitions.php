@@ -15,7 +15,7 @@
 			<div class="champs">
                 <?php
                 $data = array(
-                    'name' => 'parole_up',
+                    'name' => 'partition_up',
                     'type' => 'file',
                     'class' => 'photo_up',
                     'value' => 'Choisir des paroles'
@@ -30,7 +30,7 @@
 			<div class="champs">
                 <?php
                 $album = array(
-                    'name' => 'parole_up',
+                    'name' => 'partition_up',
                     'type' => 'file',
                     'class' => 'photo_up',
                     'value' => 'Choisir un album'
@@ -56,7 +56,7 @@
                 </div>
             </div>
 			<div id="morceaux"></div>
-			<?php echo form_submit('submit', 'Ajouter les paroles'); ?>
+			<?php echo form_submit('submit', 'Ajouter les partitions'); ?>
 			<?php echo form_close();?>
 		</div>
 	</div>
