@@ -68,6 +68,16 @@ $loger = $this->session->userdata('logged_in');
             if ($media_user_result_unit->type == 1) {
                 ?>		
                 <div class="photo box col1">
+					<!--  edition : HOVER *******************-->
+                     <?php if ($profile->id == $uid) { ?> 
+                      <div class="edit">
+
+                        <!--  edition : SUPPRESSION *******************-->
+
+                        <a class="iframe" href="<?php echo site_url('media/supprimer/' . $infos_profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+						<a class="iframe" href="<?php echo site_url('media/editer/' . $infos_profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+                    </div>
+                    <?php } ?>
                     <!-- image -->
                     <a class="iframe" href="<?php echo site_url('media/zoom/' .$media_user_result_unit->id.'/0') ?>"><img src="<?php echo files($infos_profile->id.'/photos/' . $media_user_result_unit->file_name); ?>" class="img_cover" /></a>
                     <!-- titre -->
@@ -100,16 +110,6 @@ $loger = $this->session->userdata('logged_in');
       		<?php } ?>
       		<p class="nb_like" ><?php echo $media_user_result_unit->like_total ?></p>
       		</div> 
-				<!--  edition : HOVER *******************-->
-                     <?php if ($profile->id == $uid) { ?> 
-                      <div class="edit">
-
-                        <!--  edition : SUPPRESSION *******************-->
-
-                        <a class="iframe" href="<?php echo site_url('media/supprimer/' . $infos_profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
-						<a class="iframe" href="<?php echo site_url('media/editer/' . $infos_profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
-                    </div>
-                    <?php } ?>
                     <div class="allcomment" id="comm<?php echo $media_user_result_unit->id ?>">
 
                         <?php foreach ($commentaires as $commentaire): ?>
@@ -150,6 +150,30 @@ $loger = $this->session->userdata('logged_in');
 				<!--<div class="cnt_box">-->
                 <div class="photo box col1">
                     <!--  edition : HOVER *******************-->
+					<?php
+			    if ($profile->id == $uid) 
+                    { ?> 
+                    	<div class="edit">
+                  
+                        	<a class="iframe" href="<?php echo site_url('media/supprimer/' . $infos_profile->id . '/' . $media_user_result_unit->file_name . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+							<a class="iframe" href="<?php echo base_url('/index.php/media/editer/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+                      
+                    		<div class="open_alb">
+                  		      	<a href="<?php echo site_url('album/' . $infos_profile->id . '/' . $media_user_result_unit->file_name) ?>"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+                    		</div>
+                    	</div>
+                    <?php } 
+				
+					else
+					{ ?>
+						<div class="edit" style="background:rgba(255, 255, 255, 0.5);">  <!-- METTRE CE STYLE DANS LE JS -->
+                  
+                    		<div class="open_alb">
+                        		<a href="<?php echo site_url('album/' . $infos_profile->id . '/' . $media_user_result_unit->file_name) ?>"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+                    		</div>
+                    	</div>
+					<?php 
+					}?> 
                     <?php
 			        $a = 0;
         			foreach ($all_photos as $al_photo):
@@ -220,31 +244,7 @@ $loger = $this->session->userdata('logged_in');
                     </div>
 
                <!-- </div>-->
-			   <?php
-			    if ($profile->id == $uid) 
-                    { ?> 
-                    	<div class="edit">
-                  
-                        	<a class="iframe" href="<?php echo site_url('media/supprimer/' . $infos_profile->id . '/' . $media_user_result_unit->file_name . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
-							<a class="iframe" href="<?php echo base_url('/index.php/media/editer/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
-                      
-                    		<div class="open_alb">
-                  		      	<a href="<?php echo site_url('album/' . $infos_profile->id . '/' . $media_user_result_unit->file_name) ?>"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
-                    		</div>
-                    	</div>
-                    <?php } 
-				
-					else
-					{ ?>
-						<div class="edit" style="background:rgba(255, 255, 255, 0.5);">  <!-- METTRE CE STYLE DANS LE JS -->
-                  
-                    		<div class="open_alb">
-                        		<a href="<?php echo site_url('album/' . $infos_profile->id . '/' . $media_user_result_unit->file_name) ?>"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
-                    		</div>
-                    	</div>
-					<?php 
-					}?> 
-				<div class="allcomment" id="comm<?php echo $media_user_result_unit->file_name ?>">
+			   	<div class="allcomment" id="comm<?php echo $media_user_result_unit->file_name ?>">
 				
         				<?php 
         				foreach ($commentaires_albums as $commentaire):
