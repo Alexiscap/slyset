@@ -29,13 +29,48 @@
         </div>
 
         <div class="stats_cover_block">
-            <span class="stats_number">18</span>
-            <span class="stats_title">playlists</span>
+            <span class="stats_number">
+            	<?php 
+            	$npl = 0;
+            	if(empty($playlists)!=1):
+            	 	$npl =  count($playlists);
+            	endif;
+            	echo $npl;?>
+            </span>
+            <span class="stats_title">
+            	<?php
+            	if($npl == 0 || $npl == 1){
+            		echo 'playlist';
+            	}
+            	else
+            	{
+            		echo 'playlists';
+            	}
+            	?>
+            </span>
         </div>
 
         <div class="stats_cover_block">
-            <span class="stats_number">278</span>
-            <span class="stats_title">abonnements</span>
+            <span class="stats_number">
+            	<?php
+            	$nab = 0;
+            	if(empty($all_follower)!=1):
+            		$nab =  count($all_follower);
+            	endif;
+            	echo $nab;
+            	 ?>
+            </span>       
+            <span class="stats_title">
+            	<?php
+            	if($nab == 0 || $nab == 1){
+            		echo 'abonnement';
+            	}
+            	else
+            	{
+            		echo 'abonnements';
+            	}
+            	?>
+            </span>
         </div>
     </div>
 
@@ -339,7 +374,20 @@
 				<div class="playlist">
 				
 					<div class="visu_playlist">
-						<img src="<?php echo img_url('common/visu_pl.png'); ?>"/>
+						<?php $cover = 'sidebar-right/default-photo-profil.png'; 
+						if($playlist->img_cover != null)
+						{ ?>
+						<img src="<?php echo base_url('files/'.$playlist->user_alb.'/albums/'.str_replace(' ','_',$playlist->name_alb).'/'.$playlist->img_cover) ; ?>"/>
+						<?php
+						}
+						else
+						{
+						?>
+						<img src="<?php echo img_url($cover) ; ?>"/>
+						<?php 
+						}
+						?>
+						
 					</div>
 					<div class="descri_playlist">
 					<form>
@@ -385,18 +433,33 @@
 														</a>
 													<?php echo $morceaux->title_track ?>
 													<div class="miniat_titre">
-														<a href="#" class="cadis"></a>
-															<?php if(substr_count($all_my_like,'/'.$morceaux->Morceaux_id.'/')==1)
-															{?>
+														<!-- ICON CADIS / MISE PANIER -->
+														<!-- FIN ICON CADIS / MISE PANIER -->
+														<?php if(substr_count($all_panier,'/'.$morceaux->Morceaux_id.'/')==1)
+														{?>
 										
-																<a href="javascript:void(0)" class="coeur_actif"></a>
+															<a href="javascript:void(0)" class="cadis_actif"></a>
 												
-															<?php }
-															if(substr_count($all_my_like,'/'.$morceaux->Morceaux_id.'/')==0)
+														<?php }
+														if(substr_count($all_panier,'/'.$morceaux->Morceaux_id.'/')==0)
 	
-															{	?>	
-																<a href="javascript:void(0)" class="coeur"></a><?php
-															}?>
+														{	?>	
+															<a href="javascript:void(0)" class="cadis"></a><?php
+														}?>
+															
+														<!-- ICON COEUR / LIKE -->
+														<?php if(substr_count($all_my_like,'/'.$morceaux->Morceaux_id.'/')==1)
+														{?>
+										
+															<a href="javascript:void(0)" class="coeur_actif"></a>
+												
+														<?php }
+														if(substr_count($all_my_like,'/'.$morceaux->Morceaux_id.'/')==0)
+	
+														{	?>	
+															<a href="javascript:void(0)" class="coeur"></a><?php
+														}?>
+														<!-- FIN ICON COEUR / LIKE -->
 
 														<!--<a href="#" class="cam"></a>-->
 													</div>

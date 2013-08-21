@@ -197,17 +197,29 @@ $loger = $this->session->userdata('logged_in');
                     </table>
                     <input type="button" value="Acheter" class="bt_cadis">
                     <input type="button" value="Dans ma playlist" class="bt_playlist">
-                    <div id="playlist_alert"><p>Ajouter à une playlist existante</p>
-                    </br>
-                    <?php foreach($playlists as $playlist):?>
-                   <a href ="#" id="<?php echo $playlist->nom;?>"><?php echo $playlist->nom;?></a>
-                   </br>
-                    <?php endforeach;?></div>
+                    
+                    
                 </form>
             </div>
         </div>
     </div>
 
+	<div id="modal">
+		<div id="content">
+			<p>Le morceau a bien été ajouté a votre playlist</p>
+
+			<a href="javascript:void(0)" class="button green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
+
+		</div>
+	</div>
+	
+	<div id="playlist_alert"><p>Ajouter à une playlist existante</p>
+        </br>
+        <?php foreach($playlists as $playlist):?>
+           	<a href ="javascript:void(0)" id="<?php echo $playlist->nom;?>"><?php echo $playlist->nom;?></a>
+        	</br>
+        <?php endforeach;?>
+    </div>
     <?php if (isset($sidebar_right)) echo $sidebar_right; ?>
 
 </div>

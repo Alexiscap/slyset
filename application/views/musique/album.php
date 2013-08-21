@@ -108,7 +108,7 @@ $loger = $this->session->userdata('logged_in');
 
                                 		<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
                                 	</a>
-                                    <p><?php echo $morceau->nom; ?> </p>
+                                    <p class="<?php echo $morceau->id; ?> "><?php echo $morceau->nom; ?> </p>
                                     <div class="miniat_titre">
                                         <a href="#" class="add"><span>add</span></a>
                                         <a href="#" class="edit"><span>edit</span></a>
@@ -143,6 +143,13 @@ $loger = $this->session->userdata('logged_in');
          <?php endif; ?>
         
        
+    </div>
+    <div id="playlist_alert"><p>Ajouter à une playlist existante</p>
+        </br>
+        <?php foreach($playlists as $playlist):?>
+           	<a href ="javascript:void(0)" id="<?php echo $playlist->nom;?>"><?php echo $playlist->nom;?></a>
+        	</br>
+        <?php endforeach;?>
     </div>
 
     <?php if (isset($sidebar_right)) echo $sidebar_right; ?>

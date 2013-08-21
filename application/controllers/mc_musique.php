@@ -13,9 +13,13 @@ class Mc_musique extends CI_Controller {
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_css('pop_in');
         $this->layout->ajouter_css('colorbox');
+        $this->layout->ajouter_css('information');
+
         
         $this->layout->ajouter_js('jquery.colorbox');
         $this->layout->ajouter_js('jquery-ui');
+        $this->layout->ajouter_js('jquery.reveal');
+
 //        $this->layout->ajouter_js('audiojs/audio');
 
         $this->load->library('getid3/Getid3');
@@ -110,8 +114,9 @@ class Mc_musique extends CI_Controller {
 	
 	public function to_pl()
 	{
-		print $this->input->post('pl');
-		print $this->input->post('id_track');
+		$pl_name =  $this->input->post('pl');
+		$id_morceau =  $this->input->post('id_track');
+		$this->musique_model->to_playlist($pl_name,$id_morceau);
 	}
 	
 	

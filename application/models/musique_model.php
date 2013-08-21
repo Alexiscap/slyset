@@ -199,9 +199,10 @@ class Musique_model extends CI_Model {
 
 	public function get_my_playlist($user_id)
 	{
-		return $this->db->select('COUNT(Morceaux_id) AS n_morceau,Morceaux_id,playlists.nom,COUNT(Distinct morceaux.Utilisateur_id) AS n_artiste')
+		return $this->db->select('COUNT(Morceaux_id) AS n_morceau,Morceaux_id,playlists.nom,COUNT(Distinct morceaux.Utilisateur_id) AS n_artiste, albums.img_cover,albums.nom AS name_alb,albums.Utilisateur_id AS user_alb')
 				->from($this->tbl_playlist)
 				->join($this->tbl_morceaux,'morceaux.id = playlists.Morceaux_id')
+				->join($this->tbl_album, 'morceaux.albums_id = albums.id','LEFT OUTER')
 				->where(array('playlists.Utilisateur_id'=>$user_id))
 				->group_by('nom')
 				->get()
@@ -339,4 +340,20 @@ class Musique_model extends CI_Model {
 		$this->db->update($this->tbl_playlist, $data); 
 	
 	}
+	
+	public function to_playlist($pl_name,$id_morceau)
+	{
+		$data = array(
+			'Utilisateur_id'=> $this->session->userdata('uid'),
+			'nom' => $pl_name,
+			'Morceaux_id' => $id_morceau
+			
+		);
+		$this->db->set('date_creation','CURRENT_DATE()',false);
+		$this->db->insert($this->tbl_playlist, $data);
+	}
+	
+	
+	
+	
 }

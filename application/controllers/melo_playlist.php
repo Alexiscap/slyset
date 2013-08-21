@@ -18,7 +18,7 @@ class Melo_playlist extends CI_Controller {
 
         
 
-        $this->load->model(array('user_model','musique_model'));
+        $this->load->model(array('user_model','musique_model','follower_model','achat_model'));
         $this->load->helpers(array('date','form'));
 
         $this->layout->set_id_background('playlist');
@@ -55,6 +55,12 @@ class Melo_playlist extends CI_Controller {
         $data = $this->data;
         $data['playlists'] = $this->musique_model->get_my_playlist($user_id);
     	$data['morceaux_playlist'] = $this->musique_model->get_morceau_by_playlist_user($user_id);
+    	$data['all_follower'] = $this->follower_model->get_all_abonnement($user_id);
+		$my_panier = $this->achat_model->all_panier();
+		$data['all_panier'] ="";
+			foreach($my_panier as $mpanier):
+      	 $data['all_panier'] .= '/'.$mpanier->Morceaux_id.'/';
+      	 endforeach;
 		$my_like_morceau = $this->musique_model->get_my_like_morceau();
 		//$data['artistes'] = $this->musique_model->get_n_artiste($user_id);
 		$data['all_my_like'] ="";

@@ -202,71 +202,7 @@ $(document).ready(function(){
         });
     }
     
-    if($('body.playlist').length>0)
-    {
-    	$('.coeur').live('click',function()
-    	{
-    		var coeur = $(this);
-    		var id_morceau = $(this).parents('tr').attr('id');
-    		datalike = 'id_morceau='+id_morceau;
-    		$.ajax({
-                type: "POST",
-                url : base_url +'/melo_playlist/add_like',
-                data: datalike,
-                success: function(){
-                   coeur.addClass('coeur_actif');
-                   coeur.removeClass('coeur')
-                   // $(this_comm).parents('.comm').slideUp();
-                }
-            });
-    	})
-    	
-    	$('.coeur_actif').live('click',function()
-    	{    
-    		var coeur = $(this);
-    		var id_morceau = $(this).parents('tr').attr('id');
-    		datalike = 'id_morceau='+id_morceau;
-    		$.ajax({
-                type: "POST",
-                url : base_url +'/melo_playlist/delete_like',
-                data: datalike,
-                success: function(){
-                  coeur.addClass('coeur');
-                   coeur.removeClass('coeur_actif')
-                   // $(this_comm).parents('.comm').slideUp();
-                }
-            });
-    	})
-    	
-    	
-    	$('.edit-pl').click(function()
-    	{
-    		var that = $(this);
-    		var value = $(this).parents('.descri_playlist').find('.nom_pl').text();
-    		$(this).parents('.descri_playlist').find('.nom_pl').replaceWith("<input class='nom_pl' value='"+value+"' type='text'/>");
-			$(document).keypress(function(e) {
-    		if(e.which == 13) {
-    			 var title_new = $(that).parents('.descri_playlist').find('input[type=text].nom_pl').val();
-				dataid = 'title_init=' + value + '&&title_new=' + title_new;
-            $.ajax({
-           
-                type: "POST",
-                url : base_url +'/melo_playlist/change_title_pl',
-                data: dataid,
-                success: function(){
-                       		$(that).parents('.descri_playlist').find('input[type=text].nom_pl').replaceWith('<span class="nom_pl">'+$(that).parents('.descri_playlist').find('input[type=text].nom_pl').val()+'</span>');
 
-                }
-            });
-    			}
-			});
-			
-		
-		
-    	}
-    	)
-    	
-    }
     
 
     if($('body.playlist').length>0||$('body.musique').length > 0){
@@ -1379,6 +1315,110 @@ $(document).ready(function(){
                 });
           });
         }); 	
+        
+      $('.cadis').click(function(){
+                var a =  $(this).parents('tr').attr('id');
+				var cadis = $(this);
+                var track_title = $(this).parents('tr').children('.article-title').text().trim()
+                var dataid = 'track_pl=' + a;
+                $.ajax({
+                    type: "POST",
+                    url : base_url + '/melo_playlist/pl_to_panier',
+                    data: dataid,
+                    success: function(data){ //afficher le bon bouton
+						if(data=='ajout')
+						{
+                        	$('#modal').reveal({ // The item which will be opened with reveal
+							animation: 'fade',                   // fade, fadeAndPop, none
+							animationspeed: 600,                       // how fast animtions are
+							closeonbackgroundclick: true,              // if you click background will modal close?
+							dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+							});
+							  cadis.addClass('cadis_actif');
+                   cadis.removeClass('cadis')
+						return false;
+                    	}
+                    	else
+                    	{
+                    		$('.morceau_panier_already').text(track_title+' est déja dans votre panier');
+                    		//renvoyer l'id et metrte une alert sur le tableau
+                    		$('#modal_already').reveal({ // The item which will be opened with reveal
+								animation: 'fade',                   // fade, fadeAndPop, none
+								animationspeed: 600,                       // how fast animtions are
+								closeonbackgroundclick: true,              // if you click background will modal close?
+								dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+							});
+
+							return false;
+                    	
+                    	}
+                   }
+                
+          		});
+        }); 	   
+  
+    	$('.coeur').live('click',function()
+    	{
+    		var coeur = $(this);
+    		var id_morceau = $(this).parents('tr').attr('id');
+    		datalike = 'id_morceau='+id_morceau;
+    		$.ajax({
+                type: "POST",
+                url : base_url +'/melo_playlist/add_like',
+                data: datalike,
+                success: function(){
+                   coeur.addClass('coeur_actif');
+                   coeur.removeClass('coeur')
+                   // $(this_comm).parents('.comm').slideUp();
+                }
+            });
+    	})
+    	
+    	$('.coeur_actif').live('click',function()
+    	{    
+    		var coeur = $(this);
+    		var id_morceau = $(this).parents('tr').attr('id');
+    		datalike = 'id_morceau='+id_morceau;
+    		$.ajax({
+                type: "POST",
+                url : base_url +'/melo_playlist/delete_like',
+                data: datalike,
+                success: function(){
+                  coeur.addClass('coeur');
+                   coeur.removeClass('coeur_actif')
+                   // $(this_comm).parents('.comm').slideUp();
+                }
+            });
+    	})
+    	
+    	
+    	$('.edit-pl').click(function()
+    	{
+    		var that = $(this);
+    		var value = $(this).parents('.descri_playlist').find('.nom_pl').text();
+    		$(this).parents('.descri_playlist').find('.nom_pl').replaceWith("<input class='nom_pl' value='"+value+"' type='text'/>");
+			$(document).keypress(function(e) {
+    		if(e.which == 13) {
+    			 var title_new = $(that).parents('.descri_playlist').find('input[type=text].nom_pl').val();
+				dataid = 'title_init=' + value + '&&title_new=' + title_new;
+            $.ajax({
+           
+                type: "POST",
+                url : base_url +'/melo_playlist/change_title_pl',
+                data: dataid,
+                success: function(){
+                       		$(that).parents('.descri_playlist').find('input[type=text].nom_pl').replaceWith('<span class="nom_pl">'+$(that).parents('.descri_playlist').find('input[type=text].nom_pl').val()+'</span>');
+
+                }
+            });
+    			}
+			});
+			
+		
+		
+    	}
+    	)
+    	
     }
     
     if($("body.musique").length > 0)
@@ -1408,22 +1448,27 @@ $(document).ready(function(){
 			}     
 		
            	
-        $('#playlist_alert a').click(function()
-        {
-        	var pl = ($(this).text());
-        	$(this_pl).closest('form').find('.checkbox-article:checked:not(#article-all)').each(function(){
-        		var check = $(this).val();
-        		var id_morceau = $(this).parents('tr').find('p').attr('class');
-				alert(id_morceau);
-        		dataid = 'pl='+pl+'&&id_track='+id_morceau;
-        		$.ajax({
-                    type: "POST",
-                    url : base_url + '/mc_musique/to_pl',
-                    data: dataid,
-                    success: function(data){ //afficher le bon bouton
-					
-					}
-				});
+       	 	$('#playlist_alert a').click(function()
+        	{
+        		var pl = $(this).text();
+        		$(this_pl).closest('form').find('.checkbox-article:checked:not(#article-all)').each(function(){
+        			var check = $(this).val();
+        			var id_morceau = $(this).parents('tr').find('p').attr('class');
+        			dataid = 'pl='+pl+'&&id_track='+id_morceau;
+        			$.ajax({
+       	            	type: "POST",
+        	            url : base_url + '/mc_musique/to_pl',
+            	        data: dataid,
+                	    success: function(data){ //afficher le bon bouton
+								$('#modal').reveal({ // The item which will be opened with reveal
+							animation: 'fade',                   // fade, fadeAndPop, none
+							animationspeed: 600,                       // how fast animtions are
+							closeonbackgroundclick: true,              // if you click background will modal close?
+							dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+							});
+						return false;
+						}
+					});
 				});
 			});
 		});

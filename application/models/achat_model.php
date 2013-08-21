@@ -122,5 +122,15 @@ class Achat_model extends CI_Model {
 			)')
               		 					 ->result();
     }
+    
+    public function all_panier()
+    {
+    	return $this->db->select('infos_commande.Morceaux_id')
+    			->from($this->table_cmd_info)
+    			->join($this->table_cmd,'infos_commande.Commande_id = commande.id')
+    			->where(array('commande.status'=>'P','Utilisateur_id'=>$this->session->userdata('uid')))
+    			->get()
+    			->result();
+    }
 
 }
