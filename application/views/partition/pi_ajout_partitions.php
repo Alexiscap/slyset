@@ -4,7 +4,7 @@
   <div class="content-pi">
 			<?php echo $error;?>
 
-<?php echo form_open_multipart('pi_ajout_partitions/do_upload');?>
+<?php echo form_open_multipart('pop_in_general/do_upload_partition');?>
 
 		<div class="label">
 			<label>Vos partition</label>
