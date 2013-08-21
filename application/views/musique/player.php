@@ -43,55 +43,47 @@
                     </div>
                 </div>
 
-            <div class="extra-controls">
-                <div class="random disable"></div>
-                <div class="loop disable"></div>
-                <div class="addto disable"></div>
-                <div class="like disable"></div>
-                
-                <div class="vol disable">
-                    <div id="vol-slider"></div>
+                <div class="extra-controls">
+                    <div class="random disable"></div>
+                    <div class="loop disable"></div>
+                    <div class="addto disable"></div>
+                    <div class="like disable"></div>
+
+                    <div class="vol disable">
+                        <div id="vol-slider"></div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="content-right">
+            <div class="content-right">
 
-            <?php // foreach ($playlists[0] as $playlist): ?>
-                <!--<ol><?php // echo ucfirst($this->uri->segment(4)); ?> : <?php // echo $playlist->nom ?>-->
+                <?php // foreach ($playlists[0] as $playlist): ?>
+                <!--<ol><?php // echo ucfirst($this->uri->segment(4));  ?> : <?php // echo $playlist->nom  ?>-->
                 <div class="top">
-                    <span class="txt-ecoute">Playlist : <?php // echo $playlist->nom ?></span>
+                    <span class="txt-ecoute">Playlist : <?php // echo $playlist->nom  ?></span>
                 </div>
-            
-            
-<!--<p>
-  <label for="amount">Volume:</label>
-  <input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
-</p>
- 
-<div id="slider-vertical" style="height: 200px; width:10px; background:red;"></div>-->
 
                 <div class="list-morceaux">
                     <ul>
                         <?php // foreach ($playlists[1] as $morceaux): ?>
-                            <?php // if ($morceaux->nom == $playlist->nom): ?>
-                                <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Anxiety.mp3'; ?>">1111<?php // echo $morceaux->title_track ?></a></li>
-                                <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Luno.mp3'; ?>">2222<?php // echo $morceaux->title_track ?></a></li>
-                                <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Helicopter.mp3'; ?>">3333<?php // echo $morceaux->title_track ?></a></li>
-                            <?php // endif; ?>
+                        <?php // if ($morceaux->nom == $playlist->nom): ?>
+                        <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Anxiety.mp3'; ?>">1111<?php // echo $morceaux->title_track  ?></a></li>
+                        <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Luno.mp3'; ?>">2222<?php // echo $morceaux->title_track  ?></a></li>
+                        <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Helicopter.mp3'; ?>">3333<?php // echo $morceaux->title_track  ?></a></li>
+                        <?php // endif; ?>
                         <?php // endforeach; ?>
                     </ul>
                 </div>
                 <!--</ol>-->
                 </br>
-            <?php // endforeach; ?>
-                
-                
-            <span style="float:left;" id="duration"></span><span style="float:right;" id="timeleft"></span>
-        </div>
-    </div>
+                <?php // endforeach; ?>
 
-    <script type="text/javascript" src="<?php echo js_url('audiojs/audio') ?>"></script>
-    <script type="text/javascript" src="<?php echo js_url('slyset') ?>"></script>
-</body>
+
+                <span style="float:left;" id="duration"></span><span style="float:right;" id="timeleft"></span>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="<?php echo js_url('audiojs/audio') ?>"></script>
+        <script type="text/javascript" src="<?php echo js_url('slyset') ?>"></script>
+    </body>
 </html>

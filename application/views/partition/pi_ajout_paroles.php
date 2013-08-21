@@ -1,46 +1,65 @@
- <div class="pop-in">
-  <p> Ajouter des paroles </p>
-  <img src="<?php echo img_url('musicien/pop_close.png'); ?>" alt="Fermer" />
-  <div class="content-pi">
-			<?php echo $error;?>
+<link rel="stylesheet" type="text/css" href="<?php echo css_url('pop_in') ?>" media="screen" />
+<script  src="<?php echo js_url('combobox') ?>" media="screen" ></script>
 
-<?php echo form_open_multipart('pi_ajout_paroles/do_upload');?>
 
-		<div class="label">
-			<label>Vos paroles</label>
-		</div>
-		<div class="champs">
-		<!--	<div class="bt_noir">
-				<a href="#"><span class="bt_left"></span><span class="bt_middle">Choisir un fichier</span><span class="bt_right"></span></a>
-			<p class="nom_img">bob_dylan_lille.jpg</p>
+<div class="pop-in_cent">
+	<span>Ajouter des paroles</span>
+
+    <div class="content-pi-cent">
+		<?php echo $error;?>
+
+		<?php /* echo form_open_multipart('pi_ajout_paroles/do_upload'); */?>
+		<div class="elem_center">
+			<div class="label">
+				<label>Vos paroles</label>
 			</div>
-			-->
+			<div class="champs">
+                <?php
+                $data = array(
+                    'name' => 'parole_up',
+                    'type' => 'file',
+                    'class' => 'photo_up',
+                    'value' => 'Choisir des paroles'
+                );
+                ?><div class="bt_noir">
+                <?php echo form_upload($data); ?>
+                </div>
+            </div>
+			<div class="label">
+				<label>Album</label>
+			</div>
+			<div class="champs">
+                <?php
+                $album = array(
+                    'name' => 'parole_up',
+                    'type' => 'file',
+                    'class' => 'photo_up',
+                    'value' => 'Choisir un album'
+                );
+                ?>
+                <input id="album_select" placeholder="Choisir un album" name="albums"  autocomplete="off" type="text" /><span onclick="javascript:showInfo()" class="fleche_bas"><img src="<?php echo img_url('common/flb.png'); ?>" alt="Fleche basse" /></span>
 
-<input type="file" name="userfile" size="20" />
+                <div id='test_one'>
 
-<br /><br />
-<!-- upload fichier
-par controller : list album
-par album : liste morceaux
--->
+                    <ul id='test_two'>
+                        <?php
+                        /* for ($i = 0; $i < $max_album_user; $i++) {
+                            ?>
+                            <li onclick="selectalbum(event)"><?php echo $album_by_user[$i]->{'nom'}; ?></li>
+                            <?php
+                        } */
+                        ?>
+                    </ul>
 
-				
+                    <div id='test_three'>
+                        <input  id="create" type="text" value="" autocomplete="off" placeholder="creer un nouvel album"/><div id="create_ok"  onclick="selectalbumcreate()"><img src="<?php echo img_url('common/creer_album.png'); ?>" alt="ok" /></div>
+                    </div>
+                </div>
+            </div>
+			<div id="morceaux"></div>
+			<?php echo form_submit('submit', 'Ajouter les paroles'); ?>
+			<?php echo form_close();?>
 		</div>
-		<div class="label">
-			<label>Album</label>
-		</div>
-		<div class="champs">
-			<select name="album">
-			<option  value=" "> </option>
+	</div>
 
-			<?php foreach($album as $one_album): ?>
-			<option id="" name="album" class = "<?php echo $one_album->id?>" value="<?php echo $one_album->nom?>+<?php echo $one_album->id?>"><?php echo $one_album->nom?></option>
-
-			<?php endforeach; ?>
-		</select>
-		</div>
-		<div id="morceaux"></div>
-<input type="submit" value="upload" />
-	<?php echo form_close();?>
-  </div>
 </div>

@@ -63,7 +63,7 @@ $loger = $this->session->userdata('logged_in');
 
     <div class="content">
         <div id="btn_tmp">
-            <a href="<?php echo site_url('concert/' . $infos_profile->id) ?>"><div class="avenir actif">A venir</div></a>
+            <a href="<?php echo site_url('concert/' . $infos_profile->id) ?>"><div class="avenir actif">&Aacute; venir</div></a>
             <a href="<?php echo site_url('concert/archive/' . $infos_profile->id) ?>"><div class="cpasse">Concerts passés</div></a>
 		</div>
    
@@ -171,7 +171,7 @@ else {
 
 <?php if (isset($sidebar_right)) echo $sidebar_right; ?>
 
-    <div class="pagination">
+    <!--<div class="pagination">
         <a href="#" id="precedent"><span><</span></a>
         <a href="#" class="page">1</a>
         <a href="#" class="page">2</a>
@@ -179,6 +179,6 @@ else {
         <a href="#" class="page">4</a>
         <a href="#" class="page">5</a>
         <a href="#" id="suivant"><span>></span></a>
-    </div>
+    </div>-->
 
 </div>

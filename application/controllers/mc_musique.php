@@ -13,13 +13,17 @@ class Mc_musique extends CI_Controller {
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_css('pop_in');
         $this->layout->ajouter_css('colorbox');
-        
+        $this->layout->ajouter_css('information');
+
+
         $this->layout->ajouter_js('jquery.colorbox');
         $this->layout->ajouter_js('jquery-ui');
+        $this->layout->ajouter_js('jquery.reveal');
+
 //        $this->layout->ajouter_js('audiojs/audio');
 
         $this->load->library('getid3/Getid3');
-        $this->load->model(array('perso_model', 'user_model','musique_model'));
+        $this->load->model(array('perso_model', 'user_model', 'musique_model'));
         $this->load->helper('form');
 
         $this->layout->set_id_background('musique');
@@ -73,8 +77,41 @@ class Mc_musique extends CI_Controller {
         if (!empty($infos_profile)) {
             $data['infos_profile'] = $infos_profile;
         }
+        $data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($infos_profile->id);
+        $data['album_alaune'] = $this->musique_model->get_album_une($infos_profile->id);
+        $data['morceaux_alaune'] = $this->musique_model->get_morceau_une($infos_profile->id);
+        $data['playlists'] = $this->musique_model->get_my_playlist($this->session->userdata('uid'));
 
+        //var_dump($data['all_morceau_artiste']);
         $this->layout->view('musique/mc_musique', $data);
+    }
+
+    public function page_album($user_id, $id_album) {
+        $uid = $this->session->userdata('uid');
+        $infos_profile = $this->user_model->getUser($user_id);
+
+        if ((($user_id != $uid && !empty($user_id)) || ($user_id == $uid && !empty($user_id))) && $infos_profile->type != 1) {
+            $data = $this->data;
+            $user_visited = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id;
+
+            if (!empty($infos_profile)) {
+                $data['infos_profile'] = $infos_profile;
+            }
+
+            $data['this_album'] = $this->musique_model->get_album_page($id_album);
+            $data['this_album_morceau'] = $this->musique_model->get_morceau_alb_page($user_id, $id_album);
+            $data['playlists'] = $this->musique_model->get_my_playlist($this->session->userdata('uid'));
+
+            $this->layout->view('musique/album', $data);
+        } else {
+            redirect('home/' . $uid, 'refresh');
+        }
+    }
+
+    public function to_pl() {
+        $pl_name = $this->input->post('pl');
+        $id_morceau = $this->input->post('id_track');
+        $this->musique_model->to_playlist($pl_name, $id_morceau);
     }
 
     public function test() {
@@ -93,20 +130,33 @@ class Mc_musique extends CI_Controller {
 //        print_r($test);
     }
 
+    public function player($user_id, $type = null, $name = null, $id_morceau = null) {
+        //print $type;
+        $data['playlists'] = $this->musique_model->get_my_playlist_player($user_id, $type, $name, $id_morceau);
+        //var_dump($data['playlists']);
+        $data['morceaux_playlist'] = $this->musique_model->get_morceau_by_playlist_user($user_id);
+        if ($id_morceau != null) {
+            $info_morceau = $this->musique_model->get_morceau($id_morceau);
+            $data['morceau'] = $info_morceau[0]->nom;
+        }
+        //$unique_playlist = array_unique($playlist);
+        //var_dump($morceaux_playlist);
+        $this->load->view('musique/player', $data);
+    }
+
     public function do_upload_musique() {
         $this->load->library('upload');
         $uid = $this->session->userdata('uid');
-        
+
         print_r($_FILES);
 //        print_r($this->getid3->analyze($_FILES['tmp_name']));
-        
 //        $upload_folder = './files/'.$uid.'/musique/';
         $upload_folder = 'tmp/';
 
-        if (is_dir($upload_folder) == false){
+        if (is_dir($upload_folder) == false) {
             mkdir($upload_folder, 0755, true);
         }
-        
+
         $this->upload_config = array(
             'upload_path' => $upload_folder,
 //            'allowed_types' => 'png|jpg|jpeg|mp3',
@@ -118,82 +168,81 @@ class Mc_musique extends CI_Controller {
         );
 
         $this->upload->initialize($this->upload_config);
-        
+
         $userfile_name = str_replace(' ', '_', $_FILES['userfile']['name']);
-        
+
 //        print_r($_FILES);
 //        print '<br/>';
 //        print_r($_POST);
-        
 //        if($this->check_exists()){
 //            print_r('réussie !!');
-            if (!$this->upload->do_upload()) {
-    //            $upload_error = $this->upload->display_errors();
-    //            echo json_encode($upload_error);
+        if (!$this->upload->do_upload()) {
+            //            $upload_error = $this->upload->display_errors();
+            //            echo json_encode($upload_error);
 
-                $error = array('error' => $this->upload->display_errors());
-                $this->load->view('musique/upload_musique', $error);
-            } else {
-                $data['file_info'] = $this->upload->data();                
-                $id3 = $this->getid3->analyze($upload_folder.$userfile_name);
-                print_r($id3);
-                
-                $filesize = $id3['filesize'];
-                $filename = $id3['filename'];
+            $error = array('error' => $this->upload->display_errors());
+            $this->load->view('musique/upload_musique', $error);
+        } else {
+            $data['file_info'] = $this->upload->data();
+            $id3 = $this->getid3->analyze($upload_folder . $userfile_name);
+            print_r($id3);
+
+            $filesize = $id3['filesize'];
+            $filename = $id3['filename'];
 //                $file_to_path = $id3['filepath'];
 //                $full_path = $id3['filenamepath'];
-                $format = $id3['fileformat'];
-                $bitrate = round($id3['audio']['bitrate']);
-                $track_number = $id3['tags']['id3v2']['track_number'][0];
-                $year = $id3['tags']['id3v2']['year'][0];
-                $genre = $id3['tags']['id3v2']['genre'][0];
-                $album = $id3['tags']['id3v2']['album'][0];
-                $artist = $id3['tags']['id3v2']['artist'][0];
-                $title = $id3['tags']['id3v2']['title'][0];
-                $duration = $id3['playtime_string'];
-                
-                $file_to_move = $upload_folder.''.$filename;
-                $moved_path = "";
-                $str_album = str_replace(' ', '_', strtolower($album));
-                if(!empty($album)){
-                    $moved_path = 'files/'.$uid.'/musique/'.$str_album.'/';
-                } else {
-                    $moved_path = 'files/'.$uid.'/musique/';
-                }
-                
-                if (is_dir($moved_path) == false){
-                    mkdir($moved_path, 0755, true);
-                }
-                
-                $moved_path_file = $moved_path.''.$filename;
-                    
-                print_r($str_album);
-                print_r($file_to_move);
-                print_r($moved_path_file);
-                
-                if (copy($file_to_move, $moved_path_file)) {
-                    unlink($file_to_move);
-                }
-                
-                $this->musique_model->insert_music($filename, $title, $track_number, $artist, $genre, $year, $duration, $format, $bitrate, $filesize);
-//                $this->musique_model->insert_album($str_album, $genre, $year);
-                
-                $this->load->view('musique/upload_musique', $data);
+            $format = $id3['fileformat'];
+            $bitrate = round($id3['audio']['bitrate']);
+            $track_number = $id3['tags']['id3v2']['track_number'][0];
+            $year = $id3['tags']['id3v2']['year'][0];
+            $genre = $id3['tags']['id3v2']['genre'][0];
+            $album = $id3['tags']['id3v2']['album'][0];
+            $artist = $id3['tags']['id3v2']['artist'][0];
+            $title = $id3['tags']['id3v2']['title'][0];
+            $duration = $id3['playtime_string'];
+
+            $file_to_move = $upload_folder . '' . $filename;
+            $moved_path = "";
+            $str_album = str_replace(' ', '_', strtolower($album));
+            if (!empty($album)) {
+                $moved_path = 'files/' . $uid . '/musique/' . $str_album . '/';
+            } else {
+                $moved_path = 'files/' . $uid . '/musique/';
             }
+
+            if (is_dir($moved_path) == false) {
+                mkdir($moved_path, 0755, true);
+            }
+
+            $moved_path_file = $moved_path . '' . $filename;
+
+            print_r($str_album);
+            print_r($file_to_move);
+            print_r($moved_path_file);
+
+            if (copy($file_to_move, $moved_path_file)) {
+                unlink($file_to_move);
+            }
+
+            $this->musique_model->insert_music($filename, $title, $track_number, $artist, $genre, $year, $duration, $format, $bitrate, $filesize);
+//                $this->musique_model->insert_album($str_album, $genre, $year);
+
+            $this->load->view('musique/upload_musique', $data);
+        }
 //        } else {
 //            print_r('foiré !!');
 //        }
     }
 
-    public function check_exists(){
+    public function check_exists() {
         $uid = $this->session->userdata('uid');
-        
+
         //TODO : CHANGER PATH EN FONCTION DE ALBUM OU NON
-        $targetFolder = '/slyset/'.$uid.'/musique/';
-        
+        $targetFolder = '/slyset/' . $uid . '/musique/';
+
         $userfile_name = str_replace(' ', '_', $_POST['filename']);
         print_r($_SERVER['DOCUMENT_ROOT'] . $targetFolder . '/' . $userfile_name);
-        
+
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . $targetFolder . '/' . $userfile_name)) {
             echo 1;
             print_r('exist');
@@ -208,18 +257,18 @@ class Mc_musique extends CI_Controller {
 //        return json_encode($_POST['filename']);
     }
 
-    public function player($user_id,$type = null,$name = null,$name_morceau = null) {    
-    	
-    	//print $type;
-    	$data['playlists'] = $this->musique_model->get_my_playlist_player($user_id,$type,$name,$name_morceau);
-    	//var_dump($data['playlists']);
-    	$data['morceaux_playlist'] = $this->musique_model->get_morceau_by_playlist_user($user_id);
+    public function player($user_id, $type = null, $name = null, $name_morceau = null) {
 
-    	//$unique_playlist = array_unique($playlist);
-    	//var_dump($morceaux_playlist);
-        $this->load->view('musique/player',$data);
+        //print $type;
+        $data['playlists'] = $this->musique_model->get_my_playlist_player($user_id, $type, $name, $name_morceau);
+        //var_dump($data['playlists']);
+        $data['morceaux_playlist'] = $this->musique_model->get_morceau_by_playlist_user($user_id);
+
+        //$unique_playlist = array_unique($playlist);
+        //var_dump($morceaux_playlist);
+        $this->load->view('musique/player', $data);
     }
-    
+
 ////     Function called by the form
 //    public function upload_img() { 
 //        print_r($_FILES);

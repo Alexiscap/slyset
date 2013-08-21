@@ -9,6 +9,9 @@ class Musique_model extends CI_Model {
     protected $tbl_morceaux = 'morceaux';
     protected $tbl_user = 'utilisateur';
     protected $tbl_album = 'albums';
+    protected $tbl_order = 'commande';
+    protected $tbl_orderinfo = 'infos_commande';
+    protected $tbl_doc = 'documents';
 
     public function __construct() {
         parent::__construct();
@@ -119,9 +122,18 @@ class Musique_model extends CI_Model {
         return array($pl_or_album, $morceaux);
     }
 
+    public function get_morceau($id_morceau) {
+        return $this->db->select('nom')
+                        ->from($this->tbl_morceaux)
+                        ->where(array('id' => $id_morceau))
+                        ->get()
+                        ->result();
+    }
+
     //---------------------------------------------------------------------------
     //-								MORCEAUX									-
     //---------------------------------------------------------------------------
+
 
     public function insert_music($filename, $title, $track_number, $artist, $genre, $year, $duration, $format, $bitrate, $filesize) {
         $data['Utilisateur_id'] = $this->session->userdata('uid');
@@ -138,7 +150,7 @@ class Musique_model extends CI_Model {
 
         $this->db->insert($this->tbl_morceaux, $data);
     }
-    
+
     public function insert_album($title, $genre, $year) {
         $data['Utilisateur_id'] = $this->session->userdata('uid');
         $data['nom'] = $title;
@@ -149,15 +161,61 @@ class Musique_model extends CI_Model {
         $this->db->insert($this->tbl_album, $data);
     }
 
+    public function get_album_une($user_id) {
+        return $this->db->select('nom,img_cover,annee,livret_path,documents.id AS doc_id')
+                        ->from($this->tbl_album)
+                        ->where(array('une' => 1, 'albums.Utilisateur_id' => $user_id))
+                        ->join($this->tbl_doc, 'documents.albums_id = albums.id', 'LEFT OUTER')
+                        ->get()
+                        ->result();
+    }
+
+    public function get_morceau_une($user_id) {
+        return $this->db->select('morceaux.id, morceaux.nom,duree')
+                        ->from($this->tbl_morceaux)
+                        ->join($this->tbl_album, 'morceaux.albums_id = albums.id', 'LEFT OUTER')
+                        ->where(array('une' => 1, 'morceaux.Utilisateur_id' => $user_id))
+                        ->get()
+                        ->result();
+    }
+
+    public function get_morceau_user($user_id) {
+        return $this->db->select('morceaux.id,morceaux.nom,albums.nom AS title_alb,morceaux.duree,albums.id AS id_alb')
+                        ->from($this->tbl_morceaux)
+                        ->where(array('morceaux.Utilisateur_id' => $user_id))
+                        ->join($this->tbl_album, 'morceaux.albums_id = albums.id', 'LEFT OUTER')
+                        ->get()
+                        ->result();
+    }
+
+    public function get_album_page($id_alb) {
+        return $this->db->select('nom,img_cover,annee,livret_path,documents.id AS doc_id')
+                        ->from($this->tbl_album)
+                        ->where(array('albums.id' => $id_alb))
+                        ->join($this->tbl_doc, 'documents.albums_id = albums.id', 'LEFT OUTER')
+                        ->get()
+                        ->result();
+    }
+
+    public function get_morceau_alb_page($user_id, $id_alb) {
+        return $this->db->select('morceaux.id, morceaux.nom,duree')
+                        ->from($this->tbl_morceaux)
+                        ->join($this->tbl_album, 'morceaux.albums_id = albums.id', 'LEFT OUTER')
+                        ->where(array('albums.id' => $id_alb, 'morceaux.Utilisateur_id' => $user_id))
+                        ->get()
+                        ->result();
+    }
+
     //---------------------------------------------------------------------------
     //-								PLAYLIST									-
     //---------------------------------------------------------------------------
 
-    public function get_my_playlist() {
-        return $this->db->select('COUNT(Morceaux_id) AS n_morceau,Morceaux_id,playlists.nom,COUNT(Distinct morceaux.Utilisateur_id) AS n_artiste')
+    public function get_my_playlist($user_id) {
+        return $this->db->select('COUNT(Morceaux_id) AS n_morceau,Morceaux_id,playlists.nom,COUNT(Distinct morceaux.Utilisateur_id) AS n_artiste, albums.img_cover,albums.nom AS name_alb,albums.Utilisateur_id AS user_alb')
                         ->from($this->tbl_playlist)
                         ->join($this->tbl_morceaux, 'morceaux.id = playlists.Morceaux_id')
-                        ->where(array('playlists.Utilisateur_id' => 30))
+                        ->join($this->tbl_album, 'morceaux.albums_id = albums.id', 'LEFT OUTER')
+                        ->where(array('playlists.Utilisateur_id' => $user_id))
                         ->group_by('nom')
                         ->get()
                         ->result();
@@ -210,6 +268,81 @@ class Musique_model extends CI_Model {
 
         $update_like_morceau_user = 'DELETE FROM like_activity_pav WHERE Utilisateur_id = ? AND Morceaux_id = ?';
         $this->db->query($update_like_morceau_user, array($user, $morceau));
+    }
+
+    public function delete_morceau_playlist($user, $morceau) {
+        $this->db->delete($this->tbl_playlist, array('Morceaux_id' => $morceau, 'Utilisateur_id' => $user));
+    }
+
+    public function pl_to_panier($user_id, $morceaux_id) {
+        $id_commande_user = $this->db->select('id')
+                ->from($this->tbl_order)
+                ->where(array('Utilisateur_id' => $user_id, 'status' => 'P'))
+                ->get()
+                ->result();
+        if (empty($id_commande_user) == 1) {
+            $data = array(
+                'Utilisateur_id' => $user_id,
+                'date' => date('Y-m-d H:i:s', now()),
+                'status' => 'P'
+            );
+
+            $this->db->insert($this->tbl_order, $data);
+        }
+
+        $existing_panier = $this->db->select('id,titre')
+                ->from($this->tbl_orderinfo)
+                ->where_in('Morceaux_id', $morceaux_id)
+                ->where(array('Commande_id' => $id_commande_user[0]->id))
+                ->get()
+                ->result();
+        if (empty($existing_panier) == 1) {
+            $id_commande_user = $this->db->select('id')
+                    ->from($this->tbl_order)
+                    ->where(array('Utilisateur_id' => $user_id, 'status' => 'P'))
+                    ->get()
+                    ->result();
+
+
+            $info_morceaux = $this->db->select('id,nom,Albums_id,prix,format')
+                    ->from($this->tbl_morceaux)
+                    ->where_in('id', $morceaux_id)
+                    ->get()
+                    ->result();
+
+            foreach ($info_morceaux as $info_morceau) {
+                $data_cmd = array(
+                    'Commande_id' => $id_commande_user[0]->id,
+                    'Albums_id' => $info_morceau->Albums_id,
+                    'titre' => $info_morceau->nom,
+                    'prix' => $info_morceau->prix,
+                    'morceaux_id' => $info_morceau->id,
+                    'format' => $info_morceau->format
+                );
+
+                $this->db->insert($this->tbl_orderinfo, $data_cmd);
+                return 'ajout';
+            }
+        }
+    }
+
+    public function update_title($new, $old) {
+        $data = array(
+            'nom' => $new,
+        );
+
+        $this->db->where('nom', $old);
+        $this->db->update($this->tbl_playlist, $data);
+    }
+
+    public function to_playlist($pl_name, $id_morceau) {
+        $data = array(
+            'Utilisateur_id' => $this->session->userdata('uid'),
+            'nom' => $pl_name,
+            'Morceaux_id' => $id_morceau
+        );
+        $this->db->set('date_creation', 'CURRENT_DATE()', false);
+        $this->db->insert($this->tbl_playlist, $data);
     }
 
 }

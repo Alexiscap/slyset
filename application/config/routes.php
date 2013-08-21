@@ -93,6 +93,7 @@ $route['album/(:num)/(:any)'] = "mc_photos/album/$1/$2";
 
 $route['musique'] = "mc_musique/index";
 $route['musique/(:num)'] = "mc_musique/index/$1";
+$route['musique/album/(:num)/(:num)'] = "mc_musique/page_album/$1/$2";
 
 $route['statistique'] = "mc_stats/index";
 $route['statistique/(:num)'] = "mc_stats/index/$1";

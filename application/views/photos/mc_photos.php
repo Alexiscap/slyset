@@ -68,7 +68,7 @@ $loger = $this->session->userdata('logged_in');
             if ($media_user_result_unit->type == 1) {
                 ?>		
                 <div class="photo box col1">
-                    <!--  edition : HOVER *******************-->
+					<!--  edition : HOVER *******************-->
                      <?php if ($profile->id == $uid) { ?> 
                       <div class="edit">
 
@@ -110,7 +110,6 @@ $loger = $this->session->userdata('logged_in');
       		<?php } ?>
       		<p class="nb_like" ><?php echo $media_user_result_unit->like_total ?></p>
       		</div> 
-
                     <div class="allcomment" id="comm<?php echo $media_user_result_unit->id ?>">
 
                         <?php foreach ($commentaires as $commentaire): ?>
@@ -148,16 +147,16 @@ $loger = $this->session->userdata('logged_in');
 
             else if ($media_user_result_unit->type == 2) {
                 ?>
-				<div class="cnt_box">
+				<!--<div class="cnt_box">-->
                 <div class="photo box col1">
-
                     <!--  edition : HOVER *******************-->
-                    <?php if ($profile->id == $uid) 
+					<?php
+			    if ($profile->id == $uid) 
                     { ?> 
                     	<div class="edit">
                   
                         	<a class="iframe" href="<?php echo site_url('media/supprimer/' . $infos_profile->id . '/' . $media_user_result_unit->file_name . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
-							<a class="iframe" href="<?php echo site_url('media/editer/' . $infos_profile->id . '/' . $media_user_result_unit->file_name . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+							<a class="iframe" href="<?php echo base_url('/index.php/media/editer/'.$infos_profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
                       
                     		<div class="open_alb">
                   		      	<a href="<?php echo site_url('album/' . $infos_profile->id . '/' . $media_user_result_unit->file_name) ?>"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
@@ -167,14 +166,15 @@ $loger = $this->session->userdata('logged_in');
 				
 					else
 					{ ?>
-						<div class="edit">
+						<div class="edit" style="background:rgba(255, 255, 255, 0.5);">  <!-- METTRE CE STYLE DANS LE JS -->
                   
                     		<div class="open_alb">
                         		<a href="<?php echo site_url('album/' . $infos_profile->id . '/' . $media_user_result_unit->file_name) ?>"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
                     		</div>
                     	</div>
 					<?php 
-					} 
+					}?> 
+                    <?php
 			        $a = 0;
         			foreach ($all_photos as $al_photo):
             			if ($media_user_result_unit->file_name == $al_photo->file_name):
@@ -230,7 +230,7 @@ $loger = $this->session->userdata('logged_in');
                         $count = substr_count($all_album_like, $media_user_result_unit->file_name . '/');
                         if ($count >= 1) {
                             ?>
-                            <img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" id="<?php echo $media_user_result_unit->file_name ?>" class="nolike-album" />
+                            <img src="<?php echo img_url('musicien/pink_heart.png'); ?>" id="<?php echo $media_user_result_unit->file_name ?>" class="nolike-album" />
                         	<?php
                         } 
                         else
@@ -243,9 +243,9 @@ $loger = $this->session->userdata('logged_in');
                         <p class="nb_like"><?php echo $media_user_result_unit->like_total ?></p>
                     </div>
 
-                </div>
-				<div class="allcomment" id="comm<?php echo $media_user_result_unit->file_name ?>">
-
+               <!-- </div>-->
+			   	<div class="allcomment" id="comm<?php echo $media_user_result_unit->file_name ?>">
+				
         				<?php 
         				foreach ($commentaires_albums as $commentaire):
             				if ($media_user_result_unit->file_name == $commentaire->file_name):
@@ -324,7 +324,7 @@ $loger = $this->session->userdata('logged_in');
             			$count = substr_count($all_video_like,$media_user_result_unit->id.'/');
       					if ($count>=1)
       					{ ?>
-                      		<img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="nolike-video" />
+                      		<img src="<?php echo img_url('musicien/pink_heart.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="nolike-video" />
 							<?php 
 						}
              			else

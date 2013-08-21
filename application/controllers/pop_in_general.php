@@ -451,7 +451,7 @@ class Pop_in_general extends CI_Controller {
         $uid = $this->session->userdata('uid');
 
         $data = array();
-        print $type_media;
+        //print $type_media;
 
         if ($user_id != $uid) {
             show_404();
@@ -620,7 +620,7 @@ class Pop_in_general extends CI_Controller {
         $data['error'] = " ";
 
         $data['album'] = $this->document_model->get_album($this->session->userdata('uid'));
-        $this->layout->view('partition/pi_ajout_livret', $data);
+        $this->load->view('partition/pi_ajout_livret', $data);
 	
 	}
 	
@@ -664,7 +664,7 @@ class Pop_in_general extends CI_Controller {
         $data = array();
         $data['error'] = " ";
 	    $data['album'] = $this->document_model->get_album($this->session->userdata('uid'));
-        $this->layout->view('partition/pi_ajout_paroles', $data);
+        $this->load->view('partition/pi_ajout_paroles', $data);
     }
     
      function do_upload_paroles() {
@@ -707,7 +707,7 @@ class Pop_in_general extends CI_Controller {
         $data = array();
         $data['error'] = " ";
         $data['album'] = $this->document_model->get_album($this->session->userdata('uid'));
-        $this->layout->view('partition/pi_ajout_partitions', $data);
+        $this->load->view('partition/pi_ajout_partitions', $data);
     }
 
  

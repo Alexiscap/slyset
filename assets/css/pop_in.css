@@ -122,6 +122,7 @@ body {margin:0;overflow-x:hidden;font-family: 'Trebuchet MS';}
 
 .pop-in_cent{width:100%;background:#eff4f3;border:1px solid #bbbbbb;border-radius:5px;overflow-x:hidden;margin:0;}
 .pop-in_cent span{text-indent : 20px;height : 50px;padding-top:25px; width : 100%; border-bottom:1px solid #e0e4e6;float:left;font-size:18px;color:#4e4e4e;}
+.pop-in_cent span.euro{padding: 0;width: 10px;text-indent: 5;height: 25px;margin-bottom: 25px;border: none;}
 .content-pi-cent {width:100%; height:calc(100% - 78px); min-height: 340px; border-left:none;border-right:none;clear:both;background-color:white;}
 .content-pi-cent_success {text-align:center;}
 
@@ -131,8 +132,8 @@ body {margin:0;overflow-x:hidden;font-family: 'Trebuchet MS';}
 .content-pi-cent .champs img{width:85px;height:73px;margin-left:0;}
 .content-pi-cent .champs {width:306px;float:left;margin:15px 0 0 12px;}
 .content-pi-cent .champs input{width:270px;padding:0 5px;outline:none;float:left; }
-.content-pi-cent .champs #test_one{position: absolute;background:white;border:1px solid #C0C0C0;border-top:none;}
-.content-pi-cent .champs #test_one ul{padding: 0;margin: 0;}
+.content-pi-cent .champs #test_one{position: absolute;background:white;border:1px solid #C0C0C0;border-top:none;visibility:hidden;}
+.content-pi-cent .champs #test_one ul{padding: 0;margin: 0;min-height:10px;}
 .content-pi-cent .champs #test_one ul li{padding: 10px 0 0 10px;margin: 0;list-style-type: none;height: 30px;font-size:14px;color:#dadada;}
 .content-pi-cent .champs #test_one ul li:last-Child{margin-bottom:5px;}
 .content-pi-cent .champs #test_one ul li:hover{background:#f9f9f9;color:#b9b9b9;}
@@ -198,4 +199,7 @@ body {margin:0;overflow-x:hidden;font-family: 'Trebuchet MS';}
     font-size: inherit;
     color: inherit;
 }
+
 /* FIN POP IN UPLOADIFY */
+
+.erreur {font-size: 12px;margin: 0 135px;}

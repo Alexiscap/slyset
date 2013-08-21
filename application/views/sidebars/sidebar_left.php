@@ -129,7 +129,7 @@
                 <div id="menu-profile" class="active">
                     <ul>
                         <li class="head_menu row row-7"><a href="javascript:void(0)"><!--<?php echo site_url('home/' . $user_id); ?>">--><span class="icon"></span><span class="menu-text"><?php echo $profile->login; ?></span></a></li>
-                           <div class="one">   <li class="first-row row row-8"><a href="<?php echo site_url('actualite/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Actualités</span></a></li>
+                           <div class="one">   <li id="musicien_actus" class="first-row row row-8"><a href="<?php echo site_url('actualite/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Actualités</span></a></li>
                         <li id="concert_mu" class="row row-9"><a href="<?php echo site_url('concert/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Concerts</span></a></li>
                         <li id="musique" class="row row-10"><a href="<?php echo site_url('musique/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Musique</span></a></li>
                         <li id="photos_videos" class="row row-11"><a href="<?php echo site_url('media/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Photos et vidéos</span></a></li>
