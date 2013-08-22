@@ -4,99 +4,85 @@
 <html lang="fr">
     <head>
         <title><?php echo $title = (isset($titre)) ? $titre : 'Slyset'; ?></title>
-        <meta http-equiv="Content-Type" content="text/html; charset=<?php if (isset($charset)) echo $charset; ?>" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="Content-Language" content="fr" />
         <meta http-equiv="Content-Script-Type" content="text/javascript" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <meta name="description" content="<?php echo $desc = (isset($description)) ? $description : 'Description Slyset'; ?>" />
         <meta name="keywords" content="slyset, project web, social networks, music, réseau social, réseau social musical, musique, écoute, artiste, efficom, projet" />
 
+        <!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />-->
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('reset') ?>" />
-        
-<!--        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url().'assets/css/fileupload/bootstrap.css'; ?>">
-        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url().'assets/css/fileupload/bootstrap-image-gallery.min.css'; ?>">
-        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url().'assets/css/fileupload/jquery.fileupload-ui.css'; ?>">
-        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url().'assets/css/fileupload/jquery-ui.css'; ?>">-->
-        
-        <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_header-footer') ?>" />
-        <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_sidebar-left') ?>" />
-        <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_sidebar-right') ?>" />
-        <link type="text/css" rel="stylesheet" href="<?php echo css_url('slyset') ?>" />
+        <link type="text/css" rel="stylesheet" href="<?php echo css_url('player') ?>" />
 
         <!--[if IE]>
           <link type="text/css" rel="stylesheet" href="<?php echo css_url('corrections-ie') ?>" />
         <![endif]-->
-        
+
         <!--<script type="text/javascript" src="<?php echo js_url('jquery-1.7.1.min') ?>"></script>-->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script type="text/javascript" src="<?php echo js_url('modernizr.custom.63321') ?>"></script>
+        <script type="text/javascript" src="<?php echo js_url('jquery-ui-1.10.3.min') ?>"></script>
     </head>
 
-    <body <?php if (isset($id_bkg)) echo 'class="' . $id_bkg . '"'; ?>>
-        
-<div class="content">
-    <!--<audio src="<?php echo base_url().'/assets/musique/test.mp3'; ?>" preload="auto"></audio>--> 
-    <!--<div class="audiojs " classname="audiojs" id="audiojs_wrapper0">-->
-        <audio src="<?php echo base_url().'assets/musique/Banquet.mp3'; ?>" type="audio/mpeg"  preload="auto" autoplay="autoplay"></audio>
+    <body class="player-audio">
+        <div class="content">
+            <div class="content-left">
+                <div class="top">
+                    <span class="ico-ecoute"></span>
+                    <span class="txt-ecoute">Vous écoutez ...</span>
+                </div>
+
+                <div class="current-music" style="background:url('<?php echo base_url() . 'assets/images/player/bkg-current.png'; ?>') no-repeat 0 0 transparent;">
+                    <div class="infos-txt">
+                        <h2 class="title">Comme Together</h2>
+                        <p class="artist">The Beatles</p>
+                    </div>
+
+                    <div class="controls">
+                        <audio src="<?php echo base_url() . 'assets/musique/Anxiety.mp3'; ?>" type="audio/mpeg"  preload="auto" autoplay="autoplay"></audio>
+                    </div>
+                </div>
+
+                <div class="extra-controls">
+                    <div class="random disable"></div>
+                    <div class="loop disable"></div>
+                    <div class="addto disable"></div>
+                    <div class="like disable"></div>
+
+                    <div class="vol disable">
+                        <div id="vol-slider"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-right">
+
+                <?php // foreach ($playlists[0] as $playlist): ?>
+                <!--<ol><?php // echo ucfirst($this->uri->segment(4));  ?> : <?php // echo $playlist->nom  ?>-->
+                <div class="top">
+                    <span class="txt-ecoute">Playlist : <?php // echo $playlist->nom  ?></span>
+                </div>
+
+                <div class="list-morceaux">
+                    <ul>
+                        <?php // foreach ($playlists[1] as $morceaux): ?>
+                        <?php // if ($morceaux->nom == $playlist->nom): ?>
+                        <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Anxiety.mp3'; ?>">1111<?php // echo $morceaux->title_track  ?></a></li>
+                        <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Luno.mp3'; ?>">2222<?php // echo $morceaux->title_track  ?></a></li>
+                        <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Helicopter.mp3'; ?>">3333<?php // echo $morceaux->title_track  ?></a></li>
+                        <?php // endif; ?>
+                        <?php // endforeach; ?>
+                    </ul>
+                </div>
+                <!--</ol>-->
+                </br>
+                <?php // endforeach; ?>
 
 
-<!--        <div class="play-pause">
-            <p class="play"></p>
-            <p class="pause"></p>
-            <p class="loading"></p>
-            <p class="error"></p>
+                <span style="float:left;" id="duration"></span><span style="float:right;" id="timeleft"></span>
+            </div>
         </div>
-        <div class="scrubber">
-            <div class="progress" style="width: 0px;"></div>
-            <div class="loaded" style="width: 167.82671844430362px;"></div>
-        </div>
-        <div class="time">
-            <em class="played">00:00</em>/<strong class="duration">04:09</strong>
-        </div>
-        <div class="error-message"></div>
-    </div>-->
 
-
-<!--    <p><a href="#" id="vol-0">Volume: 0.0</a></p>
-    <p><a href="#" id="vol-10">Volume: 0.1</a></p>
-    <p><a href="#" id="vol-40">Volume: 0.4</a></p>
-    <p><a href="#" id="vol-70">Volume: 0.7</a></p>
-    <p><a href="#" id="vol-100">Volume: 1.0</a></p>-->
-    
-    <?php foreach ($playlists[0] as $playlist): 
-    	if(isset($morceau)):
-    	?>
-    	<ol>
-    	<li>Morceaux <a href="#" data-src="<?php echo base_url().'assets/musique/Helicopter.mp3'; ?>"><?php echo $morceau ?></a></li>
-		</ol>
-		</br>
-		<?php 
-    	endif;
-    ?>
-    	
-   		<ol><?php echo ucfirst($this->uri->segment(4));?> : <?php echo $playlist->nom ?>
-   			<?php foreach ($playlists[1] as $morceaux):
-   				if($morceaux->nom == $playlist->nom ): ?>
-        	
-        			<li>Morceaux <a href="#" data-src="<?php echo base_url().'assets/musique/Helicopter.mp3'; ?>"><?php echo $morceaux->title_track ?></a></li>
-
-				<?php endif;
-			endforeach;?>
-     	</ol>
-     	</br>
-    <?php 
-    endforeach;?>
-    	<div id="shortcuts">
-      	<div>
-       	 	<h1>Keyboard shortcuts:</h1>
-        	<p><em>&rarr;</em> Next track</p>
-	        <p><em>&larr;</em> Previous track</p>
-    	    <p><em>Space</em> Play/pause</p>
-      	</div>
-    	</div>
-	</div>
-
-        
         <script type="text/javascript" src="<?php echo js_url('audiojs/audio') ?>"></script>
         <script type="text/javascript" src="<?php echo js_url('slyset') ?>"></script>
     </body>

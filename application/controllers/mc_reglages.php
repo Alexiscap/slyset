@@ -101,6 +101,8 @@ class Mc_reglages extends CI_Controller
         $config['max_size']    = '2048';
         $config['max_width']  = '1024';
         $config['max_height']  = '768';
+        $config['remove_space'] = TRUE;
+        $config['overwrite'] = TRUE;
         $this->load->library('upload', $config);
         
         $this->form_validation->set_rules('cover', 'Photo de couverture', 'callback_handle_upload_cover');

@@ -1,0 +1,365 @@
+.player-audio{ 
+    width: 650px;
+    height: 445px;
+    background: #eaeaea;
+}
+
+.player-audio .content{
+    width: 100%;
+    height: 100%;
+}
+
+.player-audio .content-left{
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    background: #444444;
+    float: left;
+    overflow: hidden;
+}
+
+.player-audio .content-left .top{
+    width: 100%;
+    height: 52px;
+    background: #444444;
+}
+
+.player-audio .content-right{
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    background: #eaeaea;
+    float: left;
+    overflow-x: hidden;
+}
+
+.player-audio .content-right .top{
+    width: 100%;
+    height: 52px;
+    background: #01a2ae;
+}
+
+.player-audio .content-left .ico-ecoute{
+    margin: 0 0 0 20px;
+    display: inline-block;
+    width: 29px;
+    height: 52px;
+    line-height: 52px;
+    background: url('../images/player/ico-big-casque.png') no-repeat 0 12px transparent;
+    float: left;
+}
+
+.player-audio .content .txt-ecoute{
+    margin: 0 0 0 20px;
+    display: inline-block;
+    height: 52px;
+    line-height: 52px;
+    font-family: "Myriad Pro", Arial, sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    text-align: left;
+    color: #FFFFFF;
+    float:left;
+}
+
+.player-audio .current-music{
+    /*width: 340px;*/
+    width: 100%;
+    height: 320px;
+    position: relative;
+    float: left;
+    clear: both;
+}
+
+.player-audio .current-music .infos-txt{
+    width: 100%;
+    position: absolute;
+    bottom: 36px;
+    background: rgba(29, 38, 47, 0.45);
+    float: left;
+    clear: both;
+}
+
+.player-audio .current-music .infos-txt .title{
+    margin: 15px 0 10px 0;
+    font-family: "Myriad Pro", Arial, sans-serif;
+    font-size: 30px;
+    font-weight: normal;
+    text-align: center;
+    color: #e6eaee;
+}
+
+.player-audio .current-music .infos-txt .artist{
+    margin: 5px 0 10px 0;
+    font-family: "Myriad Pro", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center;
+    color: #e6eaee;
+}
+
+.player-audio .current-music .controls{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background: rgba(19, 26, 34, 0.6);
+    float: left;
+    clear: both;
+}
+
+.player-audio .audiojs{
+    width: 100%;
+    background: none;
+    background-image: none;
+}
+
+.player-audio .audiojs .play-pause{
+    margin: 0;
+    padding: 0;
+    width: 90px;
+    border: none;
+    overflow: hidden;
+}
+
+.player-audio .audiojs .play-pause > p{
+    margin: 9px 10px;
+    padding: 0;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url('../images/player/player-controls.png') no-repeat 0 0 transparent;
+    float: left;
+}
+
+.player-audio .audiojs .play-pause > p:hover{
+    cursor: pointer;
+}
+
+.player-audio .audiojs .play-pause .prev{
+    margin: 9px 0 9px 8px;
+    background-position: 0 0;
+}
+.player-audio .audiojs .play-pause .play{
+    margin: 9px 8px;
+    background-position: -21px 0;
+}
+.player-audio .audiojs .play-pause .pause{
+    margin: 9px 8px;
+    background-position: -44px 0;
+}
+
+.player-audio .audiojs.playing .play-pause .play,
+.player-audio .audiojs.playing .play-pause .loading,
+.player-audio .audiojs.playing .play-pause .error{
+    display: none;
+}
+.player-audio .audiojs .play-pause .pause{
+    display: none;
+}
+.player-audio .audiojs.playing .play-pause .pause{
+    display: inline-block;
+}
+
+.player-audio .audiojs .play-pause .next{
+    margin: 9px 5px 9px 0;
+    background-position: -68px 0;
+}
+.player-audio .audiojs .play-pause .loading{
+    background: inherit;
+}
+.player-audio .audiojs .play-pause .error{
+    background: inherit;
+}
+
+.player-audio .audiojs .scrubber{
+    margin: 12px 0;
+    width: 187px;
+    height: 11px;
+    border-radius: 10px;
+    border-color: transparent;
+}
+
+.player-audio .audiojs .progress{
+    height: 11px;
+    border-radius: 10px;
+    background: #47bbd0;
+}
+
+.player-audio .audiojs .loaded{
+    height: 11px;
+    background: none;
+}
+
+.player-audio .audiojs .time, .player-audio .audiojs .time .played{
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    width: 48px;
+    height: 36px;
+    line-height: 37px;
+    text-align: center;
+    border: none;
+    overflow: hidden;
+}
+
+.player-audio .extra-controls{
+    /*width: 340px;*/
+    width: 100%;
+    height: 72px;
+    float: left;
+    clear: both;
+}
+
+.extra-controls > div{
+    margin: 25px 20px;
+    display: inline-block;
+    width: 24px;
+    height: 23px;
+    background: url('../images/player/extra-controls.png') no-repeat 0 0 transparent;
+    float: left;
+}
+
+.extra-controls > div:hover{
+    cursor: pointer;
+}
+
+.random, .random.disable{
+    background-position: 0 0;
+}
+.random.enable, .random.disable:hover{
+    background-position: 0 -23px;
+}
+
+.loop, .loop.disable{
+    width: 26px;
+    background-position: -24px 0;
+}
+.loop.enable, .loop.disable:hover{
+    width: 26px;
+    background-position: -24px -23px;
+}
+
+.addto, .addto.disable{
+    width: 25px;
+    background-position: -50px 0;
+}
+.addto.enable, .addto.disable:hover{
+    width: 25px;
+    background-position: -50px -23px;
+}
+
+.like, .like.disable{
+    width: 22px;
+    background-position: -75px 0;
+}
+.like.enable, .like.disable:hover{
+    width: 22px;
+    background-position: -75px -23px;
+}
+
+.vol, .vol.disable{
+    margin: 11px 0 12px 20px;
+    padding: 5px 0 0 0;
+    width: 40px;
+    height: 48px;
+    background: url('../images/player/btn-vol.png') no-repeat 0 center transparent;
+}
+.vol.enable, .vol.disable:hover{
+    margin: 11px 0 12px 20px;
+    padding: 5px 0 0 0;
+    width: 40px;
+    height: 48px;
+    background: url('../images/player/btn-vol-hover.png') no-repeat 0 center transparent;
+}
+
+#vol-slider{
+    display: none;
+    margin: 2px 0 24px 22px;
+    /*display: inline-block;*/
+    width: 6px;
+    height: 35px;
+    position: relative;
+    border: 1px solid #666666;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.5);
+}
+#vol-slider .ui-slider-range{
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+    font-size: .7em;
+    display: block;
+    border: 0;
+    background-position: 0 0;
+    background: #47bbd0;
+}
+#vol-slider .ui-slider-handle{
+    margin-left: 0;
+    margin-bottom: -4px;
+    width: 6px;
+    height: 8px;
+    position: absolute;
+    left: 0;
+/*    border-radius: 4px;
+    border-color: transparent;*/
+    border: none;
+    outline: none;
+    cursor: default;
+    /*background: #FFFFFF;*/
+    background: transparent;
+    z-index: 2;
+}
+
+.ui-slider .ui-slider-handle {
+}
+
+.player-audio .list-morceaux{
+    margin: 14px 0 0 0;
+    width: 100%;
+}
+
+.player-audio .list-morceaux ul{
+    margin: 0 5px;
+}
+    
+.player-audio .list-morceaux li{
+    padding: 0 0 0 15px;
+}
+.player-audio .list-morceaux li.playing{
+    padding: 0;
+}
+
+.player-audio .list-morceaux li a{
+    font-family: "Myriad Pro", Arial, sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    text-align: left;
+    text-decoration: none;
+    color: #000000;
+}
+
+.player-audio .list-morceaux li a:first-child{
+    margin: 0 0 0 5px;
+}
+
+.player-audio .list-morceaux li:hover a, .player-audio .list-morceaux li a:hover,
+.player-audio .list-morceaux li.playing:hover a, .player-audio .list-morceaux li.playing a:hover{
+    text-decoration: none;
+    color: #ee4e38;
+}
+
+.player-audio .list-morceaux li.playing a{
+    color: #01a2ae;
+}
+
+.player-audio .list-morceaux li.playing:before{
+    content: ' ';
+    display: inline-block;
+    width: 15px;
+    height: 14px;
+    background: url('../images/player/ico-small-casque.png') no-repeat 0 0 transparent;
+    float: left;
+}

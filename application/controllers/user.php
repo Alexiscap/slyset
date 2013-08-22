@@ -65,7 +65,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('typeaccount', 'Type de compte', '');
 
         $fb_data = $this->session->userdata('fb_data');
-        print_r($fb_data);
+//        print_r($fb_data);
         $data = array('fb_data' => $fb_data);
 
         if ($this->form_validation->run() == FALSE) {
@@ -84,14 +84,16 @@ class User extends CI_Controller {
         }
 
         $config['upload_path'] = $dynamic_path;
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = '2048';
-        $config['max_width'] = '1024';
-        $config['max_height'] = '768';
+        $config['allowed_types'] = 'gif|jpg|png]jpeg';
+//        $config['max_size'] = '2048';
+//        $config['max_width'] = '1024';
+//        $config['max_height'] = '768';
+        $config['remove_space'] = TRUE;
+        $config['overwrite'] = TRUE;
         $this->load->library('upload', $config);
 
         $data = array('fb_data' => $fb_data);
-        print_r($fb_data);
+//        print_r($fb_data);
         //echo '<pre>'.print_r($fb_data).'</pre>';
 //        $this->form_validation->set_rules('nom', 'Nom', 'trim|required|xss_clean');
 //        $this->form_validation->set_rules('prenom', 'Prénom', 'trim|required|xss_clean');
@@ -185,10 +187,9 @@ class User extends CI_Controller {
                     break;
             }
 
-print 'coucou !!!';
-//            $this->user_model->insert_user($facebook_id, $login, $mail, $password, $type, $nom, $prenom, $naissance, $genre, $ville, $pays, $stylemusicecoute, $stylemusicjoue, $stylemusicinstru, $cover, $thumb);
-//
-//            redirect('login', 'refresh');
+            $this->user_model->insert_user($facebook_id, $login, $mail, $password, $type, $nom, $prenom, $naissance, $genre, $ville, $pays, $stylemusicecoute, $stylemusicjoue, $stylemusicinstru, $cover, $thumb);
+
+            redirect('login', 'refresh');
         }
     }
 

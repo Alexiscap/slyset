@@ -19,12 +19,18 @@ header + div{ padding-top:53px; }
 #header #ico_menu #accueil:hover{ background-position:0 -50px; }
 #header #ico_menu #explorer:hover{ background-position:-85px -50px; }
 #header #ico_menu #inscrire:hover{ background-position:-170px -50px; }
+#header #ico_menu #played{ margin:0 0 0 15px; display:inline-block; height:52px; float:left; }
+#header #ico_menu #played .ico{ display:inline-block; width:27px; height:100%; background:url('../images/player/ico-big-casque.png') no-repeat 0 center transparent; background-size:contain; float:left; }
+#header #ico_menu #played .infos{ margin:0 0 0 10px; display:inline-block; height:52px; float:left; }
+#header #ico_menu #played .infos span{ margin:2px 0 0 0; display:inline-block; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:normal; font-size:14px; color:#ffffff; float:left; clear:both; }
+#header #ico_menu #played .infos span.label{ margin:15px 0 0 0; font-weight:bold; font-size:12px; }
 /*#header #separe{ margin:0 10px; }*/
 #header #connexion{ height:100%; float:left; }
 #header #identification{ margin:0 25px 0 0; height:100%; float:left; }
-#header #identification a{ margin:0; padding:0; display:inline-block; height:100%; line-height:52px; font-size:14px; text-decoration:none; color:#eaebec; }
+#header #identification a, #header #identification .separator{ margin:0; padding:0; display:inline-block; height:100%; line-height:52px; font-size:14px; text-decoration:none; color:#ffffff; float:left; /*color:#eaebec;*/ }
 #header #identification a:hover{ text-decoration:underline; }
-#header #recherche{ margin:14px 20px 13px 0; height:25px; border-radius:20px; background:#e9e9e9; float:left; }
+#header #identification .separator{ margin:0 6px; }
+#header #recherche{ margin:14px 58px 13px 50px; height:25px; border-radius:20px; background:#e9e9e9; float:left; }
 #header #recherche form{ width:100%; position:relative; }
 #header #recherche input[type="text"]{ padding:0 8px 0 0; height:25px; border-radius:20px; width:175px; color:#afafaf; background:transparent; font-style:italic; outline:none; padding-left:10px; border:0; display:inline-block; float:left; }
 #header #recherche input[type="image"]{ height:12px; width:12px; padding:7px 0 6px 10px; margin:0; top:0; display:inline-block; float:left; }

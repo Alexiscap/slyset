@@ -9,18 +9,22 @@
             e.preventDefault();
             $('#userfile').uploadify('upload', '*');
         });
+        
+        var testinput = $('#testinput').val();
 
         $('#userfile').uploadify({
-//            'formData' : {'someKey' : 'someValue', 'someOtherKey' : 1},
+//            'formData' : {'testinput' : testinput},
 //            'formData': { 'userid': $("#uid").val(), 'guid': $("#guid").val() },
             'checkExisting' : base_url + 'index.php/mc_musique/check_exists',
             'auto':false,
             'swf': base_url + 'assets/javascript/uploadify/uploadify.swf',
             'uploader': base_url + 'index.php/mc_musique/do_upload_musique',
             'cancelImg': base_url + 'assets/images/common/uploadify-cancel.png',
-            'fileTypeExts':'*.jpg;*.jpeg;*.png;*.gif;*.mp3;',
-            'fileTypeDesc':'Image Files (.jpg,.jpeg,.png,.gif,.mp3)',
-            'fileSizeLimit':'100000MB',
+//            'fileTypeExts':'*.jpg;*.jpeg;*.png;*.gif;*.mp3;',
+//            'fileTypeDesc':'Image Files (.jpg,.jpeg,.png,.gif,.mp3)',
+            'fileTypeExts':'*.mp3;',
+            'fileTypeDesc':'Image Files (,.mp3)',
+            'fileSizeLimit':'1000000MB',
             'fileObjName':'userfile',
             'buttonText':'Select',
             'multi':true,
@@ -31,6 +35,11 @@
                 console.log(file);
 //                alert('The file ' + file.name + ' was added to the queue.');
             },
+//            'onUploadStart' : function(file) {
+//                $('#userfile').uploadify('settings','formData',{
+//                    'test': $('input#testinput').val()
+//                });
+//            },
             'onUploadComplete' : function (file) {
 //                $('#userfile').uploadify('cancel',''+file.id+'');
             },
@@ -45,7 +54,7 @@
                     alert('error '+d.type+": "+d.text);
             },
             'onDialogClose' : function() {
-                $('.uploadify-queue-item').append('<input type="text" placeholder="test input" name="test" id="testinput" />');
+//                $('.uploadify-queue-item').append('<input type="text" placeholder="test input" name="test" id="testinput" />');
 //                alert(this.queueData.filesQueued);
             }
         });
@@ -81,6 +90,6 @@
             <?php echo form_close(); ?>
         </div>
         
-        <p><a href="javascript:jQuery('#userfile').uploadifyClearQueue()">Cancel All Uploads</a></p>
+        <!--<p><a href="javascript:jQuery('#userfile').uploadifyClearQueue()">Cancel All Uploads</a></p>-->
     </div>
 </div>

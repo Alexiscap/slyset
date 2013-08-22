@@ -16,12 +16,12 @@
 
     // Loop through the POST variables passed from the previous page
     foreach ($_POST as $key => $value){
-        print_r($value);
+//        print_r($value);
 //      $value = htmlentities(stripslashes(strip_tags($value)));
       echo form_hidden($key, $value);
     }
 
-//      print_r($_POST);
+      print_r($_POST);
   ?>
 
   <p class="label_big">Dites-nous en un peu plus sur vous...</p>
