@@ -1435,7 +1435,7 @@ $(document).ready(function(){
     		var top = $(this).offset().top;
     		var left =  $(this).offset().left;
     		var t = top - 30;
-    		var l = left - 230;
+    		var l = left - 210;
     		
     		//alert($(this).currentTarget);
     		if($("#playlist_alert").is(':visible')==false)
@@ -1460,16 +1460,54 @@ $(document).ready(function(){
         	            url : base_url + '/mc_musique/to_pl',
             	        data: dataid,
                 	    success: function(data){ //afficher le bon bouton
-								$('#modal').reveal({ // The item which will be opened with reveal
+						
+							$('#modal').reveal({ // The item which will be opened with reveal
 							animation: 'fade',                   // fade, fadeAndPop, none
 							animationspeed: 600,                       // how fast animtions are
 							closeonbackgroundclick: true,              // if you click background will modal close?
 							dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
 							});
+							
 						return false;
+						
 						}
 					});
 				});
+			});
+		});
+		
+		$('.panier_alb').click(function()
+		{
+			var album_id = $(this).attr('id');
+			dataid = 'album_id='+album_id;
+
+			$.ajax({
+       	            	type: "POST",
+        	            url : base_url + '/mc_musique/alb_to_panier',
+            	       data: dataid,
+                	    success: function(data){ 
+                	    if (data=="ajout")
+                	    {
+                	    	$('#modal-panier').reveal({ // The item which will be opened with reveal
+							animation: 'fade',                   // fade, fadeAndPop, none
+							animationspeed: 600,                       // how fast animtions are
+							closeonbackgroundclick: true,              // if you click background will modal close?
+							dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+							});
+							return false
+                	    }
+                	    else
+                	    {
+                	    $('#modal-already-panier').reveal({ // The item which will be opened with reveal
+							animation: 'fade',                   // fade, fadeAndPop, none
+							animationspeed: 600,                       // how fast animtions are
+							closeonbackgroundclick: true,              // if you click background will modal close?
+							dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+							});
+							return false
+                	    }
+                	    }
+			
 			});
 		});
 	}

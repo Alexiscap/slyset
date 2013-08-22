@@ -117,9 +117,16 @@ class Mc_musique extends CI_Controller {
 		$pl_name =  $this->input->post('pl');
 		$id_morceau =  $this->input->post('id_track');
 		$this->musique_model->to_playlist($pl_name,$id_morceau);
+		
 	}
 	
-	
+	public function alb_to_panier()
+	{
+		$id_alb = $this->input->post('album_id');
+		$pn = $this->musique_model->alb_to_panier($id_alb);
+		print $pn;
+		return $pn;
+	}
 	
     public function test() {
         $folder = 'assets/musique/';

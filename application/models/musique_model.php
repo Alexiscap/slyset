@@ -21,7 +21,7 @@ class Musique_model extends CI_Model {
 	
 	public function get_morceau_by_playlist_user()
 	{
-		return $this->db->select('Morceaux_id,playlists.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree')
+		return $this->db->select('Morceaux_id,playlists.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,albums.id AS id_alb,morceaux.duree,utilisateur.id AS user_id')
 						->from($this->tbl_playlist)
 						->join($this->tbl_morceaux, 'morceaux.id = playlists.Morceaux_id')
 						->join($this->tbl_album, 'morceaux.albums_id = albums.id','LEFT OUTER')
@@ -143,7 +143,7 @@ class Musique_model extends CI_Model {
 
 	public function get_album_une($user_id)
 	{
-		return $this->db->select('nom,img_cover,annee,livret_path,documents.id AS doc_id')
+		return $this->db->select('nom,albums.id,img_cover,annee,livret_path,documents.id AS doc_id')
 				->from($this->tbl_album)
 				->where(array('une'=>1,'albums.Utilisateur_id'=>$user_id))
 				->join($this->tbl_doc, 'documents.albums_id = albums.id','LEFT OUTER')
@@ -174,7 +174,7 @@ class Musique_model extends CI_Model {
 	
 	public function get_album_page($id_alb)
 	{
-		return $this->db->select('nom,img_cover,annee,livret_path,documents.id AS doc_id')
+		return $this->db->select('nom,albums.id,img_cover,annee,livret_path,documents.id AS doc_id')
 				->from($this->tbl_album)
 				->where(array('albums.id'=>$id_alb))
 				->join($this->tbl_doc, 'documents.albums_id = albums.id','LEFT OUTER')
@@ -327,6 +327,65 @@ class Musique_model extends CI_Model {
 				return 'ajout';
 			}	
 		}				
+	}
+	
+	public function alb_to_panier($alb_id)
+	{
+		
+		$id_commande_user =  $this->db->select('id')
+									->from($this->tbl_order)
+									->where(array('Utilisateur_id'=>$this->session->userdata('uid'),'status'=>'P'))
+									->get()
+									->result();
+		if (empty($id_commande_user)==1)
+		{
+			$data = array(
+   				'Utilisateur_id' => $this->session->userdata('uid') ,
+   				'date' => date('Y-m-d H:i:s', now()),
+   				'status' => 'P'
+			);
+
+			$this->db->insert($this->tbl_order, $data); 
+		}
+		
+		$existing_panier =  $this->db->select('id,titre')
+									->from($this->tbl_orderinfo)
+									->where_in('Albums_id',$alb_id)
+									->where(array('Commande_id'=>$id_commande_user[0]->id,'Morceaux_id IS NULL'=>null))
+									->get()
+									->result();
+		
+		if(empty($existing_panier)==1)
+		{
+			$id_commande_user =  $this->db->select('id')
+										->from($this->tbl_order)
+										->where(array('Utilisateur_id'=>$this->session->userdata('uid'),'status'=>'P'))
+										->get()
+										->result();
+		
+		
+			$info_albs = $this->db->select('id,nom,prix,format')
+									->from($this->tbl_album)
+									->where_in('id',$alb_id)
+									->get()
+									->result();
+		
+			foreach($info_albs as $info_alb)
+			{
+				$data_cmd = array(
+	   				'Commande_id' => $id_commande_user[0]->id ,
+   					'Albums_id' => $info_alb->id ,
+   					'titre' => $info_alb->nom,
+   					'prix' => $info_alb->prix,
+   					'morceaux_id' => null,
+   					'format' => $info_alb->format
+				);
+
+				$this->db->insert($this->tbl_orderinfo, $data_cmd); 		
+				return 'ajout';
+			}	
+		}				
+			
 	}
 	
 	public function update_title($new,$old)
