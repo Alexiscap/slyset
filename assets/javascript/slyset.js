@@ -587,17 +587,43 @@ $(document).ready(function(){
         });
     };
        
-    if($("body.photos_videos").length > 0){
+        if($("body.photos_videos").length > 0){
+	
+		var photo = $(this).parents('.photo'); 
+		
         $('.bord_photo a').click(function(){
             if($(this).parents('.bord_photo').next('.allcomment').is(':visible') == false)
             {
                 $(this).parents('.bord_photo').next('.allcomment').show();
+				
+				var photo_height=photo.height();
+				var comm_height=photo.find('.allcomment').height();
+				comm_height+=50;
+				var total_height=photo_height-comm_height;
+				photo.find('.open_alb').css("height",total_height+"px");
+				
                 $(".content").masonry('reload');
             }
             else
             {
                 $(this).parents('.bord_photo').next('.allcomment').hide();
                 $(".content").masonry('reload');
+            }
+   
+        });
+		
+		$('.photo').hover(function(){
+			var photo_height=$(this).height();
+            if($(this).find('.allcomment').is(':visible') == true)
+            {   
+				var comm_height=$(this).find('.allcomment').height();
+				comm_height+=50;
+				var total_height=photo_height-comm_height;
+				$(this).find('.open_alb').css("height",total_height+"px");
+            }
+            else
+            {
+                $('.open_alb').css("height","calc(100% - 53px);");
             }
    
         });
