@@ -80,7 +80,7 @@ class Mc_musique extends CI_Controller {
         $data['album_alaune'] = $this->musique_model->get_album_une($infos_profile->id);
         $data['morceaux_alaune'] = $this->musique_model->get_morceau_une($infos_profile->id);
         $data['playlists'] = $this->musique_model->get_my_playlist($this->session->userdata('uid'));
-
+		$data['all_alb'] = $this->musique_model->get_list_album($this->session->userdata('uid'));
         //var_dump($data['all_morceau_artiste']);
         $this->layout->view('musique/mc_musique', $data);
     }
@@ -119,6 +119,13 @@ class Mc_musique extends CI_Controller {
 		$pn = $this->musique_model->alb_to_panier($id_alb);
 		print $pn;
 		return $pn;
+	}
+	
+	public function put_alaune()
+	{
+		$id_alb = $this->input->post('id_alb');
+		$put_une = $this->musique_model->put_alune($id_alb);
+
 	}
 
     public function player($user_id, $type = null, $name = null, $id_morceau = null) {

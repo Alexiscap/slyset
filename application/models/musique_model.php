@@ -207,6 +207,36 @@ class Musique_model extends CI_Model {
                         ->get()
                         ->result();
     }
+    
+    public function get_list_album($user_id)
+    {
+    	return $this->db->select('nom,id')
+ 						->from($this->tbl_album)
+                        ->where(array('Utilisateur_id' => $user_id))
+                        ->get()
+                        ->result();
+    }
+    
+   	public function put_alune($id_alb)
+   	{
+   			$data_reset= array(
+               'une' => 0,
+
+        );
+
+        $this->db->where('Utilisateur_id', $this->session->userdata('uid'));
+        $this->db->update($this->tbl_album, $data_reset);
+    
+   			$data = array(
+               'une' => 1,
+
+        );
+
+        $this->db->where('id', $id_alb);
+        $this->db->update($this->tbl_album, $data);
+    
+   	}
+   	
 
     //---------------------------------------------------------------------------
     //-								PLAYLIST									-
