@@ -587,16 +587,16 @@
 	<hr />-->
 	
 	<div id="modal">
-		<div id="content">
+		<div id="content-info">
 			<p>Le morceau a bien été ajouté au panier</p>
 
-			<a href="javascript:void(0)" class="button green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
+			<a href="javascript:void(0)" class="button_info green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
 
 		</div>
 	</div>
 	
 		<div id="modal_already">
-		<div id="content">
+		<div id="content-info">
 			<p class="morceau_panier_already"><p>
 			<a href="javascript:void(0)" class="button green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
 

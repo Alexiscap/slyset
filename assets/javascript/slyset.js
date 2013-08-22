@@ -1557,8 +1557,12 @@ $(document).ready(function(){
    		 	if (myID !== 'playlist_alert') {
         		$('#playlist_alert').hide();
     		}
+    		var myID = ev.target.id;
+   		 	if (myID !== 'album_une_alert') {
+        		$('#album_une_alert').hide();
+    		}
 		});
-
+		
     	$('.bt_playlist').live('click',function(e){
     		var this_pl = $(this);
     		var top = $(this).offset().top;
@@ -1638,6 +1642,59 @@ $(document).ready(function(){
                 	    }
 			
 			});
+		});
+		
+		
+		$('.bt_middle').live('click',function(e){
+    		var this_pl = $(this);
+    		var top = $(this).offset().top;
+    		var left =  $(this).offset().left;
+    		var t = top + 30;
+    		var l = left -50 ;
+    		
+    		//alert($(this).currentTarget);
+    		if($("#album_une_alert").is(':visible')==false)
+ 		   	{
+        		 $("#album_une_alert").show().offset({left:l,top:t});
+			}
+			else
+			{
+		  		$("#album_une_alert").hide();
+			}     
+			
+			$('#album_une_alert a').click(function()
+        	{
+        		var title_alb = $(this).text();
+        			var id_alb = $(this).attr('id');
+        			dataid = 'id_alb='+id_alb;
+        			$.ajax({
+       	            	type: "POST",
+        	            url : base_url + '/mc_musique/put_alaune',
+            	        data: dataid,
+                	    success: function(data){ 
+                	    //$('#une_alb').hide();
+                	      //location.reload();
+						//$('#une_alb').load('http://localhost/slyset/index.php/musique/30 #une_alb');
+                	    //$('#une_alb').load('http://localhost/slyset/index.php/musique/30 #une_alb');
+						 
+                	    //$('#une_alb').show();
+
+							    //afficher le bon bouton
+						/*
+							$('#album_une_alert').reveal({ // The item which will be opened with reveal
+							animation: 'fade',                   // fade, fadeAndPop, none
+							animationspeed: 600,                       // how fast animtions are
+							closeonbackgroundclick: true,              // if you click background will modal close?
+							dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+							});
+							
+						return false;
+						*/
+						}
+					});
+				});
+			
+			
 		});
 	}
     

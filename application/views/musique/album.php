@@ -144,6 +144,15 @@ $loger = $this->session->userdata('logged_in');
         
        
     </div>
+    <div id="modal">
+		<div id="content-info">
+			<p>Le morceau a bien été ajouté a votre playlist</p>
+
+			<a href="javascript:void(0)" class="button_info green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
+
+		</div>
+	</div>
+    
     <div id="playlist_alert"><p>Ajouter à une playlist existante</p>
         </br>
         <?php foreach($playlists as $playlist):?>

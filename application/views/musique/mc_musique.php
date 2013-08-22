@@ -4,6 +4,8 @@ $uid = (empty($session_id)) ? '' : $session_id;
 $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
 $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
 $loger = $this->session->userdata('logged_in');
+
+
 ?>
 
 <div id="contentAll">
@@ -44,15 +46,17 @@ $loger = $this->session->userdata('logged_in');
             <span class="stats_title">morceaux</span>
         </div>
     </div>
+    
+    <?php if($uid == $uid_visit): ?>
     <div class="bts_noir">
         <div class="bt_noir">
-            <a href="#"><span class="bt_left"></span><span class="bt_middle">Mettre un album à la une</span><span class="bt_right"></span></a>
+            <a href="javascript:void(0)"><span class="bt_left"></span><span class="bt_middle">Mettre un album à la une</span><span class="bt_right"></span></a>
         </div>
         <div class="bt_noir">
             <a class="iframe-upload" href="<?php echo site_url() . '/pop_in_general/upload_musique/' . $session_id; ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter un morceau</span><span class="bt_right"></span></a>
         </div>
     </div>
-
+	<?php endif;?>
     <div class="content">
         <h2>Musique de <?php echo $login; ?></h2>
 
@@ -63,11 +67,12 @@ $loger = $this->session->userdata('logged_in');
 		<?php
 		if(empty($album_alaune)!=1):
 		?>
+		<div id="une_alb">
         <div class="a_la_une">
             <img src="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$album_alaune[0]->nom).'/'.$album_alaune[0]->img_cover); ?>"/>
             <img src="<?php echo img_url('portail/alaune.png'); ?>" class="bandeau_top"/>
             <div class="player">
-                <a href="#"><img src="<?php echo img_url('musicien/player_top.png'); ?>"/></a>
+                <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$album_alaune[0]->nom); ?>" class="open_player"><img src="<?php echo img_url('musicien/player_top.png'); ?>"/></a>
             </div>
             <div class="infos">
                 <p class="title"><?php echo $album_alaune[0]->nom; ?></p>
@@ -77,17 +82,21 @@ $loger = $this->session->userdata('logged_in');
             </div>
         </div>
         
+        
         <div class="top_album">
             <div>
-                <a href="#">
-                    <img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
-                        <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$album_alaune[0]->nom); ?>" class="open_player">
-							<p> Ecouter l'album</p>
-						</a>
-					
-                    <img src="<?php echo img_url('common/cadis.png'); ?>"/>
-                    <p> Acheter l'album</p>
-                </a>
+               
+                    <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$album_alaune[0]->nom); ?>" class="open_player">
+
+                    	<img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
+						<span> Ecouter l'album</span>
+					</a>
+					<a href="javascript:void(0)"> 
+
+                    	<img src="<?php echo img_url('common/cadis.png'); ?>"/>
+                  		<span class="panier_alb" id="<?php echo $album_alaune[0]->id; ?>"> Acheter l'album</span>
+            		</a>
+                
             </div>
             <div id="articles-tab">
                 <form action="http://127.0.0.1/slyset/index.php/admin_articles/delete_multi_article" method="post" accept-charset="utf-8">          
@@ -138,6 +147,7 @@ $loger = $this->session->userdata('logged_in');
             </div>
         </div>
         <hr />
+        </div>
          <?php endif; ?>
         
         <!-- LISTE DES MORCEAUX -->
@@ -194,10 +204,10 @@ $loger = $this->session->userdata('logged_in');
                                 <td class="article-date">4:19</td>
                             </tr>-->
                         </tbody>
-                    </table>
+                    </table><!--
                     <input type="button" value="Acheter" class="bt_cadis">
                     <input type="button" value="Dans ma playlist" class="bt_playlist">
-                    
+                    -->
                     
                 </form>
             </div>
@@ -205,10 +215,27 @@ $loger = $this->session->userdata('logged_in');
     </div>
 
 	<div id="modal">
-		<div id="content">
+		<div id="content-info">
 			<p>Le morceau a bien été ajouté a votre playlist</p>
 
-			<a href="javascript:void(0)" class="button green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
+			<a href="javascript:void(0)" class="button_info green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
+
+		</div>
+	</div>
+	
+	<div id="modal-panier">
+		<div id="content-info">
+			<p>L'album a bien été ajouté a votre panier</p>
+
+			<a href="javascript:void(0)" class="button_info green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
+
+		</div>
+	</div>
+	<div id="modal-already-panier">
+		<div id="content-info">
+			<p>Cet album est déjà dans votre panier</p>
+
+			<a href="javascript:void(0)" class="button_info green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
 
 		</div>
 	</div>
@@ -217,6 +244,14 @@ $loger = $this->session->userdata('logged_in');
         </br>
         <?php foreach($playlists as $playlist):?>
            	<a href ="javascript:void(0)" id="<?php echo $playlist->nom;?>"><?php echo $playlist->nom;?></a>
+        	</br>
+        <?php endforeach;?>
+    </div>
+    
+    <div id="album_une_alert"><p>Selectionner l'album à mettre à la une</p>
+        </br>
+        <?php foreach($all_alb as $album):?>
+           	<a href ="javascript:void(0)" id="<?php echo $album->id;?>"><?php echo $album->nom;?></a>
         	</br>
         <?php endforeach;?>
     </div>
