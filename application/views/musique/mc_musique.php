@@ -70,7 +70,7 @@ $loger = $this->session->userdata('logged_in');
 		<div id="une_alb">
         <div class="a_la_une">
             <img src="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$album_alaune[0]->nom).'/'.$album_alaune[0]->img_cover); ?>"/>
-            <img src="<?php echo img_url('portail/alaune.png'); ?>" class="bandeau_top"/>
+            <img src="<?php echo img_url('portail/alaune.png'); ?>" class="bandeau_top bandeau_une"/>
             <div class="player">
                 <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$album_alaune[0]->nom); ?>" class="open_player"><img src="<?php echo img_url('musicien/player_top.png'); ?>"/></a>
             </div>
@@ -104,13 +104,13 @@ $loger = $this->session->userdata('logged_in');
                         <tbody>
                             <tr class="tab-head odd row-color-2">
                                 <th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
-                                <th class="article-title">Titre de la chanson<span id="titre" class="filter filter-bottom"></span></th>
-                                <th class="article-date">Durée<span id="created" class="filter filter-bottom"></span></th>
+                                <th class="article-title">Titre de la chanson</th>
+                                <th class="article-date">Durée</th>
                             </tr>
                             <?php foreach ($morceaux_alaune as $morceau_alune):?>
                             <tr class="even row-color-<?php echo $morceau_alune->nom; ?>">
                                 <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $morceau_alune->nom; ?>" id="article-<?php echo $morceau_alune->nom; ?>" class="checkbox-article"><label for="article-<?php echo $morceau_alune->nom; ?>"></label></td>
-                                <td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id=''";>
+                                <td class="article-title" onMouseOver="this.id='select';bt_edit();show_play();" onMouseOut="cache_edit();cache_play();this.id='';">
                                 	<a href="<?php echo site_url().'/mc_musique/player/'.$uid_visit.'/album/'.$album_alaune[0]->nom.'/'.$morceau_alune->id; ?>" class="open_player">
 
                                 		<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
@@ -166,16 +166,16 @@ $loger = $this->session->userdata('logged_in');
                         <tbody>
                             <tr class="tab-head odd row-color-2">
                                 <th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
-                                <th class="article-title">Titre de la chanson<span id="titre" class="filter filter-bottom"></span></th>
-                                <th class="article-album">Album<span id="created" class="filter filter-bottom"></span></th>
+                                <th class="article-title">Titre de la chanson</th>
+                                <th class="article-album">Album</th>
 
-                                <th class="article-date">Durée<span id="created" class="filter filter-bottom"></span></th>
+                                <th class="article-date">Durée</th>
                             </tr>
                             <?php foreach ($all_morceau_artiste as $morceau_artiste): ?>
                             <tr class="even row-color-<?php echo $morceau_artiste->id?>">
                                 <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $morceau_artiste->id?>" id="article-<?php echo $morceau_artiste->id?>" class="checkbox-article"><label for="article-<?php echo $morceau_artiste->id?>"></label></td>
-                                <td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id=''";>														
-                                	<a href="<?php echo site_url().'/mc_musique/player/'.$uid_visit.'/album/'.$morceau_artiste->title_alb.'/'.$morceau_artiste->id; ?>" class="open_player">
+                                <td class="article-title" onMouseOver="this.id='select';bt_edit();show_play();" onMouseOut="cache_edit();cache_play();this.id='';">														
+                                	<a href="<?php echo site_url().'/mc_musique/player/'.$uid_visit.'/album/'.$morceau_artiste->title_alb.'/'.$morceau_artiste->id; ?>" class="open_player" >
 										<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
 									</a>
                                     <p class="<?php echo $morceau_artiste->id; ?>"> <?php echo $morceau_artiste->nom?></p>

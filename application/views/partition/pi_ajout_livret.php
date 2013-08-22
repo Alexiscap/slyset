@@ -56,6 +56,12 @@
                     </div>
                 </div>
             </div>
+			<div class="label">
+				<label>Aperçu</label>
+			</div>
+			<div class="champs">
+				<img src="http://127.0.0.1/slyset/assets/images/musicien/apercu_photo.png" alt="visuel photo">
+			</div>
 			<div id="morceaux"></div>
 			<?php echo form_submit('submit', 'Ajouter un livret'); ?>
 			<?php echo form_close();?>

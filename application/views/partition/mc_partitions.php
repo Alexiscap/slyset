@@ -78,11 +78,11 @@ $loger = $this->session->userdata('logged_in');
 			<p class="title"><?php echo $album->nom ?></p>
 			<p class="annee_crea"><?php if(isset($album->annee))echo $album->annee ?></p>
 			<?php if($album->livret_path != null){ ?>
-			<p><span>> </span><a href="<?php echo base_url('files/'.$infos_profile->id.'/documents/'.$album->id.'/'.$album->livret_path) ?>">Voir le livret d'album</a></p>
-			<p><span>> </span><a href="#">Modifier le livret</a></p>
+			<p><span>> </span><a class="link_livret" href="<?php echo base_url('files/'.$infos_profile->id.'/documents/'.$album->id.'/'.$album->livret_path) ?>">Voir le livret d'album</a></p>
+			<p><span>> </span><a href="#" class="link_livret">Modifier le livret</a></p>
 			<?php }
 			else {?>
-			<p><span>> </span><a class="iframe" href="<?php echo base_url('index.php/document/new-livret/') ?>">Ajouter le livret</a></p>
+			<p><span>> </span><a class="iframe link_livret" href="<?php echo base_url('index.php/document/new-livret/') ?>">Ajouter le livret</a></p>
 			<?php } ?>
 		</div>
 </div>
@@ -90,7 +90,7 @@ $loger = $this->session->userdata('logged_in');
 				<div>
 					<a href="#">
 						<img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
-						<p> Ecouter l'album</p>
+						<p class> Ecouter l'album</p>
 					</a>
 				</div>
 			
@@ -152,7 +152,7 @@ $loger = $this->session->userdata('logged_in');
 											if($b == 0)
 												{
 	?>
-													<td class="partitions"><a href="#"> - </a>
+													<td class="partitions"><a href="#" class="parti_name"> - </a>
 														<div class="miniat_titre">
 															<a href="#" class="edit"><span> - </span></a>
 														</div>
@@ -171,7 +171,7 @@ $loger = $this->session->userdata('logged_in');
 													$a++;
 													if($paroles->prix == null):
 									?>
-													<td class="paroles"><a id="mise-panier" href="<?php echo files($infos_profile->id.'/documents/'.$paroles->album_id.'/'.$paroles->path) ?>">Voir</a>
+													<td class="paroles"><a id="mise-panier" class="mise-panier-no" href="<?php echo files($infos_profile->id.'/documents/'.$paroles->album_id.'/'.$paroles->path) ?>">Voir</a>
 														<?php endif;
 													if($paroles->prix != null):
 														?>
@@ -189,7 +189,7 @@ $loger = $this->session->userdata('logged_in');
 											if($a == 0)
 												{
 	?>
-													<td class="paroles"><a href="#"> - </a>
+													<td class="paroles"><a href="#" class="mise-panier-no" > - </a>
 														<div class="miniat_titre">
 															<a href="#" class="edit"><span> - </span></a>
 														</div>

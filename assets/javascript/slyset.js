@@ -624,24 +624,10 @@ $(document).ready(function(){
             }
    
         });
+		
     };
 		
-		$('.photo').hover(function(){
-			var photo_height=$(this).height();
-            if($(this).find('.allcomment').is(':visible') == true)
-            {   
-				var comm_height=$(this).find('.allcomment').height();
-				comm_height+=50;
-				var total_height=photo_height-comm_height;
-				$(this).find('.open_alb').css("height",total_height+"px");
-            }
-            else
-            {
-                $('.open_alb').css("height","calc(100% - 53px);");
-            }
-   
-        });
-    };
+ 
 
     //Commentaires photos
     $('.comment-form form').submit(function(){
@@ -1819,6 +1805,7 @@ $(document).ready(function(){
         });
     }
     
+	
 });
 
 function bt_edit(){
@@ -1827,6 +1814,14 @@ function bt_edit(){
 
 function cache_edit(){
     document.getElementById('select').getElementsByClassName('miniat_titre')[0].style.display="none";
+}
+
+function show_play(){
+    document.getElementById('select').getElementsByClassName('play')[0].style.display="inline";
+}
+
+function cache_play(){
+    document.getElementById('select').getElementsByClassName('play')[0].style.display="none";
 }
 
 function edit_photo(){

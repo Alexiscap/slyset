@@ -50,8 +50,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = '127.0.0.1';
-$db['default']['username'] = 'slyset';
-$db['default']['password'] = 'slyset';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
 $db['default']['database'] = 'preprod-slyset';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
