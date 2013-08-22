@@ -128,7 +128,9 @@ $(document).ready(function(){
                     audio.load($('a', randomitem).attr('data-src'));
                     audio.play();
                 }
-            }
+            },
+            updatePlayhead: function() {},
+            loadStarted: function() {}
         });
 
 
@@ -140,6 +142,12 @@ $(document).ready(function(){
         first = $('ul a').attr('data-src');
         $('ul li').first().addClass('playing');
         audio.load(first);
+        
+    //    $(window.opener).find('#played').html(first);
+    $('audio').bind("play", function(){
+        var currentAudio = $('ul li.playing').text();
+        $('#played .infos .ecoute', window.opener.document).html(currentAudio);
+    });
 
         // Load in a track on click
         $('ul li').click(function(e) {
@@ -158,21 +166,6 @@ $(document).ready(function(){
             prev.click();
         });
         
-        $("#vol-slider").slider({
-            orientation: "vertical",
-            range: "min",
-            min: 0,
-            max: 100,
-            value: 50,
-//            step: 1,
-            slide : function(event, ui){
-                var volume = ui.value / 100;
-                audio.setVolume(volume);
-//                $("#amount").val(ui.value);
-            }
-        });
-//        $("#amount").val($("#vol-slider").slider("value"));
-        
         // Load next track on click
         $('p.next').click(function(e) {
             e.preventDefault();
@@ -185,6 +178,18 @@ $(document).ready(function(){
             next.addClass('playing').siblings().removeClass('playing');
             audio.load($('a', next).attr('data-src'));
             audio.play();
+        });
+        
+        $("#vol-slider").slider({
+            orientation: "vertical",
+            range: "min",
+            min: 0,
+            max: 100,
+            value: 50,
+            slide : function(event, ui){
+                var volume = ui.value / 100;
+                audio.setVolume(volume);
+            }
         });
                 
         $(".random.disable").toggle(function(e){
@@ -239,12 +244,18 @@ $(document).ready(function(){
 //            console.log((this.currentTime / this.duration) * 100);
         });
     }
+    
+//    var p = $('audio');
+//    function isPlaying(p) { return !audelem.paused; }
+//
+//    if(isPlaying(p)){
+//    $('#played').html('EN COURSS');
+//    }
 
     $('.iframe').bind('contextmenu', function(e) {
         return false;
     }); 
-	
-	
+  
     //status actif du menu de gauche
     if ($('body').attr('class') != 'home' && $('aside').length > 0)
     {

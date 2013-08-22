@@ -42,14 +42,19 @@
 
                 <div id="ico_menu">
                     <a href="<?php echo site_url('home/' . $this->session->userdata('uid')); ?>" id="accueil"><span>Accueil</span></a>
-                    <a href="#" id="explorer"><span>Rechercher</span></a>
-                    <?php if ($this->session->userdata('logged_in') != 1): ?>
-                        <a href="<?php echo site_url('user'); ?>" id="inscrire"><span>S'inscrire</span></a>
-                    <?php endif; ?>
-
-                    <div id="execution-times">
+                    <!--<a href="#" id="explorer"><span>Rechercher</span></a>-->
+                    
+<!--                    <div id="execution-times">
                         <p><?php echo $this->benchmark->memory_usage(); ?></p>
                         <p><?php echo $this->benchmark->elapsed_time() . 'ms'; ?></p>
+                    </div>-->
+                    
+                    <div id="played">
+                        <div class="ico"></div>
+                        <div class="infos">
+                            <span class="label">Vous écoutez...</span>
+                            <span class="ecoute"></span>
+                        </div>                        
                     </div>
                 </div>
 
@@ -59,15 +64,18 @@
                         <form action="<?php echo site_url('search/' . $this->session->userdata('uid')); ?>" method="post">
                             <input src="<?php echo img_url('header/loupe.png') ?>" type="image" value="submit" align="middle"/>
                             <input type="text" value="<?php print $val; ?>" placeholder="Rechercher un artiste..." name="recherche" />
-
                         </form>
                     </div>
 
                     <div id="identification">
                         <?php if ($this->session->userdata('logged_in') == 1): ?>
-                            <a href="<?php echo site_url('home/' . $this->session->userdata('uid')) ?>"><?php echo $this->session->userdata('login'); ?></a> | <a href="<?php echo site_url('login/logout'); ?>">Déconnexion</a>
+                            <a href="<?php echo site_url('home/' . $this->session->userdata('uid')) ?>"><?php echo $this->session->userdata('login'); ?></a>
+                            <span class="separator">|</span>
+                            <a href="<?php echo site_url('login/logout'); ?>">Déconnexion</a>
                         <?php else: ?>
-                            <a href="<?php echo site_url('login'); ?>">Connexion</a>
+                            <a href="<?php echo site_url('login'); ?>" id="connexion">Connexion</a>
+                            <span class="separator">|</span>
+                            <a href="<?php echo site_url('user');?>" id="inscrire">Inscription</a>
                         <?php endif; ?>
                     </div>
                 </div>

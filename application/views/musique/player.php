@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="controls">
-                        <audio src="<?php echo base_url() . 'assets/musique/Anxiety.mp3'; ?>" type="audio/mpeg"  preload="auto"></audio>
+                        <audio src="<?php echo base_url() . 'assets/musique/Anxiety.mp3'; ?>" type="audio/mpeg"  preload="auto" autoplay="autoplay"></audio>
                     </div>
                 </div>
 
