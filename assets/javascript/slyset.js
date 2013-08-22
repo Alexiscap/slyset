@@ -867,9 +867,11 @@ $(document).ready(function(){
         function(){
     
             $(this).children('.edit').show();
+            $(this).children('.open_alb').show();
         },
         function(){
             $(this).children('.edit').hide();
+            $(this).children('.open_alb').hide();
         }
         );
     
