@@ -1156,7 +1156,7 @@ p.detail_perso, p.detail_reglages { margin:0 0 20px 0; font-family:"Trebuchet MS
 .content .playlist #articles-tab .article-title{ padding:0 12px 0 25px;width:152px;}
 .content .playlist #articles-tab .article-artiste{ padding:0 12px 0 15px;width:67px;}
 .content .playlist #articles-tab .article-album{ padding:0 12px 0 25px;width:62px;}
-.content .playlist #articles-tab .article-duree{ padding:0 12px 0 25px;width:50px;}
+.content .playlist #articles-tab .article-duree{ padding: 0 7px 0 20px;width: 60px;}
 
 .content .playlist #articles-tab th.article-title{ cursor:pointer; }
 .content .playlist #articles-tab th.article-date{ cursor:pointer; }
