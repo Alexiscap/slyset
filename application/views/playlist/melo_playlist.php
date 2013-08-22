@@ -484,7 +484,7 @@
 			<?php endforeach;
 		endif;
 		if(empty($playlists)==1): ?>
-			Vous n'avez aucunes playlists
+			<p class="nopl">Vous n'avez aucunes playlists</p>
 		<?php endif; ?>
 		
 	
@@ -608,6 +608,3 @@
     <?php if (isset($sidebar_right)) echo $sidebar_right; ?>
 
 </div>
-
-
-	

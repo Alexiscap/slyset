@@ -1156,7 +1156,7 @@ p.detail_perso, p.detail_reglages { margin:0 0 20px 0; font-family:"Trebuchet MS
 .content .playlist #articles-tab .article-title{ padding:0 12px 0 25px;width:152px;}
 .content .playlist #articles-tab .article-artiste{ padding:0 12px 0 15px;width:67px;}
 .content .playlist #articles-tab .article-album{ padding:0 12px 0 25px;width:62px;}
-.content .playlist #articles-tab .article-duree{ padding:0 12px 0 25px;width:50px;}
+.content .playlist #articles-tab .article-duree{ padding: 0 7px 0 20px;width: 60px;}
 
 .content .playlist #articles-tab th.article-title{ cursor:pointer; }
 .content .playlist #articles-tab th.article-date{ cursor:pointer; }
@@ -1190,6 +1190,7 @@ p.detail_perso, p.detail_reglages { margin:0 0 20px 0; font-family:"Trebuchet MS
 .content .cadis_pl{float:right;width:93px;height:30px;background:url('../images/common/bt_cadis.png');border:none;color:white;padding:0 0 0 25px;font-weight:bold;font-size:14px;margin:10px 0;}
 .content .bt_supp_playlist{float:right;width:108px;height:30px;background:url('../images/common/bt_supp_pl.png');border:none;color:white;padding:0 0 0 17px;font-weight:bold;font-size:13px;margin:10px;}
 
+.content .nopl {font-size:12px;font-weight:normal;}
 
 /*----------------- FIN MELO PLAYLIST ---------------------*/
 
