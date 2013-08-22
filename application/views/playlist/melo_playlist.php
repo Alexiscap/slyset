@@ -464,8 +464,8 @@
 														<!--<a href="#" class="cam"></a>-->
 													</div>
 												</td>
-												<td class="article-artiste"><?php echo $morceaux->login ?></td>
-												<td class="article-album"><?php echo $morceaux->title_album ?></td>
+												<td class="article-artiste"><a href="<?php echo base_url('index.php/musique/'.$morceaux->user_id); ?>"><?php echo $morceaux->login ?></a></td>
+												<td class="article-album"><a href="<?php echo base_url('index.php/musique/album/'.$morceaux->user_id.'/'.$morceaux->id_alb); ?>"><?php echo $morceaux->title_album ?></a></td>
 									
 												<td class="article-duree"><?php echo substr($morceaux->duree,10,9); ?></td>
 											</tr>
