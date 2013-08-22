@@ -327,18 +327,18 @@ if (isset($all_date_calendar))
     </div>
 
     <div id="home-sidebar-right">
-        <div class="publicity">
-            <p class="publicity-title">Découvrez la mixtape #1</p>
-            <div class="publicity-bkg"></div>
+        <div class="pslyset">
+            <p class="pslyset-title">Découvrez la mixtape #1</p>
+            <div class="pslyset-bkg"></div>
         </div>
 
-        <div class="publicity pub-empty">
-            <div class="pub-ico"></div>
+        <div class="pslyset empty">
+            <div class="ico"></div>
             <p>Votre publicité ici.</p>
         </div>
 
-        <div class="publicity pub-empty">
-            <div class="pub-ico"></div>
+        <div class="pslyset empty">
+            <div class="ico"></div>
             <p>Votre publicité ici.</p>
         </div>
     </div>

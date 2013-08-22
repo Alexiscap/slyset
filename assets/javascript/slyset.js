@@ -74,9 +74,14 @@ $(document).on('submit', ".form_comments form", function(){
         return false;
     }
 });
-   
 
 $(document).ready(function(){
+//    var tt = window.opener.location.reload(true);
+//    
+//    if(tt){
+//        alert('reloaded');
+//    }
+    
     if($(".iframe, .iframe-upload, .bigiframe").length > 0){
         $(".iframe").colorbox({
             iframe:true, 
@@ -102,7 +107,7 @@ $(document).ready(function(){
 
     $(".open_player").click(function(event) {
         var href = $(this).attr('href');
-        window.open(href, '', 'resizable=no, height=445, width=650, toolbar=no, directories=no, status=no, location=no menubar=no');
+        window.open(href, '', 'resizable=no, top=150, left=400, height=445, width=650, toolbar=no, directories=no, status=no, location=no menubar=no');
         //        return false;
         event.preventDefault();
     });
@@ -147,7 +152,9 @@ $(document).ready(function(){
     $('audio').bind("play", function(){
         var currentAudio = $('ul li.playing').text();
         $('#played .infos .ecoute', window.opener.document).html(currentAudio);
+        
     });
+//        alert('test1');
 
         // Load in a track on click
         $('ul li').click(function(e) {

@@ -599,7 +599,14 @@ cursor : pointer;}
 /*#e6e6e6*/
 #wall-flux .ajax_loader, .melo_actu .ajax_loader2{ text-align:center; width:100%; position:absolute; bottom:0; }
 
-#home-sidebar-right{ width:171px; float:right; }
+#home-sidebar-right{ width:170px; float:right; }
+#home-sidebar-right .pslyset:first-child{ margin:20px 0 0 0; }
+#home-sidebar-right .pslyset{ margin:15px 0 0 0; width:170px; height:190px; position:relative; background:transparent; float:left; clear:both; }
+#home-sidebar-right .pslyset p{ font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:center; color:#3f3f3f; clear:both; }
+#home-sidebar-right .pslyset-bkg{ display:block; width:170px; height:167px; position:absolute; bottom:0; background:url('../images/portail/slyset-mixtape.png') no-repeat 0 0 transparent; float:left; clear:both; }
+#home-sidebar-right .pslyset.empty{ height:180px; background:#e6e6e6; }
+#home-sidebar-right .pslyset.empty .ico{ margin:35px 0 0 0; display:block; width:100%; height:59px; background:url('../images/portail/ico-empty-pslyset.png') no-repeat center 0 transparent; }
+#home-sidebar-right .pslyset.empty p{ margin:20px 0 0 0; font-size:16px; font-weight:normal; }
 
 /* ----- CALENDAR PORTAIL ------- */
  ui-datepicker{ width:212px; height:175px; margin:5px auto 0; font:9pt Arial, sans-serif; }  
