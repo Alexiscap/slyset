@@ -1108,9 +1108,9 @@ p.detail_perso, p.detail_reglages { margin:0 0 20px 0; font-family:"Trebuchet MS
 
 
 /* ------------------ STATS ---------------*/
-.content .stats_carre {width: 504px;height: 105px;margin: 0 auto 10px;}
+.content .stats_carre {width: 504px;height: 105px;margin: 0 auto 10px;text-align: center;}
 .content .stats_carre div{width:108px;height:108px;float:left;margin:0 9px;}
-.content .stats_carre span{font-size:20px;color:#f9f9f9;position: relative;top: 60px;left: 35px;}
+.content .stats_carre span{font-size:20px;color:#f9f9f9;position: relative;top: 60px;}
 .content .stats_carre .abonnes{background:url("../images/musicien/sprite_carre_stats.png") no-repeat 0px 0px;}
 .content .stats_carre .visites{background:url("../images/musicien/sprite_carre_stats.png") no-repeat -131px 0px;}
 .content .stats_carre .vues{background:url("../images/musicien/sprite_carre_stats.png") no-repeat -260px 0px;}
@@ -1125,8 +1125,8 @@ p.detail_perso, p.detail_reglages { margin:0 0 20px 0; font-family:"Trebuchet MS
 .content .provenance {width:305px;float:left;}
 .content .provenance span{margin:0 20px;font-size:14px;font-weight:bold;color:#676666;}
 .content .provenance .graph{width:305px;height:169px;background:#fff;margin:5px 0 20px 20px;}
-.content .provenance .graph .stats{width:150px;height:169px;float:left;}
-.content .provenance .graph .stats span{font-size:17px;color:#ffffff;margin: 0;position: relative;top: 10px;left: 12px;}
+.content .provenance .graph .stats{width:150px;height:169px;float:left;text-align: center;}
+.content .provenance .graph .stats span{font-size:17px;color:#ffffff;margin: 0;position: relative;top: 10px;}
 .content .provenance .graph .stats .portail{width:55px;height:55px;float:left;margin:20px 10px;background:url("../images/musicien/sprite_provenance.png") no-repeat 0px 0px;}
 .content .provenance .graph .stats .google{width:55px;height:55px;float:left;margin:20px 10px;background:url("../images/musicien/sprite_provenance.png") no-repeat -64px 0px;}
 .content .provenance .graph .stats .site{width:55px;height:55px;float:left;margin:0px 10px;background:url("../images/musicien/sprite_provenance.png") no-repeat 0px -58px;}
