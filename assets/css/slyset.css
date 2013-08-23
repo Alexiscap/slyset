@@ -1135,7 +1135,7 @@ p.detail_perso, p.detail_reglages { margin:0 0 20px 0; font-family:"Trebuchet MS
 .content .vente{width:171px;float:left;margin:0 20px;}
 .content .vente span{margin:0 20px;font-size:14px;font-weight:bold;color:#676666;}
 .content .vente .resume_vente{width:171px;height:169px;background:white;margin:5px 20px;}
-.content .vente .resume_vente .nb_vente{font-size:36px;font-weight:bold;color:#f05f4c;margin:0 50px;}
+.content .vente .resume_vente .nb_vente{font-size:36px;font-weight:bold;color:#f05f4c;margin: 0;text-align: center;}
 .content .vente .resume_vente .titres_vendus{font-size:12px;color:#676666;width:75px;margin:0 auto;}
 .content .vente .resume_vente img{width:19px;height:16px;margin:5px 72px;}
 .content .vente .resume_vente .source{font-size:12px;color:#676666;text-align:right;margin:6px 5px 0 0;float:left;width:100px;}
