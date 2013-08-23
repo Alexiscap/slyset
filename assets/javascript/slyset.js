@@ -1824,11 +1824,11 @@ function cache_edit(){
 }
 
 function show_play(){
-    document.getElementById('select').getElementsByClassName('play')[0].style.display="inline";
+    document.getElementById('select').getElementsByClassName('play')[0].style.visibility="visible";
 }
 
 function cache_play(){
-    document.getElementById('select').getElementsByClassName('play')[0].style.display="none";
+    document.getElementById('select').getElementsByClassName('play')[0].style.visibility="hidden";
 }
 
 function edit_photo(){
