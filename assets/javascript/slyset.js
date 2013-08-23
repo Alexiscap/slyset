@@ -154,7 +154,6 @@ $(document).ready(function(){
         $('#played .infos .ecoute', window.opener.document).html(currentAudio);
         
     });
-//        alert('test1');
 
         // Load in a track on click
         $('ul li').click(function(e) {
@@ -251,7 +250,17 @@ $(document).ready(function(){
 //            console.log((this.currentTime / this.duration) * 100);
         });
     }
-    
+////    $('audio').bind("play", function(){
+//        var currentAudio = $('ul li.playing').text();
+//        $('#played .infos .ecoute', window.opener.document).html(currentAudio);
+//        
+////    });
+//        alert('test12' + currentAudio);
+
+    console.log(window.opener.focus());
+    //http://ektaraval.blogspot.fr/2011/05/how-to-set-focus-to-child-window.html
+ 
+ 
 //    var p = $('audio');
 //    function isPlaying(p) { return !audelem.paused; }
 //
