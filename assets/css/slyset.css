@@ -887,8 +887,8 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 #album_une_alert a {color: #01adbb;}
 #album_une_alert span {text-decoration: underline;font-size: 14px;}
 
-.content .top_album .play{width: 15px; margin: 0 0 -3px 5px;display:none;}
-.content .tout_titre .play{width: 15px; margin: 0 0 -3px 5px;display:none;}
+.content .top_album .play{width: 15px; margin: 0 0 -3px 5px;visibility:hidden;}
+.content .tout_titre .play{width: 15px; margin: 0 0 -3px 5px;visibility:hidden;}
 /* --------- FIN MUSICIEN MUSIQUE  --------- */
 
 
