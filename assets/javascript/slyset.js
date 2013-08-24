@@ -23,6 +23,20 @@ function playMasonry(){
     });
 }
 
+function openPopup(winURL, winName, winObj){
+    if (winObj != null){
+        if (!winObj.closed){
+            winObj.focus();
+            return winObj;
+        } 
+    }
+      
+    var popup = window.open(winURL, winName, 'resizable=no, top=150, left=400, height=445, width=650, toolbar=no, directories=no, status=no, location=no menubar=no');
+    
+    alert('ok');
+    return popup;
+}
+
 // Keyboard shortcuts
 $(document).keydown(function(e) {
     var unicode = e.charCode ? e.charCode : e.keyCode;
@@ -76,11 +90,11 @@ $(document).on('submit', ".form_comments form", function(){
 });
 
 $(document).ready(function(){
-//    var tt = window.opener.location.reload(true);
-//    
-//    if(tt){
-//        alert('reloaded');
-//    }
+    //    var tt = window.opener.location.reload(true);
+    //    
+    //    if(tt){
+    //        alert('reloaded');
+    //    }
     
     if($(".iframe, .iframe-upload, .bigiframe").length > 0){
         $(".iframe").colorbox({
@@ -108,7 +122,8 @@ $(document).ready(function(){
     $(".open_player").click(function(event) {
         var href = $(this).attr('href');
         window.open(href, '', 'resizable=no, top=150, left=400, height=445, width=650, toolbar=no, directories=no, status=no, location=no menubar=no');
-        //        return false;
+        //        
+//        var obj = openPopup(href, '', obj);
         event.preventDefault();
     });
     
@@ -128,19 +143,24 @@ $(document).ready(function(){
                     var randomnum = Math.floor(Math.random()*elemlength);
                     var randomitem = list[randomnum];
 
-//                    randomitem.play();
+                    //                    randomitem.play();
                     randomitem.addClass('playing').siblings().removeClass('playing');
                     audio.load($('a', randomitem).attr('data-src'));
                     audio.play();
                 }
-            },
-            updatePlayhead: function() {},
-            loadStarted: function() {}
+            }
+//            updatePlayhead: function() {}
+//            loadStarted: function() {}
+//            loadProgress: function() {}
         });
-
 
         $('.audiojs .play-pause .play').before('<p class="prev"></p>');
         $('.audiojs .play-pause .pause').after('<p class="next"></p>');
+//        $('.audiojs .time').before('<div class="new-time"></div>');
+//        $('.audiojs .new-time').css(
+//            "color", "#ddd"
+//        );
+//        $('.audiojs .time').hide();
         
         // Load in the first track
         var audio = a[0];
@@ -148,12 +168,12 @@ $(document).ready(function(){
         $('ul li').first().addClass('playing');
         audio.load(first);
         
-    //    $(window.opener).find('#played').html(first);
-    $('audio').bind("play", function(){
-        var currentAudio = $('ul li.playing').text();
-        $('#played .infos .ecoute', window.opener.document).html(currentAudio);
+        //    $(window.opener).find('#played').html(first);
+        $('audio').bind("play", function(){
+            var currentAudio = $('ul li.playing').text();
+            $('#played .infos .ecoute', window.opener.document).html(currentAudio);
         
-    });
+        });
 
         // Load in a track on click
         $('ul li').click(function(e) {
@@ -234,39 +254,39 @@ $(document).ready(function(){
             var secs = rem - mins * 60;
             
             if(!isNaN(rem)){
-//                $('.audiojs .time').hide();
-//            } else {
-//                $('.audiojs .time').show();
-                $('.audiojs .time').html('-' + mins + ':' + (secs > 9 ? secs : '0' + secs));
+                //                $('.audiojs .time').hide();
+                //            } else {
+                //                $('.audiojs .time').show();
+                $('.audiojs .new-time').html('-' + mins + ':' + (secs > 9 ? secs : '0' + secs));
             }
              
             
-//            var s = parseInt(this.currentTime % 60);
-//            var m = parseInt((this.currentTime / 60) % 60);
-//            console.log(m + ':' + s);
-             
-//            console.log(this.duration);
-//            console.log(this.currentTime);
-//            console.log((this.currentTime / this.duration) * 100);
+//                    var s = parseInt(this.currentTime % 60);
+//                    var m = parseInt((this.currentTime / 60) % 60);
+//                    console.log(m + ':' + s);
+//             
+//                    console.log(this.duration);
+//                    console.log(this.currentTime);
+//                    console.log((this.currentTime / this.duration) * 100);
         });
     }
-////    $('audio').bind("play", function(){
-//        var currentAudio = $('ul li.playing').text();
-//        $('#played .infos .ecoute', window.opener.document).html(currentAudio);
-//        
-////    });
-//        alert('test12' + currentAudio);
+    ////    $('audio').bind("play", function(){
+    //        var currentAudio = $('ul li.playing').text();
+    //        $('#played .infos .ecoute', window.opener.document).html(currentAudio);
+    //        
+    ////    });
+    //        alert('test12' + currentAudio);
 
-    console.log(window.opener.focus());
-    //http://ektaraval.blogspot.fr/2011/05/how-to-set-focus-to-child-window.html
+//    console.log(window.opener.focus());
+//    //http://ektaraval.blogspot.fr/2011/05/how-to-set-focus-to-child-window.html
  
  
-//    var p = $('audio');
-//    function isPlaying(p) { return !audelem.paused; }
-//
-//    if(isPlaying(p)){
-//    $('#played').html('EN COURSS');
-//    }
+    //    var p = $('audio');
+    //    function isPlaying(p) { return !audelem.paused; }
+    //
+    //    if(isPlaying(p)){
+    //    $('#played').html('EN COURSS');
+    //    }
 
     $('.iframe').bind('contextmenu', function(e) {
         return false;
@@ -475,7 +495,7 @@ $(document).ready(function(){
     }
     
     $(".check_all").click(function(){
-    	//var inputs =  $(this).parents('form').find("checkbox-article");  
+        //var inputs =  $(this).parents('form').find("checkbox-article");  
   	
         var inputs = $("form input[type='checkbox']");
         for(var i = 0; i < inputs.length; i++){
@@ -603,17 +623,17 @@ $(document).ready(function(){
         });
     };
        
-       if($("body.photos_videos").length > 0){
+    if($("body.photos_videos").length > 0){
         $('.bord_photo a').click(function(){
             if($(this).parents('.bord_photo').next('.allcomment').is(':visible') == false)
             {
                 $(this).parents('.bord_photo').next('.allcomment').show();
 				
-				var photo_height=$(this).parents('.photo').height();
-				var comm_height=$(this).parents('.photo').find('.allcomment').height();
-				comm_height+=50;
-				var total_height=photo_height-comm_height;
-				$(this).parents('.photo').find('.open_alb').css("height",total_height+"px");
+                var photo_height=$(this).parents('.photo').height();
+                var comm_height=$(this).parents('.photo').find('.allcomment').height();
+                comm_height+=50;
+                var total_height=photo_height-comm_height;
+                $(this).parents('.photo').find('.open_alb').css("height",total_height+"px");
 				
                 $(".content").masonry('reload');
             }
@@ -625,14 +645,14 @@ $(document).ready(function(){
    
         });
 		
-		$('.photo').hover(function(){
-			var photo_height=$(this).height();
+        $('.photo').hover(function(){
+            var photo_height=$(this).height();
             if($(this).find('.allcomment').is(':visible') == true)
             {   
-				var comm_height=$(this).find('.allcomment').height();
-				comm_height+=50;
-				var total_height=photo_height-comm_height;
-				$(this).find('.open_alb').css("height",total_height+"px");
+                var comm_height=$(this).find('.allcomment').height();
+                comm_height+=50;
+                var total_height=photo_height-comm_height;
+                $(this).find('.open_alb').css("height",total_height+"px");
             }
             else
             {
@@ -1406,7 +1426,7 @@ $(document).ready(function(){
     
     if($("body.achats").length > 0){
         $('.bt_supp_playlist').click(function(){
-           $(this).parents('.panier').find('.checkbox-article:checked').each(function(){
+            $(this).parents('.panier').find('.checkbox-article:checked').each(function(){
                 var a =  $(this).val();
         
                 var dataid = 'commande=' + a;
@@ -1434,8 +1454,8 @@ $(document).ready(function(){
     //supprimer morceau playlist
     
     if($("body.playlist").length > 0){
-    $('.bt_supp_playlist').click(function(){
-           $(this).parents('form').find('.checkbox-article:checked').each(function(){
+        $('.bt_supp_playlist').click(function(){
+            $(this).parents('form').find('.checkbox-article:checked').each(function(){
                 var a =  $(this).val();
                 var dataid = 'track_pl=' + a;
                 $.ajax({
@@ -1450,8 +1470,8 @@ $(document).ready(function(){
             });
         });  
 		
-	 $('.cadis_pl').click(function(){
-           $(this).parents('form').find('.checkbox-article:checked:not(#article-all)').each(function(){
+        $('.cadis_pl').click(function(){
+            $(this).parents('form').find('.checkbox-article:checked:not(#article-all)').each(function(){
                 var a =  $(this).val();
                 var track_title = $(this).parents('tr').children('.article-title').text().trim()
                 var dataid = 'track_pl=' + a;
@@ -1460,271 +1480,277 @@ $(document).ready(function(){
                     url : base_url + '/melo_playlist/pl_to_panier',
                     data: dataid,
                     success: function(data){ //afficher le bon bouton
-						if(data=='ajout')
-						{
-                        	$('#modal').reveal({ // The item which will be opened with reveal
-							animation: 'fade',                   // fade, fadeAndPop, none
-							animationspeed: 600,                       // how fast animtions are
-							closeonbackgroundclick: true,              // if you click background will modal close?
-							dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
-							});
-						return false;
-                    	}
-                    	else
-                    	{
-                    		$('.morceau_panier_already').text(track_title+' est déja dans votre panier');
-                    		//renvoyer l'id et metrte une alert sur le tableau
-                    		$('#modal_already').reveal({ // The item which will be opened with reveal
-								animation: 'fade',                   // fade, fadeAndPop, none
-								animationspeed: 600,                       // how fast animtions are
-								closeonbackgroundclick: true,              // if you click background will modal close?
-								dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
-							});
+                        if(data=='ajout')
+                        {
+                            $('#modal').reveal({ // The item which will be opened with reveal
+                                animation: 'fade',                   // fade, fadeAndPop, none
+                                animationspeed: 600,                       // how fast animtions are
+                                closeonbackgroundclick: true,              // if you click background will modal close?
+                                dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+                            });
+                            return false;
+                        }
+                        else
+                        {
+                            $('.morceau_panier_already').text(track_title+' est déja dans votre panier');
+                            //renvoyer l'id et metrte une alert sur le tableau
+                            $('#modal_already').reveal({ // The item which will be opened with reveal
+                                animation: 'fade',                   // fade, fadeAndPop, none
+                                animationspeed: 600,                       // how fast animtions are
+                                closeonbackgroundclick: true,              // if you click background will modal close?
+                                dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+                            });
 
-							return false;
+                            return false;
                     	
-                    	}
-                   }
+                        }
+                    }
                 });
-          });
+            });
         }); 	
         
-      $('.cadis').click(function(){
-                var a =  $(this).parents('tr').attr('id');
-				var cadis = $(this);
-                var track_title = $(this).parents('tr').children('.article-title').text().trim()
-                var dataid = 'track_pl=' + a;
-                $.ajax({
-                    type: "POST",
-                    url : base_url + '/melo_playlist/pl_to_panier',
-                    data: dataid,
-                    success: function(data){ //afficher le bon bouton
-						if(data=='ajout')
-						{
-                        	$('#modal').reveal({ // The item which will be opened with reveal
-							animation: 'fade',                   // fade, fadeAndPop, none
-							animationspeed: 600,                       // how fast animtions are
-							closeonbackgroundclick: true,              // if you click background will modal close?
-							dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
-							});
-							  cadis.addClass('cadis_actif');
-                   cadis.removeClass('cadis')
-						return false;
-                    	}
-                    	else
-                    	{
-                    		$('.morceau_panier_already').text(track_title+' est déja dans votre panier');
-                    		//renvoyer l'id et metrte une alert sur le tableau
-                    		$('#modal_already').reveal({ // The item which will be opened with reveal
-								animation: 'fade',                   // fade, fadeAndPop, none
-								animationspeed: 600,                       // how fast animtions are
-								closeonbackgroundclick: true,              // if you click background will modal close?
-								dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
-							});
+        $('.cadis').click(function(){
+            var a =  $(this).parents('tr').attr('id');
+            var cadis = $(this);
+            var track_title = $(this).parents('tr').children('.article-title').text().trim()
+            var dataid = 'track_pl=' + a;
+            $.ajax({
+                type: "POST",
+                url : base_url + '/melo_playlist/pl_to_panier',
+                data: dataid,
+                success: function(data){ //afficher le bon bouton
+                    if(data=='ajout')
+                    {
+                        $('#modal').reveal({ // The item which will be opened with reveal
+                            animation: 'fade',                   // fade, fadeAndPop, none
+                            animationspeed: 600,                       // how fast animtions are
+                            closeonbackgroundclick: true,              // if you click background will modal close?
+                            dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+                        });
+                        cadis.addClass('cadis_actif');
+                        cadis.removeClass('cadis')
+                        return false;
+                    }
+                    else
+                    {
+                        $('.morceau_panier_already').text(track_title+' est déja dans votre panier');
+                        //renvoyer l'id et metrte une alert sur le tableau
+                        $('#modal_already').reveal({ // The item which will be opened with reveal
+                            animation: 'fade',                   // fade, fadeAndPop, none
+                            animationspeed: 600,                       // how fast animtions are
+                            closeonbackgroundclick: true,              // if you click background will modal close?
+                            dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+                        });
 
-							return false;
+                        return false;
                     	
-                    	}
-                   }
+                    }
+                }
                 
-          		});
+            });
         }); 	   
   
-    	$('.coeur').live('click',function()
-    	{
-    		var coeur = $(this);
-    		var id_morceau = $(this).parents('tr').attr('id');
-    		datalike = 'id_morceau='+id_morceau;
-    		$.ajax({
+        $('.coeur').live('click',function()
+        {
+            var coeur = $(this);
+            var id_morceau = $(this).parents('tr').attr('id');
+            datalike = 'id_morceau='+id_morceau;
+            $.ajax({
                 type: "POST",
                 url : base_url +'/melo_playlist/add_like',
                 data: datalike,
                 success: function(){
-                   coeur.addClass('coeur_actif');
-                   coeur.removeClass('coeur')
-                   // $(this_comm).parents('.comm').slideUp();
+                    coeur.addClass('coeur_actif');
+                    coeur.removeClass('coeur')
+                // $(this_comm).parents('.comm').slideUp();
                 }
             });
-    	})
+        })
     	
-    	$('.coeur_actif').live('click',function()
-    	{    
-    		var coeur = $(this);
-    		var id_morceau = $(this).parents('tr').attr('id');
-    		datalike = 'id_morceau='+id_morceau;
-    		$.ajax({
+        $('.coeur_actif').live('click',function()
+        {    
+            var coeur = $(this);
+            var id_morceau = $(this).parents('tr').attr('id');
+            datalike = 'id_morceau='+id_morceau;
+            $.ajax({
                 type: "POST",
                 url : base_url +'/melo_playlist/delete_like',
                 data: datalike,
                 success: function(){
-                  coeur.addClass('coeur');
-                   coeur.removeClass('coeur_actif')
-                   // $(this_comm).parents('.comm').slideUp();
+                    coeur.addClass('coeur');
+                    coeur.removeClass('coeur_actif')
+                // $(this_comm).parents('.comm').slideUp();
                 }
             });
-    	})
+        })
     	
     	
-    	$('.edit-pl').click(function()
-    	{
-    		var that = $(this);
-    		var value = $(this).parents('.descri_playlist').find('.nom_pl').text();
-    		$(this).parents('.descri_playlist').find('.nom_pl').replaceWith("<input class='nom_pl' value='"+value+"' type='text'/>");
-			$(document).keypress(function(e) {
-    		if(e.which == 13) {
-    			 var title_new = $(that).parents('.descri_playlist').find('input[type=text].nom_pl').val();
-				dataid = 'title_init=' + value + '&&title_new=' + title_new;
-            $.ajax({
+        $('.edit-pl').click(function()
+        {
+            var that = $(this);
+            var value = $(this).parents('.descri_playlist').find('.nom_pl').text();
+            $(this).parents('.descri_playlist').find('.nom_pl').replaceWith("<input class='nom_pl' value='"+value+"' type='text'/>");
+            $(document).keypress(function(e) {
+                if(e.which == 13) {
+                    var title_new = $(that).parents('.descri_playlist').find('input[type=text].nom_pl').val();
+                    dataid = 'title_init=' + value + '&&title_new=' + title_new;
+                    $.ajax({
            
-                type: "POST",
-                url : base_url +'/melo_playlist/change_title_pl',
-                data: dataid,
-                success: function(){
-                       		$(that).parents('.descri_playlist').find('input[type=text].nom_pl').replaceWith('<span class="nom_pl">'+$(that).parents('.descri_playlist').find('input[type=text].nom_pl').val()+'</span>');
+                        type: "POST",
+                        url : base_url +'/melo_playlist/change_title_pl',
+                        data: dataid,
+                        success: function(){
+                            $(that).parents('.descri_playlist').find('input[type=text].nom_pl').replaceWith('<span class="nom_pl">'+$(that).parents('.descri_playlist').find('input[type=text].nom_pl').val()+'</span>');
 
+                        }
+                    });
                 }
             });
-    			}
-			});
 			
 		
 		
-    	}
-    	)
+        }
+        )
     	
     }
     
     if($("body.musique").length > 0)
     {   
-    	$("body").bind('click', function(ev) {
-    		var myID = ev.target.id;
-   		 	if (myID !== 'playlist_alert') {
-        		$('#playlist_alert').hide();
-    		}
-    		var myID = ev.target.id;
-   		 	if (myID !== 'album_une_alert') {
-        		$('#album_une_alert').hide();
-    		}
-		});
+        $("body").bind('click', function(ev) {
+            var myID = ev.target.id;
+            if (myID !== 'playlist_alert') {
+                $('#playlist_alert').hide();
+            }
+            var myID = ev.target.id;
+            if (myID !== 'album_une_alert') {
+                $('#album_une_alert').hide();
+            }
+        });
 		
-    	$('.bt_playlist').live('click',function(e){
-    		var this_pl = $(this);
-    		var top = $(this).offset().top;
-    		var left =  $(this).offset().left;
-    		var t = top - 30;
-    		var l = left - 210;
+        $('.bt_playlist').live('click',function(e){
+            var this_pl = $(this);
+            var top = $(this).offset().top;
+            var left =  $(this).offset().left;
+            var t = top - 30;
+            var l = left - 210;
     		
-    		//alert($(this).currentTarget);
-    		if($("#playlist_alert").is(':visible')==false)
- 		   	{
-        		 $("#playlist_alert").show().offset({left:l,top:t});
-			}
-			else
-			{
-		  		$("#playlist_alert").hide();
-			}     
+            //alert($(this).currentTarget);
+            if($("#playlist_alert").is(':visible')==false)
+            {
+                $("#playlist_alert").show().offset({
+                    left:l,
+                    top:t
+                });
+            }
+            else
+            {
+                $("#playlist_alert").hide();
+            }     
 		
            	
-       	 	$('#playlist_alert a').click(function()
-        	{
-        		var pl = $(this).text();
-        		$(this_pl).closest('form').find('.checkbox-article:checked:not(#article-all)').each(function(){
-        			var check = $(this).val();
-        			var id_morceau = $(this).parents('tr').find('p').attr('class');
-        			dataid = 'pl='+pl+'&&id_track='+id_morceau;
-        			$.ajax({
-       	            	type: "POST",
-        	            url : base_url + '/mc_musique/to_pl',
-            	        data: dataid,
-                	    success: function(data){ //afficher le bon bouton
+            $('#playlist_alert a').click(function()
+            {
+                var pl = $(this).text();
+                $(this_pl).closest('form').find('.checkbox-article:checked:not(#article-all)').each(function(){
+                    var check = $(this).val();
+                    var id_morceau = $(this).parents('tr').find('p').attr('class');
+                    dataid = 'pl='+pl+'&&id_track='+id_morceau;
+                    $.ajax({
+                        type: "POST",
+                        url : base_url + '/mc_musique/to_pl',
+                        data: dataid,
+                        success: function(data){ //afficher le bon bouton
 						
-							$('#modal').reveal({ // The item which will be opened with reveal
-							animation: 'fade',                   // fade, fadeAndPop, none
-							animationspeed: 600,                       // how fast animtions are
-							closeonbackgroundclick: true,              // if you click background will modal close?
-							dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
-							});
+                            $('#modal').reveal({ // The item which will be opened with reveal
+                                animation: 'fade',                   // fade, fadeAndPop, none
+                                animationspeed: 600,                       // how fast animtions are
+                                closeonbackgroundclick: true,              // if you click background will modal close?
+                                dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+                            });
 							
-						return false;
+                            return false;
 						
-						}
-					});
-				});
-			});
-		});
+                        }
+                    });
+                });
+            });
+        });
 		
-		$('.panier_alb').click(function()
-		{
-			var album_id = $(this).attr('id');
-			dataid = 'album_id='+album_id;
+        $('.panier_alb').click(function()
+        {
+            var album_id = $(this).attr('id');
+            dataid = 'album_id='+album_id;
 
-			$.ajax({
-       	            	type: "POST",
-        	            url : base_url + '/mc_musique/alb_to_panier',
-            	       data: dataid,
-                	    success: function(data){ 
-                	    if (data=="ajout")
-                	    {
-                	    	$('#modal-panier').reveal({ // The item which will be opened with reveal
-							animation: 'fade',                   // fade, fadeAndPop, none
-							animationspeed: 600,                       // how fast animtions are
-							closeonbackgroundclick: true,              // if you click background will modal close?
-							dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
-							});
-							return false
-                	    }
-                	    else
-                	    {
-                	    $('#modal-already-panier').reveal({ // The item which will be opened with reveal
-							animation: 'fade',                   // fade, fadeAndPop, none
-							animationspeed: 600,                       // how fast animtions are
-							closeonbackgroundclick: true,              // if you click background will modal close?
-							dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
-							});
-							return false
-                	    }
-                	    }
+            $.ajax({
+                type: "POST",
+                url : base_url + '/mc_musique/alb_to_panier',
+                data: dataid,
+                success: function(data){ 
+                    if (data=="ajout")
+                    {
+                        $('#modal-panier').reveal({ // The item which will be opened with reveal
+                            animation: 'fade',                   // fade, fadeAndPop, none
+                            animationspeed: 600,                       // how fast animtions are
+                            closeonbackgroundclick: true,              // if you click background will modal close?
+                            dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+                        });
+                        return false
+                    }
+                    else
+                    {
+                        $('#modal-already-panier').reveal({ // The item which will be opened with reveal
+                            animation: 'fade',                   // fade, fadeAndPop, none
+                            animationspeed: 600,                       // how fast animtions are
+                            closeonbackgroundclick: true,              // if you click background will modal close?
+                            dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+                        });
+                        return false
+                    }
+                }
 			
-			});
-		});
+            });
+        });
 		
 		
-		$('.bt_middle').live('click',function(e){
-    		var this_pl = $(this);
-    		var top = $(this).offset().top;
-    		var left =  $(this).offset().left;
-    		var t = top + 30;
-    		var l = left -50 ;
+        $('.bt_middle').live('click',function(e){
+            var this_pl = $(this);
+            var top = $(this).offset().top;
+            var left =  $(this).offset().left;
+            var t = top + 30;
+            var l = left -50 ;
     		
-    		//alert($(this).currentTarget);
-    		if($("#album_une_alert").is(':visible')==false)
- 		   	{
-        		 $("#album_une_alert").show().offset({left:l,top:t});
-			}
-			else
-			{
-		  		$("#album_une_alert").hide();
-			}     
+            //alert($(this).currentTarget);
+            if($("#album_une_alert").is(':visible')==false)
+            {
+                $("#album_une_alert").show().offset({
+                    left:l,
+                    top:t
+                });
+            }
+            else
+            {
+                $("#album_une_alert").hide();
+            }     
 			
-			$('#album_une_alert a').click(function()
-        	{
-        		var title_alb = $(this).text();
-        			var id_alb = $(this).attr('id');
-        			dataid = 'id_alb='+id_alb;
-        			$.ajax({
-       	            	type: "POST",
-        	            url : base_url + '/mc_musique/put_alaune',
-            	        data: dataid,
-                	    success: function(data){ 
-                	    //$('#une_alb').hide();
-                	      //location.reload();
-						//$('#une_alb').load('http://localhost/slyset/index.php/musique/30 #une_alb');
-                	    //$('#une_alb').load('http://localhost/slyset/index.php/musique/30 #une_alb');
+            $('#album_une_alert a').click(function()
+            {
+                var title_alb = $(this).text();
+                var id_alb = $(this).attr('id');
+                dataid = 'id_alb='+id_alb;
+                $.ajax({
+                    type: "POST",
+                    url : base_url + '/mc_musique/put_alaune',
+                    data: dataid,
+                    success: function(data){ 
+                    //$('#une_alb').hide();
+                    //location.reload();
+                    //$('#une_alb').load('http://localhost/slyset/index.php/musique/30 #une_alb');
+                    //$('#une_alb').load('http://localhost/slyset/index.php/musique/30 #une_alb');
 						 
-                	    //$('#une_alb').show();
+                    //$('#une_alb').show();
 
-							    //afficher le bon bouton
-						/*
+                    //afficher le bon bouton
+                    /*
 							$('#album_une_alert').reveal({ // The item which will be opened with reveal
 							animation: 'fade',                   // fade, fadeAndPop, none
 							animationspeed: 600,                       // how fast animtions are
@@ -1734,13 +1760,13 @@ $(document).ready(function(){
 							
 						return false;
 						*/
-						}
-					});
-				});
+                    }
+                });
+            });
 			
 			
-		});
-	}
+        });
+    }
     
     
     if($("body.personnaliser").length > 0){
