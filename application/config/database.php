@@ -49,9 +49,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = '127.0.0.1';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '';
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'slyset';
+$db['default']['password'] = 'slyset';
 $db['default']['database'] = 'preprod-slyset';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
@@ -64,6 +64,23 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
+
+
+$db['heroku']['hostname'] = 'us-cdbr-east-04.cleardb.com';
+$db['heroku']['username'] = 'b503c54ae6cadb';
+$db['heroku']['password'] = 'b35f224d';
+$db['heroku']['database'] = 'heroku_23b8b27bc5d4a40';
+$db['heroku']['dbdriver'] = 'mysql';
+$db['heroku']['dbprefix'] = '';
+$db['heroku']['pconnect'] = TRUE;
+$db['heroku']['db_debug'] = TRUE;
+$db['heroku']['cache_on'] = FALSE;
+$db['heroku']['cachedir'] = '';
+$db['heroku']['char_set'] = 'utf8';
+$db['heroku']['dbcollat'] = 'utf8_general_ci';
+$db['heroku']['swap_pre'] = '';
+$db['heroku']['autoinit'] = TRUE;
+$db['heroku']['stricton'] = FALSE;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */

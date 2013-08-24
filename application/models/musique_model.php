@@ -13,7 +13,7 @@ class Musique_model extends CI_Model {
     protected $tbl_order = 'commande';
     protected $tbl_orderinfo = 'infos_commande';
     protected $tbl_doc = 'documents';
-
+  	protected $tbl_community = 'communaute';
     public function __construct() {
         parent::__construct();
         $this->data = array();
@@ -37,6 +37,14 @@ class Musique_model extends CI_Model {
 						->result();
     }
 
+	public function get_nalb($user_id)
+	{
+		return $this->db->select('COUNT(albums.id) AS n_alb')
+					->from($this->tbl_album)
+					->where('albums.utilisateur_id',$user_id)
+					->get()
+					->result();
+	}
     //---------------------------------------------------------------------------
     //-								PLAYER										-
     //---------------------------------------------------------------------------
@@ -191,7 +199,7 @@ class Musique_model extends CI_Model {
     }
 
     public function get_album_page($id_alb) {
-        return $this->db->select('nom,img_cover,annee,livret_path,documents.id AS doc_id')
+        return $this->db->select('albums.id,nom,img_cover,une,annee,livret_path,documents.id AS doc_id')
                         ->from($this->tbl_album)
                         ->where(array('albums.id' => $id_alb))
                         ->join($this->tbl_doc, 'documents.albums_id = albums.id', 'LEFT OUTER')
@@ -235,8 +243,52 @@ class Musique_model extends CI_Model {
         $this->db->where('id', $id_alb);
         $this->db->update($this->tbl_album, $data);
     
+    	  //return $this->markup_une();
+    	
+    	
+    	
    	}
-   	
+   	/*
+   	private function markup_une()
+   	{
+   		$infos_profile->id = 30;
+   		$album_alaune[0]->nom ="boo";
+   		$album_alaune[0]->img_cover ="aa";
+   		$album_alaune[0]->livret_path = 'gf';
+   		$uid = 30;
+   		
+   		$a =  base_url("files/".$infos_profile->id."/albums/".str_replace(" ","_",$album_alaune[0]->nom).'/'.$album_alaune[0]->img_cover);
+   		$b = img_url('portail/alaune.png');
+   		$c = site_url('mc_musique/player/'.$uid.'/album/'.$album_alaune[0]->nom);
+   		$d = img_url('musicien/player_top.png');
+   		$f = base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$album_alaune[0]->nom).'/'.$album_alaune[0]->livret_path); 
+   		
+   		if (isset($album_alaune[0]->livret_path)): 
+   		$e = '"<span>> </span><a href="'.$f.'">Voir le livret d\'album</a>';
+   		endif;
+   		$g = " ";
+   		if (isset($album_alaune[0]->doc_id)):
+   		$g = '<span>> </span><a href="#">Voir les partitions</a>';
+   		endif;
+   		
+   		return '<div id="une_alb">
+        <div class="a_la_une">
+            <img src="'.$a.'"/>
+            <img src="'.$b.'" class="bandeau_top bandeau_une"/>
+            <div class="player">
+                <a href="'.$c.'" class="open_player"><img src="'.$d.'"/></a>
+            </div>
+            <div class="infos">
+                <p class="title"><?php echo $album_alaune[0]->nom; ?></p>
+                <p class="annee_crea"><?php echo $album_alaune[0]->annee; ?></p>
+                <p>'.$e.'</p>
+                <p>'.$g.'</p>
+            </div>
+        </div>
+        
+        ';
+   	}
+   	*/
 
     //---------------------------------------------------------------------------
     //-								PLAYLIST									-
@@ -423,6 +475,58 @@ class Musique_model extends CI_Model {
 			}	
 		}				
 			
+	}
+	
+	public function morceau_to_panier($id_morceau)
+	{
+	
+		$id_commande_user =  $this->db->select('id')
+									->from($this->tbl_order)
+									->where(array('Utilisateur_id'=>$this->session->userdata('uid'),'status'=>'P'))
+									->get()
+									->result();
+		if (empty($id_commande_user)==1)
+		{
+			$data = array(
+   				'Utilisateur_id' => $this->session->userdata('uid') ,
+   				'date' => date('Y-m-d H:i:s', now()),
+   				'status' => 'P'
+			);
+
+			$this->db->insert($this->tbl_order, $data); 
+		}
+		
+		$existing_panier =  $this->db->select('id,titre')
+									->from($this->tbl_orderinfo)
+									->where_in('Morceaux_id',$id_morceau)
+									->where(array('Commande_id'=>$id_commande_user[0]->id))
+									->get()
+									->result();
+		
+		if(empty($existing_panier)==1)
+		{
+			$infos_track = $this->db->select('morceaux.id,morceaux.nom,morceaux.prix,morceaux.format,albums.id AS id_alb')
+									->from($this->tbl_morceaux)
+									->join($this->tbl_album,'morceaux.albums_id = albums.id','LEFT OUTER')
+									->where_in('morceaux.id',$id_morceau)
+									->get()
+									->result();
+	
+			foreach($infos_track as $info_track)
+			{
+				$data_cmd = array(
+	   				'Commande_id' => $id_commande_user[0]->id ,
+   					'Albums_id' => $info_track->id_alb ,
+   					'titre' => $info_track->nom,
+   					'prix' => $info_track->prix,
+   					'morceaux_id' => $info_track->id,
+   					'format' => $info_track->format
+				);
+				$this->db->insert($this->tbl_orderinfo, $data_cmd); 		
+				return 'ajout';
+			}	
+		}				
+
 	}
 	
 	public function update_title($new,$old)

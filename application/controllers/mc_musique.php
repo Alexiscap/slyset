@@ -22,7 +22,7 @@ class Mc_musique extends CI_Controller {
 //        $this->layout->ajouter_js('audiojs/audio');
 
         $this->load->library('getid3/Getid3');
-        $this->load->model(array('perso_model', 'user_model', 'musique_model'));
+        $this->load->model(array('perso_model', 'user_model', 'musique_model','follower_model'));
         $this->load->helper('form');
 
         $this->layout->set_id_background('musique');
@@ -81,6 +81,9 @@ class Mc_musique extends CI_Controller {
         $data['morceaux_alaune'] = $this->musique_model->get_morceau_une($infos_profile->id);
         $data['playlists'] = $this->musique_model->get_my_playlist($this->session->userdata('uid'));
 		$data['all_alb'] = $this->musique_model->get_list_album($this->session->userdata('uid'));
+		$data['all_follower'] = $this->follower_model->get_all_follower_user($infos_profile->id);
+    	$data['album_nbr'] = $this->musique_model->get_nalb($infos_profile->id);
+        	
         //var_dump($data['all_morceau_artiste']);
         $this->layout->view('musique/mc_musique', $data);
     }
@@ -100,7 +103,9 @@ class Mc_musique extends CI_Controller {
             $data['this_album'] = $this->musique_model->get_album_page($id_album);
             $data['this_album_morceau'] = $this->musique_model->get_morceau_alb_page($user_id, $id_album);
             $data['playlists'] = $this->musique_model->get_my_playlist($this->session->userdata('uid'));
-
+    		$data['all_follower'] = $this->follower_model->get_all_follower_user($user_id);
+    		$data['album_nbr'] = $this->musique_model->get_nalb($user_id);
+        	$data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($infos_profile->id);
             $this->layout->view('musique/album', $data);
         } else {
             redirect('home/' . $uid, 'refresh');
@@ -121,11 +126,19 @@ class Mc_musique extends CI_Controller {
 		return $pn;
 	}
 	
+	public function morceau_to_panier()
+	{
+		$id_track = $this->input->post('track_id');
+		$rtn = $this->musique_model->morceau_to_panier($id_track);
+		print $rtn;
+		return $rtn;
+	}
+	
 	public function put_alaune()
 	{
 		$id_alb = $this->input->post('id_alb');
 		$put_une = $this->musique_model->put_alune($id_alb);
-
+		//return $put_une;
 	}
 
     public function player($user_id, $type = null, $name = null, $id_morceau = null) {

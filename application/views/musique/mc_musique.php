@@ -32,19 +32,69 @@ $loger = $this->session->userdata('logged_in');
 
     <div id="stats-cover">
         <div class="stats_cover_block">
-            <span class="stats_number">489</span>
-            <span class="stats_title">abonnés</span>
+            <span class="stats_number">
+            	<?php
+            	$nab = 0;
+            	if(empty($all_follower)!=1):
+            		$nab =  count($all_follower);
+            	endif;
+            	echo $nab;
+            	 ?>
+            </span>       
+            <span class="stats_title">
+            	<?php
+            	if($nab == 0 || $nab == 1){
+            		echo 'abonné';
+            	}
+            	else
+            	{
+            		echo 'abonnés';
+            	}
+            	?>
+            </span>
+        </div>
+        
+        
+
+        <div class="stats_cover_block">
+            <span class="stats_number"><?php print $album_nbr[0]->n_alb;?></span>
+            <span class="stats_title">
+            	<?php
+            	if($album_nbr[0]->n_alb == 0 || $album_nbr[0]->n_alb == 1){
+            		echo 'album';
+            	}
+            	else
+            	{
+            		echo 'albums';
+            	}
+            	?>
+            
+            </span>
         </div>
 
         <div class="stats_cover_block">
-            <span class="stats_number">18</span>
-            <span class="stats_title">albums</span>
+        	 <span class="stats_number">
+            	<?php
+            	$nm = 0;
+            	if(empty($all_morceau_artiste)!=1):
+            		$nm =  count($all_morceau_artiste);
+            	endif;
+            	echo $nm;
+            	 ?>
+            </span>       
+            <span class="stats_title">
+            	<?php
+            	if($nm == 0 || $nm == 1){
+            		echo 'morceau';
+            	}
+            	else
+            	{
+            		echo 'morceaux';
+            	}
+            	?>
+            </span>
         </div>
-
-        <div class="stats_cover_block">
-            <span class="stats_number">278</span>
-            <span class="stats_title">morceaux</span>
-        </div>
+   
     </div>
     
     <?php if($uid == $uid_visit): ?>
@@ -117,10 +167,10 @@ $loger = $this->session->userdata('logged_in');
                                 	</a>
                                     <p class="<?php echo $morceau_alune->id; ?>"><?php echo $morceau_alune->nom; ?> </p>
                                     <div class="miniat_titre">
-                                        <a href="#" class="add"><span>add</span></a>
+                                        <a href="javascript:void(0)" class="add"><span>add</span></a>
                                         <a href="#" class="edit"><span>edit</span></a>
                                         <a href="#" class="coeur"><span>coeur</span></a>
-                                        <a href="#" class="cam"><span>cam</span></a>
+                                       <!-- <a href="#" class="cam"><span>cam</span></a>-->
                                     </div>
                                 </td>
                                 <td class="article-date"><?php echo substr($morceau_alune->duree,10,9); ?></td>
@@ -141,7 +191,7 @@ $loger = $this->session->userdata('logged_in');
                             </tr>-->
                         </tbody>
                     </table>
-                    <input type="button" value="Acheter" class="bt_cadis">
+                    <input type="button" value="Acheter" class="bt_cadis unealb">
                     <input type="button" value="Dans ma playlist" class="bt_playlist">
                 </form>
             </div>
@@ -154,15 +204,15 @@ $loger = $this->session->userdata('logged_in');
         
         
         <div class="tout_titre">
-            <input type="button" value="Acheter" class="bt_cadis"/>
-            <input type="button" value="Dans ma playlist" class="bt_playlist"/>
+            <input type="button" value="Acheter" class="bt_cadis all_track"/>
+            <input type="button" value="Dans ma playlist" class="bt_playlist all_track"/>
             <a href="<?php echo site_url().'/mc_musique/player/'.$uid_visit.'/album'; ?>" class="open_player">
                 <img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
                 <p> Ecouter les morceaux de <?php echo $login?></p>
             </a>
             <div id="articles-tab">
                 <form action="http://127.0.0.1/slyset/index.php/admin_articles/delete_multi_article" method="post" accept-charset="utf-8">          
-                    <table>
+                    <table class="alltrack_table" >
                         <tbody>
                             <tr class="tab-head odd row-color-2">
                                 <th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
@@ -180,10 +230,10 @@ $loger = $this->session->userdata('logged_in');
 									</a>
                                     <p class="<?php echo $morceau_artiste->id; ?>"> <?php echo $morceau_artiste->nom?></p>
                                     <div class="miniat_titre">
-                                        <a href="#" class="add"><span>add</span></a>
+                                        <a href="javascript:void(0)" class="add"><span>add</span></a>
                                         <a href="#" class="edit"><span>edit</span></a>
                                         <a href="#" class="coeur"><span>coeur</span></a>
-                                        <a href="#" class="cam"><span>cam</span></a>
+                                      <!--  <a href="#" class="cam"><span>cam</span></a>-->
                                     </div>
                                 </td>
                                  <td class="article-album"><a href="<?php echo base_url('index.php/musique/album/'.$uid_visit.'/'.$morceau_artiste->id_alb) ?>"><?php echo $morceau_artiste->title_alb?></a></td>
@@ -234,6 +284,25 @@ $loger = $this->session->userdata('logged_in');
 	<div id="modal-already-panier">
 		<div id="content-info">
 			<p>Cet album est déjà dans votre panier</p>
+
+			<a href="javascript:void(0)" class="button_info green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
+
+		</div>
+	</div>
+	
+	
+	<div id="modal-already-panier_track">
+		<div id="content-info">
+			<p>Ce morceau est déjà dans votre panier</p>
+
+			<a href="javascript:void(0)" class="button_info green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
+
+		</div>
+	</div>
+	
+			<div id="modal-panier_track">
+		<div id="content-info">
+			<p>Le morceau bien été ajouté a votre panier</p>
 
 			<a href="javascript:void(0)" class="button_info green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
 

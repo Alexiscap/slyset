@@ -61,8 +61,11 @@ class Photo_model extends CI_Model {
 									FROM wall
 									WHERE wallto_utilisateur_id = '.$user_id.'
 										AND photo IS NOT NULL
+										GROUP BY wall.utilisateur_id
 									ORDER BY created ASC
+									
 									LIMIT 0,4
+									
 								)	
 								ORDER BY date DESC
 								')
@@ -143,6 +146,18 @@ class Photo_model extends CI_Model {
         return $this->db->select($sql)
                         ->from('commentaires')
                         ->where(array('Photos_id' => $photos_id))
+                        ->get()
+                        ->result();
+    }
+    
+    public function get_comment_wall($user_id)
+    {
+        return $this->db->select('commentaires.id AS comm_id,comment,utilisateur.thumb,utilisateur.login')
+                        ->from('wall')
+                        ->join('commentaires','commentaires.wall_id = wall.id')
+                        ->join('utilisateur', 'utilisateur.id = commentaires.Utilisateur_id')
+                        ->where(array('wall.Utilisateur_id' => $user_id))
+                        ->order_by('commentaires.created','ASC')
                         ->get()
                         ->result();
     }
@@ -290,6 +305,27 @@ class Photo_model extends CI_Model {
 
             $commentArray = array(
                 'video_id' => $wallid,
+                'comment' => $comment,
+                'created' => $created,
+                'Utilisateur_id' => $this->session->userdata('uid')
+            );
+
+            $this->db->insert('commentaires', $commentArray);
+            return $this->returnMarkup($comment, $created);
+        } else {
+            echo 'Oops, une erreur ! Vérifie que tu as bien remplie ton commentaire !';
+        }
+    }
+    
+    public function insert_comments_wall_photo()
+    {
+     if (!empty($_POST['usercomment']) && !empty($_POST['messageid'])) {
+            $wallid = $this->input->post('messageid');
+            $comment = $this->input->post('usercomment');
+            $created = Date('Y-m-d H:i:s');
+
+            $commentArray = array(
+                'Wall_id' => $wallid,
                 'comment' => $comment,
                 'created' => $created,
                 'Utilisateur_id' => $this->session->userdata('uid')
@@ -463,7 +499,7 @@ class Photo_model extends CI_Model {
 
 	 public function get_album_wall_all($user_id)
     {
-    	$this->db->select('photo')
+    	return $this->db->select('photo,id')
     			->from('wall')
     			->where(array('wallto_utilisateur_id'=>$user_id, 'photo IS NOT NULL'=> NULL))
     			->get()

@@ -81,9 +81,9 @@ class Mc_photos extends CI_Controller {
         $data['commentaires'] = $this->photo_model->liste_comments();
         $data['commentaires_albums'] = $this->photo_model->liste_comments_album();
         $data['commentaires_video'] = $this->photo_model->liste_comments_video();
-
+		$data['wall_photos'] = $this->photo_model->get_album_wall_all($user_visited);
         $data['all_photos'] = $this->photo_model->all_photos();
-       
+       	$data['comments_wall'] = $this->photo_model->get_comment_wall($user_visited);
         $data['all_photos_albums'] = $this->photo_model->all_photos_album();
         $data['like_photo'] = $this->photo_model->get_like_user($user_visited);
         $data['all_photo_like'] = "";
@@ -167,6 +167,14 @@ class Mc_photos extends CI_Controller {
         echo $this->photo_model->insert_comments_video();
     }
 
+	public function form_album_wall_user_comment()
+	{
+	 	date_default_timezone_set('Europe/Paris');
+        $usercomment = $this->input->post('usercomment');
+        $messageid = $this->input->post('messageid');
+
+        echo $this->photo_model->insert_comments_wall_photo();
+	}
 //like : ajouter dans like activity l'id de l'elmeent et de l'utilisateu
 //incrementer de 1 le total like dans table like
 // incrementer dans photos de 1 le total like
