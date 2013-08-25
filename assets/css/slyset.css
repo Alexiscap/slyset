@@ -274,6 +274,8 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .content .photo .open_alb img{ margin:35% 36%; }
 .content .sepa_comm {width:170px;height:5px;background:#e6e6e6;margin-left:-5px;}
 
+.empty_photo_alb{}
+
 /*.box .img_cover, #tumblelog .img_cover{ display:block; width:100%; }*/
 
 /*  -----CSS TMP AJOUTER PHOTO -------- */
@@ -775,7 +777,7 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 .content .a_la_une .infos a, .content .a_la_une_parti .infos a{margin:0;color:#3c495a;font-size:12px;}
 
 .content .top_album{float:left;}
-.content .top_album a{color:#888d95;font-size:12px;text-decoration:none;padding-right:2px;}
+.content .top_album a{color:#888d95;font-size:12px;text-decoration:none;padding-right:2px;float:left;}
 .content .top_album p{float:left;margin:-2px 0 0 0;font-weight:normal;float:left;}
 .content .top_album img{display:inline;width:12px;margin:0 5px;}
 
