@@ -92,9 +92,12 @@ class Melo_actus_model extends CI_Model {
 						ON Utilisateur.id = wall.wallto_utilisateur_id
 					WHERE (wall_melo_component.Utilisateur_id 	
 						IN (' . $list_id . ') 
-					AND wall_melo_component.type = "MU")
+					AND wall_melo_component.type = "MU"
+						AND wall.photo IS NULL)
 					OR(wall_melo_component.Utilisateur_id =' . $user_id . '
-					AND wall_melo_component.type = "ME"))	
+					AND wall_melo_component.type = "ME"
+						AND wall.photo IS NULL))	
+				
 				UNION	
 			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,concerts_id,concerts.titre,concerts.seconde_partie,utilisateur.id,Utilisateur.thumb,utilisateur.login,adresse.ville,concerts.salle,"null",concerts.date, 3 as product
 				FROM wall_melo_component

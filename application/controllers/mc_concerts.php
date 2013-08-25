@@ -32,6 +32,8 @@ class Mc_concerts extends CI_Controller {
 
         if ($this->user_id != null) {
             $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
+            $sub_data['morceau_right'] = $this->user_model->top_five_morceau_profil($this->user_id);
+
         }
         $community_follower = $this->user_model->get_community($this->session->userdata('uid'));
         $my_abonnement_head = "";

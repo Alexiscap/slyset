@@ -54,8 +54,8 @@
             <span class="stats_number">
             	<?php
             	$nab = 0;
-            	if(empty($all_follower)!=1):
-            		$nab =  count($all_follower);
+            	if(empty($all_following)!=1):
+            		$nab =  count($all_following);
             	endif;
             	echo $nab;
             	 ?>
@@ -598,7 +598,7 @@
 		<div id="modal_already">
 		<div id="content-info">
 			<p class="morceau_panier_already"><p>
-			<a href="javascript:void(0)" class="button green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
+			<a href="javascript:void(0)" class="button_info green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
 
 		</div>
 	</div>

@@ -5,7 +5,6 @@ $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
 $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
 $loger = $this->session->userdata('logged_in');
 ?>
-
 <div id="contentAll">
     <div id="breadcrumbs">
         <ul>
@@ -30,24 +29,78 @@ $loger = $this->session->userdata('logged_in');
 
     <div id="stats-cover">
         <div class="stats_cover_block">
-            <span class="stats_number">489</span>
-            <span class="stats_title">abonnés</span>
+            <span class="stats_number">
+            	<?php
+            	$nab = 0;
+            	if(empty($all_follower)!=1):
+            		$nab =  count($all_follower);
+            	endif;
+            	echo $nab;
+            	 ?>
+            </span>       
+            <span class="stats_title">
+            	<?php
+            	if($nab == 0 || $nab == 1){
+            		echo 'abonné';
+            	}
+            	else
+            	{
+            		echo 'abonnés';
+            	}
+            	?>
+            </span>
         </div>
 
         <div class="stats_cover_block">
-            <span class="stats_number">18</span>
-            <span class="stats_title">albums</span>
+            <span class="stats_number"><?php print $album_nbr[0]->n_alb;?></span>
+            <span class="stats_title">
+            	<?php
+            	if($album_nbr[0]->n_alb == 0 || $album_nbr[0]->n_alb == 1){
+            		echo 'album';
+            	}
+            	else
+            	{
+            		echo 'albums';
+            	}
+            	?>
+            
+            </span>
         </div>
 
         <div class="stats_cover_block">
-            <span class="stats_number">278</span>
-            <span class="stats_title">morceaux</span>
+        	 <span class="stats_number">
+            	<?php
+            	$nm = 0;
+            	if(empty($all_morceau_artiste)!=1):
+            		$nm =  count($all_morceau_artiste);
+            	endif;
+            	echo $nm;
+            	 ?>
+            </span>       
+            <span class="stats_title">
+            	<?php
+            	if($nm == 0 || $nm == 1){
+            		echo 'morceau';
+            	}
+            	else
+            	{
+            		echo 'morceaux';
+            	}
+            	?>
+            </span>
         </div>
     </div>
     <div class="bts_noir">
-        <div class="bt_noir">
-            <a href="#"><span class="bt_left"></span><span class="bt_middle">Mettre cet album à la une</span><span class="bt_right"></span></a>
+    <?php if($this_album[0]->une == 0): ?>
+        <div class="bt_noir une">
+            <a href="#">
+            	<span class="bt_left">
+            	</span>
+            	<span class="bt_middle alb">Mettre cet album à la une</span>
+            	<span class="bt_right"></span>
+            </a>
         </div>
+    <?php endif; ?>
         <!--
         <div class="bt_noir">
             <a class="iframe-upload" href="<?php echo site_url() . '/pop_in_general/upload_musique/' . $session_id; ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter un morceau</span><span class="bt_right"></span></a>
@@ -69,10 +122,11 @@ $loger = $this->session->userdata('logged_in');
             <img src="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$this_album[0]->nom).'/'.$this_album[0]->img_cover); ?>"/>
            <!-- <img src="<?php echo img_url('portail/alaune.png'); ?>" class="bandeau_top"/>-->
             <div class="player">
-                <a href="#"><img src="<?php echo img_url('musicien/player_top.png'); ?>"/></a>
+
+                <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$this_album[0]->nom); ?>" class="open_player"><img src="<?php echo img_url('musicien/player_top.png'); ?>"/></a>
             </div>
             <div class="infos">
-                <p class="title"><?php echo $this_album[0]->nom; ?></p>
+                <p class="title" id="<?php echo $this_album[0]->id; ?>"><?php echo $this_album[0]->nom; ?></p>
                 <p class="annee_crea"><?php echo $this_album[0]->annee; ?></p>
                 <p><?php if (isset($this_album[0]->livret_path)): ?><span>> </span><a href="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$this_album[0]->nom).'/'.$this_album[0]->livret_path); ?>"><?php  echo 'Voir le livret d\'album'; ?></a><?php endif; ?></p>
                 <p><?php if (isset($this_album[0]->doc_id)): ?><span>> </span><a href="#">Voir les partitions</a><?php endif; ?></p>
@@ -81,14 +135,13 @@ $loger = $this->session->userdata('logged_in');
         
         <div class="top_album">
             <div>
-                <a href="#">
+                <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$this_album[0]->nom); ?>" class="open_player">
                     <img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
-                        <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$this_album[0]->nom); ?>" class="open_player">
-							<p> Ecouter l'album</p>
-						</a>
-					
+					<span> Ecouter l'album</span>
+				</a>
+				 <a href="#">
                     <img src="<?php echo img_url('common/cadis.png'); ?>"/>
-                    <p> Acheter l'album</p>
+                    <span class="panier_alb" id="<?php echo $this_album[0]->id;?>"> Acheter l'album</span>
                 </a>
             </div>
             <div id="articles-tab">
@@ -134,7 +187,7 @@ $loger = $this->session->userdata('logged_in');
                             </tr>-->
                         </tbody>
                     </table>
-                    <input type="button" value="Acheter" class="bt_cadis">
+                    <input type="button" value="Acheter" class="bt_cadis unealb">
                     <input type="button" value="Dans ma playlist" class="bt_playlist">
                 </form>
             </div>
@@ -147,6 +200,49 @@ $loger = $this->session->userdata('logged_in');
     <div id="modal">
 		<div id="content-info">
 			<p>Le morceau a bien été ajouté a votre playlist</p>
+
+			<a href="javascript:void(0)" class="button_info green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
+
+		</div>
+	</div>
+	
+	 <div id="modal_une">
+		<div id="content-info">
+			<p>Cet album est désormais à la une</p>
+
+			<a href="javascript:void(0)" class="button_info green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
+
+		</div>
+	</div>
+	
+		<div id="modal-panier">
+		<div id="content-info">
+			<p>L'album a bien été ajouté a votre panier</p>
+
+			<a href="javascript:void(0)" class="button_info green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
+
+		</div>
+	</div>
+	<div id="modal-already-panier_track">
+		<div id="content-info">
+			<p>Ce morceau est déjà dans votre panier</p>
+
+			<a href="javascript:void(0)" class="button_info green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
+
+		</div>
+	</div>
+	
+			<div id="modal-panier_track">
+		<div id="content-info">
+			<p>Le morceau bien été ajouté a votre panier</p>
+
+			<a href="javascript:void(0)" class="button_info green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
+
+		</div>
+	</div>
+	<div id="modal-already-panier">
+		<div id="content-info">
+			<p>Cet album est déjà dans votre panier</p>
 
 			<a href="javascript:void(0)" class="button_info green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
 

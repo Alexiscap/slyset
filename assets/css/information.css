@@ -62,7 +62,7 @@
 
 
 
-	#modal,#modal_already,#modal-already-panier,#modal-panier {
+	#modal,#modal_already,#modal-already-panier,#modal-panier,#modal_une,#modal-already-panier_track,#modal-panier_track {
 
 	visibility:hidden;
 	width:360px;
@@ -189,7 +189,7 @@
 
 @media only screen and (max-width: 767px) {
         
-	#modal,#modal_already,#modal-already-panier,#modal-panier {
+	#modal,#modal_already,#modal-already-panier,#modal-panier,#modal_une,#modal-already-panier_track,#modal-panier_track {
 		width:284px;
 		height:156px;
 		padding:8px;

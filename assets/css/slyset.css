@@ -260,14 +260,14 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .content .photo .bord_photo img{ margin:7px 5px -1px 30px; display:inline; }
 .nolike img {margin:0 5px 0 15px; display:inline; }
 .content .photo .bord_photo .nb_like{ margin:0; }
-.content .photo .comm,.content .photo .comment-form,.content .photo .comment-form-album,.content .photo .comment-form-video{ width:170px; margin:0 -15px; background:#f2f0f0; border-bottom:1px solid #cdcdcd; border-top:none; min-height:34px; }
-.content .photo .comm img,.content .photo .comment-form img, .content .photo .comment-form-album img, .content .photo .comment-form-video img{ float:left; margin:5px; height:24px; }
-.content .photo .comm .del,.content .photo .comment-form .del, .content .photo .comment-form-album .del, .content .photo .comment-form-video .del{ float:right; margin:5px 5px; height:14px; }
-.content .photo .comm p,.content .photo .comment-form p,.content .photo .comment-form-album p,.content .photo .comment-form-video p{ margin:0; text-align:left; }
-.content .photo .comm .name_comm,.content .photo .comment-form .name_comm, .content .photo .comment-form-album .name_comm, .content .photo .comment-form-video .name_comm{ font-size:10px; color:#595959; }
-.content .photo .comm .commentaire,.content .photo .comment-form .commentaire, .content .photo .comment-form-album .commentaire, .content .photo .comment-form-video .commentaire{ font-size:10px; color:#888d95; }
-.content .photo .comm input[type=text],.content .photo .comment-form input[type=text], .content .photo .comment-form-album input[type=text], .content .photo .comment-form-video input[type=text]{ float:left; width:70px; border:1px solid #dfdede; margin:5px 0; }
-.content .photo .comm input[type=image],.content .photo .comment-form input[type=submit], .content .photo .comment-form-album input[type=submit], .content .photo .comment-form-video input[type=submit]{ clear:both; width:55px; margin:4px 0 0 5px; }
+.content .photo .comm,.content .photo .comment-form,.content .photo .comment-form-album,.content .photo .comment-form-video,.content .photo .comment-form-alb-wall{ width:170px; margin:0 -15px; background:#f2f0f0; border-bottom:1px solid #cdcdcd; border-top:none; min-height:34px; }
+.content .photo .comm img,.content .photo .comment-form img, .content .photo .comment-form-album img, .content .photo .comment-form-video img,.content .photo .comment-form-alb-wall img{ float:left; margin:5px; height:24px; }
+.content .photo .comm .del,.content .photo .comment-form .del, .content .photo .comment-form-album .del, .content .photo .comment-form-video .del,.content .photo .comment-form-alb-wall del{ float:right; margin:5px 5px; height:14px; }
+.content .photo .comm p,.content .photo .comment-form p,.content .photo .comment-form-album p,.content .photo .comment-form-video p,.content .photo .comment-form-alb-wall p{ margin:0; text-align:left; }
+.content .photo .comm .name_comm,.content .photo .comment-form .name_comm, .content .photo .comment-form-album .name_comm, .content .photo .comment-form-video .name_comm,.content .photo .comment-form-alb-wall .name_comm{ font-size:10px; color:#595959; }
+.content .photo .comm .commentaire,.content .photo .comment-form .commentaire, .content .photo .comment-form-album .commentaire, .content .photo .comment-form-video .commentaire,.content .photo .comment-form-alb-wall .commentaire{ font-size:10px; color:#888d95; }
+.content .photo .comm input[type=text],.content .photo .comment-form input[type=text], .content .photo .comment-form-album input[type=text], .content .photo .comment-form-video input[type=text],.content .photo .comment-form-alb-wall input[type=text]{ float:left; width:70px; border:1px solid #dfdede; margin:5px 0; }
+.content .photo .comm input[type=image],.content .photo .comment-form input[type=submit], .content .photo .comment-form-album input[type=submit], .content .photo .comment-form-video input[type=submit],.content .photo .comment-form-alb-wall input[type=submit]{ clear:both; width:55px; margin:4px 0 0 5px; }
 .content .photo .edit{ background:rgba(36, 36, 36, 0.7); width:160px; height:22px; position:absolute;top:5px; margin:0;display:none;}
 .content .photo .edit img{ float:right; margin:4px 8px 0 0; }
 .content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:160px; position:absolute; margin:22px 0;top:5px;height: calc(100% - 53px);display:none;}
@@ -809,7 +809,8 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 .content .top_album #articles-tab input[type="submit"]{ margin:0 0 0 0; padding:0 5px; display:block; width:94px; height:32px; line-height:32px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:center; color:#FFFFFF; background:url('../images/admin/btn_supprimer.png') no-repeat 0 0 transparent; float:right; clear:both; }
 .content .top_album #articles-tab input[type="submit"]:hover{ font-size:15px; }
 
-.content .top_album #articles-tab .miniat_titre {display:none;}
+.content .top_album #articles-tab .miniat_titre {display:none; float: right;
+}
 .content .top_album #articles-tab .miniat_titre a{width:17px;height:13px;margin:0 2px 0 0;float:left;}
 .content .top_album #articles-tab .miniat_titre span{display:inline-block; text-indent: -5000px;}
 .content .top_album #articles-tab .miniat_titre .cam{background:url('../images/common/sprite_edit_titre.png') 0px -2px;}

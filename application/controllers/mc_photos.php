@@ -81,9 +81,9 @@ class Mc_photos extends CI_Controller {
         $data['commentaires'] = $this->photo_model->liste_comments();
         $data['commentaires_albums'] = $this->photo_model->liste_comments_album();
         $data['commentaires_video'] = $this->photo_model->liste_comments_video();
-
+		$data['wall_photos'] = $this->photo_model->get_album_wall_all($user_visited);
         $data['all_photos'] = $this->photo_model->all_photos();
-       
+       	$data['comments_wall'] = $this->photo_model->get_comment_wall($user_visited);
         $data['all_photos_albums'] = $this->photo_model->all_photos_album();
         $data['like_photo'] = $this->photo_model->get_like_user($user_visited);
         $data['all_photo_like'] = "";
@@ -108,36 +108,48 @@ class Mc_photos extends CI_Controller {
     }
 
     public function album($user_id, $album_name) {
+        
         $data = $this->data;
         $uid = $this->session->userdata('uid');
+		
+		if($album_name != "wall")
+		{
+	        $data['user_id'] = $this->session->userdata('uid');
+    	    $data['all_media_user_result'] = $this->photo_model->get_photos_by_album($user_id, $album_name);
+        	$data['commentaires_video'] = $this->photo_model->liste_comments_video();
 
-        $data['user_id'] = $this->session->userdata('uid');
-        $data['all_media_user_result'] = $this->photo_model->get_photos_by_album($user_id, $album_name);
-        $data['commentaires_video'] = $this->photo_model->liste_comments_video();
+	        $data['commentaires'] = $this->photo_model->liste_comments();
 
-        $data['commentaires'] = $this->photo_model->liste_comments();
+    	    $user_visited = (empty($infos_profile)) ? $uid : $infos_profile->id;
 
-        $user_visited = (empty($infos_profile)) ? $uid : $infos_profile->id;
+        	if (!empty($infos_profile)) {
+        	    $data['infos_profile'] = $infos_profile;
+        	}
 
-        if (!empty($infos_profile)) {
-            $data['infos_profile'] = $infos_profile;
+ 	       $data['like_photo'] = $this->photo_model->get_like_user($user_visited);
+    	    $data['all_photo_like'] = "";
+        	$data['all_album_like'] = "";
+        	$data['all_video_like'] = "";
+
+	        foreach ($data['like_photo'] as $data['likes_photo']) {
+    	        $data['all_photo_like'] .= $data['likes_photo']->Photo_id . "/";
+        	    $data['all_album_like'] .= $data['likes_photo']->Album_media_file_name . "/";
+            	$data['all_video_like'] .= $data['likes_photo']->Video_id . "/";
+        	}
+
+     	  	foreach ($data['like_photo'] as $data['likes_photo']) {
+        		$data['all_photo_like'] .= $data['likes_photo']->Photo_id . "/";
+            	$data['all_album_like'] .= $data['likes_photo']->Album_media_file_name . "/";
+            	$data['all_video_like'] .= $data['likes_photo']->Video_id . "/";
+        	}
         }
+        else
+        {
+       
+       		$data['all_media_user_result'] = $this->photo_model->get_photos_by_album_wall($user_id);
+		    $data['commentaires'] = $this->photo_model->liste_comments_wall();
 
-        $data['like_photo'] = $this->photo_model->get_like_user($user_visited);
-        $data['all_photo_like'] = "";
-        $data['all_album_like'] = "";
-        $data['all_video_like'] = "";
-
-        foreach ($data['like_photo'] as $data['likes_photo']) {
-            $data['all_photo_like'] .= $data['likes_photo']->Photo_id . "/";
-            $data['all_album_like'] .= $data['likes_photo']->Album_media_file_name . "/";
-            $data['all_video_like'] .= $data['likes_photo']->Video_id . "/";
-        }
-
-        foreach ($data['like_photo'] as $data['likes_photo']) {
-            $data['all_photo_like'] .= $data['likes_photo']->Photo_id . "/";
-            $data['all_album_like'] .= $data['likes_photo']->Album_media_file_name . "/";
-            $data['all_video_like'] .= $data['likes_photo']->Video_id . "/";
+        
         }
 
         $this->layout->view('photos/album', $data, false);
@@ -167,6 +179,14 @@ class Mc_photos extends CI_Controller {
         echo $this->photo_model->insert_comments_video();
     }
 
+	public function form_album_wall_user_comment()
+	{
+	 	date_default_timezone_set('Europe/Paris');
+        $usercomment = $this->input->post('usercomment');
+        $messageid = $this->input->post('messageid');
+
+        echo $this->photo_model->insert_comments_wall_photo();
+	}
 //like : ajouter dans like activity l'id de l'elmeent et de l'utilisateu
 //incrementer de 1 le total like dans table like
 // incrementer dans photos de 1 le total like

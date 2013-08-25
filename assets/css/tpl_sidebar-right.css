@@ -14,7 +14,7 @@
 #right #top_titre img{ margin:0 0 0 5px; float:left;}
 #right #top_titre p {float:left;color:#3f3f3f;margin:0 0 10px 10px;font-size:20px;}
 #right #top_titre p span{color:#31a58c;}
-#right #top_titre #classement{clear:both;background:#e6e6e6;width:200px;height:220px;border: 2px solid #dadada;}
+#right #top_titre #classement{clear:both;background:#e6e6e6;width:200px;/*height:220px;*/border: 2px solid #dadada;}
 #right #top_titre #classement #num_impair{background:#f6f6f6;font-size:14px;width:200px;height:38px;}
 #right #top_titre #classement #num_impair p{font-size:14px;padding:10px 0;margin:0;}
 #right #top_titre #classement #num_impair .position{width:23px;border-right:2px solid #e6e6e6;height:31px;font-size:24px;padding:7px 0 0 0;text-align: center;}
