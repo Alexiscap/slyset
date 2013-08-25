@@ -5,7 +5,6 @@ if (!defined('BASEPATH'))
 
 class Musique_model extends CI_Model {
 
-
     protected $tbl_playlist = 'playlists';
     protected $tbl_morceaux = 'morceaux';
     protected $tbl_user = 'utilisateur';
@@ -26,24 +25,20 @@ class Musique_model extends CI_Model {
 
 
     public function get_morceau_by_playlist_user() {
-        
-		return $this->db->select('Morceaux_id,playlists.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree,utilisateur.id AS user_id,albums.id AS id_alb')
-						->from($this->tbl_playlist)
-						->join($this->tbl_morceaux, 'morceaux.id = playlists.Morceaux_id')
-						->join($this->tbl_album, 'morceaux.albums_id = albums.id','LEFT OUTER')
-						->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
-						->where(array('playlists.Utilisateur_id'=>30))
-						->get()
-						->result();
+
+        return $this->db->select('Morceaux_id,playlists.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree,utilisateur.id AS user_id,albums.id AS id_alb')
+                        ->from($this->tbl_playlist)
+                        ->join($this->tbl_morceaux, 'morceaux.id = playlists.Morceaux_id')
+                        ->join($this->tbl_album, 'morceaux.albums_id = albums.id', 'LEFT OUTER')
+                        ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
+                        ->where(array('playlists.Utilisateur_id' => 30))
+                        ->get()
+                        ->result();
     }
 
     //---------------------------------------------------------------------------
     //-								PLAYER										-
     //---------------------------------------------------------------------------
-
-
-
-
     public function get_my_playlist_player($user_id, $type, $name, $morceau) {
         if ($type == 'playlist') {
             if ($name == null) {
@@ -65,7 +60,6 @@ class Musique_model extends CI_Model {
             }
 
             if ($name != null) {
-
                 $pl_or_album = $this->db->select('nom')
                         ->from($this->tbl_playlist)
                         ->where(array('Utilisateur_id' => $user_id, 'nom' => str_replace('%20', ' ', $name)))
@@ -208,36 +202,30 @@ class Musique_model extends CI_Model {
                         ->get()
                         ->result();
     }
-    
-    public function get_list_album($user_id)
-    {
-    	return $this->db->select('nom,id')
- 						->from($this->tbl_album)
+
+    public function get_list_album($user_id) {
+        return $this->db->select('nom,id')
+                        ->from($this->tbl_album)
                         ->where(array('Utilisateur_id' => $user_id))
                         ->get()
                         ->result();
     }
-    
-   	public function put_alune($id_alb)
-   	{
-   			$data_reset= array(
-               'une' => 0,
 
+    public function put_alune($id_alb) {
+        $data_reset = array(
+            'une' => 0,
         );
 
         $this->db->where('Utilisateur_id', $this->session->userdata('uid'));
         $this->db->update($this->tbl_album, $data_reset);
-    
-   			$data = array(
-               'une' => 1,
 
+        $data = array(
+            'une' => 1,
         );
 
         $this->db->where('id', $id_alb);
         $this->db->update($this->tbl_album, $data);
-    
-   	}
-   	
+    }
 
     //---------------------------------------------------------------------------
     //-								PLAYLIST									-
@@ -245,13 +233,13 @@ class Musique_model extends CI_Model {
 
     public function get_my_playlist($user_id) {
         return $this->db->select('COUNT(Morceaux_id) AS n_morceau,Morceaux_id,playlists.nom,COUNT(Distinct morceaux.Utilisateur_id) AS n_artiste, albums.img_cover,albums.nom AS name_alb,albums.Utilisateur_id AS user_alb')
-				->from($this->tbl_playlist)
-				->join($this->tbl_morceaux,'morceaux.id = playlists.Morceaux_id')
-				->join($this->tbl_album, 'morceaux.albums_id = albums.id','LEFT OUTER')
-				->where(array('playlists.Utilisateur_id'=>$user_id))
-				->group_by('nom')
-				->get()
-				->result();
+                        ->from($this->tbl_playlist)
+                        ->join($this->tbl_morceaux, 'morceaux.id = playlists.Morceaux_id')
+                        ->join($this->tbl_album, 'morceaux.albums_id = albums.id', 'LEFT OUTER')
+                        ->where(array('playlists.Utilisateur_id' => $user_id))
+                        ->group_by('nom')
+                        ->get()
+                        ->result();
     }
 
     public function delete_playlist_data($name, $user) {
@@ -300,138 +288,123 @@ class Musique_model extends CI_Model {
         $this->db->query($update_like_morceau_gal, array($morceau));
 
         $update_like_morceau_user = 'DELETE FROM like_activity_pav WHERE Utilisateur_id = ? AND Morceaux_id = ?';
-        $this->db->query($update_like_morceau_user, array($user,$morceau));
+        $this->db->query($update_like_morceau_user, array($user, $morceau));
+    }
 
-	
-	}
-	
-	public function delete_morceau_playlist($user,$morceau)
-	{
-		$this->db->delete($this->tbl_playlist, array('Morceaux_id' => $morceau,'Utilisateur_id'=>$user)); 
+    public function delete_morceau_playlist($user, $morceau) {
+        $this->db->delete($this->tbl_playlist, array('Morceaux_id' => $morceau, 'Utilisateur_id' => $user));
+    }
 
-	}
-	
-	public function pl_to_panier($user_id,$morceaux_id)
-	{
-		$id_commande_user =  $this->db->select('id')
-									->from($this->tbl_order)
-									->where(array('Utilisateur_id'=>$user_id,'status'=>'P'))
-									->get()
-									->result();
-		if (empty($id_commande_user)==1)
-		{
-			$data = array(
-   				'Utilisateur_id' => $user_id ,
-   				'date' => date('Y-m-d H:i:s', now()),
-   				'status' => 'P'
-			);
+    public function pl_to_panier($user_id, $morceaux_id) {
+        $id_commande_user = $this->db->select('id')
+                ->from($this->tbl_order)
+                ->where(array('Utilisateur_id' => $user_id, 'status' => 'P'))
+                ->get()
+                ->result();
+        if (empty($id_commande_user) == 1) {
+            $data = array(
+                'Utilisateur_id' => $user_id,
+                'date' => date('Y-m-d H:i:s', now()),
+                'status' => 'P'
+            );
 
-			$this->db->insert($this->tbl_order, $data); 
-		}
-		
-		$existing_panier =  $this->db->select('id,titre')
-									->from($this->tbl_orderinfo)
-									->where_in('Morceaux_id',$morceaux_id)
-									->where(array('Commande_id'=>$id_commande_user[0]->id))
-									->get()
-									->result();
-		if(empty($existing_panier)==1)
-		{
-			$id_commande_user =  $this->db->select('id')
-										->from($this->tbl_order)
-										->where(array('Utilisateur_id'=>$user_id,'status'=>'P'))
-										->get()
-										->result();
-		
-		
-			$info_morceaux = $this->db->select('id,nom,Albums_id,prix,format')
-									->from($this->tbl_morceaux)
-									->where_in('id',$morceaux_id)
-									->get()
-									->result();
-		
-			foreach($info_morceaux as $info_morceau)
-			{
-				$data_cmd = array(
-	   				'Commande_id' => $id_commande_user[0]->id ,
-   					'Albums_id' => $info_morceau->Albums_id ,
-   					'titre' => $info_morceau->nom,
-   					'prix' => $info_morceau->prix,
-   					'morceaux_id' => $info_morceau->id,
-   					'format' => $info_morceau->format
-				);
+            $this->db->insert($this->tbl_order, $data);
+        }
 
-				$this->db->insert($this->tbl_orderinfo, $data_cmd); 		
-				return 'ajout';
-			}	
-		}				
-	}
-	
-	public function alb_to_panier($alb_id)
-	{
-		
-		$id_commande_user =  $this->db->select('id')
-									->from($this->tbl_order)
-									->where(array('Utilisateur_id'=>$this->session->userdata('uid'),'status'=>'P'))
-									->get()
-									->result();
-		if (empty($id_commande_user)==1)
-		{
-			$data = array(
-   				'Utilisateur_id' => $this->session->userdata('uid') ,
-   				'date' => date('Y-m-d H:i:s', now()),
-   				'status' => 'P'
-			);
+        $existing_panier = $this->db->select('id,titre')
+                ->from($this->tbl_orderinfo)
+                ->where_in('Morceaux_id', $morceaux_id)
+                ->where(array('Commande_id' => $id_commande_user[0]->id))
+                ->get()
+                ->result();
+        if (empty($existing_panier) == 1) {
+            $id_commande_user = $this->db->select('id')
+                    ->from($this->tbl_order)
+                    ->where(array('Utilisateur_id' => $user_id, 'status' => 'P'))
+                    ->get()
+                    ->result();
 
-			$this->db->insert($this->tbl_order, $data); 
-		}
-		
-		$existing_panier =  $this->db->select('id,titre')
-									->from($this->tbl_orderinfo)
-									->where_in('Albums_id',$alb_id)
-									->where(array('Commande_id'=>$id_commande_user[0]->id,'Morceaux_id IS NULL'=>null))
-									->get()
-									->result();
-		
-		if(empty($existing_panier)==1)
-		{
-			$id_commande_user =  $this->db->select('id')
-										->from($this->tbl_order)
-										->where(array('Utilisateur_id'=>$this->session->userdata('uid'),'status'=>'P'))
-										->get()
-										->result();
-		
-		
-			$info_albs = $this->db->select('id,nom,prix,format')
-									->from($this->tbl_album)
-									->where_in('id',$alb_id)
-									->get()
-									->result();
-		
-			foreach($info_albs as $info_alb)
-			{
-				$data_cmd = array(
-	   				'Commande_id' => $id_commande_user[0]->id ,
-   					'Albums_id' => $info_alb->id ,
-   					'titre' => $info_alb->nom,
-   					'prix' => $info_alb->prix,
-   					'morceaux_id' => null,
-   					'format' => $info_alb->format
-				);
 
-				$this->db->insert($this->tbl_orderinfo, $data_cmd); 		
-				return 'ajout';
-			}	
-		}				
-			
-	}
-	
-	public function update_title($new,$old)
-	{
-	
-		$data = array(
-               'nom' => $new,
+            $info_morceaux = $this->db->select('id,nom,Albums_id,prix,format')
+                    ->from($this->tbl_morceaux)
+                    ->where_in('id', $morceaux_id)
+                    ->get()
+                    ->result();
 
+            foreach ($info_morceaux as $info_morceau) {
+                $data_cmd = array(
+                    'Commande_id' => $id_commande_user[0]->id,
+                    'Albums_id' => $info_morceau->Albums_id,
+                    'titre' => $info_morceau->nom,
+                    'prix' => $info_morceau->prix,
+                    'morceaux_id' => $info_morceau->id,
+                    'format' => $info_morceau->format
+                );
+
+                $this->db->insert($this->tbl_orderinfo, $data_cmd);
+                return 'ajout';
+            }
+        }
+    }
+
+    public function alb_to_panier($alb_id) {
+
+        $id_commande_user = $this->db->select('id')
+                ->from($this->tbl_order)
+                ->where(array('Utilisateur_id' => $this->session->userdata('uid'), 'status' => 'P'))
+                ->get()
+                ->result();
+        if (empty($id_commande_user) == 1) {
+            $data = array(
+                'Utilisateur_id' => $this->session->userdata('uid'),
+                'date' => date('Y-m-d H:i:s', now()),
+                'status' => 'P'
+            );
+
+            $this->db->insert($this->tbl_order, $data);
+        }
+
+        $existing_panier = $this->db->select('id,titre')
+                ->from($this->tbl_orderinfo)
+                ->where_in('Albums_id', $alb_id)
+                ->where(array('Commande_id' => $id_commande_user[0]->id, 'Morceaux_id IS NULL' => null))
+                ->get()
+                ->result();
+
+        if (empty($existing_panier) == 1) {
+            $id_commande_user = $this->db->select('id')
+                    ->from($this->tbl_order)
+                    ->where(array('Utilisateur_id' => $this->session->userdata('uid'), 'status' => 'P'))
+                    ->get()
+                    ->result();
+
+
+            $info_albs = $this->db->select('id,nom,prix,format')
+                    ->from($this->tbl_album)
+                    ->where_in('id', $alb_id)
+                    ->get()
+                    ->result();
+
+            foreach ($info_albs as $info_alb) {
+                $data_cmd = array(
+                    'Commande_id' => $id_commande_user[0]->id,
+                    'Albums_id' => $info_alb->id,
+                    'titre' => $info_alb->nom,
+                    'prix' => $info_alb->prix,
+                    'morceaux_id' => null,
+                    'format' => $info_alb->format
+                );
+
+                $this->db->insert($this->tbl_orderinfo, $data_cmd);
+                return 'ajout';
+            }
+        }
+    }
+
+    public function update_title($new, $old) {
+
+        $data = array(
+            'nom' => $new,
         );
 
         $this->db->where('nom', $old);

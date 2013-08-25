@@ -1,5 +1,5 @@
 <?php if($this->session->userdata('logged_in') == 1 && $this->session->userdata('account') == 0): ?>
-    <aside>
+    <aside class="admin-aside">
         <div id="first-block">
             <div id="my-profil">
                 <a href="<?php echo site_url('home/'.$this->session->userdata('uid')); ?>">

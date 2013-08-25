@@ -57,6 +57,7 @@
 
             <div class="content-right">
 
+                <?php print_r($playlists); ?>
                 <?php // foreach ($playlists[0] as $playlist): 
                 ?>
                 <!--<ol><?php // echo ucfirst($this->uri->segment(4));  ?> : <?php // echo $playlist->nom  ?>-->

@@ -1,3 +1,6 @@
+/**********************
+ ** GLOBAL VARIABLES **
+ *********************/
 var l = window.location;
 var base_url = '';
 var base_url_noindex = '';
@@ -10,34 +13,29 @@ if(l.pathname.split('/')[2] == "index.php"){
     base_url_noindex = l.protocol + "//" + l.host;
 }
 
+
+/**********************
+ *** CUSTOM FUNCTION **
+ *********************/
 function playMasonry(){
     $container = $('.content');
 
     $container.imagesLoaded(function(){
         $container.masonry({
             itemSelector: '.box'
-        //columnWidth : 100,
-        //isFitWidth: true,
-        //isAnimated:true
         });
     });
 }
 
-function openPopup(winURL, winName, winObj){
-    if (winObj != null){
-        if (!winObj.closed){
-            winObj.focus();
-            return winObj;
-        } 
-    }
-      
-    var popup = window.open(winURL, winName, 'resizable=no, top=150, left=400, height=445, width=650, toolbar=no, directories=no, status=no, location=no menubar=no');
-    
-    alert('ok');
-    return popup;
+function playedState(){
+    var t = $('#played .infos .ecoute').hide().html('- Aucune piste -').fadeIn('fast');
+    return t;
 }
 
-// Keyboard shortcuts
+
+/**********************
+ *** JQUERY KEYDOWN ***
+ *********************/
 $(document).keydown(function(e) {
     var unicode = e.charCode ? e.charCode : e.keyCode;
     // right arrow
@@ -57,6 +55,9 @@ $(document).keydown(function(e) {
 });
 
 
+/**********************
+ ****** JQUERY ON *****
+ *********************/
 $(document).on('submit', ".form_comments form", function(){
     var baseurl = $(this).find("#baseurl").val();
     var usercomment = $(this).find("#usercomment").val();
@@ -89,27 +90,27 @@ $(document).on('submit', ".form_comments form", function(){
     }
 });
 
+
+/**********************
+ **** JQUERY READY ****
+ *********************/
 $(document).ready(function(){
-    //    var tt = window.opener.location.reload(true);
-    //    
-    //    if(tt){
-    //        alert('reloaded');
-    //    }
+    $('#played .infos .ecoute').hide().html('- Aucune piste -').fadeIn('fast');
     
     if($(".iframe, .iframe-upload, .bigiframe").length > 0){
         $(".iframe").colorbox({
             iframe:true, 
             width:"45%", 
-            height:"65%",
-            onClosed:function(){
-            //$('.content').load('30 .content');
-            }
+            height:"65%"
         });
 
         $(".iframe-upload").colorbox({
             iframe:false, 
             width:"45%", 
-            height:"65%"
+            height:"65%",
+            onClosed:function(){
+                location.reload(true);
+            }
         });
 
         $(".bigiframe").colorbox({
@@ -121,10 +122,15 @@ $(document).ready(function(){
 
     $(".open_player").click(function(event) {
         var href = $(this).attr('href');
-        window.open(href, '', 'resizable=no, top=150, left=400, height=445, width=650, toolbar=no, directories=no, status=no, location=no menubar=no');
-        //        
-//        var obj = openPopup(href, '', obj);
+
+        var popup = window.open(href, 'Player Slyset', 'resizable=no, top=150, left=400, height=445, width=650, toolbar=no, directories=no, status=no, location=no menubar=no');
+        popup.focus();
+
         event.preventDefault();
+    });
+    
+    $(window).unload(function() {
+        window.opener.playedState();
     });
     
     if ($("audio").length > 0){
@@ -149,18 +155,21 @@ $(document).ready(function(){
                     audio.play();
                 }
             }
-//            updatePlayhead: function() {}
-//            loadStarted: function() {}
-//            loadProgress: function() {}
         });
 
+        // Add controls
         $('.audiojs .play-pause .play').before('<p class="prev"></p>');
         $('.audiojs .play-pause .pause').after('<p class="next"></p>');
-//        $('.audiojs .time').before('<div class="new-time"></div>');
-//        $('.audiojs .new-time').css(
-//            "color", "#ddd"
-//        );
-//        $('.audiojs .time').hide();
+        
+        // Show text on header main frame
+        $('audio').bind('play', function(){
+            var currentAudio = $('ul li.playing').text();
+            $('#played .infos .ecoute', window.opener.document).hide().html(currentAudio).fadeIn('fast');
+        });
+        $('audio').bind('pause', function(){
+            var currentAudio = $('ul li.playing').text();
+            $('#played .infos .ecoute', window.opener.document).hide().html(currentAudio + ' - paused').fadeIn('fast');
+        });
         
         // Load in the first track
         var audio = a[0];
@@ -168,13 +177,6 @@ $(document).ready(function(){
         $('ul li').first().addClass('playing');
         audio.load(first);
         
-        //    $(window.opener).find('#played').html(first);
-        $('audio').bind("play", function(){
-            var currentAudio = $('ul li.playing').text();
-            $('#played .infos .ecoute', window.opener.document).html(currentAudio);
-        
-        });
-
         // Load in a track on click
         $('ul li').click(function(e) {
             e.preventDefault();
@@ -293,7 +295,7 @@ $(document).ready(function(){
     }); 
   
     //status actif du menu de gauche
-    if ($('body').attr('class') != 'home' && $('aside').length > 0)
+    if ($('body').attr('class') != 'home' && $('aside').attr('class') != 'admin-aside' && $('aside').length > 0)
     {
         var class_current = $('body').attr('class');
         var css_init = $('aside').find('#'+ class_current + ' .icon').css('background-position');
