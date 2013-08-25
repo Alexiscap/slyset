@@ -64,15 +64,25 @@ $loger = $this->session->userdata('logged_in');
 		/*  Bloc image orpheline */
 			?>
     		<div class="photo box col1">
-    		  <?php if ($profile->id == $uid) { ?> 
+    		  <?php if ($profile->id == $uid&&$this->uri->segment(3)!='wall') { ?> 
     		 <div class="edit">
                         <a class="iframe" href="<?php echo site_url('media/editer/' . $profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
                         <!--  edition : SUPPRESSION *******************-->
 
                         <a class="iframe" href="<?php echo site_url('media/supprimer/' . $profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
                     </div>
-                    <?php } ?>
+                    <?php }
+            if ($this->uri->segment(3)!='wall') {  ?>
       		<a href="#"><img src="<?php echo base_url('/files/'.$profile->id.'/photos/'.$this->uri->segment(3).'/'.$media_user_result_unit->file_name)?>" class="img_cover" /></a>
+          	<?php
+          	}
+          	else
+          	{ ?>
+          	  <a href="#"><img src="<?php echo base_url('/files/'.$profile->id.'/wall/'.$media_user_result_unit->file_name)?>" class="img_cover" /></a>
+			<?php
+          	}
+          	
+          	?>
           	<!-- titre -->
 
       		<p class="nom_photo"><?php echo $media_user_result_unit->nom ?></p>
@@ -88,8 +98,11 @@ $loger = $this->session->userdata('logged_in');
             ?>
       		
       	 	<div class="bord_photo">
-       			 <a onclick='showComment("comm<?php echo $media_user_result_unit->id?>")' href="javascript:void(0);"><p><?php if ($cpt_comment==0)print "0 commentaire"; if($cpt_comment==1)print "1 commentaire"; if ($cpt_comment>1)print $cpt_comment."commentaires"  ?></p></a>
-       			<?php $count = substr_count($all_photo_like,$media_user_result_unit->id.'/');
+       			 <a onclick='showComment("comm<?php echo $media_user_result_unit->id?>")' href="javascript:void(0);"><p><?php if ($cpt_comment==0)print "0 commentaire"; if($cpt_comment==1)print "1 commentaire"; if ($cpt_comment>1)print $cpt_comment." commentaires"  ?></p></a>
+       			
+       			<?php 
+       			if($this->uri->segment(3)!='wall') 
+       			{$count = substr_count($all_photo_like,$media_user_result_unit->id.'/');
     	if ($count>=1)
     	{ ?>
     	       			 <img src="<?php echo img_url('musicien/pink_heart.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="nolike" />
@@ -101,6 +114,8 @@ $loger = $this->session->userdata('logged_in');
 
       		<?php } ?>
       		<p class="nb_like" ><?php echo $media_user_result_unit->like_total ?></p>
+      		<?php 
+      		}?>
       		</div> 
         	
     		
@@ -117,6 +132,10 @@ $loger = $this->session->userdata('logged_in');
 
                             <?php endif; ?>
                         <?php endforeach; ?>
+                        <?php if($this->uri->segment(3)!='wall') 
+                        {
+                        ?>
+
                         <div class="comment-form">
                             <img src="<?php echo base_url('/files/profiles/'.$this->session->userdata('thumb')) ?>" />
                             <form  action="" method="post">
@@ -130,6 +149,26 @@ $loger = $this->session->userdata('logged_in');
                             <div class="ajax_loader"></div>
 
                         </div>
+                        <?php 
+                        }
+                        else
+                        {
+                        ?>
+                        <div class="comment-form-alb-wall">
+                            <img src="<?php echo base_url('/files/profiles/'.$this->session->userdata('thumb')) ?>" />
+                            <form  action="" method="post">
+                                <input type="text" name="usercomment" id="usercomment"/>
+                                <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
+                                <input type="hidden" name="messageid" value="<?php echo $media_user_result_unit->id; ?>" id="messageid" />
+
+                                <input src= "<?php echo img_url('common/valider_comm.png'); ?>" type="submit" value="Valider"/>
+                            </form>
+
+                            <div class="ajax_loader"></div>
+
+                        </div>
+                        
+                        <?php } ?>
                     </div>
 
 		   </div>        

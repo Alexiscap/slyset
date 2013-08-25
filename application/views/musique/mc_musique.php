@@ -315,6 +315,8 @@ $loger = $this->session->userdata('logged_in');
            	<a href ="javascript:void(0)" id="<?php echo $playlist->nom;?>"><?php echo $playlist->nom;?></a>
         	</br>
         <?php endforeach;?>
+        <p>Ou crée en une</p>
+          <input id="input_alert" type='text'/> <a class="cree" href="javascript:void(0)">Creer</a>
     </div>
     
     <div id="album_une_alert"><p>Selectionner l'album à mettre à la une</p>
@@ -323,6 +325,7 @@ $loger = $this->session->userdata('logged_in');
            	<a href ="javascript:void(0)" id="<?php echo $album->id;?>"><?php echo $album->nom;?></a>
         	</br>
         <?php endforeach;?>
+      
     </div>
     <?php if (isset($sidebar_right)) echo $sidebar_right; ?>
 

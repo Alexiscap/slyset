@@ -213,6 +213,11 @@ $loger = $this->session->userdata('logged_in');
                     		break;     
                         endif;
                     endforeach;
+                   	for ($i = $a; $i < 4; $i++) {
+                   	?>
+                    	<a href="#" class="empty_photo_alb" ></a>
+					<?php
+                   	}
                     ?>
                     <p class="nom_photo"><?php echo $media_user_result_unit->nom ?></p>
                     <?php
@@ -416,7 +421,6 @@ $loger = $this->session->userdata('logged_in');
                            
                     	if($a == 4)
                     		break;     
-                        
                     endforeach;
                     ?>
                     <p class="nom_photo">Wall album</p>

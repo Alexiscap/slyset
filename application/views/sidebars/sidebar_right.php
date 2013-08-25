@@ -9,27 +9,45 @@
       <p id="instruments"><?php if(!empty($profile->instrument)) echo ucfirst($profile->instrument); ?></p>
     </div>
   </div>
+  
+  	<?php if(empty($morceau_right) != 1):?>
   <div style="display:none" id="top_titre">
     <img src="<?php echo img_url('sidebar-right/etoile.png'); ?>" alt="etoile"/><p class="head-title">Mon Top <span>Titres</span></p>
     <div id="classement"> 
+  	<?php if(isset($morceau_right[0])):?>
      <div id="num_impair">
-        <p class="position">1</p><a href="#" class="play"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p>Blowin' in the wild</p>
+        <p class="position">1</p><a href="<?php echo site_url().'/mc_musique/player/'.$profile->id.'/album/'.$morceau_right[0]->alb_name.'/'.$morceau_right[0]->id; ?>" class="play open_player"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p><?php print $morceau_right[0]->nom; ?></p>
       </div>
+      <?php endif;?>
+        	<?php if(isset($morceau_right[1])):?>
+
       <div id="num_pair">
-        <p class="position">2</p><a href="#" class="play"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p>Hurricane</p>
+        <p class="position">2</p><a href="#" class="play"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p><?php print $morceau_right[1]->nom; ?></p>
       </div>
+       <?php endif;?>
+        	<?php if(isset($morceau_right[2])):?>
+
       <div id="num_impair">
-        <p class="position">3</p><a href="#" class="play"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p>Blowin' in the wild</p>
+        <p class="position">3</p><a href="#" class="play"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p><?php print $morceau_right[2]->nom; ?></p>
       </div>
+       <?php endif;?>
+        	<?php if(isset($morceau_right[3])):?>
+
       <div id="num_pair">
-        <p class="position">4</p><a href="#" class="play"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p>Hurricane</p>
+        <p class="position">4</p><a href="#" class="play"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p><?php print $morceau_right[3]->nom; ?></p>
       </div>
-      <div id="num_impair">
-        <p class="position">5</p><a href="#" class="play"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p>Blowin' in the wild</p>
+       <?php endif;?>
+        	<?php if(isset($morceau_right[4])):?>
+
+       <div id="num_impair">
+        <p class="position">5</p><a href="#" class="play"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p><?php print $morceau_right[4]->nom; ?></p>
       </div>
-      <a href="#">> Voir toute la musique</a>
+       <?php endif;?>
+      
+      <a href="<?php echo base_url('index.php/musique/'.$profile->id)?>">> Voir toute la musique</a>
     </div>
   </div>
+  <?php endif; ?>
   
   <?php if(isset($photo_right[0])&&isset($photo_right[1])&&isset($photo_right[2])&&isset($photo_right[3])): ?>
   <div style="display:none" id="last_photo">

@@ -1645,7 +1645,7 @@ $(document).ready(function(){
     {   
 		$("body").bind('click', function(ev) {
     		var myID = ev.target.id;
-   		 	if (myID !== 'playlist_alert') {
+   		 	if (myID !== 'playlist_alert'&&myID !=='input_alert') {
         		$('#playlist_alert').hide();
     		}
     		var myID = ev.target.id;
@@ -1683,11 +1683,64 @@ $(document).ready(function(){
 			
 			
           
-       	 	$('#playlist_alert a').click(function()
+       	 	$('#playlist_alert a').not('.cree').click(function()
         	{
     		 	if($(this_pl).attr('class')=='bt_playlist'||$(this_pl).attr('class')=='bt_playlist all_track')
        			{			
         			var pl = $(this).text();
+        			checkbox.each(function(){
+        				var check = $(this).val();
+    	    			var id_morceau = $(this).parents('tr').find('p').attr('class');
+        				dataid = 'pl='+pl+'&&id_track='+id_morceau;
+        				$.ajax({
+       	        	    	type: "POST",
+        	        	    url : base_url + '/mc_musique/to_pl',
+            	        	data: dataid,
+      		          	    success: function(data){ //afficher le bon bouton
+						
+								$('#modal').reveal({ // The item which will be opened with reveal
+									animation: 'fade',                   // fade, fadeAndPop, none
+									animationspeed: 600,                       // how fast animtions are
+									closeonbackgroundclick: true,              // if you click background will modal close?
+									dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+								});
+							
+								return false;					
+							}
+						});
+					});
+				}
+				
+				if($(this_pl).attr('class')=='add')
+				{
+					var pl = $(this).text();
+    	    			var id_morceau = $(this_pl).parents('tr').find('p').attr('class');
+        				dataid = 'pl='+pl+'&&id_track='+id_morceau;
+        				$.ajax({
+       	        	    	type: "POST",
+        	        	  	url : base_url + '/mc_musique/to_pl',
+            	        	data: dataid,
+      		          	    success: function(data){ //afficher le bon bouton
+						
+								$('#modal').reveal({ // The item which will be opened with reveal
+									animation: 'fade',                   // fade, fadeAndPop, none
+									animationspeed: 600,                       // how fast animtions are
+									closeonbackgroundclick: true,              // if you click background will modal close?
+									dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+								});
+							
+								return false;					
+							}
+						});
+					
+				}
+			});
+			
+			$('#playlist_alert a.cree').click(function()
+        	{
+    		 	if($(this_pl).attr('class')=='bt_playlist'||$(this_pl).attr('class')=='bt_playlist all_track')
+       			{			
+        			var pl = $('#playlist_alert #input_alert').val();
         			checkbox.each(function(){
         				var check = $(this).val();
     	    			var id_morceau = $(this).parents('tr').find('p').attr('class');

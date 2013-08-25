@@ -83,6 +83,19 @@ class Photo_model extends CI_Model {
                         ->result();
     }
 
+	public function liste_comments_wall()
+	{
+		return $this->db->select('wall.id as photos_id,utilisateur.thumb,utilisateur.login,commentaires.comment,commentaires.id AS comm_id')
+                         ->from('wall')
+                        ->join('commentaires', 'commentaires.wall_id = wall.id')
+                       
+                        ->join('utilisateur', 'utilisateur.id = commentaires.Utilisateur_id')
+                        ->where('commentaires.wall_id IS NOT NULL',null)
+                        ->order_by('commentaires.id', 'asc')
+                        ->get()
+                        ->result();
+	}
+
     public function liste_comments_album() {
         return $this->db->select('*,commentaires.id AS comm_id')
                         ->from($this->table_album)
@@ -140,7 +153,21 @@ class Photo_model extends CI_Model {
         return $this->db->query($requete_album, array($user_id, $name_album, $user_id, $name_album))
                         ->result();
     }
-
+	
+	public function get_photos_by_album_wall($user_id)
+	{
+		$query = 'SELECT photo AS file_name,markup_message AS nom,created AS date,id,null as like_total, 1 AS type
+					FROM wall
+						WHERE Utilisateur_id = wallto_utilisateur_id 
+						AND Utilisateur_id = '.$user_id.' 
+							AND photo IS NOT NULL 
+							AND photo != ""';
+			
+						
+		return $this->db->query($query)
+						->result();
+	}
+    
     public function get_comment_by_photos($user_id, $photos_id, $para_info) {
         $sql = $para_info . ',Utilisateur_id';
         return $this->db->select($sql)
@@ -499,10 +526,22 @@ class Photo_model extends CI_Model {
 
 	 public function get_album_wall_all($user_id)
     {
-    	return $this->db->select('photo,id')
+    
+    	$query = 'SELECT * 
+					FROM wall
+						WHERE Utilisateur_id = wallto_utilisateur_id
+							AND Utilisateur_id = '.$user_id.'
+								AND photo IS NOT NULL 
+									AND photo !=  ""';
+    /*	return $this->db->select('photo,id')
     			->from('wall')
-    			->where(array('wallto_utilisateur_id'=>$user_id, 'photo IS NOT NULL'=> NULL))
+    			->where(array('Utilisateur_id' => 'wallto_utilisateur_id','wallto_utilisateur_id'=>$user_id, 'photo IS NOT NULL'=> NULL))
     			->get()
+    			->result();
+    		*/	
+
+    			
+    			return $this->db->query($query)
     			->result();
     }
 

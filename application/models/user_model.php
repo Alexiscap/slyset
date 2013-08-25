@@ -7,7 +7,9 @@ class User_model extends CI_Model {
 
     protected $table = 'utilisateur';
     protected $data;
-
+    protected $tbl_track = 'morceaux';
+ 	protected $tbl_album = 'albums';
+ 	
     public function __construct() {
         parent::__construct();
         $data = array();
@@ -208,6 +210,18 @@ class User_model extends CI_Model {
         return $this->db->query('SELECT photos.id,photos.Utilisateur_id,photos.file_name FROM photos LEFT OUTER JOIN album_media ON photos.id = album_media.Photos_id 
  WHERE photos.Utilisateur_id =' . $user . ' AND album_media.Photos_id IS NULL ORDER BY photos.date ASC LIMIT 0, 4')
                         ->result();
+    }
+    
+    public function top_five_morceau_profil($user)
+    {
+    	return $this->db->select('morceaux.nom,albums.nom AS alb_name,morceaux.id')
+    			->from($this->tbl_track)
+    			->join($this->tbl_album,'albums.id = morceaux.albums_id')
+    			->where('morceaux.Utilisateur_id',$user)
+    			->order_by('nombre_lectures','ASC')
+    			->limit(5)
+    			->get()
+    			->result();
     }
 
 }
