@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="controls">
-                        <audio src="<?php echo base_url() . 'assets/musique/Anxiety.mp3'; ?>" type="audio/mpeg"  preload="auto" autoplay="autoplay"></audio>
+                        <audio src="<?php echo base_url() . 'assets/musique/Blue_Light.mp3'; ?>" type="audio/mpeg"  preload="auto" autoplay="autoplay"></audio>
                     </div>
                 </div>
 
@@ -68,9 +68,9 @@
                     <ul>
                         <?php // foreach ($playlists[1] as $morceaux): ?>
                         <?php // if ($morceaux->nom == $playlist->nom): ?>
-                        <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Anxiety.mp3'; ?>">1111<?php // echo $morceaux->title_track  ?></a></li>
+                        <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Blue_Light.mp3'; ?>">1111<?php // echo $morceaux->title_track  ?></a></li>
                         <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Luno.mp3'; ?>">2222<?php // echo $morceaux->title_track  ?></a></li>
-                        <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Helicopter.mp3'; ?>">3333<?php // echo $morceaux->title_track  ?></a></li>
+                        <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Compliments.mp3'; ?>">3333<?php // echo $morceaux->title_track  ?></a></li>
                         <?php // endif; ?>
                         <?php // endforeach; ?>
                     </ul>
@@ -84,7 +84,7 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="<?php echo js_url('audiojs/audio') ?>"></script>
+        <script type="text/javascript" src="<?php echo js_url('audiojs/audio.min') ?>"></script>
         <script type="text/javascript" src="<?php echo js_url('slyset') ?>"></script>
     </body>
 </html>

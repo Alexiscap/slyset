@@ -145,15 +145,16 @@ class Musique_model extends CI_Model {
     //---------------------------------------------------------------------------
 
 
-    public function insert_music($filename, $title, $track_number, $artist, $genre, $year, $duration, $format, $bitrate, $filesize) {
+    public function insert_music($filename, $title, $track_number, $artist, $genre, $year, $duration, $price, $format, $bitrate, $filesize) {
         $data['Utilisateur_id'] = $this->session->userdata('uid');
-        $data['nom'] = $filename;
-        $data['titre'] = $title;
+        $data['filename'] = $filename;
+        $data['nom'] = $title;
         $data['tracknumero'] = $track_number;
         $data['artiste'] = $artist;
         $data['genre'] = $genre;
         $data['annee'] = $year;
         $data['duree'] = $duration;
+        $data['prix'] = $price;
         $data['format'] = $format;
         $data['bitrate'] = $bitrate;
         $data['filesize'] = $filesize;

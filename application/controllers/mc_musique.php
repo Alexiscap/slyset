@@ -180,11 +180,20 @@ class Mc_musique extends CI_Controller {
 
         $this->upload->initialize($this->upload_config);
 
-        $userfile_name = str_replace(' ', '_', $_FILES['userfile']['name']);
+        
+        $userfile_exploded = explode('.mp3', $_FILES['userfile']['name']);
+//        $strreplace = array('\'', '"', '(', ')', '.', ';', ':', '[', ']', '?', ',', '!', '=', '+', '`', '~', '^', '#', '°', '@', '*', '$', '€', '£', '%', 'µ');
+//        $userfile1 = str_replace($strreplace, '', $userfile_exploded[0]);
+        $userfile2 = preg_replace(array('/\s+/', '/[^\w-]/'), array('_', ''), $userfile_exploded[0]);
+//        $userfile22 = str_replace(' ', '_', $userfile_exploded[0]);
+        $userfile = $userfile2.'.mp3';
+        
+        print 'Voici le premier userfile '.$userfile;
+        $userfile_name = strtr($userfile, 'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
 
-//        print_r($_FILES);
+        print_r($_FILES);
 //        print '<br/>';
-//        print_r($_POST);
+        print_r($_POST);
 //        if($this->check_exists()){
 //            print_r('réussie !!');
         if (!$this->upload->do_upload()) {
@@ -198,19 +207,20 @@ class Mc_musique extends CI_Controller {
             $id3 = $this->getid3->analyze($upload_folder . $userfile_name);
             print_r($id3);
 
-            $filesize = $id3['filesize'];
-            $filename = $id3['filename'];
+            $filesize = (isset($id3['filesize'])) ? $id3['filesize'] : NULL;
+            $filename = (isset($id3['filename'])) ? $id3['filename'] : NULL;
+            $price = (isset($_POST['price'])) ? $_POST['price'] : NULL;
 //                $file_to_path = $id3['filepath'];
 //                $full_path = $id3['filenamepath'];
-            $format = $id3['fileformat'];
-            $bitrate = round($id3['audio']['bitrate']);
-            $track_number = $id3['tags']['id3v2']['track_number'][0];
-            $year = $id3['tags']['id3v2']['year'][0];
-            $genre = $id3['tags']['id3v2']['genre'][0];
-            $album = $id3['tags']['id3v2']['album'][0];
-            $artist = $id3['tags']['id3v2']['artist'][0];
-            $title = $id3['tags']['id3v2']['title'][0];
-            $duration = $id3['playtime_string'];
+            $format = (isset($id3['fileformat'])) ? $id3['fileformat'] : NULL;
+            $bitrate = (isset($id3['audio']['bitrate'])) ? round($id3['audio']['bitrate']) : NULL;
+            $track_number = (isset($id3['tags']['id3v2']['track_number'])) ? $id3['tags']['id3v2']['track_number'][0] : NULL;
+            $year = (isset($id3['tags']['id3v2']['year'])) ? $id3['tags']['id3v2']['year'][0] : NULL;
+            $genre = (isset($id3['tags']['id3v2']['genre'])) ? $id3['tags']['id3v2']['genre'][0] : NULL;
+            $album = (isset($id3['tags']['id3v2']['album'])) ? $id3['tags']['id3v2']['album'][0] : NULL;
+            $artist = (isset($id3['tags']['id3v2']['artist'])) ? $id3['tags']['id3v2']['artist'][0] : NULL;
+            $title = (isset($id3['tags']['id3v2']['title'])) ? $id3['tags']['id3v2']['title'][0] : NULL;
+            $duration = (isset($id3['playtime_string'])) ? $id3['playtime_string'] : NULL;
 
             $file_to_move = $upload_folder . '' . $filename;
             $moved_path = "";
@@ -235,7 +245,7 @@ class Mc_musique extends CI_Controller {
                 unlink($file_to_move);
             }
 
-            $this->musique_model->insert_music($filename, $title, $track_number, $artist, $genre, $year, $duration, $format, $bitrate, $filesize);
+            $this->musique_model->insert_music($filename, $title, $track_number, $artist, $genre, $year, $duration, $price, $format, $bitrate, $filesize);
 //                $this->musique_model->insert_album($str_album, $genre, $year);
 
             $this->load->view('musique/upload_musique', $data);

@@ -35,11 +35,12 @@
                 console.log(file);
 //                alert('The file ' + file.name + ' was added to the queue.');
             },
-//            'onUploadStart' : function(file) {
-//                $('#userfile').uploadify('settings','formData',{
-//                    'test': $('input#testinput').val()
-//                });
-//            },
+            'onUploadStart' : function(file) {
+                $('#userfile').uploadify('settings','formData',{
+                    'price': $('#'+file.id).find('input.price').val()
+                });
+                console.log(file.id);
+            },
             'onUploadComplete' : function (file) {
 //                $('#userfile').uploadify('cancel',''+file.id+'');
             },
@@ -54,7 +55,7 @@
                     alert('error '+d.type+": "+d.text);
             },
             'onDialogClose' : function() {
-//                $('.uploadify-queue-item').append('<input type="text" placeholder="test input" name="test" id="testinput" />');
+                $('.uploadify-queue-item').append('<input type="text" placeholder="Votre prix" name="price" class="price" />');
 //                alert(this.queueData.filesQueued);
             }
         });
