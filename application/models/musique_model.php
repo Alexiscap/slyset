@@ -62,12 +62,12 @@ class Musique_model extends CI_Model {
                         ->get()
                         ->result();
 
-                $morceaux = $this->db->select('Morceaux_id,playlists.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree')
+                $morceaux = $this->db->select('Morceaux_id,morceaux.filename,playlists.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree')
                         ->from($this->tbl_playlist)
                         ->join($this->tbl_morceaux, 'morceaux.id = playlists.Morceaux_id')
                         ->join($this->tbl_album, 'morceaux.albums_id = albums.id', 'LEFT OUTER')
                         ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
-                        ->where(array('playlists.Utilisateur_id' => 30))
+                        ->where(array('playlists.Utilisateur_id' => $user_id))
                         ->get()
                         ->result();
             }
@@ -81,12 +81,12 @@ class Musique_model extends CI_Model {
                         ->get()
                         ->result();
 
-                $morceaux = $this->db->select('Morceaux_id,playlists.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree')
+                $morceaux = $this->db->select('Morceaux_id,morceaux.filename,playlists.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree')
                         ->from($this->tbl_playlist)
                         ->join($this->tbl_morceaux, 'morceaux.id = playlists.Morceaux_id')
                         ->join($this->tbl_album, 'morceaux.albums_id = albums.id', 'LEFT OUTER')
                         ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
-                        ->where(array('playlists.Utilisateur_id' => 30, 'playlists.nom' => str_replace('%20', ' ', $name)))
+                        ->where(array('playlists.Utilisateur_id' => $user_id, 'playlists.nom' => str_replace('%20', ' ', $name)))
                         ->get()
                         ->result();
             }
@@ -102,11 +102,11 @@ class Musique_model extends CI_Model {
                         ->result();
 
 
-                $morceaux = $this->db->select('morceaux.id,albums.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree')
+                $morceaux = $this->db->select('morceaux.id,morceaux.filename,albums.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree')
                         ->from($this->tbl_album)
                         ->join($this->tbl_morceaux, 'morceaux.Albums_id = albums.id')
                         ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
-                        ->where(array('albums.Utilisateur_id' => 30))
+                        ->where(array('albums.Utilisateur_id' => $user_id))
                         ->get()
                         ->result();
             }
@@ -119,7 +119,7 @@ class Musique_model extends CI_Model {
                         ->result();
 
 
-                $morceaux = $this->db->select('morceaux.id,albums.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree')
+                $morceaux = $this->db->select('morceaux.id,morceaux.filename,albums.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree')
                         ->from($this->tbl_album)
                         ->join($this->tbl_morceaux, 'morceaux.Albums_id = albums.id')
                         ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
@@ -133,7 +133,7 @@ class Musique_model extends CI_Model {
     }
 
     public function get_morceau($id_morceau) {
-        return $this->db->select('nom')
+        return $this->db->select('morceaux.id,morceaux.filename,morceaux.nom ')
                         ->from($this->tbl_morceaux)
                         ->where(array('id' => $id_morceau))
                         ->get()

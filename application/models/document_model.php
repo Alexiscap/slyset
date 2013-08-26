@@ -6,6 +6,7 @@ if (!defined('BASEPATH'))
 class Document_model extends CI_Model {
 
     protected $table_doc = 'documents';
+    protected $table_alb = 'albums';
     protected $data;
 
     public function __construct() {
@@ -14,11 +15,13 @@ class Document_model extends CI_Model {
     }
 
     public function get_all_album_user($user_id) {
-        return $this->db->query('SELECT id,img_cover,annee,nom,livret_path 
-								FROM albums 
-								WHERE Utilisateur_id = ' . $user_id . '
-								GROUP BY id')
-                        ->result();
+        return $this->db->select('id,img_cover,annee,nom,livret_path')
+        				->from($this->table_alb)
+        				->where('Utilisateur_id',$user_id)
+        				->group_by('id')
+        				->get()
+        				->result();
+
     }
 
     public function get_all_album_moreceaux_user($user_id) {

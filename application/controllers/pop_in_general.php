@@ -614,9 +614,10 @@ class Pop_in_general extends CI_Controller {
 ';
     }
 
+	
+	
 	public function livret()
 	{
-	
         $data = array();
         $data['error'] = " ";
 
@@ -625,14 +626,16 @@ class Pop_in_general extends CI_Controller {
 	
 	}
 	
-	 function do_upload_livret() {
-        $album = $this->input->post('album');
+	function do_upload_livret() {
+	
+        $album = $this->input->post('livret');
         print $morceau = $this->input->post('morceaux');
         $album_exp = explode('+', $album);
         $album_name = $album_exp[0];
+        $album_file_name = str_replace(' ','_',$album_exp[0]);
         $album_id = $album_exp[1];
         $noespace_filename_album = str_replace(' ', '_', $album_name);
-        $dynamic_path = './files/' . $this->session->userdata('uid') . '/documents/' . $album_id;
+        $dynamic_path = './files/' . $this->session->userdata('uid') . '/albums/' . $album_file_name.'/livret';
 
         if (is_dir($dynamic_path) == false) {
             mkdir($dynamic_path, 0755, true);
@@ -647,7 +650,6 @@ class Pop_in_general extends CI_Controller {
 
 
         $this->load->library('upload', $config);
-
         if (!$this->upload->do_upload()) {
             $error = array('error' => $this->upload->display_errors());
             $this->load->view('partition/pi_ajout_livret', $error);
@@ -655,20 +657,21 @@ class Pop_in_general extends CI_Controller {
             $data = array('upload_data' => $this->upload->data());
 
 
-
             $this->document_model->insert_livret($album_id, $data['upload_data']['file_name']);
             //	$this->load->view('partition/pi_ajout_paroles', $data);
         }
     }
     
-       public function paroles() {
+  
+    
+    public function paroles() {
         $data = array();
         $data['error'] = " ";
 	    $data['album'] = $this->document_model->get_album($this->session->userdata('uid'));
         $this->load->view('partition/pi_ajout_paroles', $data);
     }
     
-     function do_upload_paroles() {
+    function do_upload_paroles() {
         $album = $this->input->post('album');
         print $morceau = $this->input->post('morceaux');
         $album_exp = explode('+', $album);
@@ -704,7 +707,7 @@ class Pop_in_general extends CI_Controller {
         }
     }
     
-     public function partition() {
+    public function partition() {
         $data = array();
         $data['error'] = " ";
         $data['album'] = $this->document_model->get_album($this->session->userdata('uid'));

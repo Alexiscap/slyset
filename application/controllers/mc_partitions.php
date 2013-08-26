@@ -59,21 +59,19 @@ class Mc_partitions extends CI_Controller {
         }
     }
 
-    //recuperer tous les morceaux qui ont 1 doc
-    //les asocier par album
-    //si pas d'album : undefined
-
-
     public function page($infos_profile) {
+       
         $data = $this->data;
+       
         $uid = $this->session->userdata('uid');
-
         $user_visited = (empty($infos_profile)) ? $uid : $infos_profile->id;
 
         if (!empty($infos_profile)) {
             $data['infos_profile'] = $infos_profile;
         }
+      
         $data['get_album'] = $this->document_model->get_all_album_user($user_visited);
+        
         $all_album = "";
         foreach ($data['get_album'] as $album_id) {
             $all_album .= "'" . $album_id->id . "',";

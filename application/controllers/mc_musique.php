@@ -146,10 +146,10 @@ class Mc_musique extends CI_Controller {
         $data['playlists'] = $this->musique_model->get_my_playlist_player($user_id, $type, $name, $id_morceau);
         //var_dump($data['playlists']);
         $data['morceaux_playlist'] = $this->musique_model->get_morceau_by_playlist_user($user_id);
-        if ($id_morceau != null) {
+      /*  if ($id_morceau != null) {
             $info_morceau = $this->musique_model->get_morceau($id_morceau);
             $data['morceau'] = $info_morceau[0]->nom;
-        }
+        }*/
         //$unique_playlist = array_unique($playlist);
         //var_dump($morceaux_playlist);
         $this->load->view('musique/player', $data);

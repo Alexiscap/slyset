@@ -430,6 +430,40 @@ $(document).ready(function(){
             })
         });
     }
+    
+    //affichage des morceaux pop in edition doc
+    $("select[name*='album_doc']").change(function () {
+            var str = "";
+            var id_album = $("select option:selected").attr('class');
+            var dataid = 'id_album=' + id_album;
+            $.ajax({
+                type: "POST",
+                url : base_url +'/pop_in_general/get_morceaux',
+                data: dataid,
+                success: function(datas){
+                    $('.mor').remove();
+                    $(datas).show().insertAfter('select').slideDown('slow');
+                }
+            })
+        });
+        
+
+	
+	    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#preview').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+        $(".photo_up").change(function(){
+        readURL(this);
+    });
 
     if($("body.ajout_partitions").length > 0){
         $("select").change(function () {

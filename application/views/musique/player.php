@@ -56,28 +56,28 @@
             </div>
 
             <div class="content-right">
-
-                <?php // foreach ($playlists[0] as $playlist): 
+                <?php  foreach ($playlists[0] as $playlist): 
                 ?>
                 <!--<ol><?php // echo ucfirst($this->uri->segment(4));  ?> : <?php // echo $playlist->nom  ?>-->
                 <div class="top">
-                    <span class="txt-ecoute">Playlist : <?php // echo $playlist->nom  ?></span>
+                    <span class="txt-ecoute"><?php echo ucfirst($this->uri->segment(4))?>: <?php echo $playlist->nom  ?></span>
                 </div>
 
                 <div class="list-morceaux">
                     <ul>
-                        <?php // foreach ($playlists[1] as $morceaux): ?>
-                        <?php // if ($morceaux->nom == $playlist->nom): ?>
-                        <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Blue_Light.mp3'; ?>">1111<?php // echo $morceaux->title_track  ?></a></li>
-                        <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Luno.mp3'; ?>">2222<?php // echo $morceaux->title_track  ?></a></li>
-                        <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Compliments.mp3'; ?>">3333<?php // echo $morceaux->title_track  ?></a></li>
-                        <?php // endif; ?>
-                        <?php // endforeach; ?>
+                        <?php  foreach ($playlists[1] as $morceaux): 
+                        ?>
+                        <?php  if ($morceaux->nom == $playlist->nom): ?>
+                        <li><a href="#" data-src="<?php echo base_url() .'files/'.$this->uri->segment(3).'/musique/'.str_replace(' ','_',$morceaux->title_album).'/'.$morceaux->filename; ?>"><?php  echo $morceaux->title_track  ?></a></li>
+                       <!-- <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Luno.mp3'; ?>">2222<?php  echo $morceaux->title_track  ?></a></li>
+                        <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Compliments.mp3'; ?>">3333<?php  echo $morceaux->title_track  ?></a></li>
+                        --><?php endif; ?>
+                        <?php  endforeach; ?>
                     </ul>
                 </div>
                 <!--</ol>-->
                 </br>
-                <?php // endforeach; ?>
+                <?php  endforeach; ?>
 
 
                 <span style="float:left;" id="duration"></span><span style="float:right;" id="timeleft"></span>

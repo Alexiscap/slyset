@@ -1,5 +1,9 @@
 <link rel="stylesheet" type="text/css" href="<?php echo css_url('pop_in') ?>" media="screen" />
+<script  src="<?php echo js_url('jquery-1.7.1.min') ?>" media="screen" ></script>
+
 <script  src="<?php echo js_url('combobox') ?>" media="screen" ></script>
+<script  src="<?php echo js_url('slyset') ?>" media="screen" ></script>
+
 
 <div class="pop-in_cent">
 
@@ -58,7 +62,7 @@
                 </div>
             </div>
             <div class="label">
-                <img src="<?php echo img_url('musicien/apercu_photo.png'); ?>" alt="visuel photo" />
+                <img id='preview' src="<?php echo img_url('musicien/apercu_photo.png'); ?>" alt="visuel photo" />
             </div>
             <div class="champs">
                 <?php

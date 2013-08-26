@@ -45,50 +45,51 @@ $loger = $this->session->userdata('logged_in');
       <span class="stats_title">morceaux</span>
     </div>
   </div>
-    <div class="bts_noir_partition">
-                <?php if ($infos_profile->id == $uid) { ?>
+	<div class="bts_noir_partition">
+    	<?php if ($infos_profile->id == $uid) { ?>
 
-	  <div class="bt_noir">
-		<a class="iframe" href="<?php echo base_url('index.php/document/new-lyrics/') ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter des paroles</span><span class="bt_right"></span></a>
-	  </div>
-	  <div class="bt_noir">
-		<a class="iframe" href="<?php echo base_url('index.php/document/new-score/') ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter une partition</span><span class="bt_right"></span></a>
-	  </div>
-	  <?php } ?>
+	  		<div class="bt_noir">
+				<a class="iframe" href="<?php echo base_url('index.php/document/new-lyrics/') ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter des paroles</span><span class="bt_right"></span></a>
+	 	 	</div>
+	  		<div class="bt_noir">
+				<a class="iframe" href="<?php echo base_url('index.php/document/new-score/') ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter une partition</span><span class="bt_right"></span></a>
+	  		</div>
+	  	<?php } ?>
 	</div>
 
-  <div class="content">
-	<h2>Partitions, livrets et paroles de <?php echo $login; ?></h2>
+  	<div class="content">
+		<h2>Partitions, livrets et paroles de <?php echo $login; ?></h2>
  
  
-  <?php 
-  foreach($get_album as $album):
-  ?>
-
- 		<div class="a_la_une_parti">
-	<?php if($album->img_cover!=null){ ?>
-		<img src="<?php echo files($infos_profile->id.'/albums/'.$album->id.'/'.$album->img_cover) ?>"/>
-		<?php }
-		else
-		{ ?>
-				<img src="<?php echo base_url('assets/images/musicien/logo_slyset_partition.png') ?>"/>
-<?php
-		} ?>
-		<div class="infos">
-			<p class="title"><?php echo $album->nom ?></p>
-			<p class="annee_crea"><?php if(isset($album->annee))echo $album->annee ?></p>
-			<?php if($album->livret_path != null){ ?>
-			<p><span>> </span><a class="link_livret" href="<?php echo base_url('files/'.$infos_profile->id.'/documents/'.$album->id.'/'.$album->livret_path) ?>">Voir le livret d'album</a></p>
-			<p><span>> </span><a href="#" class="link_livret">Modifier le livret</a></p>
-			<?php }
-			else {?>
-			<p><span>> </span><a class="iframe link_livret" href="<?php echo base_url('index.php/document/new-livret/') ?>">Ajouter le livret</a></p>
-			<?php } ?>
-		</div>
-</div>
+  		<?php 
+  		foreach($get_album as $album):
+		?>
+ 			<div class="a_la_une_parti">
+				<?php if($album->img_cover != null){ ?>
+					<img src="<?php echo files($infos_profile->id.'/albums/'.str_replace(' ','_',$album->nom).'/'.$album->img_cover) ?>"/>
+				<?php }
+			
+				else
+				{ ?>
+					<img src="<?php echo base_url('assets/images/musicien/logo_slyset_partition.png') ?>"/>
+				<?php } ?>
+			
+				<div class="infos">
+					<p class="title"><?php echo $album->nom ?></p>
+					<p class="annee_crea"><?php if(isset($album->annee))echo $album->annee ?></p>
+					<?php if($album->livret_path != null){ ?>
+						<p><span>> </span><a class="link_livret" href="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$album->nom).'/livret/'.$album->livret_path) ?>">Voir le livret d'album</a></p>
+						<p><span>> </span><a href="#" class="link_livret">Modifier le livret</a></p>
+					<?php }
+					else {?>
+						<p><span>> </span><a class="iframe link_livret" href="<?php echo base_url('index.php/document/new-livret/') ?>">Ajouter le livret</a></p>
+					<?php } ?>
+				</div>
+			</div>
+			
 			<div class="top_partition">
 				<div>
-					<a href="#">
+					<a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$album->nom); ?>" class="open_player">
 						<img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
 						<p class> Ecouter l'album</p>
 					</a>
@@ -96,125 +97,109 @@ $loger = $this->session->userdata('logged_in');
 			
 				<div class="liste_partitions">
 					<div class="en_tete">
-						<table>
-				
+						<table>				
 							<tbody>
                       
 								<tr class="tab-head odd row-color-2">
-                               <!-- <th class="article-checkbox checkbox-style2">
-                                	<input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all">
+                               		<!-- <th class="article-checkbox checkbox-style2">
+                                		<input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all">
                                 		<label for="article-all">	
                                 		</label>
-                                		</th>-->
-                                <th class="article-title">Titre  de la chanson<span id="titre" class="filter filter-bottom"></span></th>
-                                <th class="article-artiste">Partition<span id="titre" class="filter filter-bottom"></span></th>
-                                <th class="article-type">Paroles<span id="titre" class="filter filter-bottom"></span></th>
-                              <!--  <th class="article-prix">Prix<span id="created" class="filter filter-bottom"></span></th> -->
-                            </tr>
-                            	 <?php 
-  									foreach($all_morceau as $morceau):
-		
-										if($album->id == $morceau->albums_id): 
-			
+                                	</th>-->
+                                	<th class="article-title">Titre  de la chanson<span id="titre" class="filter filter-bottom"></span></th>
+                                	<th class="article-artiste">Partition<span id="titre" class="filter filter-bottom"></span></th>
+                                	<th class="article-type">Paroles<span id="titre" class="filter filter-bottom"></span></th>
+                              		<!--  <th class="article-prix">Prix<span id="created" class="filter filter-bottom"></span></th> -->
+                            	</tr>
+                            	<?php 
+  								foreach($all_morceau as $morceau):
+									if($album->id == $morceau->albums_id): 
 									?>
 										<tr>
 											<td class="le_titre" >
-							<p>		
-								<?php 	echo $morceau->nom;?>
-							</p>
-						</td>
-						<?php
-						$b = 0;
+												<p>		
+													<?php 	echo $morceau->nom;?>
+												</p>
+											</td>
+											<?php
+											$b = 0;
 
 				  							foreach($all_doc_partition as $partition):
-			
 												if($morceau->id == $partition->morceau_id)
 												{ 
 													$b++;
 													if($partition->prix == null):
 													
-									?>
-													<td class="partitions"><a href="<?php echo files($infos_profile->id.'/documents/'.$partition->album_id.'/'.$partition->path) ?>">Voir</a>
-																								<?php endif;
+													?>
+														<td class="partitions"><a href="<?php echo files($infos_profile->id.'/documents/'.$partition->album_id.'/'.$partition->path) ?>">Voir</a>
+													<?php endif;
 													if($partition->prix != null):
 														?>
-																	<td class="partitions" id="<?php echo $partition->prix ?>"><a id="<?php echo $partition->document_id ?>" class="mise-panier" href="javascript:void(0)">Acheter  (<?php echo $partition->prix ?> €)</a>
-<?php endif; ?>
-														<div class="miniat_titre">
-															<a href="#" class="edit"><span>edit</span></a>
-														</div>
-													</td>
-						
-						
-						<?php
+														<td class="partitions" id="<?php echo $partition->prix ?>"><a id="<?php echo $partition->document_id ?>" class="mise-panier" href="javascript:void(0)">Acheter  (<?php echo $partition->prix ?> €)</a>
+<?php 												endif; ?>
+													<div class="miniat_titre">
+														<a href="#" class="edit"><span>edit</span></a>
+													</div>
+												</td>		
+												<?php
 												}
 											endforeach;
 											if($b == 0)
-												{
+											{
 	?>
-													<td class="partitions"><a href="#" class="parti_name"> - </a>
-														<div class="miniat_titre">
-															<a href="#" class="edit"><span> - </span></a>
-														</div>
-													</td>
-								<?php				}
-						?>	
+												<td class="partitions"><a href="#" class="parti_name"> - </a>
+													<div class="miniat_titre">
+														<a href="#" class="edit"><span> - </span></a>
+													</div>
+												</td>
+						<?php				}
 						
-						
-											<?php
 											$a = 0;
 
 				  							foreach($all_doc_paroles as $paroles):
-			
 												if($morceau->id == $paroles->morceau_id)
 												{ 
 													$a++;
 													if($paroles->prix == null):
 									?>
-													<td class="paroles"><a id="mise-panier" class="mise-panier-no" href="<?php echo files($infos_profile->id.'/documents/'.$paroles->album_id.'/'.$paroles->path) ?>">Voir</a>
-														<?php endif;
+														<td class="paroles"><a id="mise-panier" class="mise-panier-no" href="<?php echo files($infos_profile->id.'/documents/'.$paroles->album_id.'/'.$paroles->path) ?>">Voir</a>
+													<?php endif;
 													if($paroles->prix != null):
-														?>
-															<td class="paroles" id="<?php echo $paroles->prix ?>"><a id="<?php echo $paroles->document_id ?>" class='mise-panier' href="javascript:void(0)">Acheter (<?php echo $paroles->prix ?> €)</a>
-<?php endif; ?>
+													?>
+														<td class="paroles" id="<?php echo $paroles->prix ?>"><a id="<?php echo $paroles->document_id ?>" class='mise-panier' href="javascript:void(0)">Acheter (<?php echo $paroles->prix ?> €)</a>
+													<?php endif; ?>
 														<div class="miniat_titre">
 															<a href="#" class="edit"><span>edit</span></a>
 														</div>
-													</td>
-						
-						
-						<?php
+													</td>	
+												<?php
 												}
 											endforeach;
 											if($a == 0)
-												{
-	?>
-													<td class="paroles"><a href="#" class="mise-panier-no" > - </a>
-														<div class="miniat_titre">
-															<a href="#" class="edit"><span> - </span></a>
-														</div>
-													</td>
-								<?php				}
-								
-						?>	
-				<?php	
-						endif;	
-		endforeach;
-					
+											{
+											?>
+												<td class="paroles"><a href="#" class="mise-panier-no" > - </a>
+													<div class="miniat_titre">
+														<a href="#" class="edit"><span> - </span></a>
+													</div>
+												</td>
+						<?php				}
 
-				?>
+										endif;	
+									endforeach;
+									?>
 			
-	</tr>
-	</tbody>
-	</table>
-			</div>
-						</div>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 
-			<div class="titres">	
+				<div class="titres">	
 			
 					
 		
- 			 </div>
+ 			 	</div>
  			 </div>
 		<hr />
 		
