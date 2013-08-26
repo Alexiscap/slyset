@@ -82,7 +82,7 @@
             echo form_input('login', $profile->login,'placeholder="Votre nom d\'utilisateur"');
             echo form_error('login', '<span class="error-form">', '</span>');
             
-            echo form_label('Prenom', 'prenom', $label_attributes);
+            echo form_label('Prenom', 'prénom', $label_attributes);
             echo form_input('prenom', $profile->prenom,'placeholder="Votre prénom"');
             echo form_error('prenom', '<span class="error-form">', '</span>');
 
@@ -113,7 +113,7 @@
             echo '<hr>';
 
             $array_ecoute = explode(', ', $profile->style_ecoute);
-            echo form_label('Genre Musicaux','stylemusicecoute[]',$label_attributes);
+            echo form_label('Genres musicaux','stylemusicecoute[]',$label_attributes);
             echo '<div class="checkbox-style">';
                 echo form_checkbox('stylemusicecoute[]', 'pop', set_checkbox('stylemusicecoute', 'pop', $bool = (in_array("pop", $array_ecoute)) ? true : false), 'id="checkecoutepop"');
                 echo form_label('Pop','checkecoutepop');
