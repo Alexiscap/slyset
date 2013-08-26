@@ -257,7 +257,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .content .photo .bord_photo p{ margin:0 10px 0; display:inline; font-size:10px; color:#878d95; }
 .content .photo .bord_photo a:hover{ text-decoration:none; }
 .content .photo .nom_photo{ width:138px; text-align:left; word-wrap : break-word }
-.content .photo .bord_photo img{ margin:7px 5px -1px 30px; display:inline; }
+.content .photo .bord_photo img{ margin:8px 0px -1px 40px; display:inline; }
 .nolike img {margin:0 5px 0 15px; display:inline; }
 .content .photo .bord_photo .nb_like{ margin:0; }
 .content .photo .comm,.content .photo .comment-form,.content .photo .comment-form-album,.content .photo .comment-form-video,.content .photo .comment-form-alb-wall{ width:170px; margin:0 -15px; background:#f2f0f0; border-bottom:1px solid #cdcdcd; border-top:none; min-height:34px; }
