@@ -91,15 +91,9 @@ class User extends CI_Controller {
         $config['remove_space'] = TRUE;
         $config['overwrite'] = TRUE;
         $this->load->library('upload', $config);
+        $this->load->library('image_lib');
 
         $data = array('fb_data' => $fb_data);
-//        print_r($fb_data);
-        //echo '<pre>'.print_r($fb_data).'</pre>';
-//        $this->form_validation->set_rules('nom', 'Nom', 'trim|required|xss_clean');
-//        $this->form_validation->set_rules('prenom', 'Prénom', 'trim|required|xss_clean');
-//        $this->form_validation->set_rules('genre', 'Genre', 'trim|required|xss_clean');
-//        $this->form_validation->set_rules('ville', 'Ville', 'trim|required|xss_clean');
-//        $this->form_validation->set_rules('pays', 'Nationalité', 'trim|required|xss_clean');
 
         $this->form_validation->set_rules('stylemusicecoute', 'Style de musique écouté', 'required');
         $this->form_validation->set_rules('submit', 'Validation du compte', 'callback_check_fb_register');
@@ -187,6 +181,13 @@ class User extends CI_Controller {
                     break;
             }
 
+//            print_r($_FILES);
+//            print_r($_SERVER);
+//            print_r($_POST);
+            
+//            print_r(getimagesize($_FILES['cover']['tmp_name']));
+//            print_r(getimagesize($_FILES['thumb']['tmp_name']));
+            
             $this->user_model->insert_user($facebook_id, $login, $mail, $password, $type, $nom, $prenom, $naissance, $genre, $ville, $pays, $stylemusicecoute, $stylemusicjoue, $stylemusicinstru, $cover, $thumb);
 
             redirect('login', 'refresh');

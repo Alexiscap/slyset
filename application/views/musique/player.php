@@ -56,8 +56,8 @@
             </div>
 
             <div class="content-right">
-                <?php  foreach ($playlists[0] as $playlist): 
-                ?>
+       <?php  foreach ($playlists[0] as $playlist): 
+               ?>
                 <!--<ol><?php // echo ucfirst($this->uri->segment(4));  ?> : <?php // echo $playlist->nom  ?>-->
                 <div class="top">
                     <span class="txt-ecoute"><?php echo ucfirst($this->uri->segment(4))?>: <?php echo $playlist->nom  ?></span>

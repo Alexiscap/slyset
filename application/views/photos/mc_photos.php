@@ -215,7 +215,7 @@ $loger = $this->session->userdata('logged_in');
                     endforeach;
                    	for ($i = $a; $i < 4; $i++) {
                    	?>
-                    	<a href="#" class="empty_photo_alb" ></a>
+                    	<a href="#" class="empty_photo_alb" ><img src="<?php echo img_url('common/empty_photo_alb.png'); ?>" /></a>
 					<?php
                    	}
                     ?>
