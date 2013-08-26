@@ -832,7 +832,7 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 .content .bt_cadis{float:right;width:93px;height:30px;background:url('../images/common/bt_cadis.png');border:none;color:white;padding:0 0 0 25px;font-weight:bold;font-size:14px;}
 .content .bt_playlist{float:right;width:145px;height:30px;background:url('../images/common/bt_playlist.png');border:none;color:white;padding:0 0 0 20px;font-weight:bold;font-size:14px;margin:0 10px 0 0;}
 
-.content .tout_titre #articles-tab{ margin:20px auto; float:left; clear:both; }
+.content .tout_titre #articles-tab{ margin:0 auto; float:left; clear:both; }
 .content .tout_titre #articles-tab table{ margin:0 0 20px 0; border:1px solid #cccfd1; -moz-box-shadow:0px 2px 3px 0px #999999;
 -webkit-box-shadow:0px 2px 3px 0px #999999; -o-box-shadow:0px 2px 3px 0px #999999; box-shadow:0px 2px 3px 0px #999999; filter:progid:DXImageTransform.Microsoft.Shadow(color=#999999, Direction=180, Strength=3);}
 .content .tout_titre #articles-tab tr{ }
@@ -865,7 +865,7 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 .content .tout_titre{margin:20px 20px 20px;}
 .content .tout_titre p{display:inline;margin:0;font-weight:normal;}
 .content .tout_titre img{display:inline;width:12px;margin:0 0 0 5px;}
-.content .tout_titre a{color:#888d95;font-size:12px;text-decoration:none;}
+.content .tout_titre a{color:#888d95;font-size:12px;text-decoration:none;float: left;margin-top: 15px;}
 
 .content .tout_titre #articles-tab .miniat_titre {display:none;}
 .content .tout_titre #articles-tab .miniat_titre a{width:17px;height:13px;display:inline;margin:4px 2px 0 0;display:block;float:right;}
@@ -962,7 +962,7 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 .content .top_partition #articles-tab .miniat_titre .cadis:hover{background-position:-76px -23px;}
 
 .content .bt_cadis{float:right;width:93px;height:30px;background:url('../images/common/bt_cadis.png');border:none;color:white;padding:0 0 0 22px;font-weight:bold;font-size:14px;}
-.content .bt_playlist{float:right;width:145px;height:30px;background:url('../images/common/bt_playlist.png');border:none;color:white;padding:0 0 0 17px;font-weight:bold;font-size:13px;margin:0 10px 0 0;}
+.content .bt_playlist{float:right;width:145px;height:30px;background:url('../images/common/bt_playlist.png');border:none;color:white;padding:0 0 0 17px;font-weight:bold;font-size:13px;margin:0 10px 5px 0;}
 
 .content .toutes_partitions{float:left;}
 .content .toutes_partitions a{color:#888d95;font-size:12px;text-decoration:none;}
