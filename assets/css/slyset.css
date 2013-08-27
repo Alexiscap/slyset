@@ -20,6 +20,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 #breadcrumbs li:after{ margin:0px 6px; width:9px; height:23px; display:inline-block; content:''; vertical-align:middle; background:url("../images/common/breadcrumbs_arrow.png") no-repeat; }
 .content{ margin:10px 0 10px 0; padding:0; width:541px; position:relative; background:#e6e6e6; float:left; clear:both; }
 .bts_noir{float:left; margin-left:15px;}
+.bts_noir_unique{float: left;margin-left: 190px;}
 .bts_noir_partition{float:left; margin-left:47px;}
 .bts_noir_photo{float:left; margin-left:68px;}
 .bt_noir_concert{float: right;margin-right: 230px;}
