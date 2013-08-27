@@ -750,11 +750,11 @@ input[type="checkbox"]:checked + label span{ background:url('../images/common/sp
 #subscription-upload label.last, #subscription-upload .upload_photo_name_file.last{ float:right; }
 #subscription-upload .container-cover + label{ margin:-15px 0 0.4em 0; font-weight:normal; float:right; clear:none; }
 .upload_images{ display:block; width:409px; height:150px; background:url('../images/subscription/upload_images2.png') no-repeat; float:left; clear:both; }
-.upload-file-container{ display:block; width:161px; height:29px; float:left; cursor:pointer; position:relative; }
-.upload-file-container:hover{ background-position:0 -29px; cursor:pointer; }
-.upload-file-container{ background:url('../images/subscription/sprite_button_file_cover.png') 0 0 no-repeat; clear:both; }
+.upload-file-container{ display:block; width:201px; height:30px; float:left; cursor:pointer; position:relative; }
+.upload-file-container:hover{ background-position:0 -39px; cursor:pointer; }
+.upload-file-container{ background:url('../images/subscription/sprite_button_file_entete.png') 0 -5px no-repeat; clear:both; }
 .upload-file-container.container-thumb{ margin:-20px 10px 0 0; width:147px; background:url('../images/subscription/sprite_button_file_thumb.png') 0 -28px no-repeat; float:right; clear:both; }
-input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:alpha(opacity=0); opacity:0; position:absolute; left:0; top:0; cursor:pointer; }
+input[type="file"]{ display:block; width:201px; height:30px; float:left; filter:alpha(opacity=0); opacity:0; position:absolute; left:0; top:0; cursor:default; }
 /* --------- FIN  D'INSCRIPTION'  --------- */
 
 
