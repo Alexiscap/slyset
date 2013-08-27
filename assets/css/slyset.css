@@ -415,7 +415,7 @@ cursor : pointer;}
 .pop-in_ta .content-pi p {float:right;margin:10px 30px 20px 0;}
 .pop-in_ta .content-pi .total {color:#666666;font-weight:bold;font-size:14px;}
 .pop-in_ta .content-pi p:last-child {color:#3f3f3f;font-weight:bold;font-size:14px;}
-.pop-in_ta .content-pi input[type=submit]{width:148px;margin:0 30px 5px;padding:0 5px;background:url("../images/common/bt_paiment.png") no-repeat;float:right;color:#ffffff;font-weight:bold;font-size:15px;}
+.pop-in_ta .content-pi input[type=submit]{width:auto;margin:0 30px 5px;padding:0 5px;float:right;color:#ffffff;font-weight:bold;font-size:15px;background: #ef7363;border: 1px outset #dd4f3c;}
 
 .pop-in_ta .content-pi .moyen_pmt {margin:0 0 50px 0;height:140px;}
 .pop-in_ta .content-pi .moyen_pmt img{width:210px;margin:0 0 0 45px;float:left;}
@@ -1038,11 +1038,11 @@ input[type="file"]{ display:block; width:201px; height:30px; float:left; filter:
 #any-background-personnaliser .upload-file-container.container-background{ margin:2px 0 0 0; float:left; clear:none; }
 .personnaliser .upload_photo_name_file{ margin:0 0 0 1px; line-height:22px; }
 .personnaliser span.error-form, .personnaliser span.error-form p{ margin:3px 0 10px 0; width:325px; float:right; }
-#any-background-personnaliser input[type="submit"]{ margin:0 0 10px 175px; padding:0 14px; height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; text-align:center; outline:none; color:#FFFFFF; background:url('../images/common/bt-rouge.png') no-repeat transparent; float:left; }
-#any-background-personnaliser input[type="submit"]:hover{font-weight:bold;}
-#any-background-personnaliser a.reset_theme, #any-background-reglages a.delete_account{ margin:0 0 10px 50px; padding:0 14px; height:30px; line-height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; text-align:center; text-decoration:none; outline:none; color:#FFFFFF; background:url('../images/common/bt-rouge2.png') no-repeat transparent; float:left; }
+#any-background-personnaliser input[type="submit"]{ margin:0 0 10px 175px; padding:0 14px; height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; text-align:center; outline:none; color:#FFFFFF; float:left; background: #ef7363;border: 1px outset #dd4f3c;}
+/*#any-background-personnaliser input[type="submit"]:hover{font-weight:bold;}*/
+#any-background-personnaliser a.reset_theme, #any-background-reglages a.delete_account{ margin:0 0 10px 50px; padding:0 14px; height:30px; line-height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; text-align:center; text-decoration:none; outline:none; color:#FFFFFF; float:left;background: #ef7363;border: 1px outset #dd4f3c; }
 #any-background-personnaliser a.reset_theme:hover, #any-background-reglages a.delete_account{ font-weight:bold;}
-#any-background-reglages a.delete_account{ margin:0 0 10px 21px; background:url('../images/common/bt-rouge3.png') no-repeat transparent;font-weight:normal;}
+#any-background-reglages a.delete_account{ margin:0 0 10px 21px;font-weight:normal;background: #ef7363;border: 1px outset #dd4f3c;}
 
 .detail_perso {font-size:14px;color:#888d95;font-weight:normal;margin:0 20px 0 20px;}
 .categ_perso {margin:20px 0;}
@@ -1096,7 +1096,7 @@ p.detail_perso, p.detail_reglages { margin:0 0 20px 0; font-family:"Trebuchet MS
 #any-background-reglages .checkbox-style{ margin:0 0 20px 20px; width:306px; clear:none; }
 #any-background-reglages input[type="text"], #any-background-reglages input[type="password"]{ margin:8px 0 8px 20px; padding:3px 10px; width:285px; outline-color:rgba(42, 179, 149, 0.6);-moz-outline-color:rgba(42, 179, 149, 0.6); color:rgb(100, 100, 100); float:left; }
 #any-background-reglages textarea{ margin:8px 0 8px 20px; padding:3px 10px; width:287px; max-width:287px; height:75px; max-height:300px; font-family:"Trebuchet MS", Arial, sans-serif; word-break:break-word; outline-color:rgba(42, 179, 149, 0.6); color:rgb(100, 100, 100); float:left;font-size:13px; }
-#any-background-reglages input[type="submit"]{ margin:0 0 10px 170px; padding:0 14px; height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px;text-align:center; outline:none; color:#FFFFFF; background:url('../images/common/bt-rouge.png') no-repeat transparent; float:left; }
+#any-background-reglages input[type="submit"]{ margin:0 0 10px 170px; padding:0 14px; height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px;text-align:center; outline:none; color:#FFFFFF;float:left;background: #ef7363;border: 1px outset #dd4f3c; }
 #any-background-reglages span.error-form, #any-background-reglages span.error-form p{ margin:3px 0 10px 0; width:250px; float:left; }
 #any-background-reglages .password + span.error-form, #any-background-reglages .password + span.error-form p{ margin:3px 0 10px 170px; width:308px; float:left; }
 
