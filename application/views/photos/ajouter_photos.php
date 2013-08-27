@@ -57,12 +57,12 @@
                     </ul>
 
                     <div id='test_three'>
-                        <input  id="create" type="text" value="" autocomplete="off" placeholder="creer un nouvel album"/><div id="create_ok"  onclick="selectalbumcreate()"><img src="<?php echo img_url('common/creer_album.png'); ?>" alt="ok" /></div>
+                        <input  id="create" type="text" value="" autocomplete="off" placeholder="Cr&eacute;er un nouvel album"/><div id="create_ok"  onclick="selectalbumcreate()"><img src="<?php echo img_url('common/creer_album.png'); ?>" alt="ok" /></div>
                     </div>
                 </div>
             </div>
             <div class="label">
-                <img id='preview' src="<?php echo img_url('musicien/apercu_photo.png'); ?>" alt="visuel photo" />
+                <img id='preview' src="<?php echo img_url('common/apercu_add_photo.png'); ?>" alt="visuel photo" />
             </div>
             <div class="champs">
                 <?php
