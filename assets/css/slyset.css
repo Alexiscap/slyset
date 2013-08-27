@@ -62,7 +62,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .actus_post_links a:hover, .actus_post_links a:active, .actus_post_links a.active{ height:20px; display:inline-block; text-decoration:none; background:#cccccc; }
 .actus_post textarea{ margin:2px 17px 4px 17px; padding:2px 5px; width:494px; height:54px; resize:none; font-family:"Trebuchet MS", Arial, sans-serif; color:#535353; float:left; clear:both;font-size:12px; }
 .actus_post #comments-link-video input[type="text"]{ margin:0 0 0 17px; padding:0 5px; width:400px; height:26px; font-size:12px; font-style:italic; color:#737578; float:left; clear:both; }
-.actus_post input[type="submit"]{ margin:0 16px 0 0; width:62px; height:32px; border:none; font-size:11px; color:#ffffff; background:url("../images/common/btn_validate.png") no-repeat transparent; float:right; clear:none; }
+.actus_post input[type="submit"]{ margin:0 16px 0 0; height:32px; font-size:11px; color:#ffffff; float:right; clear:none;background: #3f3f3f;border: 1px solid #000000;padding: 0 10px;}
 .actus_post input[type="submit"]:hover{ cursor:pointer; }
 .actus_post #comments-msg input[type="submit"]{ clear:both;padding-bottom:3px;}
 .actus_post span.error-form{ margin:5px 0 5px 17px; }
