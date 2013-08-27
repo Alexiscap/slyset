@@ -1241,7 +1241,7 @@ p.detail_perso, p.detail_reglages { margin:0 0 20px 0; font-family:"Trebuchet MS
 .content .historique {margin-top:15px;}
 .content .panier .nom_pl {float: left;font-size:18px;font-weight:bold;color:#3f3f3f;margin:0;}
 .content .historique .nom_pl {float: left;font-size:18px;font-weight:bold;color:#3f3f3f;margin:0;}
-.content .historique .detail_pl,.content .panier .detail_pl {float: right;font-size:12px;color:#888d95;margin:5px 22px 10px -15px;}
+.content .historique .detail_pl,.content .panier .detail_pl {float: right;font-size:12px;color:#888d95;margin:5px 0px 10px 7px;}
 .content .historique span.detail_pl {padding-top:3px;}
 .content .historique hr {width:455px;}
 .content .panier hr {width:455px;}
