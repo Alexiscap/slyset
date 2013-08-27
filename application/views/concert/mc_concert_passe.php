@@ -48,17 +48,17 @@ $loger = $this->session->userdata('logged_in');
             <span class="stats_title">morceaux</span>
         </div>
     </div>
-    <div class="bt_ajout_concert">
-        <?php $uid = $session_id;
-        if ($infos_profile->id == $uid) {
-            ?>
-            <a class="iframe" href="<?php echo site_url('concert/ajouter/' . $infos_profile->id) ?>"> <img href="" src="<?php echo img_url('musicien/ajout_concert.png'); ?>" alt="ajout concert"/></a>
-        <?php
-        } else {
-            // y mettre les bouton des melomanes : suivre ect
-        }
-        ?>
-    </div>
+
+	<div class="bts_noir_unique">
+		<?php if ($infos_profile->id == $uid) { ?>
+			<div class="bt_noir">
+				<a class="iframe" href="<?php echo site_url('concert/ajouter/' . $infos_profile->id) ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter un concert</span><span class="bt_right"></span></a>
+			</div>
+		<?php } 
+			else {
+				// y mettre les bouton des melomanes : suivre ect
+			} ?>
+	 </div>
 
 
   <div class="content">
