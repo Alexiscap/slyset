@@ -13,16 +13,17 @@
 			<div class="label">
 				<label>Votre partition</label>
 			</div>
-			<div class="champs">
+	<div class="champs">
                 <?php
                 $data = array(
                     'name' => 'partition_up',
                     'type' => 'file',
-                    'class' => 'photo_up',
+                    'class' => 'partition_up',
                     'value' => 'Choisir une partition'
                 );
-                ?><div class="bt_noir">
+                ?><div class="bt_noir bt_partition_up">
                 <?php echo form_upload($data); ?>
+				<span class="upload_photo">aucun fichier choisi</span>
                 </div>
             </div>
 			<div class="label">
