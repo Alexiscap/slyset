@@ -45,7 +45,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
             <a href="<?php echo site_url('my-concert/' . $infos_profile->id) ?>"><div class="avenir">&Aacute; venir</div></a>
             <a href="<?php echo site_url('my-concert/archive/' . $infos_profile->id) ?>"><div class="cpasse actif">Concerts passés</div></a>
    </div>
-    <h2>Mes concerts passés </h2>
+    <h1>Mes concerts passés</h1>
    
      <!-- Boucle : tous les concerts pour un artiste -->
    	  <?php 

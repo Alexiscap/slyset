@@ -7,6 +7,8 @@
 ?>
 
 <div id="contentAll">
+    <h1 class="hd">Votre fil d'actualité</h1>
+    
     <div id="breadcrumbs">
         <ul>
             <li><a href="<?php echo site_url('home/' . $uid); ?>">Accueil</a></li>

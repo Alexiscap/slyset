@@ -67,7 +67,7 @@ $loger = $this->session->userdata('logged_in');
             <a href="<?php echo site_url('concert/archive/' . $infos_profile->id) ?>"><div class="cpasse">Concerts passés</div></a>
 		</div>
    
-   	 	<h2>Les concerts de <?php echo $infos_profile->login; ?> &agrave; venir</h2>
+   	 	<h1>Les concerts de <?php echo $infos_profile->login; ?> &agrave; venir</h1>
    
      	<!-- Boucle : tous les concerts pour un artiste -->
    	  	<?php 

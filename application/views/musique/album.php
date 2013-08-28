@@ -101,20 +101,11 @@ $loger = $this->session->userdata('logged_in');
             </a>
         </div>
     <?php endif; ?>
-        <!--
-        <div class="bt_noir">
-            <a class="iframe-upload" href="<?php echo site_url() . '/pop_in_general/upload_musique/' . $session_id; ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter un morceau</span><span class="bt_right"></span></a>
-        </div>
-        -->
     </div>
 
     <div class="content">
-        <h2> <?php echo $this_album[0]->nom;  ?> -   <?php echo $login; ?></h2>
+        <h1><?php echo $this_album[0]->nom;  ?> - <?php echo $login; ?></h1>
 
-        <!--    <div class="open_player" style="float:left; clear:both; width:100%;">
-                <a href="<?php echo site_url() . '/mc_musique/player/' . $session_id; ?>">OPEN FRAME</a>
-            </div>-->
-		
 		<?php
 		if(empty($this_album)!=1):
 		?>
@@ -137,54 +128,43 @@ $loger = $this->session->userdata('logged_in');
             <div>
                 <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$this_album[0]->nom); ?>" class="open_player">
                     <img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
-					<span> Ecouter l'album</span>
+					<span>Ecouter l'album</span>
 				</a>
 				 <a href="#">
                     <img src="<?php echo img_url('common/cadis.png'); ?>"/>
-                    <span class="panier_alb" id="<?php echo $this_album[0]->id;?>"> Acheter l'album</span>
+                    <span class="panier_alb" id="<?php echo $this_album[0]->id;?>">Acheter l'album</span>
                 </a>
             </div>
             <div id="articles-tab">
-                <form action="http://127.0.0.1/slyset/index.php/admin_articles/delete_multi_article" method="post" accept-charset="utf-8">          
-                    <table>
-                        <tbody>
-                            <tr class="tab-head odd row-color-2">
+                <form action="<?php echo site_url('admin_articles/delete_multi_article'); ?>" method="post" accept-charset="utf-8">          
+                    <table id="tablesorter-cb">
+                        <thead>
+                            <tr class="tab-head">
                                 <th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
-                                <th class="article-title">Titre de la chanson<span id="titre" class="filter filter-bottom"></span></th>
-                                <th class="article-date">Durée<span id="created" class="filter filter-bottom"></span></th>
+                                <th class="article-title">Titre de la chanson</th>
+                                <th class="article-date">Durée</th>
                             </tr>
+                        </thead>
+                        <tbody>
                             <?php foreach ($this_album_morceau as $morceau):?>
-                            <tr class="even row-color-<?php echo $morceau->nom; ?>">
+                            <tr>
                                 <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $morceau->nom; ?>" id="article-<?php echo $morceau->nom; ?>" class="checkbox-article"><label for="article-<?php echo $morceau->nom; ?>"></label></td>
-                                <td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id=''";>
-                                	<a href="<?php echo site_url().'/mc_musique/player/'.$this->session->userdata('uid').'/album/'.$this_album[0]->nom.'/'.$morceau->id; ?>" class="open_player">
+                                <td class="article-title">
+                                	<a href="<?php echo site_url('mc_musique/player/'.$this->session->userdata('uid').'/album/'.$this_album[0]->nom.'/'.$morceau->id); ?>" class="open_player">
 
                                 		<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
                                 	</a>
-                                    <p class="<?php echo $morceau->id; ?> "><?php echo $morceau->nom; ?> </p>
+                                    <p class="<?php echo $morceau->id; ?>"><?php echo $morceau->nom; ?></p>
                                     <div class="miniat_titre">
                                         <a href="#" class="add"><span>add</span></a>
                                         <a href="#" class="edit"><span>edit</span></a>
                                         <a href="#" class="coeur"><span>coeur</span></a>
-                                        <a href="#" class="cam"><span>cam</span></a>
+                                        <!--<a href="#" class="cam"><span>cam</span></a>-->
                                     </div>
                                 </td>
-                                <td class="article-date"><?php echo substr($morceau->duree,10,9); ?></td>
+                                <td class="article-date"><?php echo substr($morceau->duree,0,5); ?></td>
                             </tr>
                             <?php endforeach;?>
-                          <!--  <tr class="even row-color-2">
-                                <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="19" id="article-19" class="checkbox-article"><label for="article-19"></label></td>
-                                <td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id=''";><a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
-                                    <p> Rainy Day Women </p>
-                                    <div class="miniat_titre">
-                                        <a href="#" class="add"><span>add</span></a>
-                                        <a href="#" class="edit"><span>edit</span></a>
-                                        <a href="#" class="coeur"><span>coeur</span></a>
-                                        <a href="#" class="cam"><span>cam</span></a>
-                                    </div>
-                                </td>
-                                <td class="article-date">4:19</td>
-                            </tr>-->
                         </tbody>
                     </table>
                     <input type="button" value="Acheter" class="bt_cadis unealb">

@@ -29,6 +29,8 @@
     echo '<div class="ico-placeholder password"></div>';
     echo form_error('password', '<span class="error-form">', '</span>');
 
+    echo anchor('login/forgot', 'Mot de passe oublié ?', array('class' => 'forgot_password'));
+    
     echo form_submit('submit','Connexion');
     
     echo form_close();

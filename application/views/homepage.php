@@ -7,6 +7,8 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 ?>
 
 <div id="contentAll">
+    <h1 class="hd">Slyset : la musique au centre des esprits</h1>
+    
     <script>
   
         var events = [ <?php echo $all_date_calendar ?>

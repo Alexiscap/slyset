@@ -11,7 +11,7 @@ $session_id = $this->session->userdata('uid');
     </div>
 
     <div class="content_static">
-        <h2 class="page_static">FAQ : la foire aux questions</h2>
+        <h1 class="page_static">FAQ : la foire aux questions</h1>
         
         <div class="menu_faq">
             <div class="left">

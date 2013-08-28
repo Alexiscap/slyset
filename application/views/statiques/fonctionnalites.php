@@ -11,7 +11,7 @@ $session_id = $this->session->userdata('uid');
     </div>
 
     <div class="content_static">
-        <h2 class="page_static">Fonctionnalités</h2>
+        <h1 class="page_static">Fonctionnalités</h1>
         
         <h3 class="titre_static">→ Créez vos playlists</h3>
         <p class="txt_static">

@@ -152,7 +152,7 @@
 
                 <?php 
                     $url = $message->video;
-                    $url_preg = preg_replace('#http://www.youtube.com/watch\?v=(.+)+#i', '$1', $url);
+                    $url_preg = preg_replace('#https?://www.youtube.com/watch\?v=(.+)+#i', '$1', $url);
                 ?>
 
                 <iframe width="455" height="300" src="http://www.youtube.com/embed/<?php echo $url_preg; ?>" frameborder="0" allowfullscreen></iframe>

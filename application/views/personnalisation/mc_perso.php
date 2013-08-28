@@ -39,7 +39,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
     </div>
 
     <div class="content">
-        <h2>Personnaliser votre page musicien</h2>
+        <h1>Personnaliser votre page musicien</h1>
         
         <p class="detail_perso">Personnalisez l’affichage de votre page musicien. Slyset vous propose différents thèmes préconçus mais vous pouvez également créer le votre.</p>
   

@@ -21,7 +21,7 @@ $feedback = $this->session->userdata('flash:old:feedback');
     <?php endif; ?>
     
     <div class="content_static contact">
-        <h2 class="page_static">Nous contacter</h2>
+        <h1 class="page_static">Nous contacter</h1>
         
         <p class="txt_static">
             Vous avez une question ? Vous rencontrez un problème ? N’hésitez pas à contacter l’équipe de Slyset. Nous vous recommandons de vérifier votre email d'envoi dans le formulaire afin de vous assurer d'avoir une réponse dans les 48 heures (jours ouvrés et hors fériés). 

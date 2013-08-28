@@ -11,7 +11,7 @@ $session_id = $this->session->userdata('uid');
     </div>
 
     <div class="content_static">
-        <h2 class="page_static">Qui sommes-nous ?</h2>
+        <h1 class="page_static">Qui sommes-nous ?</h1>
         
         <p class="txt_static">
             Le monde de la musique est sous les projecteurs depuis bien longtemps. Les ayants droit sont entrés en conflit direct avec les internautes et ont pour bras armé l’HADOPI.

@@ -39,7 +39,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
   </div>
 
   <div class="content">
-	<h2>Statistiques</h2>
+	<h1>Statistiques</h1>
 	<div class="stats_carre">
 		<div class="abonnes"><span>&nbsp;489</span></div>
 		<div class="visites"><span>5128</span></div>

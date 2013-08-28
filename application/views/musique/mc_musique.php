@@ -4,11 +4,11 @@ $uid = (empty($session_id)) ? '' : $session_id;
 $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
 $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
 $loger = $this->session->userdata('logged_in');
-
-
 ?>
 
 <div id="contentAll">
+    <?php print_r($all_morceau_artiste); ?>
+    
     <div id="breadcrumbs">
         <ul>
             <li><a href="<?php echo site_url('home/' . $uid); ?>">Accueil</a></li>
@@ -54,8 +54,6 @@ $loger = $this->session->userdata('logged_in');
             </span>
         </div>
         
-        
-
         <div class="stats_cover_block">
             <span class="stats_number"><?php print $album_nbr[0]->n_alb;?></span>
             <span class="stats_title">
@@ -108,14 +106,10 @@ $loger = $this->session->userdata('logged_in');
     </div>
 	<?php endif;?>
     <div class="content">
-        <h2>Musique de <?php echo $login; ?></h2>
-
-        <!--    <div class="open_player" style="float:left; clear:both; width:100%;">
-                <a href="<?php echo site_url() . '/mc_musique/player/' . $session_id; ?>">OPEN FRAME</a>
-            </div>-->
-		
+        <h1>Musique de <?php echo $login; ?></h1>
+        
 		<?php
-		if(empty($album_alaune)!=1):
+		if(empty($album_alaune)!= 1):
 		?>
 		<div id="une_alb">
         <div class="a_la_une">
@@ -149,46 +143,35 @@ $loger = $this->session->userdata('logged_in');
                 
             </div>
             <div id="articles-tab">
-                <form action="http://127.0.0.1/slyset/index.php/admin_articles/delete_multi_article" method="post" accept-charset="utf-8">          
-                    <table>
-                        <tbody>
-                            <tr class="tab-head odd row-color-2">
+                <form action="<?php site_url('admin_articles/delete_multi_article'); ?>" method="post" accept-charset="utf-8">          
+                    <table id="tablesorter-cb">
+                        <thead>
+                            <tr class="tab-head">
                                 <th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
                                 <th class="article-title">Titre de la chanson</th>
                                 <th class="article-date">Durée</th>
                             </tr>
+                        </thead>
+                        <tbody>
                             <?php foreach ($morceaux_alaune as $morceau_alune):?>
-                            <tr class="even row-color-<?php echo $morceau_alune->nom; ?>">
+                            <tr>
                                 <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $morceau_alune->nom; ?>" id="article-<?php echo $morceau_alune->nom; ?>" class="checkbox-article"><label for="article-<?php echo $morceau_alune->nom; ?>"></label></td>
-                                <td class="article-title" onMouseOver="this.id='select';bt_edit();show_play();" onMouseOut="cache_edit();cache_play();this.id='';">
-                                	<a href="<?php echo site_url().'/mc_musique/player/'.$uid_visit.'/album/'.$album_alaune[0]->nom.'/'.$morceau_alune->id; ?>" class="open_player">
+                                <td class="article-title">
+                                	<a href="<?php echo site_url('mc_musique/player/'.$uid_visit.'/album/'.$album_alaune[0]->nom.'/'.$morceau_alune->id); ?>" class="open_player">
 
                                 		<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
                                 	</a>
                                     <p class="<?php echo $morceau_alune->id; ?>"><?php echo $morceau_alune->nom; ?> </p>
                                     <div class="miniat_titre">
-                                        <a href="javascript:void(0)" class="add"><span>add</span></a>
+                                        <a href="#" class="add"><span>add</span></a>
                                         <a href="#" class="edit"><span>edit</span></a>
                                         <a href="#" class="coeur"><span>coeur</span></a>
                                        <!-- <a href="#" class="cam"><span>cam</span></a>-->
                                     </div>
                                 </td>
-                                <td class="article-date"><?php echo substr($morceau_alune->duree,10,9); ?></td>
+                                <td class="article-date"><?php echo substr($morceau_alune->duree,0,5); ?></td>
                             </tr>
                             <?php endforeach;?>
-                          <!--  <tr class="even row-color-2">
-                                <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="19" id="article-19" class="checkbox-article"><label for="article-19"></label></td>
-                                <td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id=''";><a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
-                                    <p> Rainy Day Women </p>
-                                    <div class="miniat_titre">
-                                        <a href="#" class="add"><span>add</span></a>
-                                        <a href="#" class="edit"><span>edit</span></a>
-                                        <a href="#" class="coeur"><span>coeur</span></a>
-                                        <a href="#" class="cam"><span>cam</span></a>
-                                    </div>
-                                </td>
-                                <td class="article-date">4:19</td>
-                            </tr>-->
                         </tbody>
                     </table>
                     <input type="button" value="Acheter" class="bt_cadis unealb">
@@ -201,64 +184,49 @@ $loger = $this->session->userdata('logged_in');
          <?php endif; ?>
         
         <!-- LISTE DES MORCEAUX -->
-        
-        
         <div class="tout_titre">
             <input type="button" value="Acheter" class="bt_cadis all_track"/>
             <input type="button" value="Dans ma playlist" class="bt_playlist all_track"/>
-            <a href="<?php echo site_url().'/mc_musique/player/'.$uid_visit.'/album'; ?>" class="open_player">
+            
+            <a href="<?php echo site_url('mc_musique/player/'.$uid_visit.'/album'); ?>" class="open_player">
                 <img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
-                <p> Ecouter les morceaux de <?php echo $login?></p>
+                <p>Ecouter les morceaux de <?php echo $login?></p>
             </a>
+            
             <div id="articles-tab">
-                <form action="http://127.0.0.1/slyset/index.php/admin_articles/delete_multi_article" method="post" accept-charset="utf-8">          
-                    <table class="alltrack_table" >
-                        <tbody>
-                            <tr class="tab-head odd row-color-2">
+                <form action="<?php site_url('admin_articles/delete_multi_article'); ?>" method="post" accept-charset="utf-8">          
+                    <table id="tablesorter-cb" class="alltrack_table">
+                        <thead>
+                            <tr class="tab-head">
                                 <th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
                                 <th class="article-title">Titre de la chanson</th>
                                 <th class="article-album">Album</th>
 
                                 <th class="article-date">Durée</th>
                             </tr>
-                            <?php foreach ($all_morceau_artiste as $morceau_artiste): ?>
-                            <tr class="even row-color-<?php echo $morceau_artiste->id?>">
+                        </thead>
+                        <tbody>
+                            <?php foreach($all_morceau_artiste as $morceau_artiste): ?>
+                            <tr>
                                 <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $morceau_artiste->id?>" id="article-<?php echo $morceau_artiste->id?>" class="checkbox-article"><label for="article-<?php echo $morceau_artiste->id?>"></label></td>
-                                <td class="article-title" onMouseOver="this.id='select';bt_edit();show_play();" onMouseOut="cache_edit();cache_play();this.id='';">														
-                                	<a href="<?php echo site_url().'/mc_musique/player/'.$uid_visit.'/album/'.$morceau_artiste->title_alb.'/'.$morceau_artiste->id; ?>" class="open_player" >
+                               <td class="article-title"><!--onMouseOver="this.id='select';bt_edit();show_play();" onMouseOut="cache_edit();cache_play();this.id='';"-->
+                                	<a href="<?php echo site_url('mc_musique/player/'.$uid_visit.'/album/'.$morceau_artiste->title_alb.'/'.$morceau_artiste->id); ?>" class="open_player" >
 										<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
 									</a>
                                     <p class="<?php echo $morceau_artiste->id; ?>"> <?php echo $morceau_artiste->nom?></p>
                                     <div class="miniat_titre">
-                                        <a href="javascript:void(0)" class="add"><span>add</span></a>
+                                        <a href="#" class="add"><span>add</span></a>
                                         <a href="#" class="edit"><span>edit</span></a>
                                         <a href="#" class="coeur"><span>coeur</span></a>
                                       <!--  <a href="#" class="cam"><span>cam</span></a>-->
                                     </div>
                                 </td>
-                                 <td class="article-album"><a href="<?php echo base_url('index.php/musique/album/'.$uid_visit.'/'.$morceau_artiste->id_alb) ?>"><?php echo $morceau_artiste->title_alb?></a></td>
-                                <td class="article-date"><?php echo substr($morceau_artiste->duree,10,9); ?></td>
+                                 <td class="article-album"><a href="<?php echo site_url('musique/album/'.$uid_visit.'/'.$morceau_artiste->id_alb) ?>"><?php echo $morceau_artiste->title_alb; ?></a></td>
+                                <td class="article-date"><?php echo substr($morceau_artiste->duree,0,5); ?></td>
                             </tr>
                             <?php endforeach;?>
-                         <!--   <tr class="even row-color-2">
-                                <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="21" id="article-21" class="checkbox-article"><label for="article-21"></label></td>
-                                <td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id=''";><a href="#"><img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/></a>
-                                    <p> Rainy Day Women </p>
-                                    <div class="miniat_titre">
-                                        <a href="#" class="add"><span>add</span></a>
-                                        <a href="#" class="edit"><span>edit</span></a>
-                                        <a href="#" class="coeur"><span>coeur</span></a>
-                                        <a href="#" class="cam"><span>cam</span></a>
-                                    </div>
-                                </td>
-                                <td class="article-date">4:19</td>
-                            </tr>-->
                         </tbody>
-                    </table><!--
-                    <input type="button" value="Acheter" class="bt_cadis">
-                    <input type="button" value="Dans ma playlist" class="bt_playlist">
-                    -->
-                    
+                    </table>
                 </form>
             </div>
         </div>
@@ -311,21 +279,21 @@ $loger = $this->session->userdata('logged_in');
 	
 	<div id="playlist_alert"><p>Ajouter à une playlist existante</p>
         </br>
-        <?php foreach($playlists as $playlist):?>
+        <?php foreach($playlists as $playlist): ?>
            	<a href ="javascript:void(0)" id="<?php echo $playlist->nom;?>"><?php echo $playlist->nom;?></a>
         	</br>
-        <?php endforeach;?>
+        <?php endforeach; ?>
         <p>Ou crée en une</p>
           <input id="input_alert" type='text'/> <a class="cree" href="javascript:void(0)">Creer</a>
     </div>
     
-    <div id="album_une_alert"><p>Selectionner l'album à mettre à la une</p>
+    <div id="album_une_alert">
+        <p>Selectionner l'album à mettre à la une</p>
         </br>
-        <?php foreach($all_alb as $album):?>
+        <?php foreach($all_alb as $album): ?>
            	<a href ="javascript:void(0)" id="<?php echo $album->id;?>"><?php echo $album->nom;?></a>
         	</br>
-        <?php endforeach;?>
-      
+        <?php endforeach; ?>
     </div>
     <?php if (isset($sidebar_right)) echo $sidebar_right; ?>
 

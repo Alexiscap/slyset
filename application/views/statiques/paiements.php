@@ -11,7 +11,7 @@ $session_id = $this->session->userdata('uid');
     </div>
 
     <div class="content_static">
-        <h2 class="page_static">Paiement sécurisé</h2>
+        <h1 class="page_static">Paiement sécurisé</h1>
         
         <h3 class="titre_static">Slyset utilise le système de paiement sécurisé 3D Secure</h3>
         <p class="txt_static">

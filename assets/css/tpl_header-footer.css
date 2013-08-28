@@ -26,7 +26,7 @@ header + div{ padding-top:53px; }
 #header #ico_menu #played .infos span.label{ margin:13px 0 0 0; font-weight:bold; font-size:12px; }
 /*#header #separe{ margin:0 10px; }*/
 #header #connexion{ height:100%; float:left; }
-#header #identification{ margin:0 25px 0 0; height:100%; float:left; }
+#header #identification{ margin:0; height:100%; float:left; }
 #header #identification a, #header #identification .separator{ margin:0; padding:0; display:inline-block; height:100%; line-height:52px; font-size:14px; text-decoration:none; color:#ffffff; float:left; /*color:#eaebec;*/ }
 #header #identification a:hover{ text-decoration:underline; }
 #header #identification .separator{ margin:0 6px; }

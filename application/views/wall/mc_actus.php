@@ -3,10 +3,12 @@
     $uid = (empty($session_id)) ? '' : $session_id;
     $uid_visit = $this->uri->segment(2);
     $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
-    $loger = $this->session->userdata('logged_in'); 
+    $loger = $this->session->userdata('logged_in');
 ?>
 
 <div id="contentAll">
+    <h1 class="hd">Vos actualités musicales</h1>
+    
     <div id="breadcrumbs">
         <ul>
             <li><a href="<?php echo site_url('home/' . $uid); ?>">Accueil</a></li>
@@ -243,7 +245,7 @@
 
                     <?php 
                         $url = $message->video;
-                        $url_preg = preg_replace('#http://www.youtube.com/watch\?v=(.+)+#i', '$1', $url);
+                        $url_preg = preg_replace('#https?://www.youtube.com/watch\?v=(.+)+#i', '$1', $url);
                     ?>
 
                     <iframe width="455" height="300" src="http://www.youtube.com/embed/<?php echo $url_preg; ?>" frameborder="0" allowfullscreen></iframe>
@@ -301,167 +303,6 @@
     <?php endforeach; ?>
     
     <div class="ajax_loader2"></div>
-    
-<!--   <p>___________________________________</p>
-    
-    <div class="artist_post simple_message">
-      
-      <div class="top">
-        <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-      </div>
-      <div class="left">
-        <img src="<?php echo img_url('sidebar-left/photo-profil.png'); ?>" alt="Photo Profil" />
-      </div>
-      <div class="right">
-        <span class="ico_citation"></span>
-        <p class="msg_post">Bienvenue sur mon espace Slyset ! Découvrez mes derniers morceaux, mes prochains concerts, mes dernières actualités et photos !</p>
-      </div>
-      <div class="bottom">
-        <span class="infos_publi">Bob Dylan - Le 26 Septembre 2013</span>
-        <span class="infos_coms">1 commentaire</span>
-      </div>
-      <div class="comments">
-        <div class="com_left">
-          <img src="<?php echo img_url('sidebar-left/photo-profil.png'); ?>" alt="Photo Profil" />
-        </div>
-        <div class="com_right">
-          <div class="com_top">
-            <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-          </div>
-          <div class="com_bottom">
-            <span class="com_publi_infos">John Doe <small>- il y a 2 heures</small></span>
-            <span class="com_publi_msg">I am a superhero, and I like this ! Nice work.</span>
-          </div>
-        </div>
-      </div>
-      <div class="form_comments">
-        <form action="" method="post">
-          <input type="text" placeholder="Ajouter votre commentaire..." />
-          <input type="submit" value="Envoyer" />
-        </form>
-      </div>
-    </div>
-
-    <div class="artist_post photo_message">
-      <div class="top">
-        <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-      </div>
-      <div class="left">
-        <img src="<?php echo img_url('sidebar-left/photo-profil.png'); ?>" alt="Photo Profil" />
-      </div>
-      <div class="right">
-        <span class="ico_citation"></span>
-        <p class="msg_post">Je viens d’ajouter une photo à <a href="#">mon album “Tournée 2013”</a></p>
-        <img src="<?php echo img_url('common/post_photo.jpg'); ?>" alt="Photo message" class="single" />
-      </div>
-      <div class="bottom">
-        <span class="infos_publi">Bob Dylan - Le 26 Septembre 2013</span>
-        <span class="infos_coms">1 commentaire</span>
-      </div>
-      <div class="comments">
-        <div class="com_left">
-          <img src="<?php echo img_url('sidebar-left/photo-profil.png'); ?>" alt="Photo Profil" />
-        </div>
-        <div class="com_right">
-          <div class="com_top">
-            <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-          </div>
-          <div class="com_bottom">
-            <span class="com_publi_infos">John Doe <small>- il y a 2 heures</small></span>
-            <span class="com_publi_msg">I am a superhero, and I like this ! Nice work.</span>
-          </div>
-        </div>
-      </div>
-      <div class="form_comments">
-        <form action="" method="post">
-          <input type="text" placeholder="Ajouter votre commentaire..." />
-          <input type="submit" value="Envoyer" />
-        </form>
-      </div>
-    </div>
-
-    <div class="artist_post simple_message">
-      <div class="top">
-        <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-      </div>
-      <div class="left">
-        <img src="<?php echo img_url('sidebar-left/photo-profil.png'); ?>" alt="Photo Profil" />
-      </div>
-      <div class="right">
-        <span class="ico_citation"></span>
-        <p class="msg_post">Trop sympô ta musique ! Si tu as l’occasion de passer par San Francisco, n’hésite pas, j’ai du LSD.<br/>Kissou, Jim.</p>
-      </div>
-      <div class="bottom">
-        <span class="infos_publi">Jim Morisson - Le 24 Septembre 2013</span>
-        <span class="infos_coms">Aucun commentaire - <a href="#">Commenter</a></span>
-      </div>
-    </div>
-
-    <div class="artist_post photo_message">
-      <div class="top">
-        <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-      </div>
-      <div class="left">
-        <img src="<?php echo img_url('sidebar-left/photo-profil.png'); ?>" alt="Photo Profil" />
-      </div>
-      <div class="right">
-        <span class="ico_citation"></span>
-        <p class="msg_post">Je viens d’ajouter 3 photos à <a href="#">mon album “Souvenirs, souvenirs”</a></p>
-        <img src="<?php echo img_url('common/post_ajout_photo1.jpg'); ?>" alt="Photo message" class="mosaic first" />
-        <img src="<?php echo img_url('common/post_ajout_photo2.jpg'); ?>" alt="Photo message" class="mosaic" />
-        <img src="<?php echo img_url('common/post_ajout_photo3.jpg'); ?>" alt="Photo message" class="mosaic last" />
-      </div>
-      <div class="bottom">
-        <span class="infos_publi">Bob Dylan - Le 21 Septembre 2013</span>
-        <span class="infos_coms">Aucun commentaire - <a href="#">Commenter</a></span>
-      </div>
-    </div>
-
-    <div class="artist_post article">
-      <div class="top">
-        <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-      </div>
-      <div class="left">
-        <img src="<?php echo img_url('sidebar-left/photo-profil.png'); ?>" alt="Photo Profil" />
-      </div>
-      <div class="right">
-        <span class="ico_citation"></span>
-        <p class="msg_post">Découvrez la chronique de mon dernier album !</p>
-
-        <div class="post_article">
-          <img src="<?php echo img_url('common/article_photo.jpg'); ?>" alt="Photo d'interview" />
-
-          <a href="#">Dylan toujours à flots après la tempête</a>
-          <p>Bob Dylan revient en pleine lumière avec une collection de ballades country-blues-jazz crépusculaires. Tirés par la swinguante locomotive Duquesne Whistle...</p>
-        </div>
-      </div>
-      <div class="bottom">
-        <span class="infos_publi">Jim Morisson - Le 24 Septembre 2013</span>
-        <span class="infos_coms">Aucun commentaire - <a href="#">Commenter</a></span>
-      </div>
-    </div>
-
-    <div class="artist_post news_song">
-      <div class="top">
-        <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
-      </div>
-      <div class="left">
-        <img src="<?php echo img_url('sidebar-left/photo-profil.png'); ?>" alt="Photo Profil" />
-      </div>
-      <div class="right">
-        <span class="ico_citation"></span>
-        <p class="msg_post">Je viens d’ajouter 2 nouveaux morceaux à <a href="#">ma musique</a></p>
-
-        <div class="new_songs">
-          <a href="#"><span class="btn_play"></span>Pretty Pegy</a>
-          <a href="#"><span class="btn_play"></span>Hard Times in New York Town</a>
-        </div>
-      </div>
-      <div class="bottom">
-        <span class="infos_publi">Jim Morisson - Le 24 Septembre 2013</span>
-        <span class="infos_coms">Aucun commentaire - <a href="#">Commenter</a></span>
-      </div>
-    </div>-->
   </div>
 
   <?php if(isset($sidebar_right)) echo $sidebar_right; ?>

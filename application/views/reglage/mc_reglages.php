@@ -39,7 +39,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
     </div>
 
     <div class="content">
-        <h2>Réglages</h2>
+        <h1>Réglages</h1>
         
         <p class="detail_reglages">Cette page vous permet d’ajouter et/ou de modifier les informations qui figurent sur votre profil musicien public.</p>
 

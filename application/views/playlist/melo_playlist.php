@@ -365,7 +365,7 @@
         <hr />
     </div>-->
   <div class="content">
-	<h2>Mes playlists</h2>
+	<h1>Mes playlists</h1>
 	
 	    <?php 
 	    if(empty($playlists)!=1):
@@ -397,19 +397,19 @@
 						<span class="detail_pl"><?php echo $playlist ->n_artiste ;if($playlist->n_artiste > 1){echo ' artistes';} else {echo ' artiste';} ?></span>
 						<div class="edit">
 							<a class="edit-pl" href="javascript:void(0)"><img src="<?php echo img_url('musicien/btn_edit.png'); ?>"/></a>
-			 				<a class='iframe' href="<?php echo base_url('index.php/my-playlists/delete/'.$playlist->nom)?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>"/></a>
+			 				<a class='iframe' href="<?php echo site_url('my-playlists/delete/'.$playlist->nom)?>"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>"/></a>
 						</div>
 						<hr/>
 						<div class="lecture_pl">
 							<img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
-							<a href="<?php echo site_url().'/mc_musique/player/'.$this->session->userdata('uid').'/playlist/'.$playlist->nom; ?>" class="open_player">
+							<a href="<?php echo site_url('mc_musique/player/'.$this->session->userdata('uid').'/playlist/'.$playlist->nom); ?>" class="open_player">
 								<span class="ecouter_pl">Ecouter toute la playlist</span>
 							</a>
 						</div>
 					</div>
 					<div class="clear"></div>
 					<div id="articles-tab">
-						<form action="http://127.0.0.1/slyset/index.php/admin_articles/delete_multi_article" method="post" accept-charset="utf-8">          
+						<form action="<?php echo site_url('admin_articles/delete_multi_article'); ?>" method="post" accept-charset="utf-8">          
 							<table>
 								<tbody>
 									<tr class="tab-head odd row-color-2">

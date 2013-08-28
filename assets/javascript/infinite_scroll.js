@@ -10,7 +10,7 @@ if(l.pathname.split('/')[2] == "index.php"){
     base_url_noindex = l.protocol + "//" + l.host;
 }
 
-var user_visited = l.pathname.split('/')[3];
+var user_visited = l.pathname.split('/')[4];
 var reachedEnd = false;
 var objHeight = $(window).height() - 50;
 var last_scroll_top = 0;
@@ -52,6 +52,7 @@ $(window).scroll(function(e) {
 function infiniteArticles() {
     var trs = $('#wall-flux .wall-flux-content');
     var count = trs.length;
+    var noMore = '<div class="end_post">No more post to load</div>';
  
     if (reachedEnd == false) {
         var ajaxLoader = $('#wall-flux').find(".ajax_loader");
@@ -64,7 +65,7 @@ function infiniteArticles() {
             async: false,
             dataType: "html",
             success: function(data) {
-                if (data != "End"){
+                if (data != "" && data != "End"){
                     $('#wall-flux').append(data);
                     ajaxLoader.fadeOut(1000);
           
@@ -75,6 +76,7 @@ function infiniteArticles() {
                 } else {
                     ajaxLoader.remove();
                     reachedEnd = true;
+                    $('.content').append(noMore);
                 }
             }
         });
@@ -98,7 +100,6 @@ function infiniteActusMelomane() {
             dataType: "html",
             success: function(data) {
                 if (data != "" && data != "End"){
-//                    alert(data);
                     $('.content').append(data);
                     ajaxLoader.fadeOut(1000);
           
@@ -122,7 +123,6 @@ function infiniteActusMusicien() {
     var noMore = '<div class="end_post">No more post to load</div>';
  
     if (reachedEnd == false) {
-//alert(base_url + "/mc_actus/ajax_actus/1/" + count);
         var ajaxLoader = $('.content').find(".ajax_loader2");
 
         ajaxLoader.show();
@@ -134,7 +134,6 @@ function infiniteActusMusicien() {
             dataType: "html",
             success: function(data) {
                 if (data != "" && data != "End"){
-//                    alert('ok');
                     $('.content').append(data);
                     ajaxLoader.fadeOut(1000);
           
@@ -155,6 +154,7 @@ function infiniteActusMusicien() {
 function infiniteArticlesAdmin() {
     var trs = $('#articles-tab table tbody tr');
     var count = trs.length;
+    var noMore = '<div class="end_post">No more post to load</div>';
  
     if (reachedEnd == false) {
         var ajaxLoader = $('#articles-tab').find(".ajax_loader");
@@ -167,7 +167,7 @@ function infiniteArticlesAdmin() {
             async: false,
             dataType: "html",
             success: function(data) {
-                if (data != "End"){
+                if (data != ""){
                     $('#articles-tab table tbody').append(data);
                     ajaxLoader.fadeOut(1000);
           
@@ -187,6 +187,7 @@ function infiniteArticlesAdmin() {
                 } else {
                     ajaxLoader.remove();
                     reachedEnd = true;
+                    $('.content').append(noMore);
                 }
             }
         });
@@ -196,6 +197,7 @@ function infiniteArticlesAdmin() {
 function infiniteResults() {
     var trs = $('.search_results_wrapper .search_result');
     var count = trs.length;
+    var noMore = '<div class="end_post">No more account to load</div>';
  
     if (reachedEnd == false) {
         var ajaxLoader = $('.search_results_wrapper').find(".ajax_loader");
@@ -208,7 +210,7 @@ function infiniteResults() {
             async: false,
             dataType: "html",
             success: function(data) {
-                if (data != "End"){
+                if (data != "" && data != "End"){
                     $('.search_results_wrapper table tbody').append(data);
                     ajaxLoader.fadeOut(1000);
           
@@ -218,6 +220,7 @@ function infiniteResults() {
                 } else {
                     ajaxLoader.remove();
                     reachedEnd = true;
+                    $('.content #results-tab').append(noMore);
                 }
             }
         });
@@ -234,6 +237,8 @@ function infiniteComptes() {
     } else if($('#comptes-tab').hasClass('comptes_musiciens')){
         typeAccount = 'musiciens';
     }
+    
+    var noMore = '<div class="end_post">Aucun '+ typeAccount +' à charger !</div>';
  
     if (reachedEnd == false) {
       
@@ -247,7 +252,7 @@ function infiniteComptes() {
             async: false,
             dataType: "html",
             success: function(data) {
-                if (data != "End"){
+                if (data != "" && data != "End"){
                     $('#comptes-tab table tbody').append(data);
                     ajaxLoader.fadeOut(1000);
           
@@ -267,6 +272,7 @@ function infiniteComptes() {
                 } else {
                     ajaxLoader.remove();
                     reachedEnd = true;
+                    $('.content').append(noMore);
                 }
             }
         });

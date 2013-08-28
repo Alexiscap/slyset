@@ -16,7 +16,7 @@ class Mc_reglages extends CI_Controller
         $this->load->model(array('mc_actus_model', 'perso_model', 'user_model'));
         $this->load->library(array('form_validation', 'layout'));
 
-        $this->layout->set_id_background('reglages');
+        $this->layout->set_id_background('reglages-music');
         
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
         $output = $this->perso_model->get_perso($this->user_id);

@@ -129,9 +129,14 @@ $(document).ready(function(){
         event.preventDefault();
     });
     
-    $(window).unload(function() {
-        window.opener.playedState();
-    });
+//    if (window.opener != null && !window.opener.closed){
+//        alert('null');
+//    } else {
+//        console.log(window.opener);
+//        $(window).unload(function() {
+//            window.opener.playedState();
+//        });
+//    }
     
     if ($("audio").length > 0){
         // Setup the player to autoplay the next track
@@ -294,7 +299,7 @@ $(document).ready(function(){
     }); 
   
     //status actif du menu de gauche
-    if ($('body').attr('class') != 'home' && $('aside').attr('class') != 'admin-aside' && $('aside').length > 0)
+    if ($('body').attr('class') != 'home' && $('body').attr('class') != 'search' && $('aside').attr('class') != 'admin-aside' && $('aside').length > 0)
     {
         var class_current = $('body').attr('class');
         var css_init = $('aside').find('#'+ class_current + ' .icon').css('background-position');
@@ -530,9 +535,8 @@ $(document).ready(function(){
     }
     
     $(".check_all").click(function(){
-        //var inputs =  $(this).parents('form').find("checkbox-article");  
-  	
         var inputs = $("form input[type='checkbox']");
+        
         for(var i = 0; i < inputs.length; i++){
             var type = inputs[i].getAttribute("type");
             if(type == "checkbox") {
@@ -545,38 +549,10 @@ $(document).ready(function(){
         }
     });
     
-    //Ajoute la classe active au menu selon l'onflet choisi
-    //    $("#menu-account li a, #menu-profile li a").click(function(){
-    //        $(".active").removeClass("active");
-    //        $(this).addClass("active");
-    //    });
-    
     if($("body.admin-articles").length > 0){
         $('#redactor').redactor({
             imageUpload: '/admin_articles/uploadImg'
         });
-
-        
-
-        //        $('#articles-tab th.article-title, #articles-tab th.article-date').click(function(e){
-        //            e.preventDefault();
-        //            var valFilter = $(this).children().attr('id');
-        //            var byFilter = $(this).children('span');
-        //            var orderBy = 'desc';
-        //            var lastSegment = location.href.split('/').pop();
-        //
-        //            if(lastSegment == 'desc'){
-        //                byFilter.removeClass().addClass('asc');
-        //                orderBy = 'asc';
-        //            } else if(lastSegment == 'asc'){
-        //                byFilter.removeClass().addClass('desc');
-        //                orderBy = 'desc';
-        //            } else {
-        //                byFilter.addClass('desc');
-        //            }
-        //            var basePath = 'http://' + window.location.hostname + '/index.php/';
-        //            location.href = basePath + 'admin_articles/index/' + valFilter + '/' + orderBy;
-        //        });
           
         var pathname = window.location.hash;
         if(pathname.indexOf('#open') > -1){
@@ -584,13 +560,13 @@ $(document).ready(function(){
         }
 
         $('#wysiwyg-link').toggle(
-            function (){
-                event.preventDefault();
+            function (e){
+                e.preventDefault();
                 window.location.hash = this.hash;
                 $('#wysiwyg-block').slideToggle('slow');
             },
-            function (){
-                event.preventDefault();
+            function (e){
+                e.preventDefault();
                 location.hash = 'close';
                 $('#wysiwyg-block').slideToggle('slow');
             }
@@ -1479,11 +1455,9 @@ $(document).ready(function(){
             
             var newForm = location.hash;
             $(".actus_post form").css("display","none");
-            //            $(newForm).css("display","block");
             $(newForm).slideToggle('slow', "swing");
             
             window.location.hash = "";
-            e.preventDefault();
         });
     }
     
