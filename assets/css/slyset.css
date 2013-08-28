@@ -274,8 +274,8 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .content .photo .comm input[type=image],.content .photo .comment-form input[type=submit], .content .photo .comment-form-album input[type=submit], .content .photo .comment-form-video input[type=submit],.content .photo .comment-form-alb-wall input[type=submit]{ clear:both; width:55px; margin:4px 0 0 5px; }
 .content .photo .edit{ background:rgba(36, 36, 36, 0.7); width:160px; height:22px; position:absolute;top:5px; margin:0;display:none;}
 .content .photo .edit img{ float:right; margin:4px 8px 0 0; }
-.content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:160px; position:absolute; margin:22px 0;top:5px;height: calc(100% - 53px);display:none;}
-.content .photo .open_alb img{ margin:35% 36%; }
+.content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:160px; position:absolute; margin:22px 0;top:5px;height: calc(100% - 53px);display:none;text-align:center;}
+.content .photo .open_alb img{}
 .content .sepa_comm {width:170px;height:5px;background:#e6e6e6;margin-left:-5px;}
 
 .empty_photo_alb{}
