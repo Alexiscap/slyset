@@ -329,6 +329,33 @@ if (isset($all_date_calendar))
     </div>
 
     <div id="home-sidebar-right">
+    	<div id="filtres">
+			<div class="entete">
+				<img src="<?php echo img_url('common/entete_filtres.png'); ?>" alt="logo musique" /><br />
+				<span> Voir les genres </span>
+			</div>
+			<div class="filtre">
+				<span>Pop bubblegum</span>
+			</div>
+			<div class="filtre">
+				<span>Jazz</span>
+			</div>
+			<div class="filtre select">
+				<span>Rock psychédélique</span>
+			</div>
+			<div class="filtre">
+				<span>Musique classique</span>
+			</div>
+			<div class="filtre">
+				<span>Hip-hop</span>
+			</div>
+			<div class="filtre select">
+				<span>Electro</span>
+			</div>
+			<div class="filtre">
+				<span>Tout</span>
+			</div>
+		</div>
         <div class="pslyset">
             <p class="pslyset-title">Découvrez la mixtape #1</p>
             <div class="pslyset-bkg"></div>
