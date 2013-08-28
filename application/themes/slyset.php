@@ -11,7 +11,8 @@
         <meta name="description" content="<?php echo $desc = (isset($description)) ? $description : 'Description Slyset'; ?>" />
         <meta name="keywords" content="slyset, project web, social networks, music, réseau social, réseau social musical, musique, écoute, artiste, efficom, projet" />
 
-        <link type="text/css" rel="stylesheet" href="<?php echo css_url('reset') ?>" />        
+        <link type="text/css" rel="stylesheet" href="<?php echo css_url('reset') ?>" />
+        <link type="text/css" rel="stylesheet" href="<?php echo css_url('fonts') ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_header-footer') ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_sidebar-left') ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_sidebar-right') ?>" />

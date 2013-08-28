@@ -62,7 +62,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .actus_post_links{ margin:12px 0 0 7px; float:left; }
 .actus_post_links a{ margin:0 0 0 10px; padding:0 4px; height:20px; line-height:20px; display:inline-block; font-size:13px; font-weight:bold; text-decoration:none; color:#737578; background:transparent; }
 .actus_post_links a:hover, .actus_post_links a:active, .actus_post_links a.active{ height:20px; display:inline-block; text-decoration:none; background:#cccccc; }
-.actus_post textarea{ margin:2px 17px 4px 17px; padding:2px 5px; width:494px; height:54px; resize:none; font-family:"Trebuchet MS", Arial, sans-serif; color:#535353; float:left; clear:both;font-size:12px; }
+.actus_post textarea{ margin:2px 17px 4px 17px; padding:2px 5px; width:495px; height:54px; resize:none; font-family:"Trebuchet MS", Arial, sans-serif; color:#535353; float:left; clear:both;font-size:12px; }
 .actus_post #comments-link-video input[type="text"]{ margin:0 0 0 17px; padding:0 5px; width:400px; height:26px; font-size:12px; font-style:italic; color:#737578; float:left; clear:both; }
 .actus_post input[type="submit"]{ margin:0 16px 0 0; height:32px; font-size:11px; color:#ffffff; float:right; clear:none;background: #3f3f3f;border: 1px solid #000000;padding: 0 10px;}
 .actus_post input[type="submit"]:hover{ cursor:pointer; }
@@ -101,6 +101,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .artist_post .bottom .infos_coms a{ text-decoration:none; color:#737578; }
 .artist_post .bottom .infos_coms a:hover{ text-decoration:underline; color:#31a58c; }
 
+.artist_post .linkCommentsWrapper{ margin:0 0 1px 0; padding:4px 0; width:455px; position:relative; left:45px; color:#01adbb; font-weight:bold; background:#ffffff; float:left; clear:both; cursor:pointer; text-align:center; }
 .artist_post .comments{ margin:0 0 1px 0; width:455px; position:relative; left:45px; background:#ffffff; float:left; clear:both; }
 .artist_post .comments .com_left{ width:62px; height:100%; float:left; }
 .artist_post .comments .com_left img{ margin:4px; display:block; position:relative; width:43px; height:43px; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px; }
@@ -876,11 +877,11 @@ input[type="file"]{ display:block; width:201px; height:30px; float:left; filter:
 .musique #tablesorter-cb input[type="submit"]{ margin:0 0 0 0; padding:0 5px; display:block; width:94px; height:32px; line-height:32px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:center; color:#FFFFFF; background:url('../images/admin/btn_supprimer.png') no-repeat 0 0 transparent; float:right; clear:both; }
 .musique #tablesorter-cb input[type="submit"]:hover{ font-size:15px; }
 
-.content .tout_titre{margin:20px;}
+.content .tout_titre{margin:20px; float:left; clear:both;}
 .content .top_album p, .content .tout_titre p{display:inline-block; margin:0; height:28px; line-height:28px; font-weight:normal;}
-.content .top_album img, .content .tout_titre img{ display:inline; width:12px; margin:8px 4px 8px 0; float:left; }
-.content .top_album a, .content .tout_titre a{color:#888d95; font-size:12px; text-decoration:none;float: left; line-height:30px; }
-.content .top_album table a.open_player, .content .tout_titre table a.open_player{ width:28px; height:28px; line-height:28px; text-align:center; }
+.content .top_album img, .content .tout_titre img{ display:inline; width:12px; height:11px; margin:7px 4px 7px 0; float:left; }
+.content .top_album a, .content .tout_titre a{ margin:0 15px 0 0; color:#888d95; font-size:12px; text-decoration:none;float: left; line-height:30px; }
+.content .top_album table a.open_player, .content .tout_titre table a.open_player{ margin:0; width:28px; height:28px; line-height:28px; text-align:center; }
 
 .musique #tablesorter-cb .miniat_titre { display:none; height:28px; line-height:28px; float:right}
 .musique #tablesorter-cb .miniat_titre a{width:17px;height:13px;display:inline;margin:8px 1px; float:right;}
@@ -905,7 +906,7 @@ input[type="file"]{ display:block; width:201px; height:30px; float:left; filter:
 #album_une_alert a {color: #01adbb;}
 #album_une_alert span {text-decoration: underline;font-size: 14px;}
 
-.musique #tablesorter-cb .play{width:15px; height:15px; float:left; position:relative; top:6px; left:6px; visibility:hidden;}
+.musique #tablesorter-cb .play{width:15px; height:15px; float:left; position:relative; top:0; left:6px; visibility:hidden;}
 .musique #tablesorter-cb td.article-title:hover a .play, .musique #tablesorter-cb td.article-title:hover .miniat_titre{ display:inline-block; visibility:visible; }
 /* --------- FIN MUSICIEN MUSIQUE  --------- */
 

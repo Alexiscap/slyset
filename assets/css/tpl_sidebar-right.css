@@ -1,8 +1,8 @@
 #right{ width:200px; height:100%; font-family:"Trebuchet MS"; -webkit-border-top-left-radius:5px; -webkit-border-top-right-radius:5px; -moz-border-radius-topleft:5px; -moz-border-radius-topright:5px; border-top-left-radius:5px; border-top-right-radius:5px; color:white; background-color:#f9f9f9; float:right; margin:-202px 10px 50px 0;/*-345px*/ position:relative;}
 
 /* AVATAR */
-#right #avatar #photo { margin:4px 3px 3px 3px; width:200px;height:195px; overflow-y:hidden; }
-#right #avatar #photo img{ display:block; width:194px; }
+#right #avatar #photo { margin:4px 3px 3px 3px; /*width:200px;*/ height:195px; overflow:hidden; }
+#right #avatar #photo img{ display:block; /*width:194px;*/ height:100%; overflow:hidden; }
 #right #avatar #description {padding:0 0 15px 0; background:#e6e6e6;margin:0 0 0 3px;width:194px;} 
 #right #avatar #description #texte_description {color:#3f3f3f;width:174px;margin:0;font-family:'Trebuchet MS';font-size:12px;padding:10px 10px 0;}
 #right #avatar #description #style {font-weight:bold;font-style:italic;color:#3f3f3f;margin:0;font-family:'Trebuchet MS';font-size:12px;padding:10px 10px 8px;}

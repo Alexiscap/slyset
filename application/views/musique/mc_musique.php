@@ -6,9 +6,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 $loger = $this->session->userdata('logged_in');
 ?>
 
-<div id="contentAll">
-    <?php print_r($all_morceau_artiste); ?>
-    
+<div id="contentAll">    
     <div id="breadcrumbs">
         <ul>
             <li><a href="<?php echo site_url('home/' . $uid); ?>">Accueil</a></li>

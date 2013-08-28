@@ -11,6 +11,7 @@ $loger = $this->session->userdata('logged_in');
             <li><a href="<?php echo site_url('home/' . $uid); ?>">Accueil</a></li>
             <li><a href="<?php echo site_url('actualite/' . $uid_visit); ?>"><?php echo 'Artiste : ' . $login; ?></a></li>
             <li><a href="<?php echo site_url($this->uri->segment(1) . '/' . $uid_visit); ?>">Musique</a></li>
+            <li><a href="<?php echo site_url($this->uri->segment(1) . '/' . $this->uri->segment(2) . '/' . $uid_visit . '/' . $this_album[0]->id); ?>"><?php echo $this_album[0]->nom; ?></a></li>
         </ul>
     </div>
 
