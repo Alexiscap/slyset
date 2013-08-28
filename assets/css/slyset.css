@@ -647,9 +647,10 @@ cursor : pointer;}
 #filtres .entete img {margin-top:-10px;}
 #filtres .entete span {font-size:14px;font-family:'Trebuchet MS';color:#e6e6e6;font-weight: bold;}
 #filtres .filtre{width:170px;height:25px;padding-top:5px;background: #f6f6f6;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f6f6f6", endColorstr="#e2e2e2");background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#e2e2e2));background: -webkit-linear-gradient(#f6f6f6, #e2e2e2);background: -moz-linear-gradient(#f6f6f6, #e2e2e2);background: -o-linear-gradient(#f6f6f6, #e2e2e2); background: -ms-linear-gradient(#f6f6f6, #e2e2e2); background: linear-gradient(#f6f6f6, #e2e2e2);border-radius:3px;margin:5px 0;text-align:center;}
-#filtres .select{background: #81e1d7;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#81e1d7", endColorstr="#32a486");background: -webkit-gradient(linear, left top, left bottom, from(#81e1d7), to(#32a486));background: -webkit-linear-gradient(#81e1d7, #32a486);background: -moz-linear-gradient(#81e1d7, #32a486);background: -o-linear-gradient(#81e1d7, #32a486); background: -ms-linear-gradient(#81e1d7, #32a486); background: linear-gradient(#81e1d7, #32a486); }
+#filtres .select{position:relative; background: #81e1d7;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#81e1d7", endColorstr="#32a486");background: -webkit-gradient(linear, left top, left bottom, from(#81e1d7), to(#32a486));background: -webkit-linear-gradient(#81e1d7, #32a486);background: -moz-linear-gradient(#81e1d7, #32a486);background: -o-linear-gradient(#81e1d7, #32a486); background: -ms-linear-gradient(#81e1d7, #32a486); background: linear-gradient(#81e1d7, #32a486); }
 #filtres .filtre span{font-size:12px;color:#3a3a3a;font-family:'Trebuchet MS';}
 #filtres .select span {color:#ffffff;}
+#filtres .select .filtre-check{background:url('../images/common/check_filtre.png');width:10px;height:9px;display: inline-block;position: absolute;left: 10px;top: 10px;}
 
 /* --------- FIN  DE PORTAIL  --------- */
 
