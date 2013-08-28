@@ -105,7 +105,7 @@
             echo '<div class="ico-placeholder password"></div>';
 
             echo form_label('Confirmer mot de passe', 'confpassword', $label_attributes_password);
-            echo form_password('confpassword','','placeholder="Confirmer mot de passe"');
+            echo form_password('confpassword','','placeholder="Confirmez le mot de passe"');
             echo '<div class="ico-placeholder password"></div>';
             echo form_error('password', '<span class="error-form">', '</span>');
             echo form_error('confpassword', '<span class="error-form">', '</span>');

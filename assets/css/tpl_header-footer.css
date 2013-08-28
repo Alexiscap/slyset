@@ -28,6 +28,7 @@ header + div{ padding-top:53px; }
 #header #connexion{ height:100%; float:left; }
 #header #identification{ margin:0; height:100%; float:left; }
 #header #identification a, #header #identification .separator{ margin:0; padding:0; display:inline-block; height:100%; line-height:52px; font-size:14px; text-decoration:none; color:#ffffff; float:left; /*color:#eaebec;*/ }
+#header #identification a:first-Child {max-width: 80px;overflow: hidden;}
 #header #identification a:hover{ text-decoration:underline; }
 #header #identification .separator{ margin:0 6px; }
 #header #recherche{ margin:14px 58px 13px 50px; height:25px; border-radius:20px; background:#e9e9e9; float:left; }

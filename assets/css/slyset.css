@@ -21,6 +21,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 #breadcrumbs li:after{ margin:0px 6px; width:9px; height:23px; display:inline-block; content:''; vertical-align:middle; background:url("../images/common/breadcrumbs_arrow.png") no-repeat; }
 .content{ margin:10px 0 10px 0; padding:0; width:541px; position:relative; background:#e6e6e6; float:left; clear:both; }
 .bts_noir{float:left; margin-left:15px;}
+.bts_noir_unique{float: left;margin-left: 190px;}
 .bts_noir_partition{float:left; margin-left:47px;}
 .bts_noir_photo{float:left; margin-left:68px;}
 .bt_noir_concert{float: right;margin-right: 230px;}
@@ -63,7 +64,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .actus_post_links a:hover, .actus_post_links a:active, .actus_post_links a.active{ height:20px; display:inline-block; text-decoration:none; background:#cccccc; }
 .actus_post textarea{ margin:2px 17px 4px 17px; padding:2px 5px; width:494px; height:54px; resize:none; font-family:"Trebuchet MS", Arial, sans-serif; color:#535353; float:left; clear:both;font-size:12px; }
 .actus_post #comments-link-video input[type="text"]{ margin:0 0 0 17px; padding:0 5px; width:400px; height:26px; font-size:12px; font-style:italic; color:#737578; float:left; clear:both; }
-.actus_post input[type="submit"]{ margin:0 16px 0 0; width:62px; height:32px; border:none; font-size:11px; color:#ffffff; background:url("../images/common/btn_validate.png") no-repeat transparent; float:right; clear:none; }
+.actus_post input[type="submit"]{ margin:0 16px 0 0; height:32px; font-size:11px; color:#ffffff; float:right; clear:none;background: #3f3f3f;border: 1px solid #000000;padding: 0 10px;}
 .actus_post input[type="submit"]:hover{ cursor:pointer; }
 .actus_post #comments-msg input[type="submit"]{ clear:both;padding-bottom:3px;}
 .actus_post span.error-form{ margin:5px 0 5px 17px; }
@@ -418,7 +419,7 @@ cursor : pointer;}
 .pop-in_ta .content-pi p {float:right;margin:10px 30px 20px 0;}
 .pop-in_ta .content-pi .total {color:#666666;font-weight:bold;font-size:14px;}
 .pop-in_ta .content-pi p:last-child {color:#3f3f3f;font-weight:bold;font-size:14px;}
-.pop-in_ta .content-pi input[type=submit]{width:148px;margin:0 30px 5px;padding:0 5px;background:url("../images/common/bt_paiment.png") no-repeat;float:right;color:#ffffff;font-weight:bold;font-size:15px;}
+.pop-in_ta .content-pi input[type=submit]{width:auto;margin:0 30px 5px;padding:0 5px;float:right;color:#ffffff;font-weight:bold;font-size:15px;background: #ef7363;border: 1px outset #dd4f3c;}
 
 .pop-in_ta .content-pi .moyen_pmt {margin:0 0 50px 0;height:140px;}
 .pop-in_ta .content-pi .moyen_pmt img{width:210px;margin:0 0 0 45px;float:left;}
@@ -754,11 +755,11 @@ input[type="checkbox"]:checked + label span{ background:url('../images/common/sp
 #subscription-upload label.last, #subscription-upload .upload_photo_name_file.last{ float:right; }
 #subscription-upload .container-cover + label{ margin:-15px 0 0.4em 0; font-weight:normal; float:right; clear:none; }
 .upload_images{ display:block; width:409px; height:150px; background:url('../images/subscription/upload_images2.png') no-repeat; float:left; clear:both; }
-.upload-file-container{ display:block; width:161px; height:29px; float:left; cursor:pointer; position:relative; }
-.upload-file-container:hover{ background-position:0 -29px; cursor:pointer; }
-.upload-file-container{ background:url('../images/subscription/sprite_button_file_cover.png') 0 0 no-repeat; clear:both; }
-.upload-file-container.container-thumb{ margin:-20px 10px 0 0; width:147px; background:url('../images/subscription/sprite_button_file_thumb.png') no-repeat; float:right; clear:both; }
-input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:alpha(opacity=0); opacity:0; position:absolute; left:0; top:0; cursor:pointer; }
+.upload-file-container{ display:block; width:201px; height:30px; float:left; cursor:pointer; position:relative; }
+.upload-file-container:hover{ background-position:0 -39px; cursor:pointer; }
+.upload-file-container{ background:url('../images/subscription/sprite_button_file_entete.png') 0 -5px no-repeat; clear:both; }
+.upload-file-container.container-thumb{ margin:-20px 10px 0 0; width:147px; background:url('../images/subscription/sprite_button_file_thumb.png') 0 -28px no-repeat; float:right; clear:both; }
+input[type="file"]{ display:block; width:201px; height:30px; float:left; filter:alpha(opacity=0); opacity:0; position:absolute; left:0; top:0; cursor:default; }
 /* --------- FIN  D'INSCRIPTION'  --------- */
 
 
@@ -1042,12 +1043,11 @@ input[type="file"]{ display:block; width:161px; height:29px; float:left; filter:
 #any-background-personnaliser .upload-file-container.container-background{ margin:2px 0 0 0; float:left; clear:none; }
 .personnaliser .upload_photo_name_file{ margin:0 0 0 1px; line-height:22px; }
 .personnaliser span.error-form, .personnaliser span.error-form p{ margin:3px 0 10px 0; width:325px; float:right; }
-#any-background-personnaliser input[type="submit"]{ margin:0 0 10px 175px; padding:0 14px; height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; text-align:center; outline:none; color:#FFFFFF; background:url('../images/common/bt-rouge.png') no-repeat transparent; float:left; }
-#any-background-personnaliser input[type="submit"]:hover{font-weight:bold;}
-#any-background-personnaliser a.reset_theme, #any-background-reglages a.delete_account{ margin:0 0 10px 50px; padding:0 14px; height:30px; line-height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; text-align:center; text-decoration:none; outline:none; color:#FFFFFF; background:url('../images/common/bt-rouge2.png') no-repeat transparent; float:left; }
-#any-background-personnaliser a.reset_theme:hover, #any-background-reglages a.delete_account{ font-weight:bold;}
-#any-background-reglages a.delete_account{ margin:0 0 10px 21px; background:url('../images/common/bt-rouge3.png') no-repeat transparent;font-weight:normal;}
-#any-background-reglages a.delete_account:hover{ font-weight:bold;}
+#any-background-personnaliser input[type="submit"]{ margin:0 0 10px 175px; padding:0 14px; height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; text-align:center; outline:none; color:#FFFFFF; float:left; background: #ef7363;border: 1px outset #dd4f3c;}
+/*#any-background-personnaliser input[type="submit"]:hover{font-weight:bold;}*/
+#any-background-personnaliser a.reset_theme, #any-background-reglages a.delete_account{ margin:0 0 10px 50px; padding:0 14px; height:30px; line-height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; text-align:center; text-decoration:none; outline:none; color:#FFFFFF; float:left;background: #ef7363;border: 1px outset #dd4f3c; }
+/*#any-background-personnaliser a.reset_theme:hover, #any-background-reglages a.delete_account{ font-weight:bold;}*/
+#any-background-reglages a.delete_account{ margin:0 0 10px 21px;font-weight:normal;background: #ef7363;border: 1px outset #dd4f3c;}
 
 .detail_perso {font-size:14px;color:#888d95;font-weight:normal;margin:0 20px 0 20px;}
 .categ_perso {margin:20px 0;}
@@ -1248,7 +1248,7 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 .content .historique {margin-top:15px;}
 .content .panier .nom_pl {float: left;font-size:18px;font-weight:bold;color:#3f3f3f;margin:0;}
 .content .historique .nom_pl {float: left;font-size:18px;font-weight:bold;color:#3f3f3f;margin:0;}
-.content .historique .detail_pl,.content .panier .detail_pl {float: right;font-size:12px;color:#888d95;margin:5px 22px 10px -15px;}
+.content .historique .detail_pl,.content .panier .detail_pl {float: right;font-size:12px;color:#888d95;margin:5px 0px 10px 7px;}
 .content .historique span.detail_pl {padding-top:3px;}
 .content .historique hr {width:455px;}
 .content .panier hr {width:455px;}
