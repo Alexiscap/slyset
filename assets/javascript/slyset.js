@@ -658,6 +658,10 @@ $(document).ready(function(){
 		
         $('.photo').hover(function(){
             var photo_height=$(this).height();
+            var cover_height=$(this).find('.img_cover').height();
+            cover_height=cover_height-27;
+	    cover_height=(cover_height-43)/2;
+			$(this).find('.open_alb').find('img').css("margin-top",cover_height+"px");
             if($(this).find('.allcomment').is(':visible') == true)
             {   
                 var comm_height=$(this).find('.allcomment').height();
