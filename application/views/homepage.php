@@ -341,7 +341,7 @@ if (isset($all_date_calendar))
 				<span>Jazz</span>
 			</div>
 			<div class="filtre select">
-				<span>Rock psychédélique</span>
+				<i class="filtre-check"></i><span>Rock psychédélique</span>
 			</div>
 			<div class="filtre">
 				<span>Musique classique</span>
@@ -350,7 +350,7 @@ if (isset($all_date_calendar))
 				<span>Hip-hop</span>
 			</div>
 			<div class="filtre select">
-				<span>Electro</span>
+				<i class="filtre-check"></i><span>Electro</span>
 			</div>
 			<div class="filtre">
 				<span>Tout</span>
