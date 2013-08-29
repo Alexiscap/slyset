@@ -16,19 +16,11 @@
 		<div class="label">
 				<label>Votre livret</label>
 			</div>
-			<div class="champs">
-                <?php
-                $data = array(
-                    'name' => 'userfile',
-                    'type' => 'file',
-                    'class' => 'livret_new',
-                    'value' => 'Choisir un livret'
-                );
-                ?>
-                <div class="bt_noir">
-                	<?php echo form_upload($data); ?>
-                </div>
-            </div>
+			<div class="champs">        
+				<div class="bt_noir bt_livret_up">
+					<input type="file" name="userfile" value="Choisir un livret" class="livret_up"><span class="upload_photo">aucun fichier choisi</span>
+				</div>
+			</div>
 			<div class="label">
 				<label>Album</label>
 			</div>
