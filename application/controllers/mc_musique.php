@@ -18,8 +18,7 @@ class Mc_musique extends CI_Controller {
         $this->layout->ajouter_js('jquery.colorbox');
         $this->layout->ajouter_js('jquery-ui');
         $this->layout->ajouter_js('jquery.reveal');
-
-//        $this->layout->ajouter_js('audiojs/audio');
+        $this->layout->ajouter_js('jquery.tablesorter');
 
         $this->load->library('getid3/Getid3');
         $this->load->model(array('perso_model', 'user_model', 'musique_model','follower_model'));

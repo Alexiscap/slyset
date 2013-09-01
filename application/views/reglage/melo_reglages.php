@@ -39,7 +39,7 @@
     </div>
 
     <div class="content">
-        <h2>Modifier mon profil</h2>
+        <h1>Modifier mon profil</h1>
         
         <p class="detail_reglages">Cette page vous permet d’ajouter et/ou de modifier les informations qui figurent sur votre profil.</p>
 
@@ -82,7 +82,7 @@
             echo form_input('login', $profile->login,'placeholder="Votre nom d\'utilisateur"');
             echo form_error('login', '<span class="error-form">', '</span>');
             
-            echo form_label('Prenom', 'prenom', $label_attributes);
+            echo form_label('Prenom', 'prénom', $label_attributes);
             echo form_input('prenom', $profile->prenom,'placeholder="Votre prénom"');
             echo form_error('prenom', '<span class="error-form">', '</span>');
 
@@ -105,7 +105,7 @@
             echo '<div class="ico-placeholder password"></div>';
 
             echo form_label('Confirmer mot de passe', 'confpassword', $label_attributes_password);
-            echo form_password('confpassword','','placeholder="Confirmer mot de passe"');
+            echo form_password('confpassword','','placeholder="Confirmez le mot de passe"');
             echo '<div class="ico-placeholder password"></div>';
             echo form_error('password', '<span class="error-form">', '</span>');
             echo form_error('confpassword', '<span class="error-form">', '</span>');
@@ -113,7 +113,7 @@
             echo '<hr>';
 
             $array_ecoute = explode(', ', $profile->style_ecoute);
-            echo form_label('Genre Musicaux','stylemusicecoute[]',$label_attributes);
+            echo form_label('Genres musicaux','stylemusicecoute[]',$label_attributes);
             echo '<div class="checkbox-style">';
                 echo form_checkbox('stylemusicecoute[]', 'pop', set_checkbox('stylemusicecoute', 'pop', $bool = (in_array("pop", $array_ecoute)) ? true : false), 'id="checkecoutepop"');
                 echo form_label('Pop','checkecoutepop');

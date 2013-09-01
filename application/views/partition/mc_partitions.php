@@ -58,7 +58,7 @@ $loger = $this->session->userdata('logged_in');
 	</div>
 
   	<div class="content">
-		<h2>Partitions, livrets et paroles de <?php echo $login; ?></h2>
+		<h1>Partitions, livrets et paroles de <?php echo $login; ?></h1>
  
  
   		<?php 

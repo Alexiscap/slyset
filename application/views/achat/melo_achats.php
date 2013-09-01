@@ -40,7 +40,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
     </div>
 
     <div class="content">
-        <h2>Mes achats</h2>
+        <h1>Mes achats</h1>
 
         <!-- ************************ PANIER ************************ -->
         <div class="panier">

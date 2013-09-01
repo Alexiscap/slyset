@@ -11,7 +11,7 @@ $session_id = $this->session->userdata('uid');
     </div>
 
     <div class="content_static">
-        <h2 class="page_static">Conditions Générales</h2>
+        <h1 class="page_static">Conditions Générales</h1>
         
         <h3 class="titre_static">1. Présentation du site</h3>
         <p class="txt_static">

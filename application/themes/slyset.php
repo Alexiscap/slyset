@@ -11,7 +11,8 @@
         <meta name="description" content="<?php echo $desc = (isset($description)) ? $description : 'Description Slyset'; ?>" />
         <meta name="keywords" content="slyset, project web, social networks, music, réseau social, réseau social musical, musique, écoute, artiste, efficom, projet" />
 
-        <link type="text/css" rel="stylesheet" href="<?php echo css_url('reset') ?>" />        
+        <link type="text/css" rel="stylesheet" href="<?php echo css_url('reset') ?>" />
+        <link type="text/css" rel="stylesheet" href="<?php echo css_url('fonts') ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_header-footer') ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_sidebar-left') ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('tpl_sidebar-right') ?>" />
@@ -28,9 +29,8 @@
           <link type="text/css" rel="stylesheet" href="<?php echo css_url('corrections-ie') ?>" />
         <![endif]-->
 
-<!--<script type="text/javascript" src="<?php echo js_url('jquery-1.7.1.min') ?>"></script>-->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <!--<script type="text/javascript" src="<?php echo js_url('modernizr.custom.63321') ?>"></script>-->
+        <script>window.jQuery || document.write('<script src="<?php echo js_url('jquery-1.8.3.min') ?>">\x3C/script>')</script>
     </head>
 
     <body <?php if (isset($id_bkg)) echo 'class="' . $id_bkg . '"'; ?>>
@@ -69,7 +69,7 @@
 
                     <div id="identification">
                         <?php if ($this->session->userdata('logged_in') == 1): ?>
-                            <a href="<?php echo site_url('home/' . $this->session->userdata('uid')) ?>"><?php echo $this->session->userdata('login'); ?></a>
+                            <a href="<?php echo site_url('home/' . $this->session->userdata('uid')) ?>"><?php echo $login_substr = (strlen($this->session->userdata('login')) > 16) ? substr($this->session->userdata('login'),0,13).'...' : $this->session->userdata('login'); ?></a>
                             <span class="separator">|</span>
                             <a href="<?php echo site_url('login/logout'); ?>">Déconnexion</a>
                         <?php else: ?>

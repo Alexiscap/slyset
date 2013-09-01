@@ -16,17 +16,17 @@
 		<div class="label">
 				<label>Vos paroles</label>
 			</div>
-			<div class="champs">
+	    <div class="champs">
                 <?php
                 $data = array(
                     'name' => 'userfile',
                     'type' => 'file',
-                    'class' => 'livret_new',
-                    'value' => 'Choisir un livret'
+                    'class' => 'parole_up',
+                    'value' => 'Choisir des paroles'
                 );
-                ?>
-                <div class="bt_noir">
-                	<?php echo form_upload($data); ?>
+                ?><div class="bt_noir bt_parole_up">
+                <?php echo form_upload($data); ?>
+				<span class="upload_photo">aucun fichier choisi</span>
                 </div>
             </div>
 			<div class="label">

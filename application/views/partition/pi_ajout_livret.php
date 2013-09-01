@@ -32,6 +32,7 @@
 
 			
 			<div style='visibility: hidden' class="label">
+
 				<label>Album</label>
 			</div>
 			<div style='visibility: hidden' class="champs">

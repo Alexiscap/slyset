@@ -11,7 +11,7 @@ $session_id = $this->session->userdata('uid');
     </div>
 
     <div class="content_static">
-        <h2 class="page_static">Annonceurs</h2>
+        <h1 class="page_static">Annonceurs</h1>
         
         <p class="txt_static">
             Slyset est un réseau social musical à destination des musiciens et des mélomanes. Son audience comprend des professionnels de la musique et des passionnés.

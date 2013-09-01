@@ -52,7 +52,7 @@
                     <li id="stats" class="row row-13"><a href="<?php echo site_url('statistique/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Statistiques</span></a></li>
                     <li id="followers" class="row row-14"><a href="<?php echo site_url('follower/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Mes abonnés</span></a></li>
                     <li id="personnaliser" class="row row-15"><a href="<?php echo site_url('personnaliser/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Personnaliser</span></a></li>
-                    <li id="reglages" class="last-row row row-16"><a href="<?php echo site_url('reglages/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Réglages</span></a></li>
+                    <li id="reglages-music" class="last-row row row-16"><a href="<?php echo site_url('reglages/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Réglages</span></a></li>
               </div>  </ul>
             </div>
         <?php elseif ($user_id != $this->session->userdata('uid')): ?>
@@ -104,9 +104,9 @@
             echo '<span class="icon pwd"></span>';
             echo form_password('password', set_value('password'), 'placeholder="Mot de passe"');
             echo form_error('password', '<span class="error-form">', '</span>');
-            ?>
-            <a href="<?php site_url('/'); ?>" class="forgot_password">Mot de passe oublié ?</a>
-            <?php
+            
+            echo anchor('login/forgot', 'Mot de passe oublié ?', array('class' => 'forgot_password'));
+    
             echo form_submit('submit', 'Se connecter');
 
             echo form_close();

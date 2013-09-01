@@ -56,13 +56,13 @@ $loger = $this->session->userdata('logged_in');
    </div>
  	<?php
  		if (count($all_follower)==1):?>
-	<h2>Mes abonnés</h2>
+	<h1>Mes abonnés</h1>
 	<?php endif;
 	if (count($all_follower)==0):?>
-	<h2>Aucun abonné</h2>
+	<h1>Aucun abonné</h1>
 	<?php endif;
 	if (count($all_follower)>1):?>
-	<h2>Mes <?php echo count($all_follower);?> abonnés</h2>
+	<h1>Mes <?php echo count($all_follower);?> abonnés</h1>
 	<?php endif;?>
 	<?php
 	if(isset($all_follower)):
