@@ -10,11 +10,11 @@
 				$type = $this->uri->segment(5);
 
 		if($type==1)
-			{echo "<span class='confirm_sup'>Modifier une photo ?</span><br />" ;}
+			{echo "<span class='confirm_sup'>Modifier une photo </span><br />" ;}
 		if($type==2)
-			{echo "<span class='confirm_sup'>Modifier un album ?</span><br />" ;}
+			{echo "<span class='confirm_sup'>Modifier un album </span><br />" ;}
 		if($type==3)
-			{echo "<span class='confirm_sup'>Modifier une vidéo ?</span><br />" ;}
+			{echo "<span class='confirm_sup'>Modifier une vidéo </span><br />" ;}
 	?>
 
     <div class="content-pi-cent">

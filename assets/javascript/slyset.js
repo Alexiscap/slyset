@@ -306,7 +306,7 @@ $(document).ready(function(){
 	
     //affichage bloc contenu side bar de droite
 
-    if($('body.followers').length>0||$('body.abonnements').length>0||$('body.melo_actu').length>0||$('body.reglages').length>0||$('body.achats').length>0||$('body.concert_melo').length>0||$('body.musicien_actus').length>0||$('body.concert_mu').length>0||$('body.partitions').length>0||$('body.stats').length>0||$('body.personnaliser').length>0)
+    if($('body.melo_actu').length>0||$('body.followers').length>0||$('body.abonnements').length>0||$('body.melo_actu').length>0||$('body.reglages').length>0||$('body.achats').length>0||$('body.concert_melo').length>0||$('body.musicien_actus').length>0||$('body.concert_mu').length>0||$('body.partitions').length>0||$('body.stats').length>0||$('body.personnaliser').length>0)
     {
         $('#top_titre').show();
         $('#last_photo').show();
@@ -372,7 +372,7 @@ $(document).ready(function(){
     }    
 
     if($('body.playlist').length>0||$('body.musique').length > 0){
-        //  $('#top_titre').show();
+         $('#top_titre').show();
         $('#last_photo').show();
         $('#reseaux_ailleur').show();
     }
@@ -413,7 +413,7 @@ $(document).ready(function(){
     });
    
     //ajout_paroles ajout_partitions
-    if($("body.ajout_paroles").length > 0){
+   /* if($("body.ajout_paroles").length > 0){
 
         $("select").change(function () {
             $("select option:selected")
@@ -431,13 +431,14 @@ $(document).ready(function(){
                 }
             })
         });
-    }
+    }*/
     
     //affichage des morceaux pop in edition doc
     $("select[name*='album_doc']").change(function () {
             var str = "";
+            var type = $('.content-pi-cent').attr('id');
             var id_album = $("select option:selected").attr('class');
-            var dataid = 'id_album=' + id_album;
+            var dataid = 'id_album=' + id_album + '&&type='+type;
             $.ajax({
                 type: "POST",
                 url : base_url +'/pop_in_general/get_morceaux',

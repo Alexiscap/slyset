@@ -28,6 +28,8 @@ class Mc_actus extends CI_Controller {
         $sub_data['perso'] = $output;
         if ($this->user_id != null) {
             $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
+            $sub_data['morceau_right'] = $this->user_model->top_five_morceau_profil($this->user_id);
+            $sub_data['morceau_right_t']['type_page'] = 1;
         }
         //--bouton suivre un musicien
         $community_follower = $this->user_model->get_community($this->session->userdata('uid'));

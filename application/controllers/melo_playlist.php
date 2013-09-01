@@ -42,13 +42,13 @@ class Melo_playlist extends CI_Controller {
         $uid = $this->session->userdata('uid');
         $type_account = $this->session->userdata('account');
 
-        if ($user_id == $uid) {
+       // if ($user_id == $uid) {
             $this->page($user_id);
-        } elseif (isset($uid)) {
+        /*} elseif (isset($uid)) {
             redirect('home/' . $uid, 'refresh');
         } else {
             redirect('home', 'refresh');
-        }
+        }*/
     }
 
     public function page($user_id) {

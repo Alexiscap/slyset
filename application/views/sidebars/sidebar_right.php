@@ -1,3 +1,11 @@
+<?php
+$session_id = $this->session->userdata('uid');
+$uid = (empty($session_id)) ? '' : $session_id;
+$uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
+$login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
+$loger = $this->session->userdata('logged_in'); 
+?>
+
 <aside id="right">
   <div id="avatar">
     <div id="photo">
@@ -10,16 +18,26 @@
     </div>
   </div>
   
-  	<?php if(empty($morceau_right) != 1):?>
-  <div style="display:none" id="top_titre">
-    <img src="<?php echo img_url('sidebar-right/etoile.png'); ?>" alt="etoile"/><p class="head-title">Mon Top <span>Titres</span></p>
-    <div id="classement"> 
-  	<?php if(isset($morceau_right[0])):?>
-     <div id="num_impair">
-        <p class="position">1</p><a href="<?php echo site_url().'/mc_musique/player/'.$profile->id.'/album/'.$morceau_right[0]->alb_name.'/'.$morceau_right[0]->id; ?>" class="play open_player"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p><?php print $morceau_right[0]->nom; ?></p>
-      </div>
-      <?php endif;?>
-        	<?php if(isset($morceau_right[1])):?>
+  <?php 
+  if(empty($morceau_right) != 1):?>
+  	<div style="display:none" id="top_titre">
+    	
+    	<!-- TITRE BLOC -->
+    	<img src="<?php echo img_url('sidebar-right/etoile.png'); ?>" alt="etoile"/>
+
+    	<p class="head-title"><?php if($uid_visit == $uid&&$morceau_right_t['type_page']!=1){ echo 'Mon' ;} else if($morceau_right_t['type_page']!=1) { echo 'Son';}; ?> Top 
+    		<span>Titres</span>
+    	</p>
+    	
+    	
+    	<div id="classement"> 
+  		<?php if(isset($morceau_right[0])):?>
+    		 <div id="num_impair">
+        		<p class="position">1</p><a href="<?php echo site_url().'/mc_musique/player/'.$profile->id.'/album/'.$morceau_right[0]->alb_name.'/'.$morceau_right[0]->id; ?>" class="play open_player"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p><?php print $morceau_right[0]->nom; ?></p>
+      		</div>
+      	<?php endif;?>
+       
+        <?php if(isset($morceau_right[1])):?>
 
       <div id="num_pair">
         <p class="position">2</p><a href="#" class="play"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p><?php print $morceau_right[1]->nom; ?></p>

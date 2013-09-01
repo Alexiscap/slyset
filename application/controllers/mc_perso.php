@@ -33,6 +33,9 @@ class Mc_perso extends CI_Controller {
         
         if ($this->user_id != null) {
             $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
+            $sub_data['morceau_right'] = $this->user_model->top_five_morceau_profil($this->user_id);
+            $sub_data['morceau_right_t']['type_page'] = 1;
+
         }
         
         if (!empty($output)) {

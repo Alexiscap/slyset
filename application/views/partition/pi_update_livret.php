@@ -6,12 +6,12 @@
 
 
 <div class="pop-in_cent">
-	<span>Ajouter un livret</span>
+	<span>Modifier le livret de l'album : <?php echo $album[0]->nom?></span>
 
     <div class="content-pi-cent">
 		<?php echo $error;?>
 
-		<?php  echo form_open_multipart('pop_in_general/do_upload_livret'); ?>
+		<?php  echo form_open_multipart('pop_in_general/update_file_livret'); ?>
 		<div class="elem_center">
 		<div class="label">
 				<label>Votre livret</label>
@@ -29,8 +29,6 @@
                 	<?php echo form_upload($data); ?>
                 </div>
             </div>
-
-			
 			<div style='visibility: hidden' class="label">
 				<label>Album</label>
 			</div>
@@ -38,12 +36,10 @@
 			
 				<select name="livret">
 
-						<option id="" name="album" class ="<?php echo $id_alb?>" value="<?php echo $album[0]->nom?>+<?php echo $album[0]->id; ?>"><?php echo $album[0]->nom; ?></option>
+						<option id="" name="album" class ="<?php echo $id_alb?>" value="<?php echo $album[0]->nom?>+<?php echo $album[0]->id?>"><?php echo $album[0]->nom?></option>
 
 				</select>
 			</div>
-			
-
 		
 			<div id="morceaux"></div>
 			
@@ -77,15 +73,35 @@
 						      
                 	</div>
             </div>-->
-			<!--<div class="label">
+            
+            <!--
+			<div class="label">
 				<label>Aperçu</label>
 			</div>
 			<div class="champs" >
 				<img id="preview" src="http://127.0.0.1/slyset/assets/images/musicien/apercu_photo.png" alt="visuel photo">
-			</div>-->
+			</div>
+			-->
+			<div id="morceaux"></div>
+			<?php 
+				$delete = array(
+              'class'        => 'delete',
+              'name'          => 'delete',
+			  'value'	=> 'Supprimer le livret',
+              );
 			
-			<?php echo form_submit('submit', 'Ajouter un livret'); ?>
-			<?php echo form_close();?>
+			  echo form_submit($delete);
+			  
+			  $nodelete = array(
+              'class'        => 'submit',
+              'name'          => 'submit',
+			  'value'	=> 'Modifier le livret',
+              );
+			
+			  echo form_submit($nodelete);
+			
+
+			 echo form_close();?>
 		</div>
 	</div>
 </div>

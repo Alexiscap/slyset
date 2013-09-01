@@ -37,33 +37,50 @@ class Melo_wall extends CI_Controller {
     }
 
     public function index($user_id) {
+     	$uid = $this->session->userdata('uid');
+        $infos_profile = $this->user_model->getUser($user_id);
+
+       // if ((($user_id != $uid && !empty($user_id)) || ($user_id == $uid && !empty($user_id))) && $infos_profile->type != 1) {
+            $this->page($infos_profile);
+        //} else {
+          //  redirect('home/' . $uid, 'refresh');
+        //}
 //        $uid = $this->session->userdata('uid');
 //        $infos_profile = $this->user_model->getUser($user_id);
 //
 //        if ($user_id == $uid) {
-        $this->page($user_id);
+        //$this->page($user_id);
 //        } else {
 //            show_404();
 //        }
     }
 
-    public function page($user_id) {
+    public function page($infos_profile) {
+		
+		$data = $this->data;
+        $uid = $this->session->userdata('uid');
+
+        $user_visited = (empty($infos_profile)) ? $uid : $infos_profile->id;
+		
+        if (!empty($infos_profile)) {
+            $data['infos_profile'] = $infos_profile;
+        }
+		
         $this->layout->ajouter_js('wall');
 
         setlocale(LC_TIME, 'fr', 'fr_FR', 'fr_FR.ISO8859-1');
 
-        $data = $this->data;
 
-        $data_follow = $this->melo_actus_model->get_following($user_id);
+        $data_follow = $this->melo_actus_model->get_following($user_visited);
         $listforin = "";
-        $data['info_user'] = $this->melo_actus_model->get_info_user($user_id);
+        $data['info_user'] = $this->melo_actus_model->get_info_user($user_visited);
         
         foreach ($data_follow as $following) {
             $listforin .= $following->Utilisateur_id . ',';
         }
         
         $listforin_sql = substr($listforin, 0, -1);
-        $data['data_all_wall'] = $this->melo_actus_model->get_entities_id(10, 0, $listforin_sql, $user_id);
+        $data['data_all_wall'] = $this->melo_actus_model->get_entities_id(10, 0, $listforin_sql, $user_visited);
 
         $a = 0;
         if (isset($data['data_all_wall'])) {

@@ -137,7 +137,9 @@ $route['document'] = "mc_partitions/index";
 $route['document/(:num)'] = "mc_partitions/index/$1";
 $route['document/new-lyrics'] = "pop_in_general/paroles";
 $route['document/new-score'] = "pop_in_general/partition";
-$route['document/new-livret'] = "pop_in_general/livret";
+$route['document/new-livret/(:num)'] = "pop_in_general/livret/$1";
+$route['document/update-livret/(:num)'] = "pop_in_general/update_livret/$1";
+
 
 
 $route['my-wall'] = "melo_wall/index";

@@ -4,6 +4,7 @@
     $uid = (empty($session_id)) ? '' : $session_id;
     $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
     $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
+
 ?>
 
 <div id="contentAll">
@@ -40,6 +41,7 @@
     </div> 
     
     <div id = "content" class="content">  
+    <h2>Fil d'actualité</h2>
         <?php
       
         if (isset($data_all_wall)):
@@ -467,7 +469,7 @@
  
 <?php if(empty($data_all_wall)):
     ?><div class="artist_post photo_message">
-    <?php echo $login; ?> n'a aucunes actualités
+    <?php echo $login; ?> n'a aucune actualité
     </div>
 <?php
 

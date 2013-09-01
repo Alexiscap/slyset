@@ -7,6 +7,8 @@ class Document_model extends CI_Model {
 
     protected $table_doc = 'documents';
     protected $table_alb = 'albums';
+	protected $table_track = 'morceaux';
+
     protected $data;
 
     public function __construct() {
@@ -84,14 +86,26 @@ class Document_model extends CI_Model {
         return $this->db->query('SELECT nom,id FROM albums WHERE Utilisateur_id = ' . $user_id)
                         ->result();
     }
-
-    public function get_morceau_by_album($album) {
-        return $this->db->query('SELECT nom,id FROM morceaux WHERE Albums_id = ' . $album)
+    
+    public function get_one_album($id_alb)
+    {
+      return $this->db->query('SELECT nom,id FROM albums WHERE id = ' . $id_alb)
                         ->result();
     }
 
-    public function insert_doc($album, $morceau, $path, $type) {
-        $this->db->set(array('albums_id' => $album, 'Morceaux_id' => $morceau, 'path' => $path, 'Utilisateur_id' => $this->session->userdata('uid'), 'format' => 'pdf', 'type_document' => $type))
+    public function get_morceau_by_album($album,$not_type_doc) {
+    	return $this->db->query('SELECT morceaux.id,morceaux.nom FROM morceaux
+									LEFT OUTER JOIN documents ON documents.morceaux_id = morceaux.id
+										WHERE  (documents.type_document != "'.$not_type_doc.'" OR documents.id IS NULL)
+											AND morceaux.albums_id = '.$album)
+						->result();
+    					
+    }
+
+    public function insert_doc($prix,$album, $morceau, $path, $type) {
+            $prix = !empty($prix) ? "$prix" : NULL;
+
+        $this->db->set(array('albums_id' => $album, 'Morceaux_id' => $morceau, 'path' => $path, 'Utilisateur_id' => $this->session->userdata('uid'), 'format' => 'pdf', 'type_document' => $type,'prix'=> $prix))
                 ->insert('documents');
     }
 
@@ -111,6 +125,15 @@ class Document_model extends CI_Model {
 
         $this->db->set(array('Commande_id' => $cmd_last_id, 'prix' => $prix, 'Documents_id' => $doc_id))
                 ->insert('infos_commande');
+    }
+    
+    public function delete_livret($id_album)
+    {
+    
+        $data['livret_path'] = null;
+
+        $this->db->where('id', $id_album);
+        $this->db->update('albums', $data);
     }
 
 }

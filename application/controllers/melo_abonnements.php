@@ -35,11 +35,11 @@ class Melo_abonnements extends CI_Controller {
         $uid = $this->session->userdata('uid');
         $infos_profile = $this->user_model->getUser($user_id);
 
-        if ($user_id == $uid) {
+      //  if ($user_id == $uid) {
             $this->page($infos_profile);
-        } else {
+        /*} else {
             show_404();
-        }
+        }*/
     }
 
     public function page($infos_profile) {

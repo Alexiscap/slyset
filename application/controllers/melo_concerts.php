@@ -40,22 +40,22 @@ class Melo_concerts extends CI_Controller {
         $uid = $this->session->userdata('uid');
         $infos_profile = $this->user_model->getUser($user_id);
 
-        if ($user_id == $uid) {
+       //if ($user_id == $uid) {
             $this->page_main($infos_profile, "melo_concerts", ">");
-        } else {
+        /*} else {
             show_404();
-        }
+        }*/
     }
 
     public function concert_passe($user_id) {
         $uid = $this->session->userdata('uid');
         $infos_profile = $this->user_model->getUser($user_id);
 
-        if ($user_id == $uid) {
+      //  if ($user_id == $uid) {
             $this->page_main($infos_profile, "melo_concert_passe", "<");
-        } else {
-            show_404();
-        }
+        //} else {
+         //   show_404();
+        //}
     }
 
     public function page_main($infos_profile, $moment, $inf_sup) {
