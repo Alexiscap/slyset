@@ -159,13 +159,18 @@ $loger = $this->session->userdata('logged_in');
 
                                 		<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
                                 	</a>
-                                    <p class="<?php echo $morceau_alune->id; ?>"><?php echo $morceau_alune->nom; ?> </p>
-                                    <div class="miniat_titre">
-                                        <a href="#" class="add"><span>add</span></a>
-                                        <a href="#" class="edit"><span>edit</span></a>
-                                        <a href="#" class="coeur"><span>coeur</span></a>
-                                       <!-- <a href="#" class="cam"><span>cam</span></a>-->
-                                    </div>
+                                    <p class="<?php echo $morceau_alune->id; ?> track-id"><?php echo $morceau_alune->nom; ?> </p>
+                                    <?php if($loger == 1): ?>
+                                        <div class="miniat_titre">
+                                            <?php if($session_id == $uid_visit): ?>
+                                                <a href="#" class="delete"><span></span></a>
+                                                <a href="<?php echo site_url('pop_in_general/edit_musique/'.$session_id.'/'.$morceau_alune->id); ?>" class="edit iframe"><span></span></a>
+                                            <?php endif; ?>
+                                            <a href="#" class="coeur"><span></span></a>
+                                            <a href="#" class="add"><span></span></a>
+                                          <!--  <a href="#" class="cam"><span>cam</span></a>-->
+                                        </div>
+                                    <?php endif; ?>
                                 </td>
                                 <td class="article-date"><?php echo substr($morceau_alune->duree,0,5); ?></td>
                             </tr>
@@ -211,13 +216,20 @@ $loger = $this->session->userdata('logged_in');
                                 	<a href="<?php echo site_url('mc_musique/player/'.$uid_visit.'/album/'.$morceau_artiste->title_alb.'/'.$morceau_artiste->id); ?>" class="open_player" >
 										<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
 									</a>
-                                    <p class="<?php echo $morceau_artiste->id; ?>"> <?php echo $morceau_artiste->nom?></p>
-                                    <div class="miniat_titre">
-                                        <a href="#" class="add"><span>add</span></a>
-                                        <a href="#" class="edit"><span>edit</span></a>
-                                        <a href="#" class="coeur"><span>coeur</span></a>
-                                      <!--  <a href="#" class="cam"><span>cam</span></a>-->
-                                    </div>
+                                    <p class="<?php echo $morceau_artiste->id; ?> track-id"> <?php echo $morceau_artiste->nom?></p>
+                                    <!--$loger $session_id-->
+                                    <?php // print_r($this->session->all_userdata()); ?>
+                                    <?php if($loger == 1): ?>
+                                        <div class="miniat_titre">
+                                            <?php if($session_id == $uid_visit): ?>
+                                                <a href="#" class="delete"><span></span></a>
+                                                <a href="<?php echo site_url('pop_in_general/edit_musique/'.$session_id.'/'.$morceau_artiste->id); ?>" class="edit iframe"><span></span></a>
+                                            <?php endif; ?>
+                                            <a href="#" class="coeur"><span></span></a>
+                                            <a href="#" class="add"><span></span></a>
+                                          <!--  <a href="#" class="cam"><span>cam</span></a>-->
+                                        </div>
+                                    <?php endif; ?>
                                 </td>
                                  <td class="article-album"><a href="<?php echo site_url('musique/album/'.$uid_visit.'/'.$morceau_artiste->id_alb) ?>"><?php echo $morceau_artiste->title_alb; ?></a></td>
                                 <td class="article-date"><?php echo substr($morceau_artiste->duree,0,5); ?></td>

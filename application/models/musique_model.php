@@ -139,8 +139,8 @@ class Musique_model extends CI_Model {
     //-								MORCEAUX									-
     //---------------------------------------------------------------------------
 
-
-    public function insert_music($filename, $title, $track_number, $artist, $genre, $year, $duration, $price, $format, $bitrate, $filesize) {
+    public function insert_music($filename, $album_id, $title, $track_number, $artist, $genre, $year, $duration, $price, $format, $bitrate, $filesize) {
+        $data['Albums_id'] = $album_id;
         $data['Utilisateur_id'] = $this->session->userdata('uid');
         $data['filename'] = $filename;
         $data['nom'] = $title;
@@ -156,17 +156,52 @@ class Musique_model extends CI_Model {
 
         $this->db->insert($this->tbl_morceaux, $data);
     }
-
-    public function insert_album($title, $genre, $year) {
-        $data['Utilisateur_id'] = $this->session->userdata('uid');
+    
+    public function update_music($track_id, $album_id, $title, $piste, $artist, $genre, $year, $price) {
+        $data['Albums_id'] = $album_id;
         $data['nom'] = $title;
-        $data['date'] = Date('Y-m-d H:i:s');
+        $data['tracknumero'] = $piste;
+        $data['artiste'] = $artist;
         $data['genre'] = $genre;
         $data['annee'] = $year;
+        $data['prix'] = $price;
+
+        $this->db->update($this->tbl_morceaux, $data, "id = " . $track_id);
+    }
+
+    public function insert_album($album) {
+        $data['Utilisateur_id'] = $this->session->userdata('uid');
+        $data['nom'] = $album;
+        $data['date'] = Date('Y-m-d');
+//        $data['genre'] = $genre;
+//        $data['annee'] = $year;
 
         $this->db->insert($this->tbl_album, $data);
     }
 
+    public function delete_morceau($morceau_id)
+    {
+        return $this->db->where('id', (int) $morceau_id)->delete($this->tbl_morceaux);
+    }
+    
+    public function get_morceau_single($track_id) {
+        $this->db->select('morceaux.*, albums.nom AS title_alb, albums.id AS id_alb')
+                 ->from($this->tbl_morceaux)
+                 ->where(array('morceaux.id' => $track_id))
+                 ->join($this->tbl_album, 'morceaux.Albums_id = albums.id', 'LEFT OUTER')
+                 ->limit(1);
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() == 1) {
+            $result = $query->result();
+            $data = $result[0];
+            return $data;
+        } else {
+            return false;
+        }
+    }
+    
     public function get_album_une($user_id) {
         return $this->db->select('nom,albums.id,img_cover,annee,livret_path,documents.id AS doc_id')
                         ->from($this->tbl_album)
@@ -186,10 +221,11 @@ class Musique_model extends CI_Model {
     }
 
     public function get_morceau_user($user_id) {
-        return $this->db->select('morceaux.id,morceaux.nom,albums.nom AS title_alb,morceaux.duree,albums.id AS id_alb')
+        return $this->db->select('morceaux.id, morceaux.nom, albums.nom AS title_alb, morceaux.duree, albums.id AS id_alb, albums.une AS une')
                         ->from($this->tbl_morceaux)
-                        ->where(array('morceaux.Utilisateur_id' => $user_id))
                         ->join($this->tbl_album, 'morceaux.albums_id = albums.id', 'LEFT OUTER')
+                        ->where('morceaux.Utilisateur_id =', $user_id)
+                        ->where('une IS NULL OR une != 1')
                         ->get()
                         ->result();
     }
@@ -237,48 +273,6 @@ class Musique_model extends CI_Model {
 
         //return $this->markup_une();
     }
-
-    /*
-      private function markup_une()
-      {
-      $infos_profile->id = 30;
-      $album_alaune[0]->nom ="boo";
-      $album_alaune[0]->img_cover ="aa";
-      $album_alaune[0]->livret_path = 'gf';
-      $uid = 30;
-
-      $a =  base_url("files/".$infos_profile->id."/albums/".str_replace(" ","_",$album_alaune[0]->nom).'/'.$album_alaune[0]->img_cover);
-      $b = img_url('portail/alaune.png');
-      $c = site_url('mc_musique/player/'.$uid.'/album/'.$album_alaune[0]->nom);
-      $d = img_url('musicien/player_top.png');
-      $f = base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$album_alaune[0]->nom).'/'.$album_alaune[0]->livret_path);
-
-      if (isset($album_alaune[0]->livret_path)):
-      $e = '"<span>> </span><a href="'.$f.'">Voir le livret d\'album</a>';
-      endif;
-      $g = " ";
-      if (isset($album_alaune[0]->doc_id)):
-      $g = '<span>> </span><a href="#">Voir les partitions</a>';
-      endif;
-
-      return '<div id="une_alb">
-      <div class="a_la_une">
-      <img src="'.$a.'"/>
-      <img src="'.$b.'" class="bandeau_top bandeau_une"/>
-      <div class="player">
-      <a href="'.$c.'" class="open_player"><img src="'.$d.'"/></a>
-      </div>
-      <div class="infos">
-      <p class="title"><?php echo $album_alaune[0]->nom; ?></p>
-      <p class="annee_crea"><?php echo $album_alaune[0]->annee; ?></p>
-      <p>'.$e.'</p>
-      <p>'.$g.'</p>
-      </div>
-      </div>
-
-      ';
-      }
-     */
 
     //---------------------------------------------------------------------------
     //-								PLAYLIST									-

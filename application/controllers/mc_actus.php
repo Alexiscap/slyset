@@ -19,6 +19,8 @@ class Mc_actus extends CI_Controller {
         $this->load->library(array('form_validation'));
 
         $this->layout->set_id_background('musicien_actus');
+        $this->layout->set_description('');
+        $this->layout->set_titre('Dashboard Admin : Gestion des articles | Slyset Music');
 
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
         $output = $this->perso_model->get_perso($this->user_id);

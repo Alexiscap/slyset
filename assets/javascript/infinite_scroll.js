@@ -107,7 +107,7 @@ function infiniteActusMelomane() {
                         ajaxLoader.remove();
                     }, 1000);
                 } else {
-//                    alert('pas ok');
+                    //                    alert('pas ok');
                     ajaxLoader.remove();
                     reachedEnd = true;
                     $('.content').append(noMore);
@@ -135,13 +135,31 @@ function infiniteActusMusicien() {
             success: function(data) {
                 if (data != "" && data != "End"){
                     $('.content').append(data);
+                    
+                    $(".artist_post").each(function(){
+                        var comments = $(this).find('.comments');
+                        var limit = 2;
+
+                        if(comments.length > 2 && $(this).find('.commentsWrapper').length == 0){
+                            comments.slice(limit).wrapAll('<div class="commentsWrapper"></div>');
+
+                            $(this).find('.commentsWrapper').before("<div class='linkCommentsWrapper'>Voir " + (comments.length - limit) + " de plus</div>");
+                            $(this).find('.commentsWrapper').hide();
+
+                            $(this).find('.linkCommentsWrapper').click(function(){
+                                $(this).fadeOut('slow');
+                                $(this).next('.commentsWrapper').slideDown('slow');
+                            });
+                        }
+                    });
+                    
                     ajaxLoader.fadeOut(1000);
           
                     setTimeout(function(){
                         ajaxLoader.remove();
                     }, 1000);
                 } else {
-//                    alert('pas ok');
+                    //                    alert('pas ok');
                     ajaxLoader.remove();
                     reachedEnd = true;
                     $('.content').append(noMore);
@@ -180,7 +198,7 @@ function infiniteArticlesAdmin() {
                         var check_span = check.children();
                         
                         if(check_span.length == 0){
-//                            $checkLabel = $('.checkbox-style label, .checkbox-style2 label');
+                            //                            $checkLabel = $('.checkbox-style label, .checkbox-style2 label');
                             check.prepend('<span/>');
                         }
                     });
@@ -265,7 +283,7 @@ function infiniteComptes() {
                         var check_span = check.children();
                     
                         if(check_span.length == 0){
-//                            $checkLabel = $('.checkbox-style label, .checkbox-style2 label');
+                            //                            $checkLabel = $('.checkbox-style label, .checkbox-style2 label');
                             check.prepend('<span/>');
                         }
                     });

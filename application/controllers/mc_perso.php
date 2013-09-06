@@ -107,10 +107,12 @@ class Mc_perso extends CI_Controller {
             $theme_css = 'custom_user_css.php';
 
             $background_perso = $this->input->post('background');
-            if (empty($background_perso)) {
+            if (empty($background_perso) && !empty($data['perso']->background)) {
                 $background = $data['perso']->background;
             } elseif (!empty($background_perso)) {
                 $background = $background_perso;
+            } else {
+                $background = NULL;
             }
 
             $repeat = $this->input->post('repeat');
@@ -119,7 +121,6 @@ class Mc_perso extends CI_Controller {
             $couleur3 = $this->input->post('couleur3');
             $couleur4 = $this->input->post('couleur4');
 
-
             $this->user_id = $this->uri->segment(3);
             $exist = $this->perso_model->get_perso($this->user_id);
 
@@ -127,6 +128,12 @@ class Mc_perso extends CI_Controller {
                 $this->perso_model->insert_perso($theme_css, $background, $repeat, $couleur1, $couleur2, $couleur3, $couleur4);
             } else {
                 $this->perso_model->update_perso($theme_css, $background, $repeat, $couleur1, $couleur2, $couleur3, $couleur4);
+            }
+            
+            $output = $this->perso_model->get_perso($uid);
+            if(!empty($output)){
+                $this->layout->ajouter_dynamique_css($output->theme_css);
+                write_css($output);
             }
 
             redirect('personnaliser/' . $uid, 'refresh');

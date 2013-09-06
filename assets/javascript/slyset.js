@@ -1436,9 +1436,7 @@ $(document).ready(function(){
 
     //Appel de la fonction masonry uniquement sur la page photos/vidéos
     if($("body.photos_videos").length > 0){
-  		
         playMasonry();
-   
     };
     
     //Appel de la fonction
@@ -1449,7 +1447,7 @@ $(document).ready(function(){
         });
     }
     
-    if($("body.musicien_actus").length > 0){
+    if($("body.musicien_actus").length > 0){        
         $(".actus_post .actus_post_links a").click(function(e){
             e.preventDefault();
             var cls = $(this).attr('href').replace('#', '');
@@ -1673,8 +1671,25 @@ $(document).ready(function(){
     	
     }
     
-    if($("body.musique").length > 0)
-    {   
+    if($("body.musique").length > 0){
+        $('.alltrack_table tr .delete').click(function(e){
+            e.preventDefault();
+            
+            var that = $(this);
+            
+            var track_id = $(this).parent().prev().attr('class').split(' ')[0];
+            var dataid = 'track_id=' + track_id;
+            
+            $.ajax({
+                type: "POST",
+                url : base_url +'/mc_musique/delete_track',
+                data: dataid,
+                success: function(data){
+                    that.closest('tr').slideUp();
+                }
+            });
+        });
+        
         $("body").bind('click', function(ev) {
             var myID = ev.target.id;
             if (myID !== 'playlist_alert'&&myID !=='input_alert') {

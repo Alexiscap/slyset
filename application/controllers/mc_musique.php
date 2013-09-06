@@ -21,7 +21,7 @@ class Mc_musique extends CI_Controller {
         $this->layout->ajouter_js('jquery.tablesorter');
 
         $this->load->library('getid3/Getid3');
-        $this->load->model(array('perso_model', 'user_model', 'musique_model','follower_model'));
+        $this->load->model(array('perso_model', 'user_model', 'musique_model', 'follower_model'));
         $this->load->helper('form');
 
         $this->layout->set_id_background('musique');
@@ -79,10 +79,10 @@ class Mc_musique extends CI_Controller {
         $data['album_alaune'] = $this->musique_model->get_album_une($infos_profile->id);
         $data['morceaux_alaune'] = $this->musique_model->get_morceau_une($infos_profile->id);
         $data['playlists'] = $this->musique_model->get_my_playlist($this->session->userdata('uid'));
-		$data['all_alb'] = $this->musique_model->get_list_album($this->session->userdata('uid'));
-		$data['all_follower'] = $this->follower_model->get_all_follower_user($infos_profile->id);
-    	$data['album_nbr'] = $this->musique_model->get_nalb($infos_profile->id);
-        	
+        $data['all_alb'] = $this->musique_model->get_list_album($this->session->userdata('uid'));
+        $data['all_follower'] = $this->follower_model->get_all_follower_user($infos_profile->id);
+        $data['album_nbr'] = $this->musique_model->get_nalb($infos_profile->id);
+
         //var_dump($data['all_morceau_artiste']);
         $this->layout->view('musique/mc_musique', $data);
     }
@@ -102,9 +102,9 @@ class Mc_musique extends CI_Controller {
             $data['this_album'] = $this->musique_model->get_album_page($id_album);
             $data['this_album_morceau'] = $this->musique_model->get_morceau_alb_page($user_id, $id_album);
             $data['playlists'] = $this->musique_model->get_my_playlist($this->session->userdata('uid'));
-    		$data['all_follower'] = $this->follower_model->get_all_follower_user($user_id);
-    		$data['album_nbr'] = $this->musique_model->get_nalb($user_id);
-        	$data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($infos_profile->id);
+            $data['all_follower'] = $this->follower_model->get_all_follower_user($user_id);
+            $data['album_nbr'] = $this->musique_model->get_nalb($user_id);
+            $data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($infos_profile->id);
             $this->layout->view('musique/album', $data);
         } else {
             redirect('home/' . $uid, 'refresh');
@@ -116,39 +116,36 @@ class Mc_musique extends CI_Controller {
         $id_morceau = $this->input->post('id_track');
         $this->musique_model->to_playlist($pl_name, $id_morceau);
     }
-    
-    public function alb_to_panier()
-	{
-		$id_alb = $this->input->post('album_id');
-		$pn = $this->musique_model->alb_to_panier($id_alb);
-		print $pn;
-		return $pn;
-	}
-	
-	public function morceau_to_panier()
-	{
-		$id_track = $this->input->post('track_id');
-		$rtn = $this->musique_model->morceau_to_panier($id_track);
-		print $rtn;
-		return $rtn;
-	}
-	
-	public function put_alaune()
-	{
-		$id_alb = $this->input->post('id_alb');
-		$put_une = $this->musique_model->put_alune($id_alb);
-		//return $put_une;
-	}
+
+    public function alb_to_panier() {
+        $id_alb = $this->input->post('album_id');
+        $pn = $this->musique_model->alb_to_panier($id_alb);
+        print $pn;
+        return $pn;
+    }
+
+    public function morceau_to_panier() {
+        $id_track = $this->input->post('track_id');
+        $rtn = $this->musique_model->morceau_to_panier($id_track);
+        print $rtn;
+        return $rtn;
+    }
+
+    public function put_alaune() {
+        $id_alb = $this->input->post('id_alb');
+        $put_une = $this->musique_model->put_alune($id_alb);
+        //return $put_une;
+    }
 
     public function player($user_id, $type = null, $name = null, $id_morceau = null) {
         //print $type;
         $data['playlists'] = $this->musique_model->get_my_playlist_player($user_id, $type, $name, $id_morceau);
         //var_dump($data['playlists']);
         $data['morceaux_playlist'] = $this->musique_model->get_morceau_by_playlist_user($user_id);
-      /*  if ($id_morceau != null) {
-            $info_morceau = $this->musique_model->get_morceau($id_morceau);
-            $data['morceau'] = $info_morceau[0]->nom;
-        }*/
+        /*  if ($id_morceau != null) {
+          $info_morceau = $this->musique_model->get_morceau($id_morceau);
+          $data['morceau'] = $info_morceau[0]->nom;
+          } */
         //$unique_playlist = array_unique($playlist);
         //var_dump($morceaux_playlist);
         $this->load->view('musique/player', $data);
@@ -158,7 +155,7 @@ class Mc_musique extends CI_Controller {
         $this->load->library('upload');
         $uid = $this->session->userdata('uid');
 
-        print_r($_FILES);
+//        print_r($_FILES);
 //        print_r($this->getid3->analyze($_FILES['tmp_name']));
 //        $upload_folder = './files/'.$uid.'/musique/';
         $upload_folder = 'tmp/';
@@ -179,20 +176,20 @@ class Mc_musique extends CI_Controller {
 
         $this->upload->initialize($this->upload_config);
 
-        
+
         $userfile_exploded = explode('.mp3', $_FILES['userfile']['name']);
 //        $strreplace = array('\'', '"', '(', ')', '.', ';', ':', '[', ']', '?', ',', '!', '=', '+', '`', '~', '^', '#', '°', '@', '*', '$', '€', '£', '%', 'µ');
 //        $userfile1 = str_replace($strreplace, '', $userfile_exploded[0]);
         $userfile2 = preg_replace(array('/\s+/', '/[^\w-]/'), array('_', ''), $userfile_exploded[0]);
 //        $userfile22 = str_replace(' ', '_', $userfile_exploded[0]);
-        $userfile = $userfile2.'.mp3';
-        
-        print 'Voici le premier userfile '.$userfile;
+        $userfile = $userfile2 . '.mp3';
+
+//        print 'Voici le premier userfile ' . $userfile;
         $userfile_name = strtr($userfile, 'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
 
-        print_r($_FILES);
+//        print_r($_FILES);
 //        print '<br/>';
-        print_r($_POST);
+//        print_r($_POST);
 //        if($this->check_exists()){
 //            print_r('réussie !!');
         if (!$this->upload->do_upload()) {
@@ -204,7 +201,7 @@ class Mc_musique extends CI_Controller {
         } else {
             $data['file_info'] = $this->upload->data();
             $id3 = $this->getid3->analyze($upload_folder . $userfile_name);
-            print_r($id3);
+//            print_r($id3);
 
             $filesize = (isset($id3['filesize'])) ? $id3['filesize'] : NULL;
             $filename = (isset($id3['filename'])) ? $id3['filename'] : NULL;
@@ -235,23 +232,50 @@ class Mc_musique extends CI_Controller {
             }
 
             $moved_path_file = $moved_path . '' . $filename;
-
-            print_r($str_album);
-            print_r($file_to_move);
-            print_r($moved_path_file);
-
+            
             if (copy($file_to_move, $moved_path_file)) {
                 unlink($file_to_move);
             }
 
-            $this->musique_model->insert_music($filename, $title, $track_number, $artist, $genre, $year, $duration, $price, $format, $bitrate, $filesize);
+            $list_albums = $this->musique_model->get_list_album($uid);
+            
+            foreach($list_albums as $list_album){
+                $albs[$list_album->id] = $list_album->nom;
+            }
+            
+            $last_album_id = key(array_slice($albs, -1, 1, TRUE));
+            
+            if(!in_array($album, $albs)){
+                $this->musique_model->insert_album($album);
+            }
+            
+            $this->musique_model->insert_music($filename, $last_album_id, $title, $track_number, $artist, $genre, $year, $duration, $price, $format, $bitrate, $filesize);
+//            
 //                $this->musique_model->insert_album($str_album, $genre, $year);
 
             $this->load->view('musique/upload_musique', $data);
         }
-//        } else {
-//            print_r('foiré !!');
-//        }
+    }
+
+    public function delete_track() {
+        $morceau_id = $this->input->post('track_id');
+        $uid = $this->session->userdata('uid');
+        
+        $data = array();
+        $data['track'] = $this->musique_model->get_morceau_single($morceau_id);
+        $filename = $data['track']->filename;
+        $album = $data['track']->title_alb;
+        
+        $moved_path = "";
+        $str_album = str_replace(' ', '_', strtolower($album));
+        if (!empty($album)) {
+            $moved_path = 'files/' . $uid . '/musique/' . $str_album . '/';
+        } else {
+            $moved_path = 'files/' . $uid . '/musique/';
+        }
+        unlink($moved_path. '' .$filename);
+        
+        echo $this->musique_model->delete_morceau($morceau_id);
     }
 
     public function check_exists() {
@@ -269,7 +293,7 @@ class Mc_musique extends CI_Controller {
 //            return false;
         } else {
             echo 0;
-            print_r('d"ont exist');
+            print_r('don\'t exist');
 //            return true;
         }
 
