@@ -19,7 +19,7 @@ $loger = $this->session->userdata('logged_in');
   </div>
   
   <?php 
-  if(empty($morceau_right) != 1):?>
+  if(!empty($morceau_right) && $morceau_right > 1):?>
   	<div style="display:none" id="top_titre">
     	
     	<!-- TITRE BLOC -->
@@ -28,40 +28,30 @@ $loger = $this->session->userdata('logged_in');
     	<p class="head-title"><?php if($uid_visit == $uid&&$morceau_right_t['type_page']!=1){ echo 'Mon' ;} else if($morceau_right_t['type_page']!=1) { echo 'Son';}; ?> Top 
     		<span>Titres</span>
     	</p>
-    	
-    	
-    	<div id="classement"> 
-  		<?php if(isset($morceau_right[0])):?>
-    		 <div id="num_impair">
-        		<p class="position">1</p><a href="<?php echo site_url().'/mc_musique/player/'.$profile->id.'/album/'.$morceau_right[0]->alb_name.'/'.$morceau_right[0]->id; ?>" class="play open_player"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p><?php print $morceau_right[0]->nom; ?></p>
-      		</div>
-      	<?php endif;?>
-       
-        <?php if(isset($morceau_right[1])):?>
-
-      <div id="num_pair">
-        <p class="position">2</p><a href="#" class="play"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p><?php print $morceau_right[1]->nom; ?></p>
-      </div>
-       <?php endif;?>
-        	<?php if(isset($morceau_right[2])):?>
-
-      <div id="num_impair">
-        <p class="position">3</p><a href="#" class="play"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p><?php print $morceau_right[2]->nom; ?></p>
-      </div>
-       <?php endif;?>
-        	<?php if(isset($morceau_right[3])):?>
-
-      <div id="num_pair">
-        <p class="position">4</p><a href="#" class="play"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p><?php print $morceau_right[3]->nom; ?></p>
-      </div>
-       <?php endif;?>
-        	<?php if(isset($morceau_right[4])):?>
-
-       <div id="num_impair">
-        <p class="position">5</p><a href="#" class="play"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p><?php print $morceau_right[4]->nom; ?></p>
-      </div>
-       <?php endif;?>
       
+    	<?php
+        $cpt = 1;
+        $numb_string = '';
+      ?>
+    	<div id="classement">
+          
+      <?php foreach($morceau_right as $morceau): ?>
+        <?php
+            if($cpt % 2){
+                $numb_string = 'num_pair';
+            } else{
+                $numb_string = 'num_impair';
+            }
+        ?>  
+          
+        <?php if(isset($morceau)): ?>
+          <div class="<?php echo $numb_string; ?>">
+        		<p class="position"><?php echo $cpt; ?></p><a href="<?php echo site_url().'/mc_musique/player/'.$profile->id.'/album/'.$morceau->alb_name.'/'.$morceau->id; ?>" class="play open_player"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p><?php print $morceau->nom; ?></p>
+      		</div>
+        <?php endif; ?>
+        <?php $cpt++; ?>
+      <?php endforeach; ?>
+          
       <a href="<?php echo base_url('index.php/musique/'.$profile->id)?>">> Voir toute la musique</a>
     </div>
   </div>
