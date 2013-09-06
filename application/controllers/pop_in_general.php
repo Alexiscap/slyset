@@ -473,8 +473,7 @@ class Pop_in_general extends CI_Controller {
                 $this->load->view('photos/photos_success');
             }
         }
-        echo $this->input->post("no_delete");
-        {
+        echo $this->input->post("no_delete"); {
             //CLOSE POP UP
         }
 
@@ -604,55 +603,138 @@ class Pop_in_general extends CI_Controller {
 
     public function get_morceaux() {
         $album_id = $this->input->post('id_album');
-        $data['morceaux'] = $this->document_model->get_morceau_by_album($album_id);
-        $all_option = "";
-        foreach ($data['morceaux'] as $morceau) {
-            $all_option .=
-                    $option = '<option name="morceaux" value="' . $morceau->id . '">' . $morceau->nom . '</option>';
+        $type = $this->input->post('type');
+        $data['morceaux'] = $this->document_model->get_morceau_by_album($album_id, $type);
+        $all_option = '<option name="morceaux" value=""></option>';
+
+        if (empty($data['morceaux']) != 1) {
+            foreach ($data['morceaux'] as $morceau) {
+                $all_option .=
+                        $option = '<option name="morceaux" value="' . $morceau->id . '">' . $morceau->nom . '</option>';
+            }
+        } else {
+            $all_option = '<option name="morceaux" value="Aucun morceaux disponibles">Aucun morceaux disponibles</option>';
         }
-        echo '			<select name="morceaux" class="mor">' . $all_option . '</select>
-';
+
+        echo '<select name="morceaux" class="mor">' . $all_option . '</select>';
     }
 
-    public function livret() {
+    public function livret($album_id) {
         $data = array();
         $data['error'] = " ";
+        $data['id_alb'] = $album_id;
 
         $data['album'] = $this->document_model->get_album($this->session->userdata('uid'));
         $this->load->view('partition/pi_ajout_livret', $data);
     }
 
+    // ************************************************************
+    // ******************		LIVRET  	***********************
+    // ************************************************************
+
     function do_upload_livret() {
+        $this->form_validation->set_rules('livret', 'livret', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $data = array('error' => '');
+            $this->load->view('partition/pi_ajout_livret', $data);
+        } else {
+            $album = $this->input->post('livret');
+            //print $morceau = $this->input->post('morceaux');
+            print $album;
+            $album_exp = explode('+', $album);
+            $album_name = $album_exp[0];
+            $album_file_name = str_replace(' ', '_', $album_exp[0]);
+            $album_id = $album_exp[1];
+            print $album_id;
+            $noespace_filename_album = str_replace(' ', '_', $album_name);
+            $dynamic_path = './files/' . $this->session->userdata('uid') . '/albums/' . $album_file_name . '/livret';
+
+            if (is_dir($dynamic_path) == false) {
+                mkdir($dynamic_path, 0755, true);
+            }
+
+            $config['upload_path'] = $dynamic_path;
+            $config['remove_space'] = TRUE;
+            $config['overwrite'] = TRUE;
+            $config['allowed_types'] = 'pdf';
+
+            $this->load->library('upload', $config);
+            
+            if (!$this->upload->do_upload()) {
+                $data = array('error' => $this->upload->display_errors());
+                $this->load->view('partition/pi_ajout_livret', $data);
+            } else {
+                $data = array('upload_data' => $this->upload->data());
+                $this->document_model->insert_livret($album_id, $data['upload_data']['file_name']);
+                //	$this->load->view('partition/pi_ajout_paroles', $data);
+            }
+        }
+    }
+
+    public function update_livret($album_id) {
+        $data = array();
+        $data['error'] = " ";
+        $data['id_alb'] = $album_id;
+        $data['album'] = $this->document_model->get_one_album($album_id);
+        $this->load->view('partition/pi_update_livret', $data);
+    }
+
+    function update_file_livret() {
+        $this->form_validation->set_rules('livret', 'livret', 'required');
+
         $album = $this->input->post('livret');
-        print $morceau = $this->input->post('morceaux');
+        //print $morceau = $this->input->post('morceaux');
         $album_exp = explode('+', $album);
         $album_name = $album_exp[0];
         $album_file_name = str_replace(' ', '_', $album_exp[0]);
         $album_id = $album_exp[1];
-        $noespace_filename_album = str_replace(' ', '_', $album_name);
-        $dynamic_path = './files/' . $this->session->userdata('uid') . '/albums/' . $album_file_name . '/livret';
-
-        if (is_dir($dynamic_path) == false) {
-            mkdir($dynamic_path, 0755, true);
-        }
-
-        $config['upload_path'] = $dynamic_path;
-        $config['remove_space'] = TRUE;
-        $config['overwrite'] = TRUE;
-        $config['allowed_types'] = 'pdf';
-
-
-        $this->load->library('upload', $config);
-        if (!$this->upload->do_upload()) {
-            $error = array('error' => $this->upload->display_errors());
-            $this->load->view('partition/pi_ajout_livret', $error);
+        if ($this->input->post("delete")) {
+            $this->document_model->delete_livret($album_id);
         } else {
-            $data = array('upload_data' => $this->upload->data());
+            if ($this->form_validation->run() == FALSE) {
 
-            $this->document_model->insert_livret($album_id, $data['upload_data']['file_name']);
-            //	$this->load->view('partition/pi_ajout_paroles', $data);
+                $data = array('error' => '');
+                $this->update_livret($album_id);
+            } else {
+                $album = $this->input->post('livret');
+                //print $morceau = $this->input->post('morceaux');
+                $album_exp = explode('+', $album);
+                $album_name = $album_exp[0];
+                $album_file_name = str_replace(' ', '_', $album_exp[0]);
+                $album_id = $album_exp[1];
+                $noespace_filename_album = str_replace(' ', '_', $album_name);
+                $dynamic_path = './files/' . $this->session->userdata('uid') . '/albums/' . $album_file_name . '/livret';
+
+                if (is_dir($dynamic_path) == false) {
+                    mkdir($dynamic_path, 0755, true);
+                }
+
+                $config['upload_path'] = $dynamic_path;
+                $config['remove_space'] = TRUE;
+                $config['overwrite'] = TRUE;
+                $config['allowed_types'] = 'pdf';
+
+                $this->load->library('upload', $config);
+
+                if (!$this->upload->do_upload()) {
+                    $error = array('error' => $this->upload->display_errors());
+
+                    $this->load->view('partition/pi_update_livret', $error);
+
+                    //$this->load->view('partition/pi_ajout_livret', $error);
+                } else {
+                    $data = array('upload_data' => $this->upload->data());
+                    $this->document_model->insert_livret($album_id, $data['upload_data']['file_name']);
+                    //	$this->load->view('partition/pi_ajout_paroles', $data);
+                }
+            }
         }
     }
+
+    // ************************************************************
+    // ******************		PAROLES  	***********************
+    // ************************************************************
 
     public function paroles() {
         $data = array();
@@ -662,32 +744,47 @@ class Pop_in_general extends CI_Controller {
     }
 
     function do_upload_paroles() {
-        $album = $this->input->post('album');
-        print $morceau = $this->input->post('morceaux');
-        $album_exp = explode('+', $album);
-        $album_name = $album_exp[0];
-        $album_id = $album_exp[1];
-        $noespace_filename_album = str_replace(' ', '_', $album_name);
-        $dynamic_path = './files/' . $this->session->userdata('uid') . '/documents/' . $album_id;
+        if ($this->input->post("submit")) {
+            $album = $this->input->post('album_doc');
+            $morceau = $this->input->post('morceaux');
+            print $morceau;
+            $album_exp = explode('+', $album);
+            $album_name = $album_exp[0];
+            if (isset($album_exp[1])) {
+                $album_id = $album_exp[1];
+            }
+            $noespace_filename_album = str_replace(' ', '_', $album_name);
+            $dynamic_path = './files/' . $this->session->userdata('uid') . '/documents/' . $album_id;
 
-        if (is_dir($dynamic_path) == false) {
-            mkdir($dynamic_path, 0755, true);
-        }
+            if (is_dir($dynamic_path) == false) {
+                mkdir($dynamic_path, 0755, true);
+            }
 
-        $config['upload_path'] = $dynamic_path;
-        $config['remove_space'] = TRUE;
-        $config['overwrite'] = TRUE;
-        $config['allowed_types'] = 'pdf';
+            $config['upload_path'] = $dynamic_path;
+            $config['remove_space'] = TRUE;
+            $config['overwrite'] = TRUE;
+            $config['allowed_types'] = 'pdf';
 
-        $this->load->library('upload', $config);
+            $this->load->library('upload', $config);
 
-        if (!$this->upload->do_upload()) {
-            $error = array('error' => $this->upload->display_errors());
-            $this->load->view('partition/pi_ajout_paroles', $error);
-        } else {
-            $data = array('upload_data' => $this->upload->data());
-            $this->document_model->insert_doc($album_id, $morceau, $data['upload_data']['file_name'], "paroles");
-            //	$this->load->view('partition/pi_ajout_paroles', $data);
+            if (!$this->upload->do_upload()) {
+                $error = array('error' => $this->upload->display_errors());
+                $this->load->view('partition/pi_ajout_paroles', $error);
+            } else {
+                $data = array('upload_data' => $this->upload->data());
+
+                $parole_price = $this->input->post('parole_price');
+                $this->document_model->insert_doc($parole_price, $album_id, $morceau, $data['upload_data']['file_name'], "paroles");
+                //	$this->load->view('partition/pi_ajout_paroles', $data);
+            }
+        } else if ($this->input->post("delete")) {
+            $album = $this->input->post('album');
+            print 'delete';
+            $album_exp = explode('+', $album);
+            $album_name = $album_exp[0];
+            $album_id = $album_exp[1];
+            $noespace_filename_album = str_replace(' ', '_', $album_name);
+            $dynamic_path = './files/' . $this->session->userdata('uid') . '/documents/' . $album_id;
         }
     }
 
@@ -749,7 +846,7 @@ class Pop_in_general extends CI_Controller {
 
         $this->load->view('musique/upload_musique', $data);
     }
-    
+
     public function edit_musique($uid, $track_id) {
         $this->load->library('getid3/Getid3');
         $textEncoding = 'UTF-8';
@@ -757,11 +854,11 @@ class Pop_in_general extends CI_Controller {
         $getID3->setOption(array('encoding' => $textEncoding));
 
         require_once('application/libraries/getid3/write.php');
-        
+
         $data = array();
         $data['track'] = $this->musique_model->get_morceau_single($track_id);
         $data['albums'] = $this->musique_model->get_list_album($uid);
-        
+
         $this->form_validation->set_rules('titre', 'Titre', 'trim|clean_xss|required');
         $this->form_validation->set_rules('artiste', 'Artiste', 'trim|clean_xss|required');
         $this->form_validation->set_rules('piste', 'Piste', 'trim|clean_xss|numeric');
@@ -773,64 +870,64 @@ class Pop_in_general extends CI_Controller {
             $this->load->view('musique/edit_musique', $data);
         } else {
             $upload_folder = '';
-            $alb = $data['track']->title_alb;            
+            $alb = $data['track']->title_alb;
             $str_album = str_replace(' ', '_', strtolower($alb));
             if (!empty($data['track']->title_alb)) {
                 $upload_folder = 'files/' . $uid . '/musique/' . $str_album . '/';
             } else {
                 $upload_folder = 'files/' . $uid . '/musique/';
             }
-            
-            $title  = $this->input->post('titre');
+
+            $title = $this->input->post('titre');
             $artist = $this->input->post('artiste');
-            $album  = $this->input->post('album');
-            $year   = $this->input->post('annee');
-            $genre  = $this->input->post('genre');
-            $piste  = $this->input->post('piste');
-            $price  = $this->input->post('prix');
-            
-            if($album == 0){
+            $album = $this->input->post('album');
+            $year = $this->input->post('annee');
+            $genre = $this->input->post('genre');
+            $piste = $this->input->post('piste');
+            $price = $this->input->post('prix');
+
+            if ($album == 0) {
                 $album = NULL;
             }
-            
+
             $userfile_name = $data['track']->filename;
             $dir_userfile = $upload_folder . $userfile_name;
-            
-            if(!empty($userfile_name) && file_exists($upload_folder) && file_exists($dir_userfile)){
+
+            if (!empty($userfile_name) && file_exists($upload_folder) && file_exists($dir_userfile)) {
                 $id3_write = new getid3_writetags;
                 $id3_write->filename = $dir_userfile;
                 $id3_write->tagformats = array('id3v2.3');
                 $id3_write->overwrite_tags = true;
                 $id3_write->tag_encoding = $textEncoding;
                 $id3_write->remove_other_tags = false;
-                
+
                 $tagData = array(
-                    'title'         => array($title),
-                    'artist'        => array($artist),
-                    'album'         => array($album),
-                    'year'          => array($year),
-                    'genre'         => array($genre),
-                    'track'         => array($piste),
+                    'title' => array($title),
+                    'artist' => array($artist),
+                    'album' => array($album),
+                    'year' => array($year),
+                    'genre' => array($genre),
+                    'track' => array($piste),
                 );
                 $id3_write->tag_data = $tagData;
-                
+
                 if ($id3_write->WriteTags()) {
 //                    print_r($this->getid3->analyze($dir_userfile));
                     $data['success'] = 'Modification réalisée avec succès.';
                     if (!empty($id3_write->warnings)) {
-                        $data['warning'] = 'Avertissement :<br>'.implode('<br><br>', $id3_write->warnings);
+                        $data['warning'] = 'Avertissement :<br>' . implode('<br><br>', $id3_write->warnings);
                     }
                 } else {
-                    $data['failed'] = 'Echec de la modification :<br>'.implode('<br><br>', $id3_write->errors);
+                    $data['failed'] = 'Echec de la modification :<br>' . implode('<br><br>', $id3_write->errors);
                 }
 
                 $this->musique_model->update_music($track_id, $album, $title, $piste, $artist, $genre, $year, $price);
-                
+
                 $data['track'] = $this->musique_model->get_morceau_single($track_id);
             } else {
                 $data['error'] = 'Le fichier n\'a pas été trouvé sur Slyset, le chemin est cassé ou le fichier a été supprimé.';
             }
-            
+
             $this->load->view('musique/edit_musique', $data);
         }
     }

@@ -2,7 +2,7 @@
 <script  src="<?php echo js_url('combobox') ?>" media="screen" ></script>
 
 
-<div class="pop-in_cent">
+<div class="pop-in_cent" id="partition">
 	<span>Ajouter une partition</span>
 
     <div class="content-pi-cent">

@@ -79,10 +79,10 @@ $loger = $this->session->userdata('logged_in');
 					<p class="annee_crea"><?php if(isset($album->annee))echo $album->annee ?></p>
 					<?php if($album->livret_path != null){ ?>
 						<p><span>> </span><a class="link_livret" href="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$album->nom).'/livret/'.$album->livret_path) ?>">Voir le livret d'album</a></p>
-						<p><span>> </span><a href="#" class="link_livret">Modifier le livret</a></p>
+						<p><span>> </span><a href="<?php echo base_url('index.php/document/update-livret/'.$album->id) ?>" class="iframe link_livret">Modifier le livret</a></p>
 					<?php }
 					else {?>
-						<p><span>> </span><a class="iframe link_livret" href="<?php echo base_url('index.php/document/new-livret/') ?>">Ajouter le livret</a></p>
+						<p><span>> </span><a class="iframe link_livret" href="<?php echo base_url('index.php/document/new-livret/'.$album->id) ?>">Ajouter le livret</a></p>
 					<?php } ?>
 				</div>
 			</div>

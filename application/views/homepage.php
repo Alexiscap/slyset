@@ -242,9 +242,20 @@ if (isset($all_date_calendar))
                             </a>
                         </p>
                         <div class="newbies-people">
-                            <a href="<?php echo site_url('my-wall/' . $newbie->id); ?>">
-<?php echo $newbie->login; ?>
-                            </a>
+                        	<?php if ($newbie->type == 1)
+                        	{
+                        	?>
+                            	<a href="<?php echo site_url('my-wall/' . $newbie->id); ?>">
+                            <?php 
+                            }
+                            else
+                            {
+                            ?>
+                            	<a href="<?php echo site_url('actualite/' . $newbie->id); ?>">
+							<?php
+                            }
+ 									echo $newbie->login; ?>
+                           		</a>
                             </br>
                             <span class="newbies-people-type"><?php echo $type = ($newbie->type == 1) ? 'Mélomane' : 'Musicien'; ?></span>
                         </div>

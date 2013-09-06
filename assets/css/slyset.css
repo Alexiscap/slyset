@@ -143,7 +143,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .content #btn_tmp .actif{ color:#f05f4c;}
 .content #btn_tmp a{ float:left;color:#666666;font-size:12px;text-decoration:none;}
 .content #btn_tmp a:hover{color:#f05f4c;}
-.content h1, .content h2{ font-size:20px; margin:25px 20px; clear:both; }
+.content h1, .content h2{ font-size:20px; margin:25px 20px 0; clear:both; }
 .content .text-empty{ margin:25px 20px 15px 20px; color:#5d5b5b; clear:both; }
 
 .content p{ font-size:14px; line-height:19px; margin:0 0 0 20px; font-weight:bold; }

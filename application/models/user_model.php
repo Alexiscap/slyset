@@ -223,6 +223,18 @@ class User_model extends CI_Model {
     			->get()
     			->result();
     }
+    public function top_five_morceau_ecoute($user)
+	{
+    	return $this->db->select('morceaux.nom,albums.nom AS alb_name,morceaux.id')
+    					->from($this->tbl_track)
+   			 			->join($this->tbl_album,'albums.id = morceaux.albums_id')
+    					->join('ilike','ilike.morceaux_id_ecoute = morceaux.id')
+    					->where('morceaux.Utilisateur_id',$user)
+    					->order_by('ilike.like_value','ASC')
+    					->limit(5)
+    					->get()
+    					->result();
+      }
 
 }
 
