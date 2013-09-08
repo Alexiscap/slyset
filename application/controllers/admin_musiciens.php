@@ -20,6 +20,8 @@ class Admin_musiciens extends CI_Controller {
         $this->load->library(array('form_validation', 'layout'));
 
         $this->layout->set_id_background('admin-comptes');
+        $this->layout->set_description('');
+        $this->layout->set_titre('Dashboard Admin : Gestion des artistes | Slyset Music');
 
         $this->data = array(
             'sidebar_left' => $this->load->view('sidebars/sidebar_left_admin', '', TRUE)

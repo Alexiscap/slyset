@@ -377,7 +377,7 @@ $(document).ready(function(){
     }    
 
     if($('body.playlist').length>0||$('body.musique').length > 0){
-         $('#top_titre').show();
+        $('#top_titre').show();
         $('#last_photo').show();
         $('#reseaux_ailleur').show();
     }
@@ -418,7 +418,7 @@ $(document).ready(function(){
     });
    
     //ajout_paroles ajout_partitions
-   /* if($("body.ajout_paroles").length > 0){
+    /* if($("body.ajout_paroles").length > 0){
 
         $("select").change(function () {
             $("select option:selected")
@@ -440,20 +440,20 @@ $(document).ready(function(){
     
     //affichage des morceaux pop in edition doc
     $("select[name*='album_doc']").change(function () {
-          	var str = "";
-            var type = $('.content-pi-cent').attr('id');
-            var id_album = $("select option:selected").attr('class');
-            var dataid = 'id_album=' + id_album + '&&type='+type;
-            $.ajax({
-                type: "POST",
-                url : base_url +'/pop_in_general/get_morceaux',
-                data: dataid,
-                success: function(datas){
-                    $('.mor').remove();
-                    $(datas).show().insertAfter('select').slideDown('slow');
-                }
-            })
-        });
+        var str = "";
+        var type = $('.content-pi-cent').attr('id');
+        var id_album = $("select option:selected").attr('class');
+        var dataid = 'id_album=' + id_album + '&&type='+type;
+        $.ajax({
+            type: "POST",
+            url : base_url +'/pop_in_general/get_morceaux',
+            data: dataid,
+            success: function(datas){
+                $('.mor').remove();
+                $(datas).show().insertAfter('select').slideDown('slow');
+            }
+        })
+    });
       
 
 	
@@ -1437,9 +1437,7 @@ $(document).ready(function(){
 
     //Appel de la fonction masonry uniquement sur la page photos/vidéos
     if($("body.photos_videos").length > 0){
-  		
         playMasonry();
-   
     };
     
     //Appel de la fonction
@@ -1450,7 +1448,7 @@ $(document).ready(function(){
         });
     }
     
-    if($("body.musicien_actus").length > 0){
+    if($("body.musicien_actus").length > 0){        
         $(".actus_post .actus_post_links a").click(function(e){
             e.preventDefault();
             var cls = $(this).attr('href').replace('#', '');
@@ -1674,8 +1672,25 @@ $(document).ready(function(){
     	
     }
     
-    if($("body.musique").length > 0)
-    {   
+    if($("body.musique").length > 0){
+        $('.alltrack_table tr .delete').click(function(e){
+            e.preventDefault();
+            
+            var that = $(this);
+            
+            var track_id = $(this).parent().prev().attr('class').split(' ')[0];
+            var dataid = 'track_id=' + track_id;
+            
+            $.ajax({
+                type: "POST",
+                url : base_url +'/mc_musique/delete_track',
+                data: dataid,
+                success: function(data){
+                    that.closest('tr').slideUp();
+                }
+            });
+        });
+        
         $("body").bind('click', function(ev) {
             var myID = ev.target.id;
             if (myID !== 'playlist_alert'&&myID !=='input_alert') {

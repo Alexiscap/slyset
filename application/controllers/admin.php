@@ -19,6 +19,8 @@ class Admin extends CI_Controller
         $this->load->library(array('form_validation', 'layout'));
         
         $this->layout->set_id_background('admin');
+        $this->layout->set_description('');
+        $this->layout->set_titre('Dashboard Admin | Slyset Music');
         
         $this->data = array(
             'sidebar_left'  => $this->load->view('sidebars/sidebar_left_admin', '', TRUE)

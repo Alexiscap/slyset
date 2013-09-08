@@ -22,7 +22,7 @@ class Home extends CI_Controller {
 
         $this->layout->set_id_background('home');
         $this->layout->set_description('Slyset');
-        $this->layout->set_titre('Slyset');
+        $this->layout->set_titre('Slyset Music');
     }
 
     public function index($uid = NULL) {

@@ -14,6 +14,8 @@ class Login extends CI_Controller {
 //        $this->load->model('Facebook_Model');
 
         $this->layout->set_id_background('inscription');
+        $this->layout->set_description('Inscrivez-vous à Slyset, découvrez et partagez vos musiques et artistes favoris.');
+        $this->layout->set_titre('Inscription | Slyset Music');
     }
 
     public function index() {
