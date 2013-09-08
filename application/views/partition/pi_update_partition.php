@@ -6,45 +6,38 @@
 
 
 <div class="pop-in_cent">
-	<span>Ajouter des paroles</span>
+	<span>Modifier les paroles du morceau: <?php echo $document[0]->name_track ?></span>
 
-    <div class="content-pi-cent" id="paroles">
+    <div class="content-pi-cent">
 		<?php echo $error;?>
 
-		<?php  echo form_open_multipart('pop_in_general/do_upload_paroles'); ?>
+		<?php  echo form_open_multipart('pop_in_general/update_file_partition/'.$document[0]->doc_id); ?>
 		<div class="elem_center">
 		<div class="label">
 				<label>Vos paroles</label>
 			</div>
-	    <div class="champs">
+			<div class="champs">
                 <?php
                 $data = array(
                     'name' => 'userfile',
                     'type' => 'file',
-                    'class' => 'parole_up',
-                    'value' => 'Choisir des paroles'
+                    'class' => 'partition_upd',
+                    'value' => 'Choisir une partition'
                 );
-                ?><div class="bt_noir bt_parole_up">
-                <?php echo form_upload($data); ?>
-				<!--<span class="upload_photo">aucun fichier choisi</span>-->
+                ?>
+                <div class="bt_noir">
+                	<?php echo form_upload($data); ?>
                 </div>
             </div>
-			<div class="label">
-				<label>Album</label>
-			</div>
-			<div class="champs">
-			
-				<select name="album_doc">
-					<option  value=" "> </option>
 
-					<?php foreach($album as $one_album): ?>
-						<option id="" name="album" class ="<?php echo $one_album->id?>" value="<?php echo $one_album->nom?>+<?php echo $one_album->id?>"><?php echo $one_album->nom?></option>
+            <div class="label">
+                <label>Prix</label>
+            </div>
+            <div class="champs" >
+                <input type='text' name="partition_price" value="<?php if(isset($document[0]->prix)) echo $document[0]->prix ?>"><!--<img id="preview" src="http://127.0.0.1/slyset/assets/images/musicien/apercu_photo.png" alt="visuel photo">-->
+            </div>
 
-					<?php endforeach; ?>
-				</select>
-			</div>
 		
-			<div id="morceaux"></div>
 			
             <?php
                 /*
@@ -76,15 +69,35 @@
 						      
                 	</div>
             </div>-->
+            
+            <!--
 			<div class="label">
-				<label>Prix</label>
+				<label>Aperçu</label>
 			</div>
 			<div class="champs" >
-				<input type='text' name="parole_price"><!--<img id="preview" src="http://127.0.0.1/slyset/assets/images/musicien/apercu_photo.png" alt="visuel photo">-->
+				<img id="preview" src="http://127.0.0.1/slyset/assets/images/musicien/apercu_photo.png" alt="visuel photo">
 			</div>
-			<div id="morceaux"></div>
-			<?php echo form_submit('submit', 'Ajouter des paroles'); ?>
-			<?php echo form_close();?>
+			-->
+			
+			<?php 
+				$delete = array(
+              'class'        => 'delete',
+              'name'          => 'delete',
+			  'value'	=> 'Supprimer la partition',
+              );
+			
+			  echo form_submit($delete);
+			  
+			  $nodelete = array(
+              'class'        => 'submit',
+              'name'          => 'submit',
+			  'value'	=> 'Modifier la partition',
+              );
+			
+			  echo form_submit($nodelete);
+			
+
+			 echo form_close();?>
 		</div>
 	</div>
 </div>

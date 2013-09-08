@@ -41,7 +41,9 @@ class Achat_model extends CI_Model {
 						INNER JOIN commande ON infos_commande.Commande_id = commande.id
 							INNER JOIN morceaux ON infos_commande.Morceaux_id = morceaux.id
 								INNER JOIN utilisateur ON utilisateur.id = morceaux.Utilisateur_id
-					WHERE commande.Utilisateur_id = ? )";
+					WHERE commande.Utilisateur_id = ? 
+                                        AND Documents_id IS NULL
+)";
 					
         return $this->db->query($sql, array($user_id, $user_id, $user_id))
                         ->result();
@@ -73,18 +75,19 @@ class Achat_model extends CI_Model {
     public function delete_panier($id_commande) 
     {
         
-        $this->db->where('id', $id_commande);
-        $this->db->delete($this->table_cmd);
+        //$this->db->where('id', $id_commande);
+        //$this->db->delete($this->table_cmd);
 
-        $this->db->where('Commande_id', $id_commande);
+        $this->db->where('id', $id_commande);
         $this->db->delete($this->table_cmd_info);
     }
 
 	//la derniere commande existante
     public function number_commande() {
     	
-    	return $last_commande = $this->db->select('MAX(titre) AS last_cmd')
-    							->from($this->table_cmd_info)
+    	return $last_commande = $this->db->select('MAX(id) AS last_cmd')
+    							->from($this->table_cmd)
+                                ->where('Utilisateur_id',$this->session->userdata('uid'))
     							->get()
     							->result();
         /*return $last_commande = $this->db->query('SELECT MAX(titre) AS last_cmd FROM infos_commande')
@@ -101,7 +104,7 @@ class Achat_model extends CI_Model {
 						INNER JOIN documents ON infos_commande.Documents_id = documents.id
 							INNER JOIN morceaux ON documents.Morceaux_id = morceaux.id
 								INNER JOIN utilisateur ON utilisateur.id = morceaux.Utilisateur_id
-				WHERE infos_commande.titre =' . $cmd . ' 
+				WHERE infos_commande.Commande_id =' . $cmd . ' 
 			)
 			UNION
 			(SELECT commande.id,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,albums.nom,"album",utilisateur.login,infos_commande.prix,albums.format
@@ -109,8 +112,7 @@ class Achat_model extends CI_Model {
 					INNER JOIN commande ON infos_commande.Commande_id = commande.id
 						INNER JOIN albums ON infos_commande.Albums_id = albums.id
 							INNER JOIN utilisateur ON utilisateur.id = albums.Utilisateur_id
-
-				WHERE infos_commande.titre =' . $cmd . '
+				WHERE infos_commande.Commande_id =' . $cmd . ' AND infos_commande.Morceaux_id IS NULL AND infos_commande.Documents_id IS NULL
 			)
 			UNION	
 			(SELECT commande.id,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,morceaux.nom,"morceau",utilisateur.login,infos_commande.prix,morceaux.format
@@ -118,7 +120,7 @@ class Achat_model extends CI_Model {
 					INNER JOIN infos_commande ON infos_commande.Commande_id = commande.id
 						INNER JOIN morceaux ON infos_commande.Morceaux_id = morceaux.id
 							INNER JOIN utilisateur ON utilisateur.id = morceaux.Utilisateur_id
-				WHERE infos_commande.titre =' . $cmd . '
+				WHERE infos_commande.Commande_id =' . $cmd . ' AND infos_commande.Documents_id IS NULL
 			)')
               		 					 ->result();
     }

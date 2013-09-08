@@ -1,6 +1,7 @@
  <link rel="stylesheet" type="text/css" href="<?php echo css_url('pop_in') ?>" media="screen" />
-<script type="text/javascript" src="http://127.0.0.1/slyset/assets/javascript/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="http://127.0.0.1/slyset/assets/javascript/slyset.js"></script>
+<script  src="<?php echo js_url('jquery-1.8.3.min') ?>" media="screen" ></script>
+<script  src="<?php echo js_url('slyset') ?>" media="screen" ></script>
+
 
 <span></span>
  <div class="pop-in_cent">

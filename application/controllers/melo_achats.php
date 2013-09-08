@@ -62,29 +62,37 @@ class Melo_achats extends CI_Controller {
         //print $this->input->post("article-all");
         $data['total_album_panier'] = 0;
         $data['total_morceaux_panier'] = 0;
-        $data['total_document_panier'] = 0;
+        $data['total_paroles_panier'] = 0;
+        $data['total_partition_panier'] = 0;
         $data['total_album_history'] = 0;
         $data['total_morceaux_history'] = 0;
-        $data['total_document_history'] = 0;
+        $data['total_paroles_history'] = 0;
+        $data['total_partition_history'] = 0;
 
         foreach ($data['cmd'] as $commande) {
-            if ($commande->status == "P" && $commande->Albums_id != null) {
+            if ($commande->status == "P" && $commande->type == 'album' ) {
                 $data['total_album_panier'] = $data['total_album_panier'] + count($commande);
             }
-            if ($commande->status == "P" && $commande->Morceaux_id != null) {
+            if ($commande->status == "P" && $commande->type == 'morceau' ) {
                 $data['total_morceaux_panier'] = $data['total_morceaux_panier'] + count($commande);
             }
-            if ($commande->status == "P" && $commande->Documents_id != null) {
-                $data['total_document_panier'] = $data['total_document_panier'] + count($commande);
+            if ($commande->status == "P" && $commande->type == 'paroles' ) {
+                $data['total_paroles_panier'] = $data['total_paroles_panier'] + count($commande);
             }
-            if ($commande->status == "V" && $commande->Albums_id != null) {
+            if ($commande->status == "P" && $commande->type == 'partition' ) {
+                $data['total_partition_panier'] = $data['total_partition_panier'] + count($commande);
+            }
+            if ($commande->status == "V" && $commande->type == 'album' ) {
                 $data['total_album_history'] = $data['total_album_history'] + count($commande);
             }
-            if ($commande->status == "V" && $commande->Morceaux_id != null) {
+            if ($commande->status == "V" && $commande->type == 'morceau' ) {
                 $data['total_morceaux_history'] = $data['total_morceaux_history'] + count($commande);
             }
-            if ($commande->status == "V" && $commande->Documents_id != null) {
-                $data['total_document_history'] = $data['total_document_history'] + count($commande);
+            if ($commande->status == "V" && $commande->type == 'paroles' ) {
+                $data['total_paroles_history'] = $data['total_paroles_history'] + count($commande);
+            }
+            if ($commande->status == "V" && $commande->type == 'partition' ) {
+                $data['total_partition_history'] = $data['total_partition_history'] + count($commande);
             }
         }
         $this->layout->view('achat/melo_achats', $data);
