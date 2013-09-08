@@ -50,7 +50,7 @@ class Home extends CI_Controller {
         $data['coverflow_covers'] = $this->admin_model->get_cover_artistes();
         $data['concert_date'] = $this->homepage_model->get_concert();
         $data['dates'] = $this->homepage_model->get_date();
-
+        $data['top_morceaux'] = $this->homepage_model->get_top_morceau();
         $data['all_date_calendar'] = "";
         $data['all_info_concert'] = "";
 
@@ -82,6 +82,8 @@ class Home extends CI_Controller {
             }
             $data['all_date_calendar'] .= $data['format_date_calendar'];
         }
+
+
         $this->layout->view('homepage', $data);
     }
 

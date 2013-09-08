@@ -170,7 +170,7 @@ class Mc_musique extends CI_Controller {
         $this->upload_config = array(
             'upload_path' => $upload_folder,
 //            'allowed_types' => 'png|jpg|jpeg|mp3',
-            'allowed_types' => 'mp3|MP3',
+            'allowed_types' => 'mp3|MP3|octet-stream',
             'max_size' => 9000000,
             'remove_space' => TRUE,
             'overwrite' => TRUE,
@@ -179,7 +179,7 @@ class Mc_musique extends CI_Controller {
 
         $this->upload->initialize($this->upload_config);
 
-
+        var_dump($_FILES);
         $userfile_exploded = explode('.mp3', $_FILES['userfile']['name']);
 //        $strreplace = array('\'', '"', '(', ')', '.', ';', ':', '[', ']', '?', ',', '!', '=', '+', '`', '~', '^', '#', '°', '@', '*', '$', '€', '£', '%', 'µ');
 //        $userfile1 = str_replace($strreplace, '', $userfile_exploded[0]);

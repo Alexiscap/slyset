@@ -7,6 +7,8 @@ class Homepage_model extends CI_Model {
 
     protected $table = 'concerts';
     protected $data;
+    protected $tbl_morceau = 'morceaux';
+    protected $tbl_user = 'utilisateur';
 
     public function __construct() {
         parent::__construct();
@@ -28,6 +30,18 @@ class Homepage_model extends CI_Model {
                         ->group_by('date')
                         ->get()
                         ->result();
+    }
+
+    public function get_top_morceau()
+    {
+        return $this->db->select('morceaux.nom,utilisateur.login')
+                        ->from($this->tbl_morceau)
+                        ->join($this->tbl_user,'morceaux.Utilisateur_id = utilisateur.id')
+                        ->order_by('nombre_lectures DESC')
+                        ->limit(10)
+                        ->get()
+                        ->result();
+
     }
 
 }
