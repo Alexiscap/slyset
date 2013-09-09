@@ -351,7 +351,7 @@ class Musique_model extends CI_Model {
         if (empty($id_commande_user) == 1) {
             $data = array(
                 'Utilisateur_id' => $user_id,
-                'date' => date('Y-m-d H:i:s', now()),
+                'date' => date('Y-m-d H:i:s', time()),
                 'status' => 'P'
             );
 
@@ -404,7 +404,7 @@ class Musique_model extends CI_Model {
         if (empty($id_commande_user) == 1) {
             $data = array(
                 'Utilisateur_id' => $this->session->userdata('uid'),
-                'date' => date('Y-m-d H:i:s', now()),
+                'date' => date('Y-m-d H:i:s', time()),
                 'status' => 'P'
             );
 
@@ -414,7 +414,7 @@ class Musique_model extends CI_Model {
         $existing_panier = $this->db->select('id,titre')
                 ->from($this->tbl_orderinfo)
                 ->where_in('Albums_id', $alb_id)
-                ->where(array('Commande_id' => $id_commande_user[0]->id, 'Morceaux_id IS NULL' => null))
+                ->where(array('Commande_id' => $id_commande_user[0]->id, 'Morceaux_id IS NULL' => null,'Documents_id IS NULL' =>null))
                 ->get()
                 ->result();
 
@@ -458,17 +458,24 @@ class Musique_model extends CI_Model {
         if (empty($id_commande_user) == 1) {
             $data = array(
                 'Utilisateur_id' => $this->session->userdata('uid'),
-                'date' => date('Y-m-d H:i:s', now()),
+                'date' => date('Y-m-d H:i:s', time()),
                 'status' => 'P'
             );
 
             $this->db->insert($this->tbl_order, $data);
         }
 
+        $id_commande_user = $this->db->select('id')
+                ->from($this->tbl_order)
+                ->where(array('Utilisateur_id' => $this->session->userdata('uid'), 'status' => 'P'))
+                ->get()
+                ->result();
+
         $existing_panier = $this->db->select('id,titre')
                 ->from($this->tbl_orderinfo)
                 ->where_in('Morceaux_id', $id_morceau)
                 ->where(array('Commande_id' => $id_commande_user[0]->id))
+                ->where(array('Documents_id IS NULL' => null))
                 ->get()
                 ->result();
 

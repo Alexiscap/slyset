@@ -131,14 +131,14 @@ $loger = $this->session->userdata('logged_in');
 													if($partition->prix == null):
 													
 													?>
-														<td class="partitions"><a href="<?php echo files($infos_profile->id.'/documents/'.$partition->album_id.'/'.$partition->path) ?>">Voir</a>
+														<td class="partitions"><a href="<?php echo files($infos_profile->id.'/albums/'.str_replace(' ', '_', $album->nom).'/partition/'.$partition->path) ?>">Voir</a>
 													<?php endif;
 													if($partition->prix != null):
 														?>
 														<td class="partitions" id="<?php echo $partition->prix ?>"><a id="<?php echo $partition->document_id ?>" class="mise-panier" href="javascript:void(0)">Acheter  (<?php echo $partition->prix ?> €)</a>
 <?php 												endif; ?>
 													<div class="miniat_titre">
-														<a href="#" class="edit"><span>edit</span></a>
+														<a href="<?php echo base_url('index.php/document/update-score/'.$partition->document_id) ?>" class="edit iframe"><span>edit</span></a>
 													</div>
 												</td>		
 												<?php
@@ -148,9 +148,6 @@ $loger = $this->session->userdata('logged_in');
 											{
 	?>
 												<td class="partitions"><a href="#" class="parti_name"> - </a>
-													<div class="miniat_titre">
-														<a href="#" class="edit"><span> - </span></a>
-													</div>
 												</td>
 						<?php				}
 						
@@ -162,14 +159,14 @@ $loger = $this->session->userdata('logged_in');
 													$a++;
 													if($paroles->prix == null):
 									?>
-														<td class="paroles"><a id="mise-panier" class="mise-panier-no" href="<?php echo files($infos_profile->id.'/documents/'.$paroles->album_id.'/'.$paroles->path) ?>">Voir</a>
+														<td class="paroles"><a id="mise-panier" class="mise-panier-no" href="<?php echo files($infos_profile->id.'/albums/'.str_replace(' ', '_', $album->nom).'/paroles/'.$paroles->path) ?>">Voir</a>
 													<?php endif;
 													if($paroles->prix != null):
 													?>
 														<td class="paroles" id="<?php echo $paroles->prix ?>"><a id="<?php echo $paroles->document_id ?>" class='mise-panier' href="javascript:void(0)">Acheter (<?php echo $paroles->prix ?> €)</a>
 													<?php endif; ?>
 														<div class="miniat_titre">
-															<a href="#" class="edit"><span>edit</span></a>
+															<a href="<?php echo base_url('index.php/document/update-paroles/'.$paroles->document_id) ?>" class="edit iframe"><span>edit</span></a>
 														</div>
 													</td>	
 												<?php
@@ -179,9 +176,6 @@ $loger = $this->session->userdata('logged_in');
 											{
 											?>
 												<td class="paroles"><a href="#" class="mise-panier-no" > - </a>
-													<div class="miniat_titre">
-														<a href="#" class="edit"><span> - </span></a>
-													</div>
 												</td>
 						<?php				}
 

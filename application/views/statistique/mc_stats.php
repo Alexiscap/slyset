@@ -1,9 +1,12 @@
+<script type="text/javascript" src="http://localhost/slyset/assets/javascript/Chart.js"></script>
+
 <?php
 $session_id = $this->session->userdata('uid');
 $uid = (empty($session_id)) ? '' : $session_id;
 $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
 $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
 ?>
+
 
 <div id="contentAll">
     <div id="breadcrumbs">
@@ -42,8 +45,8 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 	<h1>Statistiques</h1>
 	<div class="stats_carre">
 		<div class="abonnes"><span>&nbsp;489</span></div>
-		<div class="visites"><span>5128</span></div>
-		<div class="vues"><span>9489</span></div>
+		<div class="visites"><span><?php echo $visit_tot[0][1] ?></span></div>
+		<div class="vues"><span><?php echo $pages_tot[0][1] ?></span></div>
 		<div class="ventes"><span>&nbsp;512</span></div>
 	</div>
 	<div class="clear"></div>
@@ -52,6 +55,15 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 		<div class="legende"><div class="visites"></div><span>Visites</span><div class="unique"></div><span>Visites Uniques</span></div>
 		<div class="clear"></div>
 		<div class="graph_stats">
+			<?php 
+		  	$graph ="";
+		  	foreach($evol as $visit_evol)
+		  	{
+		  		$graph .= $visit_evol[1].',';
+		  	} 
+		  	$value_graph =  substr ( $graph,0 , -1);
+		  	?>
+			<canvas id="myChart" width="500px" height="200px"></canvas>
 		</div>
 	</div>
 	<div class="provenance">
@@ -138,6 +150,36 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 	</div>
   </div>
 
+		
+			
+
   <?php if(isset($sidebar_right)) echo $sidebar_right; ?>
 
 </div>
+
+<script>
+
+	var lineChartData = {
+		labels : ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17"],
+		datasets : [
+			{
+				fillColor : "rgba(220,220,220,0.5)",
+				strokeColor : "rgba(220,220,220,1)",
+				pointColor : "rgba(220,220,220,1)",
+				pointStrokeColor : "#fff",
+				data : [<?php echo $value_graph ?>]
+			}/*,
+				{
+					fillColor : "rgba(151,187,205,0.5)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					data : [28,48,40,19,96,27,100]
+				}*/
+		]
+			
+	}
+
+	var myLine = new Chart(document.getElementById("myChart").getContext("2d")).Line(lineChartData);
+	
+	</script>

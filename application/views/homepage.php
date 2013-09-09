@@ -3,7 +3,6 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 //$feedback = $this->session->userdata('flash:new:feedback');
 //print_r($this->session->all_userdata());
 
-
 ?>
 
 <div id="contentAll">
@@ -26,7 +25,6 @@ if (isset($all_date_calendar))
             <li><a href="#" title="#">Accueil</a></li>
         </ul>
     </div>
-
 <?php if (isset($notification) && $notification != ''): ?>
         <div id="message-notification">
             <div class="ico-msg"></div>
@@ -74,142 +72,57 @@ if (isset($all_date_calendar))
                 <span class="title-img"><img src="<?php echo img_url('portail/etoile.png') ?>"></span>
                 <span class="title-color">Top 10</span> des écoutes
             </div>
-
+            <?php
+            $n_top = 1;
+            $class_top_track = '';
+            ?>
+            
             <div id="top-song-play-one">
-                <div class="tab-top-song-line-white">
-                    <div class="tab-top-song-col-one">
-                        <div class="tab-top-song-col-number">1</div>
-                        <div class="tab-top-song-col-texte">
-                            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-                            <div class="tab-top-song-col-texte-titre">
-                                Blowin The Wind</br>
-                                <span class="tab-top-song-col-texte-artiste">Bob Dylan
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="tab-top-song-line-grey">
-                    <div class="tab-top-song-col-one">
-                        <div class="tab-top-song-col-number">2</div>
-                        <div class="tab-top-song-col-texte">
-                            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-                            <div class="tab-top-song-col-texte-titre">
-                                Blowin The Wind</br>
-                                <span class="tab-top-song-col-texte-artiste">Bob Dylan
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php foreach($top_morceaux as $top_morceau): 
+                    if($n_top<=5){
+                        if($n_top % 2){
+                            $class_top_track = 'tab-top-song-line-white';
+                        } else{
+                            $class_top_track = 'tab-top-song-line-grey';
+                        }
+                    }
+                    else
+                    {
+                        if($n_top % 2){
+                            $class_top_track = 'tab-top-song-line-grey';
+                        } else{
+                            $class_top_track = 'tab-top-song-line-white';
+                        }
+                    }
+                    ?>  
 
-                <div class="tab-top-song-line-white">
-                    <div class="tab-top-song-col-one">
-                        <div class="tab-top-song-col-number">3</div>
-                        <div class="tab-top-song-col-texte">
-                            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-                            <div class="tab-top-song-col-texte-titre">
-                                Blowin The Wind</br>
-                                <span class="tab-top-song-col-texte-artiste">Bob Dylan
+                    <div class="<?php echo $class_top_track; ?>">
+                        <div class="tab-top-song-col-one">
+                            <div class="tab-top-song-col-number"><?php echo $n_top ?></div>
+                            <div class="tab-top-song-col-texte">
+                                <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
+                                <div class="tab-top-song-col-texte-titre">
+                                    <?php echo $top_morceau->nom ?></br>
+                                    <span class="tab-top-song-col-texte-artiste"><?php echo $top_morceau->login ?></span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <?php 
 
-                <div class="tab-top-song-line-grey">
-                    <div class="tab-top-song-col-one">
-                        <div class="tab-top-song-col-number">4</div>
-                        <div class="tab-top-song-col-texte">
-                            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-                            <div class="tab-top-song-col-texte-titre">
-                                Blowin The Wind</br>
-                                <span class="tab-top-song-col-texte-artiste">Bob Dylan
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-top-song-line-white">
-                    <div class="tab-top-song-col-one">
-                        <div class="tab-top-song-col-number">5</div>
-                        <div class="tab-top-song-col-texte">
-                            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-                            <div class="tab-top-song-col-texte-titre">
-                                Blowin The Wind</br>
-                                <span class="tab-top-song-col-texte-artiste">Bob Dylan
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    if($n_top==5)
+                    { ?>
             </div>
-
             <div id="top-song-play-two">
-                <div class="tab-top-song-line-white">
-                    <div class="tab-top-song-col-one">
-                        <div class="tab-top-song-col-number">6</div>
-                        <div class="tab-top-song-col-texte">
-                            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-                            <div class="tab-top-song-col-texte-titre">
-                                Blowin The Wind</br>
-                                <span class="tab-top-song-col-texte-artiste">Bob Dylan
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <?php
+                    }
 
-                <div class="tab-top-song-line-grey">
-                    <div class="tab-top-song-col-one">
-                        <div class="tab-top-song-col-number">7</div>
-                        <div class="tab-top-song-col-texte">
-                            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-                            <div class="tab-top-song-col-texte-titre">
-                                Blowin The Wind</br>
-                                <span class="tab-top-song-col-texte-artiste">Bob Dylan
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-top-song-line-white">
-                    <div class="tab-top-song-col-one">
-                        <div class="tab-top-song-col-number">8</div>
-                        <div class="tab-top-song-col-texte">
-                            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-                            <div class="tab-top-song-col-texte-titre">
-                                Blowin The Wind</br>
-                                <span class="tab-top-song-col-texte-artiste">Bob Dylan
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-top-song-line-grey">
-                    <div class="tab-top-song-col-one">
-                        <div class="tab-top-song-col-number">9</div>
-                        <div class="tab-top-song-col-texte">
-                            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-                            <div class="tab-top-song-col-texte-titre">
-                                Blowin The Wind</br>
-                                <span class="tab-top-song-col-texte-artiste">Bob Dylan
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-top-song-line-white">
-                    <div class="tab-top-song-col-one">
-                        <div class="tab-top-song-col-number">10</div>
-                        <div class="tab-top-song-col-texte">
-                            <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
-                            <div class="tab-top-song-col-texte-titre">
-                                Blowin The Wind</br>
-                                <span class="tab-top-song-col-texte-artiste">Bob Dylan
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    $n_top++; 
+                endforeach; ?>
             </div>
         </div>
-        
+                
         <div id="first-line-top-calendar">
             <div id="calendar-title">
                 <span class="title-img"><img src="<?php echo img_url('portail/agenda.png') ?>"></span>
@@ -383,4 +296,14 @@ if (isset($all_date_calendar))
         </div>
     </div>
 </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43870188-2', '127.0.0.1');
+  ga('send', 'pageview');
+
+</script>
 <!--</div>-->

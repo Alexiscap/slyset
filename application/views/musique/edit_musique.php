@@ -28,40 +28,51 @@
             <?php echo validation_errors(); ?>
 
             <?php echo form_open_multipart('pop_in_general/edit_musique/'.$uid.'/'.$track->id); ?>
-            <ul class="unstyled">
-                <?php echo form_label('Titre', 'titre'); ?>
-                <?php echo form_input('titre', $track->nom, array('id' => 'track-title', 'placeholder' => 'Nom du morceau')); ?>
+                <div class="label"><label for="titre">Titre</label></div>
+				<div class="champs">
+					<?php echo form_input('titre', $track->nom, array('id' => 'track-title', 'placeholder' => 'Nom du morceau')); ?>
+				</div>
 
-                <?php echo form_label('Artiste', 'artiste'); ?>
-                <?php echo form_input('artiste', $track->artiste, array('id' => 'track-artist', 'placeholder' => 'Nom d\'artiste du morceau')); ?>
+                <div class="label"><label for="artiste">Artiste</label></div>
+				<div class="champs">
+					<?php echo form_input('artiste', $track->artiste, array('id' => 'track-artist', 'placeholder' => 'Nom d\'artiste du morceau')); ?>
+				</div>
 
-                <?php echo form_label('N° de piste', 'piste'); ?>
-                <?php echo form_input('piste', $track->tracknumero, array('id' => 'track-piste', 'placeholder' => 'Numéro de poste', 'maxlength' => 2)); ?>
+                <div class="label"><label for="album">Album</label></div>
+				<div class="champs alb_morceau">
+					<?php 
+						$options = array();
+						$options[0] = 'aucun';
+						foreach($albums as $album){
+							$options[$album->id] = $album->nom;                     
+						}
+					?>
+					<?php echo form_dropdown('album', $options, $track->id_alb); ?>
+				</div>
+				
+				<div class="label"><label for="piste">N° de piste</label></div>
+				<div class="champs num_morceau">
+					<?php echo form_input('piste', $track->tracknumero, array('id' => 'track-piste', 'placeholder' => 'Numéro de piste', 'maxlength' => 2,'class' => 'num_piste')); ?>
+				</div>
+				
+				<div class="label"><label for="genre">Genre</label></div>
+				<div class="champs">
+					<?php echo form_input('genre', $track->genre, array('id' => 'track-genre', 'placeholder' => 'Genre du morceau')); ?>
+				</div>
+				
+                <div class="label"><label for="annee">Année</label></div>
+				<div class="champs annee_morceau">
+					<?php echo form_input('annee', $track->annee, array('id' => 'track-year', 'placeholder' => 'Année de production du morceau', 'maxlength' => 4)); ?>
+				</div>
 
-                <?php echo form_label('Album', 'album'); ?>
-                <?php 
-                    $options = array();
-                    $options[0] = 'aucun';
-                    foreach($albums as $album){
-                        $options[$album->id] = $album->nom;                     
-                    }
-                ?>
-                <?php echo form_dropdown('album', $options, $track->id_alb); ?>
-
-                <?php echo form_label('Année', 'annee'); ?>
-                <?php echo form_input('annee', $track->annee, array('id' => 'track-year', 'placeholder' => 'Année de production du morceau', 'maxlength' => 4)); ?>
-
-                <?php echo form_label('Genre', 'genre'); ?>
-                <?php echo form_input('genre', $track->genre, array('id' => 'track-genre', 'placeholder' => 'Genre du morceau')); ?>
-
-                <?php echo form_label('Prix', 'prix'); ?>
-                <?php echo form_input('prix', $track->prix, array('id' => 'track-price', 'placeholder' => 'Prix du morceau')); ?>
+                <div class="label"><label for="prix">Prix</label></div>
+				<div class="champs prix_morceau">
+					<?php echo form_int('prix', $track->prix, array('id' => 'track-price', 'placeholder' => 'Prix du morceau')); ?>€
+				</div>
 
                 <?php echo form_submit('valider', 'Valider'); ?>
-            </ul>
             <?php echo form_close(); ?>
         </div>
-        
         <!--<p><a href="javascript:jQuery('#userfile').uploadifyClearQueue()">Cancel All Uploads</a></p>-->
     </div>
 </div>

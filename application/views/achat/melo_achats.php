@@ -50,11 +50,11 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 
                 <span class="detail_pl">
                     <?php
-                    if ($total_document_panier == 1) {
-                        echo $total_document_panier . ' partition';
-                    } if ($total_document_panier > 1) {
-                        echo $total_document_panier . ' partitions';
-                    } if ($total_document_panier == 0) {
+                    if ($total_partition_panier == 1) {
+                        echo $total_partition_panier . ' partition';
+                    } if ($total_partition_panier > 1) {
+                        echo $total_partition_panier . ' partitions';
+                    } if ($total_partition_panier == 0) {
                         echo '0 partition';
                     }
                     ?>
@@ -64,8 +64,8 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                         echo $total_album_panier . ' album,';
                     } if ($total_album_panier > 1) {
                         echo $total_album_panier . ' albums,';
-                    } else {
-                        echo '0 album,';
+                    } if ($total_album_panier == 0) {
+                        echo '0 album';
                     }
                  
                     ?></span>
@@ -75,15 +75,15 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                         echo $total_morceaux_panier . ' chanson,';
                     } if ($total_morceaux_panier > 1) {
                         echo $total_morceaux_panier . ' chansons,';
-                    } else {
-                        echo '0 chanson,';
+                    } if ($total_morceaux_panier == 0) {
+                        echo '0 chanson';
                     }
                     ?> </span>
                 <img src="<?php echo img_url('common/caddis_achat.png'); ?>" class="detail_pl"/>
             </div>
             <hr />
             <div class="clear"></div>
-             <?php if($total_album_panier + $total_document_panier + $total_morceaux_panier !=0)
+             <?php if($total_album_panier + $total_partition_panier + $total_morceaux_panier !=0)
                   { ?>
             <div id="articles-tab">
                 <form action="<?php echo site_url('melo_achats/delete_panier'); ?>" method="post" accept-charset="utf-8">          
@@ -147,12 +147,12 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
             <div class="descri_historique">
                 <span class="nom_pl">Historique d'achats</span>
                 <span class="detail_pl"><?php
-                            if ($total_document_history == 1) {
-                                echo $total_document_history . ' partition';
-                            } if ($total_document_history > 1) {
-                                echo $total_document_history . ' partitions';
+                            if ($total_partition_history == 1) {
+                                echo $total_partition_history . ' partition';
+                            } if ($total_partition_history > 1) {
+                                echo $total_partition_history . ' partitions';
                             }
-                            if ($total_document_history == 0) {
+                            if ($total_partition_history == 0) {
                                 echo '0 partition';
                             }
                             ?></span>
@@ -172,15 +172,15 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                         } if ($total_morceaux_history > 1) {
                             echo $total_morceaux_history . ' chansons,';
                         }
-                     else {
-                        echo '0 chanson,';
-                    }
+                         if ($total_morceaux_history == 0) {
+                            echo '0 chanson,';
+                        }
                             ?> </span>
                 <img src="<?php echo img_url('common/sac_historique.png'); ?>" class="detail_pl"/>
             </div>
             <hr />
             <div class="clear"></div>
-             <?php if($total_album_history + $total_document_history + $total_morceaux_history !=0)
+             <?php if($total_album_history + $total_partition_history + $total_morceaux_history !=0)
                   { ?>
             <div id="articles-tab">
            

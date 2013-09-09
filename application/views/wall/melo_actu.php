@@ -32,13 +32,48 @@
         </div>
 
         <div class="stats_cover_block">
-            <span class="stats_number">18</span>
-            <span class="stats_title">playlists</span>
+          <span class="stats_number">
+            <?php 
+            $npl = 0;
+            if(empty($playlists)!=1):
+              $npl =  count($playlists);
+            endif;
+            echo $npl;?>
+          </span>
+          <span class="stats_title">
+            <?php
+            if($npl == 0 || $npl == 1){
+              echo 'playlist';
+            }
+            else
+            {
+              echo 'playlists';
+            }
+            ?>
+          </span>
         </div>
         
-         <div class="stats_cover_block">
-            <span class="stats_number">278</span>
-            <span class="stats_title">abonnements</span>
+        <div class="stats_cover_block">
+          <span class="stats_number">
+            <?php
+            $nab = 0;
+            if(empty($all_following)!=1):
+              $nab =  count($all_following);
+            endif;
+            echo $nab;
+            ?>
+          </span>       
+          <span class="stats_title">
+            <?php
+            if($nab == 0 || $nab == 1){
+              echo 'abonnement';
+            }
+            else
+            {
+              echo 'abonnements';
+            }
+            ?>
+          </span>
         </div>
     </div> 
     

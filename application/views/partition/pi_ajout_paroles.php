@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="<?php echo css_url('pop_in') ?>" media="screen" />
-<script  src="<?php echo js_url('jquery-1.7.1.min') ?>" media="screen" ></script>
+<script  src="<?php echo js_url('jquery-1.8.3.min') ?>" media="screen" ></script>
 
 <script  src="<?php echo js_url('combobox') ?>" media="screen" ></script>
 <script  src="<?php echo js_url('slyset') ?>" media="screen" ></script>
@@ -26,7 +26,7 @@
                 );
                 ?><div class="bt_noir bt_parole_up">
                 <?php echo form_upload($data); ?>
-				<span class="upload_photo">aucun fichier choisi</span>
+				<!--<span class="upload_photo">aucun fichier choisi</span>-->
                 </div>
             </div>
 			<div class="label">

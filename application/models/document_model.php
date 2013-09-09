@@ -8,6 +8,8 @@ class Document_model extends CI_Model {
     protected $table_doc = 'documents';
     protected $table_alb = 'albums';
 	protected $table_track = 'morceaux';
+    protected $tbl_order = 'commande';
+    protected $tbl_orderinfo = 'infos_commande';
 
     protected $data;
 
@@ -119,12 +121,60 @@ class Document_model extends CI_Model {
 
 	//mise au panier
     public function panier($prix, $doc_id, $nom) {
+
+        $id_commande_user = $this->db->select('id')
+                                    ->from($this->tbl_order)
+                                    ->where(array('Utilisateur_id' => $this->session->userdata('uid'), 'status' => 'P'))
+                                    ->get()
+                                    ->result();
+        if (empty($id_commande_user) == 1) {
+            $data = array(
+                'Utilisateur_id' => $this->session->userdata('uid'),
+                'date' => date('Y-m-d H:i:s', now()),
+                'status' => 'P'
+            );
+
+            $this->db->insert($this->tbl_order, $data);
+        }
+
+        $existing_panier = $this->db->select('id,titre')
+                                    ->from($this->tbl_orderinfo)
+                                    ->where_in('Documents_id', $doc_id)
+                                    ->where(array('Commande_id' => $id_commande_user[0]->id))
+                                    ->get()
+                                    ->result();
+
+        if (empty($existing_panier) == 1) {
+            $infos_track = $this->db->select('documents.id,documents.morceaux_id AS track_id,morceaux.nom AS nom_track,documents.prix,morceaux.format,documents.Albums_id AS id_alb')
+                    ->from($this->table_doc)
+                    ->join($this->table_track,'morceaux.id = documents.Morceaux_id')
+                    ->where(array('documents.id'=> $doc_id))
+                    ->get()
+                    ->result();
+
+            foreach ($infos_track as $info_track) {
+                $data_cmd = array(
+                    'Commande_id' => $id_commande_user[0]->id,
+                    'Albums_id' => $info_track->id_alb,
+                    'titre' => $info_track->nom_track,
+                    'prix' => $info_track->prix,
+                    'morceaux_id' => $info_track->track_id,
+                    'documents_id' => $doc_id,
+                    'format' => 'pdf'
+                );
+                $this->db->insert($this->tbl_orderinfo, $data_cmd);
+                return 'ajout';
+            }
+        }
+
+        /*
         $this->db->set(array('Utilisateur_id' => $this->session->userdata('uid'), 'status' => 'P'))
                 ->insert('commande');
         $cmd_last_id = $this->db->insert_id();
 
         $this->db->set(array('Commande_id' => $cmd_last_id, 'prix' => $prix, 'Documents_id' => $doc_id))
                 ->insert('infos_commande');
+        */
     }
     
     public function delete_livret($id_album)
@@ -134,6 +184,43 @@ class Document_model extends CI_Model {
 
         $this->db->where('id', $id_album);
         $this->db->update('albums', $data);
+    }
+
+    public function get_one_doc_by_id($doc_id)
+    {
+        return $this->db->select('documents.id AS doc_id,documents.prix, morceaux.nom AS name_track, albums.nom AS alb_name,documents.path AS doc_path')
+                        ->from($this->table_doc)
+                        ->join($this->table_track,'morceaux.id=documents.Morceaux_id')
+                        ->join($this->table_alb,'morceaux.albums_id=albums.id','LEFT OUTER')
+                        ->where(array('documents.id'=>$doc_id))
+                        ->get()
+                        ->result();
+
+    }
+
+    public function delete_paroles($doc_id)
+    {
+        $this->db->delete($this->table_doc, array('id' => $doc_id)); 
+
+
+    }
+    public function update_paroles($doc_id,$file_name,$prix)
+    {
+        $data['path'] = $file_name;
+        $prix = !empty($prix) ? "$prix" : NULL;
+        $data['prix'] = $prix;
+        $this->db->where('id', $doc_id);
+        $this->db->update($this->table_doc, $data);
+
+    }
+
+        public function update_paroles_price($doc_id,$prix)
+    {
+        $prix = !empty($prix) ? "$prix" : NULL;
+        $data['prix'] = $prix;
+        $this->db->where('id', $doc_id);
+        $this->db->update($this->table_doc, $data);
+
     }
 
 }
