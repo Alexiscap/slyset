@@ -202,3 +202,8 @@ body { margin:0; font-family:'Trebuchet MS'; }
 /* FIN POP IN UPLOADIFY */
 
 .erreur{ font-size:12px; margin:0 135px; }
+
+.content-pi-cent .prix_morceau input {width:60px;}
+.content-pi-cent .annee_morceau input {width:60px;}
+.content-pi-cent .num_morceau input {width:60px;}
+
