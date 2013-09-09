@@ -111,7 +111,7 @@ $loger = $this->session->userdata('logged_in');
 		?>
 		<div id="une_alb">
         <div class="a_la_une">
-            <img src="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$album_alaune[0]->nom).'/'.$album_alaune[0]->img_cover); ?>"/>
+            <img src="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$album_alaune[0]->nom).'/'.$album_alaune[0]->img_cover); ?>" class="alb_cover"/>
             <img src="<?php echo img_url('portail/alaune.png'); ?>" class="bandeau_top bandeau_une"/>
             <div class="player">
                 <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$album_alaune[0]->nom); ?>" class="open_player"><img src="<?php echo img_url('musicien/player_top.png'); ?>"/></a>
@@ -202,9 +202,9 @@ $loger = $this->session->userdata('logged_in');
                         <thead>
                             <tr class="tab-head">
                                 <th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
+                                <th class="article-date">#</th>
                                 <th class="article-title">Titre de la chanson</th>
                                 <th class="article-album">Album</th>
-
                                 <th class="article-date">Durée</th>
                             </tr>
                         </thead>
@@ -212,11 +212,13 @@ $loger = $this->session->userdata('logged_in');
                             <?php foreach($all_morceau_artiste as $morceau_artiste): ?>
                             <tr>
                                 <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $morceau_artiste->id?>" id="article-<?php echo $morceau_artiste->id?>" class="checkbox-article"><label for="article-<?php echo $morceau_artiste->id?>"></label></td>
-                               <td class="article-title"><!--onMouseOver="this.id='select';bt_edit();show_play();" onMouseOut="cache_edit();cache_play();this.id='';"-->
+                                <td class="article-date"><?php echo $morceau_artiste->tracknumero; ?></td>
+                                <td class="article-title"><!--onMouseOver="this.id='select';bt_edit();show_play();" onMouseOut="cache_edit();cache_play();this.id='';"-->
                                 	<a href="<?php echo site_url('mc_musique/player/'.$uid_visit.'/album/'.$morceau_artiste->title_alb.'/'.$morceau_artiste->id); ?>" class="open_player" >
 										<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
 									</a>
-                                    <p class="<?php echo $morceau_artiste->id; ?> track-id"> <?php echo $morceau_artiste->nom?></p>
+                                    <!--<p class="<?php echo $morceau_artiste->id; ?> track-id"> <?php echo $morceau_artiste->nom?></p>-->
+                                    <?php echo $title_substr = (strlen($morceau_artiste->nom) > 23) ? '<p title="'.$morceau_artiste->nom.'" class="'.$morceau_artiste->id.' track-id">'.substr($morceau_artiste->nom,0,20).'...</p>' : '<p class="'.$morceau_artiste->id.' track-id">'.$morceau_artiste->nom.'</p>'; ?>
                                     <!--$loger $session_id-->
                                     <?php // print_r($this->session->all_userdata()); ?>
                                     <?php if($loger == 1): ?>

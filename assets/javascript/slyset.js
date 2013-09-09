@@ -505,6 +505,23 @@ $(document).ready(function(){
             cssDesc: "headerSortDown"
         });
     }
+    
+    /*Specification second tableau page*/
+    if($('.tout_titre #tablesorter-cb').length > 0){
+        $('.tout_titre #tablesorter-cb').tablesorter({
+            theme: 'blue',
+            widgets: ['zebra'],
+            headers:{
+                0:{
+                    sorter:false
+                }
+            },
+            cssAsc:	"headerSortUp",
+            cssDesc: "headerSortDown"
+        });
+    }
+    
+    /*Tableau sans checkbox*/
     if($('#tablesorter-nocb').length > 0){
         $('#tablesorter-nocb').tablesorter({
             theme: 'blue',

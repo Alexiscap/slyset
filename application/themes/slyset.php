@@ -31,6 +31,8 @@
 
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="<?php echo js_url('jquery-1.8.3.min') ?>">\x3C/script>')</script>
+        <!--<script type="text/javascript" src="<?php echo js_url('jquery-1.8.3.min') ?>"></script>-->
+        
     </head>
 
     <body <?php if (isset($id_bkg)) echo 'class="' . $id_bkg . '"'; ?>>
