@@ -16,7 +16,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 
     <div id="cover" style="background-image:url(<?php echo files('profiles/' . $cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
         <div id="infos-cover">
-            <h1><?php echo $login; ?></h1>
+            <h2><?php echo $login; ?></h2>
             <!--
             <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
       -->  </div>
