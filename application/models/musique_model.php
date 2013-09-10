@@ -221,7 +221,7 @@ class Musique_model extends CI_Model {
     }
 
     public function get_morceau_user($user_id) {
-        return $this->db->select('morceaux.id, morceaux.nom, albums.nom AS title_alb, morceaux.duree, albums.id AS id_alb, albums.une AS une')
+        return $this->db->select('morceaux.id, morceaux.nom, morceaux.tracknumero, albums.nom AS title_alb, morceaux.duree, albums.id AS id_alb, albums.une AS une')
                         ->from($this->tbl_morceaux)
                         ->join($this->tbl_album, 'morceaux.albums_id = albums.id', 'LEFT OUTER')
                         ->where('morceaux.Utilisateur_id =', $user_id)

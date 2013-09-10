@@ -46,7 +46,7 @@ $loger = $this->session->userdata('logged_in');
           
         <?php if(isset($morceau)): ?>
           <div class="<?php echo $numb_string; ?>">
-        		<p class="position"><?php echo $cpt; ?></p><a href="<?php echo site_url().'/mc_musique/player/'.$profile->id.'/album/'.$morceau->alb_name.'/'.$morceau->id; ?>" class="play open_player"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><p><?php print $morceau->nom; ?></p>
+        		<p class="position"><?php echo $cpt; ?></p><a href="<?php echo site_url().'/mc_musique/player/'.$profile->id.'/album/'.$morceau->alb_name.'/'.$morceau->id; ?>" class="play open_player"><img src="<?php echo img_url('sidebar-right/lecture.png'); ?>" alt="lecture"/></a><?php echo $title_substr = (strlen($morceau->nom) > 20) ? '<p title="'.$morceau->nom.'">'.substr($morceau->nom,0,17).'...</p>' : '<p>'.$morceau->nom.'</p>'; ?>
       		</div>
         <?php endif; ?>
         <?php $cpt++; ?>

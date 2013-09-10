@@ -1023,11 +1023,11 @@ class Pop_in_general extends CI_Controller {
         $getID3->setOption(array('encoding' => $textEncoding));
 
         require_once('application/libraries/getid3/write.php');
-
+        
         $data = array();
         $data['track'] = $this->musique_model->get_morceau_single($track_id);
         $data['albums'] = $this->musique_model->get_list_album($uid);
-
+        
         $this->form_validation->set_rules('titre', 'Titre', 'trim|clean_xss|required');
         $this->form_validation->set_rules('artiste', 'Artiste', 'trim|clean_xss|required');
         $this->form_validation->set_rules('piste', 'Piste', 'trim|clean_xss|numeric');
@@ -1039,64 +1039,64 @@ class Pop_in_general extends CI_Controller {
             $this->load->view('musique/edit_musique', $data);
         } else {
             $upload_folder = '';
-            $alb = $data['track']->title_alb;
+            $alb = $data['track']->title_alb;            
             $str_album = str_replace(' ', '_', strtolower($alb));
             if (!empty($data['track']->title_alb)) {
                 $upload_folder = 'files/' . $uid . '/musique/' . $str_album . '/';
             } else {
                 $upload_folder = 'files/' . $uid . '/musique/';
             }
-
-            $title = $this->input->post('titre');
+            
+            $title  = $this->input->post('titre');
             $artist = $this->input->post('artiste');
-            $album = $this->input->post('album');
-            $year = $this->input->post('annee');
-            $genre = $this->input->post('genre');
-            $piste = $this->input->post('piste');
-            $price = $this->input->post('prix');
-
-            if ($album == 0) {
+            $album  = $this->input->post('album');
+            $year   = $this->input->post('annee');
+            $genre  = $this->input->post('genre');
+            $piste  = $this->input->post('piste');
+            $price  = $this->input->post('prix');
+            
+            if($album == 0){
                 $album = NULL;
             }
-
+            
             $userfile_name = $data['track']->filename;
             $dir_userfile = $upload_folder . $userfile_name;
-
-            if (!empty($userfile_name) && file_exists($upload_folder) && file_exists($dir_userfile)) {
+            
+            if(!empty($userfile_name) && file_exists($upload_folder) && file_exists($dir_userfile)){
                 $id3_write = new getid3_writetags;
                 $id3_write->filename = $dir_userfile;
                 $id3_write->tagformats = array('id3v2.3');
                 $id3_write->overwrite_tags = true;
                 $id3_write->tag_encoding = $textEncoding;
                 $id3_write->remove_other_tags = false;
-
+                
                 $tagData = array(
-                    'title' => array($title),
-                    'artist' => array($artist),
-                    'album' => array($album),
-                    'year' => array($year),
-                    'genre' => array($genre),
-                    'track' => array($piste),
+                    'title'         => array($title),
+                    'artist'        => array($artist),
+                    'album'         => array($album),
+                    'year'          => array($year),
+                    'genre'         => array($genre),
+                    'track'         => array($piste),
                 );
                 $id3_write->tag_data = $tagData;
-
+                
                 if ($id3_write->WriteTags()) {
 //                    print_r($this->getid3->analyze($dir_userfile));
                     $data['success'] = 'Modification réalisée avec succès.';
                     if (!empty($id3_write->warnings)) {
-                        $data['warning'] = 'Avertissement :<br>' . implode('<br><br>', $id3_write->warnings);
+                        $data['warning'] = 'Avertissement :<br>'.implode('<br><br>', $id3_write->warnings);
                     }
                 } else {
-                    $data['failed'] = 'Echec de la modification :<br>' . implode('<br><br>', $id3_write->errors);
+                    $data['failed'] = 'Echec de la modification :<br>'.implode('<br><br>', $id3_write->errors);
                 }
 
                 $this->musique_model->update_music($track_id, $album, $title, $piste, $artist, $genre, $year, $price);
-
+                
                 $data['track'] = $this->musique_model->get_morceau_single($track_id);
             } else {
                 $data['error'] = 'Le fichier n\'a pas été trouvé sur Slyset, le chemin est cassé ou le fichier a été supprimé.';
             }
-
+            
             $this->load->view('musique/edit_musique', $data);
         }
     }
