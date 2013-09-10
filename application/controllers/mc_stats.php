@@ -59,92 +59,62 @@ class Mc_stats extends CI_Controller {
         }
     }
 
-    public function page() {
+    public function page($user_id) {
         $data = $this->data;
         $data['profile'] = $this->user_model->getUser($this->user_id);
+ 		$piwik = curl_init();
 
-        // GOOGLE ANALYTICS APPEL A L4'API
+        curl_setopt($piwik, CURLOPT_URL, base_url('assets/piwik/?module=API&method=Actions.get&idSite=1&date=today&period=year&format=json&segment=pageUrl=@'.$user_id.'&token_auth=1cc12df5ceefcb5003bf04c0a1006036'));
+        curl_setopt($piwik, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($piwik, CURLOPT_RETURNTRANSFER, TRUE);
 
-        session_start();
-        require_once 'assets/GoogleClientApi/src/Google_Client.php';
-        require_once 'assets/GoogleClientApi/src/contrib/Google_AnalyticsService.php';
-
-        //$scriptUri = $this->layout->view('statistique/mc_stats', $data);
-
-
-        $client = new Google_Client();
-        $client->setAccessType('offline'); // default: offline
-        $client->setApplicationName('My Application name');
-        $client->setClientId('359711119127-10vh4o4i102le2jtp64qfcjdum7mkf91.apps.googleusercontent.com');
-        $client->setClientSecret('EC7OnFYBjxMLQXepSYpTm6lh');
-        //$client->setRedirectUri($scriptUri);
-        $client->setDeveloperKey('AIzaSyCcssc_1iHiNjx3tub8qJ3L3WmpCn-ea5Y'); // API key
-
-        // $service implements the client interface, has to be set before auth call
-        $service = new Google_AnalyticsService($client);
-
-        if (isset($_GET['logout'])) { // logout: destroy token
-            unset($_SESSION['token']);
-            die('Logged out.');
-        }
-
-        if (isset($_GET['code'])) { // we received the positive auth callback, get the token and store it in session
-            $client->authenticate();
-            $_SESSION['token'] = $client->getAccessToken();
-        }
-
-        if (isset($_SESSION['token'])) { // extract token from session and configure client
-            $token = $_SESSION['token'];
-            $client->setAccessToken($token);
-        }
-
-        if (!$client->getAccessToken()) { // auth call to google
-            $authUrl = $client->createAuthUrl();
-            header("Location: ".$authUrl);
-            die;
-        }
-    
-        $projectId = '76438199';
-
-        //from 30 pour le graph
-        //depuis la date d'inscription pour les autres données
-        $from_30 = date('Y-m-d', time()-30*24*60*60); // 30 days
-        $from_begining = date('Y-m-d', time()-30*24*60*60); // 30 days
-        $to = date('Y-m-d'); // today
-
-
-        //pour viste et page vu : ajouter le path2 et ne prendre que les page musicien
-
-        //total visite pour un utilisateur
+        $data['curl'] = curl_exec($piwik);
+        $data['stats_page'] = json_decode($data['curl']);
         
-        $metrics_visit = 'ga:visits';
-        $dimensions_visit = 'ga:pagePathLevel3';
-        //ga:pagePathLevel3==/3')) : 3 est l'id de l'utilisateur
-        $visit_tot = $service->data_ga->get('ga:'.$projectId, $from_begining, $to, $metrics_visit, array('dimensions' => $dimensions_visit,'filters'=>'ga:pagePathLevel3==/3'));
-        $data['visit_tot'] = $visit_tot['rows'];
-       
-        //page vue sur l'utilisateur
+        $piwik_visit = curl_init();
+        curl_setopt($piwik_visit, CURLOPT_URL, base_url('assets/piwik/?module=API&method=VisitsSummary.get&idSite=1&date=today&period=year&format=json&segment=pageUrl=@'.$user_id.'&token_auth=1cc12df5ceefcb5003bf04c0a1006036'));
+        curl_setopt($piwik_visit, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($piwik_visit, CURLOPT_RETURNTRANSFER, TRUE);
 
-        $metrics_page = 'ga:pageviews';
-        $dimensions_page = 'ga:pagePathLevel3';
-        //ga:pagePathLevel3==/3')) : 3 est l'id de l'utilisateur
-        $pages = $service->data_ga->get('ga:'.$projectId, $from_begining, $to, $metrics_page, array('dimensions' => $dimensions_page,'filters'=>'ga:pagePathLevel3==/3'));
-        $data['pages_tot'] = $visit_tot['rows'];
+        $data['curl_v'] = curl_exec($piwik_visit);
+        $data['stats_visit'] = json_decode($data['curl_v']);
+             
+         $piwik_graph = curl_init();
+        curl_setopt($piwik_graph, CURLOPT_URL, base_url('assets/piwik/?module=API&method=VisitsSummary.get&format=json&idSite=1&date=2013-09-01,today&period=day&segment=pageUrl=@30&token_auth=1cc12df5ceefcb5003bf04c0a1006036'));
+        curl_setopt($piwik_graph, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($piwik_graph, CURLOPT_RETURNTRANSFER, TRUE);
 
-        // source du traffic par utilisar
+        $data['curl_g'] = curl_exec($piwik_graph);
+        $stats_graph = json_decode($data['curl_g']);
+		$graph ="";
+		$graph_uniq = "";
+		  	
 
-        $metrics_sources = 'ga:visits';
-        $dimensions_sources = 'ga:source';
-        //ga:pagePathLevel3==/3')) : 3 est l'id de l'utilisateur
-        $sources = $service->data_ga->get('ga:'.$projectId, $from_begining, $to, $metrics_sources, array('dimensions' => $dimensions_sources,'filters'=>'ga:pagePathLevel3==/3'));
-        $data['sources_tot'] = $sources['rows'];
+		  	foreach($stats_graph as $graph_s)
+		  	{
+		  		if (empty($graph_s)==1)
+		  		{
+		  			$visit_graph = 0;
+		  			$visit_uniq = 0;
+		  		}
+		  		else
+		  		{
+		  			$visit_graph = $graph_s->nb_visits;
+		  			$visit_uniq = $graph_s->nb_uniq_visitors;
+		  		}
+		  		$graph .= $visit_graph.',';
+		  		$graph_uniq .= $visit_uniq.',';
+		  	} 
+		  	$data['value_graph'] =  substr ( $graph,0 , -1);
+		  	$data['value_graph_uniq'] =  substr ( $graph_uniq,0 , -1);
         
-        //evolution du trafic (visit et visit unique par jour sur le mois
-        $metrics_evol = 'ga:visits,ga:newVisits';
-        $dimensions_evol = 'ga:day';
-        //ga:pagePathLevel3==/3')) : 3 est l'id de l'utilisateur
-        $evol = $service->data_ga->get('ga:'.$projectId, $from_30, $to, $metrics_evol, array('dimensions' => $dimensions_evol,'filters'=>'ga:pagePathLevel3==/3'));
-        $data['evol'] = $evol['rows'];
+        $piwik_source = curl_init();
+        curl_setopt($piwik_source, CURLOPT_URL, base_url('assets/piwik/?module=API&method=Referers.getRefererType&language=fr&format=json&idSite=1&date=today&period=day&segment=pageUrl=@'.$user_id.'&token_auth=1cc12df5ceefcb5003bf04c0a1006036'));
+        curl_setopt($piwik_source, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($piwik_source, CURLOPT_RETURNTRANSFER, TRUE);
+
+        $data['curl_s'] = curl_exec($piwik_source);
+        $data['stats_source'] = json_decode($data['curl_s']);      
 
         //var_dump($data['rows']);
 
