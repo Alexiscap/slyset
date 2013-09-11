@@ -22,7 +22,7 @@ header + div{ padding-top:53px; }
 #header #ico_menu #played{ margin:0 0 0 15px; display:inline-block; height:52px; float:left; }
 #header #ico_menu #played .ico{ display:inline-block; width:27px; height:100%; background:url('../images/player/ico-big-casque.png') no-repeat 0 center transparent; background-size:contain; float:left; }
 #header #ico_menu #played .infos{ margin:0 0 0 10px; display:inline-block; height:52px; float:left; }
-#header #ico_menu #played .infos span{ margin:2px 0 0 0; display:inline-block; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:normal; font-size:14px; color:#ffffff; float:left; clear:both; }
+#header #ico_menu #played .infos span{ margin:2px 0 0 0; display:inline-block; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:normal; font-size:14px; color:#d5d7d8; float:left; clear:both; }
 #header #ico_menu #played .infos span.label{ margin:13px 0 0 0; font-weight:bold; font-size:12px; }
 /*#header #separe{ margin:0 10px; }*/
 #header #connexion{ height:100%; float:left; }
