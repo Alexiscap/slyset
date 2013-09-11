@@ -1,4 +1,3 @@
-
 <?php
     $session_id = $this->session->userdata('uid');
     $uid = (empty($session_id)) ? '' : $session_id;
@@ -8,7 +7,7 @@
 ?>
 
 <div id="contentAll">
-    <h1 class="hd">Votre fil d'actualité</h1>
+    <!--<h1 class="hd">Votre fil d'actualité</h1>-->
     
     <div id="breadcrumbs">
         <ul>
@@ -78,7 +77,7 @@
     </div> 
     
     <div id = "content" class="content">  
-    <h2>Fil d'actualité</h2>
+    <h1>Fil d'actualité</h1>
         <?php
       
         if (isset($data_all_wall)):
