@@ -18,7 +18,7 @@ class Achat_model extends CI_Model {
     
     //toutes les infos produits sur une commande
     public function get_achat($user_id) {
-        $sql = "(SELECT infos_commande.id,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,morceaux.nom AS nom,documents.type_document AS type,utilisateur.login AS user_login,infos_commande.prix,documents.format,commande.id AS commande_id
+        $sql = "(SELECT infos_commande.id,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,morceaux.nom AS nom,documents.type_document AS type,utilisateur.login AS user_login,utilisateur.id AS artiste_id,infos_commande.prix,documents.format,commande.id AS commande_id,'null' AS name_alb
 					FROM commande
 						INNER JOIN infos_commande ON infos_commande.Commande_id = commande.id
 							INNER JOIN documents ON infos_commande.Documents_id = documents.id
@@ -27,7 +27,7 @@ class Achat_model extends CI_Model {
 					WHERE commande.Utilisateur_id = ? 
 				)
 				UNION
-				(SELECT infos_commande.id,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,albums.nom,'album',utilisateur.login,infos_commande.prix,albums.format,commande.id AS commande_id
+				(SELECT infos_commande.id,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,albums.nom,'album',utilisateur.login,utilisateur.id AS artiste_id,infos_commande.prix,albums.format,commande.id AS commande_id,'null'
 					FROM commande
 						INNER JOIN infos_commande ON infos_commande.Commande_id = commande.id
 							INNER JOIN albums ON infos_commande.Albums_id = albums.id
@@ -36,11 +36,12 @@ class Achat_model extends CI_Model {
 					AND infos_commande.Morceaux_id IS NULL
 				)
 				UNION
-				(SELECT infos_commande.id,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,morceaux.nom,'morceau',utilisateur.login,infos_commande.prix,morceaux.format,commande.id AS commande_id
+				(SELECT infos_commande.id,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,morceaux.nom,'morceau',utilisateur.login,utilisateur.id AS artiste_id,infos_commande.prix,morceaux.format,commande.id AS commande_id,albums.nom 
 					FROM infos_commande
 						INNER JOIN commande ON infos_commande.Commande_id = commande.id
 							INNER JOIN morceaux ON infos_commande.Morceaux_id = morceaux.id
 								INNER JOIN utilisateur ON utilisateur.id = morceaux.Utilisateur_id
+                                    LEFT OUTER JOIN albums ON albums.id = morceaux.Albums_id
 					WHERE commande.Utilisateur_id = ? 
                                         AND Documents_id IS NULL
 )";

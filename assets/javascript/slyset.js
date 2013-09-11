@@ -293,7 +293,16 @@ $(document).ready(function(){
     //    if(isPlaying(p)){
     //    $('#played').html('EN COURSS');
     //    }
-
+    
+    $('.more_albpl').click(function(){
+    	if($('.drop').is(':visible')==false)
+    	{$('.drop').show();
+    	}
+    	else
+    	{
+    	$('.drop').hide();
+    	}
+});
     $('.iframe').bind('contextmenu', function(e) {
         return false;
     }); 

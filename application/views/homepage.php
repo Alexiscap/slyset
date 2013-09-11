@@ -47,7 +47,7 @@ if (isset($all_date_calendar))
                     <?php // print_r($coverflow_cover); 
                     ?>
             <div>
-                 <a href="<?php echo site_url('mc_musique/player/' . $coverflow_cover[0]->idU).'/album'; ?>" class="open_player">
+                 <a href="<?php echo site_url('mc_musique/player/' . $coverflow_cover[0]->idU).'/albums'; ?>" class="open_player">
                <!-- <a href="<?php echo site_url('actualite/' . $coverflow_cover[0]->idU); ?>">-->
                     <img class="coverflow-img" src="<?php echo $thumb = (!empty($coverflow_cover[0]->coverU)) ? files('profiles/' . $coverflow_cover[0]->coverU) : img_url('sidebar-right/default-photo-profil.png'); ?>" />
                     <div class="coverflow_player">
@@ -101,7 +101,7 @@ if (isset($all_date_calendar))
                         <div class="tab-top-song-col-one">
                             <div class="tab-top-song-col-number"><?php echo $n_top ?></div>
                             <div class="tab-top-song-col-texte">
-                                <div class="tab-top-song-col-texte-img"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></div>  				
+                                <div class="tab-top-song-col-texte-img"><a href="<?php echo base_url('index.php/mc_musique/player/'.$top_morceau->loggin_id.'/album/'.$top_morceau->name_alb.'/'.$top_morceau->id_track);?>" class="open_player"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></a></div>  				
                                 <div class="tab-top-song-col-texte-titre">
                                     <?php echo $top_morceau->nom ?></br>
                                     <span class="tab-top-song-col-texte-artiste"><?php echo $top_morceau->login ?></span>

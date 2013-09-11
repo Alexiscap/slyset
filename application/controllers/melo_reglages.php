@@ -18,7 +18,7 @@ class Melo_reglages extends CI_Controller {
         $this->layout->ajouter_js('jquery.colorbox');
 
         $this->load->helper(array('form', 'comments_helper'));
-        $this->load->model(array('mc_actus_model', 'perso_model', 'user_model'));
+        $this->load->model(array('mc_actus_model', 'perso_model', 'user_model','follower_model','musique_model'));
         $this->load->library(array('form_validation'));
 
         $this->layout->set_id_background('reglages');
@@ -54,6 +54,9 @@ class Melo_reglages extends CI_Controller {
 
     public function page($user_id) {
         $data = $this->data;
+        $data['all_following'] = $this->follower_model->get_all_abonnement($user_id);
+        $data['playlists'] = $this->musique_model->get_my_playlist($user_id);
+
 
         $this->layout->view('reglage/melo_reglages', $data);
     }

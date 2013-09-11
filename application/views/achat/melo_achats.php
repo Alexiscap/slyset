@@ -29,13 +29,48 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
         </div>
 
         <div class="stats_cover_block">
-            <span class="stats_number">18</span>
-            <span class="stats_title">playlists</span>
+            <span class="stats_number">
+                <?php 
+                $npl = 0;
+                if(empty($playlists)!=1):
+                    $npl =  count($playlists);
+                endif;
+                echo $npl;?>
+            </span>
+            <span class="stats_title">
+                <?php
+                if($npl == 0 || $npl == 1){
+                    echo 'playlist';
+                }
+                else
+                {
+                    echo 'playlists';
+                }
+                ?>
+            </span>
         </div>
 
         <div class="stats_cover_block">
-            <span class="stats_number">278</span>
-            <span class="stats_title">abonnements</span>
+            <span class="stats_number">
+                <?php
+                $nab = 0;
+                if(empty($all_following)!=1):
+                    $nab =  count($all_following);
+                endif;
+                echo $nab;
+                 ?>
+            </span>       
+            <span class="stats_title">
+                <?php
+                if($nab == 0 || $nab == 1){
+                    echo 'abonnement';
+                }
+                else
+                {
+                    echo 'abonnements';
+                }
+                ?>
+            </span>
         </div>
     </div>
 
@@ -112,8 +147,25 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                               ?>
                                     <tr class="even row-color-<?php echo $commande->id ?>">
                                         <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $commande->id ?>" id="article-<?php echo $commande->id ?>" class="checkbox-article"><label for="article-<?php echo $commande->id ?>"></label></td>
-                                        <td class="article-title"><a href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
-        <?php echo $commande->nom ?></td>
+                                        <?php if ($commande->type == "morceau") 
+                                        {
+                                        	?>
+                                        	<td class="article-title"><a href="<?php echo base_url('index.php//mc_musique/player/'.$commande->artiste_id.'/album/'.$commande->name_alb.'/'.$commande->Morceaux_id) ?>" class="open_player"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/></a>
+        								<?php 
+        								}
+        								else if ($commande->type == "album") 
+        								{
+        								?>
+                                        	<td class="article-title"><a href="<?php echo base_url('index.php//mc_musique/player/'.$commande->artiste_id.'/album/'.$commande->nom) ?>" class="open_player"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/></a>
+                                        <?php
+        								}
+        								else
+        								{
+        								?>
+        									<td class="article-title">
+        								<?php
+        								}
+        								echo $commande->nom ?></td>
                                         <td class="article-artiste"><?php echo $commande->user_login ?></td>
                                         <td class="article-type"><?php echo $commande->type ?></td>
                                         <td class="article-prix"><?php echo $commande->prix ?> €</td>

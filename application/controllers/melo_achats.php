@@ -17,7 +17,7 @@ class Melo_achats extends CI_Controller {
         $this->layout->ajouter_js('jquery.tablesorter');
         $this->layout->ajouter_js('jquery.colorbox');
 
-        $this->load->model(array('user_model', 'mc_actus_model', 'achat_model'));
+        $this->load->model(array('user_model', 'mc_actus_model', 'achat_model','musique_model','follower_model'));
         $this->load->helper('form');
 
         $this->layout->set_id_background('achats');
@@ -56,6 +56,9 @@ class Melo_achats extends CI_Controller {
         if (!empty($profile)) {
             $data['infos_profile'] = $profile;
         }
+        $data['playlists'] = $this->musique_model->get_my_playlist($user_visited);
+
+        $data['all_following'] = $this->follower_model->get_all_abonnement($user_visited);
 
         $data['cmd'] = $this->achat_model->get_achat($user_visited);
         //var_dump($data['cmd']);

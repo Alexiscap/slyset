@@ -83,7 +83,6 @@ class Mc_reglages extends CI_Controller
     {
         $data = $this->data;
         $data['profile'] = $this->user_model->getUser($this->user_id);
-        
         $this->layout->view('reglage/mc_reglages', $data);
     }
     

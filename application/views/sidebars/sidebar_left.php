@@ -18,7 +18,7 @@
             <?php endif; ?>
 
             <div id="listen-playlist">
-                <a href="<?php echo site_url().'/mc_musique/player/'.$this->session->userdata('uid').'/playlist'; ?>" class="open_player">
+                <a href="<?php echo site_url().'/mc_musique/player/'.$this->session->userdata('uid').'/playlists'; ?>" class="open_player">
                     <img src="<?php echo img_url('sidebar-left/btn-play.png'); ?>" alt="Lecture Playlist" />
                     <span>Écouter mes playlists</span>
                 </a>
