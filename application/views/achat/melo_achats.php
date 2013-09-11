@@ -45,7 +45,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
         <!-- ************************ PANIER ************************ -->
         <div class="panier">
             <div class="descri_panier">
-                <span class="nom_pl">Mon panier</span>
+                <h2 class="nom_pl">Mon panier</h2>
                 <!-- ************************ RESUME ************************ -->
 
                 <span class="detail_pl">
@@ -79,7 +79,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                         echo '0 chanson';
                     }
                     ?> </span>
-                <img src="<?php echo img_url('common/caddis_achat.png'); ?>" class="detail_pl"/>
+                <img src="<?php echo img_url('common/caddis_achat.png'); ?>" class="detail_pl" alt="icone panier"/>
             </div>
             <hr />
             <div class="clear"></div>
@@ -145,7 +145,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
         <div class="clear"></div>
         <div class="historique">
             <div class="descri_historique">
-                <span class="nom_pl">Historique d'achats</span>
+                <h2 class="nom_pl">Historique d'achats</h2>
                 <span class="detail_pl"><?php
                             if ($total_partition_history == 1) {
                                 echo $total_partition_history . ' partition';
@@ -176,7 +176,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                             echo '0 chanson,';
                         }
                             ?> </span>
-                <img src="<?php echo img_url('common/sac_historique.png'); ?>" class="detail_pl"/>
+                <img src="<?php echo img_url('common/sac_historique.png'); ?>" class="detail_pl" alt="icone historique"/>
             </div>
             <hr />
             <div class="clear"></div>
