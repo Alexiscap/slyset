@@ -250,7 +250,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 /* --------- MUSICIEN PHOTO ET VIDEO --------- */
 .content .col1{ width:170px; }
 .content .col1 .img_cover{width:160px;}
-.content .box{ margin:5px;min-height: 160px; /* background:#D8D5D2; */ font-size:11px; line-height:1.4em; float:left; display:block; }
+.content .box{ margin:5px; /* background:#D8D5D2; */ font-size:11px; line-height:1.4em; float:left; display:block; }
 .content .photo{background: white;text-align: left;box-shadow: 1px 1px 1px 1px #9b9b9b;width: 160px;padding: 5px 5px 0;}
 .content .photo .pochette{ width:139px; margin:10px 10px 5px 10px; min-height:214px; }
 .content .photo .img_miniat{ width:51px; margin:0; }
