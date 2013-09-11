@@ -652,17 +652,17 @@ $(document).ready(function(){
         });
     };
        
-    if($("body.photos_videos").length > 0){
+  if($("body.photos_videos").length > 0){
         $('.bord_photo a').click(function(){
             if($(this).parents('.bord_photo').next('.allcomment').is(':visible') == false)
             {
                 $(this).parents('.bord_photo').next('.allcomment').show();
 				
-                var photo_height=$(this).parents('.photo').height();
-                var comm_height=$(this).parents('.photo').find('.allcomment').height();
-                comm_height+=50;
+                var photo_height=$(this).parents('.box').height();
+                var comm_height=$(this).parents('.box').find('.allcomment').height();
+                comm_height+=60;
                 var total_height=photo_height-comm_height;
-                $(this).parents('.photo').find('.open_alb').css("height",total_height+"px");
+                $(this).parents('.box').find('.open_alb').css("height",total_height+"px");
 				
                 $(".content").masonry('reload');
             }
@@ -674,7 +674,7 @@ $(document).ready(function(){
    
         });
 		
-        $('.photo').hover(function(){
+        $('.box').hover(function(){
             var photo_height=$(this).height();
             var cover_height=$(this).find('.img_cover').height();
             cover_height=cover_height-27;
@@ -683,7 +683,7 @@ $(document).ready(function(){
             if($(this).find('.allcomment').is(':visible') == true)
             {   
                 var comm_height=$(this).find('.allcomment').height();
-                comm_height+=50;
+                comm_height+=60;
                 var total_height=photo_height-comm_height;
                 $(this).find('.open_alb').css("height",total_height+"px");
             }
