@@ -112,7 +112,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                               ?>
                                     <tr class="even row-color-<?php echo $commande->id ?>">
                                         <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $commande->id ?>" id="article-<?php echo $commande->id ?>" class="checkbox-article"><label for="article-<?php echo $commande->id ?>"></label></td>
-                                        <td class="article-title"><a href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
+                                        <td class="article-title"><a href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>" alt="Bouton play"/>
         <?php echo $commande->nom ?></td>
                                         <td class="article-artiste"><?php echo $commande->user_login ?></td>
                                         <td class="article-type"><?php echo $commande->type ?></td>
@@ -202,7 +202,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                                     ?>
                                     <tr class="even row-color-<?php echo $commande->id ?>">
                                         <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"></label></td>
-                                        <td class="article-title"><a href="#" class ="play_achat" style="visibility:hidden"><img  src="<?php echo img_url('common/btn_play2.png'); ?>"/></a>
+                                        <td class="article-title"><a href="#" class ="play_achat" style="visibility:hidden"><img  src="<?php echo img_url('common/btn_play2.png'); ?>" alt="Bouton play historique"/></a>
         <?php echo $commande->nom ?></td>
                                         <td class="article-artiste"><?php echo $commande->user_login ?></td>
                                         <td class="article-type"><?php echo $commande->type ?></td>
