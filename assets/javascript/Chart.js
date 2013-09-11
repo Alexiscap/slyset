@@ -271,7 +271,7 @@ window.Chart = function(context){
 			animation : true,
 			animationSteps : 100,
 			animationEasing : "easeOutBounce",
-			animateRotate : true,
+			animateRotate : false,
 			animateScale : false,
 			onAnimationComplete : null
 		};		
@@ -286,10 +286,10 @@ window.Chart = function(context){
 	
 		chart.Line.defaults = {
 			scaleOverlay : false,
-			scaleOverride : false,
-			scaleSteps : null,
-			scaleStepWidth : null,
-			scaleStartValue : null,
+			scaleOverride : true,
+			scaleSteps : 10,
+			scaleStepWidth : step,
+			scaleStartValue : 0,
 			scaleLineColor : "rgba(0,0,0,.1)",
 			scaleLineWidth : 1,
 			scaleShowLabels : true,
@@ -307,8 +307,8 @@ window.Chart = function(context){
 			pointDotStrokeWidth : 2,
 			datasetStroke : true,
 			datasetStrokeWidth : 2,
-			datasetFill : true,
-			animation : true,
+			datasetFill : false,
+			animation : false,
 			animationSteps : 60,
 			animationEasing : "easeOutQuart",
 			onAnimationComplete : null
@@ -1423,4 +1423,55 @@ window.Chart = function(context){
 	  };
 }
 
+$(document).ready(function(){
 
+	var lineChartData = {
+		labels : chart_month,
+		datasets : [
+			{
+				fillColor : "#88BBC8",
+				strokeColor : "#88BBC8",
+				pointColor : "#88BBC8",
+				pointStrokeColor : "#fff",
+				data : chart_visit
+			},
+				{
+					fillColor : "#EC9185",
+					strokeColor : "#EC9185",
+					pointColor : "#EC9185",
+					pointStrokeColor : "#fff",
+					data :value_charts
+				}
+		]
+			
+	}
+
+	var myLine = new Chart(document.getElementById("myChart").getContext("2d")).Line(lineChartData);
+	
+	var data = [
+	{
+		value: direct,
+		color:"#EB5D4A"
+	},
+	{
+		value : se,
+		color : "#29AE8D"
+	},
+
+	{
+		value : site_ref,
+		color : "#57B8DB"
+	},
+	{
+		value : other_s,
+		color : "#3C495A"
+	}
+
+]
+
+
+//Get the context of the canvas element we want to select
+var ctx = document.getElementById("piechart").getContext("2d");
+new Chart(ctx).Doughnut(data);
+
+});

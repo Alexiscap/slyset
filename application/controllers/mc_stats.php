@@ -80,43 +80,68 @@ class Mc_stats extends CI_Controller {
         $data['stats_visit'] = json_decode($data['curl_v']);
              
          $piwik_graph = curl_init();
-        curl_setopt($piwik_graph, CURLOPT_URL, base_url('assets/piwik/?module=API&method=VisitsSummary.get&format=json&idSite=1&date=2013-09-01,today&period=day&segment=pageUrl=@30&token_auth=1cc12df5ceefcb5003bf04c0a1006036'));
+        curl_setopt($piwik_graph, CURLOPT_URL, base_url('assets/piwik/?module=API&method=VisitsSummary.get&format=json&idSite=1&date=2013-08-25,today&period=day&segment=pageUrl=@30&token_auth=1cc12df5ceefcb5003bf04c0a1006036'));
         curl_setopt($piwik_graph, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         curl_setopt($piwik_graph, CURLOPT_RETURNTRANSFER, TRUE);
 
         $data['curl_g'] = curl_exec($piwik_graph);
-        $stats_graph = json_decode($data['curl_g']);
+        $stats_graph = json_decode($data['curl_g'],true);
 		$graph ="";
 		$graph_uniq = "";
-		  	
+        $all_date = "";
 
-		  	foreach($stats_graph as $graph_s)
+        $max_array =  max($stats_graph);
+        $max_visit = $max_array['nb_visits'];       
+        $data['decimal'] = 10;
+        $n_n =  strlen($max_visit); 
+        for($i = 1; $i < $n_n;$i++){ $data['decimal'] = $data['decimal'] * 10;}
+
+		foreach($stats_graph as $date => $graph_s)
+		{
+		  	if (empty($graph_s)==1)
 		  	{
-		  		if (empty($graph_s)==1)
-		  		{
-		  			$visit_graph = 0;
-		  			$visit_uniq = 0;
-		  		}
-		  		else
-		  		{
-		  			$visit_graph = $graph_s->nb_visits;
-		  			$visit_uniq = $graph_s->nb_uniq_visitors;
-		  		}
-		  		$graph .= $visit_graph.',';
-		  		$graph_uniq .= $visit_uniq.',';
-		  	} 
-		  	$data['value_graph'] =  substr ( $graph,0 , -1);
-		  	$data['value_graph_uniq'] =  substr ( $graph_uniq,0 , -1);
-        
+		  		$visit_graph = 0;
+		  		$visit_uniq = 0;
+		  	}
+			else
+		  	{
+		  		$visit_graph = $graph_s['nb_visits'];
+
+		  		$visit_uniq = $graph_s['nb_uniq_visitors'];
+		  	}
+			$graph .= $visit_graph.',';
+            $all_date  .= '"'.substr ($date,8).'"'.',';
+
+	  		$graph_uniq .= $visit_uniq.',';
+		} 
+		
+        $data['value_graph'] =  substr ( $graph,0 , -1);
+		$data['value_graph_uniq'] =  substr ( $graph_uniq,0 , -1);
+        $data['all_date'] = substr ($all_date,0,-1);
         $piwik_source = curl_init();
-        curl_setopt($piwik_source, CURLOPT_URL, base_url('assets/piwik/?module=API&method=Referers.getRefererType&language=fr&format=json&idSite=1&date=today&period=day&segment=pageUrl=@'.$user_id.'&token_auth=1cc12df5ceefcb5003bf04c0a1006036'));
+        curl_setopt($piwik_source, CURLOPT_URL, base_url('assets/piwik/?module=API&method=Referers.getRefererType&language=fr&format=json&idSite=1&date=today&period=year&segment=pageUrl=@'.$user_id.'&token_auth=1cc12df5ceefcb5003bf04c0a1006036'));
         curl_setopt($piwik_source, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         curl_setopt($piwik_source, CURLOPT_RETURNTRANSFER, TRUE);
 
-        $data['curl_s'] = curl_exec($piwik_source);
-        $data['stats_source'] = json_decode($data['curl_s']);      
+        $curl_s = curl_exec($piwik_source);
+        $stats_source = json_decode($curl_s);      
+        foreach ($stats_source as $source)
+        {
 
-        //var_dump($data['rows']);
+            if ($source->label == 'Entrées directes')
+            {
+                $data['direct'] = $source->nb_visits * 100 / $data['stats_visit'] ->nb_visits ;
+            }
+            if ($source->label=='Sites Internet')
+            {
+                $data['site_ref'] = $source->nb_visits * 100 / $data['stats_visit'] ->nb_visits ;
+            }
+            if ($source->label=='Moteurs de recherche')
+            {
+                $data['se'] = $source->nb_visits * 100 / $data['stats_visit'] ->nb_visits ;
+            }
+
+        }
 
         $this->layout->view('statistique/mc_stats', $data);
     }
