@@ -53,7 +53,7 @@
                 <input type='text' name="partition_price"><!--<img id="preview" src="http://127.0.0.1/slyset/assets/images/musicien/apercu_photo.png" alt="visuel photo">-->
             </div>
             <div id="morceaux"></div>
-            <?php echo form_submit('submit', 'Ajouter une partition'); ?>
+            <?php echo form_submit('submit', 'Ajouter la partition'); ?>
             <?php echo form_close();?>
         </div>
     </div>
