@@ -12,7 +12,7 @@ class Home extends CI_Controller {
         $this->layout->ajouter_css('slyset');
 
         $this->load->helper(array('cookie', 'form'));
-        $this->load->model(array('login_model', 'homepage_model', 'user_model', 'article_model', 'admin_model'));
+        $this->load->model(array('login_model', 'homepage_model', 'user_model', 'article_model', 'admin_model','achat_model'));
         //      $this->load->model('Facebook_Model');
 
         $this->layout->ajouter_js('carouFredSel');
@@ -41,9 +41,10 @@ class Home extends CI_Controller {
         $this->load->helper('date');
 
         $data = array();
+        $data_notif['count_notif'] = $this->achat_model->notif_panier($this->session->userdata('uid'));
 
         $data['notification'] = $this->input->cookie('notification');
-        $data['sidebar_left'] = $this->load->view('sidebars/sidebar_left', '', TRUE);
+        $data['sidebar_left'] = $this->load->view('sidebars/sidebar_left', $data_notif, TRUE);
         $data['sidebar_right'] = $this->load->view('sidebars/sidebar_right', '', TRUE);
         $data['articles'] = $this->article_model->liste_article(10, 0);
         $data['newbies'] = $this->user_model->getNewbies();

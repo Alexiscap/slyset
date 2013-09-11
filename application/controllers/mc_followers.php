@@ -12,7 +12,7 @@ class Mc_followers extends CI_Controller {
 
         $this->layout->ajouter_css('slyset');
 
-        $this->load->model(array('perso_model', 'user_model', 'follower_model'));
+        $this->load->model(array('perso_model', 'user_model', 'follower_model','achat_model'));
         $this->load->helper('form');
 
         $this->layout->set_id_background('followers');
@@ -41,9 +41,10 @@ class Mc_followers extends CI_Controller {
             $this->layout->ajouter_dynamique_css($output->theme_css);
             write_css($output);
         }
+        $data_notif['count_notif'] = $this->achat_model->notif_panier($this->session->userdata('uid'));
 
         $this->data = array(
-            'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
+            'sidebar_left' => $this->load->view('sidebars/sidebar_left', $data_notif, TRUE),
             'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE),
             'community_follower' => $my_abonnement_head
         );

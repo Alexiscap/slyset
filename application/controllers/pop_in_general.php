@@ -10,7 +10,7 @@ class Pop_in_general extends CI_Controller {
 
         $this->layout->ajouter_css('pop');
 
-        $this->load->model(array('concert_model', 'photo_model', 'achat_model', 'document_model', 'musique_model'));
+        $this->load->model(array('concert_model', 'photo_model', 'achat_model', 'document_model', 'musique_model','achat_model'));
         $this->load->helper('form');
         $this->load->library('form_validation');
 

@@ -25,14 +25,16 @@ class Melo_achats extends CI_Controller {
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
 
         $sub_data = array();
+        $data_notif['count_notif'] = $this->achat_model->notif_panier($this->session->userdata('uid'));
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
 
         if ($this->user_id != null) {
             $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
         }
 
+
         $this->data = array(
-            'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
+            'sidebar_left' => $this->load->view('sidebars/sidebar_left', $data_notif, TRUE),
             'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
         );
     }

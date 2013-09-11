@@ -136,4 +136,16 @@ class Achat_model extends CI_Model {
     			->result();
     }
 
+    public function notif_panier($user_id)
+    {
+        return $this->db->select('COUNT(infos_commande.id) AS n_notif')
+                        ->from($this->table_cmd)
+                        ->join($this->table_cmd_info, 'infos_commande.Commande_id = commande.id','INNER JOIN')
+                        ->where('commande.status','P')
+                        ->get()
+                        ->result();
+
+
+    }
+
 }

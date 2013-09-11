@@ -21,7 +21,7 @@ class Mc_musique extends CI_Controller {
         $this->layout->ajouter_js('jquery.tablesorter');
 
         $this->load->library('getid3/Getid3');
-        $this->load->model(array('perso_model', 'user_model', 'musique_model', 'follower_model'));
+        $this->load->model(array('perso_model', 'user_model', 'musique_model', 'follower_model','achat_model'));
         $this->load->helper('form');
 
         $this->layout->set_id_background('musique');
@@ -52,9 +52,10 @@ class Mc_musique extends CI_Controller {
         foreach ($community_follower as $my_following_head) {
             $my_abonnement_head .= $my_following_head->Utilisateur_id . '/';
         }
+        $data_notif['count_notif'] = $this->achat_model->notif_panier($this->session->userdata('uid'));
 
         $this->data = array(
-            'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
+            'sidebar_left' => $this->load->view('sidebars/sidebar_left', $data_notif, TRUE),
             'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE),
             'community_follower' => $my_abonnement_head
         );
