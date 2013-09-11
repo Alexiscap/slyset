@@ -82,7 +82,7 @@
             echo form_input('login', $profile->login,'placeholder="Votre nom d\'utilisateur"');
             echo form_error('login', '<span class="error-form">', '</span>');
             
-            echo form_label('Prenom', 'prénom', $label_attributes);
+            echo form_label('Prénom', 'prénom', $label_attributes);
             echo form_input('prenom', $profile->prenom,'placeholder="Votre prénom"');
             echo form_error('prenom', '<span class="error-form">', '</span>');
 
@@ -101,7 +101,7 @@
             echo '<hr>';
             
             echo form_label('Nouveau mot de passe', 'password', $label_attributes_password);
-            echo form_password('password','','placeholder="Mot de passe"');
+            echo form_password('password','','placeholder="Votre nouveau mot de passe"');
             echo '<div class="ico-placeholder password"></div>';
 
             echo form_label('Confirmer mot de passe', 'confpassword', $label_attributes_password);
