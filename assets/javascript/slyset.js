@@ -986,15 +986,15 @@ $(document).ready(function(){
         })
     });
  
-    $('.photo.box.col1').hover(
+    $('.box.col1').hover(
         function(){
     
-            $(this).children('.edit').show();
-            $(this).children('.open_alb').show();
+            $(this).find('.photo').children('.edit').show();
+            $(this).find('.photo').children('.open_alb').show();
         },
         function(){
-            $(this).children('.edit').hide();
-            $(this).children('.open_alb').hide();
+            $(this).find('.photo').children('.edit').hide();
+            $(this).find('.photo').children('.open_alb').hide();
         }
         );
     
