@@ -51,32 +51,32 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                 <span class="detail_pl">
                     <?php
                     if ($total_partition_panier == 1) {
-                        echo $total_partition_panier . ' partition';
+                        echo $total_partition_panier . ' partition, ';
                     } if ($total_partition_panier > 1) {
-                        echo $total_partition_panier . ' partitions';
+                        echo $total_partition_panier . ' partitions, ';
                     } if ($total_partition_panier == 0) {
-                        echo '0 partition';
+                        echo '0 partition, ';
                     }
                     ?>
                 </span>
                 <span class="detail_pl"><?php
                     if ($total_album_panier == 1) {
-                        echo $total_album_panier . ' album,';
+                        echo $total_album_panier . ' album, ';
                     } if ($total_album_panier > 1) {
-                        echo $total_album_panier . ' albums,';
+                        echo $total_album_panier . ' albums, ';
                     } if ($total_album_panier == 0) {
-                        echo '0 album';
+                        echo '0 album, ';
                     }
                  
                     ?></span>
                 
                 <span class="detail_pl"><?php
                     if ($total_morceaux_panier == 1) {
-                        echo $total_morceaux_panier . ' chanson,';
+                        echo $total_morceaux_panier . ' chanson, ';
                     } if ($total_morceaux_panier > 1) {
-                        echo $total_morceaux_panier . ' chansons,';
+                        echo $total_morceaux_panier . ' chansons, ';
                     } if ($total_morceaux_panier == 0) {
-                        echo '0 chanson';
+                        echo '0 chanson, ';
                     }
                     ?> </span>
                 <img src="<?php echo img_url('common/caddis_achat.png'); ?>" class="detail_pl" alt="icone panier"/>
