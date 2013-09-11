@@ -248,34 +248,35 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 
 
 /* --------- MUSICIEN PHOTO ET VIDEO --------- */
-.content .col1{ width:160px; }
+.content .col1{ width:170px; }
 .content .col1 .img_cover{width:160px;}
-.content .box{ margin:5px; padding:5px 5px 0; /*max-width:150px; */ background:#D8D5D2; font-size:11px; line-height:1.4em; float:left; display:block; }
-.content .photo{ background:white; margin:5px; text-align:left;-moz-box-shadow: 1px 1px 1px 1px #9b9b9b;-webkit-box-shadow: 1px 1px 1px 1px #aaa;-o-box-shadow: 1px 1px 1px 1px #9b9b9b;box-shadow: 1px 1px 1px 1px #9b9b9b; }
+.content .box{ margin:5px; /* background:#D8D5D2; */ font-size:11px; line-height:1.4em; float:left; display:block; }
+.content .photo{background: white;text-align: left;box-shadow: 1px 1px 1px 1px #9b9b9b;width: 160px;padding: 5px 5px 0;}
 .content .photo .pochette{ width:139px; margin:10px 10px 5px 10px; min-height:214px; }
 .content .photo .img_miniat{ width:51px; margin:0; }
 .content .photo a{ text-decoration:none; }
 .content .photo a:hover{ text-decoration:underline; color:#4d4d4d; }
 .content .photo p{ margin:0 10px 5px; color:#4d4d4d; font-size:12px; font-weight:bold; }
-.content .photo .bord_photo{ background:#f2f0f0; margin:0 -5px; height:25px; text-align:left;}
-.content .photo .bord_photo p{ margin:0 10px 0; display:inline; font-size:10px; color:#878d95; }
-.content .photo .bord_photo a:hover{ text-decoration:none; }
+.content .bord_photo{ background:#f2f0f0; margin:0; height:25px; text-align:left;box-shadow: 1px 1px 1px 1px #9b9b9b;}
+.content .bord_photo p{ margin:0 10px 0; display:inline; font-size:10px; color:#878d95; }
+.content .bord_photo a:hover{ text-decoration:none; }
+.content .bord_photo a{ text-decoration:none; }
 .content .photo .nom_photo{ width:138px; text-align:left; word-wrap : break-word }
-.content .photo .bord_photo img{ margin:8px 0px -1px 40px; display:inline; }
+.content .bord_photo img{ margin:8px 0px -1px 40px; display:inline; }
 .nolike img {margin:0 5px 0 15px; display:inline; }
 .like, .nolike, .like-video, .nolike-video, .like-album, .nolike-album{ cursor:pointer; }
-.content .photo .bord_photo .nb_like{ margin:0; }
-.content .photo .comm,.content .photo .comment-form,.content .photo .comment-form-album,.content .photo .comment-form-video,.content .photo .comment-form-alb-wall{ width:170px; margin:0 -15px; background:#f2f0f0; border-bottom:1px solid #cdcdcd; border-top:none; min-height:34px; }
-.content .photo .comm img,.content .photo .comment-form img, .content .photo .comment-form-album img, .content .photo .comment-form-video img,.content .photo .comment-form-alb-wall img{ float:left; margin:5px; height:24px; }
-.content .photo .comm .del,.content .photo .comment-form .del, .content .photo .comment-form-album .del, .content .photo .comment-form-video .del,.content .photo .comment-form-alb-wall del{ float:right; margin:5px 5px; height:14px; }
-.content .photo .comm p,.content .photo .comment-form p,.content .photo .comment-form-album p,.content .photo .comment-form-video p,.content .photo .comment-form-alb-wall p{ margin:0; text-align:left; }
-.content .photo .comm .name_comm,.content .photo .comment-form .name_comm, .content .photo .comment-form-album .name_comm, .content .photo .comment-form-video .name_comm,.content .photo .comment-form-alb-wall .name_comm{ font-size:10px; color:#595959; }
-.content .photo .comm .commentaire,.content .photo .comment-form .commentaire, .content .photo .comment-form-album .commentaire, .content .photo .comment-form-video .commentaire,.content .photo .comment-form-alb-wall .commentaire{ font-size:10px; color:#888d95; }
-.content .photo .comm input[type=text],.content .photo .comment-form input[type=text], .content .photo .comment-form-album input[type=text], .content .photo .comment-form-video input[type=text],.content .photo .comment-form-alb-wall input[type=text]{ float:left; width:70px; border:1px solid #dfdede; margin:5px 0; }
-.content .photo .comm input[type=image],.content .photo .comment-form input[type=submit], .content .photo .comment-form-album input[type=submit], .content .photo .comment-form-video input[type=submit],.content .photo .comment-form-alb-wall input[type=submit]{ clear:both; width:55px; margin:4px 0 0 5px; }
+.content .bord_photo .nb_like{ margin:0; }
+.content .comm,.content .comment-form,.content .comment-form-album,.content .comment-form-video,.content .comment-form-alb-wall{ width:170px; margin:0 -10px; background:#f2f0f0; border-bottom:1px solid #cdcdcd; border-top:none; min-height:34px; box-shadow: 1px 1px 1px 1px #9b9b9b;}
+.content .comm img,.content .comment-form img, .content .comment-form-album img, .content .comment-form-video img,.content .comment-form-alb-wall img{ float:left; margin:5px; height:24px; }
+.content .comm .del,.content .comment-form .del, .content .photo .comment-form-album .del, .content .photo .comment-form-video .del,.content .photo .comment-form-alb-wall del{ float:right; margin:5px 5px; height:14px; }
+.content .comm p,.content .comment-form p,.content .comment-form-album p,.content .comment-form-video p,.content .comment-form-alb-wall p{ margin:0; text-align:left; }
+.content .comm .name_comm,.content .comment-form .name_comm, .content .comment-form-album .name_comm, .content .comment-form-video .name_comm,.content .comment-form-alb-wall .name_comm{ font-size:10px; color:#595959; }
+.content .comm .commentaire,.content .comment-form .commentaire, .content .comment-form-album .commentaire, .content .comment-form-video .commentaire,.content .photo .comment-form-alb-wall .commentaire{ font-size:10px; color:#888d95; }
+.content .comm input[type=text],.content .comment-form input[type=text], .content .comment-form-album input[type=text], .content .comment-form-video input[type=text],.content .comment-form-alb-wall input[type=text]{ float:left; width:70px; border:1px solid #dfdede; margin:5px 0; }
+.content .comm input[type=image],.content .comment-form input[type=submit], .content .comment-form-album input[type=submit], .content .comment-form-video input[type=submit],.content .comment-form-alb-wall input[type=submit]{ clear:both; width:55px; margin:4px 0 0 5px; }
 .content .photo .edit{ background:rgba(36, 36, 36, 0.7); width:160px; height:22px; position:absolute;top:5px; margin:0;display:none;}
 .content .photo .edit img{ float:right; margin:4px 8px 0 0; }
-.content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:160px; position:absolute; margin:22px 0;top:5px;height: calc(100% - 53px);display:none;text-align:center;}
+.content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:160px; position:absolute; margin:22px 0;top:5px;height: calc(100% - 57px);display:none;text-align:center;}
 .content .photo .open_alb img{}
 .content .sepa_comm {width:170px;height:5px;background:#e6e6e6;margin-left:-5px;}
 
