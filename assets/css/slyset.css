@@ -599,7 +599,7 @@ cursor : pointer;}
 .wall-flux-content .wall-flux-content-text table tr td { padding:5px; border:1px solid #8d8c80; }
 .wall-flux-content .wall-flux-content-text iframe{ margin:5px 0; width:100%; }
 .wall-flux-content .wall-flux-content-text{ margin:0 0 10px 0; }
-.wall-flux-content .wall-flux-content-text ol, .wall-flux-content .wall-flux-content-text li, .wall-flux-content .wall-flux-content-text img{ margin:5px 0 -7px 0 !important; width:100%; }
+.wall-flux-content .wall-flux-content-text ol, .wall-flux-content .wall-flux-content-text li, .wall-flux-content .wall-flux-content-text img{ margin:5px 0 -7px 0 ; width:100%; }
 .wall-flux-content .wall-flux-content-text .wall-flux-content-text-chapeau{ font-weight:bold; }
 .wall-flux-content .wall-flux-content-right-text{ margin-left:185px; padding-bottom:20px; }
 .wall-flux-content .wall-flux-content-left-picture .img-blog-artiste-carre{ position:absolute; margin :19px 15px 15px 15px; }
@@ -640,6 +640,9 @@ cursor : pointer;}
 #calendar_alert{ margin-top:40px; margin-left:-7px; width:70%; border:1px solid #dedede; box-shadow:1px 0 1px 1px #EDEDED; padding: 5px; line-height: 25px; display: none; position: absolute; background-color:#f6f6f6; font-family:"Trebuchet MS"; font-size:12px; color:#7f7d7d; text-decoration:none; z-index:1;}
 #calendar_alert a {color: #01adbb;}
 #calendar_alert span {text-decoration: underline; font-size:14px;}
+
+.partage {margin: 0 5px 5px;height:35px;}
+.partage img{width:29px !important;float:left;margin:0 5px !important;}
 /* --------- FIN  DE PORTAIL  --------- */
 
 /* ---------- FILTRES PORTAIL --------- */
