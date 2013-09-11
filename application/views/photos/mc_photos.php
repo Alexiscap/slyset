@@ -68,8 +68,9 @@ $loger = $this->session->userdata('logged_in');
 
             if ($media_user_result_unit->type == 1) {
                 ?>		
-                <div class="photo box col1">
-                    <!--  edition : HOVER *******************-->
+                <div class="box col1">
+                    <div class="photo">
+						<!--  edition : HOVER *******************-->
                     <?php if ($profile->id == $uid) { ?> 
                         <div class="edit">
 
@@ -94,6 +95,7 @@ $loger = $this->session->userdata('logged_in');
                         }
                     }
                     ?>
+					</div>
 
                     <div class="bord_photo">
                         <a href="javascript:void(0);">
@@ -150,8 +152,9 @@ $loger = $this->session->userdata('logged_in');
             else if ($media_user_result_unit->type == 2) {
                 ?>
                 <!--<div class="cnt_box">-->
-                <div class="photo box col1">
-                    <!--  edition : HOVER *******************-->
+                <div class="box col1">
+					<div class="photo">
+						<!--  edition : HOVER *******************-->
                     <?php
                     if ($profile->id == $uid) {
                         ?> 
@@ -228,6 +231,8 @@ $loger = $this->session->userdata('logged_in');
                         }
                     }
                     ?>
+					</div>
+                    
                     <div class="bord_photo">
                         <a href="javascript:void(0);"><p><?php if ($cpt_comment == 0) echo "0 commentaire"; if ($cpt_comment == 1) echo "1 commentaire"; if ($cpt_comment > 1) echo $cpt_comment . "commentaires"; ?></p></a>
         <?php
@@ -284,8 +289,8 @@ $loger = $this->session->userdata('logged_in');
         <?php
     } else if ($media_user_result_unit->type == 3) {
         ?>
-                <div class="photo box col1">
-
+                <div class="box col1">
+				<div class="photo">
                     <!--  edition : HOVER *******************-->
                 <?php
                 if ($profile->id == $uid) {
@@ -311,7 +316,7 @@ $loger = $this->session->userdata('logged_in');
                         }
                     }
                     ?>
-
+				</div>
                     <div class="bord_photo">
                         <a href="javascript:void(0);"><p><?php if ($cpt_comment == 0) print "0 commentaire"; if ($cpt_comment == 1) print "1 commentaire"; if ($cpt_comment > 1) print $cpt_comment . "commentaires"; ?></p>
                         </a>
@@ -369,7 +374,8 @@ $loger = $this->session->userdata('logged_in');
     // album wall
     else if ($media_user_result_unit->type == 4) {
         ?>    
-                <div class="photo box col1">
+                <div class="box col1">
+				<div class="photo">
                     <!--  edition : HOVER *******************-->
         <?php { ?> <!--
                           <div class="edit">
@@ -415,6 +421,7 @@ $loger = $this->session->userdata('logged_in');
                     <?php
                     $cpt_comment = count($comments_wall);
                     ?>
+				</div>
                     <div class="bord_photo">
                         <a href="javascript:void(0);"><p><?php if ($cpt_comment == 0) echo "0 commentaire"; if ($cpt_comment == 1) echo "1 commentaire"; if ($cpt_comment > 1) echo $cpt_comment . " commentaires"; ?></p></a>
 
