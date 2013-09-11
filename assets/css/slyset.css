@@ -1065,9 +1065,9 @@ input[type="file"]{ display:block; width:201px; height:30px; float:left; filter:
 .personnaliser span.error-form, .personnaliser span.error-form p{ margin:3px 0 10px 0; width:325px; float:right; }
 #any-background-personnaliser input[type="submit"]{ margin:0 0 10px 175px; padding:0 14px; height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; text-align:center; outline:none; color:#FFFFFF; float:left; background: #ef7363;border: 1px outset #dd4f3c;}
 /*#any-background-personnaliser input[type="submit"]:hover{font-weight:bold;}*/
-#any-background-personnaliser a.reset_theme, #any-background-reglages a.delete_account{ margin:0 0 10px 50px; padding:0 14px; height:30px; line-height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; text-align:center; text-decoration:none; outline:none; color:#FFFFFF; float:left;background: #ef7363;border: 1px outset #dd4f3c; }
+#any-background-personnaliser a.reset_theme, #any-background-reglages a.delete_account{ margin:0 0 10px 50px; padding:0 14px; height:30px; line-height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; text-align:center; text-decoration:none; outline:none; color:#FFFFFF; float:left;background: #ef7363;}
 /*#any-background-personnaliser a.reset_theme:hover, #any-background-reglages a.delete_account{ font-weight:bold;}*/
-#any-background-reglages a.delete_account{ margin:0 0 10px 21px;font-weight:normal;background: #ef7363;border: 1px outset #dd4f3c;}
+#any-background-reglages a.delete_account{ margin:0 0 10px 21px;font-weight:normal;background: #ef7363;}
 
 .detail_perso {font-size:14px;color:#888d95;font-weight:normal;margin:0 20px 0 20px;}
 .categ_perso {margin:20px 0;}
@@ -1113,17 +1113,16 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 #any-background-reglages #subscription-upload, #any-background-reglages-music #subscription-upload{ margin:15px 0 0 0; clear:both; }
 #any-background-reglages #subscription-upload label, #any-background-reglages-music #subscription-upload label{ margin:4px 0 55px 0; display:inline-block; width:150px; font-size:16px; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:bold; text-align:right; color: #4e4e4e; clear:both; }
 #any-background-reglages #subscription-upload input, #any-background-reglages-music #subscription-upload input{ width:100%; position:relative; }
-#any-background-reglages .upload-file-container.container-thumb, #any-background-reglages-music .upload-file-container.container-thumb{ margin:2px 100px 0 0; float:left; clear:none; }
+#any-background-reglages hr, #any-background-reglages-music hr, #any-background-personnaliser hr{ margin:15px auto 5px auto; height:1px; border-bottom:1.5px solid rgb(184, 187, 190); background:#f8f8f8; }
 #any-background-reglages .upload-file-container.container-cover, #any-background-reglages-music .upload-file-conainter.container-cover{ margin:2px 0 0 0; float:left; clear:none; }
 #any-background-reglages hr, #any-background-reglages-music hr, #any-background-personnaliser hr{ margin:15px auto 25px auto; height:1px; border-bottom:1.5px solid rgb(184, 187, 190); background:#f8f8f8; }
 
 #any-background-reglages form > label, #any-background-reglages-music form > label{ margin:8px 0 0 0; width:150px; height:26px; line-height:26px; font-size:16px; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:bold; text-align:right; color: #4e4e4e; float:left; }
 #any-background-reglages form > .label_password, #any-background-reglages-music form > .label_password{ margin:6px 0 0 0; line-height:15px; }
-#any-background-reglages .checkbox-style, #any-background-reglages-music .checkbox-style{ margin:0 0 20px 20px; width:306px; clear:none; }
+#any-background-reglages .checkbox-style, #any-background-reglages-music .checkbox-style{ margin:15px 0 20px 20px; width:306px; clear:none; }
 #any-background-reglages input[type="text"], #any-background-reglages input[type="password"], #any-background-reglages-music input[type="text"], #any-background-reglages-music input[type="password"]{ margin:8px 0 8px 20px; padding:3px 10px; width:285px; outline-color:rgba(42, 179, 149, 0.6);-moz-outline-color:rgba(42, 179, 149, 0.6); color:rgb(100, 100, 100); float:left; }
 #any-background-reglages textarea, #any-background-reglages-music textarea{ margin:8px 0 8px 20px; padding:3px 10px; width:287px; max-width:287px; height:75px; max-height:300px; font-family:"Trebuchet MS", Arial, sans-serif; word-break:break-word; outline-color:rgba(42, 179, 149, 0.6); color:rgb(100, 100, 100); float:left;font-size:13px; }
-#any-background-reglages input[type="submit"], #any-background-reglages-music input[type="submit"]{ margin:0 0 10px 170px; padding:0 14px; height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px;text-align:center; outline:none; color:#FFFFFF; float:left; background: #ef7363;
-border: 1px outset #dd4f3c;}
+#any-background-reglages input[type="submit"], #any-background-reglages-music input[type="submit"]{ margin:0 0 10px 170px; padding:0 14px; height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px;text-align:center; outline:none; color:#FFFFFF; float:left; background: #ef7363;}
 /*#any-background-reglages input[type="submit"]:hover, #any-background-reglages-music input[type="submit"]:hover{font-weight:bold;}*/
 #any-background-reglages span.error-form, #any-background-reglages span.error-form p, #any-background-reglages-music span.error-form, #any-background-reglages-music span.error-form p{ margin:3px 0 10px 0; width:250px; float:left; }
 #any-background-reglages .password + span.error-form, #any-background-reglages .password + span.error-form p, #any-background-reglages-music .password + span.error-form, #any-background-reglages-music .password + span.error-form p{ margin:3px 0 10px 170px; width:308px; float:left; }
