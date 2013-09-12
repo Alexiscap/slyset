@@ -289,7 +289,7 @@ $loger = $this->session->userdata('logged_in');
 		</div>
 	</div>
 	
-	<div id="playlist_alert"><p>Ajouter à une playlist existante</p>
+	<div id="playlist_alert" class="modal_alert"><p>Ajouter à une playlist existante</p>
         </br>
         <?php foreach($playlists as $playlist): ?>
            	<a href ="javascript:void(0)" id="<?php echo $playlist->nom;?>"><?php echo $playlist->nom;?></a>
@@ -299,9 +299,9 @@ $loger = $this->session->userdata('logged_in');
           <input id="input_alert" type='text'/> <a class="cree" href="javascript:void(0)">Creer</a>
     </div>
     
-    <div id="album_une_alert">
+    <div id="album_une_alert" class="modal_alert">
         <p>Selectionner l'album à mettre à la une</p>
-        </br>
+        <hr>
         <?php foreach($all_alb as $album): ?>
            	<a href ="javascript:void(0)" id="<?php echo $album->id;?>"><?php echo $album->nom;?></a>
         	</br>
