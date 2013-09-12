@@ -94,13 +94,15 @@ $loger = $this->session->userdata('logged_in');
     </div>
     
     <?php if($uid == $uid_visit): ?>
-    <div class="bts_noir">
-        <div class="bt_noir">
-            <a href="javascript:void(0)"><span class="bt_left"></span><span class="bt_middle">Mettre un album à la une</span><span class="bt_right"></span></a>
-        </div>
-        <div class="bt_noir">
-            <a class="iframe-upload" href="<?php echo site_url() . '/pop_in_general/upload_musique/' . $session_id; ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter un morceau</span><span class="bt_right"></span></a>
-        </div>
+    <div class="bts_noir_musique">
+        <?php if ($infos_profile->id == $uid) { ?>
+            <div class="bt_noir">
+				<a href="javascript:void(0)"><span class="bt_left"></span><span class="bt_middle">Mettre un album à la une</span><span class="bt_right"></span></a>
+			</div>
+            <div class="bt_noir">
+				<a class="iframe-upload" href="<?php echo site_url() . '/pop_in_general/upload_musique/' . $session_id; ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter un morceau</span><span class="bt_right"></span></a>
+			</div>
+        <?php } ?>
     </div>
 	<?php endif;?>
     <div class="content">

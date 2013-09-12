@@ -63,40 +63,41 @@ $loger = $this->session->userdata('logged_in');
 {
 		/*  Bloc image orpheline */
 			?>
-    		<div class="photo box col1">
-    		  <?php if ($profile->id == $uid&&$this->uri->segment(3)!='wall') { ?> 
-    		 <div class="edit">
-                        <a class="iframe" href="<?php echo site_url('media/editer/' . $profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
-                        <!--  edition : SUPPRESSION *******************-->
+    		<div class="box col1">
+				<div class="photo">
+					  <?php if ($profile->id == $uid&&$this->uri->segment(3)!='wall') { ?> 
+					 <div class="edit">
+								<a class="iframe" href="<?php echo site_url('media/editer/' . $profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+								<!--  edition : SUPPRESSION *******************-->
 
-                        <a class="iframe" href="<?php echo site_url('media/supprimer/' . $profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
-                    </div>
-                    <?php }
-            if ($this->uri->segment(3)!='wall') {  ?>
-      		<a href="#"><img src="<?php echo base_url('/files/'.$profile->id.'/photos/'.$this->uri->segment(3).'/'.$media_user_result_unit->file_name)?>" class="img_cover" /></a>
-          	<?php
-          	}
-          	else
-          	{ ?>
-          	  <a href="#"><img src="<?php echo base_url('/files/'.$profile->id.'/wall/'.$media_user_result_unit->file_name)?>" class="img_cover" /></a>
-			<?php
-          	}
-          	
-          	?>
-          	<!-- titre -->
+								<a class="iframe" href="<?php echo site_url('media/supprimer/' . $profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+							</div>
+							<?php }
+					if ($this->uri->segment(3)!='wall') {  ?>
+					<a href="#"><img src="<?php echo base_url('/files/'.$profile->id.'/photos/'.$this->uri->segment(3).'/'.$media_user_result_unit->file_name)?>" class="img_cover" /></a>
+					<?php
+					}
+					else
+					{ ?>
+					  <a href="#"><img src="<?php echo base_url('/files/'.$profile->id.'/wall/'.$media_user_result_unit->file_name)?>" class="img_cover" /></a>
+					<?php
+					}
+					
+					?>
+					<!-- titre -->
 
-      		<p class="nom_photo"><?php echo $media_user_result_unit->nom ?></p>
-      		<!-- commentaire -->
-      		
-      		 <?php 
-			$cpt_comment = 0;
-            foreach($commentaires as $commentaire){
-                 if($media_user_result_unit->id == $commentaire->photos_id){
-                    	 $cpt_comment++;
-                 }
-            }
-            ?>
-      		
+					<p class="nom_photo"><?php echo $media_user_result_unit->nom ?></p>
+					<!-- commentaire -->
+					
+					 <?php 
+					$cpt_comment = 0;
+					foreach($commentaires as $commentaire){
+						 if($media_user_result_unit->id == $commentaire->photos_id){
+								 $cpt_comment++;
+						 }
+					}
+					?>
+				</div>
       	 	<div class="bord_photo">
        			 <a onclick='showComment("comm<?php echo $media_user_result_unit->id?>")' href="javascript:void(0);"><p><?php if ($cpt_comment==0)print "0 commentaire"; if($cpt_comment==1)print "1 commentaire"; if ($cpt_comment>1)print $cpt_comment." commentaires"  ?></p></a>
        			
@@ -188,31 +189,32 @@ $loger = $this->session->userdata('logged_in');
       <p class="name_comm"> Jim Morrison</p>
       <p class="commentaire"><?php echo $media_user_result_unit->comment?></p> 
     </div>-->
- 	<div class="photo box col1">
- 	  <?php if ($profile->id == $uid) { ?> 
-    			 <div class="edit">
-                <a class="iframe" href="<?php echo base_url('/index.php/mc_photos/update_photo/'.$profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
-              <!--  edition : SUPPRESSION *******************-->
+ 	<div class="box col1">
+		<div class="photo">
+		  <?php if ($profile->id == $uid) { ?> 
+					 <div class="edit">
+					<a class="iframe" href="<?php echo base_url('/index.php/mc_photos/update_photo/'.$profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+				  <!--  edition : SUPPRESSION *******************-->
 
-               <a class="iframe" href="<?php echo base_url('/index.php/mc_photos/suppression_media/'.$profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
-             </div>
-             <?php } ?>
-  				 	<!--  edition : HOVER *******************-->
-  				 <!--<object type="text/html" data="http://www.youtube.com/v/zol2MJf6XNE?version=3" style="width:40px;height:35px;"></object>
-    			-->	
-   					<a href="http://www.youtube.com/v/<?php echo $media_user_result_unit->file_name ?>?version=3"><img src="http://i.ytimg.com/vi/<?php echo $media_user_result_unit->file_name?>/hqdefault.jpg" class="img_cover" /></a>
-      					
-     				<p class="nom_photo"><?php echo $media_user_result_unit->nom ?></p>
-     				
-     					 <?php 
-							$cpt_comment = 0;
-          						 foreach($commentaires_video as $commentaire){
-           					      if($media_user_result_unit->id == $commentaire->video_id){
-                   			 	 $cpt_comment++;
-                					 }
-           						 }     						
-           						 ?>
-     				
+				   <a class="iframe" href="<?php echo base_url('/index.php/mc_photos/suppression_media/'.$profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+				 </div>
+				 <?php } ?>
+						<!--  edition : HOVER *******************-->
+					 <!--<object type="text/html" data="http://www.youtube.com/v/zol2MJf6XNE?version=3" style="width:40px;height:35px;"></object>
+					-->	
+						<a href="http://www.youtube.com/v/<?php echo $media_user_result_unit->file_name ?>?version=3"><img src="http://i.ytimg.com/vi/<?php echo $media_user_result_unit->file_name?>/hqdefault.jpg" class="img_cover" /></a>
+							
+						<p class="nom_photo"><?php echo $media_user_result_unit->nom ?></p>
+						
+							 <?php 
+								$cpt_comment = 0;
+									 foreach($commentaires_video as $commentaire){
+									  if($media_user_result_unit->id == $commentaire->video_id){
+									 $cpt_comment++;
+										 }
+									 }     						
+									 ?>
+     	</div>			
       			<div class="bord_photo">
         				 <a onclick='showComment("comm<?php echo $media_user_result_unit->file_name?>")' href="javascript:void(0);"><p><?php if($cpt_comment==0)echo "0 commentaire"; if($cpt_comment==1)echo "1 commentaire"; if($cpt_comment>1)echo $cpt_comment."commentaires"; ?></p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like"><?php echo $media_user_result_unit->like_total ?></p>
       				</div>

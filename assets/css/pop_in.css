@@ -133,12 +133,12 @@ body { margin:0; font-family:'Trebuchet MS'; }
 .content-pi-cent .champs img{ width:85px; height:73px; margin-left:0; }
 .content-pi-cent .champs { width:306px; float:left; margin:15px 0 0 12px; }
 .content-pi-cent .champs input{ width:270px; padding:0 5px; outline:none; float:left; }
-.content-pi-cent .champs #test_one{ position:absolute; background:white; border:1px solid #C0C0C0; border-top:none; visibility:hidden; }
-.content-pi-cent .champs #test_one ul{ padding:0; margin:0; min-height:10px; }
-.content-pi-cent .champs #test_one ul li{ padding:10px 0 0 10px; margin:0; list-style-type:none; height:30px; font-size:14px; color:#dadada; }
-.content-pi-cent .champs #test_one ul li:last-Child{ margin-bottom:5px; }
-.content-pi-cent .champs #test_one ul li:hover{ background:#f9f9f9; color:#b9b9b9; }
-.content-pi-cent .champs #test_three{ width:298px; }
+.content-pi-cent .champs #list_albums{ position:absolute; background:white; border:1px solid #C0C0C0; border-top:none; visibility:hidden; }
+.content-pi-cent .champs #list_albums ul{ padding:0; margin:0; min-height:10px; }
+.content-pi-cent .champs #list_albums ul li{ padding:10px 0 0 10px; margin:0; list-style-type:none; height:30px; font-size:14px; color:#dadada; }
+.content-pi-cent .champs #list_albums ul li:last-Child{ margin-bottom:5px; }
+.content-pi-cent .champs #list_albums ul li:hover{ background:#f9f9f9; color:#b9b9b9; }
+.content-pi-cent .champs #un_album{ width:298px; }
 .content-pi-cent .champs #create{ width:205px; margin:0 0 5px 10px; }
 .content-pi-cent .champs #create_ok{ width:20px; float:left; margin:0 0 0 10px; }
 .content-pi-cent .champs #create_ok img{ width:65px; height:25px; }
@@ -149,7 +149,7 @@ body { margin:0; font-family:'Trebuchet MS'; }
 .content-pi-cent .champs_prix input{ width:50px; padding:0 5px; outline:none; margin:15px 0 0 10px; }
 .content-pi-cent .champs select{ width:296px; padding:0 0 0 5px; outline:none }
 .content-pi-cent .champs .descript-vid{ width:300px; padding:0 5px; height:73px; outline:none; word-break:break-word; }
-.content-pi-cent input[type="submit"]{ clear:both; width:auto; min-width:90px; height:30px; margin:30px 135px; background:url('../images/common/bt-rouge2.png'); color:white; font-weight:bold; font-size:16px; }
+.content-pi-cent input[type="submit"]{ clear:both; width:auto; min-width:90px; height:30px; margin:30px 135px; background:#ef7363; color:white; font-weight:bold; font-size:16px; }
 .content-pi-cent input[type="submit"]:hover{ cursor:pointer; box-shadow:0px 0px 5px #ef7363; }
 .content-pi-cent .champs .bt_noir{ height:30px; float:left; margin:0; }
 .content-pi-cent .champs .bt_photo_up{ background:url('../images/subscription/sprite_button_file_thumb.png') 0 -28px no-repeat; }

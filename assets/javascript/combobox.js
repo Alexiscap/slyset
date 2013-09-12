@@ -1,12 +1,11 @@
-
 function showInfo() {
-if( document.getElementById('test_one').style.visibility == "visible")
+if( document.getElementById('list_albums').style.visibility == "visible")
 {
- document.getElementById('test_one').style.visibility = "hidden";
+ document.getElementById('list_albums').style.visibility = "hidden";
 }
 else
 {
- document.getElementById('test_one').style.visibility = "visible";
+ document.getElementById('list_albums').style.visibility = "visible";
 
 }
 }
