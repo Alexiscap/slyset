@@ -178,6 +178,7 @@ $route['mentions-legales/(:num)'] = "pages_statiques/mentions_legales/$1";
 $route['annonceurs'] = "pages_statiques/annonceurs";
 $route['annonceurs/(:num)'] = "pages_statiques/annonceurs/$1";
 
+$route['contacter/(:num)'] = "pop_in_general/contact_user/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

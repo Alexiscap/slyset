@@ -35,12 +35,13 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 
 /* --------- MUSICIEN - ACTUS  --------- */
 #cover{ width:770px; height:176px; position:relative; border-top:1px solid #d9dadb; background-repeat:no-repeat; float:left; clear:both; }
-#infos-cover{ margin:0; padding:0; width:100%; height:68px; position:absolute; bottom:0; background:rgba(255, 255, 255, 0.3); }
-#infos-cover h2{ margin:5px 0 0 0; padding:0; position:relative; right:240px; font-size:30px; color:#ffffff; float:right; }
-#infos-cover a{ margin:-2px 0 0 10px; padding:0; font-family:Arial, "Trebuchet MS"; font-size:14px; text-decoration:none; color:#ffffff; float:left; clear:both; }
+#infos-cover{ margin:0; padding:0; width:100%; height:70px; position:absolute; bottom:0; background:rgba(255, 255, 255, 0.3); }
+#infos-cover h2{ margin:4px 0 0 0; padding:0; position:relative; right:240px; font-size:30px; color:#ffffff; float:right; }
+#infos-cover a{ margin:4px 0 0 10px; padding:0; font-family:Arial, "Trebuchet MS"; font-size:14px; text-decoration:none; color:#ffffff; float:left; clear:both; }
 #infos-cover a .button_left{ display:block; width:22px; height:30px; background:url("../images/common/sprite_btn_suivre.png") no-repeat 0 -61px; float:left; }
 #infos-cover a .button_center{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_suivre.png") repeat-x 0 -31px; float:left; }
 #infos-cover a .button_right{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_suivre.png") no-repeat -77px -1px; float:left; }
+#infos-cover a + a{ float:left; clear:none; }
 
 #stats-cover{ margin:0 0 10px 0; padding:0 21px; /*width:201px;*/ height:33px; -webkit-border-bottom-right-radius:10px; -webkit-border-radius-bottom-left-radius:10px; -moz-border-radius-bottomright:10px; -moz-border-radius-bottomleft:10px; border-bottom-right-radius:10px; border-bottom-left-radius:10px; background:#e6e6e6; float:left; }
 #stats-cover .stats_cover_block:first-child{ margin:4px 0 0 0px; }
@@ -799,7 +800,7 @@ input[type="file"]{ display:block; width:201px; height:30px; float:left; filter:
 /*.content .top_album p{float:left;margin:-2px 0 0 0;font-weight:normal;float:left;}*/
 /*.content .top_album img{display:inline;width:12px;margin:0 5px;}*/
 
-.content .top_album #articles-tab{ margin:5px 0; float:left; clear:both; width:328px;}
+.content .top_album #articles-tab{ margin:5px 0; float:left; clear:both; width:318px;}
 .content .top_album #articles-tab table{ margin:0 0 20px 0; border:1px solid #cccfd1; -moz-box-shadow:0px 2px 3px 0px #999999; -webkit-box-shadow:0px 2px 3px 0px #999999; -o-box-shadow:0px 2px 3px 0px #999999; box-shadow:0px 2px 3px 0px #999999; filter:progid:DXImageTransform.Microsoft.Shadow(color=#999999, Direction=180, Strength=3);}
 /*.content .top_album #articles-tab tr{ }
 .content .top_album #articles-tab th{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:left; color:#666666; }

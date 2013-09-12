@@ -10,7 +10,7 @@ class Pop_in_general extends CI_Controller {
 
         $this->layout->ajouter_css('pop');
 
-        $this->load->model(array('concert_model', 'photo_model', 'achat_model', 'document_model', 'musique_model'));
+        $this->load->model(array('user_model', 'concert_model', 'photo_model', 'achat_model', 'document_model', 'musique_model'));
         $this->load->helper('form');
         $this->load->library('form_validation');
 
@@ -1112,4 +1112,46 @@ class Pop_in_general extends CI_Controller {
         }
     }
 
+    public function contact_user($uid_visit) {
+        $data = array();
+        $data['infos_profile'] = $this->user_model->getUser($uid_visit);
+        
+        $this->form_validation->set_rules('object', 'Objet', 'trim|clean_xss|required');
+        $this->form_validation->set_rules('message', 'Message', 'trim|clean_xss|required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('message_contacter', $data);
+        } else {
+            $email = $this->session->userdata('mail');
+            $nom = $this->session->userdata('login');
+
+            $to = $data['infos_profile']->mail;
+            $to_name = $data['infos_profile']->login;
+
+            $subject  = $this->input->post('object');
+            $msg  = $this->input->post('message');
+
+            $message = '<html>
+                            <head>
+                              <title>Messagerie Slyset</title>
+                            </head>
+                            <body>
+                              Bonjour' . $to_name . '</br></br>
+
+                              Vous avez reçu un nouveau message de' . $nom . ' :</br></br>
+
+                              ' . $msg . '
+
+                            </body>
+                        </html>';
+
+            $headers = 'MIME-Version: 1.0' . "\r\n";
+            $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+
+            mail($to, $subject, $message, $headers);
+            $data['success'] = 'Message envoyé avec succès.';
+
+            $this->load->view('message_contacter', $data);
+        }
+    }
 }

@@ -120,7 +120,7 @@ body { margin:0; font-family:'Trebuchet MS'; }
 /* --------------- FIN POP IN ----------- */
 
 /* ---------- POP IN 100% ------------- */
-.pop-in_cent{ width:99.6%; background:#eff4f3; border:1px solid #bbbbbb; border-radius:5px; overflow:hidden; margin:0; }
+.pop-in_cent{ width:99.6%; background:#eff4f3; border:1px solid #bbbbbb; border-radius:5px; overflow-x:hidden; margin:0; }
 .pop-in_cent span{ text-indent:20px; height:50px; padding-top:25px; width:100%; border-bottom:1px solid #e0e4e6; float:left; font-size:18px; color:#4e4e4e; }
 .pop-in_cent span.upload_photo{ text-indent:0; height:auto; padding-top:0; width:auto; border-bottom:none; float:left; font-size:12px; color:#4e4e4e; margin:5px 5px; }
 .pop-in_cent span.euro{ padding:0; width:10px; text-indent:5; height:25px; margin-bottom:25px; border:none; }

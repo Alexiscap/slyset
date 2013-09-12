@@ -25,9 +25,11 @@ $loger = $this->session->userdata('logged_in');
                 ?>
                 <a href="#" class="delete-follow" id="<?php echo $infos_profile->id ?>"><span class="button_left_abonne"></span><span class="button_center_abonne">Ne plus suivre</span><span class="button_right_abonne"></span></a>
             <?php endif; ?>
+                
+            <?php if($loger == 1 && $infos_profile->id != $session_id): ?><a class="contact-user iframe" href="<?php echo site_url('contacter/'.$uid_visit); ?>"><span class="button_left_abonne"></span><span class="button_center_abonne">Contacter</span><span class="button_right_abonne"></span></a><?php endif; ?>
         </div>
     </div>
-
+    
     <div id="stats-cover">
         <div class="stats_cover_block">
             <span class="stats_number">
@@ -99,7 +101,7 @@ $loger = $this->session->userdata('logged_in');
             <a href="javascript:void(0)"><span class="bt_left"></span><span class="bt_middle">Mettre un album à la une</span><span class="bt_right"></span></a>
         </div>
         <div class="bt_noir">
-            <a class="iframe-upload" href="<?php echo site_url() . '/pop_in_general/upload_musique/' . $session_id; ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter un morceau</span><span class="bt_right"></span></a>
+            <a class="iframe-upload" href="<?php echo site_url('pop_in_general/upload_musique/' . $session_id); ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter un morceau</span><span class="bt_right"></span></a>
         </div>
     </div>
 	<?php endif;?>

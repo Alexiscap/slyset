@@ -11,8 +11,9 @@ class Mc_concerts extends CI_Controller {
         parent::__construct();
 
         $this->layout->ajouter_css('slyset');
+        $this->layout->ajouter_css('pop_in');
         $this->layout->ajouter_css('colorbox');
-
+        
         $this->layout->ajouter_js('concert');
         $this->layout->ajouter_js('social_media');
         $this->layout->ajouter_js('maps_api');
