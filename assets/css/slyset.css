@@ -1114,6 +1114,7 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 #any-background-reglages #subscription-upload label, #any-background-reglages-music #subscription-upload label{ margin:4px 0 55px 0; display:inline-block; width:150px; font-size:16px; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:bold; text-align:right; color: #4e4e4e; clear:both; }
 #any-background-reglages #subscription-upload input, #any-background-reglages-music #subscription-upload input{ width:100%; position:relative; }
 #any-background-reglages hr, #any-background-reglages-music hr, #any-background-personnaliser hr{ margin:15px auto 5px auto; height:1px; border-bottom:1.5px solid rgb(184, 187, 190); background:#f8f8f8; }
+#any-background-reglages .upload-file-container.container-thumb, #any-background-reglages-music .upload-file-container.container-thumb{ margin:2px 30px 0 0; float:left; clear:none; }
 #any-background-reglages .upload-file-container.container-cover, #any-background-reglages-music .upload-file-conainter.container-cover{ margin:2px 0 0 0; float:left; clear:none; }
 #any-background-reglages hr, #any-background-reglages-music hr, #any-background-personnaliser hr{ margin:15px auto 25px auto; height:1px; border-bottom:1.5px solid rgb(184, 187, 190); background:#f8f8f8; }
 
