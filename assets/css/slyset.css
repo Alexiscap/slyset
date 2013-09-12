@@ -258,7 +258,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .content .photo a{ text-decoration:none; }
 .content .photo a:hover{ text-decoration:underline; color:#4d4d4d; }
 .content .photo p{ margin:0 10px 5px; color:#4d4d4d; font-size:12px; font-weight:bold; }
-.content .bord_photo{ background:#f2f0f0; margin:0; height:25px; text-align:left;box-shadow: 1px 1px 1px 1px #9b9b9b;}
+.content .bord_photo{ background:#f2f0f0; margin:-5px 0 5px; height:25px; text-align:left;box-shadow: 1px 1px 1px 1px #9b9b9b;}
 .content .bord_photo p{ margin:0 10px 0; display:inline; font-size:10px; color:#878d95; }
 .content .bord_photo a:hover{ text-decoration:none; }
 .content .bord_photo a{ text-decoration:none; }
@@ -1116,7 +1116,7 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 #any-background-reglages hr, #any-background-reglages-music hr, #any-background-personnaliser hr{ margin:15px auto 5px auto; height:1px; border-bottom:1.5px solid rgb(184, 187, 190); background:#f8f8f8; }
 #any-background-reglages .upload-file-container.container-thumb, #any-background-reglages-music .upload-file-container.container-thumb{ margin:2px 30px 0 0; float:left; clear:none; }
 #any-background-reglages .upload-file-container.container-cover, #any-background-reglages-music .upload-file-conainter.container-cover{ margin:2px 0 0 0; float:left; clear:none; }
-#any-background-reglages hr, #any-background-reglages-music hr, #any-background-personnaliser hr{ margin:15px auto 25px auto; height:1px; border-bottom:1.5px solid rgb(184, 187, 190); background:#f8f8f8; }
+#any-background-reglages hr, #any-background-reglages-music hr, #any-background-personnaliser hr{ margin:5px auto 15px auto; height:1px; border-bottom:1.5px solid rgb(184, 187, 190); background:#f8f8f8; }
 
 #any-background-reglages form > label, #any-background-reglages-music form > label{ margin:0 0 0 0; width:150px; height:26px; line-height:26px; font-size:16px; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:bold; text-align:right; color: #4e4e4e; float:left; }
 #any-background-reglages form > .label_password, #any-background-reglages-music form > .label_password{ margin:6px 0 0 0; line-height:15px; }
