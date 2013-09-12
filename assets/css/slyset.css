@@ -281,7 +281,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .content .photo .open_alb img{}
 .content .sepa_comm {width:170px;height:5px;background:#e6e6e6;margin-left:-5px;}
 
-.empty_photo_alb{}
+.empty_photo_alb img{width:44px;height:44px;}
 
 /*.box .img_cover, #tumblelog .img_cover{ display:block; width:100%; }*/
 
