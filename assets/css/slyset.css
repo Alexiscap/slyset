@@ -1072,7 +1072,7 @@ border-top : 1px solid #d9dadb;}
 .detail_perso {font-size:14px;color:#888d95;font-weight:normal;margin:0 20px 0 20px;}
 .categ_perso {margin:20px 0;}
 .categ_perso p {margin:0; display:inline-block; font-family:"Trebuchet MS"; font-weight:bold; font-size:16px; width:150px; color:#6b6b6b; float:left;}
-.categ_perso .themes {/*margin:-15px 10px 10px;*/ margin:0; width:348px; float:left;}
+.categ_perso .themes {margin:-15px 0 10px; width:348px; float:left;}
 .categ_perso .themes a {width:82px;height:55px;float:left;text-indent:-50000px;margin:0 5px 0 0;}
 .categ_perso .themes .t1 {background:url("../images/musicien/sprite_theme.png") no-repeat -15px -8px;}
 .categ_perso .themes .t2 {background:url("../images/musicien/sprite_theme.png") no-repeat -111px -8px;}
