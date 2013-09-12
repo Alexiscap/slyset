@@ -401,8 +401,8 @@
 						</div>
 						<hr/>
 						<div class="lecture_pl">
-							<img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
-							<a href="<?php echo site_url('mc_musique/player/'.$this->session->userdata('uid').'/playlist/'.$playlist->nom); ?>" class="open_player">
+                            <a href="<?php echo site_url('mc_musique/player/'.$this->session->userdata('uid').'/playlist/'.$playlist->nom); ?>" class="open_player">
+                                <img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
 								<span class="ecouter_pl">Ecouter toute la playlist</span>
 							</a>
 						</div>

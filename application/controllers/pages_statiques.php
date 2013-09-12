@@ -13,14 +13,16 @@ class Pages_statiques extends CI_Controller {
         
         $this->layout->ajouter_css('slyset');
         $this->load->helper('form');
-
+        $this->load->model('achat_model');
         $this->layout->set_id_background('statics-pages');
 
         $uid = $this->session->userdata('uid');
         $this->session_uid = (!empty($uid)) ? $uid : '';
 
+        $data_notif['count_notif'] = $this->achat_model->notif_panier($this->session->userdata('uid'));
+
         $this->data = array(
-            'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE)
+            'sidebar_left' => $this->load->view('sidebars/sidebar_left', $data_notif, TRUE)
         );
     }
     

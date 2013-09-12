@@ -29,13 +29,48 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
         </div>
 
         <div class="stats_cover_block">
-            <span class="stats_number">18</span>
-            <span class="stats_title">playlists</span>
+            <span class="stats_number">
+                <?php 
+                $npl = 0;
+                if(empty($playlists)!=1):
+                    $npl =  count($playlists);
+                endif;
+                echo $npl;?>
+            </span>
+            <span class="stats_title">
+                <?php
+                if($npl == 0 || $npl == 1){
+                    echo 'playlist';
+                }
+                else
+                {
+                    echo 'playlists';
+                }
+                ?>
+            </span>
         </div>
 
         <div class="stats_cover_block">
-            <span class="stats_number">278</span>
-            <span class="stats_title">abonnements</span>
+            <span class="stats_number">
+                <?php
+                $nab = 0;
+                if(empty($all_following)!=1):
+                    $nab =  count($all_following);
+                endif;
+                echo $nab;
+                 ?>
+            </span>       
+            <span class="stats_title">
+                <?php
+                if($nab == 0 || $nab == 1){
+                    echo 'abonnement';
+                }
+                else
+                {
+                    echo 'abonnements';
+                }
+                ?>
+            </span>
         </div>
     </div>
 
@@ -45,41 +80,41 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
         <!-- ************************ PANIER ************************ -->
         <div class="panier">
             <div class="descri_panier">
-                <span class="nom_pl">Mon panier</span>
+                <h2 class="nom_pl">Mon panier</h2>
                 <!-- ************************ RESUME ************************ -->
 
                 <span class="detail_pl">
                     <?php
                     if ($total_partition_panier == 1) {
-                        echo $total_partition_panier . ' partition';
+                        echo $total_partition_panier . ' partition, ';
                     } if ($total_partition_panier > 1) {
-                        echo $total_partition_panier . ' partitions';
+                        echo $total_partition_panier . ' partitions, ';
                     } if ($total_partition_panier == 0) {
-                        echo '0 partition';
+                        echo '0 partition, ';
                     }
                     ?>
                 </span>
                 <span class="detail_pl"><?php
                     if ($total_album_panier == 1) {
-                        echo $total_album_panier . ' album,';
+                        echo $total_album_panier . ' album, ';
                     } if ($total_album_panier > 1) {
-                        echo $total_album_panier . ' albums,';
+                        echo $total_album_panier . ' albums, ';
                     } if ($total_album_panier == 0) {
-                        echo '0 album';
+                        echo '0 album, ';
                     }
                  
                     ?></span>
                 
                 <span class="detail_pl"><?php
                     if ($total_morceaux_panier == 1) {
-                        echo $total_morceaux_panier . ' chanson,';
+                        echo $total_morceaux_panier . ' chanson, ';
                     } if ($total_morceaux_panier > 1) {
-                        echo $total_morceaux_panier . ' chansons,';
+                        echo $total_morceaux_panier . ' chansons, ';
                     } if ($total_morceaux_panier == 0) {
-                        echo '0 chanson';
+                        echo '0 chanson, ';
                     }
                     ?> </span>
-                <img src="<?php echo img_url('common/caddis_achat.png'); ?>" class="detail_pl"/>
+                <img src="<?php echo img_url('common/caddis_achat.png'); ?>" class="detail_pl" alt="icone panier"/>
             </div>
             <hr />
             <div class="clear"></div>
@@ -112,8 +147,26 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                               ?>
                                     <tr class="even row-color-<?php echo $commande->id ?>">
                                         <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $commande->id ?>" id="article-<?php echo $commande->id ?>" class="checkbox-article"><label for="article-<?php echo $commande->id ?>"></label></td>
-                                        <td class="article-title"><a href="#"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
-        <?php echo $commande->nom ?></td>
+                                        <?php if ($commande->type == "morceau") 
+                                        {
+                                        	?>
+                                        	<td class="article-title"><a href="<?php echo base_url('index.php//mc_musique/player/'.$commande->artiste_id.'/album/'.$commande->name_alb.'/'.$commande->Morceaux_id) ?>" class="open_player"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/></a>
+        								<?php 
+        								}
+        								else if ($commande->type == "album") 
+        								{
+        								?>
+                                        	<td class="article-title"><a href="<?php echo base_url('index.php//mc_musique/player/'.$commande->artiste_id.'/album/'.$commande->nom) ?>" class="open_player"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/></a>
+                                        <?php
+        								}
+        								else
+        								{
+        								?>
+        									<td class="article-title">
+        								<?php
+        								}
+        								echo $commande->nom ?></td>
+
                                         <td class="article-artiste"><?php echo $commande->user_login ?></td>
                                         <td class="article-type"><?php echo $commande->type ?></td>
                                         <td class="article-prix"><?php echo $commande->prix ?> €</td>
@@ -145,7 +198,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
         <div class="clear"></div>
         <div class="historique">
             <div class="descri_historique">
-                <span class="nom_pl">Historique d'achats</span>
+                <h2 class="nom_pl">Historique d'achats</h2>
                 <span class="detail_pl"><?php
                             if ($total_partition_history == 1) {
                                 echo $total_partition_history . ' partition';
@@ -176,7 +229,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                             echo '0 chanson,';
                         }
                             ?> </span>
-                <img src="<?php echo img_url('common/sac_historique.png'); ?>" class="detail_pl"/>
+                <img src="<?php echo img_url('common/sac_historique.png'); ?>" class="detail_pl" alt="icone historique"/>
             </div>
             <hr />
             <div class="clear"></div>
@@ -202,7 +255,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                                     ?>
                                     <tr class="even row-color-<?php echo $commande->id ?>">
                                         <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"></label></td>
-                                        <td class="article-title"><a href="#" class ="play_achat" style="visibility:hidden"><img  src="<?php echo img_url('common/btn_play2.png'); ?>"/></a>
+                                        <td class="article-title"><a href="#" class ="play_achat" style="visibility:hidden"><img  src="<?php echo img_url('common/btn_play2.png'); ?>" alt="Bouton play historique"/></a>
         <?php echo $commande->nom ?></td>
                                         <td class="article-artiste"><?php echo $commande->user_login ?></td>
                                         <td class="article-type"><?php echo $commande->type ?></td>

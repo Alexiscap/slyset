@@ -18,7 +18,7 @@
             <?php endif; ?>
 
             <div id="listen-playlist">
-                <a href="<?php echo site_url().'/mc_musique/player/'.$this->session->userdata('uid').'/playlist'; ?>" class="open_player">
+                <a href="<?php echo site_url().'/mc_musique/player/'.$this->session->userdata('uid').'/playlists'; ?>" class="open_player">
                     <img src="<?php echo img_url('sidebar-left/btn-play.png'); ?>" alt="Lecture Playlist" />
                     <span>Écouter mes playlists</span>
                 </a>
@@ -30,7 +30,7 @@
                 <li class="head_menu row row-0"><a href="javascript:void(0)"><!--<?php echo site_url('home/' . $this->session->userdata('uid')); ?>">--><span class="icon"></span><span class="menu-text">Mon compte</span></a></li>
              <div class="one">   <li id="melo_actu" class="first-row row row-1"><a href="<?php echo site_url('my-wall/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Fil d'actualité</span></a></li>
                 <li id='reglages' class="row row-2"><a href="<?php echo site_url('my-reglages/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Modifier mon profil</span></a></li>
-                <li id="achats" class="row row-3"><a href="<?php echo site_url('my-shopping/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Mes achats</span></a></li>
+                <li id="achats" class="row row-3"><a href="<?php echo site_url('my-shopping/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Mes achats <div class="notif"><div><?php if(isset($count_notif[0]->n_notif)) {echo $count_notif[0]->n_notif ;} else { echo 0;}?></div></div></span></a></li>
                 <li id='playlist' class="row row-4"><a href="<?php echo site_url('my-playlists/' . $this->session->userdata('uid')); ?>"><span class="icon"></span><span class="menu-text">Mes playlists</span></a></li>
                 <li id="concert_melo" class="row row-5"><a href="<?php echo site_url('my-concert/' . $this->session->userdata('uid')) ?>"><span class="icon"></span><span class="menu-text">Mes concerts</span></a></li>
                 <li id='abonnements' class="last-row row row-6"><a href="<?php echo site_url('my-follower/' . $this->session->userdata('uid')) ?>"><span class="icon"></span><span class="menu-text">Mes abonnements</span></a></li>
@@ -73,10 +73,10 @@
                 <div id="menu-profile" class="active">
                     <ul>
                         <li class="head_menu row row-7"><a href="javascript:void(0)"> <!--<?php echo site_url('home/' . $user_id); ?>">--><span class="icon"></span><span class="menu-text"><?php echo $user_info->login; ?></span></a></li>
-                <div class="one">           <li id="melo_actu" class="first-row row row-8"><a href="<?php echo site_url('my-wall/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Actualités</span></a></li>
-                        <li id="concert_melo" class="row row-9"><a href="<?php echo site_url('my-concert/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Concerts</span></a></li>
-                        <li id='playlist' class="row row-10"><a href="<?php echo site_url('my-playlists/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Playlist</span></a></li>
-                        <li id='abonnements' class="row row-14"><a href="<?php echo site_url('my-follower/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Abonnements</span></a></li>
+                <div class="one">           <li id="melo_actu" class="first-row row row-8"><a href="<?php echo site_url('my-wall/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Son fil d'actualité</span></a></li>
+                        <li id="concert_melo" class="row row-9"><a href="<?php echo site_url('my-concert/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Ses concerts</span></a></li>
+                        <li id='playlist' class="row row-10"><a href="<?php echo site_url('my-playlists/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Ses playlist</span></a></li>
+                        <li id='abonnements' class="row row-14"><a href="<?php echo site_url('my-follower/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Ses abonnements</span></a></li>
                 </div>     </ul>
                 </div>
             <?php endif; ?>
@@ -141,10 +141,10 @@
                 <div id="menu-profile" class="active">
                     <ul>
                         <li class="head_menu row row-7"><a href="javascript:void(0)"><!--<?php echo site_url('home/' . $user_id); ?>"><span class="icon">--></span><span class="menu-text"><?php echo $profile->login; ?></span></a></li>
-                     <div class="one">     <li id="melo_actu" class="first-row row row-8"><a href="<?php echo site_url('my-wall/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Actualités</span></a></li>
-                        <li id="concert_melo" class="row row-9"><a href="<?php echo site_url('my-concert/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Concerts</span></a></li>
-                        <li id='playlist' class="row row-10"><a href="<?php echo site_url('my-playlists/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Playlist</span></a></li>
-                        <li id='abonnements'class="row row-14"><a href="<?php echo site_url('my-follower/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Abonnements</span></a></li>
+                     <div class="one">     <li id="melo_actu" class="first-row row row-8"><a href="<?php echo site_url('my-wall/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Son fil d'actualité</span></a></li>
+                        <li id="concert_melo" class="row row-9"><a href="<?php echo site_url('my-concert/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Ses concerts</span></a></li>
+                        <li id='playlist' class="row row-10"><a href="<?php echo site_url('my-playlists/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Ses playlist</span></a></li>
+                        <li id='abonnements'class="row row-14"><a href="<?php echo site_url('my-follower/' . $user_id); ?>"><span class="icon"></span><span class="menu-text">Ses abonnements</span></a></li>
                        </div>  </ul>
                 </div>
             <?php endif; ?>

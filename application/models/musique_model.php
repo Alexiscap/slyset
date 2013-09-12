@@ -49,26 +49,64 @@ class Musique_model extends CI_Model {
     //-								PLAYER										-
     //---------------------------------------------------------------------------
     public function get_my_playlist_player($user_id, $type, $name, $morceau) {
-        if ($type == 'playlist') {
-            if ($name == null) {
-                $pl_or_album = $this->db->select('nom')
-                        ->from($this->tbl_playlist)
-                        ->where(array('Utilisateur_id' => $user_id))
-                        ->group_by('nom')
-                        ->get()
-                        ->result();
 
-                $morceaux = $this->db->select('Morceaux_id,morceaux.filename,playlists.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree')
-                        ->from($this->tbl_playlist)
-                        ->join($this->tbl_morceaux, 'morceaux.id = playlists.Morceaux_id')
-                        ->join($this->tbl_album, 'morceaux.albums_id = albums.id', 'LEFT OUTER')
-                        ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
-                        ->where(array('playlists.Utilisateur_id' => $user_id))
-                        ->get()
-                        ->result();
+        if ($type == 'playlists') 
+        {
+            if($name == null)
+            {
+                $pl_or_album = $this->db->select('nom')
+                                        ->from($this->tbl_playlist)
+                                        ->where(array('Utilisateur_id' => $user_id))
+                                        ->group_by('nom')
+                                        ->order_by('date_creation DESC')
+                                        ->limit(1)
+                                        ->get()
+                                        ->result(); 
+                $morceaux = $this->db->select('morceaux.id,morceaux.filename,playlists.nom,morceaux.nom AS title_track,utilisateur.login,playlists.nom AS title_album,morceaux.duree')
+                                    ->from($this->tbl_playlist)
+                                    ->join($this->tbl_morceaux, 'playlists.Morceaux_id = morceaux.id')
+                                    ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
+                                    ->where(array('playlists.Utilisateur_id' => $user_id,'playlists.nom'=>$pl_or_album[0]->nom))
+                                    ->get()
+                                    ->result();
+                $all_pl_or_album = $this->db->select('nom')
+                                            ->from($this->tbl_playlist)
+                                            ->where(array('Utilisateur_id' => $user_id,'nom !='=>$pl_or_album[0]->nom))
+                                            ->group_by('nom')
+                                            ->order_by('nom DESC')
+                                            ->get()
+                                            ->result();                                    
             }
 
-            if ($name != null) {
+            else 
+            {
+                $pl_or_album = $this->db->select('nom')
+                                        ->from($this->tbl_playlist)
+                                        ->where(array('Utilisateur_id' => $user_id, 'nom' => str_replace('%20', ' ', $name)))
+                                        ->group_by('nom')
+                                        ->get()
+                                         ->result();
+
+                $morceaux = $this->db->select('morceaux.id,morceaux.filename,playlists.nom,morceaux.nom AS title_track,utilisateur.login,playlists.nom AS title_album,morceaux.duree')
+                                    ->from($this->tbl_playlist)
+                                    ->join($this->tbl_morceaux, 'morceaux.id = playlists.Morceaux_id')
+                                    ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
+                                    ->where(array('playlists.Utilisateur_id' => 30, 'playlists.nom' => str_replace('%20', ' ', $name)))
+                                    ->get()
+                                    ->result();
+                $all_pl_or_album = $this->db->select('nom')
+                                            ->from($this->tbl_playlist)
+                                            ->where(array('Utilisateur_id' => $user_id,'nom !='=>str_replace('%20', ' ', $name)))
+                                            ->group_by('nom')
+                                            ->order_by('nom DESC')
+                                            ->get()
+                                            ->result();
+            }
+
+
+
+        }
+        if ($type == 'playlist') {
                 $pl_or_album = $this->db->select('nom')
                         ->from($this->tbl_playlist)
                         ->where(array('Utilisateur_id' => $user_id, 'nom' => str_replace('%20', ' ', $name)))
@@ -76,36 +114,84 @@ class Musique_model extends CI_Model {
                         ->get()
                         ->result();
 
-                $morceaux = $this->db->select('Morceaux_id,morceaux.filename,playlists.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree')
+
+                $morceaux = $this->db->select('morceaux.id,morceaux.filename,playlists.nom,morceaux.nom AS title_track,utilisateur.login,playlists.nom AS title_album,morceaux.duree')
                         ->from($this->tbl_playlist)
                         ->join($this->tbl_morceaux, 'morceaux.id = playlists.Morceaux_id')
-                        ->join($this->tbl_album, 'morceaux.albums_id = albums.id', 'LEFT OUTER')
                         ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
-                        ->where(array('playlists.Utilisateur_id' => $user_id, 'playlists.nom' => str_replace('%20', ' ', $name)))
+                        ->where(array('playlists.Utilisateur_id' => 30, 'playlists.nom' => str_replace('%20', ' ', $name)))
                         ->get()
                         ->result();
-            }
+
+                $all_pl_or_album =null;
+            
         }
 
-        if ($type == 'album') {
-            if ($name == null) {
-                $pl_or_album = $this->db->select('nom')
-                        ->from($this->tbl_album)
-                        ->where(array('Utilisateur_id' => $user_id))
-                        ->group_by('nom')
-                        ->get()
-                        ->result();
 
+
+
+
+        if ($type == 'albums') 
+        {
+            if($name == null)
+            {
+                $pl_or_album = $this->db->select('nom')
+                                        ->from($this->tbl_album)
+                                        ->where(array('Utilisateur_id' => $user_id))
+                                        ->group_by('nom')
+                                        ->order_by('date DESC')
+                                        ->limit(1)
+                                        ->get()
+                                        ->result(); 
+                if(empty($pl_or_album)==1)
+                {
+                    return 'no_track';
+                }
+                $morceaux = $this->db->select('morceaux.id,morceaux.filename,albums.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree')
+                                    ->from($this->tbl_album)
+                                    ->join($this->tbl_morceaux, 'morceaux.Albums_id = albums.id')
+                                    ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
+                                    ->where(array('albums.Utilisateur_id' => $user_id,'albums.nom'=>$pl_or_album[0]->nom))
+                                    ->get()
+                                    ->result();
+                $all_pl_or_album = $this->db->select('nom')
+                                            ->from($this->tbl_album)
+                                            ->where(array('Utilisateur_id' => $user_id,'nom !='=>$pl_or_album[0]->nom))
+                                            ->group_by('nom')
+                                            ->order_by('nom DESC')
+                                            ->get()
+                                            ->result();                                    
+            }
+
+            else 
+            {
+                $pl_or_album = $this->db->select('nom')
+                                        ->from($this->tbl_album)
+                                        ->where(array('Utilisateur_id' => $user_id, 'nom' => str_replace('%20', ' ', $name)))
+                                        ->group_by('nom')
+                                        ->get()
+                                         ->result();
 
                 $morceaux = $this->db->select('morceaux.id,morceaux.filename,albums.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree')
-                        ->from($this->tbl_album)
-                        ->join($this->tbl_morceaux, 'morceaux.Albums_id = albums.id')
-                        ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
-                        ->where(array('albums.Utilisateur_id' => $user_id))
-                        ->get()
-                        ->result();
+                                    ->from($this->tbl_album)
+                                    ->join($this->tbl_morceaux, 'morceaux.Albums_id = albums.id')
+                                    ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
+                                    ->where(array('albums.Utilisateur_id' => 30, 'albums.nom' => str_replace('%20', ' ', $name)))
+                                    ->get()
+                                    ->result();
+                $all_pl_or_album = $this->db->select('nom')
+                                            ->from($this->tbl_album)
+                                            ->where(array('Utilisateur_id' => $user_id,'nom !='=>str_replace('%20', ' ', $name)))
+                                            ->group_by('nom')
+                                            ->order_by('nom DESC')
+                                            ->get()
+                                            ->result();
             }
-            if ($name != null) {
+
+
+
+        }
+        if ($type == 'album') {
                 $pl_or_album = $this->db->select('nom')
                         ->from($this->tbl_album)
                         ->where(array('Utilisateur_id' => $user_id, 'nom' => str_replace('%20', ' ', $name)))
@@ -121,10 +207,12 @@ class Musique_model extends CI_Model {
                         ->where(array('albums.Utilisateur_id' => 30, 'albums.nom' => str_replace('%20', ' ', $name)))
                         ->get()
                         ->result();
-            }
+
+                $all_pl_or_album =null;
+            
         }
 
-        return array($pl_or_album, $morceaux);
+        return array($pl_or_album, $morceaux,$all_pl_or_album);
     }
 
     public function get_morceau($id_morceau) {
@@ -225,7 +313,7 @@ class Musique_model extends CI_Model {
                         ->from($this->tbl_morceaux)
                         ->join($this->tbl_album, 'morceaux.albums_id = albums.id', 'LEFT OUTER')
                         ->where('morceaux.Utilisateur_id =', $user_id)
-                        ->where('une IS NULL OR une != 1')
+//                        ->where('une IS NULL OR une != 1')
                         ->get()
                         ->result();
     }

@@ -20,7 +20,7 @@ class Mc_concerts extends CI_Controller {
         // $this->layout->ajouter_js('maps-google');
         $this->layout->ajouter_js('jquery.colorbox');
 
-        $this->load->model(array('perso_model', 'user_model', 'concert_model'));
+        $this->load->model(array('perso_model', 'user_model', 'concert_model','achat_model'));
 
         $this->load->helper('form');
 
@@ -48,9 +48,10 @@ class Mc_concerts extends CI_Controller {
             $this->layout->ajouter_dynamique_css($output->theme_css);
             write_css($output);
         }
+        $data_notif['count_notif'] = $this->achat_model->notif_panier($this->session->userdata('uid'));
 
         $this->data = array(
-            'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
+            'sidebar_left' => $this->load->view('sidebars/sidebar_left', $data_notif, TRUE),
             'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE),
             'community_follower' => $my_abonnement_head
         );

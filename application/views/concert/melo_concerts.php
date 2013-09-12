@@ -52,7 +52,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
   
 
   
-    <h2>Mes prochains concerts</h2>
+    <h1>Mes prochains concerts</h1>
    
      <!-- Boucle : tous les concerts pour un artiste -->
    	  <?php 

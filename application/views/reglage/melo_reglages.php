@@ -24,17 +24,53 @@
     <div id="stats-cover">
         <div class="stats_cover_block">
             <span class="stats_number">489</span>
-            <span class="stats_title">abonnés</span>
+            <span class="stats_title">écoutes</span>
+        </div>
+       
+        <div class="stats_cover_block">
+                
+            <span class="stats_number">
+                <?php 
+                $npl = 0;
+                if(empty($playlists)!=1):
+                    $npl =  count($playlists);
+                endif;
+                echo $npl;?>
+            </span>
+            <span class="stats_title">
+                <?php
+                if($npl == 0 || $npl == 1){
+                    echo 'playlist';
+                }
+                else
+                {
+                    echo 'playlists';
+                }
+                ?>
+            </span>
         </div>
 
         <div class="stats_cover_block">
-            <span class="stats_number">18</span>
-            <span class="stats_title">albums</span>
-        </div>
-
-        <div class="stats_cover_block">
-            <span class="stats_number">278</span>
-            <span class="stats_title">morceaux</span>
+            <span class="stats_number">
+                <?php
+                $nab = 0;
+                if(empty($all_following)!=1):
+                    $nab =  count($all_following);
+                endif;
+                echo $nab;
+                 ?>
+            </span>       
+            <span class="stats_title">
+                <?php
+                if($nab == 0 || $nab == 1){
+                    echo 'abonnement';
+                }
+                else
+                {
+                    echo 'abonnements';
+                }
+                ?>
+            </span>
         </div>
     </div>
 
@@ -82,7 +118,7 @@
             echo form_input('login', $profile->login,'placeholder="Votre nom d\'utilisateur"');
             echo form_error('login', '<span class="error-form">', '</span>');
             
-            echo form_label('Prenom', 'prénom', $label_attributes);
+            echo form_label('Prénom', 'prénom', $label_attributes);
             echo form_input('prenom', $profile->prenom,'placeholder="Votre prénom"');
             echo form_error('prenom', '<span class="error-form">', '</span>');
 
@@ -101,7 +137,7 @@
             echo '<hr>';
             
             echo form_label('Nouveau mot de passe', 'password', $label_attributes_password);
-            echo form_password('password','','placeholder="Mot de passe"');
+            echo form_password('password','','placeholder="Votre nouveau mot de passe"');
             echo '<div class="ico-placeholder password"></div>';
 
             echo form_label('Confirmer mot de passe', 'confpassword', $label_attributes_password);

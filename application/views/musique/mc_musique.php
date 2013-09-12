@@ -95,14 +95,14 @@ $loger = $this->session->userdata('logged_in');
    
     </div>
     
-    <?php if($uid == $uid_visit): ?>
-    <div class="bts_noir">
-        <div class="bt_noir">
-            <a href="javascript:void(0)"><span class="bt_left"></span><span class="bt_middle">Mettre un album à la une</span><span class="bt_right"></span></a>
-        </div>
-        <div class="bt_noir">
-            <a class="iframe-upload" href="<?php echo site_url('pop_in_general/upload_musique/' . $session_id); ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter un morceau</span><span class="bt_right"></span></a>
-        </div>
+    <?php if ($infos_profile->id == $uid): ?>
+    <div class="bts_noir_musique">
+            <div class="bt_noir">
+				<a href="javascript:void(0)"><span class="bt_left"></span><span class="bt_middle">Mettre un album à la une</span><span class="bt_right"></span></a>
+			</div>
+            <div class="bt_noir">
+				<a class="iframe-upload" href="<?php echo site_url() . '/pop_in_general/upload_musique/' . $session_id; ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter un morceau</span><span class="bt_right"></span></a>
+			</div>
     </div>
 	<?php endif;?>
     <div class="content">
@@ -291,7 +291,7 @@ $loger = $this->session->userdata('logged_in');
 		</div>
 	</div>
 	
-	<div id="playlist_alert"><p>Ajouter à une playlist existante</p>
+	<div id="playlist_alert" class="modal_alert"><p>Ajouter à une playlist existante</p>
         </br>
         <?php foreach($playlists as $playlist): ?>
            	<a href ="javascript:void(0)" id="<?php echo $playlist->nom;?>"><?php echo $playlist->nom;?></a>
@@ -301,9 +301,9 @@ $loger = $this->session->userdata('logged_in');
           <input id="input_alert" type='text'/> <a class="cree" href="javascript:void(0)">Creer</a>
     </div>
     
-    <div id="album_une_alert">
+    <div id="album_une_alert" class="modal_alert">
         <p>Selectionner l'album à mettre à la une</p>
-        </br>
+        <hr>
         <?php foreach($all_alb as $album): ?>
            	<a href ="javascript:void(0)" id="<?php echo $album->id;?>"><?php echo $album->nom;?></a>
         	</br>

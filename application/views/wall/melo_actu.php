@@ -1,4 +1,3 @@
-
 <?php
     $session_id = $this->session->userdata('uid');
     $uid = (empty($session_id)) ? '' : $session_id;
@@ -8,7 +7,7 @@
 ?>
 
 <div id="contentAll">
-    <h1 class="hd">Votre fil d'actualité</h1>
+    <!--<h1 class="hd">Votre fil d'actualité</h1>-->
     
     <div id="breadcrumbs">
         <ul>
@@ -377,7 +376,7 @@
   			if($entity_wall->type =='MU'):
   			?>
   				<div id ="<?php echo $entity_wall->id?>" class="artist_post photo_message">
-      				<div class="top"   class="top" id="<?php echo $entity_wall->id?>">
+      				<div class="top" class="top" id="<?php echo $entity_wall->id?>">
         				<?php 
         				if($this->uri->segment(2)==$this->session->userdata('uid')):
 ?>

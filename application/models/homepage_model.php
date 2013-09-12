@@ -9,6 +9,7 @@ class Homepage_model extends CI_Model {
     protected $data;
     protected $tbl_morceau = 'morceaux';
     protected $tbl_user = 'utilisateur';
+    protected $tbl_alb  ='albums';
 
     public function __construct() {
         parent::__construct();
@@ -34,9 +35,10 @@ class Homepage_model extends CI_Model {
 
     public function get_top_morceau()
     {
-        return $this->db->select('morceaux.nom,utilisateur.login')
+        return $this->db->select('morceaux.nom,utilisateur.login,utilisateur.id AS loggin_id, albums.nom AS name_alb,morceaux.id AS id_track')
                         ->from($this->tbl_morceau)
                         ->join($this->tbl_user,'morceaux.Utilisateur_id = utilisateur.id')
+                        ->join($this->tbl_alb,'albums.id = morceaux.albums_id', 'LEFT OUTER')
                         ->order_by('nombre_lectures DESC')
                         ->limit(10)
                         ->get()

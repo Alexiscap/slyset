@@ -28,9 +28,9 @@
 		<div class="champs">
 			<input id="album_select" placeholder="Choisir un album" name="albums"  autocomplete="off" type="text" /><span onclick="javascript:showInfo()" class="fleche_bas"><img src="<?php echo img_url('common/flb.png'); ?>" alt="Fleche basse" /></span>
 
-			<div id='test_one'>
+			<div id='list_albums'>
 		
-				<ul id='test_two'>
+				<ul id='tout_albums'>
 					<?php 
 				
 					for($i=0;$i<$max_album_user;$i++)
@@ -41,7 +41,7 @@
 					?>	
 				</ul>
 				
-				<div id='test_three'>
+				<div id='un_album'>
 					<input  id="create" type="text" value="" autocomplete="off" placeholder="creer un nouvel album"/><div id="create_ok"  onclick="selectalbumcreate()"><img src="<?php echo img_url('common/creer_album.png'); ?>" alt="ok" /></div>
 				</div>
 			</div>

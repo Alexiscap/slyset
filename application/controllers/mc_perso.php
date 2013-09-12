@@ -19,7 +19,7 @@ class Mc_perso extends CI_Controller {
         $this->layout->ajouter_js('colorpicker/utils');
 
         $this->load->helper(array('form', 'comments_helper'));
-        $this->load->model(array('perso_model', 'user_model'));
+        $this->load->model(array('perso_model', 'user_model','achat_model'));
         $this->load->library(array('form_validation'));
 
         $this->layout->set_id_background('personnaliser');
@@ -49,9 +49,10 @@ class Mc_perso extends CI_Controller {
         foreach ($community_follower as $my_following_head) {
             $my_abonnement_head .= $my_following_head->Utilisateur_id . '/';
         }
+        $data_notif['count_notif'] = $this->achat_model->notif_panier($this->session->userdata('uid'));
 
         $this->data = array(
-            'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
+            'sidebar_left' => $this->load->view('sidebars/sidebar_left', $data_notif, TRUE),
             'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
         );
     }

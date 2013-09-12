@@ -56,29 +56,45 @@
             </div>
 
             <div class="content-right">
-       <?php  foreach ($playlists[0] as $playlist): 
-               ?>
-                <!--<ol><?php // echo ucfirst($this->uri->segment(4));  ?> : <?php // echo $playlist->nom  ?>-->
-                <div class="top">
-                    <span class="txt-ecoute"><?php echo ucfirst($this->uri->segment(4))?>: <?php echo $playlist->nom  ?></span>
-                </div>
+                <?php 
+                if ($playlists == 'no_track') 
+                {
+                    echo '<div class="no-track">aucuns morceaux n\'est disponibles pour cet artiste</div>';
+                }
+                else
+                {
+                    foreach ($playlists[0] as $playlist): ?>
+                        <!--<ol><?php // echo ucfirst($this->uri->segment(4));  ?> : <?php // echo $playlist->nom  ?>-->
+                        <div class="top">
+                            <span class="txt-ecoute"><?php echo ucfirst($this->uri->segment(4))?>: <?php echo $playlist->nom  ?> <?php if($playlists[2]!= null) echo '<span class="more_albpl"> > </span>' ?> </span>
+                        </div>
 
-                <div class="list-morceaux">
-                    <ul>
-                        <?php  foreach ($playlists[1] as $morceaux): 
+                        <?php if($playlists[2]!= null):
+                            foreach ($playlists[2] as $all_name_albpl): ?>
+                                <div class="top drop">
+                                    <span class="txt-ecoute"><?php echo ucfirst($this->uri->segment(4))?>: <a href="<?php echo base_url('index.php/mc_musique/player/'.$this->uri->segment(3).'/'.$this->uri->segment(4).'/'.$all_name_albpl->nom) ?>"><?php echo $all_name_albpl->nom  ?></a></span>
+                                </div>
+                            <?php endforeach; 
+                        endif;
                         ?>
-                        <?php  if ($morceaux->nom == $playlist->nom): ?>
-                        <li><a href="#" data-src="<?php echo base_url() .'files/'.$this->uri->segment(3).'/musique/'.str_replace(' ','_',$morceaux->title_album).'/'.$morceaux->filename; ?>"><?php  echo $morceaux->title_track  ?></a></li>
-                       <!-- <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Luno.mp3'; ?>">2222<?php  echo $morceaux->title_track  ?></a></li>
-                        <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Compliments.mp3'; ?>">3333<?php  echo $morceaux->title_track  ?></a></li>
-                        --><?php endif; ?>
-                        <?php  endforeach; ?>
-                    </ul>
-                </div>
-                <!--</ol>-->
-                </br>
-                <?php  endforeach; ?>
 
+                        <div class="list-morceaux">
+                            <ul>
+                                <?php  foreach ($playlists[1] as $morceaux): 
+                                    if ($morceaux->nom == $playlist->nom): ?>
+                                        <li><a href="#" data-src="<?php echo base_url() .'files/'.$this->uri->segment(3).'/musique/'.str_replace(' ','_',$morceaux->title_album).'/'.$morceaux->filename; ?>"><div class="track"><?php if(strlen($morceaux->title_track)<21) { echo $morceaux->title_track ;} else {echo substr($morceaux->title_track, 0,18).' ...';}?></div> <div class="artiste"><?php echo $morceaux->login ?></div></a></li>
+                                        <!-- <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Luno.mp3'; ?>">2222<?php  echo $morceaux->title_track  ?></a></li>
+                                        <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Compliments.mp3'; ?>">3333<?php  echo $morceaux->title_track  ?></a></li>
+                                        -->
+                                    <?php endif; ?>
+                                <?php  endforeach; ?>
+                            </ul>
+                        </div>
+                        <!--</ol>-->
+                        </br>
+                    <?php  endforeach; 
+                }
+                ?>
 
                 <span style="float:left;" id="duration"></span><span style="float:right;" id="timeleft"></span>
             </div>

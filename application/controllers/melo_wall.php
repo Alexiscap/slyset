@@ -18,7 +18,7 @@ class Melo_wall extends CI_Controller {
         $this->layout->ajouter_js('infinite_scroll');
         $this->layout->ajouter_js('jquery.easing.min');
         
-        $this->load->model(array('user_model', 'mc_actus_model', 'melo_actus_model','musique_model','follower_model'));
+        $this->load->model(array('user_model', 'mc_actus_model', 'melo_actus_model','musique_model','follower_model','achat_model'));
         $this->load->helper('form');
         $this->load->library('form_validation');
         
@@ -28,13 +28,14 @@ class Melo_wall extends CI_Controller {
 
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
-        
+        $data_notif['count_notif'] = $this->achat_model->notif_panier($this->session->userdata('uid'));
+
         if ($this->user_id != null) {
             $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
         }
         
         $this->data = array(
-            'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
+            'sidebar_left' => $this->load->view('sidebars/sidebar_left', $data_notif, TRUE),
             'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
         );
     }

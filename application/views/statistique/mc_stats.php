@@ -7,7 +7,6 @@ $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
 $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
 ?>
 
-
 <div id="contentAll">
     <div id="breadcrumbs">
         <ul>
@@ -43,10 +42,11 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 
   <div class="content">
 	<h1>Statistiques</h1>
+	<h2 style="font-size:15px;">Cette année : </h2>
 	<div class="stats_carre">
 		<div class="abonnes"><span>&nbsp;489</span></div>
-		<div class="visites"><span><?php echo $visit_tot[0][1] ?></span></div>
-		<div class="vues"><span><?php echo $pages_tot[0][1] ?></span></div>
+		<div class="visites"><span><?php echo $stats_visit->nb_visits ?></span></div>
+		<div class="vues"><span><?php echo $stats_page->nb_pageviews ?></span></div>
 		<div class="ventes"><span>&nbsp;512</span></div>
 	</div>
 	<div class="clear"></div>
@@ -55,14 +55,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 		<div class="legende"><div class="visites"></div><span>Visites</span><div class="unique"></div><span>Visites Uniques</span></div>
 		<div class="clear"></div>
 		<div class="graph_stats">
-			<?php 
-		  	$graph ="";
-		  	foreach($evol as $visit_evol)
-		  	{
-		  		$graph .= $visit_evol[1].',';
-		  	} 
-		  	$value_graph =  substr ( $graph,0 , -1);
-		  	?>
+			
 			<canvas id="myChart" width="500px" height="200px"></canvas>
 		</div>
 	</div>
@@ -70,12 +63,14 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 		<span>D'où viennent vos visiteurs ?</span>
 		<div class="graph">
 			<div class="stats">
-				<div class="portail"><span>30%</span></div>
-				<div class="google"><span>40%</span></div>
-				<div class="site"><span>15%</span></div>
-				<div class="autre"><span>15%</span></div>
+				<div class="portail"><span><?php if(!isset($direct)){$direct = 0 ;} echo $direct.'%'; ?></span></div>
+				<div class="google"><span><?php if(!isset($se)) {$se =  0;} echo $se.'%';?></span></div>
+				<div class="site"><span><?php if(!isset($site_ref)){$site_ref =  0;} echo $site_ref.'%'; ?></span></div>
+				<div class="autre"><span><?php $autre_source = 100 - $se - $site_ref - $direct; echo $autre_source.'%' ?></span></div>
 			</div>
 			<div class="cercle">
+			<canvas id="piechart" width="140" height="140"></canvas>
+			<div style="font-size : 10px; float:right">(cette année)</div>
 			</div>
 		</div>
 	</div>
@@ -150,36 +145,19 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 	</div>
   </div>
 
-		
-			
+	
 
   <?php if(isset($sidebar_right)) echo $sidebar_right; ?>
 
 </div>
-
 <script>
+	var chart_month = [<?php echo $all_date ?>];
+	var value_charts = [<?php echo $value_graph_uniq ?>] ;
+	var chart_visit = [<?php echo $value_graph ?>];
+ 	var direct = <?php echo $direct ?>;
+ 	var se =<?php echo $se ?>;
+	var site_ref = <?php echo $site_ref ?>;
+	var other_s = <?php echo $autre_source ?>;
+	var step =<?php echo $decimal / 10; ?>;
 
-	var lineChartData = {
-		labels : ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17"],
-		datasets : [
-			{
-				fillColor : "rgba(220,220,220,0.5)",
-				strokeColor : "rgba(220,220,220,1)",
-				pointColor : "rgba(220,220,220,1)",
-				pointStrokeColor : "#fff",
-				data : [<?php echo $value_graph ?>]
-			}/*,
-				{
-					fillColor : "rgba(151,187,205,0.5)",
-					strokeColor : "rgba(151,187,205,1)",
-					pointColor : "rgba(151,187,205,1)",
-					pointStrokeColor : "#fff",
-					data : [28,48,40,19,96,27,100]
-				}*/
-		]
-			
-	}
-
-	var myLine = new Chart(document.getElementById("myChart").getContext("2d")).Line(lineChartData);
-	
-	</script>
+</script>

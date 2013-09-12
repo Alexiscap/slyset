@@ -13,7 +13,7 @@ h1.hd{ height:1px; overflow: hidden; position:absolute; top:-1000em; width:1px; 
 body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; background:#f9f9f9; z-index:2; }
 #page{ margin:0 auto; width:980px; }
 #contentAll{ margin:0 0 39px 20px; width:770px; float:left; }
-#breadcrumbs{ margin:5px 12px; width:100%; height:23px; float:left; clear:both; }
+#breadcrumbs{ margin:0 12px; width:100%; height:23px; float:left; clear:both; }
 #breadcrumbs ul{ display:inline-block; }
 #breadcrumbs li{ display:inline-block; line-height:20px; }
 #breadcrumbs li a{ text-decoration:none; font-size:10px; color:#858585; }
@@ -24,6 +24,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 .bts_noir_unique{float: left;margin-left: 190px;}
 .bts_noir_partition{float:left; margin-left:47px;}
 .bts_noir_photo{float:left; margin-left:68px;}
+.bts_noir_musique{float:left; margin-left:35px;}
 .bt_noir_concert{float: right;margin-right: 230px;}
 .bt_noir{ height:30px; float:left; margin:5px 0 0 8px; }
 .bt_noir .bt_left{ width:10px; height:30px; float:left; background:url("../images/common/bt_noir.png") no-repeat 0px -10px; }
@@ -249,38 +250,39 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 
 
 /* --------- MUSICIEN PHOTO ET VIDEO --------- */
-.content .col1{ width:160px; }
+.content .col1{ width:170px; }
 .content .col1 .img_cover{width:160px;}
-.content .box{ margin:5px; padding:5px 5px 0; /*max-width:150px; */ background:#D8D5D2; font-size:11px; line-height:1.4em; float:left; display:block; }
-.content .photo{ background:white; margin:5px; text-align:left;-moz-box-shadow: 1px 1px 1px 1px #9b9b9b;-webkit-box-shadow: 1px 1px 1px 1px #aaa;-o-box-shadow: 1px 1px 1px 1px #9b9b9b;box-shadow: 1px 1px 1px 1px #9b9b9b; }
+.content .box{ margin:5px; /* background:#D8D5D2; */ font-size:11px; line-height:1.4em; float:left; display:block; }
+.content .photo{background: white;text-align: left;box-shadow: 1px 1px 1px 1px #9b9b9b;width: 160px;padding: 5px 5px 0;}
 .content .photo .pochette{ width:139px; margin:10px 10px 5px 10px; min-height:214px; }
 .content .photo .img_miniat{ width:51px; margin:0; }
 .content .photo a{ text-decoration:none; }
 .content .photo a:hover{ text-decoration:underline; color:#4d4d4d; }
 .content .photo p{ margin:0 10px 5px; color:#4d4d4d; font-size:12px; font-weight:bold; }
-.content .photo .bord_photo{ background:#f2f0f0; margin:0 -5px; height:25px; text-align:left;}
-.content .photo .bord_photo p{ margin:0 10px 0; display:inline; font-size:10px; color:#878d95; }
-.content .photo .bord_photo a:hover{ text-decoration:none; }
+.content .bord_photo{ background:#f2f0f0; margin:-5px 0 5px; height:25px; text-align:left;box-shadow: 1px 1px 1px 1px #9b9b9b;}
+.content .bord_photo p{ margin:0 10px 0; display:inline; font-size:10px; color:#878d95; }
+.content .bord_photo a:hover{ text-decoration:none; }
+.content .bord_photo a{ text-decoration:none; }
 .content .photo .nom_photo{ width:138px; text-align:left; word-wrap : break-word }
-.content .photo .bord_photo img{ margin:8px 0px -1px 40px; display:inline; }
+.content .bord_photo img{ margin:8px 0px -1px 40px; display:inline; }
 .nolike img {margin:0 5px 0 15px; display:inline; }
 .like, .nolike, .like-video, .nolike-video, .like-album, .nolike-album{ cursor:pointer; }
-.content .photo .bord_photo .nb_like{ margin:0; }
-.content .photo .comm,.content .photo .comment-form,.content .photo .comment-form-album,.content .photo .comment-form-video,.content .photo .comment-form-alb-wall{ width:170px; margin:0 -15px; background:#f2f0f0; border-bottom:1px solid #cdcdcd; border-top:none; min-height:34px; }
-.content .photo .comm img,.content .photo .comment-form img, .content .photo .comment-form-album img, .content .photo .comment-form-video img,.content .photo .comment-form-alb-wall img{ float:left; margin:5px; height:24px; }
-.content .photo .comm .del,.content .photo .comment-form .del, .content .photo .comment-form-album .del, .content .photo .comment-form-video .del,.content .photo .comment-form-alb-wall del{ float:right; margin:5px 5px; height:14px; }
-.content .photo .comm p,.content .photo .comment-form p,.content .photo .comment-form-album p,.content .photo .comment-form-video p,.content .photo .comment-form-alb-wall p{ margin:0; text-align:left; }
-.content .photo .comm .name_comm,.content .photo .comment-form .name_comm, .content .photo .comment-form-album .name_comm, .content .photo .comment-form-video .name_comm,.content .photo .comment-form-alb-wall .name_comm{ font-size:10px; color:#595959; }
-.content .photo .comm .commentaire,.content .photo .comment-form .commentaire, .content .photo .comment-form-album .commentaire, .content .photo .comment-form-video .commentaire,.content .photo .comment-form-alb-wall .commentaire{ font-size:10px; color:#888d95; }
-.content .photo .comm input[type=text],.content .photo .comment-form input[type=text], .content .photo .comment-form-album input[type=text], .content .photo .comment-form-video input[type=text],.content .photo .comment-form-alb-wall input[type=text]{ float:left; width:70px; border:1px solid #dfdede; margin:5px 0; }
-.content .photo .comm input[type=image],.content .photo .comment-form input[type=submit], .content .photo .comment-form-album input[type=submit], .content .photo .comment-form-video input[type=submit],.content .photo .comment-form-alb-wall input[type=submit]{ clear:both; width:55px; margin:4px 0 0 5px; }
+.content .bord_photo .nb_like{ margin:0; }
+.content .comm,.content .comment-form,.content .comment-form-album,.content .comment-form-video,.content .comment-form-alb-wall{ width:170px; margin:0 -10px; background:#f2f0f0; border-bottom:1px solid #cdcdcd; border-top:none; min-height:34px; box-shadow: 1px 1px 1px 1px #9b9b9b;}
+.content .comm img,.content .comment-form img, .content .comment-form-album img, .content .comment-form-video img,.content .comment-form-alb-wall img{ float:left; margin:5px; height:24px; }
+.content .comm .del,.content .comment-form .del, .content .photo .comment-form-album .del, .content .photo .comment-form-video .del,.content .photo .comment-form-alb-wall del{ float:right; margin:5px 5px; height:14px; }
+.content .comm p,.content .comment-form p,.content .comment-form-album p,.content .comment-form-video p,.content .comment-form-alb-wall p{ margin:0; text-align:left; }
+.content .comm .name_comm,.content .comment-form .name_comm, .content .comment-form-album .name_comm, .content .comment-form-video .name_comm,.content .comment-form-alb-wall .name_comm{ font-size:10px; color:#595959; }
+.content .comm .commentaire,.content .comment-form .commentaire, .content .comment-form-album .commentaire, .content .comment-form-video .commentaire,.content .photo .comment-form-alb-wall .commentaire{ font-size:10px; color:#888d95; }
+.content .comm input[type=text],.content .comment-form input[type=text], .content .comment-form-album input[type=text], .content .comment-form-video input[type=text],.content .comment-form-alb-wall input[type=text]{ float:left; width:70px; border:1px solid #dfdede; margin:5px 0; }
+.content .comm input[type=image],.content .comment-form input[type=submit], .content .comment-form-album input[type=submit], .content .comment-form-video input[type=submit],.content .comment-form-alb-wall input[type=submit]{ clear:both; width:55px; margin:4px 0 0 5px; }
 .content .photo .edit{ background:rgba(36, 36, 36, 0.7); width:160px; height:22px; position:absolute;top:5px; margin:0;display:none;}
 .content .photo .edit img{ float:right; margin:4px 8px 0 0; }
-.content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:160px; position:absolute; margin:22px 0;top:5px;height: calc(100% - 53px);display:none;text-align:center;}
+.content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:160px; position:absolute; margin:22px 0;top:5px;height: calc(100% - 57px);display:none;text-align:center;}
 .content .photo .open_alb img{}
 .content .sepa_comm {width:170px;height:5px;background:#e6e6e6;margin-left:-5px;}
 
-.empty_photo_alb{}
+.empty_photo_alb img{width:44px;height:44px;}
 
 /*.box .img_cover, #tumblelog .img_cover{ display:block; width:100%; }*/
 
@@ -595,11 +597,11 @@ cursor : pointer;}
 .wall-flux-content .wall-flux-content-titre-artiste{ margin:19px 19px 5px 19px; color:#535353 ; padding-top:15px; font-size:13px; }
 /*.wall-flux-content .wall-flux-content-text{ font-size:14px; line-height:21px; color:#555555; margin:10px 19px 19px 19px; word-wrap:break-word; }*/
 .wall-flux-content .wall-flux-content-text p:first-child, .wall-flux-content .wall-flux-content-text p:last-child { margin:0 19px; }
-.wall-flux-content .wall-flux-content-text p { margin:0.8em 19px; line-height: 1.1em; }
+.wall-flux-content .wall-flux-content-text p { margin:0.8em 19px; line-height: 1.4em; }
 .wall-flux-content .wall-flux-content-text table tr td { padding:5px; border:1px solid #8d8c80; }
 .wall-flux-content .wall-flux-content-text iframe{ margin:5px 0; width:100%; }
 .wall-flux-content .wall-flux-content-text{ margin:0 0 10px 0; }
-.wall-flux-content .wall-flux-content-text ol, .wall-flux-content .wall-flux-content-text li, .wall-flux-content .wall-flux-content-text img{ margin:5px 0 -7px 0 !important; width:100%; }
+.wall-flux-content .wall-flux-content-text ol, .wall-flux-content .wall-flux-content-text li, .wall-flux-content .wall-flux-content-text img{ margin:5px 0 -7px 0 ; width:100%; }
 .wall-flux-content .wall-flux-content-text .wall-flux-content-text-chapeau{ font-weight:bold; }
 .wall-flux-content .wall-flux-content-right-text{ margin-left:185px; padding-bottom:20px; }
 .wall-flux-content .wall-flux-content-left-picture .img-blog-artiste-carre{ position:absolute; margin :19px 15px 15px 15px; }
@@ -640,6 +642,10 @@ cursor : pointer;}
 #calendar_alert{ margin-top:40px; margin-left:-7px; width:70%; border:1px solid #dedede; box-shadow:1px 0 1px 1px #EDEDED; padding: 5px; line-height: 25px; display: none; position: absolute; background-color:#f6f6f6; font-family:"Trebuchet MS"; font-size:12px; color:#7f7d7d; text-decoration:none; z-index:1;}
 #calendar_alert a {color: #01adbb;}
 #calendar_alert span {text-decoration: underline; font-size:14px;}
+
+.partage {margin: 0 5px 5px;height:35px;}
+.partage img{width:29px !important;float:left;margin:0 5px !important;}
+/*.menu-text{font-size:14px;}*/
 /* --------- FIN  DE PORTAIL  --------- */
 
 /* ---------- FILTRES PORTAIL --------- */
@@ -768,8 +774,8 @@ input[type="checkbox"]:checked + label span{ background:url('../images/common/sp
 #subscription-upload .container-cover + label{ margin:-15px 0 0.4em 0; font-weight:normal; float:right; clear:none; }
 .upload_images{ display:block; width:409px; height:150px; background:url('../images/subscription/upload_images2.png') no-repeat; float:left; clear:both; }
 .upload-file-container{ display:block; width:201px; height:30px; float:left; cursor:pointer; position:relative; }
-.upload-file-container:hover{ background-position:0 -39px; cursor:pointer; }
-.upload-file-container{ background:url('../images/subscription/sprite_button_file_entete.png') 0 -5px no-repeat; clear:both; }
+.upload-file-container:hover{ background-position:0 -28px; cursor:pointer; }
+.upload-file-container{ background:url('../images/subscription/sprite_button_file_cover.png') 0 1px no-repeat; clear:both; }
 .upload-file-container.container-thumb{ margin:-20px 10px 0 0; width:147px; background:url('../images/subscription/sprite_button_file_thumb.png') 0 -28px no-repeat; float:right; clear:both; }
 input[type="file"]{ display:block; width:201px; height:30px; float:left; filter:alpha(opacity=0); opacity:0; position:absolute; left:0; top:0; cursor:default; }
 /* --------- FIN  D'INSCRIPTION'  --------- */
@@ -903,13 +909,12 @@ input[type="file"]{ display:block; width:201px; height:30px; float:left; filter:
 .musique #tablesorter-cb .miniat_titre .cadis:hover{background-position:-76px -23px;}
 .musique #tablesorter-cb .miniat_titre .delete:hover{background-position:-95px -22px;}
 
-#playlist_alert{display: none; position: absolute; margin-top: 40px; margin-left: -7px; border: 1px solid #dedede; box-shadow: 1px 0 1px 1px #EDEDED; padding: 5px; line-height: 25px; position: absolute; background-color:#f6f6f6; font-family:"Trebuchet MS"; font-size: 12px; color: #7f7d7d; text-decoration: none; z-index: +1;}
-#playlist_alert a {color: #01adbb;}
-#playlist_alert span {text-decoration: underline;font-size: 14px;}
-
-#album_une_alert{display: none; position: absolute; margin-top: 40px; margin-left: -7px; border: 1px solid #dedede; box-shadow: 1px 0 1px 1px #EDEDED; padding: 5px; line-height: 25px; position: absolute; background-color:#f6f6f6; font-family:"Trebuchet MS"; font-size: 12px; color: #7f7d7d; text-decoration: none; z-index: 1;}
-#album_une_alert a {color: #01adbb;}
-#album_une_alert span {text-decoration: underline;font-size: 14px;}
+.modal_alert{display: none; position: absolute; margin-top: 40px; margin-left: -7px; border: 1px solid #dedede; box-shadow: 1px 0 1px 1px #EDEDED; padding: 5px; line-height: 25px; position: absolute; background-color:#f6f6f6; font-family:"Trebuchet MS"; font-size: 12px; color: #7f7d7d; text-decoration: none; z-index: +1;}
+.modal_alert p {font-weight : bold;}
+.modal_alert a {color: #01adbb; text-indent : 30px;padding-left: 15px;}
+.modal_alert span {text-decoration: underline;font-size: 14px;}
+.modal_alert hr {
+border-top : 1px solid #d9dadb;}
 
 .musique #tablesorter-cb .play{width:15px; height:15px; float:left; position:relative; top:0; left:6px; visibility:hidden;}
 .musique #tablesorter-cb td.article-title:hover a .play, .musique #tablesorter-cb td.article-title:hover .miniat_titre{ display:inline-block; visibility:visible; }
@@ -1059,16 +1064,16 @@ input[type="file"]{ display:block; width:201px; height:30px; float:left; filter:
 #any-background-personnaliser .upload-file-container.container-background{ margin:2px 0 0 0; float:left; clear:none; }
 .personnaliser .upload_photo_name_file{ margin:0 0 0 1px; line-height:22px; }
 .personnaliser span.error-form, .personnaliser span.error-form p{ margin:3px 0 10px 0; width:325px; float:right; }
-#any-background-personnaliser input[type="submit"]{ margin:0 0 10px 175px; padding:0 14px; height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; text-align:center; outline:none; color:#FFFFFF; float:left; background: #ef7363;border: 1px outset #dd4f3c;}
+#any-background-personnaliser input[type="submit"]{ margin:0 0 10px 175px; padding:0 14px; height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; text-align:center; outline:none; color:#FFFFFF; float:left; background: #ef7363;}
 /*#any-background-personnaliser input[type="submit"]:hover{font-weight:bold;}*/
-#any-background-personnaliser a.reset_theme, #any-background-reglages a.delete_account{ margin:0 0 10px 50px; padding:0 14px; height:30px; line-height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; text-align:center; text-decoration:none; outline:none; color:#FFFFFF; float:left;background: #ef7363;border: 1px outset #dd4f3c; }
+#any-background-personnaliser a.reset_theme, #any-background-reglages a.delete_account{ margin:0 0 10px 50px; padding:0 14px; height:30px; line-height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; text-align:center; text-decoration:none; outline:none; color:#FFFFFF; float:left;background: #ef7363;}
 /*#any-background-personnaliser a.reset_theme:hover, #any-background-reglages a.delete_account{ font-weight:bold;}*/
-#any-background-reglages a.delete_account{ margin:0 0 10px 21px;font-weight:normal;background: #ef7363;border: 1px outset #dd4f3c;}
+#any-background-reglages a.delete_account{ margin:0 0 10px 21px;font-weight:normal;background: #ef7363;}
 
 .detail_perso {font-size:14px;color:#888d95;font-weight:normal;margin:0 20px 0 20px;}
 .categ_perso {margin:20px 0;}
 .categ_perso p {margin:0; display:inline-block; font-family:"Trebuchet MS"; font-weight:bold; font-size:16px; width:150px; color:#6b6b6b; float:left;}
-.categ_perso .themes {/*margin:-15px 10px 10px;*/ margin:0; width:348px; float:left;}
+.categ_perso .themes {margin:-15px 0 10px; width:348px; float:left;}
 .categ_perso .themes a {width:82px;height:55px;float:left;text-indent:-50000px;margin:0 5px 0 0;}
 .categ_perso .themes .t1 {background:url("../images/musicien/sprite_theme.png") no-repeat -15px -8px;}
 .categ_perso .themes .t2 {background:url("../images/musicien/sprite_theme.png") no-repeat -111px -8px;}
@@ -1109,17 +1114,17 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 #any-background-reglages #subscription-upload, #any-background-reglages-music #subscription-upload{ margin:15px 0 0 0; clear:both; }
 #any-background-reglages #subscription-upload label, #any-background-reglages-music #subscription-upload label{ margin:4px 0 55px 0; display:inline-block; width:150px; font-size:16px; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:bold; text-align:right; color: #4e4e4e; clear:both; }
 #any-background-reglages #subscription-upload input, #any-background-reglages-music #subscription-upload input{ width:100%; position:relative; }
-#any-background-reglages .upload-file-container.container-thumb, #any-background-reglages-music .upload-file-container.container-thumb{ margin:2px 100px 0 0; float:left; clear:none; }
+#any-background-reglages hr, #any-background-reglages-music hr, #any-background-personnaliser hr{ margin:15px auto 5px auto; height:1px; border-bottom:1.5px solid rgb(184, 187, 190); background:#f8f8f8; }
+#any-background-reglages .upload-file-container.container-thumb, #any-background-reglages-music .upload-file-container.container-thumb{ margin:2px 30px 0 0; float:left; clear:none; }
 #any-background-reglages .upload-file-container.container-cover, #any-background-reglages-music .upload-file-conainter.container-cover{ margin:2px 0 0 0; float:left; clear:none; }
-#any-background-reglages hr, #any-background-reglages-music hr, #any-background-personnaliser hr{ margin:15px auto 25px auto; height:1px; border-bottom:1.5px solid rgb(184, 187, 190); background:#f8f8f8; }
+#any-background-reglages hr, #any-background-reglages-music hr, #any-background-personnaliser hr{ margin:5px auto 15px auto; height:1px; border-bottom:1.5px solid rgb(184, 187, 190); background:#f8f8f8; }
 
-#any-background-reglages form > label, #any-background-reglages-music form > label{ margin:8px 0 0 0; width:150px; height:26px; line-height:26px; font-size:16px; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:bold; text-align:right; color: #4e4e4e; float:left; }
+#any-background-reglages form > label, #any-background-reglages-music form > label{ margin:0 0 0 0; width:150px; height:26px; line-height:26px; font-size:16px; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:bold; text-align:right; color: #4e4e4e; float:left; }
 #any-background-reglages form > .label_password, #any-background-reglages-music form > .label_password{ margin:6px 0 0 0; line-height:15px; }
-#any-background-reglages .checkbox-style, #any-background-reglages-music .checkbox-style{ margin:0 0 20px 20px; width:306px; clear:none; }
-#any-background-reglages input[type="text"], #any-background-reglages input[type="password"], #any-background-reglages-music input[type="text"], #any-background-reglages-music input[type="password"]{ margin:8px 0 8px 20px; padding:3px 10px; width:285px; outline-color:rgba(42, 179, 149, 0.6);-moz-outline-color:rgba(42, 179, 149, 0.6); color:rgb(100, 100, 100); float:left; }
+#any-background-reglages .checkbox-style, #any-background-reglages-music .checkbox-style{ margin:5px 0 20px 20px; width:306px; clear:none; }
+#any-background-reglages input[type="text"], #any-background-reglages input[type="password"], #any-background-reglages-music input[type="text"], #any-background-reglages-music input[type="password"]{ margin:0 0 16px 20px; padding:3px 10px; width:285px; outline-color:rgba(42, 179, 149, 0.6);-moz-outline-color:rgba(42, 179, 149, 0.6); color:rgb(100, 100, 100); float:left; }
 #any-background-reglages textarea, #any-background-reglages-music textarea{ margin:8px 0 8px 20px; padding:3px 10px; width:287px; max-width:287px; height:75px; max-height:300px; font-family:"Trebuchet MS", Arial, sans-serif; word-break:break-word; outline-color:rgba(42, 179, 149, 0.6); color:rgb(100, 100, 100); float:left;font-size:13px; }
-#any-background-reglages input[type="submit"], #any-background-reglages-music input[type="submit"]{ margin:0 0 10px 170px; padding:0 14px; height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px;text-align:center; outline:none; color:#FFFFFF; float:left; background: #ef7363;
-border: 1px outset #dd4f3c;}
+#any-background-reglages input[type="submit"], #any-background-reglages-music input[type="submit"]{ margin:0 0 10px 170px; padding:0 14px; height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px;text-align:center; outline:none; color:#FFFFFF; float:left; background: #ef7363;}
 /*#any-background-reglages input[type="submit"]:hover, #any-background-reglages-music input[type="submit"]:hover{font-weight:bold;}*/
 #any-background-reglages span.error-form, #any-background-reglages span.error-form p, #any-background-reglages-music span.error-form, #any-background-reglages-music span.error-form p{ margin:3px 0 10px 0; width:250px; float:left; }
 #any-background-reglages .password + span.error-form, #any-background-reglages .password + span.error-form p, #any-background-reglages-music .password + span.error-form, #any-background-reglages-music .password + span.error-form p{ margin:3px 0 10px 170px; width:308px; float:left; }

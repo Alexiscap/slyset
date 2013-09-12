@@ -15,7 +15,7 @@ class Search extends CI_Controller {
         $this->layout->ajouter_js('jquery.tablesorter');
 
         $this->load->helper(array('cookie', 'form'));
-        $this->load->model(array('search_model', 'user_model'));
+        $this->load->model(array('search_model', 'user_model','achat_model'));
         $this->load->library(array('form_validation'));
 
         $this->layout->set_id_background('search');
@@ -29,9 +29,10 @@ class Search extends CI_Controller {
         }
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
+        $data_notif['count_notif'] = $this->achat_model->notif_panier($this->session->userdata('uid'));
 
         $this->data = array(
-            'sidebar_left' => $this->load->view('sidebars/sidebar_left', '', TRUE),
+            'sidebar_left' => $this->load->view('sidebars/sidebar_left', $data_notif, TRUE),
             'sidebar_right' => $this->load->view('sidebars/sidebar_right', $sub_data, TRUE)
         );
     }
