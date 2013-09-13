@@ -1122,7 +1122,7 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 #any-background-reglages hr, #any-background-reglages-music hr, #any-background-personnaliser hr{ margin:5px auto 15px auto; height:1px; border-bottom:1.5px solid rgb(184, 187, 190); background:#f8f8f8; }
 
 #any-background-reglages form > label, #any-background-reglages-music form > label{ margin:0 0 0 0; width:150px; height:26px; line-height:26px; font-size:16px; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:bold; text-align:right; color: #4e4e4e; float:left; }
-#any-background-reglages form > .label_password, #any-background-reglages-music form > .label_password{ margin:6px 0 0 0; line-height:15px; }
+#any-background-reglages form > .label_password, #any-background-reglages-music form > .label_password{ margin:0 0 0 0; line-height:13px; }
 #any-background-reglages .checkbox-style, #any-background-reglages-music .checkbox-style{ margin:5px 0 20px 20px; width:306px; clear:none; }
 #any-background-reglages input[type="text"], #any-background-reglages input[type="password"], #any-background-reglages-music input[type="text"], #any-background-reglages-music input[type="password"]{ margin:0 0 16px 20px; padding:3px 10px; width:285px; outline-color:rgba(42, 179, 149, 0.6);-moz-outline-color:rgba(42, 179, 149, 0.6); color:rgb(100, 100, 100); float:left; }
 #any-background-reglages textarea, #any-background-reglages-music textarea{ margin:8px 0 8px 20px; padding:3px 10px; width:287px; max-width:287px; height:75px; max-height:300px; font-family:"Trebuchet MS", Arial, sans-serif; word-break:break-word; outline-color:rgba(42, 179, 149, 0.6); color:rgb(100, 100, 100); float:left;font-size:13px; }
