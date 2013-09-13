@@ -95,6 +95,7 @@ $loger = $this->session->userdata('logged_in');
                             <a href="<?php echo base_url('index.php/my-wall/' . $follower->Follower_id) ?> " onclick="location.href='<?php echo base_url('index.php/my-wall/' . $follower->Follower_id) ?>';" class="melo"><span class="button_left_red"></span><span class="button_center_red">Voir le profil</span><span class="button_right_red"></span></a>
                     	</div>
                		</div>
+               		<div class="clear"></div>
                		   <hr/>
                         <?php
             	endif;
@@ -126,7 +127,7 @@ $loger = $this->session->userdata('logged_in');
                         </div>
                         <?php
                     endif;
-                    ?> </div><hr/><?php
+                    ?> </div><div class="clear"></div><hr/><?php
                 endif;
                 
               ?>
