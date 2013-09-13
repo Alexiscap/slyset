@@ -260,7 +260,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .content .photo a:hover{ text-decoration:underline; color:#4d4d4d; }
 .content .photo p{ margin:0 10px 5px; color:#4d4d4d; font-size:12px; font-weight:bold; }
 .content .bord_photo{ background:#f2f0f0; margin:-5px 0 5px; height:25px; text-align:left;box-shadow: 1px 1px 1px 1px #9b9b9b;}
-.content .bord_photo p{ margin:0 10px 0; display:inline; font-size:10px; color:#878d95; }
+.content .bord_photo p{ margin:0 0 0 10px; display:inline; font-size:10px; color:#878d95; }
 .content .bord_photo a:hover{ text-decoration:none; }
 .content .bord_photo a{ text-decoration:none; }
 .content .photo .nom_photo{ width:138px; text-align:left; word-wrap : break-word }
