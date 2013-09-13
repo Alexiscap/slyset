@@ -195,7 +195,7 @@ $loger = $this->session->userdata('logged_in');
             
             <a href="<?php echo site_url('mc_musique/player/'.$uid_visit.'/album'); ?>" class="open_player">
                 <img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
-                <p>Ecouter les morceaux de <?php echo $login?></p>
+                <p>&Eacute;couter les morceaux de <?php echo $login?></p>
             </a>
             
             <div id="articles-tab">
