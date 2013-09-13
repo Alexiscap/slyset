@@ -61,7 +61,7 @@
 					</ul>
 					
 					<div id='un_album'>
-                        <input  id="create" type="text" value="" autocomplete="off" placeholder="creer un nouvel album"/><div id="create_ok"  onclick="selectalbumcreate()"><img src="<?php echo img_url('common/creer_album.png'); ?>" alt="ok" /></div>
+                        <input  id="create" type="text" value="" autocomplete="off" placeholder="Créer un nouvel album"/><div id="create_ok"  onclick="selectalbumcreate()"><img src="<?php echo img_url('common/creer_album.png'); ?>" alt="ok" /></div>
                     </div>
 				</div>
 			<?php }else if($type == 2)
