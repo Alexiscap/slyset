@@ -23,7 +23,15 @@
 
             <div class="label"><label for="message">Message</label></div>
             <div class="champs">
-                <?php echo form_textarea('message', set_value('object'), 'placeholder="Entrez ici votre message."'); ?>
+				<?php
+                $message = array(
+                    'name' => 'message',
+                    'class' => 'contact_mess',
+                    'resize' => 'none',
+                    'placeholder' => 'Entrez ici votre message.',
+                );
+                echo form_textarea($message);
+                ?>
             </div>
 
             <?php echo form_submit('valider', 'Valider'); ?>
