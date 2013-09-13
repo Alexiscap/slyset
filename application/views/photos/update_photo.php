@@ -106,7 +106,14 @@
 			<?php
 				echo validation_errors();
 			?>
-            <?php echo form_submit('submit', 'Modifier la photo'); ?>
+            <?php 
+				if($type==1)
+					{echo form_submit('submit', 'Modifier la photo');}
+				if($type==2)
+					{echo form_submit('submit', 'Modifier l\'album');}
+				if($type==3)
+					{echo form_submit('submit', 'Modifier la vidéo');}
+			?>
         </div>
     </div>
 
