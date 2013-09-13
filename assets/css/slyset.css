@@ -229,7 +229,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .content .partage_reseaux .twitter{ width:30px; height:29px; margin:0; padding:0; background:url('../images/musicien/sprite_info_sup.png') -7px -10px; }
 .content .partage_reseaux .facebook{ width:30px; height:29px; margin:0; padding:0; background:url('../images/musicien/sprite_info_sup.png') -48px -10px; }
 .content .partage_reseaux .google{ width:30px; height:29px; margin:0; padding:0; background:url('../images/musicien/sprite_info_sup.png') -90px -10px; }
-.content #plan_google{ width:233px; height:198px; float:left; margin:0 0 0 10px; margin-bottom : 10px;}
+.content #plan_google{ width:233px; height:198px; float:left; margin: 0px 0 5px 10px;}
 .content .edition{ float:right; margin:-16px 20px 0 0; }
 .content .edition span{ margin:0 5px 0 5px; display:inline-block; text-indent:-50000px; }
 .content .edition .edit{ background:url('../images/musicien/sprite_edition.png') -10px -6px; width:14px; height:14px; }
