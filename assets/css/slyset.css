@@ -160,7 +160,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .content .infos_concert img{ float:left; }
 .content .adr_concert{ width:196px; float:left; margin:0 0px; }
 .content .adr_concert p{ margin:3px; color:#5d5d5b; font-size:14px; line-height:19px;  }
-.content .adr_concert .adr_lieu{ margin:3px; color:#5d5d5b; font-size:14px; font-weight:bold; }
+.content .adr_concert .adr_lieu{ margin: 10px 0 0;color: #5d5d5b;font-size: 14px;font-weight: bold;line-height: 10px; }
 .content .adr_concert .adr_rue{ margin:3px; font-size:12px; }
 .content .adr_concert .adr_ville{ margin:3px; font-size:12px; }
 .content .adr_concert img{ float:left; }
