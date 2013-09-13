@@ -276,6 +276,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .content .comm .commentaire,.content .comment-form .commentaire, .content .comment-form-album .commentaire, .content .comment-form-video .commentaire,.content .photo .comment-form-alb-wall .commentaire{ font-size:10px; color:#888d95;line-height: 12px; }
 .content .comm input[type=text],.content .comment-form input[type=text], .content .comment-form-album input[type=text], .content .comment-form-video input[type=text],.content .comment-form-alb-wall input[type=text]{ float:left; width:70px; border:1px solid #dfdede; margin:5px 0; }
 .content .comm input[type=image],.content .comment-form input[type=submit], .content .comment-form-album input[type=submit], .content .comment-form-video input[type=submit],.content .comment-form-alb-wall input[type=submit]{ clear:both; width:55px; margin:4px 0 0 5px; }
+.content .comment-form-album input[type=submit] {clear: both;width: 55px;margin: 0px 0 3px 5px;background: #ef7663;color: white;}
 .content .photo .edit{ background:rgba(36, 36, 36, 0.7); width:150px; height:22px; position:absolute;top:5px; margin:0;display:none;}
 .content .photo .edit img{ float:right; margin:4px 8px 0 0; }
 .content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:150px; position:absolute; margin:22px 0;top:5px;height: calc(100% - 57px);display:none;text-align:center;}
