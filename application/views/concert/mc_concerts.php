@@ -139,6 +139,11 @@ $loger = $this->session->userdata('logged_in');
     <div class="info_sup" id="more_info_<?php echo $concert_unit->id ?>" style="display:none">
       <div class="informations">
         <p class="nom_date"><?php echo $concert_unit->titre.',' ?> <!--le 28/11/13 &agrave; 20h30--></p>
+        <p id='<?php echo $concert_unit->id;?>' class="lieu_salle">
+  					<span><?php
+						get_date($concert_unit->date,'complete');?>
+					</span>
+				</p>
         <p class="lieu_salle"><?php echo $concert_unit->salle.',' ?></p>
         <p class="lieu_rue"><?php if(isset($concert_unit->numero_adresse,$concert_unit->voie_adresse))echo $concert_unit->numero_adresse." ".$concert_unit->voie_adresse."," ?> </p>
         <p class="lieu_ville"><?php if(isset($concert_unit->code_postal))echo $concert_unit->code_postal." ".$concert_unit->ville;?></p>
