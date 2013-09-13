@@ -90,7 +90,7 @@
 
             </div>
             <div class="label">
-                <img src="<?php echo img_url('musicien/apercu_photo.png'); ?>" alt="visuel photo" />
+               <img id="preview" src="http://127.0.0.1/www/slyset/assets/images/common/apercu_add_photo.png" alt="visuel photo">
             </div>
             <div class="champs">
                 <?php
