@@ -90,7 +90,7 @@
 
             </div>
             <div class="label">
-               <img id="preview" src="http://127.0.0.1/www/slyset/assets/images/common/apercu_add_photo.png" alt="visuel photo">
+                <label>Description</label>
             </div>
             <div class="champs">
                 <?php
