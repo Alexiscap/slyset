@@ -889,7 +889,7 @@ input[type="file"]{ display:block; width:201px; height:30px; float:left; filter:
 
 .content .tout_titre{margin:20px 10px; float:left; clear:both;}
 .content .top_album p, .content .tout_titre p{display:inline-block; margin:0; height:28px; line-height:28px; font-weight:normal;}
-.content .top_album img, .content .tout_titre img{ display:inline; width:12px; height:11px; margin:7px 4px 7px 0; float:left; }
+.content .top_album img, .content .tout_titre img{ display:inline; width:12px; margin:7px 4px 7px 0; float:left; }
 .content .top_album a, .content .tout_titre a{ margin:0 15px 0 0; color:#888d95; font-size:12px; text-decoration:none;float: left; line-height:30px; }
 .content .top_album table a.open_player, .content .tout_titre table a.open_player{ margin:0; width:28px; height:28px; line-height:28px; text-align:center; }
 
