@@ -2,6 +2,6 @@
  	 <div class="pop-in_cent confirmation">
 		<span></span>
 	  <div class="content-pi-cent content-pi-cent_success">
-		<p class='confirm_sup'>Modification éffectuée avec succés</p>
+		<p class='confirm_sup'>Votre photo a bien été ajoutée !</p>
 	  </div>
 	 </div>
