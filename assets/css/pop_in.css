@@ -206,4 +206,4 @@ body { margin:0; font-family:'Trebuchet MS'; }
 .content-pi-cent .prix_morceau input {width:60px;}
 .content-pi-cent .annee_morceau input {width:60px;}
 .content-pi-cent .num_morceau input {width:60px;}
-
+.contact_mess {width: 270px!important;padding: 0 5px;height: 100px;outline: none;word-break: break-word;}
