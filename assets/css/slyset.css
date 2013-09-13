@@ -60,7 +60,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .actus_post form{ clear:both; }
 .actus_post .upload-file-container.container-photo{ margin:0 0 0 17px; width:125px; background:url('../images/musicien/sprite_button_file_photo.png') 0 0 no-repeat; float:left; clear:both; }
 .actus_post .upload-file-container.container-photo input{ width:125px; }
-.upload_photo_name_file{ display:inline-block; height:30px; line-height:30px; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; color:#737578; float:left; }
+.upload_photo_name_file{ display:inline-block; height:30px; line-height:20px; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; color:#737578; float:left; }
 .actus_post_links{ margin:12px 0 0 7px; float:left; }
 .actus_post_links a{ margin:0 0 0 10px; padding:0 4px; height:20px; line-height:20px; display:inline-block; font-size:13px; font-weight:bold; text-decoration:none; color:#737578; background:transparent; }
 .actus_post_links a:hover, .actus_post_links a:active, .actus_post_links a.active{ height:20px; display:inline-block; text-decoration:none; background:#cccccc; }
