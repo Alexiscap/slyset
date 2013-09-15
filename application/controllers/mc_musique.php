@@ -86,7 +86,12 @@ class Mc_musique extends CI_Controller {
         $data['all_alb'] = $this->musique_model->get_list_album($this->session->userdata('uid'));
         $data['all_follower'] = $this->follower_model->get_all_follower_user($infos_profile->id);
         $data['album_nbr'] = $this->musique_model->get_nalb($infos_profile->id);
-
+        $my_like_morceau = $this->musique_model->get_my_like_morceau();
+        //$data['artistes'] = $this->musique_model->get_n_artiste($user_id);
+        $data['all_my_like'] ="";
+        foreach($my_like_morceau as $mlike):
+         $data['all_my_like'] .= '/'.$mlike->morceaux_id.'/';
+         endforeach;
         //var_dump($data['all_morceau_artiste']);
         $this->layout->view('musique/mc_musique', $data);
     }
@@ -109,8 +114,17 @@ class Mc_musique extends CI_Controller {
             $data['all_follower'] = $this->follower_model->get_all_follower_user($user_id);
             $data['album_nbr'] = $this->musique_model->get_nalb($user_id);
             $data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($infos_profile->id);
+
+            $my_like_morceau = $this->musique_model->get_my_like_morceau();
+
+            $data['all_my_like'] ="";
+            foreach($my_like_morceau as $mlike):
+                $data['all_my_like'] .= '/'.$mlike->morceaux_id.'/';
+            endforeach;
+
             $this->layout->view('musique/album', $data);
-        } else {
+        } 
+        else {
             redirect('home/' . $uid, 'refresh');
         }
     }

@@ -11,9 +11,14 @@ class Melo_wall extends CI_Controller {
         parent::__construct();
 
         $this->layout->ajouter_css('slyset');
+        $this->layout->ajouter_css('colorbox');
+
         
         $this->layout->ajouter_js('infinite_scroll');
         $this->layout->ajouter_js('jquery.easing.min');
+        $this->layout->ajouter_js('jquery.colorbox');
+
+        $this->layout->ajouter_js('colorbox');
         
         $this->load->model(array('user_model', 'mc_actus_model', 'melo_actus_model','musique_model','follower_model','achat_model'));
         $this->load->helper('form');

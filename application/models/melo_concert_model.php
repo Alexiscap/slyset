@@ -73,8 +73,8 @@ class Melo_concert_model extends CI_Model {
         $this->db->set(array('Utilisateur_id' => $uid, 'Concerts_id' => $id_concert))
                 ->insert('concerts_activite');
 
-        $this->db->set(array('Utilisateur_id' => $uid, 'concerts_id' => $id_concert, 'type' => "ME"))
-                ->insert('wall_melo_component');
+        /*$this->db->set(array('Utilisateur_id' => $uid, 'concerts_id' => $id_concert, 'type' => "ME"))
+                ->insert('wall_melo_component');*/
         //return $this->returnMarkup($id_concert);
     }
 

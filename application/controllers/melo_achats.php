@@ -18,8 +18,8 @@ class Melo_achats extends CI_Controller {
         $this->layout->ajouter_js('jquery.colorbox');
 
         $this->load->model(array('user_model', 'mc_actus_model', 'achat_model','musique_model','follower_model'));
-        $this->load->helper('form');
-
+        $this->load->helper(array('form','download'));
+        $this->load->library('zip');
         $this->layout->set_id_background('achats');
 
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
@@ -105,6 +105,39 @@ class Melo_achats extends CI_Controller {
 
     public function delete_panier() {
         $this->achat_model->delete_panier($this->input->post("commande"));
+    }
+
+    public function download_file($user_id,$id_commandes)
+    {
+        $id_commande = explode('%20',$id_commandes);
+
+        $info_dnld = $this->achat_model->get_item_for_cmd_dwnld($id_commande);
+
+        foreach ($info_dnld as $path_n => $info_cmd)
+        {
+            if($info_cmd->doc_user != null)
+            {
+                $path_n = "./files/".$info_cmd->alb_user."/albums/".str_replace(" ", "_", $info_cmd->name_alb)."/".$info_cmd->type_doc.'/'.$info_cmd->path_doc;
+            
+                $this->zip->read_file($path_n); 
+
+            }
+            if($info_cmd->doc_user == null && $info_cmd->track_fname !=null)
+            {
+                $path_n = "./files/".$info_cmd->alb_user."/musique/".str_replace(" ", "_", $info_cmd->name_alb)."/".$info_cmd->track_fname;
+                $this->zip->read_file($path_n); 
+            }
+    
+            if($info_cmd->doc_user == null && $info_cmd->track_fname ==null)
+            {
+                $path_n = "./files/".$info_cmd->alb_user."/musique/".str_replace(" ", "_", $info_cmd->name_alb)."/";
+                $this->zip->read_dir($path_n,FALSE); 
+
+            }
+        }
+
+        $this->zip->download('slyset_mes_telechargement.zip');
+
     }
 
 }

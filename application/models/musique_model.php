@@ -62,6 +62,10 @@ class Musique_model extends CI_Model {
                                         ->limit(1)
                                         ->get()
                                         ->result(); 
+                if(empty($pl_or_album)==1)
+                {
+                    return 'no_track';
+                }
                 $morceaux = $this->db->select('morceaux.id,morceaux.filename,playlists.nom,morceaux.nom AS title_track,utilisateur.login,playlists.nom AS title_album,morceaux.duree')
                                     ->from($this->tbl_playlist)
                                     ->join($this->tbl_morceaux, 'playlists.Morceaux_id = morceaux.id')
@@ -403,8 +407,12 @@ class Musique_model extends CI_Model {
         $update_like_morceau_gal = 'UPDATE ilike SET like_value = like_value +1 WHERE Morceaux_id= ?';
         $this->db->query($update_like_morceau_gal, array($morceau));
 
-        $update_like_morceau_user = 'INSERT INTO like_activity_pav (Utilisateur_id,Morceaux_id) VALUES ( ?,?)';
-        $this->db->query($update_like_morceau_user, array($user, $morceau));
+        $data_insert_like = array(
+            'Utilisateur_id' => $user ,
+            'Morceaux_id' => $morceau 
+        );
+
+        $this->db->insert('like_activity_pav', $data_insert_like); 
     }
 
     public function get_my_like_morceau() {
@@ -426,8 +434,8 @@ class Musique_model extends CI_Model {
         $this->db->query($update_like_morceau_user, array($user, $morceau));
     }
 
-    public function delete_morceau_playlist($user, $morceau) {
-        $this->db->delete($this->tbl_playlist, array('Morceaux_id' => $morceau, 'Utilisateur_id' => $user));
+    public function delete_morceau_playlist($user, $morceau,$playlist) {
+        $this->db->delete($this->tbl_playlist, array('Morceaux_id' => $morceau, 'Utilisateur_id' => $user,'nom'=>$playlist));
     }
 
     public function pl_to_panier($user_id, $morceaux_id) {

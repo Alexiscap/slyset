@@ -11,7 +11,7 @@ class Home extends CI_Controller {
         parent::__construct();
         $this->layout->ajouter_css('slyset');
 
-        $this->load->helper(array('cookie', 'form'));
+        $this->load->helper(array('cookie', 'form','date'));
         $this->load->model(array('login_model', 'homepage_model', 'user_model', 'article_model', 'admin_model','achat_model'));
         //      $this->load->model('Facebook_Model');
 
@@ -54,6 +54,35 @@ class Home extends CI_Controller {
         $data['top_morceaux'] = $this->homepage_model->get_top_morceau();
         $data['all_date_calendar'] = "";
         $data['all_info_concert'] = "";
+        $data['top_morceau_fil'] = $this->homepage_model->fil_top_morceau();
+        $a = $this->homepage_model->fil_top_concert();
+        //var_dump($a);
+        $all_item_portail = array_merge($data['top_morceau_fil'],$data['articles']);
+        $timestamp_item = array();
+        foreach ($all_item_portail as $all_date) 
+        {
+            $timestamp_item[] .= mysql_to_unix($all_date->created) ;
+        }
+        rsort($timestamp_item);
+        $date_item = array();
+        foreach ($timestamp_item as $item_time)         
+        {
+            $date_item[] .= unix_to_human($item_time, TRUE, 'eu') ;
+        }
+        $data['flux_portail'] = array();
+
+        foreach ($date_item as $date_desc)
+        {
+            foreach ($all_item_portail as $content_top_fil)
+            {
+                if($content_top_fil->created == $date_desc)
+                {
+                    $data['flux_portail'][] = $content_top_fil;
+                }
+
+            }
+
+        }
 
         foreach ($data['dates'] as $data['date']) {
             $title = "";
@@ -70,9 +99,9 @@ class Home extends CI_Controller {
                         $today = mdate($datestring, $time) . "<pre>";
 
                         if ($today < $data['concert_date_uniq']->date) {
-                            $link = site_url() . "/mc_concerts/" . $data['concert_date_uniq']->Utilisateur_id . '/#' . $data['concert_date_uniq']->id;
+                            $link = site_url() . "/concert/" . $data['concert_date_uniq']->Utilisateur_id . '/#' . $data['concert_date_uniq']->id;
                         } else {
-                            $link = site_url() . "/mc_concerts/concert_passe/" . $data['concert_date_uniq']->Utilisateur_id . '/#' . $data['concert_date_uniq']->id;
+                            $link = site_url() . "/concert/archive/" . $data['concert_date_uniq']->Utilisateur_id . '/#' . $data['concert_date_uniq']->id;
                         }
 
                         $title .= '<a href=' . $link . '> ' . $data['concert_date_uniq']->titre . ' + ' . $data['concert_date_uniq']->seconde_partie . ' </a> </br> ' . $data['concert_date_uniq']->salle . ' - ' . $data['concert_date_uniq']->ville . '</br>';

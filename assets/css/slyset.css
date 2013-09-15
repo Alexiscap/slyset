@@ -602,8 +602,8 @@ cursor : pointer;}
 .wall-flux-content .wall-flux-content-text{ margin:0 0 10px 0; }
 .wall-flux-content .wall-flux-content-text ol, .wall-flux-content .wall-flux-content-text li, .wall-flux-content .wall-flux-content-text img{ margin:5px 0 -7px 0 ; width:100%; }
 .wall-flux-content .wall-flux-content-text .wall-flux-content-text-chapeau{ font-weight:bold; }
-.wall-flux-content .wall-flux-content-right-text{ margin-left:185px; padding-bottom:20px; }
-.wall-flux-content .wall-flux-content-left-picture .img-blog-artiste-carre{ position:absolute; margin :19px 15px 15px 15px; }
+.wall-flux-content .wall-flux-content-right-text{ margin-left:185px; padding-bottom:20px; height : 100%; }
+.wall-flux-content .wall-flux-content-left-picture .img-blog-artiste-carre{ position:absolute; margin :19px 15px 15px 15px; widt }
 .wall-flux-content .wall-flux-content-goto-profile{ color:#f05f4c; font-size:14px; float:right; margin-top:-17px; margin-right:20px; padding:10px; } 
 /*#e6e6e6*/
 #wall-flux .ajax_loader, .melo_actu .ajax_loader2{ text-align:center; width:100%; position:absolute; bottom:0; }
@@ -1251,7 +1251,7 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 .content .playlist #articles-tab .article-title .miniat_titre .add:hover{background-position:-56px -22px;}
 .content .playlist #articles-tab .article-title .miniat_titre .cadis:hover{background-position:-76px -23px;}
 .content .playlist #articles-tab .article-title .miniat_titre .cadis_actif{background:url('../images/common/sprite_edit_titre.png');background-position:-76px -23px;}
-.content .playlist #articles-tab .article-title .miniat_titre .coeur_actif{background:url('../images/common/sprite_edit_titre.png'); background-position:-20px -22px;}
+.content #articles-tab .article-title .miniat_titre .coeur_actif{background:url('../images/common/sprite_edit_titre.png'); background-position:-20px -22px;}
 .content .cadis_pl{float:right;width:93px;height:30px;background:url('../images/common/bt_cadis.png');border:none;color:white;padding:0 0 0 25px;font-weight:bold;font-size:14px;margin:10px 0;}
 .content .bt_supp_playlist{float:right;width:108px;height:30px;background:url('../images/common/bt_supp_pl.png');border:none;color:white;padding:0 0 0 17px;font-weight:bold;font-size:13px;margin:10px;}
 

@@ -225,13 +225,14 @@ class Photo_model extends CI_Model {
         if ($album_name != null || $album_name != '') {
             $this->db->set(array('Utilisateur_id' => $user_name, 'file_name' => $album_file_name, 'nom' => $album_name, 'Photos_id' => $last_id_photos))
                     ->insert($this->table_album);
-
+        /*
             $data_add_cmty_photo = array('Utilisateur_id' => $user_name, 'photos_id' => $photo_last_id, 'albums_media_file_name' => $album_file_name, 'type' => "MU");
             $this->db->insert('wall_melo_component', $data_add_cmty_photo);
+        */
         } else {
 
             $data_add_cmty_photo = array('Utilisateur_id' => $user_name, 'photos_id' => $photo_last_id, 'type' => "MU");
-            $this->db->insert('wall_melo_component', $data_add_cmty_photo);
+          //  $this->db->insert('wall_melo_component', $data_add_cmty_photo);
         }
     }
 
@@ -377,8 +378,8 @@ class Photo_model extends CI_Model {
         $this->db->set(array('Photo_id' => $id_photo, 'Utilisateur_id' => $id_user))
                 ->insert('like_activity_pav');
 
-        $data_delete_act = array('Utilisateur_id' => $id_user, 'photos_id' => $id_photo, 'type' => "ME");
-        $this->db->insert('wall_melo_component', $data_delete_act);
+       /* $data_delete_act = array('Utilisateur_id' => $id_user, 'photos_id' => $id_photo, 'type' => "ME");
+        $this->db->insert('wall_melo_component', $data_delete_act);*/
     }
 
     public function insert_like_a($file_name_album, $id_user) {
@@ -406,8 +407,8 @@ class Photo_model extends CI_Model {
         $this->db->set(array('Video_id' => $video_id, 'Utilisateur_id' => $id_user))
                 ->insert('like_activity_pav');
 
-        $data_delete_act = array('Utilisateur_id' => $id_user, 'videos_id' => $video_id, 'type' => "ME");
-        $this->db->insert('wall_melo_component', $data_delete_act);
+        /*$data_delete_act = array('Utilisateur_id' => $id_user, 'videos_id' => $video_id, 'type' => "ME");
+        $this->db->insert('wall_melo_component', $data_delete_act);*/
     }
 
     public function delete_like($id_photo, $id_user) {
@@ -476,18 +477,18 @@ class Photo_model extends CI_Model {
                     ->insert($this->table_album);
 
             $data_add_cmty_photo = array('Utilisateur_id' => $user_id,'videos_id' => $id_video, 'albums_media_file_name' => $album_nom, 'type' => "MU");
-            $this->db->insert('wall_melo_component', $data_add_cmty_photo);
+          //  $this->db->insert('wall_melo_component', $data_add_cmty_photo);
         } else {
 
             $data_add_cmty_photo = array('Utilisateur_id' => $user_id, 'videos_id' => $id_video, 'type' => "MU");
-            $this->db->insert('wall_melo_component', $data_add_cmty_photo);
+           // $this->db->insert('wall_melo_component', $data_add_cmty_photo);
         }
         
 
 
         $data_delete_act = array('Utilisateur_id' => $user_id, 'videos_id' => $last_id_video, 'type' => "MU");
 
-        $this->db->insert('wall_melo_component', $data_delete_act);
+        //$this->db->insert('wall_melo_component', $data_delete_act);
     }
 
     public function delete_photo($id_photo) {
