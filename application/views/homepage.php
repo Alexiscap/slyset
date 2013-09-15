@@ -103,7 +103,7 @@ if (isset($all_date_calendar))
                             <div class="tab-top-song-col-texte">
                                 <div class="tab-top-song-col-texte-img"><a href="<?php echo base_url('index.php/mc_musique/player/'.$top_morceau->loggin_id.'/album/'.$top_morceau->name_alb.'/'.$top_morceau->id_track);?>" class="open_player"><img  src="<?php echo img_url('sidebar-right/lecture.png'); ?>"></a></div>  				
                                 <div class="tab-top-song-col-texte-titre">
-                                    <?php echo $title = (strlen($top_morceau->nom) > 20) ? substr($top_morceau->nom,0,17).'...' : $top_morceau->nom; ?></br>
+                                    <?php echo $top_morceau->nom ?></br>
                                     <span class="tab-top-song-col-texte-artiste"><?php echo $top_morceau->login ?></span>
                                 </div>
                             </div>
@@ -173,64 +173,32 @@ if (isset($all_date_calendar))
                             <span class="newbies-people-type"><?php echo $type = ($newbie->type == 1) ? 'Mélomane' : 'Musicien'; ?></span>
                         </div>
                     </div>
-                <?php endforeach; ?>
+<?php endforeach; ?>
             </div>
         </div>
     </div>
+        
     <div id="wall-flux">
-<?php
-        foreach ($articles as $article):
-           // if(isset($article->article)):
-?>
-                <div class="wall-flux-content" >
-                    <p class="wall-flux-content-title">
-                        <?php echo $article->titre; ?>
-                    </p>
+<?php foreach ($articles as $article): ?>
+            <div class="wall-flux-content" >
+                <p class="wall-flux-content-title">
+<?php echo $article->titre; ?>
+                </p>
 
-                    <p class="wall-flux-content-subtitle">
-                        Publié par Slyset, le <?php echo strftime("%A %d %B %Y à %Hh%M ", strtotime($article->updated)); ?>
-                    </p>
+                <p class="wall-flux-content-subtitle">
+                    Publié par Slyset, le <?php echo strftime("%A %d %B %Y à %Hh%M ", strtotime($article->updated)); ?>
+                </p>
 
-                    <div class="wall-flux-content-text">
-                        <?php echo htmlspecialchars_decode($article->article); ?>
-                        <div class="partage">
-                            <a href="#"><img src="<?php echo img_url('common/img_fb.png') ?>" alt="logo Facebook"/></a>
-                            <a href="#"><img src="<?php echo img_url('common/img_twitter.png') ?>" alt="logo Twitter"/></a>
-                            <a href="#"><img src="<?php echo img_url('common/img_gplus.png') ?>" alt="logo Google+"/></a>
-                        </div>
-                    </div>
+                <div class="wall-flux-content-text">
+<?php echo htmlspecialchars_decode($article->article); ?>
+<div class="partage">
+	<a href="#"><img src="<?php echo img_url('common/img_fb.png') ?>" alt="logo Facebook"/></a>
+	<a href="#"><img src="<?php echo img_url('common/img_twitter.png') ?>" alt="logo Twitter"/></a>
+	<a href="#"><img src="<?php echo img_url('common/img_gplus.png') ?>" alt="logo Google+"/></a>
+</div>
                 </div>
-            <?php 
-           // endif;
-
-        //    if(isset($article->description)):
-?>
-           <!--     <div class="wall-flux-content">
-                    <div class="wall-flux-content-left-picture">
-                        <img class="img-blog-artiste-carre" src="<?php echo files('profiles/'.$article->thumb) ?>">
-
-                    </div>
-                    <div class="wall-flux-content-right-text">
-                        <!-- <p class="wall-flux-content-title">L’évènement à ne pas rater</p>-->
-<!--
-                        <p class="wall-flux-content-title">Les internautes ont aimé...</p>
-
-                        <p class="wall-flux-content-subtitle"><?php echo $article->login ?> - <?php echo $article->nom ?></p>
-
-                        <!--<p class="wall-flux-content-subtitle">Bob Dylan à l’Aéronef, le 28/11/2013</p>--><!--
-                        <p class="wall-flux-content-text"><?php echo $article->description ?>
-                        </p>
-                                                <a href="<?php echo base_url('index.php/actualite/'.$article->Utilisateur_id) ?>"><p class="wall-flux-content-goto-profile">Voir le profil &rarr;</p></a>
-
-                       <!-- <p class="wall-flux-content-goto-profile">Voir le concert &rarr;</p>--><!--
-                    </div>
-                </div>
--->
-                <?php
-         //   endif;
-        endforeach; 
-
-?>
+            </div>
+<?php endforeach; ?>
 
         <div class="ajax_loader"></div>
 
@@ -261,9 +229,32 @@ if (isset($all_date_calendar))
                 <img class="img-blog-artiste" src="<?php echo img_url('portail/bobd.png') ?>">
               </div>
 
+              <div class="wall-flux-content">
+                <div class="wall-flux-content-left-picture">
+                  <img class="img-blog-artiste-carre" src="<?php echo img_url('portail/grandville.png') ?>">
+                </div>
 
+                <div class="wall-flux-content-right-text">
+                  <p class="wall-flux-content-title">Les internautes ont aimé...</p>
+                  <p class="wall-flux-content-subtitle">Granville - Jersey</p>
+                  <p class="wall-flux-content-text">Granville, groupe de pop naïve en français basé à Caen, chante une adolescence tantôt sauvage et souvent rêveuse. Rappelant aussi bien le yéyé français des années soixante (France Gall, Françoise Hardy…) que la pop garage américaine (Best Coast, Tennis..).
+                  </p>
+                  <p class="wall-flux-content-goto-profile">L’espace de Granville &rarr;</p>
+                </div>
+              </div>
 
--->
+              <div class="wall-flux-content">
+                <div class="wall-flux-content-left-picture">
+                  <img class="img-blog-artiste-carre" src="<?php echo img_url('portail/bob-carre.png') ?>">
+
+                </div>
+                <div class="wall-flux-content-right-text">
+                  <p class="wall-flux-content-title">L’évènement à ne pas rater</p>
+                  <p class="wall-flux-content-subtitle">Bob Dylan à l’Aéronef, le 28/11/2013</p>
+                  <p class="wall-flux-content-text">Chaque année depuis trois ans, Lille Métropole organise une course sur le Grand Boulevard, suivie d’un concert gratuit en plein air. Cette fois, l’Aéronef, le Grand Mix et La Cave aux Poètes ont conjointement pensé la programmation du plateau Place Mitterrand.
+                  </p>
+                  <p class="wall-flux-content-goto-profile">Voir le concert &rarr;</p>
+                </div>-->
     </div>
 
     <div id="home-sidebar-right">

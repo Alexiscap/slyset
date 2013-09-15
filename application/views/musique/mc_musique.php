@@ -113,12 +113,7 @@ $loger = $this->session->userdata('logged_in');
 		?>
 		<div id="une_alb">
         <div class="a_la_une">
-            <?php if ($album_alaune[0]->img_cover!= null):?>
             <img src="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$album_alaune[0]->nom).'/'.$album_alaune[0]->img_cover); ?>" class="alb_cover"/>
-            <?php endif;?>
-            <?php if ($album_alaune[0]->img_cover== null):?>
-            <img src="<?php echo img_url('sidebar-right/default-photo-profil.png'); ?>" class="alb_cover"/>
-            <?php endif;?>
             <img src="<?php echo img_url('portail/alaune.png'); ?>" class="bandeau_top bandeau_une"/>
             <div class="player">
                 <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$album_alaune[0]->nom); ?>" class="open_player"><img src="<?php echo img_url('musicien/player_top.png'); ?>"/></a>
@@ -126,8 +121,8 @@ $loger = $this->session->userdata('logged_in');
             <div class="infos">
                 <p class="title"><?php echo $album_alaune[0]->nom; ?></p>
                 <p class="annee_crea"><?php echo $album_alaune[0]->annee; ?></p>
-                <p><?php if (isset($album_alaune[0]->livret_path)): ?><span>> </span><a href="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$album_alaune[0]->nom).'/livret/'.$album_alaune[0]->livret_path); ?>"><?php  echo 'Voir le livret d\'album'; ?></a><?php endif; ?></p>
-                <p><?php if (isset($album_alaune[0]->doc_id)): ?><span>> </span><a href="<?php echo base_url('index.php/document/'.$uid_visit.'#album-'.$album_alaune[0]->id) ?>">Voir les partitions</a><?php endif; ?></p>
+                <p><?php if (isset($album_alaune[0]->livret_path)): ?><span>> </span><a href="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$album_alaune[0]->nom).'/'.$album_alaune[0]->livret_path); ?>"><?php  echo 'Voir le livret d\'album'; ?></a><?php endif; ?></p>
+                <p><?php if (isset($album_alaune[0]->doc_id)): ?><span>> </span><a href="#">Voir les partitions</a><?php endif; ?></p>
             </div>
         </div>
         
@@ -173,21 +168,7 @@ $loger = $this->session->userdata('logged_in');
                                                 <a href="#" class="delete"><span></span></a>
                                                 <a href="<?php echo site_url('pop_in_general/edit_musique/'.$session_id.'/'.$morceau_alune->id); ?>" class="edit iframe"><span></span></a>
                                             <?php endif; ?>
-                                             
-                                                            
-                                                <!-- ICON COEUR / LIKE -->
-                                                <?php 
-                                                if(substr_count($all_my_like,'/'.$morceau_alune->id.'/')>=1)
-                                                {?>
-                                        
-                                                    <a href="javascript:void(0)" class="coeur_actif"></a>
-                                                
-                                                <?php }
-                                                if(substr_count($all_my_like,'/'.$morceau_alune->id.'/')==0)
-    
-                                                {   ?>  
-                                                    <a href="javascript:void(0)" class="coeur"></a><?php
-                                                }?>
+                                            <a href="#" class="coeur"><span></span></a>
                                             <a href="#" class="add"><span></span></a>
                                           <!--  <a href="#" class="cam"><span>cam</span></a>-->
                                         </div>
@@ -248,19 +229,7 @@ $loger = $this->session->userdata('logged_in');
                                                 <a href="#" class="delete"><span></span></a>
                                                 <a href="<?php echo site_url('pop_in_general/edit_musique/'.$session_id.'/'.$morceau_artiste->id); ?>" class="edit iframe"><span></span></a>
                                             <?php endif; ?>
-                                            <!-- ICON COEUR / LIKE -->
-                                                <?php 
-                                                if(substr_count($all_my_like,'/'.$morceau_artiste->id.'/')>=1)
-                                                {?>
-                                        
-                                                    <a href="javascript:void(0)" class="coeur_actif"></a>
-                                                
-                                                <?php }
-                                                if(substr_count($all_my_like,'/'.$morceau_artiste->id.'/')==0)
-    
-                                                {   ?>  
-                                                    <a href="javascript:void(0)" class="coeur"></a><?php
-                                                }?>
+                                            <a href="#" class="coeur"><span></span></a>
                                             <a href="#" class="add"><span></span></a>
                                           <!--  <a href="#" class="cam"><span>cam</span></a>-->
                                         </div>
