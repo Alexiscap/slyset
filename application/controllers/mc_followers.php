@@ -11,7 +11,11 @@ class Mc_followers extends CI_Controller {
         parent::__construct();
 
         $this->layout->ajouter_css('slyset');
-
+        $this->layout->ajouter_css('pop_in');
+        $this->layout->ajouter_css('colorbox');
+        
+        $this->layout->ajouter_js('jquery.colorbox');
+        
         $this->load->model(array('perso_model', 'user_model', 'follower_model','achat_model'));
         $this->load->helper('form');
 

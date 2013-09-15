@@ -3,7 +3,7 @@
     $uid = (empty($session_id)) ? '' : $session_id;
     $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
     $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
-
+    $loger = $this->session->userdata('logged_in');
 ?>
 
 <div id="contentAll">
@@ -20,8 +20,10 @@
     <div id="cover" style="background-image:url(<?php echo files('profiles/' . $cover = (empty($infos_profile)) ? $this->session->userdata('cover') : $infos_profile->cover); ?>);">
         <div id="infos-cover">
             <h2><?php echo $login; ?></h2><!--
-            <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a>
-       --> </div>
+            <a href="#"><span class="button_left"></span><span class="button_center">Suivre</span><span class="button_right"></span></a> -->
+                
+            <?php if($loger == 1 && $infos_profile->id != $session_id): ?><a class="contact-user iframe" href="<?php echo site_url('contacter/'.$uid_visit); ?>"><span class="button_left_abonne"></span><span class="button_center_abonne">Contacter</span><span class="button_right_abonne"></span></a><?php endif; ?>
+        </div>
     </div>
 
     <div id="stats-cover">
@@ -76,8 +78,8 @@
         </div>
     </div> 
     
-    <div id = "content" class="content">  
-    <h1>Fil d'actualité</h1>
+    <div id="content" class="content">  
+    <h2>Fil d'actualité</h2>
         <?php
       
         if (isset($data_all_wall)):
@@ -377,7 +379,7 @@
   			if($entity_wall->type =='MU'):
   			?>
   				<div id ="<?php echo $entity_wall->id?>" class="artist_post photo_message">
-      				<div class="top"   class="top" id="<?php echo $entity_wall->id?>">
+      				<div class="top" class="top" id="<?php echo $entity_wall->id?>">
         				<?php 
         				if($this->uri->segment(2)==$this->session->userdata('uid')):
 ?>

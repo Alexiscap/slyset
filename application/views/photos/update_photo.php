@@ -10,11 +10,11 @@
 				$type = $this->uri->segment(5);
 
 		if($type==1)
-			{echo "<span class='confirm_sup'>Modifier une photo ?</span><br />" ;}
+			{echo "<span class='confirm_sup'>Modifier une photo</span><br />" ;}
 		if($type==2)
-			{echo "<span class='confirm_sup'>Modifier un album ?</span><br />" ;}
+			{echo "<span class='confirm_sup'>Modifier un album</span><br />" ;}
 		if($type==3)
-			{echo "<span class='confirm_sup'>Modifier une vidéo ?</span><br />" ;}
+			{echo "<span class='confirm_sup'>Modifier une vidéo</span><br />" ;}
 	?>
 
     <div class="content-pi-cent">
@@ -61,7 +61,7 @@
 					</ul>
 					
 					<div id='un_album'>
-                        <input  id="create" type="text" value="" autocomplete="off" placeholder="creer un nouvel album"/><div id="create_ok"  onclick="selectalbumcreate()"><img src="<?php echo img_url('common/creer_album.png'); ?>" alt="ok" /></div>
+                        <input  id="create" type="text" value="" autocomplete="off" placeholder="Créer un nouvel album"/><div id="create_ok"  onclick="selectalbumcreate()"><img src="<?php echo img_url('common/creer_album.png'); ?>" alt="ok" /></div>
                     </div>
 				</div>
 			<?php }else if($type == 2)
@@ -90,7 +90,7 @@
 
             </div>
             <div class="label">
-                <img src="<?php echo img_url('musicien/apercu_photo.png'); ?>" alt="visuel photo" />
+                <label>Description</label>
             </div>
             <div class="champs">
                 <?php
@@ -106,7 +106,14 @@
 			<?php
 				echo validation_errors();
 			?>
-            <?php echo form_submit('submit', 'Modifier la photo'); ?>
+            <?php 
+				if($type==1)
+					{echo form_submit('submit', 'Modifier la photo');}
+				if($type==2)
+					{echo form_submit('submit', 'Modifier l\'album');}
+				if($type==3)
+					{echo form_submit('submit', 'Modifier la vidéo');}
+			?>
         </div>
     </div>
 

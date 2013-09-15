@@ -29,7 +29,7 @@
                 );
                 ?><div class="bt_noir bt_photo_up">
                 <?php echo form_upload($data); ?>
-				<span class="upload_photo">aucun fichier choisi</span>
+				<span class="upload_photo">Aucun fichier choisi</span>
                 </div>
             </div>
 

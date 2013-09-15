@@ -120,7 +120,7 @@ body { margin:0; font-family:'Trebuchet MS'; }
 /* --------------- FIN POP IN ----------- */
 
 /* ---------- POP IN 100% ------------- */
-.pop-in_cent{ width:99.6%; background:#eff4f3; border:1px solid #bbbbbb; border-radius:5px; overflow:hidden; margin:0; }
+.pop-in_cent{ width:99.6%; background:#eff4f3; border:1px solid #bbbbbb; border-radius:5px; overflow-x:hidden; margin:0; }
 .pop-in_cent span{ text-indent:20px; height:50px; padding-top:25px; width:100%; border-bottom:1px solid #e0e4e6; float:left; font-size:18px; color:#4e4e4e; }
 .pop-in_cent span.upload_photo{ text-indent:0; height:auto; padding-top:0; width:auto; border-bottom:none; float:left; font-size:12px; color:#4e4e4e; margin:5px 5px; }
 .pop-in_cent span.euro{ padding:0; width:10px; text-indent:5; height:25px; margin-bottom:25px; border:none; }
@@ -129,7 +129,7 @@ body { margin:0; font-family:'Trebuchet MS'; }
 
 .content-pi-cent .label { width:123px; float:left; margin:15px 0 0 0; text-align:right; }
 .content-pi-cent .label label{ background:white; padding:0 12px 0 0; font-size:16px; color:#4e4e4e; }
-.content-pi-cent .label img{ width:85px; height:73px; margin:0 12px 0 40px; float:left; }
+.content-pi-cent .label img{ width:85px; height:73px; margin:0 12px 0 30px; float:left; }
 .content-pi-cent .champs img{ width:85px; height:73px; margin-left:0; }
 .content-pi-cent .champs { width:306px; float:left; margin:15px 0 0 12px; }
 .content-pi-cent .champs input{ width:270px; padding:0 5px; outline:none; float:left; }
@@ -149,7 +149,7 @@ body { margin:0; font-family:'Trebuchet MS'; }
 .content-pi-cent .champs_prix input{ width:50px; padding:0 5px; outline:none; margin:15px 0 0 10px; }
 .content-pi-cent .champs select{ width:296px; padding:0 0 0 5px; outline:none }
 .content-pi-cent .champs .descript-vid{ width:300px; padding:0 5px; height:73px; outline:none; word-break:break-word; }
-.content-pi-cent input[type="submit"]{ clear:both; width:auto; min-width:90px; height:30px; margin:30px 135px; background:#ef7363; color:white; font-weight:bold; font-size:16px; }
+.content-pi-cent input[type="submit"]{ clear:both; width:auto; min-width:90px; height:30px; margin:30px 135px; background:#ef7363; color:white; font-weight:bold; font-size:14px; }
 .content-pi-cent input[type="submit"]:hover{ cursor:pointer; box-shadow:0px 0px 5px #ef7363; }
 .content-pi-cent .champs .bt_noir{ height:30px; float:left; margin:0; }
 .content-pi-cent .champs .bt_photo_up{ background:url('../images/subscription/sprite_button_file_thumb.png') 0 -28px no-repeat; }
@@ -206,4 +206,4 @@ body { margin:0; font-family:'Trebuchet MS'; }
 .content-pi-cent .prix_morceau input {width:60px;}
 .content-pi-cent .annee_morceau input {width:60px;}
 .content-pi-cent .num_morceau input {width:60px;}
-
+.contact_mess {width: 270px!important;padding: 0 5px;height: 100px;outline: none;word-break: break-word;}

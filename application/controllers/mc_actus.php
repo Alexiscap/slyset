@@ -11,6 +11,10 @@ class Mc_actus extends CI_Controller {
         parent::__construct();
         
         $this->layout->ajouter_css('slyset');
+        $this->layout->ajouter_css('pop_in');
+        $this->layout->ajouter_css('colorbox');
+        
+        $this->layout->ajouter_js('jquery.colorbox');
         $this->layout->ajouter_js('infinite_scroll');
         $this->layout->ajouter_js('jquery.easing.min');
 

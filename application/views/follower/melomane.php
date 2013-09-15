@@ -26,7 +26,10 @@ $loger = $this->session->userdata('logged_in');
    			<?php endif;
      		if($loger==1&&$infos_profile->id != $session_id&&($infos_profile->type==2)&&(substr_count($community_follower,$infos_profile->id)>0)): ?>
      			<a href="#" class="delete-follow" id="<?php echo $this->uri->segment(3)?>"><span class="button_left_abonne"></span><span class="button_center_abonne">Ne plus suivre</span><span class="button_right_abonne"></span></a>
-    		<?php endif;?>     </div>
+    		<?php endif;?>
+                
+            <?php if($loger == 1 && $infos_profile->id != $session_id): ?><a class="contact-user iframe" href="<?php echo site_url('contacter/'.$uid_visit); ?>"><span class="button_left_abonne"></span><span class="button_center_abonne">Contacter</span><span class="button_right_abonne"></span></a><?php endif; ?>
+        </div>
     </div>
 
   <div id="stats-cover">
