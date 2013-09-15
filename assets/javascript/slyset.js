@@ -170,6 +170,27 @@ $(document).ready(function(){
         $('audio').bind('play', function(){
             var currentAudio = $('ul li.playing').text();
             $('#played .infos .ecoute', window.opener.document).hide().html(currentAudio).fadeIn('fast');
+        	
+        	//show info on player (left side)
+        	$('.title').text($('.playing .track').text());
+        	$('.artist').text($('.playing .artiste').text());
+        	var img_cover = $('.playing .cover_alb').attr('href');
+        	$('.current-music').css("background", "url("+img_cover+") no-repeat 0 0 transparent");  
+        	$('.current-music').css("background-size", "100%");  
+        	
+        	//increment ecoute value 
+        	var id_morceau = $('.playing .cover_alb').attr('id');
+        	var dataecoute = 'id_morceau='+id_morceau;
+        	$.ajax({
+            type: "POST",
+            url : base_url +'/mc_musique/calcul_ecoute',
+                data: dataecoute,
+                success: function(){
+                }
+            });
+        	        	
+
+
         });
         $('audio').bind('pause', function(){
             var currentAudio = $('ul li.playing').text();
@@ -276,6 +297,9 @@ $(document).ready(function(){
         //                    console.log(this.currentTime);
         //                    console.log((this.currentTime / this.duration) * 100);
         });
+
+        
+        
     }
     //    $('audio').bind("play", function(){
     //        var currentAudio = $('ul li.playing').text();

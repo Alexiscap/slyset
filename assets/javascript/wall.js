@@ -1,6 +1,7 @@
 $( document ).ready(function() 
 {
-   $('.top').click(function(){
+   $('.top').click(function(e){
+    e.preventDefault();
       	var baseurl = window.location.host;
 
    		var id_wall = $(this).attr('id');

@@ -32,7 +32,7 @@
                     <span class="txt-ecoute">Vous écoutez ...</span>
                 </div>
 
-                <div class="current-music" style="background:url('<?php echo base_url() . 'assets/images/player/bkg-current.png'; ?>') no-repeat 0 0 transparent;">
+                <div class="current-music" style="background:url('<?php echo base_url() . 'assets/images/player/bkg-current.png'; ?>') no-repeat 0 0 transparent;background-size:100%;">
                     <div class="infos-txt">
                         <h2 class="title">Comme Together</h2>
                         <p class="artist">The Beatles</p>
@@ -56,6 +56,7 @@
             </div>
 
             <div class="content-right">
+
                 <?php 
                 if ($playlists == 'no_track') 
                 {
@@ -76,21 +77,25 @@
                             <span class="txt-ecoute"><?php echo ucfirst($this->uri->segment(4))?>: <?php echo $playlist->nom  ?> <?php if($playlists[2]!= null) echo '<span class="more_albpl"> <img width="30px" src="'.img_url('player/tritrait.png').'"> </span>' ?> </span>
                         </div>
                             
-                        <?php if($playlists[2]!= null): ?>
+                        <?php 
+                        if($playlists[2]!= null): 
+                        ?>
                            <div class="modal_alert drop"><p>Selectionner une playlist</p>
                                
                                 </br>
                     
 <?php
-                            foreach ($playlists[2] as $all_name_albpl): ?>
-                              <span><?php echo ucfirst($this->uri->segment(4))?>: <a href="<?php echo base_url('index.php/mc_musique/player/'.$this->uri->segment(3).'/'.$this->uri->segment(4).'/'.$all_name_albpl->nom) ?>"><?php echo $all_name_albpl->nom  ?></span>
+                                foreach ($playlists[2] as $all_name_albpl):
+                                 ?>
+                                    <span><?php echo ucfirst($this->uri->segment(4))?>: <a href="<?php echo base_url('index.php/mc_musique/player/'.$this->uri->segment(3).'/'.$this->uri->segment(4).'/'.$all_name_albpl->nom) ?>"><?php echo $all_name_albpl->nom  ?></a></span>
 
                                 <!--<div class="top">
                                     <span class="txt-ecoute"><?php echo ucfirst($this->uri->segment(4))?>: <a href="<?php echo base_url('index.php/mc_musique/player/'.$this->uri->segment(3).'/'.$this->uri->segment(4).'/'.$all_name_albpl->nom) ?>"><?php echo $all_name_albpl->nom  ?></a></span>
                                 </div>-->
-                            <?php endforeach; 
+                                <?php 
+                                endforeach; 
                             ?>
-                         </div>
+                            </div>
                             <?php
                         endif;
                         ?>
@@ -99,7 +104,10 @@
                             <ul>
                                 <?php  foreach ($playlists[1] as $morceaux): 
                                     if ($morceaux->nom == $playlist->nom): ?>
-                                        <li><a href="#" data-src="<?php echo base_url() .'files/'.$this->uri->segment(3).'/musique/'.str_replace(' ','_',$morceaux->title_album).'/'.$morceaux->filename; ?>"><div class="track"><?php if(strlen($morceaux->title_track)<21) { echo $morceaux->title_track ;} else {echo substr($morceaux->title_track, 0,18).' ...';}?></div> <div class="artiste"><?php echo $morceaux->login ?></div></a></li>
+                                        <li>
+                                            <a href="#" data-src="<?php echo base_url() .'files/'.$this->uri->segment(3).'/musique/'.str_replace(' ','_',$morceaux->title_album).'/'.$morceaux->filename; ?>"><div class="track"><?php if(strlen($morceaux->title_track)<21) { echo $morceaux->title_track ;} else {echo substr($morceaux->title_track, 0,18).' ...';}?></div> <div class="artiste"><?php echo $morceaux->login ?></div></a>
+                                            <span class="cover_alb" id="<?php echo $morceaux->id ?>" style="visibility:hidden" href="<?php echo files($morceaux->user_id_cur.'/albums/'.str_replace(' ','_',$morceaux->title_album).'/'.$morceaux->cover_path)?>"></span>
+                                        </li>
                                         <!-- <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Luno.mp3'; ?>">2222<?php  echo $morceaux->title_track  ?></a></li>
                                         <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Compliments.mp3'; ?>">3333<?php  echo $morceaux->title_track  ?></a></li>
                                         -->
@@ -109,7 +117,8 @@
                         </div>
                         <!--</ol>-->
                         </br>
-                    <?php  endforeach; 
+                    <?php  
+                    endforeach; 
                 }
                 ?>
 

@@ -169,6 +169,13 @@ class Mc_musique extends CI_Controller {
         $this->load->view('musique/player', $data);
     }
 
+    public function calcul_ecoute()
+    {
+        $id_track = $this->input->post('id_morceau');
+        $this->musique_model->increment_ecoute($id_track);
+
+    }
+
     public function do_upload_musique() {
         $this->load->library('upload');
         $uid = $this->session->userdata('uid');

@@ -64,6 +64,16 @@ $loger = $this->session->userdata('logged_in');
  
  
   		<?php 
+  		if(empty($get_album)==1): ?>
+  			
+  			<div class="text-empty"><?php
+
+  			echo $login.' n\'a aucun document disponible pour le moment';
+  			?>
+  			</div>
+  			<?php
+  		endif;
+
   		foreach($get_album as $album):
 		?>
  			<div class="a_la_une_parti">

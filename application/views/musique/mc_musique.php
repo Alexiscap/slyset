@@ -212,7 +212,7 @@ $loger = $this->session->userdata('logged_in');
             <input type="button" value="Acheter" class="bt_cadis all_track"/>
             <input type="button" value="Dans ma playlist" class="bt_playlist all_track"/>
             
-            <a href="<?php echo site_url('mc_musique/player/'.$uid_visit.'/album'); ?>" class="open_player">
+            <a href="<?php echo site_url('mc_musique/player/'.$uid_visit.'/albums'); ?>" class="open_player">
                 <img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
                 <p>&Eacute;couter les morceaux de <?php echo $login?></p>
             </a>

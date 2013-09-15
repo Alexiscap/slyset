@@ -12,7 +12,7 @@ echo form_open('pop_in_general/paiement');
     <h2>Choisissez votre moyen de paiement</h2>
 	<div class="moyen_pmt">
 		<img class="select" src="<?php echo img_url('common/pmt_cb.png'); ?>" alt="CB" />
-		<img src="<?php echo img_url('common/pmt_ppal.png'); ?>" alt="Paypal" />
+		<a target="_blank" href="https://www.paypal.com/fr/cgi-bin/webscr?cmd=_login-submit"><img src="<?php echo img_url('common/pmt_ppal.png'); ?>" alt="Paypal" /></a>
 		<span>Payer avec une carte bancaire</span>
 		<span>Payer avec un compte Paypal</span>
 	</div>

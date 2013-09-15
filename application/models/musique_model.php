@@ -66,10 +66,11 @@ class Musique_model extends CI_Model {
                 {
                     return 'no_track';
                 }
-                $morceaux = $this->db->select('morceaux.id,morceaux.filename,playlists.nom,morceaux.nom AS title_track,utilisateur.login,playlists.nom AS title_album,morceaux.duree')
+                $morceaux = $this->db->select('morceaux.id,morceaux.filename,playlists.nom,morceaux.nom AS title_track,utilisateur.id AS user_id_cur,utilisateur.login,albums.nom AS title_album,morceaux.duree,albums.img_cover AS cover_path')
                                     ->from($this->tbl_playlist)
                                     ->join($this->tbl_morceaux, 'playlists.Morceaux_id = morceaux.id')
                                     ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
+                                    ->join($this->tbl_album,'morceaux.albums_id = albums.id','LEFT OUTER')
                                     ->where(array('playlists.Utilisateur_id' => $user_id,'playlists.nom'=>$pl_or_album[0]->nom))
                                     ->get()
                                     ->result();
@@ -91,11 +92,12 @@ class Musique_model extends CI_Model {
                                         ->get()
                                          ->result();
 
-                $morceaux = $this->db->select('morceaux.id,morceaux.filename,playlists.nom,morceaux.nom AS title_track,utilisateur.login,playlists.nom AS title_album,morceaux.duree')
+                $morceaux = $this->db->select('morceaux.id,morceaux.filename,playlists.nom,morceaux.nom AS title_track,utilisateur.id AS user_id_cur,utilisateur.id AS user_id_cur,utilisateur.login,albums.nom AS title_album,morceaux.duree,albums.img_cover AS cover_path')
                                     ->from($this->tbl_playlist)
                                     ->join($this->tbl_morceaux, 'morceaux.id = playlists.Morceaux_id')
                                     ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
-                                    ->where(array('playlists.Utilisateur_id' => 30, 'playlists.nom' => str_replace('%20', ' ', $name)))
+                                    ->join($this->tbl_album,'morceaux.albums_id=albums.id','LEFT OUTER')
+                                    ->where(array('playlists.Utilisateur_id' => $user_id, 'playlists.nom' => str_replace('%20', ' ', $name)))
                                     ->get()
                                     ->result();
                 $all_pl_or_album = $this->db->select('nom')
@@ -119,11 +121,12 @@ class Musique_model extends CI_Model {
                         ->result();
 
 
-                $morceaux = $this->db->select('morceaux.id,morceaux.filename,playlists.nom,morceaux.nom AS title_track,utilisateur.login,playlists.nom AS title_album,morceaux.duree')
+                $morceaux = $this->db->select('morceaux.id,morceaux.filename,playlists.nom,morceaux.nom AS title_track,utilisateur.id AS user_id_cur,utilisateur.login,albums.nom AS title_album,morceaux.duree,albums.img_cover AS cover_path')
                         ->from($this->tbl_playlist)
                         ->join($this->tbl_morceaux, 'morceaux.id = playlists.Morceaux_id')
                         ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
-                        ->where(array('playlists.Utilisateur_id' => 30, 'playlists.nom' => str_replace('%20', ' ', $name)))
+                        ->join($this->tbl_album,'morceaux.albums_id=albums.id','LEFT OUTER')
+                        ->where(array('playlists.Utilisateur_id' => $user_id, 'playlists.nom' => str_replace('%20', ' ', $name)))
                         ->get()
                         ->result();
 
@@ -151,7 +154,7 @@ class Musique_model extends CI_Model {
                 {
                     return 'no_track';
                 }
-                $morceaux = $this->db->select('morceaux.id,morceaux.filename,albums.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree')
+                $morceaux = $this->db->select('morceaux.id,morceaux.filename,albums.nom,morceaux.nom AS title_track,utilisateur.id AS user_id_cur,utilisateur.login,albums.nom AS title_album,morceaux.duree,albums.img_cover AS cover_path')
                                     ->from($this->tbl_album)
                                     ->join($this->tbl_morceaux, 'morceaux.Albums_id = albums.id')
                                     ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
@@ -176,11 +179,11 @@ class Musique_model extends CI_Model {
                                         ->get()
                                          ->result();
 
-                $morceaux = $this->db->select('morceaux.id,morceaux.filename,albums.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree')
+                $morceaux = $this->db->select('morceaux.id,morceaux.filename,albums.nom,morceaux.nom AS title_track,utilisateur.id AS user_id_cur,utilisateur.login,albums.nom AS title_album,morceaux.duree,albums.img_cover AS cover_path')
                                     ->from($this->tbl_album)
                                     ->join($this->tbl_morceaux, 'morceaux.Albums_id = albums.id')
                                     ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
-                                    ->where(array('albums.Utilisateur_id' => 30, 'albums.nom' => str_replace('%20', ' ', $name)))
+                                    ->where(array('albums.Utilisateur_id' => $user_id, 'albums.nom' => str_replace('%20', ' ', $name)))
                                     ->get()
                                     ->result();
                 $all_pl_or_album = $this->db->select('nom')
@@ -204,11 +207,11 @@ class Musique_model extends CI_Model {
                         ->result();
 
 
-                $morceaux = $this->db->select('morceaux.id,morceaux.filename,albums.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree')
+                $morceaux = $this->db->select('morceaux.id,morceaux.filename,albums.nom,morceaux.nom AS title_track,utilisateur.id AS user_id_cur,utilisateur.login,albums.nom AS title_album,morceaux.duree,albums.img_cover AS cover_path')
                         ->from($this->tbl_album)
                         ->join($this->tbl_morceaux, 'morceaux.Albums_id = albums.id')
                         ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
-                        ->where(array('albums.Utilisateur_id' => 30, 'albums.nom' => str_replace('%20', ' ', $name)))
+                        ->where(array('albums.Utilisateur_id' => $user_id, 'albums.nom' => str_replace('%20', ' ', $name)))
                         ->get()
                         ->result();
 
@@ -616,6 +619,14 @@ class Musique_model extends CI_Model {
         );
         $this->db->set('date_creation', 'CURRENT_DATE()', false);
         $this->db->insert($this->tbl_playlist, $data);
+    }
+
+    public function increment_ecoute($id_track)
+    {
+
+        $this->db->set('nombre_lectures', 'nombre_lectures+1', FALSE);
+        $this->db->where('id', $id_track);
+        $this->db->update($this->tbl_morceaux); 
     }
 
 }

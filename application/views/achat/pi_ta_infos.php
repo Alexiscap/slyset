@@ -20,7 +20,7 @@
 	<?php echo form_email('email',$email) ?>
 	
 	<div class="espace"></div>
-	<h2>Vérifiez votre panier et choisissez le format </h2>
+	<h2>Vérifiez votre panier <!--et choisissez le format --> </h2>
 	<div class="en_tete">
 		<table>
 			<tr>
@@ -45,17 +45,18 @@
 				<td class="artiste"><?php echo $commande->user_login ?></td>
 				<td class="type"><?php echo $commande->type ?></td>
 				<td class="format">
-					<?php $formats = ( explode('/',$commande->format))					
+					<?php //$formats = ( explode('/',$commande->format))					
 					 ?>
-					 <select name="format">
-					 <?php foreach ($formats as $format)
-						{ ?>
-						<option value="320Kbps"><?php echo $format ?></option>
+					 <!--<select name="format">-->
+					 <?php //foreach ($formats as $format)
+						//{
+						 ?>
+						<!--<option value="320Kbps">--><?php echo $commande->format ?><!--</option>-->
 						<?php
-						}			
+						//}			
 					 ?>
 		
-					</select>
+					<!--</select>-->
 				</td>
 				<td class="prix"><?php echo $commande->prix ?> €</td>
 			</tr>
