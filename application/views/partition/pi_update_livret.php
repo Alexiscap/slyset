@@ -21,13 +21,12 @@
                 $data = array(
                     'name' => 'userfile',
                     'type' => 'file',
-                    'class' => 'livret_up',
+                    'class' => 'livret_new',
                     'value' => 'Choisir un livret'
                 );
                 ?>
-				<div class="bt_noir bt_livret_up">
+                <div class="bt_noir">
                 	<?php echo form_upload($data); ?>
-					<!--<span class="upload_photo">aucun fichier choisi</span>-->
                 </div>
             </div>
 			<div style='visibility: hidden' class="label">
@@ -86,15 +85,15 @@
 			<div id="morceaux"></div>
 			<?php 
 				$delete = array(
-              'class'        => 'delete del_livret',
+              'class'        => 'delete',
               'name'          => 'delete',
-			  'value'	=> 'Supprimer',
+			  'value'	=> 'Supprimer le livret',
               );
 			
 			  echo form_submit($delete);
 			  
 			  $nodelete = array(
-              'class'        => 'submit submit_livret',
+              'class'        => 'submit',
               'name'          => 'submit',
 			  'value'	=> 'Modifier le livret',
               );

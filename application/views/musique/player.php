@@ -59,22 +59,39 @@
                 <?php 
                 if ($playlists == 'no_track') 
                 {
-                    echo '<div class="no-track">aucuns morceaux n\'est disponibles pour cet artiste</div>';
+                    if ($this->uri->segment(4)=="playlists")
+                    {
+                        echo '<div class="no-track">Vous n\'avez aucune playlist</div>';
+                    }
+                    else
+                    {
+                         echo '<div class="no-track">aucun morceau n\'est disponible pour cet artiste</div>';
+                    }
                 }
                 else
                 {
                     foreach ($playlists[0] as $playlist): ?>
                         <!--<ol><?php // echo ucfirst($this->uri->segment(4));  ?> : <?php // echo $playlist->nom  ?>-->
                         <div class="top">
-                            <span class="txt-ecoute"><?php echo ucfirst($this->uri->segment(4))?>: <?php echo $playlist->nom  ?> <?php if($playlists[2]!= null) echo '<span class="more_albpl"> > </span>' ?> </span>
+                            <span class="txt-ecoute"><?php echo ucfirst($this->uri->segment(4))?>: <?php echo $playlist->nom  ?> <?php if($playlists[2]!= null) echo '<span class="more_albpl"> <img width="30px" src="'.img_url('player/tritrait.png').'"> </span>' ?> </span>
                         </div>
-
-                        <?php if($playlists[2]!= null):
+                            
+                        <?php if($playlists[2]!= null): ?>
+                           <div class="modal_alert drop"><p>Selectionner une playlist</p>
+                               
+                                </br>
+                    
+<?php
                             foreach ($playlists[2] as $all_name_albpl): ?>
-                                <div class="top drop">
+                              <span><?php echo ucfirst($this->uri->segment(4))?>: <a href="<?php echo base_url('index.php/mc_musique/player/'.$this->uri->segment(3).'/'.$this->uri->segment(4).'/'.$all_name_albpl->nom) ?>"><?php echo $all_name_albpl->nom  ?></span>
+
+                                <!--<div class="top">
                                     <span class="txt-ecoute"><?php echo ucfirst($this->uri->segment(4))?>: <a href="<?php echo base_url('index.php/mc_musique/player/'.$this->uri->segment(3).'/'.$this->uri->segment(4).'/'.$all_name_albpl->nom) ?>"><?php echo $all_name_albpl->nom  ?></a></span>
-                                </div>
+                                </div>-->
                             <?php endforeach; 
+                            ?>
+                         </div>
+                            <?php
                         endif;
                         ?>
 
