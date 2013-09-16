@@ -95,8 +95,8 @@ class Concert_model extends CI_Model {
         $last_id_concert = $this->db->insert_id();
 		
 		//ajout du concert pour remontée wall
-        $insert_community = array('Utilisateur_id' => $user, 'concerts_id' => $last_id_concert, 'type' => 'MU');
-        $this->db->insert('wall_melo_component', $insert_community);
+       /* $insert_community = array('Utilisateur_id' => $user, 'concerts_id' => $last_id_concert, 'type' => 'MU');
+        $this->db->insert('wall_melo_component', $insert_community);*/
     }
 
     public function update_concert_data($ville, $pays, $code_postal, $route, $street_number, $artiste, $snd_partie, $salle, $prix, $heure, $date, $id_concert, $adresse_id, $phone, $website) {
@@ -132,8 +132,9 @@ class Concert_model extends CI_Model {
         $this->db->set(array('Utilisateur_id' => $uid, 'Concerts_id' => $id_concert))
                 ->insert('concerts_activite');
 
-        $this->db->set(array('Utilisateur_id' => $uid, 'concerts_id' => $id_concert, 'type' => "ME"))
+       /* $this->db->set(array('Utilisateur_id' => $uid, 'concerts_id' => $id_concert, 'type' => "ME"))
                 ->insert('wall_melo_component');
+                */
         
        // return $this->returnMarkup($id_concert);
     }

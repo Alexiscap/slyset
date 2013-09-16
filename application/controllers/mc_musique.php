@@ -21,7 +21,7 @@ class Mc_musique extends CI_Controller {
         $this->layout->ajouter_js('jquery.tablesorter');
 
         $this->load->library('getid3/Getid3');
-        $this->load->model(array('perso_model', 'user_model', 'musique_model', 'follower_model','achat_model'));
+        $this->load->model(array('perso_model', 'user_model', 'musique_model', 'follower_model', 'achat_model'));
         $this->load->helper('form');
 
         $this->layout->set_id_background('musique');
@@ -37,7 +37,6 @@ class Mc_musique extends CI_Controller {
             $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
             $sub_data['morceau_right'] = $this->user_model->top_five_morceau_profil($this->user_id);
             $sub_data['morceau_right_t']['type_page'] = 1;
-
         }
 
         if (!empty($output)) {
@@ -86,7 +85,12 @@ class Mc_musique extends CI_Controller {
         $data['all_alb'] = $this->musique_model->get_list_album($this->session->userdata('uid'));
         $data['all_follower'] = $this->follower_model->get_all_follower_user($infos_profile->id);
         $data['album_nbr'] = $this->musique_model->get_nalb($infos_profile->id);
-
+        $my_like_morceau = $this->musique_model->get_my_like_morceau();
+        //$data['artistes'] = $this->musique_model->get_n_artiste($user_id);
+        $data['all_my_like'] = "";
+        foreach ($my_like_morceau as $mlike):
+            $data['all_my_like'] .= '/' . $mlike->morceaux_id . '/';
+        endforeach;
         //var_dump($data['all_morceau_artiste']);
         $this->layout->view('musique/mc_musique', $data);
     }
@@ -109,8 +113,17 @@ class Mc_musique extends CI_Controller {
             $data['all_follower'] = $this->follower_model->get_all_follower_user($user_id);
             $data['album_nbr'] = $this->musique_model->get_nalb($user_id);
             $data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($infos_profile->id);
+
+            $my_like_morceau = $this->musique_model->get_my_like_morceau();
+
+            $data['all_my_like'] = "";
+            foreach ($my_like_morceau as $mlike):
+                $data['all_my_like'] .= '/' . $mlike->morceaux_id . '/';
+            endforeach;
+
             $this->layout->view('musique/album', $data);
-        } else {
+        }
+        else {
             redirect('home/' . $uid, 'refresh');
         }
     }
@@ -153,6 +166,11 @@ class Mc_musique extends CI_Controller {
         //$unique_playlist = array_unique($playlist);
         //var_dump($morceaux_playlist);
         $this->load->view('musique/player', $data);
+    }
+
+    public function calcul_ecoute() {
+        $id_track = $this->input->post('id_morceau');
+        $this->musique_model->increment_ecoute($id_track);
     }
 
     public function do_upload_musique($current_album = NULL) {
@@ -217,15 +235,15 @@ class Mc_musique extends CI_Controller {
             $track_number = (isset($id3['tags']['id3v2']['track_number'])) ? $id3['tags']['id3v2']['track_number'][0] : NULL;
             $year = (isset($id3['tags']['id3v2']['year'])) ? $id3['tags']['id3v2']['year'][0] : NULL;
             $genre = (isset($id3['tags']['id3v2']['genre'])) ? $id3['tags']['id3v2']['genre'][0] : NULL;
-            
-            if(!empty($current_album)){
+
+            if (!empty($current_album)) {
                 $data['current_album'] = $current_album;
                 $cur_album = $this->musique_model->get_album_page($current_album);
                 $album = $cur_album[0]->nom;
             } else {
                 $album = (isset($id3['tags']['id3v2']['album'])) ? $id3['tags']['id3v2']['album'][0] : NULL;
             }
-                
+
             $artist = (isset($id3['tags']['id3v2']['artist'])) ? $id3['tags']['id3v2']['artist'][0] : NULL;
             $title = (isset($id3['tags']['id3v2']['title'])) ? $id3['tags']['id3v2']['title'][0] : NULL;
             $duration = (isset($id3['playtime_string'])) ? $id3['playtime_string'] : NULL;
@@ -244,23 +262,23 @@ class Mc_musique extends CI_Controller {
             }
 
             $moved_path_file = $moved_path . '' . $filename;
-            
+
             if (copy($file_to_move, $moved_path_file)) {
                 unlink($file_to_move);
             }
 
             $list_albums = $this->musique_model->get_list_album($uid);
-            
-            foreach($list_albums as $list_album){
+
+            foreach ($list_albums as $list_album) {
                 $albs[$list_album->id] = $list_album->nom;
             }
-            
+
             $last_album_id = key(array_slice($albs, -1, 1, TRUE));
-            
-            if(!in_array($album, $albs)){
+
+            if (!in_array($album, $albs)) {
                 $this->musique_model->insert_album($album);
             }
-            
+
             $this->musique_model->insert_music($filename, $last_album_id, $title, $track_number, $artist, $genre, $year, $duration, $price, $format, $bitrate, $filesize);
 //            
 //                $this->musique_model->insert_album($str_album, $genre, $year);
@@ -272,12 +290,12 @@ class Mc_musique extends CI_Controller {
     public function delete_track() {
         $morceau_id = $this->input->post('track_id');
         $uid = $this->session->userdata('uid');
-        
+
         $data = array();
         $data['track'] = $this->musique_model->get_morceau_single($morceau_id);
         $filename = $data['track']->filename;
         $album = $data['track']->title_alb;
-        
+
         $moved_path = "";
         $str_album = str_replace(' ', '_', strtolower($album));
         if (!empty($album)) {
@@ -285,38 +303,38 @@ class Mc_musique extends CI_Controller {
         } else {
             $moved_path = 'files/' . $uid . '/musique/';
         }
-        unlink($moved_path. '' .$filename);
-        
+        unlink($moved_path . '' . $filename);
+
         echo $this->musique_model->delete_morceau($morceau_id);
     }
 
     public function delete_album($album_id) {
         $uid = $this->session->userdata('uid');
-        
+
         $alb_name = $this->musique_model->get_album_by_id($album_id);
         $album = $alb_name->nom;
-        
+
         $moved_path = "";
         $str_album = str_replace(' ', '_', strtolower($album));
         if (!empty($album)) {
             $moved_path = 'files/' . $uid . '/musique/' . $str_album;
         }
 //        unlink($moved_path. '' .$filename);
-        
+
         $morceaux_alb = $this->musique_model->get_morceau_alb_page($uid, $album_id);
         $array_tracks = array();
-        foreach($morceaux_alb as $morceau_alb){
+        foreach ($morceaux_alb as $morceau_alb) {
             $array_tracks[] = $morceau_alb->id;
         }
         $this->musique_model->delete_morceau_alb($array_tracks);
-        
+
         echo $this->musique_model->delete_album($album_id);
-        
+
         $this->rrmdir($moved_path);
-        
+
         redirect('musique/' . $uid, 'refresh');
     }
-    
+
     public function rrmdir($dir) {
         if (is_dir($dir)) {
             $objects = scandir($dir);
@@ -331,7 +349,7 @@ class Mc_musique extends CI_Controller {
             rmdir($dir);
         }
     }
-    
+
     public function check_exists() {
         $uid = $this->session->userdata('uid');
 
@@ -354,4 +372,5 @@ class Mc_musique extends CI_Controller {
 //        echo json_encode($_POST['filename']);
 //        return json_encode($_POST['filename']);
     }
+
 }

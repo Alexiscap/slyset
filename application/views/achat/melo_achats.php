@@ -86,11 +86,11 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                 <span class="detail_pl">
                     <?php
                     if ($total_partition_panier == 1) {
-                        echo $total_partition_panier . ' partition, ';
+                        echo $total_partition_panier . ' partition ';
                     } if ($total_partition_panier > 1) {
-                        echo $total_partition_panier . ' partitions, ';
+                        echo $total_partition_panier . ' partitions ';
                     } if ($total_partition_panier == 0) {
-                        echo '0 partition, ';
+                        echo '0 partition ';
                     }
                     ?>
                 </span>
@@ -150,13 +150,13 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                                         <?php if ($commande->type == "morceau") 
                                         {
                                         	?>
-                                        	<td class="article-title"><a href="<?php echo base_url('index.php//mc_musique/player/'.$commande->artiste_id.'/album/'.$commande->name_alb.'/'.$commande->Morceaux_id) ?>" class="open_player"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/></a>
+                                        	<td class="article-title"><a class="open_player" href="<?php echo base_url('index.php/mc_musique/player/'.$commande->artiste_id.'/album/'.$commande->name_alb.'/'.$commande->Morceaux_id) ?>" ><img src="<?php echo img_url('common/btn_play2.png'); ?>"/></a>
         								<?php 
         								}
         								else if ($commande->type == "album") 
         								{
         								?>
-                                        	<td class="article-title"><a href="<?php echo base_url('index.php//mc_musique/player/'.$commande->artiste_id.'/album/'.$commande->nom) ?>" class="open_player"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/></a>
+                                        	<td class="article-title"><a  class="open_player" href="<?php echo base_url('index.php/mc_musique/player/'.$commande->artiste_id.'/album/'.$commande->nom) ?>"><img src="<?php echo img_url('common/btn_play2.png'); ?>"/></a>
                                         <?php
         								}
         								else
@@ -237,7 +237,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                   { ?>
             <div id="articles-tab">
            
-                <form action="<?php echo site_url('admin_articles/delete_multi_article'); ?>" method="post" accept-charset="utf-8">          
+                <form action="<?php echo site_url('admin_articles/delete_multi_article'); ?>" method="post" accept-charset="utf-8" class="historiq_dwld">          
                     <table id="tablesorter-cb">
                         <thead>
                             <tr class="tab-head odd row-color-2">
@@ -250,13 +250,36 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                         </thead>
                         <tbody>
                             <?php
+                  
                             foreach ($cmd as $commande):
                                 if ($commande->status == "V"):
                                     ?>
                                     <tr class="even row-color-<?php echo $commande->id ?>">
-                                        <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="20" id="article-20" class="checkbox-article"><label for="article-20"></label></td>
-                                        <td class="article-title"><a href="#" class ="play_achat" style="visibility:hidden"><img  src="<?php echo img_url('common/btn_play2.png'); ?>" alt="Bouton play historique"/></a>
-        <?php echo $commande->nom ?></td>
+                                        <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $commande->id ?>" id="article-<?php echo $commande->id ?>" class="checkbox-article"><label for="article-<?php echo $commande->id ?>"></label></td>
+                                        <?php if ($commande->type == "morceau") 
+
+                                        {
+                                            ?>
+                                            <td class="article-title"><a href="<?php echo base_url('index.php/mc_musique/player/'.$commande->artiste_id.'/album/'.$commande->name_alb.'/'.$commande->Morceaux_id) ?>" class ="play_achat open_player" style="visibility:hidden"><img  src="<?php echo img_url('common/btn_play2.png'); ?>" alt="Bouton play historique"/></a>
+
+                                        <?php 
+                                        }
+                                        else if ($commande->type == "album") 
+                                        {
+                                        ?>
+                                            <td class="article-title"><a href="<?php echo base_url('index.php/mc_musique/player/'.$commande->artiste_id.'/album/'.$commande->nom) ?>" class ="play_achat open_player" style="visibility:hidden"><img  src="<?php echo img_url('common/btn_play2.png'); ?>" alt="Bouton play historique"/></a>
+
+                                        <?php
+                                        }
+                                        else
+                                        {
+                                        ?>
+                                            <td class="article-title">
+                                        <?php
+                                        }
+
+
+                                        echo $commande->nom ?></td>
                                         <td class="article-artiste"><?php echo $commande->user_login ?></td>
                                         <td class="article-type"><?php echo $commande->type ?></td>
                                         <td class="article-prix"><?php echo $commande->prix ?> €</td>
@@ -269,7 +292,9 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                     </table>
                 </form>
             </div>
-            <input type="button" value="Télécharger" class="telecharge_select">
+            <?php 
+            ?>
+            <?php echo anchor('melo_achats/download_file/'.$this->session->userdata('uid'),' <input type="button" value="Télécharger" class="telecharge_select">',array('class'=>'ctr_dnw')); ?>
               <?php }
                     else
                     {

@@ -12,6 +12,8 @@ class Mc_photos extends CI_Controller {
 
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_css('pop_in');
+        $this->layout->ajouter_css('colorbox');
+
 
         $this->layout->ajouter_js('jquery.imagesloaded.min');
         $this->layout->ajouter_js('jquery.masonry.min');

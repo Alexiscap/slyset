@@ -7,10 +7,11 @@ class Homepage_model extends CI_Model {
 
     protected $table = 'concerts';
     protected $data;
+    protected $tbl_activity_concert = 'concerts_activite';
     protected $tbl_morceau = 'morceaux';
     protected $tbl_user = 'utilisateur';
     protected $tbl_alb  ='albums';
-
+    protected $tbl_community = 'communaute';
     public function __construct() {
         parent::__construct();
         $this->data = array();
@@ -44,6 +45,45 @@ class Homepage_model extends CI_Model {
                         ->get()
                         ->result();
 
+    }
+
+    public function fil_top_morceau()
+    {
+
+        return $this->db->select('morceaux.id,morceaux.Utilisateur_id,utilisateur.description,utilisateur.login,morceaux.nom,utilisateur.thumb,albums.nom AS name_alb,morceaux.created')
+                        ->from($this->tbl_morceau)
+                        ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id','LEFT OUTER')
+                        ->join($this->tbl_alb,'morceaux.albums_id = albums.id','LEFT OUTER')
+                        ->where('nombre_lectures > 5')
+                        ->get()
+                        ->result();
+
+    }
+
+    public function fil_top_concert()
+    {
+
+        return $this->db->select('concerts.id,concerts.Utilisateur_id,utilisateur.description,utilisateur.login,concerts.titre,utilisateur.thumb,concerts.created')
+                        ->from($this->tbl_activity_concert)
+                        ->join($this->table,'concerts.id = concerts_activite.Concerts_id')
+                        ->join($this->tbl_user, 'concerts.Utilisateur_id = utilisateur.id','LEFT OUTER')
+                        ->group_by('concerts_activite.concerts_id')
+                        ->having ('COUNT(concerts_activite.concerts_id) > 2')
+                        ->get()
+                        ->result();
+
+    }
+
+    public function fil_top_people()
+    {
+
+                return $this->db->select('concerts.id,concerts.Utilisateur_id,utilisateur.description,utilisateur.login,concerts.titre,utilisateur.thumb,concerts.created')
+                        ->from($this->tbl_community)
+                        ->join($this->tbl_user, 'communaute.Utilisateur_id = utilisateur.id','LEFT OUTER')
+                        ->group_by('concerts_activite.concerts_id')
+                        ->having ('COUNT(concerts_activite.concerts_id) > 2')
+                        ->get()
+                        ->result();
     }
 
 }

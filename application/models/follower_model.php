@@ -67,13 +67,13 @@ class Follower_model extends CI_Model {
         $this->db->insert($this->table_communaute, $data_follow);
         $last_id_follow = $this->db->insert_id();
 
-        $data_follow_wall = array(
+      /*  $data_follow_wall = array(
             'Utilisateur_id' => $id_follower,
             'type' => 'ME',
             'Following_id' => $last_id_follow
         );
 
-        $this->db->insert($this->table_wall_melo, $data_follow_wall);
+        $this->db->insert($this->table_wall_melo, $data_follow_wall);*/
     }
 
     public function ifollow($user_id, $follower_id) {

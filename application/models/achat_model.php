@@ -9,7 +9,9 @@ class Achat_model extends CI_Model {
     protected $table_cmd_info = 'infos_commande';
     protected $data;
     protected $data_cmd;
-
+    protected $tb_track = 'morceaux';
+    protected $tb_doc = 'documents';
+    protected $tb_alb = 'albums';
     public function __construct() {
         parent::__construct();
         $this->data = array();
@@ -99,7 +101,7 @@ class Achat_model extends CI_Model {
     public function cmd_valider($cmd) 
     {
         return $download_last_cmd = $this->db->query(
-        	'(SELECT commande.id,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,morceaux.nom AS nom,documents.type_document AS type,utilisateur.login AS user_login,infos_commande.prix,documents.format
+        	'(SELECT commande.id,infos_commande.id AS id_info,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,morceaux.nom AS nom,documents.type_document AS type,utilisateur.login AS user_login,infos_commande.prix,documents.format
 				FROM commande
 					INNER JOIN infos_commande ON infos_commande.Commande_id = commande.id
 						INNER JOIN documents ON infos_commande.Documents_id = documents.id
@@ -108,7 +110,7 @@ class Achat_model extends CI_Model {
 				WHERE infos_commande.Commande_id =' . $cmd . ' 
 			)
 			UNION
-			(SELECT commande.id,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,albums.nom,"album",utilisateur.login,infos_commande.prix,albums.format
+			(SELECT commande.id,infos_commande.id AS id_info,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,albums.nom,"album",utilisateur.login,infos_commande.prix,albums.format
 				FROM infos_commande
 					INNER JOIN commande ON infos_commande.Commande_id = commande.id
 						INNER JOIN albums ON infos_commande.Albums_id = albums.id
@@ -116,7 +118,7 @@ class Achat_model extends CI_Model {
 				WHERE infos_commande.Commande_id =' . $cmd . ' AND infos_commande.Morceaux_id IS NULL AND infos_commande.Documents_id IS NULL
 			)
 			UNION	
-			(SELECT commande.id,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,morceaux.nom,"morceau",utilisateur.login,infos_commande.prix,morceaux.format
+			(SELECT commande.id,infos_commande.id AS id_info,commande.Utilisateur_id,commande.date,status,infos_commande.Albums_id,infos_commande.Morceaux_id,infos_commande.Documents_id,morceaux.nom,"morceau",utilisateur.login,infos_commande.prix,morceaux.format
 				FROM commande
 					INNER JOIN infos_commande ON infos_commande.Commande_id = commande.id
 						INNER JOIN morceaux ON infos_commande.Morceaux_id = morceaux.id
@@ -141,9 +143,23 @@ class Achat_model extends CI_Model {
         return $this->db->select('COUNT(infos_commande.id) AS n_notif')
                         ->from($this->table_cmd)
                         ->join($this->table_cmd_info, 'infos_commande.Commande_id = commande.id','INNER JOIN')
-                        ->where('commande.status','P')
+                        ->where(array('commande.status'=>'P','Utilisateur_id'=>$user_id))
                         ->get()
                         ->result();
+
+
+    }
+
+    public function get_item_for_cmd_dwnld($id_commandes)
+    {
+       return $this->db->select('infos_commande.*,documents.path,documents.Utilisateur_id AS doc_user,albums.Utilisateur_id AS alb_user,morceaux.Utilisateur_id AS track_user,albums.nom AS name_alb,morceaux.filename AS track_fname,documents.path AS path_doc,documents.type_document AS type_doc')
+                ->from($this->table_cmd_info)
+                ->join($this->tb_track,'infos_commande.Morceaux_id = morceaux.id','LEFT OUTER')
+                ->join($this->tb_doc,'infos_commande.Documents_id = documents.id','LEFT OUTER')
+                ->join($this->tb_alb,'infos_commande.Albums_id = albums.id','LEFT OUTER')
+                ->where_in ('infos_commande.id',$id_commandes)
+                ->get()
+                ->result();
 
 
     }

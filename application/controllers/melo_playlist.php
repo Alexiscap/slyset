@@ -93,7 +93,8 @@ class Melo_playlist extends CI_Controller {
  	{
  		$user = $this->session->userdata('uid');
  		$morceau =  $this->input->post('track_pl');
- 		$this->musique_model->delete_morceau_playlist($user,$morceau);
+        $playlist = $this->input->post('name_pl');
+ 		$this->musique_model->delete_morceau_playlist($user,$morceau,$playlist);
  	}
  	
  	public function pl_to_panier()
