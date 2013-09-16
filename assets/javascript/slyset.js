@@ -1699,7 +1699,7 @@ $(document).ready(function(){
     }
     
     if($("body.musique").length > 0){
-        $('.alltrack_table tr .delete').click(function(e){
+        $('tr .delete').click(function(e){
             e.preventDefault();
             
             var that = $(this);

@@ -93,18 +93,28 @@ $loger = $this->session->userdata('logged_in');
             </span>
         </div>
     </div>
-    <div class="bts_noir">
-    <?php if($this_album[0]->une == 0): ?>
-        <div class="bt_noir une">
-            <a href="#">
-            	<span class="bt_left">
-            	</span>
-            	<span class="bt_middle alb">Mettre cet album à la une</span>
-            	<span class="bt_right"></span>
-            </a>
+    
+    <?php if ($infos_profile->id == $uid): ?>
+        <div class="bts_noir">
+            <!--<?php if($this_album[0]->une == 0): ?>
+                <div class="bt_noir une">
+                    <a href="#"><span class="bt_left"></span><span class="bt_middle alb">Album en une</span><span class="bt_right"></span></a>
+                </div>
+            <?php endif; ?>-->
+            
+            <div class="bt_noir">
+                <a class="iframe-upload" href="<?php echo site_url() . '/pop_in_general/upload_musique/' . $session_id . '/'. $this_album[0]->id; ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter morceau</span><span class="bt_right"></span></a>
+            </div>
+
+            <div class="bt_noir">
+                <a class="iframe" href="<?php echo site_url() . '/pop_in_general/edit_album/' . $this_album[0]->id; ?>"><span class="bt_left"></span><span class="bt_middle">Editer album</span><span class="bt_right"></span></a>
+            </div>
+
+            <div class="bt_noir">
+                <a href="<?php echo site_url() . '/mc_musique/delete_album/' . $this_album[0]->id; ?>"><span class="bt_left"></span><span class="bt_middle">Supprimer album</span><span class="bt_right"></span></a>
+            </div>
         </div>
-    <?php endif; ?>
-    </div>
+    <?php endif;?>
 
     <div class="content">
         <h1><?php echo $this_album[0]->nom;  ?> - <?php echo $login; ?></h1>
@@ -113,7 +123,9 @@ $loger = $this->session->userdata('logged_in');
 		if(empty($this_album)!=1):
 		?>
         <div class="a_la_une">
-            <img src="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$this_album[0]->nom).'/'.$this_album[0]->img_cover); ?>"/>
+            <?php $str_album = str_replace(' ', '_', strtolower($this_album[0]->nom)); ?>
+            <img src="<?php echo files($infos_profile->id.'/musique/'.$str_album.'/'.$this_album[0]->img_cover); ?>"/>
+            
            <!-- <img src="<?php echo img_url('portail/alaune.png'); ?>" class="bandeau_top"/>-->
             <div class="player">
 
@@ -158,12 +170,16 @@ $loger = $this->session->userdata('logged_in');
                                 		<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
                                 	</a>
                                     <p class="<?php echo $morceau->id; ?>"><?php echo $morceau->nom; ?></p>
-                                    <div class="miniat_titre">
-                                        <a href="#" class="add"><span>add</span></a>
-                                        <a href="#" class="edit"><span>edit</span></a>
-                                        <a href="#" class="coeur"><span>coeur</span></a>
-                                        <!--<a href="#" class="cam"><span>cam</span></a>-->
-                                    </div>
+                                    <?php if($loger == 1): ?>
+                                        <div class="miniat_titre">
+                                            <?php if($session_id == $uid_visit): ?>
+                                                <a href="#" class="delete"><span></span></a>
+                                                <a href="<?php echo site_url('pop_in_general/edit_musique/'.$session_id.'/'.$morceau->id); ?>" class="edit iframe"><span></span></a>
+                                            <?php endif; ?>
+                                            <a href="#" class="coeur"><span></span></a>
+                                            <a href="#" class="add"><span></span></a>
+                                        </div>
+                                    <?php endif; ?>
                                 </td>
                                 <td class="article-date"><?php echo substr($morceau->duree,0,5); ?></td>
                             </tr>
@@ -175,7 +191,6 @@ $loger = $this->session->userdata('logged_in');
                 </form>
             </div>
         </div>
-        <hr />
          <?php endif; ?>
         
        

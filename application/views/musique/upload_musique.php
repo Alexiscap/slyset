@@ -4,6 +4,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         var base_url = '<?php echo base_url(); ?>';
+        var current_album = '<?php echo $current_album; ?>';
 
         $('#upload-file').click(function (e) {
             e.preventDefault();
@@ -18,7 +19,7 @@
             'checkExisting' : base_url + 'index.php/mc_musique/check_exists',
             'auto':false,
             'swf': base_url + 'assets/javascript/uploadify/uploadify.swf',
-            'uploader': base_url + 'index.php/mc_musique/do_upload_musique',
+            'uploader': base_url + 'index.php/mc_musique/do_upload_musique/' + current_album,
             'cancelImg': base_url + 'assets/images/common/uploadify-cancel.png',
 //            'fileTypeExts':'*.jpg;*.jpeg;*.png;*.gif;*.mp3;',
 //            'fileTypeDesc':'Image Files (.jpg,.jpeg,.png,.gif,.mp3)',
@@ -72,7 +73,7 @@
         <div class="elem_center">
             <?php echo validation_errors(); ?>
 
-            <?php echo form_open_multipart('mc_musique/do_upload_musique'); ?>
+            <?php echo form_open_multipart('mc_musique/do_upload_musique/'.$current_album); ?>
             <ul class="unstyled">
                 <li>
                     <?php echo form_upload('userfile', '', 'id="userfile"'); ?>
