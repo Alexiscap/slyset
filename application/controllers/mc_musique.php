@@ -21,7 +21,7 @@ class Mc_musique extends CI_Controller {
         $this->layout->ajouter_js('jquery.tablesorter');
 
         $this->load->library('getid3/Getid3');
-        $this->load->model(array('perso_model', 'user_model', 'musique_model', 'follower_model','achat_model'));
+        $this->load->model(array('perso_model', 'user_model', 'musique_model', 'follower_model', 'achat_model'));
         $this->load->helper('form');
 
         $this->layout->set_id_background('musique');
@@ -37,7 +37,6 @@ class Mc_musique extends CI_Controller {
             $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);
             $sub_data['morceau_right'] = $this->user_model->top_five_morceau_profil($this->user_id);
             $sub_data['morceau_right_t']['type_page'] = 1;
-
         }
 
         if (!empty($output)) {
@@ -88,10 +87,10 @@ class Mc_musique extends CI_Controller {
         $data['album_nbr'] = $this->musique_model->get_nalb($infos_profile->id);
         $my_like_morceau = $this->musique_model->get_my_like_morceau();
         //$data['artistes'] = $this->musique_model->get_n_artiste($user_id);
-        $data['all_my_like'] ="";
-        foreach($my_like_morceau as $mlike):
-         $data['all_my_like'] .= '/'.$mlike->morceaux_id.'/';
-         endforeach;
+        $data['all_my_like'] = "";
+        foreach ($my_like_morceau as $mlike):
+            $data['all_my_like'] .= '/' . $mlike->morceaux_id . '/';
+        endforeach;
         //var_dump($data['all_morceau_artiste']);
         $this->layout->view('musique/mc_musique', $data);
     }
@@ -117,13 +116,13 @@ class Mc_musique extends CI_Controller {
 
             $my_like_morceau = $this->musique_model->get_my_like_morceau();
 
-            $data['all_my_like'] ="";
-            foreach($my_like_morceau as $mlike):
-                $data['all_my_like'] .= '/'.$mlike->morceaux_id.'/';
+            $data['all_my_like'] = "";
+            foreach ($my_like_morceau as $mlike):
+                $data['all_my_like'] .= '/' . $mlike->morceaux_id . '/';
             endforeach;
 
             $this->layout->view('musique/album', $data);
-        } 
+        }
         else {
             redirect('home/' . $uid, 'refresh');
         }
@@ -171,11 +170,9 @@ class Mc_musique extends CI_Controller {
         $this->load->view('musique/player', $data);
     }
 
-    public function calcul_ecoute()
-    {
+    public function calcul_ecoute() {
         $id_track = $this->input->post('id_morceau');
         $this->musique_model->increment_ecoute($id_track);
-
     }
 
     public function already_like_track()
@@ -184,7 +181,6 @@ class Mc_musique extends CI_Controller {
         $yes_or_not_exist = $this->musique_model->already_like_track($id_morceau);
         if(empty($yes_or_not_exist)==1)
         {
-
             echo 'no';
         }
         else
@@ -193,7 +189,8 @@ class Mc_musique extends CI_Controller {
         }
     }
 
-    public function do_upload_musique() {
+
+    public function do_upload_musique($current_album = NULL) {
         $this->load->library('upload');
         $uid = $this->session->userdata('uid');
 
@@ -218,7 +215,7 @@ class Mc_musique extends CI_Controller {
 
         $this->upload->initialize($this->upload_config);
 
-        var_dump($_FILES);
+//        var_dump($_FILES);
         $userfile_exploded = explode('.mp3', $_FILES['userfile']['name']);
 //        $strreplace = array('\'', '"', '(', ')', '.', ';', ':', '[', ']', '?', ',', '!', '=', '+', '`', '~', '^', '#', '°', '@', '*', '$', '€', '£', '%', 'µ');
 //        $userfile1 = str_replace($strreplace, '', $userfile_exploded[0]);
@@ -255,7 +252,15 @@ class Mc_musique extends CI_Controller {
             $track_number = (isset($id3['tags']['id3v2']['track_number'])) ? $id3['tags']['id3v2']['track_number'][0] : NULL;
             $year = (isset($id3['tags']['id3v2']['year'])) ? $id3['tags']['id3v2']['year'][0] : NULL;
             $genre = (isset($id3['tags']['id3v2']['genre'])) ? $id3['tags']['id3v2']['genre'][0] : NULL;
-            $album = (isset($id3['tags']['id3v2']['album'])) ? $id3['tags']['id3v2']['album'][0] : NULL;
+
+            if (!empty($current_album)) {
+                $data['current_album'] = $current_album;
+                $cur_album = $this->musique_model->get_album_page($current_album);
+                $album = $cur_album[0]->nom;
+            } else {
+                $album = (isset($id3['tags']['id3v2']['album'])) ? $id3['tags']['id3v2']['album'][0] : NULL;
+            }
+
             $artist = (isset($id3['tags']['id3v2']['artist'])) ? $id3['tags']['id3v2']['artist'][0] : NULL;
             $title = (isset($id3['tags']['id3v2']['title'])) ? $id3['tags']['id3v2']['title'][0] : NULL;
             $duration = (isset($id3['playtime_string'])) ? $id3['playtime_string'] : NULL;
@@ -274,23 +279,23 @@ class Mc_musique extends CI_Controller {
             }
 
             $moved_path_file = $moved_path . '' . $filename;
-            
+
             if (copy($file_to_move, $moved_path_file)) {
                 unlink($file_to_move);
             }
 
             $list_albums = $this->musique_model->get_list_album($uid);
-            
-            foreach($list_albums as $list_album){
+
+            foreach ($list_albums as $list_album) {
                 $albs[$list_album->id] = $list_album->nom;
             }
-            
+
             $last_album_id = key(array_slice($albs, -1, 1, TRUE));
-            
-            if(!in_array($album, $albs)){
+
+            if (!in_array($album, $albs)) {
                 $this->musique_model->insert_album($album);
             }
-            
+
             $this->musique_model->insert_music($filename, $last_album_id, $title, $track_number, $artist, $genre, $year, $duration, $price, $format, $bitrate, $filesize);
 //            
 //                $this->musique_model->insert_album($str_album, $genre, $year);
@@ -302,12 +307,12 @@ class Mc_musique extends CI_Controller {
     public function delete_track() {
         $morceau_id = $this->input->post('track_id');
         $uid = $this->session->userdata('uid');
-        
+
         $data = array();
         $data['track'] = $this->musique_model->get_morceau_single($morceau_id);
         $filename = $data['track']->filename;
         $album = $data['track']->title_alb;
-        
+
         $moved_path = "";
         $str_album = str_replace(' ', '_', strtolower($album));
         if (!empty($album)) {
@@ -315,9 +320,51 @@ class Mc_musique extends CI_Controller {
         } else {
             $moved_path = 'files/' . $uid . '/musique/';
         }
-        unlink($moved_path. '' .$filename);
-        
+        unlink($moved_path . '' . $filename);
+
         echo $this->musique_model->delete_morceau($morceau_id);
+    }
+
+    public function delete_album($album_id) {
+        $uid = $this->session->userdata('uid');
+
+        $alb_name = $this->musique_model->get_album_by_id($album_id);
+        $album = $alb_name->nom;
+
+        $moved_path = "";
+        $str_album = str_replace(' ', '_', strtolower($album));
+        if (!empty($album)) {
+            $moved_path = 'files/' . $uid . '/musique/' . $str_album;
+        }
+//        unlink($moved_path. '' .$filename);
+
+        $morceaux_alb = $this->musique_model->get_morceau_alb_page($uid, $album_id);
+        $array_tracks = array();
+        foreach ($morceaux_alb as $morceau_alb) {
+            $array_tracks[] = $morceau_alb->id;
+        }
+        $this->musique_model->delete_morceau_alb($array_tracks);
+
+        echo $this->musique_model->delete_album($album_id);
+
+        $this->rrmdir($moved_path);
+
+        redirect('musique/' . $uid, 'refresh');
+    }
+
+    public function rrmdir($dir) {
+        if (is_dir($dir)) {
+            $objects = scandir($dir);
+            foreach ($objects as $object) {
+                if ($object != "." && $object != "..") {
+                    if (filetype($dir . "/" . $object) == "dir")
+                        rmdir($dir . "/" . $object); else
+                        unlink($dir . "/" . $object);
+                }
+            }
+            reset($objects);
+            rmdir($dir);
+        }
     }
 
     public function check_exists() {
@@ -343,149 +390,4 @@ class Mc_musique extends CI_Controller {
 //        return json_encode($_POST['filename']);
     }
 
-////     Function called by the form
-//    public function upload_img() { 
-//        print_r($_FILES);
-//        //Format the name        
-//        $name = $_FILES['files']['name'][0];
-//        $name = strtr($name, 'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
-//
-////         replace characters other than letters, numbers and . by _
-//        $name = preg_replace('/([^.a-z0-9]+)/i', '_', $name);
-//
-//        //Your upload directory, see CI user guide
-//        $config['upload_path'] = $this->getPath_img_upload_folder();
-//
-//        $config['allowed_types'] = 'gif|jpg|png|JPG|GIF|PNG|mp3|MP3';
-////		$config['max_size'] = '1000';
-//        $config['file_name'] = $name;
-//
-//        //Load the upload library
-//        $this->load->library('upload', $config);
-//
-//        if ($this->do_upload()) {
-//            print 'ok';
-//            // Codeigniter Upload class alters name automatically (e.g. periods are escaped with an
-//            //underscore) - so use the altered name for thumbnail
-//            $data = $this->upload->data();
-//            $name = $data['file_name'];
-//
-//            //If you want to resize 
-//            $config['new_image'] = $this->getPath_img_thumb_upload_folder();
-//            $config['image_library'] = 'gd2';
-//            $config['source_image'] = $this->getPath_img_upload_folder() . $name;
-//            $config['create_thumb'] = FALSE;
-//            $config['maintain_ratio'] = TRUE;
-//            $config['width'] = 193;
-//            $config['height'] = 94;
-//
-//            $this->load->library('image_lib', $config);
-//
-//            $this->image_lib->resize();
-//
-//            //Get info 
-//            $info = new stdClass();
-//
-//            $info->name = $name;
-//            $info->size = $data['file_size'];
-//            $info->type = $data['file_type'];
-//            $info->url = $this->getPath_img_upload_folder() . $name;
-//            $info->thumbnail_url = $this->getPath_img_thumb_upload_folder() . $name; //I set this to original file since I did not create thumbs.  change to thumbnail directory if you do = $upload_path_url .'/thumbs' .$name
-//            $info->delete_url = $this->getDelete_img_url() . $name;
-//            $info->delete_type = 'DELETE';
-//
-//
-//            //Return JSON data
-//            if (IS_AJAX) {   //this is why we put this in the constants to pass only json data
-//                echo json_encode(array($info));
-//                //this has to be the only the only data returned or you will get an error.
-//                //if you don't give this a json array it will give you a Empty file upload result error
-//                //it you set this without the if(IS_AJAX)...else... you get ERROR:TRUE (my experience anyway)
-//            } else {   // so that this will still work if javascript is not enabled
-//                $file_data['upload_data'] = $this->upload->data();
-//                echo json_encode(array($info));
-//            }
-//        } else {
-//
-//            // the display_errors() function wraps error messages in <p> by default and these html chars don't parse in
-//            // default view on the forum so either set them to blank, or decide how you want them to display.  null is passed.
-//            $error = array('error' => $this->upload->display_errors('', ''));
-//
-//            echo json_encode(array($error));
-//        }
-//    }
-//
-//    //Function for the upload : return true/false
-//    public function do_upload() {
-//        if (!$this->upload->do_upload()) {
-//            return false;
-//        } else {
-//            //$data = array('upload_data' => $this->upload->data());
-//            return true;
-//        }
-//    }
-//
-//    //Function Delete image
-//    public function deleteImage() {
-//        //Get the name in the url
-//        $file = $this->uri->segment(3);
-//
-//        $success = unlink($this->getPath_img_upload_folder() . $file);
-//        $success_th = unlink($this->getPath_img_thumb_upload_folder() . $file);
-//
-//        //info to see if it is doing what it is supposed to	
-//        $info = new stdClass();
-//        $info->sucess = $success;
-//        $info->path = $this->getPath_url_img_upload_folder() . $file;
-//        $info->file = is_file($this->getPath_img_upload_folder() . $file);
-//        if (IS_AJAX) {//I don't think it matters if this is set but good for error checking in the console/firebug
-//            echo json_encode(array($info));
-//        } else {
-//            //here you will need to decide what you want to show for a successful delete
-//            var_dump($file);
-//        }
-//    }
-//
-//    //Load the files
-//    public function get_files() {
-//        $this->get_scan_files();
-//    }
-//
-//    //Get info and Scan the directory
-//    public function get_scan_files() {
-//        $file_name = isset($_REQUEST['file']) ?
-//                basename(stripslashes($_REQUEST['file'])) : null;
-//        if ($file_name) {
-//            $info = $this->get_file_object($file_name);
-//        } else {
-//            $info = $this->get_file_objects();
-//        }
-//        header('Content-type: application/json');
-//        echo json_encode($info);
-//    }
-//
-//    protected function get_file_object($file_name) {
-//        $file_path = $this->getPath_img_upload_folder() . $file_name;
-//        if (is_file($file_path) && $file_name[0] !== '.') {
-//
-//            $file = new stdClass();
-//            $file->name = $file_name;
-//            $file->size = filesize($file_path);
-//            $file->url = $this->getPath_url_img_upload_folder() . rawurlencode($file->name);
-//            $file->thumbnail_url = $this->getPath_url_img_thumb_upload_folder() . rawurlencode($file->name);
-//            //File name in the url to delete 
-//            $file->delete_url = $this->getDelete_img_url() . rawurlencode($file->name);
-//            $file->delete_type = 'DELETE';
-//
-//            return $file;
-//        }
-//        return null;
-//    }
-//
-//    //Scan
-//    protected function get_file_objects() {
-//        return array_values(array_filter(array_map(
-//                                array($this, 'get_file_object'), scandir($this->getPath_img_upload_folder())
-//        )));
-//    }
 }

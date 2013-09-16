@@ -251,7 +251,7 @@ class Musique_model extends CI_Model {
 
         $this->db->insert($this->tbl_morceaux, $data);
     }
-    
+
     public function update_music($track_id, $album_id, $title, $piste, $artist, $genre, $year, $price) {
         $data['Albums_id'] = $album_id;
         $data['nom'] = $title;
@@ -268,23 +268,32 @@ class Musique_model extends CI_Model {
         $data['Utilisateur_id'] = $this->session->userdata('uid');
         $data['nom'] = $album;
         $data['date'] = Date('Y-m-d');
-//        $data['genre'] = $genre;
-//        $data['annee'] = $year;
 
         $this->db->insert($this->tbl_album, $data);
     }
 
-    public function delete_morceau($morceau_id)
-    {
+    public function update_album($album_id, $cover, $titre, $description, $participants, $producteur, $annee, $prix) {
+        $data['nom'] = $titre;
+        $data['description'] = $description;
+        $data['participants'] = $participants;
+        $data['producteur'] = $producteur;
+        $data['img_cover'] = $cover;
+        $data['annee'] = $annee;
+        $data['prix'] = $prix;
+
+        $this->db->update($this->tbl_album, $data, "id = " . $album_id);
+    }
+
+    public function delete_morceau($morceau_id) {
         return $this->db->where('id', (int) $morceau_id)->delete($this->tbl_morceaux);
     }
-    
+
     public function get_morceau_single($track_id) {
         $this->db->select('morceaux.*, albums.nom AS title_alb, albums.id AS id_alb')
-                 ->from($this->tbl_morceaux)
-                 ->where(array('morceaux.id' => $track_id))
-                 ->join($this->tbl_album, 'morceaux.Albums_id = albums.id', 'LEFT OUTER')
-                 ->limit(1);
+                ->from($this->tbl_morceaux)
+                ->where(array('morceaux.id' => $track_id))
+                ->join($this->tbl_album, 'morceaux.Albums_id = albums.id', 'LEFT OUTER')
+                ->limit(1);
 
         $query = $this->db->get();
 
@@ -296,7 +305,24 @@ class Musique_model extends CI_Model {
             return false;
         }
     }
-    
+
+    public function get_album_by_id($album) {
+        $this->db->select('*')
+                ->from($this->tbl_album)
+                ->where('id', $album)
+                ->limit(1);
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() == 1) {
+            $result = $query->result();
+            $data = $result[0];
+            return $data;
+        } else {
+            return false;
+        }
+    }
+
     public function get_album_une($user_id) {
         return $this->db->select('nom,albums.id,img_cover,annee,livret_path,documents.id AS doc_id')
                         ->from($this->tbl_album)
@@ -326,7 +352,7 @@ class Musique_model extends CI_Model {
     }
 
     public function get_album_page($id_alb) {
-        return $this->db->select('albums.id,nom,img_cover,une,annee,livret_path,documents.id AS doc_id')
+        return $this->db->select('albums.id,nom,description,participants,producteur,albums.prix,img_cover,une,annee,livret_path,documents.id AS doc_id')
                         ->from($this->tbl_album)
                         ->where(array('albums.id' => $id_alb))
                         ->join($this->tbl_doc, 'documents.albums_id = albums.id', 'LEFT OUTER')
@@ -335,7 +361,7 @@ class Musique_model extends CI_Model {
     }
 
     public function get_morceau_alb_page($user_id, $id_alb) {
-        return $this->db->select('morceaux.id, morceaux.nom,duree')
+        return $this->db->select('morceaux.id, morceaux.nom, duree, filename')
                         ->from($this->tbl_morceaux)
                         ->join($this->tbl_album, 'morceaux.albums_id = albums.id', 'LEFT OUTER')
                         ->where(array('albums.id' => $id_alb, 'morceaux.Utilisateur_id' => $user_id))
@@ -349,6 +375,14 @@ class Musique_model extends CI_Model {
                         ->where(array('Utilisateur_id' => $user_id))
                         ->get()
                         ->result();
+    }
+
+    public function delete_album($album_id) {
+        return $this->db->where('id', (int) $album_id)->delete($this->tbl_album);
+    }
+
+    public function delete_morceau_alb($array_tracks) {
+        return $this->db->where_in('id', $array_tracks)->delete($this->tbl_morceaux);
     }
 
     public function put_alune($id_alb) {
@@ -513,7 +547,7 @@ class Musique_model extends CI_Model {
         $existing_panier = $this->db->select('id,titre')
                 ->from($this->tbl_orderinfo)
                 ->where_in('Albums_id', $alb_id)
-                ->where(array('Commande_id' => $id_commande_user[0]->id, 'Morceaux_id IS NULL' => null,'Documents_id IS NULL' =>null))
+                ->where(array('Commande_id' => $id_commande_user[0]->id, 'Morceaux_id IS NULL' => null, 'Documents_id IS NULL' => null))
                 ->get()
                 ->result();
 

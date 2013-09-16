@@ -98,10 +98,10 @@ $loger = $this->session->userdata('logged_in');
     <?php if ($infos_profile->id == $uid): ?>
     <div class="bts_noir_musique">
             <div class="bt_noir">
-				<a href="javascript:void(0)"><span class="bt_left"></span><span class="bt_middle">Mettre un album à la une</span><span class="bt_right"></span></a>
+				<a href="javascript:void(0)"><span class="bt_left"></span><span class="bt_middle">Définir album en une</span><span class="bt_right"></span></a>
 			</div>
             <div class="bt_noir">
-				<a class="iframe-upload" href="<?php echo site_url() . '/pop_in_general/upload_musique/' . $session_id; ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter un morceau</span><span class="bt_right"></span></a>
+				<a class="iframe-upload" href="<?php echo site_url() . '/pop_in_general/upload_musique/' . $session_id; ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter morceau</span><span class="bt_right"></span></a>
 			</div>
     </div>
 	<?php endif;?>
@@ -114,7 +114,8 @@ $loger = $this->session->userdata('logged_in');
 		<div id="une_alb">
         <div class="a_la_une">
             <?php if ($album_alaune[0]->img_cover!= null):?>
-            <img src="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$album_alaune[0]->nom).'/'.$album_alaune[0]->img_cover); ?>" class="alb_cover"/>
+            <?php $str_album = str_replace(' ', '_', strtolower($album_alaune[0]->nom)); ?>
+            <img src="<?php echo files($infos_profile->id.'/musique/'.$str_album.'/'.$album_alaune[0]->img_cover); ?>" class="alb_cover"/>
             <?php endif;?>
             <?php if ($album_alaune[0]->img_cover== null):?>
             <img src="<?php echo img_url('sidebar-right/default-photo-profil.png'); ?>" class="alb_cover"/>
@@ -143,7 +144,7 @@ $loger = $this->session->userdata('logged_in');
 					<a href="javascript:void(0)"> 
 
                     	<img src="<?php echo img_url('common/cadis.png'); ?>"/>
-                  		<span class="panier_alb" id="<?php echo $album_alaune[0]->id; ?>"> Acheter l'album</span>
+                  		<span class="panier_alb" id="<?php echo $album_alaune[0]->id; ?>">Acheter l'album</span>
             		</a>
                 
             </div>
@@ -241,7 +242,6 @@ $loger = $this->session->userdata('logged_in');
                                     <!--<p class="<?php echo $morceau_artiste->id; ?> track-id"> <?php echo $morceau_artiste->nom?></p>-->
                                     <?php echo $title_substr = (strlen($morceau_artiste->nom) > 23) ? '<p title="'.$morceau_artiste->nom.'" class="'.$morceau_artiste->id.' track-id">'.substr($morceau_artiste->nom,0,20).'...</p>' : '<p class="'.$morceau_artiste->id.' track-id">'.$morceau_artiste->nom.'</p>'; ?>
                                     <!--$loger $session_id-->
-                                    <?php // print_r($this->session->all_userdata()); ?>
                                     <?php if($loger == 1): ?>
                                         <div class="miniat_titre">
                                             <?php if($session_id == $uid_visit): ?>
@@ -266,7 +266,7 @@ $loger = $this->session->userdata('logged_in');
                                         </div>
                                     <?php endif; ?>
                                 </td>
-                                 <td class="article-album"><a href="<?php echo site_url('musique/album/'.$uid_visit.'/'.$morceau_artiste->id_alb) ?>"><?php echo $morceau_artiste->title_alb; ?></a></td>
+                                 <td class="article-album"><a href="<?php echo site_url('musique/album/'.$uid_visit.'/'.$morceau_artiste->id_alb); ?>"><?php echo $morceau_artiste->title_alb; ?></a></td>
                                 <td class="article-date"><?php echo substr($morceau_artiste->duree,0,5); ?></td>
                             </tr>
                             <?php endforeach;?>

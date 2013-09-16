@@ -128,7 +128,7 @@ body { margin:0; font-family:'Trebuchet MS'; }
 .content-pi-cent_success { text-align:center; }
 
 .content-pi-cent .label { width:123px; float:left; margin:15px 0 0 0; text-align:right; }
-.content-pi-cent .label label{ background:white; padding:0 12px 0 0; font-size:16px; color:#4e4e4e; }
+.content-pi-cent .label label{ padding:0 12px 0 0; font-size:16px; color:#4e4e4e; }
 .content-pi-cent .label img{ width:85px; height:73px; margin:0 12px 0 30px; float:left; }
 .content-pi-cent .champs img{ width:85px; height:73px; margin-left:0; }
 .content-pi-cent .champs { width:306px; float:left; margin:15px 0 0 12px; }
