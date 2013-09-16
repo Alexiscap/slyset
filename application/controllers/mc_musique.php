@@ -160,6 +160,8 @@ class Mc_musique extends CI_Controller {
         $data['playlists'] = $this->musique_model->get_my_playlist_player($user_id, $type, $name, $id_morceau);
         //var_dump($data['playlists']);
         $data['morceaux_playlist'] = $this->musique_model->get_morceau_by_playlist_user($user_id);
+
+
         /*  if ($id_morceau != null) {
           $info_morceau = $this->musique_model->get_morceau($id_morceau);
           $data['morceau'] = $info_morceau[0]->nom;
@@ -174,6 +176,21 @@ class Mc_musique extends CI_Controller {
         $id_track = $this->input->post('id_morceau');
         $this->musique_model->increment_ecoute($id_track);
 
+    }
+
+    public function already_like_track()
+    {
+        $id_morceau = $this->input->post('id_morceau');
+        $yes_or_not_exist = $this->musique_model->already_like_track($id_morceau);
+        if(empty($yes_or_not_exist)==1)
+        {
+
+            echo 'no';
+        }
+        else
+        {
+            echo 'yes';
+        }
     }
 
     public function do_upload_musique() {

@@ -81,7 +81,7 @@
     <div id="content" class="content">  
     <h2>Fil d'actualité</h2>
         <?php
-      
+     
         if (isset($data_all_wall)):
             foreach ($data_all_wall as $entity_wall):
             // ------------------------ PHOTO --------------------------

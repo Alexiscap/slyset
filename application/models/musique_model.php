@@ -629,4 +629,14 @@ class Musique_model extends CI_Model {
         $this->db->update($this->tbl_morceaux); 
     }
 
+    public function already_like_track($id_morceau)
+    {
+        return $this->db->select('morceaux_id')
+                        ->from('like_activity_pav')
+                        ->where(array('Utilisateur_id' => $this->session->userdata('uid'), 'morceaux_id' => $id_morceau))
+                        ->get()
+                        ->result();
+
+    }
+
 }

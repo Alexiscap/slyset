@@ -93,7 +93,7 @@ class Melo_actus_model extends CI_Model {
 					WHERE (wall_melo_component.Utilisateur_id 	
 						IN (' . $list_id . ') 
 					AND wall_melo_component.type = "MU"
-						AND wall.photo IS NULL)
+						AND wall.photo IS NULL OR wall.photo ="")
 					OR(wall_melo_component.Utilisateur_id =' . $user_id . '
 					AND wall_melo_component.type = "ME"
 						AND wall.photo IS NULL))	

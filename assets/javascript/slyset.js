@@ -188,6 +188,27 @@ $(document).ready(function(){
                 success: function(){
                 }
             });
+            
+            //already like the track ?
+           	var id_morceau = $('.playing .cover_alb').attr('id');
+        	var dataecoute = 'id_morceau='+id_morceau;
+        	$.ajax({
+            type: "POST",
+            url : base_url +'/mc_musique/already_like_track',
+                data: dataecoute,
+                success: function(resul){
+                	if (resul == "yes")
+                	{
+                		$('.like').addClass('enable');
+                		$('.like').removeClass('disable');
+                	}
+                	if(resul == "no")
+                	{
+                		$('.like').addClass('disable');	
+                		$('.like').removeClass('enable');
+                	}
+                }
+            });
         	        	
 
 
@@ -198,10 +219,34 @@ $(document).ready(function(){
         });
         
         // Load in the first track
-        var audio = a[0];
+       /* 
+       ---	Code initial : sans le debut sur un morceau specifique ---
+      	
+       	var audio = a[0];
         first = $('ul a').attr('data-src');
         $('ul li').first().addClass('playing');
         audio.load(first);
+        */
+        
+        // Load in the first track or specific track (if mentionned on url)
+        var audio = a[0];
+        var id_morceau_url = l.pathname.split('/')[8];
+        
+        if(typeof id_morceau_url !== 'undefined')
+        {
+        	var track_first_force = $('ul').find('#'+id_morceau_url);
+        	track_first_force.attr('class','cover_alb first_force');
+        	first = $(".first_force").prev().attr('data-src');
+        	$(".first_force").parents('li').addClass('playing');
+        }
+        else
+        {
+        	first = $('ul a').attr('data-src');
+        	$('ul li').first().addClass('playing');
+        }
+        	audio.load(first);
+        
+        
         
         // Load in a track on click
         $('ul li').click(function(e) {
@@ -297,6 +342,40 @@ $(document).ready(function(){
         //                    console.log(this.currentTime);
         //                    console.log((this.currentTime / this.duration) * 100);
         });
+        
+        //add like
+       $('.like.disable').live('click',function()
+       {
+       		var item_like = $(this);
+       		var id_morceau = $('.playing .cover_alb').attr('id');
+       		var dataecoute = 'id_morceau='+id_morceau;
+        	$.ajax({
+            type: "POST",
+            url : base_url +'/melo_playlist/add_like',
+                data: dataecoute,
+                success: function(){
+                	item_like.removeClass('disable');
+                	item_like.addClass('enable');
+                }
+            });
+       })
+       
+       //delete like
+       $('.like.enable').live('click',function()
+       {
+       		var item_like = $(this);
+       		var id_morceau = $('.playing .cover_alb').attr('id');
+       		var dataecoute = 'id_morceau='+id_morceau;
+        	$.ajax({
+            type: "POST",
+            url : base_url +'/melo_playlist/delete_like',
+                data: dataecoute,
+                success: function(){
+                	item_like.removeClass('enable');
+                	item_like.addClass('disable');
+                }
+            });
+       })
 
         
         
@@ -727,7 +806,7 @@ $(document).ready(function(){
    
         });
 		
-    };
+   
 		
  
 
@@ -1033,7 +1112,7 @@ $(document).ready(function(){
         }
         );
     
-
+ };
       
     //Ne plus assister a un concert
     $('.noparticiper_melo').click(function(){

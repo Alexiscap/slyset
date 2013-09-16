@@ -46,8 +46,8 @@
                 <div class="extra-controls">
                     <div class="random disable"></div>
                     <div class="loop disable"></div>
-                    <div class="addto disable"></div>
-                    <div class="like disable"></div>
+                    <div class="addto disable"></div>         
+                    <div class="like"></div>
 
                     <div class="vol disable">
                         <div id="vol-slider"></div>
@@ -108,11 +108,13 @@
                                             <a href="#" data-src="<?php echo base_url() .'files/'.$this->uri->segment(3).'/musique/'.str_replace(' ','_',$morceaux->title_album).'/'.$morceaux->filename; ?>"><div class="track"><?php if(strlen($morceaux->title_track)<21) { echo $morceaux->title_track ;} else {echo substr($morceaux->title_track, 0,18).' ...';}?></div> <div class="artiste"><?php echo $morceaux->login ?></div></a>
                                             <span class="cover_alb" id="<?php echo $morceaux->id ?>" style="visibility:hidden" href="<?php echo files($morceaux->user_id_cur.'/albums/'.str_replace(' ','_',$morceaux->title_album).'/'.$morceaux->cover_path)?>"></span>
                                         </li>
+
                                         <!-- <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Luno.mp3'; ?>">2222<?php  echo $morceaux->title_track  ?></a></li>
                                         <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Compliments.mp3'; ?>">3333<?php  echo $morceaux->title_track  ?></a></li>
                                         -->
                                     <?php endif; ?>
                                 <?php  endforeach; ?>
+
                             </ul>
                         </div>
                         <!--</ol>-->
