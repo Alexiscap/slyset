@@ -425,17 +425,17 @@
    										if($morceaux->nom == $playlist->nom ): ?>
 
 											<tr class="even row-color-<?php echo $morceaux->Morceaux_id ?>" id='<?php echo $morceaux->Morceaux_id ?>'>
-												<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $morceaux->Morceaux_id ?>" id="article-<?php echo $morceaux->Morceaux_id ?>" class="checkbox-article"><label for="article-<?php echo $morceaux->Morceaux_id ?>"></label></td>
+												<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $morceaux->Morceaux_id.$playlist->nom ?>" id="article-<?php echo $morceaux->Morceaux_id.$playlist->nom ?>" class="checkbox-article"><label for="article-<?php echo $morceaux->Morceaux_id.$playlist->nom ?>"></label></td>
 												<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
 														<a href="<?php echo site_url().'/mc_musique/player/'.$this->session->userdata('uid').'/playlist/'.$playlist->nom.'/'.$morceaux->Morceaux_id; ?>" class="open_player">
 
 															<img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
 														</a>
-													<?php echo $morceaux->title_track ?>
+                                                    <?php echo $title = (strlen($morceaux->title_track) > 20) ? substr($morceaux->title_track,0,17).'...' : $morceaux->title_track; ?>
 													<div class="miniat_titre">
 														<!-- ICON CADIS / MISE PANIER -->
 														<!-- FIN ICON CADIS / MISE PANIER -->
-														<?php if(substr_count($all_panier,'/'.$morceaux->Morceaux_id.'/')==1)
+														<?php if(substr_count($all_panier,'/'.$morceaux->Morceaux_id.'/')>=1)
 														{?>
 										
 															<a href="javascript:void(0)" class="cadis_actif"></a>
@@ -448,7 +448,8 @@
 														}?>
 															
 														<!-- ICON COEUR / LIKE -->
-														<?php if(substr_count($all_my_like,'/'.$morceaux->Morceaux_id.'/')==1)
+														<?php 
+                                                        if(substr_count($all_my_like,'/'.$morceaux->Morceaux_id.'/')>=1)
 														{?>
 										
 															<a href="javascript:void(0)" class="coeur_actif"></a>
@@ -467,7 +468,7 @@
 												<td class="article-artiste"><a href="<?php echo base_url('index.php/musique/'.$morceaux->user_id); ?>"><?php echo $morceaux->login ?></a></td>
 												<td class="article-album"><a href="<?php echo base_url('index.php/musique/album/'.$morceaux->user_id.'/'.$morceaux->id_alb); ?>"><?php echo $morceaux->title_album ?></a></td>
 									
-												<td class="article-duree"><?php echo substr($morceaux->duree,10,9); ?></td>
+												<td class="article-duree"><?php echo $morceaux->duree; ?></td>
 											</tr>
 										<?php endif;
       						 		endforeach;?>

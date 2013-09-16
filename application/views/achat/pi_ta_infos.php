@@ -1,8 +1,7 @@
 <link rel="stylesheet" type="text/css" href="http://127.0.0.1/slyset/assets/css/slyset.css" media="screen" />
-<div class="pop-in_ta pop-in_center">
-  <div class="elem_center">
+<div class="pop-in_ta">
   <span class="info et_active">Informations</span><span  class="paiement">Paiement</span><span  class="telechargement">Téléchargements</span>
-
+  <img src="<?php echo img_url('musicien/pop_close.png'); ?>" alt="Fermer" />
   <div class="content-pi">
 		<?php echo form_open('pop_in_general/panier_infos');
 	  	$nom= $this->session->userdata('nom');
@@ -76,6 +75,5 @@
 
 	 form_close(); ?>
 	<div class="clear"></div>
-  </div>
   </div>
 </div>

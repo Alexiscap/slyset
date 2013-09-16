@@ -101,7 +101,7 @@
             
             <?php echo form_label('Votre en-tête','cover', $label_attributes); ?>
             <div class="preview_upload cover" style="background-image:url(<?php echo files('profiles/'.$this->session->userdata('cover')); ?>);"></div>
-            <div class="upload-file-entete container-cover">
+            <div class="upload-file-container container-cover">
                 <input type="file" name="cover" size="200" id="upload_images_cover" />
             </div>
             <?php $cov_name = $this->session->userdata('cover'); ?>

@@ -201,17 +201,9 @@ body { margin:0; font-family:'Trebuchet MS'; }
 
 /* FIN POP IN UPLOADIFY */
 
+.erreur{ font-size:12px; margin:0 135px; }
 
 .content-pi-cent .prix_morceau input {width:60px;}
 .content-pi-cent .annee_morceau input {width:60px;}
 .content-pi-cent .num_morceau input {width:60px;}
 .contact_mess {width: 270px!important;padding: 0 5px;height: 100px;outline: none;word-break: break-word;}
-
-.erreur{ font-size:12px; margin:0 135px; }
-
-.styled-select select {background: transparent;width: 268px;padding: 5px;font-size: 16px;line-height: 1;border: 0;border-radius: 0;height: 25px;-webkit-appearance: none;background: url(../images/common/flb.png) no-repeat right;border: 1px solid #ccc;margin-top:5px;}
-
-.styled-select {width: 240px;}
-
-.del_livret {margin:30px !important;}
-.submit_livret{margin:30px 0 0 135px !important;}
