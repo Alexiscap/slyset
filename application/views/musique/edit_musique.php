@@ -1,4 +1,14 @@
 <link rel="stylesheet" type="text/css" href="<?php echo css_url('pop_in') ?>" media="screen" />
+<script type="text/javascript">
+//    $(document).ready(function () {
+//        var base_url = '<?php echo base_url(); ?>';
+//
+//        $('#upload-file').click(function (e) {
+//            e.preventDefault();
+//            $('#userfile').uploadify('upload', '*');
+//        });
+//    });
+</script>
 
 <div class="pop-in_cent">
     <?php // print_r($track); ?>
@@ -57,7 +67,7 @@
 
                 <div class="label"><label for="prix">Prix</label></div>
 				<div class="champs prix_morceau">
-					<?php echo form_input('prix', $track->prix, array('id' => 'track-price', 'placeholder' => 'Prix du morceau')); ?>€
+					<?php echo form_int('prix', $track->prix, array('id' => 'track-price', 'placeholder' => 'Prix du morceau')); ?>€
 				</div>
 
                 <?php echo form_submit('valider', 'Valider'); ?>

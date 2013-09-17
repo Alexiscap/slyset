@@ -62,7 +62,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 		get_date($concert_unit->date,'mois_trois');?></p><p class="jour"><?php
 	get_date($concert_unit->date,'jour_texte');?></p></div>
      			 <p><?php echo $concert_unit->titre ?></p>
-     			 <p><?php if(isset($concert_unit->seconde_partie)) echo '+ '.$concert_unit->seconde_partie ?></p>
+     			 <p><?php if(isset($concert_unit->prix)) echo '+ '.$concert_unit->seconde_partie ?></p>
     		 </div>
    			 <div class="adr_concert">
      	 		<img src="<?php echo img_url('musicien/localisation.png'); ?>" />

@@ -34,14 +34,16 @@
             </div>
             <div class="champs">
             
-                <select name="album_doc">
-                    <option  value=" "> </option>
+				<div class="styled-select">
+					<select name="album_doc">
+						<option  value=" "> </option>
 
-                    <?php foreach($album as $one_album): ?>
-                        <option id="" name="album" class ="<?php echo $one_album->id?>" value="<?php echo $one_album->nom?>+<?php echo $one_album->id?>"><?php echo $one_album->nom?></option>
+						<?php foreach($album as $one_album): ?>
+							<option id="" name="album" class ="<?php echo $one_album->id?>" value="<?php echo $one_album->nom?>+<?php echo $one_album->id?>"><?php echo $one_album->nom?></option>
 
-                    <?php endforeach; ?>
-                </select>
+						<?php endforeach; ?>
+					</select>
+				</div>
             </div>
         
             <div id="morceaux"></div>
