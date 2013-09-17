@@ -26,7 +26,7 @@
       			echo form_input($artiste, $info_concert[0]->{'titre'});
       			echo form_error('artiste', '<div class="erreur-form">', '</div>');
 	  
-      			echo form_input('snd_partie', $info_concert[0]->{'seconde_partie'}) . "<pre>";
+      			echo form_input('snd_partie', $info_concert[0]->{'seconde_partie'});
 	  
       			?>
       		</div>
@@ -42,7 +42,7 @@
 	      			'value'			=> substr($info_concert[0]->{'date'}, 0, 10)
             	);
       			
-      			echo form_date($date) . "<pre>";     
+      			echo form_date($date);     
       			echo form_error('date_concert', '<div class="error-form" >', '</div>');
 				?>
 			</div>
@@ -59,7 +59,7 @@
 	      			'value'			=> substr($info_concert[0]->{'date'}, 11, 10)
             	);
       			
-      			echo form_time($heure) . "<pre>";
+      			echo form_time($heure);
       			?>	
       		</div>	
 			
@@ -84,7 +84,7 @@
 	      			'placeholder'	=> 'Ville'
             	);
       			
-      			echo form_input($ville) . "<pre>";
+      			echo form_input($ville);
       			echo form_error('ville', '<div class="error-form" >', '</div>');
 				?>
 			</div>

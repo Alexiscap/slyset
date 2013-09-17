@@ -5,9 +5,9 @@
 <script  src="<?php echo js_url('slyset') ?>" media="screen" ></script>
 
 
-<div class="pop-in_ta pop_in3">
+<div class="pop-in_ta pop_in3 pop-in_center">
   <span class="info">Informations</span><span  class="paiement">Paiement</span><span  class="telechargement et_active">Téléchargements</span>
-  <img src="<?php echo img_url('musicien/pop_close.png'); ?>" alt="Fermer" />
+  <!--<img src="<?php echo img_url('musicien/pop_close.png'); ?>" alt="Fermer" />-->
   <div class="content-pi">
     <h2>Transaction réussie, merci d’avoir choisi Slyset !</h2>
 	<div class="remercier">
@@ -19,40 +19,44 @@
 	<div class="clear"></div>
 	<h2>Téléchargez vos morceaux</h2>
 	<div class="titre_achete">
-		<div class="en_tete">
+		<!--<div class="en_tete">-->
 		     <form class="last_tunnel" action="" method="post" accept-charset="utf-8">          
 
-			<table>
-				<tr>
+			<table id="tablesorter-cb">
+				<thead>
+				<tr class="tab-head odd row-color-2">
 					<th class="article-checkbox checkbox-style2">
                         <input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all">
                         <label for="article-all">
-
+                        	<span class="piste"></span>
                         </label>
                     </th>
-					<th class="le_titre">Titre</th>
-					<th class="artiste">Artiste</th>
-					<th class="type">Type</th>
-					<th class="dwl">Télécharger</th>
+					<th class="article-title header">Titre</th>
+					<th class="article-artiste header">Artiste</th>
+					<th class="article-type header">Type</th>
+					<th class="article-prix header">Télécharger</th>
+
 				</tr>
+				</thead>
+				<tbody>
 
 			<?php 
 				$all_id = "";
 				foreach($cmd_download as $dwld_cmd): ?>
-				<tr>
+				<tr class="row-color-5 odd">
 					<td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $dwld_cmd->id_info ?>" id="article-<?php echo $dwld_cmd->id_info ?>" class="checkbox-article"><label for="article-<?php echo $dwld_cmd->id_info ?>"></label></td>
 
 
-
-					<td class="le_titre"><?php echo $dwld_cmd->nom ?></td>
-					<td class="artiste"><?php echo $dwld_cmd->user_login ?></td>
-					<td class="type"><?php echo $dwld_cmd->type ?></td>
-					<td class="dwl">
+					<td class="article-title"><?php echo $dwld_cmd->nom ?></td>
+					<td class="article-artiste"><?php echo $dwld_cmd->user_login ?></td>
+					<td class="article-type"><?php echo $dwld_cmd->type ?></td>
+					<td class="article-prix">
 						<?php echo anchor('melo_achats/download_file/'.$this->session->userdata('uid').'/'.$dwld_cmd->id_info,' <img src="'.img_url("common/telecharge.png").'" alt="Telecharger" />',array('class'=>'ctr_dnw')); ?>
 
 						
 					</td>
 				</tr>
+				</tbody>
 				
 				<?php 
 				$all_id .= $dwld_cmd->id_info."%20";
@@ -61,7 +65,6 @@
 			</form>
 		</div>
 	</div>
-	<div class="clear"></div>
 	<?php echo anchor('melo_achats/download_file/'.$this->session->userdata('uid'),'<input type="submit" value="Télécharger" class="dl_black"/>',array('class'=>'ctr_dnw_part')); ?>
 
 	<?php echo anchor('melo_achats/download_file/'.$this->session->userdata('uid').'/'.$all_id,'<input type="submit" value="Tout télécharger" class="dl_red"/>',array('class'=>'ctr_dnw')); ?>

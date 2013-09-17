@@ -813,7 +813,7 @@ class Pop_in_general extends CI_Controller {
             $dynamic_path = './files/' . $this->session->userdata('uid') . '/albums/' . $noespace_filename_album . '/paroles/';
 
             if (is_dir($dynamic_path) == false) {
-                mkdir($dynamic_path, 0755, true);
+                mkdir($dynamic_path, 0777, true);
             }
 
 

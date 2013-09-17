@@ -5,9 +5,10 @@
 echo form_open('pop_in_general/paiement');
  echo validation_errors();
 
- ?><div class="pop-in_ta pop_in2">
+ ?><div class="pop-in_ta pop_in2 pop-in_center">
+  <div class="elem_center">
   <span class="info">Informations</span><span  class="paiement et_active">Paiement</span><span  class="telechargement">Téléchargements</span>
-  <img src="<?php echo img_url('musicien/pop_close.png'); ?>" alt="Fermer" />
+  <!--<img src="<?php echo img_url('musicien/pop_close.png'); ?>" alt="Fermer" />-->
   <div class="content-pi">
     <h2>Choisissez votre moyen de paiement</h2>
 	<div class="moyen_pmt">
@@ -43,5 +44,6 @@ echo form_open('pop_in_general/paiement');
 	 echo form_close(); ?>	
 	</div>
 	<div class="clear"></div>
+	</div>
   </div>
 </div>

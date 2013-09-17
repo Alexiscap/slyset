@@ -33,7 +33,7 @@
 				<label>Album</label>
 			</div>
 			<div class="champs">
-			
+			 <div class="styled-select">
 				<select name="album_doc">
 					<option  value=" "> </option>
 
@@ -42,6 +42,7 @@
 
 					<?php endforeach; ?>
 				</select>
+			</div>
 			</div>
 		
 			<div id="morceaux"></div>

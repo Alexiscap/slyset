@@ -25,7 +25,7 @@
                     'value' => 'Choisir un livret'
                 );
                 ?>
-                <div class="bt_noir">
+                <div class="bt_noir bt_livret_up">
                 	<?php echo form_upload($data); ?>
                 </div>
             </div>

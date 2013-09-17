@@ -79,7 +79,7 @@
     </div> 
     
     <div id="content" class="content">  
-    <h2>Fil d'actualité</h2>
+    <h1>Fil d'actualité</h1>
         <?php
      
         if (isset($data_all_wall)):
