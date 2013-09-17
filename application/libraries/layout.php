@@ -68,6 +68,7 @@ class Layout
     |   . set_titre
     |   . set_charset
     |   . set_description
+    |   . set_keyword
     |===============================================================================
     */
     public function set_titre($titre)
@@ -95,6 +96,16 @@ class Layout
         if(is_string($description) AND !empty($description))
         {
             $this->var['description'] = $description;
+            return true;
+        }
+        return false;
+    }
+
+    public function set_keyword($keyword)
+    {
+        if(is_string($keyword) AND !empty($keyword))
+        {
+            $this->var['keyword'] = $keyword;
             return true;
         }
         return false;

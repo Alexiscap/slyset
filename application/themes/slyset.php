@@ -3,13 +3,13 @@
 <!DOCTYPE HTML>
 <html lang="fr">
     <head>
-        <title><?php echo $title = (isset($titre)) ? $titre : 'Slyset'; ?></title>
+        <title><?php echo $title = (isset($titre)) ? $titre : 'Slyset, le réseau social dédié aux musiciens et mélomanes'; ?></title>
         <meta http-equiv="Content-Type" content="text/html; charset=<?php if (isset($charset)) echo $charset; ?>" />
         <meta http-equiv="Content-Language" content="fr" />
         <meta http-equiv="Content-Script-Type" content="text/javascript" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <meta name="description" content="<?php echo $desc = (isset($description)) ? $description : 'Description Slyset'; ?>" />
-        <meta name="keywords" content="slyset, project web, social networks, music, réseau social, réseau social musical, musique, écoute, artiste, efficom, projet" />
+        <meta name="description" content="<?php echo $desc = (isset($description)) ? $description : 'Slyset, le réseau social dédié aux musiciens et mélomanes'; ?>" />
+        <meta name="keywords" content="<?php echo $keywords = (isset($keyword)) ? $keyword : 'musique, artiste, morceaux de musique, streaming, agenda concert, top musique, slyset, écouter musique, musique en ligne, réseau social musicien'; ?>" />
 
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('reset') ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('fonts') ?>" />

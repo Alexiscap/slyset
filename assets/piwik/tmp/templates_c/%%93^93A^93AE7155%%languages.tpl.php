@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2013-09-10 08:41:19
+<?php /* Smarty version 2.6.26, created on 2013-09-17 22:50:06
          compiled from LanguagesManager/templates/languages.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'translate', 'LanguagesManager/templates/languages.tpl', 6, false),)), $this); ?>
