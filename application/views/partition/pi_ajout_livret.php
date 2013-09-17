@@ -21,13 +21,12 @@
                 $data = array(
                     'name' => 'userfile',
                     'type' => 'file',
-                    'class' => 'livret_up',
+                    'class' => 'livret_new',
                     'value' => 'Choisir un livret'
                 );
                 ?>
-                <div class="bt_noir bt_livret_up">
+                <div class="bt_noir">
                 	<?php echo form_upload($data); ?>
-					<!--<span class="upload_photo">aucun fichier choisi</span>-->
                 </div>
             </div>
 

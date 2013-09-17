@@ -11,7 +11,8 @@ $loger = $this->session->userdata('logged_in');
         <ul>
             <li><a href="<?php echo site_url('home/' . $uid); ?>">Accueil</a></li>
             <li><a href="<?php echo site_url('actualite/' . $uid_visit); ?>"><?php echo 'Artiste : ' . $login; ?></a></li>
-            <li><a href="<?php echo site_url($this->uri->segment(1) . '/' . $uid_visit); ?>">Photos & Vidéos</a></li>
+            <li><a href="<?php echo site_url('media/' . $uid_visit); ?>">Photos & Vidéos</a></li>
+            <li><a href="#"><?php echo str_replace("_", " ", $this->uri->segment(3))  ?></li>
         </ul>
     </div>
     
@@ -57,7 +58,9 @@ $loger = $this->session->userdata('logged_in');
         <?php } ?>
 
   <div class="content">
-  	 <?php
+  	 
+     <h1><?php echo str_replace("_", " ", $this->uri->segment(3))  ?></h1>
+     <?php
 	foreach ($all_media_user_result as $media_user_result_unit):
 		if($media_user_result_unit->type == 1)
 {

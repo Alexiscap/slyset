@@ -79,9 +79,9 @@
     </div> 
     
     <div id="content" class="content">  
-    <h1>Fil d'actualité</h1>
+    <h2>Fil d'actualité</h2>
         <?php
-      
+     
         if (isset($data_all_wall)):
             foreach ($data_all_wall as $entity_wall):
             // ------------------------ PHOTO --------------------------
@@ -95,8 +95,7 @@
  						<div id ="<?php echo $entity_wall->id ?>" class="artist_post photo_message">
                             <div class="top"   class="top" id="<?php echo $entity_wall->id ?>">
 
-                                <?php if ($this->uri->segment(2) == $session_id):
-                                    ?>
+                                <?php if ($this->uri->segment(2) == $session_id): ?>
                                     <a href="#"><img src="<?php echo img_url('musicien/btn_suppr.png'); ?>" alt="Suppression" /></a>
                                 <?php endif; ?>
 
@@ -108,9 +107,11 @@
       						
       						<div class="right">
         						<span class="ico_citation"></span>
-        						<p class="msg_post"><a class='iframe' href="<?php echo site_url('actualite/'.$entity_wall->Utilisateur_id)?>" ><?php echo $entity_wall->login ?></a> viens d’ajouter une photo :  <a href="<?php echo site_url('index.php/media/zoom/'.$entity_wall->idproduit.'/0') ?>"><?php echo $entity_wall->main_nom?></a></p>
-       							<img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
-      						</div>
+        						<p class="msg_post"><a href="<?php echo site_url('actualite/'.$entity_wall->Utilisateur_id)?>" ><?php echo $entity_wall->login ?></a> viens d’ajouter une photo :  <a class='iframe' href="<?php echo site_url('media/zoom/'.$entity_wall->idproduit.'/0') ?>"><?php echo $entity_wall->main_nom?></a></p>
+       							<a class='iframe' href="<?php echo site_url('media/zoom/'.$entity_wall->idproduit.'/0') ?>">
+                                    <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
+      						    </a>
+                            </div>
       						
       						<div class="bottom">
         						<span class="infos_publi"><?php echo $entity_wall->login ?> - 
@@ -144,9 +145,10 @@
       					
       						<div class="right">
       							<span class="ico_citation"></span>
-        						<p class="msg_post">Je viens d'aimer la photo de <?php echo $entity_wall->login ?> :  <a href="<?php echo base_url('index.php/media/zoom/'.$entity_wall->idproduit.'/0') ?>"><?php echo $entity_wall->main_nom?></a></p>
-      							<img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
-
+        						<p class="msg_post">Je viens d'aimer la photo de <a href="<?php echo base_url('/index.php/actualite/'.$entity_wall->Utilisateur_id) ?>"><?php echo $entity_wall->login ?></a> :  <a class = "iframe" href="<?php echo base_url('index.php/media/zoom/'.$entity_wall->idproduit.'/0') ?>"><?php echo $entity_wall->main_nom?></a></p>
+      							<a class = "iframe" href="<?php echo base_url('index.php/media/zoom/'.$entity_wall->idproduit.'/0') ?>">
+                      <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
+                    </a>
       							<!--  <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
    								-->  
     						</div>
@@ -183,7 +185,7 @@
     	 					</div>
       						<div class="right">
         						<span class="ico_citation"></span>
-        						<p class="msg_post">Je viens d'aimer la video de <?php echo $entity_wall->login ?> :  <a href="<?php echo 'http://www.youtube.com/v/'.$entity_wall->file_name.'?version=3' ?>"><?php echo $entity_wall->main_nom?></a></p>
+        						<p class="msg_post">Je viens d'aimer la video de <a href="<?php echo base_url('/index.php/actualite/'.$entity_wall->Utilisateur_id) ?>"><?php echo $entity_wall->login ?></a> :  <a href="<?php echo 'http://www.youtube.com/v/'.$entity_wall->file_name.'?version=3' ?>"><?php echo $entity_wall->main_nom?></a></p>
      							<iframe id="ytplayer" type="document" width="455" height="350" src="http://www.youtube.com/v/<?php echo $entity_wall->file_name ?>?version=3" /></iframe>
 
 	    					</div>
@@ -254,7 +256,7 @@
       					
       				<div class="right">
       					<span class="ico_citation"></span>
-        				<p class="msg_post">Je participe au concert de  <a href="<?php echo base_url('/index.php/actualite/'.$entity_wall->Utilisateur_id) ?>"><?php echo $entity_wall->login ?>, à <?php echo $entity_wall->ville ?>   </a>
+        				<p class="msg_post">Je participe au concert de  <a href="<?php echo base_url('/index.php/actualite/'.$entity_wall->Utilisateur_id) ?>"><?php echo $entity_wall->login ?></a>, à <?php echo $entity_wall->ville ?>   
       					<!--  <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->file_name); ?>" alt="Photo message" class="single" />
    						-->  
    						</br></br>
@@ -279,12 +281,13 @@
    								</br>
    								<a href="<?php echo base_url("index.php/concert/".$entity_wall->Utilisateur_id.'/#'.$entity_wall->idproduit)?>">
    									<?php echo $entity_wall->salle?> - <?php echo $entity_wall->ville?>
-   								</a>
+   								
    								</br>
    								<?php $date_format = (date_create($entity_wall->date_concert, timezone_open('Europe/Paris')));
     					  		$a =  date_timestamp_get($date_format);
-            					echo $data['date_2'] = '<a>'.strftime('Le %d %B %G',$a).'</a>';
+            					echo $data['date_2'] = strftime('Le %d %B %G',$a);
             					?>
+                      </a>
     						</div>
     					</div>
     					</p>
@@ -433,7 +436,7 @@
       							<div class="right">
  							   		<span class="ico_citation"></span>
         							<p class="msg_post">
-        								<?php echo $entity_wall->login; ?> vient d’ajouter <?php echo count($photo_album) ?> photos à <a href="<?php echo base_url('index.php/media/album/'.$entity_wall->Utilisateur_id.'/'.$photo_album[0]->albums_media_file_name)?>">son album “<?php echo $entity_wall->main_nom ?>”</a>
+        								<a href="<?php echo base_url('/index.php/actualite/'.$entity_wall->Utilisateur_id) ?>"><?php echo $entity_wall->login; ?></a> vient d’ajouter <?php echo count($photo_album) ?> photos à son album <a href="<?php echo base_url('index.php/album/'.$entity_wall->Utilisateur_id.'/'.$photo_album[0]->albums_media_file_name)?>">“<?php echo $entity_wall->main_nom ?>”</a>
        								</p>
         						<div class="content-mosaic">
         						<?php  foreach($photo_album as $photo):
@@ -443,21 +446,17 @@
           					</div>
       					</div>
       
-      <?php endif;
-        if (count($photo_album)==1):
-        ?>
-         <div class="right">
+                    <?php endif;
+                    if (count($photo_album)==1):
+                    ?>
+                        <div class="right">
          
-          <span class="ico_citation"></span>
-    
-         
-        <p class="msg_post"><?php echo $entity_wall->login;
-?> vient d’ajouter <?php echo count($photo_album) ?> photo à <a href="#">son album “<?php echo $entity_wall->main_nom ?>”</a></p>
-        
-                <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$photo_album[0]->albums_media_file_name.'/'.$photo_album[0]->file_name); ?>" alt="Photo message" class="single" />
-
-          
-      </div>
+                            <span class="ico_citation"></span>
+                            <p class="msg_post"><a href="<?php echo base_url('/index.php/actualite/'.$entity_wall->Utilisateur_id) ?>"><?php echo $entity_wall->login;?></a> vient d’ajouter <?php echo count($photo_album) ?> photo à son album <a href="<?php echo base_url('index.php/album/'.$entity_wall->Utilisateur_id.'/'.$photo_album[0]->albums_media_file_name)?>">“<?php echo $entity_wall->main_nom ?>”</a></p>      
+                            <!--<a href="<?php echo site_url('media/zoom/'.$entity_wall->idproduit.'/0') ?>">-->
+                                <img src="<?php echo base_url('./files/'.$entity_wall->Utilisateur_id.'/photos/'.$photo_album[0]->albums_media_file_name.'/'.$photo_album[0]->file_name); ?>" alt="Photo message" class="single" /> 
+                            <!--</a>-->
+                        </div>
         <?php endif; ?>
       
       <div class="bottom">

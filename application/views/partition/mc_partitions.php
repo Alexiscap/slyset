@@ -64,6 +64,16 @@ $loger = $this->session->userdata('logged_in');
  
  
   		<?php 
+  		if(empty($get_album)==1): ?>
+  			
+  			<div class="text-empty"><?php
+
+  			echo $login.' n\'a aucun document disponible pour le moment';
+  			?>
+  			</div>
+  			<?php
+  		endif;
+
   		foreach($get_album as $album):
 		?>
  			<div class="a_la_une_parti">
@@ -89,7 +99,7 @@ $loger = $this->session->userdata('logged_in');
 				</div>
 			</div>
 			
-			<div class="top_partition">
+			<div class="top_partition" id="album-<?php echo $album->id?>">
 				<div>
 					<a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$album->nom); ?>" class="open_player">
 						<img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
@@ -120,7 +130,7 @@ $loger = $this->session->userdata('logged_in');
 										<tr>
 											<td class="le_titre" >
 												<p>		
-													<?php 	echo $morceau->nom;?>
+													<?php echo $title = (strlen($morceau->nom) > 20) ? substr($morceau->nom,0,17).'...' : $morceau->nom; ?>
 												</p>
 											</td>
 											<?php

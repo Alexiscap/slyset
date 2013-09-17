@@ -5,9 +5,9 @@
 <script  src="<?php echo js_url('slyset') ?>" media="screen" ></script>
 
 
-<div class="pop-in_ta pop_in3 pop-in_center">
-  <div class="elem_center">
+<div class="pop-in_ta pop_in3">
   <span class="info">Informations</span><span  class="paiement">Paiement</span><span  class="telechargement et_active">Téléchargements</span>
+  <img src="<?php echo img_url('musicien/pop_close.png'); ?>" alt="Fermer" />
   <div class="content-pi">
     <h2>Transaction réussie, merci d’avoir choisi Slyset !</h2>
 	<div class="remercier">
@@ -19,9 +19,10 @@
 	<div class="clear"></div>
 	<h2>Téléchargez vos morceaux</h2>
 	<div class="titre_achete">
+		<div class="en_tete">
 		     <form class="last_tunnel" action="" method="post" accept-charset="utf-8">          
 
-			<!--<table>
+			<table>
 				<tr>
 					<th class="article-checkbox checkbox-style2">
                         <input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all">
@@ -56,35 +57,9 @@
 				<?php 
 				$all_id .= $dwld_cmd->id_info."%20";
 				endforeach;?>
-			</table>-->
-			<div id="articles-tab">
-           
-                <form action="http://127.0.0.1/slyset/index.php/admin_articles/delete_multi_article" method="post" accept-charset="utf-8" class="historiq_dwld">          
-                    <table id="tablesorter-cb">
-                        <thead>
-                            <tr class="tab-head odd row-color-2">
-                                <th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"><span class="piste"></span></label></th>
-                                <th class="article-title header">Titre<!--<span id="titre" class="filter filter-bottom"></span>--></th>
-                                <th class="article-artiste header">Artiste<!--<span id="titre" class="filter filter-bottom"></span>--></th>
-                                <th class="article-type header">Type<!--<span id="titre" class="filter filter-bottom"></span>--></th>
-                                <th class="article-prix header">Télécharger<!--<span id="created" class="filter filter-bottom"></span>--></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                                                                <tr class="row-color-5 odd">
-                                        <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="5" id="article-5" class="checkbox-article"><label for="article-5"><span class="piste"></span></label></td>
-                                                                                    <td class="article-title"><a href="http://127.0.0.1/slyset/index.php/mc_musique/player/1/album/album one/3" class="play_achat open_player"><img src="http://127.0.0.1/slyset/assets/images/common/btn_play2.png" alt="Bouton play historique"></a>
-
-                                        test</td>
-                                        <td class="article-artiste">slyset</td>
-                                        <td class="article-type">morceau</td>
-                                        <td class="article-prix"><?php echo anchor('melo_achats/download_file/'.$this->session->userdata('uid').'/'.$dwld_cmd->id_info,' <img src="'.img_url("common/telecharge.png").'" alt="Telecharger" class="bt_dl_achat"/>',array('class'=>'ctr_dnw')); ?></td>
-                                    </tr>
-                                                            </tbody>
-                    </table>
-                </form>
-            </div>
+			</table>
 			</form>
+		</div>
 	</div>
 	<div class="clear"></div>
 	<?php echo anchor('melo_achats/download_file/'.$this->session->userdata('uid'),'<input type="submit" value="Télécharger" class="dl_black"/>',array('class'=>'ctr_dnw_part')); ?>
@@ -94,5 +69,4 @@
 	
 	<div class="clear"></div>
   </div>
-</div>
 </div>
