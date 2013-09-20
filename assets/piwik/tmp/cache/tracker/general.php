@@ -1,9 +1,9 @@
 <?php
 $content   = array (
   'isBrowserTriggerArchivingEnabled' => true,
-  'lastTrackerCronRun' => '1378812706',
+  'lastTrackerCronRun' => 1379631038,
   'currentLocationProviderId' => 'default',
 );
-$expires_on   = 1378815207;
+$expires_on   = 1379631338;
 $cache_complete   = true;
 ?>
