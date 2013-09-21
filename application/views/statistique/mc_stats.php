@@ -1,4 +1,4 @@
-<script type="text/javascript" src="http://localhost/slyset/assets/javascript/Chart.js"></script>
+<script type="text/javascript" src="<?php echo ajouter_js('Chart'); ?>"></script>
 
 <?php
 $session_id = $this->session->userdata('uid');

@@ -49,7 +49,7 @@ $loger = $this->session->userdata('logged_in');
         </div>
     </div>
 
-    <div class="bts_noir_photo">
+    <div class="bts_noir">
         <?php if ($infos_profile->id == $uid) { ?>
 
             <div class="bt_noir">
@@ -134,7 +134,8 @@ $loger = $this->session->userdata('logged_in');
                         <div class="comment-form">
                             <img src="<?php echo base_url('/files/profiles/' . $this->session->userdata('thumb')) ?>" />
                             <form  action="" method="post">
-                                <input type="text" name="usercomment" id="usercomment"/>
+                                <!--<input type="text" name="usercomment" id="usercomment"/>-->
+                                <textarea id="usercomment" placeholder="Votre commentaire..."></textarea>
                                 <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
                                 <input type="hidden" name="messageid" value="<?php echo $media_user_result_unit->id; ?>" id="messageid" />
 
@@ -276,7 +277,8 @@ $loger = $this->session->userdata('logged_in');
                         <div class="comment-form-album">
                             <img src="<?php echo base_url('/files/profiles/' . $this->session->userdata('thumb')) ?>" />
                             <form  action="" method="post">
-                                <input type="text" name="usercomment" id="usercomment"/>
+                                <!--<input type="text" name="usercomment" id="usercomment"/>-->
+                                <textarea id="usercomment" placeholder="Votre commentaire..."></textarea>
                                 <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
                                 <input type="hidden" name="messageid" value="<?php echo $media_user_result_unit->file_name; ?>" id="messageid" />
 
@@ -360,7 +362,8 @@ $loger = $this->session->userdata('logged_in');
                         <div class="comment-form-video">
                             <img src="<?php echo base_url('/files/profiles/' . $this->session->userdata('thumb')) ?>" />
                             <form  action="" method="post">
-                                <input type="text" name="usercomment" id="usercomment"/>
+                                <!--<input type="text" name="usercomment" id="usercomment"/>-->
+                                <textarea id="usercomment" placeholder="Votre commentaire..."></textarea>
                                 <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
                                 <input type="hidden" name="messageid" value="<?php print $media_user_result_unit->id; ?>" id="messageid" />
 
@@ -456,7 +459,8 @@ $loger = $this->session->userdata('logged_in');
                         <div class="comment-form-alb-wall">
                             <img src="<?php echo base_url('/files/profiles/' . $this->session->userdata('thumb')) ?>" />
                             <form  action="" method="post">
-                                <input type="text" name="usercomment" id="usercomment"/>
+                                <!--<input type="text" name="usercomment" id="usercomment"/>-->
+                                <textarea id="usercomment" placeholder="Votre commentaire..."></textarea>
                                 <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
                                 <input type="hidden" name="messageid" value="<?php if(isset($wall_photo->id)){echo $wall_photo->id;} ?>" id="messageid" />
 

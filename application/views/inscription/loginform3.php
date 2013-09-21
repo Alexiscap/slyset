@@ -21,10 +21,10 @@
       echo form_hidden($key, $value);
     }
 
-      print_r($_POST);
+//      print_r($_POST);
   ?>
 
-  <p class="label_big">Dites-nous en un peu plus sur vous...</p>
+  <p class="label_big">Dites-nous en un peu plus sur vous</p>
   
   <?php
     if($_POST['typeaccount'] == 1):
@@ -192,7 +192,7 @@
   ?>
     <hr>
 
-    <p class="label_big">Dites-nous en un peu plus sur vous...</p>
+    <p class="label_big">Personnalisez votre profil</p>
   
     <div id="subscription-upload">
       <div class="upload_images"></div>

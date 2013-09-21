@@ -46,7 +46,7 @@ $loger = $this->session->userdata('logged_in');
       <span class="stats_title">morceaux</span>
     </div>
   </div>
-	<div class="bts_noir_partition">
+	<div class="bts_noir">
     	<?php if ($infos_profile->id == $uid) { ?>
 
 	  		<div class="bt_noir">

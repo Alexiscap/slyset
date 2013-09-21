@@ -52,7 +52,7 @@ $loger = $this->session->userdata('logged_in');
    
   </div>
     
-	<div class="bts_noir_unique">
+	<div class="bts_noir">
 		<?php if ($infos_profile->id == $uid) { ?>
 			<div class="bt_noir">
 				<a class="iframe" href="<?php echo site_url('concert/ajouter/' . $infos_profile->id) ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter un concert</span><span class="bt_right"></span></a>

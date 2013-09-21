@@ -700,7 +700,7 @@ $(document).ready(function(){
                 location.hash = 'close';
                 $('#wysiwyg-block').slideToggle('slow');
             }
-            );
+           );
 
         $('#articles-tab td .article-actions').hide();
         $('#articles-tab tr').hover(function() {
@@ -887,7 +887,7 @@ $(document).ready(function(){
                   
                     ajaxLoader.fadeOut(1000);
                    
-                    $(".content").masonry( 'reload');
+                    $(".content").masonry('reload');
                 }
             })
             return false;
@@ -914,7 +914,7 @@ $(document).ready(function(){
                 success: function(comment){
                     $(comment).hide().insertBefore(thisParent).slideDown('slow');
                     ajaxLoader.fadeOut(1000);
-                    $(".content").masonry( 'reload');
+                    $(".content").masonry('reload');
                 }
             })
             return false;
@@ -941,7 +941,7 @@ $(document).ready(function(){
                 success: function(comment){
                     $(comment).hide().insertBefore(thisParent).slideDown('slow');
                     ajaxLoader.fadeOut(1000);
-                    $(".content").masonry( 'reload');
+                    $(".content").masonry('reload');
                 }
             })
             return false;
@@ -1110,7 +1110,7 @@ $(document).ready(function(){
             $(this).find('.photo').children('.edit').hide();
             $(this).find('.photo').children('.open_alb').hide();
         }
-        );
+       );
     
  };
       
@@ -1159,7 +1159,7 @@ $(document).ready(function(){
         // $(this).replaceWith(one).show()},
         //function(){$(this).replaceWith(two).show()
     
-        );
+       );
     
     if($('body.abonnements').length>0)
     {
@@ -1510,8 +1510,6 @@ $(document).ready(function(){
             items: 1,
             direction: "left",
             height: "100%",
-            //            width: 770,
-            //            height: 308,
             auto: {
                 fx : "crossfade",
                 easing : "linear",
@@ -1638,7 +1636,7 @@ $(document).ready(function(){
             function() {
                 $(this).find('.play_achat').css('visibility', 'hidden');
             }
-            );
+           );
             
             //passage parametre commande id en url pour download
         	
@@ -1650,7 +1648,7 @@ $(document).ready(function(){
        				$('form.historiq_dwld .checkbox-article:checked').each(function(){
        					id_commande.push($(this).val());
        				});
-       		     	var all_cmd =   id_commande.join( "%20" );
+       		     	var all_cmd =   id_commande.join("%20");
        				$('.ctr_dnw').attr('href', url + all_cmd);
 
        			
@@ -1668,7 +1666,7 @@ $(document).ready(function(){
        				$('form.last_tunnel .checkbox-article:checked').each(function(){
        					id_commande.push($(this).val());
        				});
-       		     	var all_cmd =   id_commande.join( "%20" );
+       		     	var all_cmd =   id_commande.join("%20");
        				$('.ctr_dnw_part').attr('href', url + all_cmd);
        			});
 
@@ -1835,7 +1833,7 @@ $(document).ready(function(){
 		
 		
         }
-        )
+       )
     	
     }
     

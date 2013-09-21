@@ -77,8 +77,9 @@ $loger = $this->session->userdata('logged_in');
         <?php
         if (isset($all_follower)):
            
-           
-            foreach ($all_follower as $follower):
+           $last_key = end(array_keys($all_follower));
+            
+            foreach ($all_follower as $key => $follower):
                 if ($follower->type == 1):
                             ?>
         	        <div class="follower">
@@ -95,8 +96,6 @@ $loger = $this->session->userdata('logged_in');
                             <a href="<?php echo base_url('index.php/my-wall/' . $follower->Follower_id) ?> " onclick="location.href='<?php echo base_url('index.php/my-wall/' . $follower->Follower_id) ?>';" class="melo"><span class="button_left_red"></span><span class="button_center_red">Voir le profil</span><span class="button_right_red"></span></a>
                     	</div>
                		</div>
-               		<div class="clear"></div>
-               		   <hr/>
                         <?php
             	endif;
   if ($follower->type == 2||$follower->type == 0):
@@ -127,12 +126,15 @@ $loger = $this->session->userdata('logged_in');
                         </div>
                         <?php
                     endif;
-                    ?> </div><div class="clear"></div><hr/><?php
+                    ?> </div><?php
                 endif;
                 
               ?>
 
-        
+            <?php if($key != $last_key): ?>
+                <div class="clear"></div>
+                   <hr/>
+            <?php endif; ?>
         <?php
     endforeach;
 endif;
