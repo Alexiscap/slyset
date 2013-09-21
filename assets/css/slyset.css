@@ -51,17 +51,17 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 #stats-cover_melo .stats_number{ margin:1px 0 0 0; font-weight:bold; font-size:14px; color:#01adbb; float:left; }
 #stats-cover_melo .stats_title{ font-size:10px; font-weight:bold; text-transform:uppercase; color:#3f3f3f; float:left; clear:both; }*/
 
-.actus_post{ margin:12px 0 4px 0; width:540px; /*height:134px;*/ background:#e6e6e6; float:left; clear:both; }
+.actus_post{ margin:12px 0 4px 0; width:100%; /*height:134px;*/ background:#e6e6e6; float:left; clear:both; }
 .actus_post form{ clear:both; }
 .actus_post .upload-file-container.container-photo{ margin:0 0 0 17px; width:125px; background:url('../images/musicien/sprite_button_file_photo.png') 0 0 no-repeat; float:left; clear:both; }
 .actus_post .upload-file-container.container-photo input{ width:125px; }
 .upload_photo_name_file{ display:inline-block; height:30px; line-height:20px; font-family:"Trebuchet MS", Arial, sans-serif; font-size:12px; color:#737578; float:left; }
-.actus_post_links{ margin:12px 0 0 7px; float:left; }
+.actus_post_links{ margin:12px 0 0 5px; float:left; }
 .actus_post_links a{ margin:0 0 0 10px; padding:0 4px; height:20px; line-height:20px; display:inline-block; font-size:13px; font-weight:bold; text-decoration:none; color:#737578; background:transparent; }
 .actus_post_links a:hover, .actus_post_links a:active, .actus_post_links a.active{ height:20px; display:inline-block; text-decoration:none; background:#cccccc; }
-.actus_post textarea{ margin:2px 17px 4px 17px; padding:2px 5px; width:495px; height:54px; resize:none; font-family:"Trebuchet MS", Arial, sans-serif; color:#535353; float:left; clear:both;font-size:12px; }
+.actus_post textarea{ margin:2px 15px 4px 15px; padding:2px 5px; width:518px; height:54px; resize:none; font-family:"Trebuchet MS", Arial, sans-serif; color:#535353; float:left; clear:both;font-size:12px; }
 .actus_post #comments-link-video input[type="text"]{ margin:0 0 0 17px; padding:0 5px; width:400px; height:26px; font-size:12px; font-style:italic; color:#737578; float:left; clear:both; }
-.actus_post input[type="submit"]{ margin:0 16px 0 0; height:32px; font-size:14px; color:#ffffff; float:right; clear:none;background: #3f3f3f;border: 1px solid #000000;padding: 0 10px;}
+.actus_post input[type="submit"]{ margin:0 16px 0 0; height:30px; line-height:30px; color:#ffffff; float:right; clear:none; background: #3f3f3f;border: 1px solid #000000; font-family:'Trebuchet MS', Arial, sans-serif; font-size:12px; padding: 0 10px;}
 .actus_post input[type="submit"]:hover{ cursor:pointer; }
 .actus_post #comments-msg input[type="submit"]{ clear:both;padding-bottom:3px;}
 .actus_post span.error-form{ margin:5px 0 5px 17px; }
@@ -77,7 +77,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .artist_post .right .msg_post{ padding:0 0 20px 0; display:inline-block; width:396px; font-weight:normal; font-size:13px; color:#535353; float:left; margin:0 0 0 5px;}
 .artist_post .right .msg_post a{ font-weight:bold; text-decoration:none; color:#31a58c; }
 .artist_post .right .msg_post a:hover{ text-decoration:underline; }
-.artist_post .right .singleWrapper{ width:455px; max-height:500px; overflow:hidden; float:left; clear:both; }
+.artist_post .right .singleWrapper{ width:475px; max-height:500px; overflow:hidden; float:left; clear:both; }
 .artist_post .right img.single{ display:block; min-width:475px; max-width:100%; }
 .artist_post .right .content-mosaic {margin-left : 13px;}
 .artist_post .right img.mosaic{ margin:0 5px 10px 5px; display:inline-block; width:135px; height:135px; overflow:hidden; float:left; }
@@ -99,19 +99,19 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .artist_post .bottom .infos_coms a:hover{ text-decoration:underline; color:#31a58c; }
 
 .artist_post .linkCommentsWrapper{ margin:0 0 1px 0; padding:4px 0; width:455px; position:relative; left:45px; color:#01adbb; font-weight:bold; background:#ffffff; float:left; clear:both; cursor:pointer; text-align:center; }
-.artist_post .comments{ margin:0 0 1px 0; width:455px; position:relative; left:45px; background:#ffffff; float:left; clear:both; }
+.artist_post .comments{ margin:0 0 1px 0; width:475px; position:relative; left:45px; background:#ffffff; float:left; clear:both; }
 .artist_post .comments .com_left{ width:62px; height:100%; float:left; }
 .artist_post .comments .com_left img{ margin:4px; display:block; position:relative; width:43px; height:43px; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px; }
 .artist_post .comments .com_right{ width:393px; float:left; }
-.artist_post .comments .com_right .com_top{ width:100%; height:17px; float:left; }
+.artist_post .comments .com_right .com_top{ width:413px; height:17px; float:left; }
 .artist_post .comments .com_right .com_top a{ margin:1px 2px 0 0; display:block; float:right; }
-.artist_post .comments .com_right .com_bottom{ margin:-2px 0 10px 0; width:353px; float:left; clear:both; }
+.artist_post .comments .com_right .com_bottom{ margin:-2px 0 10px 0; width:390px; float:left; clear:both; }
 .artist_post .comments .com_publi_infos{ display:block; font-size:12px; font-weight:bold; color:#3f3f3f; float:left; clear:both; }
 .artist_post .comments .com_publi_infos small{ font-size:10px; }
 .artist_post .comments .com_publi_msg{ margin:2px 0 0 0; display:block; font-size:12px; color:#707070; float:left; clear:both; }
 
-.artist_post .form_comments{ margin:3px 0 0 0; width:457px; position:relative; left:44px; float:left; }
-.artist_post .form_comments input[type="text"]{ padding:0 0 0 15px; display:inline-block; width:440px; height:38px; position:relative; font-size:12px; border:1px solid #c1c1c1; color:#909090; float:left; }
+.artist_post .form_comments{ margin:3px 0 0 0; width:476px; position:relative; left:44px; float:left; }
+.artist_post .form_comments input[type="text"]{ padding:0 0 0 15px; display:inline-block; width:459px; height:38px; position:relative; font-size:12px; border:1px solid #c1c1c1; color:#909090; float:left; }
 .artist_post .form_comments input[type="submit"]{ display:inline-block; width:64px; height:28px; position:absolute; right:6px; top:5px; border:1px solid #d85342; font-size:11px; font-weight:bold; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; color:#ffffff; background:#f05f4c; float:left; -moz-box-shadow:1px 1px 2px 1px #c2c2c2; -webkit-box-shadow:1px 1px 2px 1px #c2c2c2; -o-box-shadow:1px 1px 2px 1px #c2c2c2; box-shadow:1px 1px 2px 1px #c2c2c2; filter:progid:DXImageTransform.Microsoft.Shadow(color=#c2c2c2, Direction=134, Strength=2); }
 .artist_post .ajax_loader{ padding:5px 0 0 0; text-align:center; clear:both; }
 .artist_post .ajax_loader img{ margin:0 10px 0 0; }
@@ -248,7 +248,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 /* --------- MUSICIEN PHOTO ET VIDEO --------- */
 .content .col1{ width:160px; }
 .content .col1 .img_cover{width:150px;}
-.content .box{ margin:5px; /* background:#D8D5D2; */ font-size:11px; line-height:1.4em; float:left; display:block; }
+.content .box{ margin:10px 13px; /* background:#D8D5D2; */ font-size:11px; line-height:1.4em; float:left; display:block; }
 .content .photo{background: white;text-align: left;box-shadow: 1px 1px 1px 1px #9b9b9b;width: 150px;padding: 5px 5px 0;}
 .content .photo .pochette{ width:139px; margin:10px 10px 5px 10px; min-height:214px; }
 .content .photo .img_miniat{ width:44px; margin:0 0 0 3px; }
@@ -258,13 +258,13 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .content .bord_photo{ background:#f2f0f0; margin:-5px 0 5px; height:25px; text-align:left;box-shadow: 1px 1px 1px 1px #9b9b9b;}
 .content .bord_photo p{ margin:0 0 0 10px; display:inline; font-size:10px; color:#878d95; }
 .content .bord_photo a:hover{ text-decoration:none; }
-.content .bord_photo a{ text-decoration:none; }
-.content .photo .nom_photo{ width:138px; text-align:left; word-wrap : break-word }
+.content .bord_photo a{ display:inline-block; float:left; height:25px; line-height:25px; text-decoration:none; }
+.content .photo .nom_photo{ width:138px; text-align:left; word-wrap:break-word }
 .content .bord_photo img{ margin:8px 0px -1px 40px; display:inline; }
 .nolike img {margin:0 5px 0 15px; display:inline; }
 .like, .nolike, .like-video, .nolike-video, .like-album, .nolike-album{ cursor:pointer; }
 .content .bord_photo .nb_like{ margin:0; }
-.content .comm,.content .comment-form,.content .comment-form-album,.content .comment-form-video,.content .comment-form-alb-wall{ width:160px; margin:0 -10px; background:#f2f0f0; border-bottom:1px solid #cdcdcd; border-top:none; min-height:34px; box-shadow: 1px 1px 1px 1px #9b9b9b;}
+.content .comm,.content .comment-form,.content .comment-form-album,.content .comment-form-video,.content .comment-form-alb-wall{ width:160px; margin:0 -10px; background:#f2f0f0; border-bottom:1px solid #cdcdcd; border-top:none; min-height:34px; box-shadow: 1px 1px 1px 1px #9b9b9b; float:left; clear:both; }
 .content .comm img,.content .comment-form img, .content .comment-form-album img, .content .comment-form-video img,.content .comment-form-alb-wall img{ float:left; margin:5px; height:24px; }
 .content .comm .del,.content .comment-form .del, .content .photo .comment-form-album .del, .content .photo .comment-form-video .del,.content .photo .comment-form-alb-wall del{ float:right; margin:5px 5px; height:14px; }
 .content .comm p,.content .comment-form p,.content .comment-form-album p,.content .comment-form-video p,.content .comment-form-alb-wall p{ margin:0; text-align:left; }
@@ -272,13 +272,13 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .content .comm .commentaire,.content .comment-form .commentaire, .content .comment-form-album .commentaire, .content .comment-form-video .commentaire,.content .photo .comment-form-alb-wall .commentaire{ font-size:10px; color:#888d95;line-height: 12px; }
 .content .comm input[type=text],.content .comment-form input[type=text], .content .comment-form-album input[type=text], .content .comment-form-video input[type=text],.content .comment-form-alb-wall input[type=text]{ float:left; width:70px; border:1px solid #dfdede; margin:5px 0; }
 .content .comm input[type=image],.content .comment-form input[type=submit], .content .comment-form-album input[type=submit], .content .comment-form-video input[type=submit],.content .comment-form-alb-wall input[type=submit]{ clear:both; width:55px; margin:4px 0 0 5px; }
-.content .comment-form-album input[type=submit] {clear: both;width: 55px;margin: 0px 0 3px 5px;background: #ef7663;color: white;}
+.content .comment-form input[type=submit], .content .comment-form-album input[type=submit], .content .comment-form-alb-wall input[type=submit]{clear: both;width: 55px;float:right;margin:3px 7px 3px 0;background: #ef7663;color: white;}
 .content .photo .edit{ background:rgba(36, 36, 36, 0.7); width:150px; height:22px; position:absolute;top:5px; margin:0;display:none;}
 .content .photo .edit img{ float:right; margin:4px 8px 0 0; }
 .content .photo .open_alb{ background:rgba(255, 255, 255, 0.5); width:150px; position:absolute; margin:22px 0;top:5px;height: calc(100% - 57px);display:none;text-align:center;}
 .content .photo .open_alb img{}
 .content .sepa_comm {width:160px;height:5px;background:#e6e6e6;margin-left:-5px;}
-
+.photos_videos #usercomment{ float:left; margin:5px 0 0 0; display:inline-block; width:115px; max-width:115px; height:55px; font-family:'Tebuchet MS', Arial, sans-serif; font-size:11px; border:none; outline-color:#01adbb; outline-width:2px;}
 .empty_photo_alb img{width:44px;height:44px;margin: 0 0 0 3px;}
 
 /*.box .img_cover, #tumblelog .img_cover{ display:block; width:100%; }*/
@@ -542,7 +542,7 @@ cursor : pointer;}
 
 
 /* --------- PORTAIL  --------- */
-#message-welcome{ margin:0; border-top:1px solid #afafaf; background:url('../images/portail/bkg_welcome.png') no-repeat 0 0 transparent; width:790px; height:84px; position:relative;float:left; clear:both; }
+#message-welcome{ margin:0; border-top:1px solid #afafaf; background:url('../images/portail/bkg_welcome.png') no-repeat 0 0 transparent; background-size:100%; width:790px; height:84px; position:relative;float:left; clear:both; }
 #message-welcome h1{ margin:14px 0 14px 60px; display:inline-block; width:385px; font-family:"Trebuchet MS", Arial, sans-serif; font-size:23px; line-height:28px; font-weight:bold; color:#3f3f3f; float:left; }
 #message-welcome a{ margin:25px 0 25px 30px; display:inline-block; width:252px; height:35px; line-height:35px; font-family:"Trebuchet MS", Arial, sans-serif; font-size:18px; font-weight:bold; text-align:center; text-decoration:none; color:#ffffff; background:url('../images/portail/btn_welcome2.png') no-repeat 0 0 transparent; }
 #message-welcome a:hover{ background:url('../images/portail/btn_welcome2.png') no-repeat 0 -35px transparent; }
@@ -805,7 +805,7 @@ input[type="checkbox"]:checked + label span{ background:url('../images/common/sp
 #subscription-upload label.last, #subscription-upload .upload_photo_name_file.last{ float:right; }
 #subscription-upload .container-cover + label{ margin:-15px 0 0.4em 0; font-weight:normal; float:right; clear:none; }
 .upload_images{ display:block; width:409px; height:150px; background:url('../images/subscription/upload_images2.png') no-repeat; float:left; clear:both; }
-.upload-file-container{ display:block; width:201px; height:30px; float:left; cursor:pointer; position:relative; }
+.upload-file-container{ display:block; width:160px; height:30px; float:left; cursor:pointer; position:relative; }
 .upload-file-container:hover{ background-position:0 -28px; cursor:pointer; }
 .upload-file-container{ background:url('../images/subscription/sprite_button_file_cover.png') 0 1px no-repeat; clear:both; }
 .upload-file-container.container-thumb{ margin:-20px 10px 0 0; width:147px; background:url('../images/subscription/sprite_button_file_thumb.png') 0 -28px no-repeat; float:right; clear:both; }
@@ -1064,10 +1064,11 @@ border-top : 1px solid #d9dadb;}
 .content .follower:last-child hr{display:none;}
 .content .follower .photo_follow {width:64px;float:left;margin:0 10px 10px 20px;}
 .content .follower .photo_follow img {width : 63px; border-radius : 10px;}
-.content .follower .description {width:220px;float:left;margin:0 10px}
+.content .follower .description {width:230px;float:left;margin:0 10px}
 .content .follower .description span {font-size:12px;color:#888d95;}
 .content .follower .description .nom_follow, .content .follower .description .nom_follow a {font-size:14px;font-weight:bold;color:#3f3f3f;margin:0;text-decoration : none;}
-.content .follower .description .text_follow {font-size:14px;color:#5d5b5b;font-weight:normal;width:220px;margin:0;}
+.content .follower .description .text_follow {font-size:14px;color:#5d5b5b;font-weight:normal;width:100%;margin:0;}
+.content .follower .bouton{ float:left; }
 .content .follower .bouton .participer,.content .follower .bouton .melo,.content .follower .bouton .my-follow,.content .follower .bouton .follow_following {margin:20px 0 0 30px;}
 
 /*.content .participer .button_left_abonne{ display:block; width:22px; height:30px; background:url("../images/common/sprite_btn_suivre.png") no-repeat 0 -61px; float:left; }
@@ -1076,14 +1077,14 @@ border-top : 1px solid #d9dadb;}
 .content .participer .button_left_non{ display:block; width:22px; height:30px; background:url("../images/common/sprite_btn_pas_suivre.png") no-repeat 0 -61px; float:left; }
 .content .participer .button_center_non{ padding:0 10px 0 0; display:block; height:30px; line-height:28px; font-weight:bold; background:url("../images/common/sprite_btn_pas_suivre.png") repeat-x 0 -31px; float:left; }
 .content .participer .button_right_non{ display:block; width:32px; height:30px; background:url("../images/common/sprite_btn_pas_suivre.png") no-repeat -77px -1px; float:left; }
-*/.content #btn_tmp_follow{ width:193px; margin:0 20px; padding:20px 0; }
+*/.content #btn_tmp_follow{ width:193px; margin:0 20px; padding:20px 0; float:left; }
 .content #btn_tmp_follow .tous{background:url("../images/common/fd_ts.png");width:46px;height:22px;text-align:center;padding-top:8px;}
 .content #btn_tmp_follow .musiciens{ width:65px;height:22px;background:url("../images/common/fd_music.png");text-align:center;padding-top:8px;}
 .content #btn_tmp_follow .melomanes{ width:82px;height:22px;background:url("../images/common/fd_melo.png");text-align:center;padding-top:8px;}
 .content #btn_tmp_follow a{ float:left;color:#666666;font-size:12px;text-decoration:none;}
 .content #btn_tmp_follow a:hover, .content #btn_tmp_follow a.active{color:#f05f4c;}
 
-.follower {margin-top:15px;}
+.follower { margin-top:15px; padding:0 0 10px 0; float:left; width:100%; }
 /* ---------- FIN MUSICIEN FOLLOWERS --------- */
 
 
@@ -1102,7 +1103,7 @@ border-top : 1px solid #d9dadb;}
 /*#any-background-personnaliser input[type="submit"]:hover{font-weight:bold;}*/
 #any-background-personnaliser a.reset_theme, #any-background-reglages a.delete_account{ margin:0 0 10px 50px; padding:0 14px; height:30px; line-height:30px; border:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:16px; text-align:center; text-decoration:none; outline:none; color:#FFFFFF; float:left;background: #3f3f3f;}
 /*#any-background-personnaliser a.reset_theme:hover, #any-background-reglages a.delete_account{ font-weight:bold;}*/
-#any-background-reglages a.delete_account{ margin:0 0 10px 21px;font-weight:normal;background: #ef7363;}
+#any-background-reglages a.delete_account{ margin:0 0 10px 32px;font-weight:normal;background: #ef7363;}
 
 .detail_perso {font-size:14px;color:#888d95;font-weight:normal;margin:0 20px 0 20px;}
 .categ_perso {margin:20px 0;}
@@ -1141,16 +1142,16 @@ border-top : 1px solid #d9dadb;}
 
 /*------------ REGLAGES -------------*/
 #any-background-personnaliser .content, #any-background-reglages .content, #any-background-reglages-music .content, #any-background-achats .content{ margin:0 0 25px 0; padding:0 20px; width:520px; }
-#any-background-personnaliser .content h1, #any-background-reglages .content h1, #any-background-reglages-music .content h1,
-#any-background-personnaliser .content h2, #any-background-reglages .content h2, #any-background-reglages-music .content h2{ margin:20px 0 15px 0; }
+#any-background-personnaliser .content h1, #any-background-reglages .content h1, #any-background-reglages-music .content h1, #any-background-achats .content h1,
+#any-background-personnaliser .content h2, #any-background-reglages .content h2, #any-background-reglages-music .content h2 #any-background-achats .content h2{ margin:20px 0 15px 0; }
 p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:normal; line-height:21px; color:#888d95; float:left; text-align:left; }
 .preview_upload{ margin:0 10px 0 18px; width:58px; height:58px; -webkit-border-radius:8px; -moz-border-radius:8px; border-radius:8px; overflow:hidden; background-repeat:no-repeat; background-size:cover; background-position:center center; float:left; }
 #any-background-reglages #subscription-upload, #any-background-reglages-music #subscription-upload{ margin:15px 0 0 0; clear:both; }
 #any-background-reglages #subscription-upload label, #any-background-reglages-music #subscription-upload label{ margin:4px 0 55px 0; display:inline-block; width:150px; font-size:16px; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:bold; text-align:right; color: #4e4e4e; clear:both; }
 #any-background-reglages #subscription-upload input, #any-background-reglages-music #subscription-upload input{ width:100%; position:relative; }
 #any-background-reglages hr, #any-background-reglages-music hr, #any-background-personnaliser hr{ margin:15px auto 5px auto; height:1px; border-bottom:1.5px solid rgb(184, 187, 190); background:#f8f8f8; }
-#any-background-reglages .upload-file-container.container-thumb, #any-background-reglages-music .upload-file-container.container-thumb{ margin:2px 30px 0 0; float:left; clear:none; }
-#any-background-reglages .upload-file-container.container-cover, #any-background-reglages-music .upload-file-conainter.container-cover{ margin:2px 0 0 0; float:left; clear:none; }
+#any-background-reglages .upload-file-container.container-thumb, #any-background-reglages-music .upload-file-container.container-thumb{ margin:2px 120px 0 0; float:left; clear:none; }
+#any-background-reglages .upload-file-container.container-cover, #any-background-reglages-music .upload-file-conainter.container-cover{ margin:2px 120px 0 0; float:left; clear:none; }
 #any-background-reglages hr, #any-background-reglages-music hr, #any-background-personnaliser hr{ margin:5px auto 15px auto; height:1px; border-bottom:1.5px solid rgb(184, 187, 190); background:#f8f8f8; }
 
 #any-background-reglages form > label, #any-background-reglages-music form > label{ margin:0 0 0 0; width:150px; height:26px; line-height:26px; font-size:16px; font-family:"Trebuchet MS", Arial, sans-serif; font-weight:bold; text-align:right; color: #4e4e4e; float:left; }
@@ -1306,8 +1307,8 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 .content .historique .nom_pl {float: left;font-size:18px;font-weight:bold;color:#3f3f3f;margin:0;}
 .content .historique .detail_pl,.content .panier .detail_pl {float: right;font-size:12px;color:#888d95;margin:5px 0px 10px 7px;}
 .content .historique span.detail_pl {padding-top:3px;}
-.content .historique hr {width:455px;}
-.content .panier hr {width:455px;}
+.content .historique hr {width:518px;}
+.content .panier hr {width:518px;}
 
 .content  .historique tr{border-bottom:1px solid #cbcbcb;}
 .content  .historique .titres tr{background:#fafafa;}
@@ -1364,13 +1365,13 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 .content .panier #articles-tab input[type="submit"]{ margin:0 0 0 0; padding:0 5px; display:block; width:94px; height:32px; line-height:32px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:center; color:#FFFFFF; background:url('../images/admin/btn_supprimer.png') no-repeat 0 0 transparent; float:right; clear:both; }
 .content .panier #articles-tab input[type="submit"]:hover{ font-size:15px; }
 
-.content .panier{margin:20px 20px 20px;}
+.content .panier{margin:20px 0 20px 0;}
 .content .panier p{display:inline;margin:0;font-weight:normal;}
 .content .panier img{display:inline;width:12px;margin:0 0 0 5px;}
 .content .panier a{color:#888d95;font-size:12px;text-decoration:none;}
 
-.content .historique #articles-tab{ margin:20px auto; float:left; clear:both; }
-.content .historique #articles-tab table,.content .liste_partitions table{ margin:0 0 5px 0; border:1px solid #cccfd1; -moz-box-shadow:0px 2px 3px 0px #999999;
+.content .historique #articles-tab{ margin:8px auto 20px auto; width:100%; float:left; clear:both; }
+.content .historique #articles-tab table,.content .liste_partitions table{ margin:0 0 5px 0; width:100%; border:1px solid #cccfd1; -moz-box-shadow:0px 2px 3px 0px #999999;
 -webkit-box-shadow:0px 2px 3px 0px #999999; -o-box-shadow:0px 2px 3px 0px #999999; box-shadow:0px 2px 3px 0px #999999; filter:progid:DXImageTransform.Microsoft.Shadow(color=#999999, Direction=180, Strength=3);}
 .content .historique #articles-tab tr, .content .liste_partitions tr{ }
 .content .historique #articles-tab th, .content .liste_partitions th{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:left; color:#666666; }
@@ -1403,7 +1404,7 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 .content .historique #articles-tab input[type="submit"]{ margin:0 0 0 0; padding:0 5px; display:block; width:94px; height:32px; line-height:32px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:center; color:#FFFFFF; background:url('../images/admin/btn_supprimer.png') no-repeat 0 0 transparent; float:right; clear:both; }
 .content .historique #articles-tab input[type="submit"]:hover{ font-size:15px; }
 
-.content .historique{margin:40px 20px 20px;}
+.content .historique{margin:40px 0 20px 0;}
 .content .historique p{display:inline;margin:0;font-weight:normal;}
 .content .historique img{display:inline;width:12px;margin:0 0 0 5px;}
 .content .historique a{color:#888d95;font-size:12px;text-decoration:none;}
@@ -1422,8 +1423,8 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 .contentAdmin h3:before{ content: '>'; }
 .contentAdmin label{ font-family:"Myriad Pro", Arial, sans-serif; font-size:17px; font-weight:normal; color:#878d95; }
 
-#admin_notification{ margin:30px 0 0 20px; width:100%; float:left; clear:both; }
-#admin_notification textarea{ margin:10px 0 0 0; padding:20px; display:block; width:727px; height:115px; font-family:"Myriad Pro", Arial, sans-serif; font-size:17px; font-weight:normal; border:1px solid #b0d4cc; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px; outline:none; color:#717171; float:left; clear:both; }
+#admin_notification{ margin:30px 20px 0 20px; width:750px; float:left; clear:both; }
+#admin_notification textarea{ margin:10px 0 0 0; padding:20px; display:block; width:708px; max-width:708px; height:115px; font-family:"Myriad Pro", Arial, sans-serif; font-size:17px; font-weight:normal; border:1px solid #b0d4cc; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px; outline:none; color:#717171; float:left; clear:both; }
 #admin_notification [type='submit']{ margin:12px 0 0 0; display:block; width:124px; height:41px; line-height:41px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:17px; font-weight:bold; text-align:center; color:#01adbb; background:url('../images/admin/btn_enregistrer.png') no-repeat 0 0 transparent; float:right; clear:both; }
 
 #admin_chiffres{ margin:45px 0 0 20px; width:100%; float:left; clear:both; }

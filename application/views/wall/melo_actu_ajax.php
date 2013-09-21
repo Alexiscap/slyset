@@ -35,13 +35,11 @@
                 </div>
 
                 <div class="bottom">
-                    <span class="infos_publi"><?php echo $entity_wall->login ?> - 
-                        <?php
-                        $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
-                        $a = date_timestamp_get($date_format);
-                        echo $data['date_2'] = strftime('Le %d %B %G', $a);
-                        ?><!--Le 26 Septembre 2013-->
-                    </span>
+    							<span class="infos_publi">
+                      <?php // print_r($entity_wall); ?><?php echo $entity_wall->login; ?> - <?php	$date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
+                        $a =  date_timestamp_get($date_format);
+                        echo $data['date_2'] = date('d-m-Y', strtotime(str_replace('-', '/', $entity_wall->date)));//strftime('Le %d %B %G',$a); ?>
+                  </span>
                 </div>
             </div>
 
@@ -75,11 +73,11 @@
                 </div>
 
                 <div class="bottom">
-                    <span class="infos_publi"><?php echo $this->uri->segment('') ?><!--  - -->  <?php
-            $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
-            $a = date_timestamp_get($date_format);
-            echo $data['date_2'] = strftime('Le %d %B %G', $a);
-            ?><!--Le 26 Septembre 2013--></span>
+    							<span class="infos_publi">
+                      <?php // print_r($entity_wall); ?><?php echo $entity_wall->login; ?> - <?php	$date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
+                        $a =  date_timestamp_get($date_format);
+                        echo $data['date_2'] = date('d-m-Y', strtotime(str_replace('-', '/', $entity_wall->date)));//strftime('Le %d %B %G',$a); ?>
+                  </span>
                 </div>
             </div>
 
@@ -113,12 +111,11 @@
 
                 </div>
                 <div class="bottom">
-                  <span class="infos_publi"><!--<?php echo $this->session->userdata('login') ?> ---> <?php
-            $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
-            $a = date_timestamp_get($date_format);
-            echo $data['date_2'] = strftime('Le %d %B %G', $a);
-            ?><!--Le 26 Septembre 2013-->
-                    </span>
+    							<span class="infos_publi">
+                      <?php // print_r($entity_wall); ?><?php echo $entity_wall->login; ?> - <?php	$date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
+                        $a =  date_timestamp_get($date_format);
+                        echo $data['date_2'] = date('d-m-Y', strtotime(str_replace('-', '/', $entity_wall->date)));//strftime('Le %d %B %G',$a); ?>
+                  </span>
                 </div>
             </div>
 
@@ -149,12 +146,11 @@
 
                 </div>
                 <div class="bottom">
-                    <span class="infos_publi"><?php echo $entity_wall->login ?> - <?php
-            $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
-            $a = date_timestamp_get($date_format);
-            echo $data['date_2'] = strftime('Le %d %B %G', $a);
-            ?><!--Le 26 Septembre 2013-->
-                    </span>
+    							<span class="infos_publi">
+                      <?php // print_r($entity_wall); ?><?php echo $entity_wall->login; ?> - <?php	$date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
+                        $a =  date_timestamp_get($date_format);
+                        echo $data['date_2'] = date('d-m-Y', strtotime(str_replace('-', '/', $entity_wall->date)));//strftime('Le %d %B %G',$a); ?>
+                  </span>
                 </div>
             </div>
             <?php
@@ -223,11 +219,11 @@
                 </div>
 
                 <div class="bottom">
-                <span class="infos_publi"><!--<?php echo $this->session->userdata('login') ?> - --><?php
-            $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
-            $a = date_timestamp_get($date_format);
-            echo $data['date_2'] = strftime('Le %d %B %G', $a);
-            ?><!--Le 26 Septembre 2013--></span>
+    							<span class="infos_publi">
+                      <?php // print_r($entity_wall); ?><?php echo $entity_wall->login; ?> - <?php	$date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
+                        $a =  date_timestamp_get($date_format);
+                        echo $data['date_2'] = date('d-m-Y', strtotime(str_replace('-', '/', $entity_wall->date)));//strftime('Le %d %B %G',$a); ?>
+                  </span>
                 </div>
             </div>
 
@@ -296,11 +292,11 @@
 
 
                 <div class="bottom">
-                    <span class="infos_publi"><?php echo $entity_wall->login ?> - <?php
-            $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
-            $a = date_timestamp_get($date_format);
-            echo $data['date_2'] = strftime('Le %d %B %G', $a);
-                        ?><!--Le 26 Septembre 2013--></span>
+    							<span class="infos_publi">
+                      <?php // print_r($entity_wall); ?><?php echo $entity_wall->login; ?> - <?php	$date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
+                        $a =  date_timestamp_get($date_format);
+                        echo $data['date_2'] = date('d-m-Y', strtotime(str_replace('-', '/', $entity_wall->date)));//strftime('Le %d %B %G',$a); ?>
+                  </span>
                 </div>
             </div>
 
@@ -337,12 +333,11 @@
                 </div>
 
                 <div class="bottom">
-                    <span class="infos_publi"><?php echo $entity_wall->login ?> - <?php
-            $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
-            $a = date_timestamp_get($date_format);
-            echo $data['date_2'] = strftime('Le %d %B %G', $a);
-            ?><!--Le 26 Septembre 2013-->
-                    </span>
+    							<span class="infos_publi">
+                      <?php // print_r($entity_wall); ?><?php echo $entity_wall->login; ?> - <?php	$date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
+                        $a =  date_timestamp_get($date_format);
+                        echo $data['date_2'] = date('d-m-Y', strtotime(str_replace('-', '/', $entity_wall->date)));//strftime('Le %d %B %G',$a); ?>
+                  </span>
                 </div>
             </div>
 
@@ -400,11 +395,11 @@
                             <?php endif; ?>
 
                         <div class="bottom">
-                            <span class="infos_publi"><?php echo $entity_wall->login ?> - <?php
-                    $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
-                    $a = date_timestamp_get($date_format);
-                    echo $data['date_2'] = strftime('Le %d %B %G', $a);
-                    ?></span>
+    							<span class="infos_publi">
+                      <?php // print_r($entity_wall); ?><?php echo $entity_wall->login; ?> - <?php	$date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
+                        $a =  date_timestamp_get($date_format);
+                        echo $data['date_2'] = date('d-m-Y', strtotime(str_replace('-', '/', $entity_wall->date)));//strftime('Le %d %B %G',$a); ?>
+                  </span>
                         </div>
                     </div>
 
@@ -432,11 +427,11 @@
                     -->  
                 </div>
                 <div class="bottom">
-                  <span class="infos_publi"><!--<?php echo $this->session->userdata('login') ?> ---> <?php
-            $date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
-            $a = date_timestamp_get($date_format);
-            echo $data['date_2'] = strftime('Le %d %B %G', $a);
-            ?><!--Le 26 Septembre 2013--></span>
+    							<span class="infos_publi">
+                      <?php // print_r($entity_wall); ?><?php echo $entity_wall->login; ?> - <?php	$date_format = (date_create($entity_wall->date, timezone_open('Europe/Paris')));
+                        $a =  date_timestamp_get($date_format);
+                        echo $data['date_2'] = date('d-m-Y', strtotime(str_replace('-', '/', $entity_wall->date)));//strftime('Le %d %B %G',$a); ?>
+                  </span>
                 </div>
             </div>
             <?php
