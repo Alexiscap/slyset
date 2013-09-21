@@ -23,14 +23,17 @@ class Mc_actus extends CI_Controller {
         $this->load->library(array('form_validation'));
 
         $this->layout->set_id_background('musicien_actus');
-        $this->layout->set_description('');
-        $this->layout->set_titre('Dashboard Admin : Gestion des articles | Slyset Music');
 
         $this->user_id = (is_numeric($this->uri->segment(2))) ? $this->uri->segment(2) : $this->uri->segment(3);
         $output = $this->perso_model->get_perso($this->user_id);
 
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
+        
+        $this->layout->set_description('Retrouvez '.$sub_data['profile']->login.' sur Slyset et découvrez sa musique, ses prochains concerts, ses photos, ses vidéos, ses livrets, ses partitions...');
+        $this->layout->set_titre('Toute l\'actualité de '.$sub_data['profile']->login.' : photos, concerts, news - Slyset');
+        $this->layout->set_keyword($sub_data['profile']->login.', musicien, musique en ligne, streaming musique, slyset, concerts, photos, vidéos, actualités musique');
+        
         $sub_data['perso'] = $output;
         if ($this->user_id != null) {
             $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);

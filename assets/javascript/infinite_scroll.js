@@ -205,7 +205,7 @@ function infiniteArticlesAdmin() {
                 } else {
                     ajaxLoader.remove();
                     reachedEnd = true;
-                    $('.content').append(noMore);
+//                    $('.content').append(noMore);
                 }
             }
         });
@@ -290,7 +290,7 @@ function infiniteComptes() {
                 } else {
                     ajaxLoader.remove();
                     reachedEnd = true;
-                    $('.content').append(noMore);
+//                    $('.content').append(noMore);
                 }
             }
         });

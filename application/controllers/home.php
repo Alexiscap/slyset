@@ -21,8 +21,8 @@ class Home extends CI_Controller {
         $this->layout->ajouter_js('calendar');
 
         $this->layout->set_id_background('home');
-        $this->layout->set_description('Slyset');
-        $this->layout->set_titre('Slyset Music');
+        $this->layout->set_description('Slyset, le réseau social dédié aux musiciens et mélomanes');
+        $this->layout->set_titre('Slyset, le réseau social dédié aux musiciens et mélomanes');
     }
 
     public function index($uid = NULL) {

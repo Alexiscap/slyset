@@ -28,24 +28,28 @@ class Pages_statiques extends CI_Controller {
     
     public function mentions_legales() {
         $data = $this->data;
-
+        $this->layout->set_titre('Slyset, le réseau social dédié aux musiciens et mélomanes');
+        
         $this->layout->view('statiques/mentions_legales', $data);
     }
 
     public function faq() {
         $data = $this->data;
+        $this->layout->set_titre('Aide pour les utilisateurs de Slyset, réseau social pour musiciens');
 
         $this->layout->view('statiques/faq', $data);
     }
 
     public function cgu() {
         $data = $this->data;
+        $this->layout->set_titre('Slyset, le réseau social dédié aux musiciens et mélomanes');
 
         $this->layout->view('statiques/cgu', $data);
     }
 
     public function annonceurs() {
         $data = $this->data;
+        $this->layout->set_titre('Régie publicitaire Slyset, le réseau social dédié aux musiciens et mélomanes');
 
         $this->layout->view('statiques/annonceurs', $data);
     }
@@ -54,6 +58,7 @@ class Pages_statiques extends CI_Controller {
         $this->load->library('form_validation');
         
         $data = $this->data;
+        $this->layout->set_titre('Contacter l\'équipe Slyset, service de musique en ligne pour musiciens');
 
         $this->layout->view('statiques/contact', $data);
     }
@@ -62,6 +67,7 @@ class Pages_statiques extends CI_Controller {
         $this->load->library(array('form_validation', 'email'));
         
         $data = $this->data;
+        $this->layout->set_titre('Contacter l\'équipe Slyset, service de musique en ligne pour musiciens');
 
         $this->form_validation->set_rules('nom', 'Nom', 'trim|required|xss_clean');
         $this->form_validation->set_rules('prenom', 'Prénom', 'trim|required|xss_clean');
@@ -112,18 +118,21 @@ class Pages_statiques extends CI_Controller {
 
     public function paiements() {
         $data = $this->data;
+        $this->layout->set_titre('Paiement sécurisé sur Slyset, le réseau social dédié aux musiciens et mélomanes');
 
         $this->layout->view('statiques/paiements', $data);
     }
 
     public function slyset() {
         $data = $this->data;
+        $this->layout->set_titre('Service de musique en ligne pour musiciens et mélomanes');
 
         $this->layout->view('statiques/qui_sommes_nous', $data);
     }
 
     public function fonctionnalites() {
         $data = $this->data;
+        $this->layout->set_titre('Fonctionnalités de Slyset, botre nouveau service de musique en ligne');
 
         $this->layout->view('statiques/fonctionnalites', $data);
     }

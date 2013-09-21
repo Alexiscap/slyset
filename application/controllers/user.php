@@ -15,6 +15,8 @@ class User extends CI_Controller {
         $this->load->library('form_validation');
 
         $this->layout->set_id_background('inscription');
+        $this->layout->set_description('Slyset, le réseau social dédié aux musiciens et mélomanes');
+        $this->layout->set_titre('Inscrivez-vous sur Slyset, service de musique en ligne');
     }
 
     public function index() {
@@ -22,7 +24,6 @@ class User extends CI_Controller {
     }
 
     public function register_step_1() {
-
         $fb_data = $this->session->userdata('fb_data');
 //        print_r($fb_data);
 //        if((!$fb_data['uid']) or (!$fb_data['me'])){
