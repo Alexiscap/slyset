@@ -63,7 +63,6 @@ class Melo_achats extends CI_Controller {
         $data['all_following'] = $this->follower_model->get_all_abonnement($user_visited);
 
         $data['cmd'] = $this->achat_model->get_achat($user_visited);
-        //var_dump($data['cmd']);
         //print $this->input->post("article-all");
         $data['total_album_panier'] = 0;
         $data['total_morceaux_panier'] = 0;

@@ -98,8 +98,10 @@ class Document_model extends CI_Model {
     public function get_morceau_by_album($album,$not_type_doc) {
     	return $this->db->query('SELECT morceaux.id,morceaux.nom FROM morceaux
 									LEFT OUTER JOIN documents ON documents.morceaux_id = morceaux.id
-										WHERE  (documents.type_document != "'.$not_type_doc.'" OR documents.id IS NULL)
-											AND morceaux.albums_id = '.$album)
+                                     WHERE morceaux.id NOT IN ( SELECT morceaux.id FROM morceaux
+                                        LEFT OUTER JOIN documents ON documents.morceaux_id = morceaux.id
+                                            WHERE documents.type_document = "'.$not_type_doc.'")
+                                        AND morceaux.albums_id = '.$album )                       
 						->result();
     					
     }
@@ -130,7 +132,7 @@ class Document_model extends CI_Model {
         if (empty($id_commande_user) == 1) {
             $data = array(
                 'Utilisateur_id' => $this->session->userdata('uid'),
-                'date' => date('Y-m-d H:i:s', now()),
+                'date' => date('Y-m-d H:i:s', time()),
                 'status' => 'P'
             );
 
@@ -220,6 +222,20 @@ class Document_model extends CI_Model {
         $data['prix'] = $prix;
         $this->db->where('id', $doc_id);
         $this->db->update($this->table_doc, $data);
+
+    }
+
+    public function get_doc_already_basket()
+    {
+        $user_ud = $this->session->userdata('uid');
+        return $this->db->select('infos_commande.Documents_id,documents.type_document')
+                        ->from($this->tbl_order)
+                        ->join($this->tbl_orderinfo,'commande.id = infos_commande.Commande_id','LEFT OUTER JOIN')
+                        ->join($this->table_doc,'documents.id = infos_commande.Documents_id','LEFT OUTER JOIN')
+                        ->where(array('commande.status'=>'P','infos_commande.Documents_id IS NOT NULL'=> null,'commande.Utilisateur_id'=>$user_ud))
+                        ->get()
+                        ->result();
+
 
     }
 

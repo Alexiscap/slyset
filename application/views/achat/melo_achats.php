@@ -118,7 +118,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
             </div>
             <hr />
             <div class="clear"></div>
-             <?php if($total_album_panier + $total_partition_panier + $total_morceaux_panier !=0)
+             <?php if($total_album_panier + $total_partition_panier + $total_morceaux_panier + $total_paroles_panier !=0)
                   { ?>
             <div id="articles-tab">
                 <form action="<?php echo site_url('melo_achats/delete_panier'); ?>" method="post" accept-charset="utf-8">          

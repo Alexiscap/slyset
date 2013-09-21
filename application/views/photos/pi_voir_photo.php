@@ -7,7 +7,12 @@
  <div class="pop-in_cent">
   <div class="content-pi_photo">
 	<div class="zoom_photo">
-		<img src="<?php echo base_url('files/'.$zoom[0]->Utilisateur_id.'/photos/'.$zoom[0]->file_name ); ?>" alt="Voir Photo" />
+		<?php if($zoom[0]->alb_fn == null ) : ?>
+			<img src="<?php echo base_url('files/'.$zoom[0]->Utilisateur_id.'/photos/'.$zoom[0]->file_name ); ?>" alt="Voir Photo" />
+		<?php endif;?>
+		<?php if($zoom[0]->alb_fn != null ) : ?>
+			<img src="<?php echo base_url('files/'.$zoom[0]->Utilisateur_id.'/photos/'.$zoom[0]->alb_fn .'/'.$zoom[0]->file_name ); ?>" alt="Voir Photo" />
+		<?php endif;?>		
 	</div>
 	<div class="name_like">
 		<p class="titre_visu_photo"><?php echo $zoom[0]->nom ?></p>

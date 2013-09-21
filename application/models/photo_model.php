@@ -510,7 +510,7 @@ class Photo_model extends CI_Model {
     }
 
     public function get_zoom_photos($id_photo) {
-        return $this->db->query('SELECT Utilisateur_id,like_total,file_name,nom,id FROM photos WHERE id=' . $id_photo)
+        return $this->db->query('SELECT photos.Utilisateur_id,photos.like_total,photos.file_name,photos.nom,photos.id,album_media.file_name AS alb_fn FROM photos LEFT OUTER JOIN album_media ON album_media.photos_id = photos.id WHERE photos.id=' . $id_photo )
                         ->result();
     }
 

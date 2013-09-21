@@ -179,8 +179,9 @@ if (isset($all_date_calendar))
     </div>
     <div id="wall-flux">
 <?php
-        foreach ($articles as $article):
-           // if(isset($article->article)):
+       // foreach ($articles as $article):
+        foreach ($flux_portail as $article):
+            if(isset($article->article)):
 ?>
                 <div class="wall-flux-content" >
                     <p class="wall-flux-content-title">
@@ -201,33 +202,86 @@ if (isset($all_date_calendar))
                     </div>
                 </div>
             <?php 
-           // endif;
+            endif;
 
-        //    if(isset($article->description)):
+           if(isset($article->descri_f_t)):
 ?>
-           <!--     <div class="wall-flux-content">
+               <div class="wall-flux-content">
+                    <div class="wall-flux-content-left-picture">
+                        <img class="img-blog-artiste-carre" src="<?php echo files('profiles/'.$article->thumb) ?>">
+                        <a class="open_player" href="<?php echo base_url('index.php/mc_musique/player/'.$article->Utilisateur_id.'/album/'.$article->name_alb.'/'.$article->id) ?>">play</a>
+
+                    </div>
+                    <div class="wall-flux-content-right-text">
+
+                        <p class="wall-flux-content-title">Les internautes écoutent...</p>
+
+                        <p class="wall-flux-content-subtitle"><?php echo $article->login ?> - <?php echo $article->nom ?></p>
+
+                        <p class="wall-flux-content-text"><?php echo $article->descri_f_t ?>
+                        </p>
+                        <a href="<?php echo base_url('index.php/actualite/'.$article->Utilisateur_id) ?>"><p class="wall-flux-content-goto-profile">Voir le profil &rarr;</p></a>
+
+                    </div>
+                </div>
+
+                <?php
+            endif;
+           if(isset($article->salle)):
+?>
+               <div class="wall-flux-content">
                     <div class="wall-flux-content-left-picture">
                         <img class="img-blog-artiste-carre" src="<?php echo files('profiles/'.$article->thumb) ?>">
 
                     </div>
                     <div class="wall-flux-content-right-text">
-                        <!-- <p class="wall-flux-content-title">L’évènement à ne pas rater</p>-->
-<!--
-                        <p class="wall-flux-content-title">Les internautes ont aimé...</p>
+                        <p class="wall-flux-content-title">L’évènement à ne pas rater</p>
 
-                        <p class="wall-flux-content-subtitle"><?php echo $article->login ?> - <?php echo $article->nom ?></p>
 
-                        <!--<p class="wall-flux-content-subtitle">Bob Dylan à l’Aéronef, le 28/11/2013</p>--><!--
+
+                        <p class="wall-flux-content-subtitle"><?php echo $article->login ?>, <?php echo $article->salle ?>, le <?php $unix = mysql_to_unix($article->date); $format_date = mdate('%d/%m/%Y',$unix); echo $format_date ;?></p>
                         <p class="wall-flux-content-text"><?php echo $article->description ?>
                         </p>
-                                                <a href="<?php echo base_url('index.php/actualite/'.$article->Utilisateur_id) ?>"><p class="wall-flux-content-goto-profile">Voir le profil &rarr;</p></a>
+                        <?php 
+                        $datestring = "%Y-%m-%d %h:%i:%s";
 
-                       <!-- <p class="wall-flux-content-goto-profile">Voir le concert &rarr;</p>--><!--
+                        $time = time();
+                             $today = mdate($datestring, $time);
+
+                        if ($today < $article->date) {
+                            $link = site_url() . "/concert/" . $article->Utilisateur_id . '/#' . $article->id;
+                        } else {
+                            $link = site_url() . "/concert/archive/" .$article->Utilisateur_id. '/#' . $article->id;
+                        }
+                        ?>
+                      <a href="<?php echo $link ?>"> <p class="wall-flux-content-goto-profile">Voir le concert &rarr;</p></a>
                     </div>
                 </div>
--->
+
                 <?php
-         //   endif;
+            endif;  
+           if(isset($article->description_f_p)):
+?>
+               <div class="wall-flux-content">
+                    <div class="wall-flux-content-left-picture">
+                        <img class="img-blog-artiste-carre" src="<?php echo files('profiles/'.$article->thumb) ?>">
+
+                    </div>
+                    <div class="wall-flux-content-right-text">
+
+                        <p class="wall-flux-content-title">Les internautes ont aimé...</p>
+
+                        <p class="wall-flux-content-subtitle"><?php echo $article->login ?></p>
+
+                        <p class="wall-flux-content-text"><?php echo $article->description_f_p ?>
+                        </p>
+                        <a href="<?php echo base_url('index.php/actualite/'.$article->Utilisateur_id) ?>"><p class="wall-flux-content-goto-profile">Voir le profil &rarr;</p></a>
+
+                    </div>
+                </div>
+
+                <?php
+            endif;          
         endforeach; 
 
 ?>

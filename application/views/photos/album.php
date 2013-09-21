@@ -27,6 +27,7 @@ $loger = $this->session->userdata('logged_in');
      		if($loger==1&&$profile->id != $session_id&&($profile->type==2)&&(substr_count($community_follower,$profile->id)>0)): ?>
      			<a href="#" class="delete-follow" id="<?php echo $this->uri->segment(2)?>"><span class="button_left_abonne"></span><span class="button_center_abonne">Ne plus suivre</span><span class="button_right_abonne"></span></a>
     		<?php endif;?>
+        
   </div>
     </div>
 
@@ -56,8 +57,12 @@ $loger = $this->session->userdata('logged_in');
             <a class="iframe" href="<?php echo site_url('media/ajouter-video/' . $profile->id) ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter une vidéo</span><span class="bt_right"></span></a>
         </div>-->
         <?php } ?>
+<!--<div class="top_title_photo">
+     <h1><?php echo str_replace("_", " ", $this->uri->segment(3))  ?></h1>
+     <a href="<?php echo base_url('index.php/media/'.$uid_visit)?>">retour</a>
 
-  <div class="content">
+</div>-->
+  <div class="content ">
   	 
      <h1><?php echo str_replace("_", " ", $this->uri->segment(3))  ?></h1>
      <?php

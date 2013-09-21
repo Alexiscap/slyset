@@ -29,9 +29,11 @@ class Melo_actus_model extends CI_Model {
     }
 
     public function get_entities_id($limit = 3, $offset = 0, $list_id, $user_id) {
+    
     if ($list_id == null) {$list_id = 0;}
        // if ($list_id != null) {
-       $sql_mu = 'SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,videos_id AS idproduit,videos.description AS main_nom,videos.nom AS file_name,videos.Utilisateur_id,utilisateur.thumb,utilisateur.login,"null" AS ville,"null" AS salle,"null" AS walltouser,"null" AS date_concert,  2 as product
+       
+       $sql_mu = 'SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,videos_id AS idproduit,videos.description AS main_nom,videos.nom AS file_name,videos.Utilisateur_id,utilisateur.thumb,utilisateur.login,"null" AS ville,"null" AS salle,"null" AS walltouser,"null" AS date_concert,"null" AS playlist, "null" AS name_alb , 2 as product
 				FROM wall_melo_component
 				JOIN videos
 						ON videos.id = wall_melo_component.Videos_id
@@ -44,7 +46,7 @@ class Melo_actus_model extends CI_Model {
 					AND wall_melo_component.type = "MU")
 					
 							UNION
-			(SELECT MAX(wall_melo_component.id),wall_melo_component.type,wall_melo_component.date,wall_melo_component.albums_media_file_name,album_media.nom AS main_nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser,"null", 5 as product
+			(SELECT MAX(wall_melo_component.id),wall_melo_component.type,wall_melo_component.date,wall_melo_component.albums_media_file_name,album_media.nom AS main_nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser,"null","null", "null" ,5 as product
 				FROM wall_melo_component
 				JOIN photos
 						ON photos.id = wall_melo_component.Photos_id
@@ -58,7 +60,7 @@ class Melo_actus_model extends CI_Model {
 					AND wall_melo_component.albums_media_file_name IS NOT NULL
 					GROUP BY wall_melo_component.albums_media_file_name)		
 			UNION
-			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,wall_melo_component.albums_media_file_name,album_media.nom AS main_nom,album_media.file_name,album_media.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser,"null", 5 as product
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,wall_melo_component.albums_media_file_name,album_media.nom AS main_nom,album_media.file_name,album_media.Utilisateur_id,utilisateur.thumb,utilisateur.login, "null" AS ville,"null" AS salle,"null" AS walltouser,"null","null","null" , 5 as product
 				FROM wall_melo_component
 				JOIN album_media
 						ON album_media.file_name = wall_melo_component.albums_media_file_name
@@ -70,7 +72,7 @@ class Melo_actus_model extends CI_Model {
 					)
 			UNION
 			
-			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,photos_id,photos.nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login,"null","null","null","null", 1 as product
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,photos_id,photos.nom,photos.file_name,photos.Utilisateur_id,utilisateur.thumb,utilisateur.login,"null","null","null","null","null","null" , 1 as product
 				FROM wall_melo_component
 				JOIN photos
 						ON photos.id = wall_melo_component.Photos_id
@@ -84,7 +86,7 @@ class Melo_actus_model extends CI_Model {
 						AND wall_melo_component.type = "MU"
 							AND wall_melo_component.albums_media_file_name IS NULL))
 			UNION
-			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,message_id,wall.markup_message,"null",utilisateur.id,utilisateur.thumb,utilisateur.login,"null","null",wall.wallto_utilisateur_id,"null",  4 as product
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,message_id,wall.markup_message,"null",utilisateur.id,utilisateur.thumb,utilisateur.login,"null","null",wall.wallto_utilisateur_id,"null","null","null" , 4 as product
 				FROM wall_melo_component
 				JOIN wall
 						ON wall.id = wall_melo_component.message_id
@@ -99,7 +101,7 @@ class Melo_actus_model extends CI_Model {
 						AND wall.photo IS NULL))	
 				
 				UNION	
-			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,concerts_id,concerts.titre,concerts.seconde_partie,utilisateur.id,Utilisateur.thumb,utilisateur.login,adresse.ville,concerts.salle,"null",concerts.date, 3 as product
+			(SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,concerts_id,concerts.titre,concerts.seconde_partie,utilisateur.id,Utilisateur.thumb,utilisateur.login,adresse.ville,concerts.salle,"null",concerts.date,"null" ,"null" , 3 as product
 				FROM wall_melo_component
 				JOIN concerts
 						ON concerts.id = wall_melo_component.concerts_id
@@ -112,30 +114,29 @@ class Melo_actus_model extends CI_Model {
 						IN (' . $list_id . ') 
 					AND wall_melo_component.type = "MU")
 					OR(wall_melo_component.Utilisateur_id= ' . $user_id . '
-					AND wall_melo_component.type = "ME"))							
-						ORDER BY date DESC  
-						LIMIT ' . $limit . ' OFFSET ' . $offset . '
-				';
-
-
-     /* 	
-              UNION
-              (SELECT morceaux_id,morceaux.nom,3
+					AND wall_melo_component.type = "ME"))		
+        UNION
+        (
+              SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,morceaux.id,morceaux.nom,"null",utilisateur.id,Utilisateur.thumb,utilisateur.login,"null","null","null","null",playlists.nom,albums.nom, 6 AS product
               FROM wall_melo_component
               JOIN morceaux
               ON morceaux.id = wall_melo_component.morceaux_id
-              WHERE wall_melo_component.Utilisateur_id
-              IN ('.$listforin.')
-              AND type = "MU")
-              UNION
-              (SELECT concerts_id,concerts.titre,4
-              FROM wall_melo_component
-              JOIN concerts
-              ON concerts.id = wall_melo_component.concerts_id
-              WHERE wall_melo_component.Utilisateur_id
-              IN ('.$listforin.')
-              AND type = "MU")
-              '; */
+              LEFT OUTER JOIN playlists
+              ON playlists.morceaux_id = morceaux.id
+              LEFT OUTER JOIN albums
+              ON albums.id = morceaux.albums_id
+
+        JOIN Utilisateur
+            ON Utilisateur.id = morceaux.Utilisateur_id
+              WHERE (wall_melo_component.Utilisateur_id   
+            IN (' . $list_id . ') 
+          AND wall_melo_component.type = "MU")
+          OR(wall_melo_component.Utilisateur_id= ' . $user_id . '
+          AND wall_melo_component.type = "ME")
+          )
+						ORDER BY date DESC  
+						LIMIT ' . $limit . ' OFFSET ' . $offset . '
+				';
             return $this->db->query($sql_mu)
                             ->result();
       //  }
@@ -397,7 +398,7 @@ class Melo_actus_model extends CI_Model {
     }
 
     public function get_photos_album($album, $date) {
-        $requete = "SELECT wall_melo_component.id,wall_melo_component.albums_media_file_name,photos.file_name,photos.nom
+        $requete = "SELECT wall_melo_component.id,wall_melo_component.albums_media_file_name,photos.file_name,photos.nom,photos.id AS id_produit
 FROM wall_melo_component
 JOIN photos
 ON photos.id = wall_melo_component.photos_id

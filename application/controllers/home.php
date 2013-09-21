@@ -55,9 +55,10 @@ class Home extends CI_Controller {
         $data['all_date_calendar'] = "";
         $data['all_info_concert'] = "";
         $data['top_morceau_fil'] = $this->homepage_model->fil_top_morceau();
-        $a = $this->homepage_model->fil_top_concert();
-        //var_dump($a);
-        $all_item_portail = array_merge($data['top_morceau_fil'],$data['articles']);
+        $data['top_concert_fil'] = $this->homepage_model->fil_top_concert();
+        $data['top_people_fil'] = $this->homepage_model->fil_top_people();
+
+        $all_item_portail = array_merge($data['top_morceau_fil'],$data['articles'],$data['top_concert_fil'],$data['top_people_fil']);
         $timestamp_item = array();
         foreach ($all_item_portail as $all_date) 
         {
@@ -83,6 +84,8 @@ class Home extends CI_Controller {
             }
 
         }
+               //var_dump($data['flux_portail']);
+
 
         foreach ($data['dates'] as $data['date']) {
             $title = "";
