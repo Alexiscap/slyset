@@ -1,7 +1,7 @@
 <?php
 $session_id = $this->session->userdata('uid');
 $uid = (empty($session_id)) ? '' : $session_id;
-$uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
+$uid_visit = (empty($infos_profile)) ? '' : $infos_profile->id;
 $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
 $loger = $this->session->userdata('logged_in');
 ?>
@@ -96,7 +96,7 @@ $loger = $this->session->userdata('logged_in');
     </div>
     
     <?php if ($infos_profile->id == $uid): ?>
-    <div class="bts_noir_musique">
+    <div class="bts_noir">
             <div class="bt_noir">
 				<a href="javascript:void(0)"><span class="bt_left"></span><span class="bt_middle">Définir album en une</span><span class="bt_right"></span></a>
 			</div>
@@ -167,7 +167,10 @@ $loger = $this->session->userdata('logged_in');
 
                                 		<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
                                 	</a>
-                                    <p class="<?php echo $morceau_alune->id; ?> track-id"><?php echo $morceau_alune->nom; ?> </p>
+                                    <!--<p class="<?php echo $morceau_alune->id; ?> track-id"><?php echo $morceau_alune->nom; ?> </p>-->
+                                    
+                                    <?php echo $title_substr = (strlen($morceau_alune->nom) > 23) ? '<p title="'.$morceau_alune->nom.'" class="'.$morceau_alune->id.' track-id">'.substr($morceau_alune->nom,0,20).'...</p>' : '<p class="'.$morceau_alune->id.' track-id">'.$morceau_alune->nom.'</p>'; ?>
+                                    
                                     <?php if($loger == 1): ?>
                                         <div class="miniat_titre">
                                             <?php if($session_id == $uid_visit): ?>
@@ -262,11 +265,14 @@ $loger = $this->session->userdata('logged_in');
                                                     <a href="javascript:void(0)" class="coeur"></a><?php
                                                 }?>
                                             <a href="#" class="add"><span></span></a>
-                                          <!--  <a href="#" class="cam"><span>cam</span></a>-->
                                         </div>
                                     <?php endif; ?>
                                 </td>
-                                 <td class="article-album"><a href="<?php echo site_url('musique/album/'.$uid_visit.'/'.$morceau_artiste->id_alb); ?>"><?php echo $morceau_artiste->title_alb; ?></a></td>
+                                 <!--<td class="article-album"><a href="<?php echo site_url('musique/album/'.$uid_visit.'/'.$morceau_artiste->id_alb); ?>"><?php echo $morceau_artiste->title_alb; ?></a></td>-->
+                                 
+                                 <?php $album_link = site_url('musique/album/'.$uid_visit.'/'.$morceau_artiste->id_alb); ?>
+                                 <td class="article-album"><?php echo $album_substr = (strlen($morceau_artiste->title_alb) > 10) ? '<a href="'.$album_link.'" title="'.$morceau_artiste->title_alb.'">'.substr($morceau_artiste->title_alb,0,13).'...</a>' : '<a href="'.$album_link.'">'.$morceau_artiste->title_alb.'</a>'; ?></td>
+                                 
                                 <td class="article-date"><?php echo substr($morceau_artiste->duree,0,5); ?></td>
                             </tr>
                             <?php endforeach;?>

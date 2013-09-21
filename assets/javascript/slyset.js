@@ -1510,8 +1510,6 @@ $(document).ready(function(){
             items: 1,
             direction: "left",
             height: "100%",
-            //            width: 770,
-            //            height: 308,
             auto: {
                 fx : "crossfade",
                 easing : "linear",

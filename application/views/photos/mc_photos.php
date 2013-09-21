@@ -49,7 +49,7 @@ $loger = $this->session->userdata('logged_in');
         </div>
     </div>
 
-    <div class="bts_noir_photo">
+    <div class="bts_noir">
         <?php if ($infos_profile->id == $uid) { ?>
 
             <div class="bt_noir">

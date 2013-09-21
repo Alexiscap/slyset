@@ -71,24 +71,8 @@ aside #identification-block .identification-inscrire a:hover{ text-decoration:un
 #menu-account .row.row-6:hover .icon, #menu-account .row.row-6:hover a.active .icon{ background-position:-22px -175px; }
 
 
-#menu-account .notif
-{
-display: inline-block;
-margin-left: 32px;
-height: 17px;
-vertical-align: middle;
-width: 24px;
-text-align: center;
-background-color: #F55D51;
-border-radius : 16px;
-border : 1px solid #d9dadb;
-}
-#menu-account .notif div
-{
-	margin-top : -9px;
-	font-size : 12px;
-	color : white;
-}
+#menu-account .notif{ display:inline-block; margin-left:32px; position:relative; top:-1px; height:17px; vertical-align:middle; width:24px; text-align:center; background-color:#F55D51; border-radius:16px; border:1px solid #d9dadb; }
+#menu-account .notif div{	margin-top:-9px; font-size:12px; color:white; }
 /*
 * SIDEBAR LEFT - MENU MY PAGE
 */
