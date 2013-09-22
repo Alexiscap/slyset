@@ -25,9 +25,9 @@ class Mc_partitions extends CI_Controller {
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
         
-        $this->layout->set_description('Retrouvez '.$sub_data['profile']->login.' sur Slyset et découvrez sa musique, ses prochains concerts, ses photos, ses vidéos, ses livrets, ses partitions...');
-        $this->layout->set_titre('Retrouvez tous les livrets et les partitions de '.$sub_data['profile']->login.' - Slyset');
-        $this->layout->set_keyword($sub_data['profile']->login.', musicien, musique en ligne, streaming musique, slyset, concerts, photos, vidéos, actualités musique');
+       // $this->layout->set_description('Retrouvez '.$sub_data['profile']->login.' sur Slyset et découvrez sa musique, ses prochains concerts, ses photos, ses vidéos, ses livrets, ses partitions...');
+       // $this->layout->set_titre('Retrouvez tous les livrets et les partitions de '.$sub_data['profile']->login.' - Slyset');
+        //$this->layout->set_keyword($sub_data['profile']->login.', musicien, musique en ligne, streaming musique, slyset, concerts, photos, vidéos, actualités musique');
         
         $sub_data['perso'] = $output;
         
@@ -92,6 +92,18 @@ class Mc_partitions extends CI_Controller {
             $data['all_doc_partition'] = $this->document_model->get_document_partition($album_where_in);
         }
         $data['all_morceau'] = $this->document_model->get_all_album_moreceaux_user($user_visited);
+        $already_basket = $this->document_model->get_doc_already_basket();
+        $data['panier_paroles'] = null;
+        $data['panier_partition'] = null ;
+        foreach ($already_basket as $basket):
+            if($basket->type_document == 'paroles'):
+                 $data['panier_paroles'] .= $basket->Documents_id.'/';
+            endif;
+            if($basket->type_document == 'partition'):
+                 $data['panier_partition'] .= $basket->Documents_id.'/';
+            endif;
+
+        endforeach;
 
         //  $data['get_doc'] = $this->document_model->get_all_morceau_doc($user_visited);
         //  var_dump($data['get_doc']);

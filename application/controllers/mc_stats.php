@@ -63,19 +63,23 @@ class Mc_stats extends CI_Controller {
     }
 
     public function page($user_id) {
+
+        
+        $token = "01c5dbdecc252c269e958370779295f7";
+      
         $data = $this->data;
         $data['profile'] = $this->user_model->getUser($this->user_id);
  		$piwik = curl_init();
 
-        curl_setopt($piwik, CURLOPT_URL, base_url('assets/piwik/?module=API&method=Actions.get&idSite=1&date=today&period=year&format=json&segment=pageUrl=@'.$user_id.'&token_auth=1cc12df5ceefcb5003bf04c0a1006036'));
+        curl_setopt($piwik, CURLOPT_URL, base_url('assets/piwik/?module=API&method=Actions.get&idSite=1&date=today&period=year&format=json&segment=pageUrl=@'.$user_id.'&token_auth='.$token));
         curl_setopt($piwik, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         curl_setopt($piwik, CURLOPT_RETURNTRANSFER, TRUE);
 
         $data['curl'] = curl_exec($piwik);
         $data['stats_page'] = json_decode($data['curl']);
-        
+     
         $piwik_visit = curl_init();
-        curl_setopt($piwik_visit, CURLOPT_URL, base_url('assets/piwik/?module=API&method=VisitsSummary.get&idSite=1&date=today&period=year&format=json&segment=pageUrl=@'.$user_id.'&token_auth=1cc12df5ceefcb5003bf04c0a1006036'));
+        curl_setopt($piwik_visit, CURLOPT_URL, base_url('assets/piwik/?module=API&method=VisitsSummary.get&idSite=1&date=today&period=year&format=json&segment=pageUrl=@'.$user_id.'&token_auth='.$token));
         curl_setopt($piwik_visit, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         curl_setopt($piwik_visit, CURLOPT_RETURNTRANSFER, TRUE);
 
@@ -83,7 +87,7 @@ class Mc_stats extends CI_Controller {
         $data['stats_visit'] = json_decode($data['curl_v']);
              
          $piwik_graph = curl_init();
-        curl_setopt($piwik_graph, CURLOPT_URL, base_url('assets/piwik/?module=API&method=VisitsSummary.get&format=json&idSite=1&date=2013-08-25,today&period=day&segment=pageUrl=@30&token_auth=1cc12df5ceefcb5003bf04c0a1006036'));
+        curl_setopt($piwik_graph, CURLOPT_URL, base_url('assets/piwik/?module=API&method=VisitsSummary.get&format=json&idSite=1&date=2013-08-25,today&period=day&segment=pageUrl=@30&token_auth='.$token));
         curl_setopt($piwik_graph, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         curl_setopt($piwik_graph, CURLOPT_RETURNTRANSFER, TRUE);
 
@@ -122,7 +126,7 @@ class Mc_stats extends CI_Controller {
 		$data['value_graph_uniq'] =  substr ( $graph_uniq,0 , -1);
         $data['all_date'] = substr ($all_date,0,-1);
         $piwik_source = curl_init();
-        curl_setopt($piwik_source, CURLOPT_URL, base_url('assets/piwik/?module=API&method=Referers.getRefererType&language=fr&format=json&idSite=1&date=today&period=year&segment=pageUrl=@'.$user_id.'&token_auth=1cc12df5ceefcb5003bf04c0a1006036'));
+        curl_setopt($piwik_source, CURLOPT_URL, base_url('assets/piwik/?module=API&method=Referers.getRefererType&language=fr&format=json&idSite=1&date=today&period=year&segment=pageUrl=@'.$user_id.'&token_auth='.$token));
         curl_setopt($piwik_source, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         curl_setopt($piwik_source, CURLOPT_RETURNTRANSFER, TRUE);
 
@@ -144,7 +148,7 @@ class Mc_stats extends CI_Controller {
                 $data['se'] = $source->nb_visits * 100 / $data['stats_visit'] ->nb_visits ;
             }
 
-        }
+        }  
 
         $this->layout->view('statistique/mc_stats', $data);
     }

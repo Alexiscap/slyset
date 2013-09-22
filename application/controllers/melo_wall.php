@@ -172,7 +172,16 @@ class Melo_wall extends CI_Controller {
         
         if ($this->melo_actus_model->get_entities_id(10, $offset, $listforin_sql, $uid)) {
             $data['data_all_wall'] = $this->melo_actus_model->get_entities_id(10, $offset, $listforin_sql, $uid);
+            $a = 0;
+            if (isset($data['data_all_wall'])) {
+            foreach ($data['data_all_wall'] as $data_for_album) {
 
+                if ($data_for_album->product == 5 && $data_for_album->type == "MU") {
+                    $data['photo_by_album'][$a] = $this->melo_actus_model->get_photos_album($data_for_album->idproduit, $data_for_album->date);
+                    $a++;
+                }
+            }
+        }
             $this->load->view('wall/melo_actu_ajax', $data);
         } else {
 //          echo 'End';

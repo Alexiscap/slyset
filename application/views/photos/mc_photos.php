@@ -65,7 +65,7 @@ $loger = $this->session->userdata('logged_in');
 
         <?php
         foreach ($all_media_user_result as $media_user_result_unit):
-//var_dump($media_user_result_unit);
+            //var_dump($media_user_result_unit);
             /*  ------------- Bloc image orpheline -------------- */
 
             if ($media_user_result_unit->type == 1) {
@@ -73,30 +73,30 @@ $loger = $this->session->userdata('logged_in');
                 <div class="box col1">
                     <div class="photo">
 						<!--  edition : HOVER *******************-->
-                    <?php if ($profile->id == $uid) { ?> 
-                        <div class="edit">
+                        <?php if ($profile->id == $uid) { ?> 
+                            <div class="edit">
 
-                            <!--  edition : SUPPRESSION *******************-->
+                                <!--  edition : SUPPRESSION *******************-->
 
-                            <a class="iframe" href="<?php echo site_url('media/supprimer/' . $infos_profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
-                            <a class="iframe" href="<?php echo site_url('media/editer/' . $infos_profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
-                        </div>
-                    <?php } ?>
-                    <!-- image -->
-                    <a class="iframe" href="<?php echo site_url('media/zoom/' . $media_user_result_unit->id . '/0') ?>"><img src="<?php echo files($infos_profile->id . '/photos/' . $media_user_result_unit->file_name); ?>" class="img_cover" /></a>
-                    <!-- titre -->
+                                <a class="iframe" href="<?php echo site_url('media/supprimer/' . $infos_profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+                                <a class="iframe" href="<?php echo site_url('media/editer/' . $infos_profile->id . '/' . $media_user_result_unit->id . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+                            </div>
+                        <?php } ?>
+                        <!-- image -->
+                        <a class="iframe" href="<?php echo site_url('media/zoom/' . $media_user_result_unit->id . '/0') ?>"><img src="<?php echo files($infos_profile->id . '/photos/' . $media_user_result_unit->file_name); ?>" class="img_cover" /></a>
+                        <!-- titre -->
 
-                    <p class="nom_photo"><?php echo $media_user_result_unit->nom ?></p>
-                    <!-- commentaire -->
+                        <p class="nom_photo"><?php echo $media_user_result_unit->nom ?></p>
+                        <!-- commentaire -->
 
-                    <?php
-                    $cpt_comment = 0;
-                    foreach ($commentaires as $commentaire) {
-                        if ($media_user_result_unit->id == $commentaire->photos_id) {
-                            $cpt_comment++;
+                        <?php
+                        $cpt_comment = 0;
+                        foreach ($commentaires as $commentaire) {
+                           if ($media_user_result_unit->id == $commentaire->photos_id) {
+                                $cpt_comment++;
+                            }
                         }
-                    }
-                    ?>
+                        ?>
 					</div>
 
                     <div class="bord_photo">
@@ -380,13 +380,13 @@ $loger = $this->session->userdata('logged_in');
     else if ($media_user_result_unit->type == 4) {
         ?>    
                 <div class="box col1">
-				<div class="photo">
+				    <div class="photo">
                     <!--  edition : HOVER *******************-->
-        <?php { ?> <!--
+                         <?php //{ ?> <!--
                           <div class="edit">
                       
                               <a class="iframe" href="<?php echo site_url('media/supprimer/' . $infos_profile->id . '/' . $media_user_result_unit->file_name . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
-                  <a class="iframe" href="<?php echo base_url('/index.php/media/editer/' . $infos_profile->id . '/' . $media_user_result_unit->file_name . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+                            <a class="iframe" href="<?php echo base_url('/index.php/media/editer/' . $infos_profile->id . '/' . $media_user_result_unit->file_name . '/' . $media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
                             </div>
                           <div class="open_alb">
                                   <a href="<?php echo site_url('album/' . $infos_profile->id . '/' . $media_user_result_unit->file_name) ?>"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
@@ -399,34 +399,36 @@ $loger = $this->session->userdata('logged_in');
                         <div class="open_alb">
                             <a href="<?php echo site_url('album/' . $infos_profile->id . '/wall') ?>"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
                         </div>
-            <?php }
-        ?> 
-        <?php
-        $a = 0;
-        foreach ($wall_photos as $wall_photo):
-            $a++;
-            if ($a == 1):
-                ?>
-                            <a href="#"><img src="<?php echo files($infos_profile->id . '/wall/' . $wall_photo->photo); ?>" class="img_cover" /></a>
-                <?php
-            endif;
+                        <?php //}
 
-            if ($a > 1):
-                ?>
-                            <a href="#"><img src="<?php echo files($infos_profile->id . '/wall/' . $wall_photo->photo); ?>" class="img_miniat" /></a>
+                        $a = 0;
+                        foreach ($wall_photos as $wall_photo):
+                            $a++;
+                            if ($a == 1):
+                            ?>
+                                <a href="#"><img src="<?php echo files($infos_profile->id . '/wall/' . $wall_photo->photo); ?>" class="img_cover" /></a>
                             <?php
-                        endif;
+                            endif;
+
+                            if ($a > 1):
+                             ?>
+                                <a href="#"><img src="<?php echo files($infos_profile->id . '/wall/' . $wall_photo->photo); ?>" class="img_miniat" /></a>
+                                <?php
+                            endif;
 
 
-                        if ($a == 4)
-                            break;
-                    endforeach;
-                    ?>
-                    <p class="nom_photo">Wall album</p>
-                    <?php
-                    $cpt_comment = count($comments_wall);
-                    ?>
-				</div>
+                            if ($a == 4)
+                            {
+                                break;
+                            }
+                        endforeach;
+                        ?>
+                        <p class="nom_photo">Wall album</p>
+                        <?php
+                        $cpt_comment = count($comments_wall);
+                        ?>
+				    </div>
+
                     <div class="bord_photo">
                         <a href="javascript:void(0);"><p><?php if ($cpt_comment == 0) echo "0 commentaire"; if ($cpt_comment == 1) echo "1 commentaire"; if ($cpt_comment > 1) echo $cpt_comment . " commentaires"; ?></p></a>
 
@@ -435,16 +437,16 @@ $loger = $this->session->userdata('logged_in');
                     <!-- </div>-->
                     <div class="allcomment" id="comm<?php echo $media_user_result_unit->file_name ?>">
 
-                    <?php
-                    foreach ($comments_wall as $comment_wall):
-                        //	if ($media_user_result_unit->file_name == $commentaire->file_name):
-                        ?>  
+                        <?php
+                        foreach ($comments_wall as $comment_wall):
+                            //	if ($media_user_result_unit->file_name == $commentaire->file_name):
+                            ?>  
                             <div class="comm">
-                        <?php if ($infos_profile->id == $uid) { ?>
+                                <?php if ($infos_profile->id == $uid) { ?>
 
-                                    <img id="<?php echo $comment_wall->comm_id ?>"  src="<?php echo img_url('common/del.png'); ?>" class="del"/>
-                <?php }
-            ?> 
+                                   <img id="<?php echo $comment_wall->comm_id ?>"  src="<?php echo img_url('common/del.png'); ?>" class="del"/>
+                                <?php }
+                                ?> 
                                 <img src="<?php echo base_url('/files/profiles/' . $comment_wall->thumb); ?>" />
                                 <p class="name_comm"><?php echo $comment_wall->login ?></p>
                                 <p class="commentaire"><?php echo $comment_wall->comment ?></p> 
@@ -453,14 +455,14 @@ $loger = $this->session->userdata('logged_in');
                             //endif; 
                             ?>
 
-                            <?php endforeach; ?>
+                        <?php endforeach; ?>
                         <div class="comment-form-alb-wall">
                             <img src="<?php echo base_url('/files/profiles/' . $this->session->userdata('thumb')) ?>" />
                             <form  action="" method="post">
                                 <!--<input type="text" name="usercomment" id="usercomment"/>-->
                                 <textarea id="usercomment" placeholder="Votre commentaire..."></textarea>
                                 <input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />
-                                <input type="hidden" name="messageid" value="<?php echo $wall_photo->id; ?>" id="messageid" />
+                                <input type="hidden" name="messageid" value="<?php if(isset($wall_photo->id)){echo $wall_photo->id;} ?>" id="messageid" />
 
                                 <input src= "<?php echo img_url('common/valider_comm.png'); ?>" type="submit" value="Valider"/>
                             </form>
@@ -470,13 +472,14 @@ $loger = $this->session->userdata('logged_in');
                     </div>
                 </div>
 
-                        <?php
-                    }
+
+            <?php
+            }
 
 
-                endforeach;
+        endforeach;
                 ?>
-    </div>
+    </div> 
 
 <?php if (isset($sidebar_right)) echo $sidebar_right; ?>
 

@@ -5,7 +5,6 @@ $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
 $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
 $loger = $this->session->userdata('logged_in'); 
 
-
 ?>
 <div id="contentAll">
     <div id="breadcrumbs">
@@ -147,7 +146,15 @@ $loger = $this->session->userdata('logged_in');
 													<?php endif;
 													if($partition->prix != null):
 														?>
-														<td class="partitions" id="<?php echo $partition->prix ?>"><a id="<?php echo $partition->document_id ?>" class="mise-panier" href="javascript:void(0)">Acheter  (<?php echo $partition->prix ?> €)</a>
+
+														<?php
+
+														 if(substr_count($panier_partition,$partition->document_id)==0): ?>
+															<td class="partitions" id="<?php echo $partition->prix ?>"><a id="<?php echo $partition->document_id ?>" class="mise-panier" href="javascript:void(0)">Acheter  (<?php echo $partition->prix ?> €)</a>
+														<?php endif;?>
+														<?php if(substr_count($panier_partition,$partition->document_id)!=0): ?>
+															<td class="partitions" id="<?php echo $partition->prix ?>"><a id="<?php echo $partition->document_id ?>" href="<?php echo base_url('index.php/my-shopping/'.$this->session->userdata('uid')) ?>">Au panier </a>
+														<?php endif;?>
 <?php 												endif; ?>
 													<div class="miniat_titre">
 														<a href="<?php echo base_url('index.php/document/update-score/'.$partition->document_id) ?>" class="edit iframe"><span>edit</span></a>
@@ -174,9 +181,17 @@ $loger = $this->session->userdata('logged_in');
 														<td class="paroles"><a id="mise-panier" class="mise-panier-no" href="<?php echo files($infos_profile->id.'/albums/'.str_replace(' ', '_', $album->nom).'/paroles/'.$paroles->path) ?>">Voir</a>
 													<?php endif;
 													if($paroles->prix != null):
-													?>
+													
+														if(substr_count($panier_paroles,$paroles->document_id)==0): ?>
+
 														<td class="paroles" id="<?php echo $paroles->prix ?>"><a id="<?php echo $paroles->document_id ?>" class='mise-panier' href="javascript:void(0)">Acheter (<?php echo $paroles->prix ?> €)</a>
-													<?php endif; ?>
+														<?php endif; 
+														if(substr_count($panier_paroles,$paroles->document_id)!=0): ?>
+
+														<td class="paroles" id="<?php echo $paroles->prix ?>"><a id="<?php echo $paroles->document_id ?>"  href="<?php echo base_url('index.php/my-shopping/'.$this->session->userdata('uid')) ?>">Au panier</a>
+														<?php endif; 
+
+													 endif; ?>
 														<div class="miniat_titre">
 															<a href="<?php echo base_url('index.php/document/update-paroles/'.$paroles->document_id) ?>" class="edit iframe"><span>edit</span></a>
 														</div>

@@ -4,7 +4,6 @@ $uid = (empty($session_id)) ? '' : $session_id;
 $uid_visit = (empty($infos_profile)) ? $session_id : $infos_profile->id;
 $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_profile->login;
 ?>
-
 <div id="contentAll">
     <div id="breadcrumbs">
         <ul>
