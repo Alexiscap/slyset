@@ -1,18 +1,18 @@
 ; <?php exit; ?> DO NOT REMOVE THIS LINE
 ; file automatically generated or modified by Piwik; you can manually override the default values in global.ini.php by redefining them in this file.
 [database]
-host = "127.0.0.1"
-username = "root"
-password = "root"
+host = "localhost"
+username = "slyset"
+password = "slyset"
 dbname = "preprod-slyset"
 tables_prefix = "piwik_"
 charset = "utf8"
 
 [superuser]
-login = "slysetadmin"
+login = "slyset"
 password = "47608c2abe381275e00b8df4736f47d4"
 email = "camille.fenart@gmail.com"
-salt = "400b51a334b0ff566fc2fef8f6750e94"
+salt = "17213d8987c1878dad224a1d85a4bdb9"
 
 [PluginsInstalled]
 PluginsInstalled[] = "Login"

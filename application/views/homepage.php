@@ -209,14 +209,15 @@ if (isset($all_date_calendar))
                <div class="wall-flux-content">
                     <div class="wall-flux-content-left-picture">
                         <img class="img-blog-artiste-carre" src="<?php echo files('profiles/'.$article->thumb) ?>">
+                        <div class="bloc_player">
                         <a class="open_player" href="<?php echo base_url('index.php/mc_musique/player/'.$article->Utilisateur_id.'/album/'.$article->name_alb.'/'.$article->id) ?>">play</a>
-
+                        </div>
                     </div>
                     <div class="wall-flux-content-right-text">
 
-                        <p class="wall-flux-content-title">Les internautes écoutent...</p>
+                        <p class="wall-flux-content-title top">Les internautes écoutent...</p>
 
-                        <p class="wall-flux-content-subtitle"><?php echo $article->login ?> - <?php echo $article->nom ?></p>
+                        <p class="wall-flux-content-subtitle top"><?php echo $article->login ?> - <?php echo $article->nom ?></p>
 
                         <p class="wall-flux-content-text"><?php echo $article->descri_f_t ?>
                         </p>
@@ -235,11 +236,11 @@ if (isset($all_date_calendar))
 
                     </div>
                     <div class="wall-flux-content-right-text">
-                        <p class="wall-flux-content-title">L’évènement à ne pas rater</p>
+                        <p class="wall-flux-content-title top">L’évènement à ne pas rater</p>
 
 
 
-                        <p class="wall-flux-content-subtitle"><?php echo $article->login ?>, <?php echo $article->salle ?>, le <?php $unix = mysql_to_unix($article->date); $format_date = mdate('%d/%m/%Y',$unix); echo $format_date ;?></p>
+                        <p class="wall-flux-content-subtitle top"><?php echo $article->login ?>, <?php echo $article->salle ?>, le <?php $unix = mysql_to_unix($article->date); $format_date = mdate('%d/%m/%Y',$unix); echo $format_date ;?></p>
                         <p class="wall-flux-content-text"><?php echo $article->description ?>
                         </p>
                         <?php 
@@ -271,7 +272,7 @@ if (isset($all_date_calendar))
 
                         <p class="wall-flux-content-title">Les internautes ont aimé...</p>
 
-                        <p class="wall-flux-content-subtitle"><?php echo $article->login ?></p>
+                        <p class="wall-flux-content-subtitle top"><?php echo $article->login ?></p>
 
                         <p class="wall-flux-content-text"><?php echo $article->description_f_p ?>
                         </p>

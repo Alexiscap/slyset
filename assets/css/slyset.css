@@ -628,6 +628,8 @@ cursor : pointer;}
 .wall-flux-content .img-blog-artiste{ width:560px; font-family:"Trebuchet MS"; margin-top:7px; margin-bottom:20px; }
 
 .wall-flux-content .wall-flux-content-title{ font-size:18px; color:#3f3f3f; margin:5px 19px 5px 19px; padding-top:20px; word-wrap:break-word; }
+.wall-flux-content .wall-flux-content-title.top, .wall-flux-content .wall-flux-content-subtitle.top{ margin:5px 19px 5px 0px; }
+
 .wall-flux-content .wall-flux-content-subtitle{ font-size:13px; color:#8d8c80; margin:0px 19px 19px 19px; word-wrap:break-word; }
 .wall-flux-content .wall-flux-content-titre-artiste{ margin:19px 19px 5px 19px; color:#535353 ; padding-top:15px; font-size:13px; }
 /*.wall-flux-content .wall-flux-content-text{ font-size:14px; line-height:21px; color:#555555; margin:10px 19px 19px 19px; word-wrap:break-word; }*/
@@ -638,9 +640,15 @@ cursor : pointer;}
 .wall-flux-content .wall-flux-content-text{ margin:0 0 10px 0; }
 .wall-flux-content .wall-flux-content-text ol, .wall-flux-content .wall-flux-content-text li, .wall-flux-content .wall-flux-content-text img{ margin:5px 0 -7px 0 ; width:100%; }
 .wall-flux-content .wall-flux-content-text .wall-flux-content-text-chapeau{ font-weight:bold; }
-.wall-flux-content .wall-flux-content-right-text{ margin-left:185px; padding-bottom:20px; height : 100%; }
-.wall-flux-content .wall-flux-content-left-picture .img-blog-artiste-carre{ position:absolute; margin :19px 15px 15px 15px; widt }
+
+/*.wall-flux-content .wall-flux-content-right-text{ min-height : 200px; margin-left:185px; padding-bottom:20px; height : 100%; }
+.wall-flux-content .wall-flux-content-left-picture .img-blog-artiste-carre{ width:170px;position:absolute; margin :19px 15px 15px 15px; widt }
 .wall-flux-content .wall-flux-content-goto-profile{ color:#f05f4c; font-size:14px; float:right; margin-top:-17px; margin-right:20px; padding:10px; } 
+*/
+.wall-flux-content .wall-flux-content-left-picture {width:210px; float:left;}
+.wall-flux-content .wall-flux-content-right-text {width:300px;margin-left: 200px;min-height : 210px; }
+.wall-flux-content .wall-flux-content-left-picture .img-blog-artiste-carre{ width:170px; height : 170px; margin :19px 19px 19px 19px;}
+.wall-flux-content .wall-flux-content-left-picture .bloc_player {background: rgba(115,115,115,0.68);}
 /*#e6e6e6*/
 #wall-flux .ajax_loader, .melo_actu .ajax_loader2{ text-align:center; width:100%; position:absolute; bottom:0; }
 

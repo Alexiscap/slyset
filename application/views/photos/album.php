@@ -82,7 +82,8 @@ $loger = $this->session->userdata('logged_in');
 							</div>
 							<?php }
 					if ($this->uri->segment(3)!='wall') {  ?>
-					<a href="#"><img src="<?php echo base_url('/files/'.$profile->id.'/photos/'.$this->uri->segment(3).'/'.$media_user_result_unit->file_name)?>" class="img_cover" /></a>
+
+					<a class="iframe" href=" <?php echo site_url('media/zoom/' . $media_user_result_unit->id . '/0') ?>"><img src="<?php echo base_url('/files/'.$profile->id.'/photos/'.$this->uri->segment(3).'/'.$media_user_result_unit->file_name)?>" class="img_cover" /></a>
 					<?php
 					}
 					else
