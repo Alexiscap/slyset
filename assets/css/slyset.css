@@ -19,7 +19,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 #breadcrumbs li a{ text-decoration:none; font-size:10px; color:#858585; }
 #breadcrumbs li a:hover{ text-decoration:underline; color:#01adbb; }
 #breadcrumbs li:after{ margin:0px 6px; width:9px; height:23px; display:inline-block; content:''; vertical-align:middle; background:url("../images/common/breadcrumbs_arrow.png") no-repeat; }
-.content{ margin:0 0 10px 0; padding:0; width:560px; position:relative; background:#e6e6e6; float:left; clear:both; }
+.content{ margin:0 0 10px 0; padding:0 0 20px 0; width:560px; position:relative; background:#e6e6e6; float:left; clear:both; }
 .bts_noir{float:right; margin:0 229px 0 0;}
 .bt_noir{ height:30px; float:left; margin:4px 0 0 5px; }
 .bt_noir .bt_left{ width:10px; height:30px; float:left; background:url("../images/common/bt_noir.png") no-repeat 0px -10px; }
@@ -548,7 +548,7 @@ cursor : pointer;}
 #message-welcome a:hover{ background:url('../images/portail/btn_welcome2.png') no-repeat 0 -35px transparent; }
 
 #coverflow{ background:none; height:364px; }
-#coverflowContainer{ padding:0; background:url("../images/portail/bg-coverflow.png") no-repeat; width:100%; height:308px; position:relative; float:left; clear:both; }
+#coverflowContainer{ padding:0; background:url("../images/portail/bg-coverflow.png") no-repeat; background-size:100%; width:100%; height:308px; position:relative; float:left; clear:both; }
 #coverflowRuban{ margin:0; padding:0; width:110px; height:110px; position:absolute; top:0; left:0; background:url("../images/portail/alaune.png") no-repeat 0 0 transparent; z-index:10; }
 .caroufredsel_wrapper{ margin:0 auto !important; }
 #coverflow{ width:790px; height:308px !important; position:relative; z-index:1; overflow:hidden; }
@@ -620,11 +620,11 @@ cursor : pointer;}
 #newbies-content .newbies-people a:hover{ text-decoration:underline; }
 #newbies-content .newbies-people-type{ color:#72797f; font-size:11px; font-weight:normal; }
 #wall-flux{ float:left; position:relative; margin-top:20px; margin-bottom:12px; width:590px; background-color:#e6e6e6; }
-.wall-flux-content{ margin:14px; width:560px; background-color:#f6f6f6; padding-bottom:1px; }
+.wall-flux-content{ margin:14px; width:560px; background-color:#f6f6f6; padding-bottom:1px; float:left; clear:both; }
 .wall-flux-content .img-blog{ width:560px; margin-top:7px; margin-bottom:2px; }
 .wall-flux-content .img-blog-artiste{ width:560px; font-family:"Trebuchet MS"; margin-top:7px; margin-bottom:20px; }
 
-.wall-flux-content .wall-flux-content-title{ font-size:18px; color:#3f3f3f; margin:5px 19px 5px 19px; padding-top:20px; word-wrap:break-word; }
+.wall-flux-content .wall-flux-content-title{ font-size:18px; color:#3f3f3f; margin:20px 19px 5px 19px; word-wrap:break-word; }
 .wall-flux-content .wall-flux-content-subtitle{ font-size:13px; color:#8d8c80; margin:0px 19px 19px 19px; word-wrap:break-word; }
 .wall-flux-content .wall-flux-content-titre-artiste{ margin:19px 19px 5px 19px; color:#535353 ; padding-top:15px; font-size:13px; }
 /*.wall-flux-content .wall-flux-content-text{ font-size:14px; line-height:21px; color:#555555; margin:10px 19px 19px 19px; word-wrap:break-word; }*/
@@ -675,7 +675,7 @@ cursor : pointer;}
 #calendar_alert a {color: #01adbb;}
 #calendar_alert span {text-decoration: underline; font-size:14px;}
 
-.partage {margin: 0 5px 5px;height:35px;}
+.partage { margin:10px 0px 10px 15px; width:545px; height:30px; float:left; clear:both; }
 .partage img{width:29px !important;float:left;margin:0 5px !important;}
 /*.menu-text{font-size:14px;}*/
 /* --------- FIN  DE PORTAIL  --------- */
