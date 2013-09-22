@@ -205,9 +205,34 @@ class Photo_model extends CI_Model {
                         ->result();
     }
 
+        public function get_abum_add($fn_alb) {
+        return $this->db->select('file_name,nom')
+                        ->from($this->table_album)
+                        ->where('file_name', $fn_alb)
+                        ->get()
+                        ->result();
+    }
+
+      public function get_abum($id_photo) {
+        return $this->db->select('file_name,nom')
+                        ->from($this->table_album)
+                        ->where('file_name', $id_photo)
+                        ->get()
+                        ->result();
+    }
+
+    
+
     public function get_photo_by_id($id_photo) {
         return $this->db->select('nom,file_name')
                         ->from($this->table_photos)
+                        ->where('id', $id_photo)
+                        ->get()
+                        ->result();
+    }
+    public function get_video_by_id($id_photo) {
+        return $this->db->select('nom AS file_name,description AS nom')
+                        ->from($this->table_video)
                         ->where('id', $id_photo)
                         ->get()
                         ->result();

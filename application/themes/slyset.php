@@ -156,13 +156,14 @@
         <script type="text/javascript" src="<?php echo js_url('slyset') ?>"></script>
 
         <!-- Piwik -->
+<!-- Piwik -->
 <script type="text/javascript">
   var _paq = _paq || [];
   _paq.push(["trackPageView"]);
   _paq.push(["enableLinkTracking"]);
 
   (function() {
-    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://localhost/~camille/slyset/assets/piwik/";
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://localhost/slyset/assets/piwik/";
     _paq.push(["setTrackerUrl", u+"piwik.php"]);
     _paq.push(["setSiteId", "1"]);
     var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
@@ -170,5 +171,6 @@
   })();
 </script>
 <!-- End Piwik Code -->
+
     </body>
 </html>

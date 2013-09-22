@@ -25,8 +25,12 @@
 	<div class="label">
 			<label>Album</label>
 		</div>
+		 <?php 
+            $place_alb = "";
+            if(isset($info_album_photo[0]->nom)): $place_alb = $info_album_photo[0]->nom ; endif;
+            ?>
 		<div class="champs">
-			<input id="album_select" placeholder="Choisir un album" name="albums"  autocomplete="off" type="text" /><span onclick="javascript:showInfo()" class="fleche_bas"><img src="<?php echo img_url('common/flb.png'); ?>" alt="Fleche basse" /></span>
+			<input id="album_select" value="<?php echo $place_alb ?>" placeholder="Choisir un album" name="albums"  autocomplete="off" type="text" /><span onclick="javascript:showInfo()" class="fleche_bas"><img src="<?php echo img_url('common/flb.png'); ?>" alt="Fleche basse" /></span>
 
 			<div id='list_albums'>
 		

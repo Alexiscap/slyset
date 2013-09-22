@@ -87,7 +87,7 @@ class Mc_stats extends CI_Controller {
         $data['stats_visit'] = json_decode($data['curl_v']);
              
          $piwik_graph = curl_init();
-        curl_setopt($piwik_graph, CURLOPT_URL, base_url('assets/piwik/?module=API&method=VisitsSummary.get&format=json&idSite=1&date=2013-08-25,today&period=day&segment=pageUrl=@30&token_auth='.$token));
+        curl_setopt($piwik_graph, CURLOPT_URL, base_url('assets/piwik/?module=API&method=VisitsSummary.get&format=json&idSite=1&date=2013-08-25,today&period=day&segment=pageUrl=@'.$user_id.'&token_auth='.$token));
         curl_setopt($piwik_graph, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         curl_setopt($piwik_graph, CURLOPT_RETURNTRANSFER, TRUE);
 

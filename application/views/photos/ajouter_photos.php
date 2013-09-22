@@ -3,8 +3,6 @@
 
 <script  src="<?php echo js_url('combobox') ?>" media="screen" ></script>
 <script  src="<?php echo js_url('slyset') ?>" media="screen" ></script>
-
-
 <div class="pop-in_cent">
 
     <span>Ajouter une photo</span>
@@ -35,6 +33,8 @@
 
             <div class="label"><label>Album</label></div>
             <div class="champs">
+
+
                 <?php
                 $album = array(
                     'name' => 'photo_up',
@@ -43,7 +43,11 @@
                     'value' => 'Choisir une photo'
                 );
                 ?>
-                <input id="album_select" placeholder="Choisir un album" name="albums"  autocomplete="off" type="text" /><span onclick="javascript:showInfo()" class="fleche_bas"><img src="<?php echo img_url('common/flb.png'); ?>" alt="Fleche basse" /></span>
+                            <?php 
+            $place_alb = null;
+            if(isset($info_album_photo)): $place_alb = $info_album_photo[0]->nom ; endif;
+            ?>
+                <input id="album_select" value="<?php echo $place_alb ?>" placeholder="Choisir un album" name="albums"  autocomplete="off" type="text" /><span onclick="javascript:showInfo()" class="fleche_bas"><img src="<?php echo img_url('common/flb.png'); ?>" alt="Fleche basse" /></span>
 
                 <div id='list_albums'>
 

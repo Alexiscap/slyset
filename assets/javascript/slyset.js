@@ -839,7 +839,8 @@ $(document).ready(function(){
     });
     
     
-    $('.ajout_comm form').submit(function(e){
+    $('.ajout_comm form').submit(function(){
+    alert('jkl');
         var baseurl = $(this).find("#baseurl").val();
         var comment = $(this).find("#usercomment").val();
         var messageid = $(this).find("#messageid").val();
@@ -969,12 +970,12 @@ $(document).ready(function(){
         })
     });
     
-    $('.like').mouseover(function(){
+    $('.like').live('mouseover',function(){
         var coeur = $(this);
         $(coeur).attr('src',base_url_noindex + '/assets/images/musicien/pink_heart.png');     	
     });
     
-    $('.like').mouseout(function(){
+    $('.like').live('mouseout',function(){
         var coeur = $(this);
         $(coeur).attr('src',base_url_noindex + '/assets/images/musicien/icon_coeur.png');     	
     });
@@ -1011,20 +1012,25 @@ $(document).ready(function(){
             url :  base_url + '/mc_photos/add_like_a',
             data: dataid,
             success: function(jelike){
-                $(coeur).attr('src',base_url_noindex + '/assets/images/musicien/pink_heart.png');
+             $(coeur).attr('src',base_url_noindex + '/assets/images/musicien/pink_heart.png');
+
                 $(coeur).next().text(parseInt($(coeur).next().text()) + 1);
+                http://localhost/slyset/assets/images/musicien/pink_heart.png
+                 $(coeur).removeClass('like-album');
                 $(coeur).addClass('nolike-album');
-                $(coeur).removeClass('like-album');
+                $(coeur).attr('src',base_url_noindex + '/assets/images/musicien/pink_heart.png');
+
+               
             }
         })
     });
     
-    $('.like-album').mouseover(function(){
+    $('.like-album').live('mouseover',function(){
         var coeur = $(this);
         $(coeur).attr('src',base_url_noindex + '/assets/images/musicien/pink_heart.png');     	
     });
     
-    $('.like-album').mouseout(function(){
+    $('.like-album').live('mouseout',function(){
         var coeur = $(this);
         $(coeur).attr('src',base_url_noindex + '/assets/images/musicien/icon_coeur.png');     	
     });
@@ -1069,12 +1075,12 @@ $(document).ready(function(){
         })
     });
     
-    $('.like-video').mouseover(function(){
+    $('.like-video').live('mouseover',function(){
         var coeur = $(this);
         $(coeur).attr('src',base_url_noindex + '/assets/images/musicien/pink_heart.png');     	
     });
     
-    $('.like-video').mouseout(function(){
+    $('.like-video').live('mouseout',function(){
         var coeur = $(this);
         $(coeur).attr('src',base_url_noindex + '/assets/images/musicien/icon_coeur.png');     	
     });
