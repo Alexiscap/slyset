@@ -40,7 +40,7 @@ class Melo_concerts extends CI_Controller {
     public function index($user_id) {
         $uid = $this->session->userdata('uid');
         $infos_profile = $this->user_model->getUser($user_id);
-
+        
        //if ($user_id == $uid) {
             $this->page_main($infos_profile, "melo_concerts", ">");
         /*} else {
@@ -63,7 +63,8 @@ class Melo_concerts extends CI_Controller {
         $data = $this->data;
         $uid = $this->session->userdata('uid');
 
-        $user_visited = (empty($infos_profile)) ? $this->session->userdata('uid') : $infos_profile->id;
+        $user_visited = (empty($infos_profile)) ? $uid : $infos_profile->id;
+
         if (!empty($infos_profile)) {
             $data['infos_profile'] = $infos_profile;
         }
