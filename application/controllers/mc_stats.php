@@ -10,7 +10,7 @@ class Mc_stats extends CI_Controller {
 
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_js('Chart');
-        $this->load->model(array('perso_model', 'user_model','achat_model'));
+        $this->load->model(array('perso_model', 'user_model','achat_model','follower_model','stat_model'));
 
         $this->layout->set_id_background('stats');
 
@@ -64,10 +64,12 @@ class Mc_stats extends CI_Controller {
 
     public function page($user_id) {
 
-        
+        // id piwik pour api
         $token = "01c5dbdecc252c269e958370779295f7";
       
         $data = $this->data;
+
+        // statistique page vue
         $data['profile'] = $this->user_model->getUser($this->user_id);
  		$piwik = curl_init();
 
@@ -77,7 +79,8 @@ class Mc_stats extends CI_Controller {
 
         $data['curl'] = curl_exec($piwik);
         $data['stats_page'] = json_decode($data['curl']);
-     
+      
+        // statistique visit general
         $piwik_visit = curl_init();
         curl_setopt($piwik_visit, CURLOPT_URL, base_url('assets/piwik/?module=API&method=VisitsSummary.get&idSite=1&date=today&period=year&format=json&segment=pageUrl=@'.$user_id.'&token_auth='.$token));
         curl_setopt($piwik_visit, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
@@ -85,7 +88,8 @@ class Mc_stats extends CI_Controller {
 
         $data['curl_v'] = curl_exec($piwik_visit);
         $data['stats_visit'] = json_decode($data['curl_v']);
-             
+           
+         // statistique visit timeline 
          $piwik_graph = curl_init();
         curl_setopt($piwik_graph, CURLOPT_URL, base_url('assets/piwik/?module=API&method=VisitsSummary.get&format=json&idSite=1&date=2013-08-25,today&period=day&segment=pageUrl=@'.$user_id.'&token_auth='.$token));
         curl_setopt($piwik_graph, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
@@ -125,6 +129,10 @@ class Mc_stats extends CI_Controller {
         $data['value_graph'] =  substr ( $graph,0 , -1);
 		$data['value_graph_uniq'] =  substr ( $graph_uniq,0 , -1);
         $data['all_date'] = substr ($all_date,0,-1);
+
+
+         // statistique source des visites
+
         $piwik_source = curl_init();
         curl_setopt($piwik_source, CURLOPT_URL, base_url('assets/piwik/?module=API&method=Referers.getRefererType&language=fr&format=json&idSite=1&date=today&period=year&segment=pageUrl=@'.$user_id.'&token_auth='.$token));
         curl_setopt($piwik_source, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
@@ -150,6 +158,22 @@ class Mc_stats extends CI_Controller {
 
         }  
 
+        //statistique abonée
+        $data['count_follower'] = $this->follower_model->count_follower($user_id);
+
+        //statisqtique vente
+        $data['count_vente_titre'] = $this->stat_model->count_vente_titre($user_id);
+        
+        $data['stat_by_track'] = $this->stat_model->stat_by_track($user_id);
+
+        //calcul euros pour chaque produit
+        $stat_euro_track = $this->stat_model->stat_euro_track($user_id);
+        $stat_euro_album = $this->stat_model->stat_euro_album($user_id);
+        $data['stat_euro_doc'] = $this->stat_model->stat_euro_doc($user_id);
+        $data['count_distinc_buyer'] = $this->stat_model->count_distinc_buyer($user_id);
+        $data['total_gain'] = $stat_euro_track[0]->gain_track + $stat_euro_album[0]->gain_alb + $data['stat_euro_doc'][0]->gain_doc;
+        $data['total_gain_music'] = $stat_euro_track[0]->gain_track + $stat_euro_album[0]->gain_alb;
+        
         $this->layout->view('statistique/mc_stats', $data);
     }
 
