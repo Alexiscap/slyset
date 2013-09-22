@@ -1543,6 +1543,35 @@ $(document).ready(function(){
             },
             mousewheel: true
         });
+        
+        $('.filtre').live('click',function()
+        {
+        	$(this).addClass('select');
+        	var type_select = $(this).children('span').text();
+        	$('.search_filter').each(function()
+        	{
+        		var bloc_type_joue = $(this).find('.wall-flux-content-right-text').attr('id')
+
+        		if (bloc_type_joue.indexOf(type_select) != 0)
+        		{
+        			$(this).hide();
+        		}
+        	})
+        })
+        
+    	$('.filtre.select').live('click',function()
+        {
+        	var type_select = $(this).children('span').text();
+        	$(this).removeClass('select');
+        	$('.search_filter').each(function()
+        	{
+        		var bloc_type_joue = $(this).find('.wall-flux-content-right-text').attr('id')
+        		if (bloc_type_joue.indexOf(type_select) != 0)
+        		{
+        			$(this).show();
+        		}
+        	})
+        })
     }
 
     //Uniformise les placeholder pour tous les navigateurs
