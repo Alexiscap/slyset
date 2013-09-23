@@ -702,6 +702,7 @@ cursor : pointer;}
 #filtres .select{position:relative; background: #81e1d7;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#81e1d7", endColorstr="#08abb7");background: -webkit-gradient(linear, left top, left bottom, from(#81e1d7), to(#08abb7));background: -webkit-linear-gradient(#81e1d7, #08abb7);background: -moz-linear-gradient(#81e1d7, #08abb7);background: -o-linear-gradient(#81e1d7, #08abb7); background: -ms-linear-gradient(#81e1d7, #08abb7); background: linear-gradient(#81e1d7, #08abb7); }
 #filtres .filtre span{font-size:12px;color:#3a3a3a;font-family:'Trebuchet MS';}
 #filtres .select span {color:#ffffff;}
+#filtres .filtre:hover, #filtres .select:hover{ cursor:pointer; }
 #filtres .select .filtre-check{background:url('../images/common/check_filtre.png');width:10px;height:9px;display: inline-block;position: absolute;left: 10px;top: 10px;}
 
 /* --------- FIN  DE PORTAIL  --------- */
