@@ -66,7 +66,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 
                 <?php echo form_label('Arrière-plan personnalisé','background', $label_attributes); ?>
                 <div class="preview_upload background" style="background:<?php echo $background = (empty($perso->background)) ? '#FFFFFF' : 'url('.files($this->uri->segment(2).'/perso/'.$perso->background).')'; ?>;"></div>
-                <div class="upload-file-container container-background">
+                <div class="upload-file-container upload-file-container_entete container-background">
                    <input type="file" name="background" size="200" id="upload_images_background" />
                 </div>
                 <span class="upload_photo_name_file"><?php echo $background_name = (empty($perso->background)) ? '' : $perso->background; ?></span>
