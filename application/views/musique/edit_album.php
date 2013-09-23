@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo css_url('slyset') ?>" media="screen" />
 <link rel="stylesheet" type="text/css" href="<?php echo css_url('pop_in') ?>" media="screen" />
 <script type="text/javascript">
     $(document).ready(function () {

@@ -495,15 +495,13 @@ class Pop_in_general extends CI_Controller {
         $this->form_validation->set_rules('confirm-non', 'Non', '');
 
         if ($this->form_validation->run() == FALSE) {
-//            $this->layout->ajouter_css('colorbox');
-//            $this->layout->ajouter_js('jquery.colorbox');
             $this->load->view('reglage/pi_suppression_confirm', $data);
         } else {
             $confirm = $this->input->post('confirm-oui');
             $unconfirm = $this->input->post('confirm-non');
 
             if ($confirm) {
-                
+                $this->user_model->delete_user($uid);
             } else {
                 redirect('my-reglages/' . $uid, 'refresh');
             }

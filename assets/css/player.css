@@ -226,6 +226,7 @@
     text-align: center;
     border: none;
     overflow: hidden;
+    float: right;
 }
 
 .player-audio .extra-controls{

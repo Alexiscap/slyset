@@ -124,36 +124,44 @@ $loger = $this->session->userdata('logged_in');
             <div class="player">
                 <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$album_alaune[0]->nom); ?>" class="open_player"><img src="<?php echo img_url('musicien/player_top.png'); ?>"/></a>
             </div>
-            <div class="infos">
-                <p class="title"><?php echo $album_alaune[0]->nom; ?></p>
-                <p class="annee_crea"><?php echo $album_alaune[0]->annee; ?></p>
-                <p><?php if (isset($album_alaune[0]->livret_path)): ?><span>> </span><a href="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$album_alaune[0]->nom).'/livret/'.$album_alaune[0]->livret_path); ?>"><?php  echo 'Voir le livret d\'album'; ?></a><?php endif; ?></p>
-                <p><?php if (isset($album_alaune[0]->doc_id)): ?><span>> </span><a href="<?php echo base_url('index.php/document/'.$uid_visit.'#album-'.$album_alaune[0]->id) ?>">Voir les partitions</a><?php endif; ?></p>
-            </div>
         </div>
         
         
+        <div class="infos">
+            <p class="title"><?php echo ucwords($album_alaune[0]->nom); ?></p>
+            <p class="annee_crea"><?php echo $album_alaune[0]->annee; ?> - <?php if (isset($album_alaune[0]->producteur)): ?><?php echo $album_alaune[0]->producteur; ?><?php endif; ?></p>
+            
+            <?php if (isset($album_alaune[0]->description)): ?><p class="infos_alb_desc"><?php echo ucfirst($album_alaune[0]->description); ?></p><?php else: ?><p>Aucune description d'album renseignée.</p><?php endif; ?>
+            
+            <?php if (isset($album_alaune[0]->participants)): ?><p><?php echo $album_alaune[0]->participants; ?></p><?php endif; ?>
+            <?php if (isset($album_alaune[0]->prix)): ?><p class="infos_alb_prix"><?php echo $album_alaune[0]->prix; ?></p><?php endif; ?>
+            <br>
+            <?php if (isset($album_alaune[0]->livret_path)): ?><p><span>> </span><a href="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$album_alaune[0]->nom).'/livret/'.$album_alaune[0]->livret_path); ?>"><?php  echo 'Voir le livret d\'album'; ?></a></p><?php endif; ?>
+            <?php if (isset($album_alaune[0]->doc_id)): ?><p><span>> </span><a href="<?php echo base_url('index.php/document/'.$uid_visit.'#album-'.$album_alaune[0]->id) ?>">Voir les partitions</a></p><?php endif; ?>
+        </div>
+        
         <div class="top_album">
             <div>
-               
-                    <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$album_alaune[0]->nom); ?>" class="open_player">
-
-                    	<img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
-						<span> Ecouter l'album</span>
+            <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$album_alaune[0]->nom); ?>" class="open_player">
+              <img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
+						<p>Ecouter l'album</p>
 					</a>
-					<a href="javascript:void(0)"> 
-
+					<a href="javascript:void(0)">
                     	<img src="<?php echo img_url('common/cadis.png'); ?>"/>
-                  		<span class="panier_alb" id="<?php echo $album_alaune[0]->id; ?>">Acheter l'album</span>
+                  		<p class="panier_alb" id="<?php echo $album_alaune[0]->id; ?>">Acheter l'album</p>
             		</a>
                 
             </div>
             <div id="articles-tab">
+                <input type="button" value="Acheter" class="bt_cadis unealb">
+                <input type="button" value="Dans ma playlist" class="bt_playlist">
+                    
                 <form action="<?php site_url('admin_articles/delete_multi_article'); ?>" method="post" accept-charset="utf-8">          
                     <table id="tablesorter-cb">
                         <thead>
                             <tr class="tab-head">
                                 <th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
+                                <th class="article-date">#</th>
                                 <th class="article-title">Titre de la chanson</th>
                                 <th class="article-date">Durée</th>
                             </tr>
@@ -162,6 +170,7 @@ $loger = $this->session->userdata('logged_in');
                             <?php foreach ($morceaux_alaune as $morceau_alune):?>
                             <tr>
                                 <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $morceau_alune->nom; ?>" id="article-<?php echo $morceau_alune->nom; ?>" class="checkbox-article"><label for="article-<?php echo $morceau_alune->nom; ?>"></label></td>
+                                <td class="article-date"><?php echo $morceau_alune->tracknumero; ?></td>
                                 <td class="article-title">
                                 	<a href="<?php echo site_url('mc_musique/player/'.$uid_visit.'/album/'.$album_alaune[0]->nom.'/'.$morceau_alune->id); ?>" class="open_player">
 
@@ -169,7 +178,7 @@ $loger = $this->session->userdata('logged_in');
                                 	</a>
                                     <!--<p class="<?php echo $morceau_alune->id; ?> track-id"><?php echo $morceau_alune->nom; ?> </p>-->
                                     
-                                    <?php echo $title_substr = (strlen($morceau_alune->nom) > 23) ? '<p title="'.$morceau_alune->nom.'" class="'.$morceau_alune->id.' track-id">'.substr($morceau_alune->nom,0,20).'...</p>' : '<p class="'.$morceau_alune->id.' track-id">'.$morceau_alune->nom.'</p>'; ?>
+                                    <?php echo $title_substr = (strlen($morceau_alune->nom) > 43) ? '<p title="'.$morceau_alune->nom.'" class="'.$morceau_alune->id.' track-id">'.substr($morceau_alune->nom,0,40).'...</p>' : '<p class="'.$morceau_alune->id.' track-id">'.$morceau_alune->nom.'</p>'; ?>
                                     
                                     <?php if($loger == 1): ?>
                                         <div class="miniat_titre">
@@ -202,8 +211,6 @@ $loger = $this->session->userdata('logged_in');
                             <?php endforeach;?>
                         </tbody>
                     </table>
-                    <input type="button" value="Acheter" class="bt_cadis unealb">
-                    <input type="button" value="Dans ma playlist" class="bt_playlist">
                 </form>
             </div>
         </div>
@@ -243,7 +250,7 @@ $loger = $this->session->userdata('logged_in');
 										<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
 									</a>
                                     <!--<p class="<?php echo $morceau_artiste->id; ?> track-id"> <?php echo $morceau_artiste->nom?></p>-->
-                                    <?php echo $title_substr = (strlen($morceau_artiste->nom) > 23) ? '<p title="'.$morceau_artiste->nom.'" class="'.$morceau_artiste->id.' track-id">'.substr($morceau_artiste->nom,0,20).'...</p>' : '<p class="'.$morceau_artiste->id.' track-id">'.$morceau_artiste->nom.'</p>'; ?>
+                                    <?php echo $title_substr = (strlen($morceau_artiste->nom) > 30) ? '<p title="'.$morceau_artiste->nom.'" class="'.$morceau_artiste->id.' track-id">'.substr($morceau_artiste->nom,0,27).'...</p>' : '<p class="'.$morceau_artiste->id.' track-id">'.$morceau_artiste->nom.'</p>'; ?>
                                     <!--$loger $session_id-->
                                     <?php if($loger == 1): ?>
                                         <div class="miniat_titre">
