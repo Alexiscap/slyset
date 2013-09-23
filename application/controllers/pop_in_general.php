@@ -243,7 +243,7 @@ class Pop_in_general extends CI_Controller {
         $this->load->view('photos/pi_voir_photo', $data);
     }
 
-    public function upload_photo($user_id) {
+    public function upload_photo($user_id, $id_alb = null) {
         $this->load->model('photo_model');
 
         $data = array('error' => ' ');
@@ -260,11 +260,16 @@ class Pop_in_general extends CI_Controller {
 //            $data['options'][$album_by_user[$i]->{'nom'}] = $album_by_user[$i]->{'nom'};  
 //        }
 //        $data['options']['nouveau']="Creer un nouvel album";
+        if($id_alb != null)
+        {
 
+            $data['info_album_photo'] = $this->photo_model->get_abum_add($id_alb);
+           
+        }
         $this->load->view('photos/ajouter_photos', $data);
     }
 
-    public function add_video($user_id) {
+    public function add_video($user_id, $id_alb = null) {
         $url_video_complete = $this->input->post('url_video');
         $description = $this->input->post('description');
         $id_url_v = strstr($url_video_complete, "v=");
@@ -277,9 +282,11 @@ class Pop_in_general extends CI_Controller {
             '' => '',
         );
         $data['album_by_user'] = $this->photo_model->get_album($user_id);
+        if($id_alb != null)
+        {
 
-//        specifier $i en fonction du nombre de ligne retourner
-//        marche pas avec tableaux multidimension :
+            $data['info_album_photo'] = $this->photo_model->get_abum_add($id_alb);
+        }
 
         $data['max_album_user'] = count($data['album_by_user']);
 
@@ -334,22 +341,6 @@ class Pop_in_general extends CI_Controller {
     public function update_photo($user_id, $id_media, $type) {
         $this->form_validation->set_rules('description', 'description', 'required');
 
-        // cas possible : 
-        //update le nom d'une photo orpheline donc sans albm -> ok
-        //update du nom d'un album -> ok
-        //update une video -> le nom ->ok
-        // Video et photo -> changer nom d'alubm 
-        // mettre sans album
-        // ajouter un album
-        //si cover et changement ou suppresion album -> changer la cover
-        //pour album : changement de direction fichier
-        //update du nom d'une photo dans un album 
-        //update une video -> la mettre dans un album
-        //ajouter un  album a une photo : nouvel album
-        // changer l'album d'une photo
-        //supprimer la photo d'un album
-        //supprimer une video d'un album
-
         $data = array();
         $data['album_by_user'] = $this->photo_model->get_album($user_id);
         $data['max_album_user'] = count($data['album_by_user']);
@@ -358,6 +349,14 @@ class Pop_in_general extends CI_Controller {
             $data['info_album_photo'] = $this->photo_model->get_abum_for_photo($id_media);
             $data['info_photo'] = $this->photo_model->get_photo_by_id($id_media);
         }
+        if ($type == 2) {
+            $data['info_album_photo'] = $this->photo_model->get_abum($id_media);
+        }
+        if ($type == 3) {
+            $data['info_album_photo'] = $this->photo_model->get_abum($id_media);
+            $data['info_photo'] = $this->photo_model->get_video_by_id($id_media);
+        }
+
         if ($this->form_validation->run() == FALSE) {
             $this->load->helper(array('form', 'url'));
 

@@ -8,6 +8,7 @@ class Follower_model extends CI_Model {
     protected $table_communaute = 'communaute';
     protected $table_info_user = 'utilisateur';
     protected $table_wall_melo = 'wall_melo_component';
+    protected $table_track = 'morceaux';
     protected $data;
 
     public function __construct() {
@@ -106,6 +107,15 @@ class Follower_model extends CI_Model {
 
         $this->db->where($data_follow_wall)
                 ->delete($this->table_wall_melo);
+    }
+
+    public function count_follower($user_id)
+    {
+        return $this->db->select('COUNT(Follower_id) AS count_follower')
+                        ->from($this->table_communaute)
+                        ->where('Utilisateur_id',$user_id)
+                        ->get()
+                        ->result();
     }
 
 }

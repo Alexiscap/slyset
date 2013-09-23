@@ -59,7 +59,18 @@ class Home extends CI_Controller {
         $data['top_people_fil'] = $this->homepage_model->fil_top_people();
 
         $all_item_portail = array_merge($data['top_morceau_fil'],$data['articles'],$data['top_concert_fil'],$data['top_people_fil']);
+        $items_filtre = array_merge($data['top_morceau_fil'],$data['top_concert_fil'],$data['top_people_fil']);
+        $style_filtre = "";
+        foreach ($items_filtre as $item_filtre):
+             $style_filtre .= $item_filtre->style_joue.',';
+        endforeach;
+
+        $filtre_cat = explode(',',substr($style_filtre,0,-1));
+        $data['filtre_cat'] = array_unique($filtre_cat);
+     
+
         $timestamp_item = array();
+       
         foreach ($all_item_portail as $all_date) 
         {
             $timestamp_item[] .= mysql_to_unix($all_date->created) ;

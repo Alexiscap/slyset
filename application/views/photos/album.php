@@ -5,6 +5,11 @@ $uid_visit = (empty($profile)) ? $session_id : $profile->id;
 $login = (empty($profile)) ? $this->session->userdata('login') : $profile->login;
 $loger = $this->session->userdata('logged_in'); 
 ?>
+<link rel="stylesheet" type="text/css" href="<?php echo css_url('pop_in') ?>" media="screen" />
+<script  src="<?php echo js_url('jquery-1.8.3.min') ?>" media="screen" ></script>
+
+<script  src="<?php echo js_url('slyset') ?>" media="screen" ></script>
+
 
 <div id="contentAll">
     <div id="breadcrumbs">
@@ -47,16 +52,17 @@ $loger = $this->session->userdata('logged_in');
       <span class="stats_title">morceaux</span>
     </div>
   </div>
-          <?php if ($this->uri->segment(2) == $uid) { ?>
-<!--
-        <div class="bt_noir">
-        
-            <a class="iframe" href="<?php echo site_url('media/ajouter-photo/' . $profile->id) ?>" ><span class="bt_left"></span><span class="bt_middle">Ajouter une photo</span><span class="bt_right"></span></a>
-        </div>
-        <div class="bt_noir">
-            <a class="iframe" href="<?php echo site_url('media/ajouter-video/' . $profile->id) ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter une vidéo</span><span class="bt_right"></span></a>
-        </div>-->
+         <div class="bts_noir">
+        <?php if ($profile->id == $uid) { ?>
+
+            <div class="bt_noir">
+                <a class="iframe" href="<?php echo site_url('media/ajouter-photo/' . $profile->id.'/'.$this->uri->segment(3)) ?>" ><span class="bt_left"></span><span class="bt_middle">Ajouter une photo</span><span class="bt_right"></span></a>
+            </div>
+            <div class="bt_noir">
+                <a class="iframe" href="<?php echo site_url('media/ajouter-video/' . $profile->id.'/'.$this->uri->segment(3)) ?>"><span class="bt_left"></span><span class="bt_middle">Ajouter une vidéo</span><span class="bt_right"></span></a>
+            </div>
         <?php } ?>
+    </div>
 <!--<div class="top_title_photo">
      <h1><?php echo str_replace("_", " ", $this->uri->segment(3))  ?></h1>
      <a href="<?php echo base_url('index.php/media/'.$uid_visit)?>">retour</a>
@@ -204,10 +210,10 @@ $loger = $this->session->userdata('logged_in');
 		<div class="photo">
 		  <?php if ($profile->id == $uid) { ?> 
 					 <div class="edit">
-					<a class="iframe" href="<?php echo base_url('/index.php/mc_photos/update_photo/'.$profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
+					<a class="iframe" href="<?php echo base_url('/index.php/media/editer/'.$profile->id.'/'.$media_user_result_unit->id.'/3') ?>"><img src="<?php echo img_url('musicien/edite.png'); ?>"/></a>
 				  <!--  edition : SUPPRESSION *******************-->
 
-				   <a class="iframe" href="<?php echo base_url('/index.php/mc_photos/suppression_media/'.$profile->id.'/'.$media_user_result_unit->id.'/'.$media_user_result_unit->type) ?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
+				   <a class="iframe" href="<?php echo base_url('/index.php/mc_photos/suppression_media/'.$profile->id.'/'.$media_user_result_unit->id.'/3' )?>"><img src="<?php echo img_url('musicien/suppr.png'); ?>"/></a>
 				 </div>
 				 <?php } ?>
 						<!--  edition : HOVER *******************-->
@@ -227,7 +233,26 @@ $loger = $this->session->userdata('logged_in');
 									 ?>
      	</div>			
       			<div class="bord_photo">
-        				 <a onclick='showComment("comm<?php echo $media_user_result_unit->file_name?>")' href="javascript:void(0);"><p><?php if($cpt_comment==0)echo "0 commentaire"; if($cpt_comment==1)echo "1 commentaire"; if($cpt_comment>1)echo $cpt_comment."commentaires"; ?></p></a><img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" class="like" /><p class="nb_like"><?php echo $media_user_result_unit->like_total ?></p>
+        				 <a onclick='showComment("comm<?php echo $media_user_result_unit->file_name?>")' href="javascript:void(0);"><p><?php if($cpt_comment==0)echo "0 commentaire"; if($cpt_comment==1)echo "1 commentaire"; if($cpt_comment>1)echo $cpt_comment."commentaires"; ?></p></a>
+
+
+
+                <?php
+                $count = substr_count($all_video_like,$media_user_result_unit->id.'/');
+                if ($count>=1)
+                { ?>
+                   <img src="<?php echo img_url('musicien/pink_heart.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="nolike-video" />
+
+            <?php }
+            else
+            { ?>
+             <img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="like-video" />
+
+          <?php } ?>
+       
+
+
+                <p class="nb_like"><?php echo $media_user_result_unit->like_total ?></p>
       				</div>
             		    	<div class="allcomment" id="comm<?php echo $media_user_result_unit->file_name ?>">
 

@@ -22,8 +22,24 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 
   <div id="stats-cover">
     <div class="stats_cover_block">
-      <span class="stats_number">489</span>
-      <span class="stats_title">abonnés</span>
+   
+    
+    	<span class="stats_number">
+            	<?php
+            	echo $count_follower[0]->count_follower;
+            	?>
+            </span>       
+            <span class="stats_title">
+            	<?php
+            	if($count_follower[0]->count_follower == 0 || $count_follower[0]->count_follower == 1){
+            		echo 'abonné';
+            	}
+            	else
+            	{
+            		echo 'abonnés';
+            	}
+            	?>
+            </span>
     </div>
 
     <div class="stats_cover_block">
@@ -41,10 +57,10 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 	<h1>Statistiques</h1>
 	<h2 style="font-size:15px;">Cette année : </h2>
 	<div class="stats_carre">
-		<div class="abonnes"><span>&nbsp;489</span></div>
+		<div class="abonnes"><span>&nbsp;<?php echo $count_follower[0]->count_follower?></span></div>
 		<div class="visites"><span><?php echo $stats_visit->nb_visits ?></span></div>
 		<div class="vues"><span><?php echo $stats_page->nb_pageviews ?></span></div>
-		<div class="ventes"><span>&nbsp;512</span></div>
+		<div class="ventes"><span>&nbsp;<?php echo $count_vente_titre[0]->vente_titre ?></span></div>
 	</div>
 	<div class="clear"></div>
 	<div class="visites_quotidiennes">
@@ -75,71 +91,53 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 		<span>Vos ventes</span>
 		<div class="resume_vente">
 			<img src="<?php echo img_url('common/cadis.png'); ?>"/>
-			<p class="nb_vente">512</p>
-			<p class="titres_vendus">titres vendus</p>
-			<div class="source">Revenus générés</div><div class="revenu">614,00€</div>
-			<div class="source_detail">dont musiques</div><div class="revenu">600,00€</div>
-			<div class="source_detail">dont documents</div><div class="revenu">14,00€</div>
-			<div class="source">Acheteurs</div><div class="revenu">142</div>
+			<p class="nb_vente"><?php echo $count_vente_titre[0]->vente_titre ?></p>
+			<p class="titres_vendus"> <?php if($count_vente_titre[0]->vente_titre<2){echo 'titre vendu';} else { echo 'titres vendus';} ?></p>
+			<div class="source">Revenus générés</div><div class="revenu"><?php echo $total_gain?> €</div>
+			<div class="source_detail">dont musiques</div><div class="revenu"><?php echo $total_gain_music?> €</div>
+			<div class="source_detail">dont documents</div><div class="revenu"> <?php echo $stat_euro_doc[0]->gain_doc ;?> €</div>
+			<div class="source">Acheteurs</div><div class="revenu"><?php echo $count_distinc_buyer[0]->n_client ?></div>
 		</div>
 	</div>
 	<div class="clear"></div>
 	<div class="ecoutes">
-		<span>Détail des écoutes et des achats</span>
-		<select>
-			<option value="titre">titres</option>
-			<option value="ecoutes">écoutes</option>
-			<option value="achats">achats</option>
-		</select>
-		<div class="en_tete">
+		
+
+		<?php if(empty($stat_by_track)!= 1)
+		{ ?>
+			<span>Détail des écoutes et des achats</span>
+
+			<select>
+				<option value="titre">titres</option>
+				<option value="ecoutes">écoutes</option>
+				<option value="achats">achats</option>
+			</select>
+
+			<div class="en_tete">
 				<table>
 					<tr>
 						<td class="le_titre">Titre de la chanson</td>
-						<td class="paroles">Ecoutes<span>ces 7 derniers jours</span></td>
+						<td class="paroles">Ecoutes<span>Depuis mise en ligne<!--ces 7 derniers jours--></span></td>
 						<td class="partitions">Achats<span>Depuis mise en ligne</span></td>
 					</tr>
 				</table>
 			</div>
 			<div class="titres">
 				<table>
-					<tr>
-						<td class="le_titre">Rainy Day Women</td>
-						<td class="paroles">419</td>
-						<td class="partitions">118</td>
-					</tr>
-					<tr>
-						<td class="le_titre">Rainy Day Women</td>
-						<td class="paroles">419</td>
-						<td class="partitions">118</td>
-					</tr>
-					<tr>
-						<td class="le_titre">Rainy Day Women</td>
-						<td class="paroles">419</td>
-						<td class="partitions">118</td>
-					</tr>
-					<tr>
-						<td class="le_titre">Rainy Day Women</td>
-						<td class="paroles">419</td>
-						<td class="partitions">118</td>
-					</tr>
-					<tr>
-						<td class="le_titre">Rainy Day Women</td>
-						<td class="paroles">419</td>
-						<td class="partitions">118</td>
-					</tr>
-					<tr>
-						<td class="le_titre">Rainy Day Women</td>
-						<td class="paroles">419</td>
-						<td class="partitions">118</td>
-					</tr>
-					<tr>
-						<td class="le_titre">Rainy Day Women</td>
-						<td class="paroles">419</td>
-						<td class="partitions">118</td>
-					</tr>
+					<?php 
+					foreach($stat_by_track as $stat_track):
+					?>
+						<tr>
+							<td class="le_titre"><?php echo $stat_track->nom ?></td>
+							<td class="paroles"><?php echo $stat_track->nombre_lectures ?></td>
+							<td class="partitions"><?php echo $stat_track->vente_by_titre ?></td>
+						</tr>
+					<?php endforeach; ?>
 				</table>
 			</div>
+		<?php } ?>
 	</div>
+		
   </div>
 
 	

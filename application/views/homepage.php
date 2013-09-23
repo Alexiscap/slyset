@@ -206,14 +206,14 @@ if (isset($all_date_calendar))
 
            if(isset($article->descri_f_t)):
 ?>
-               <div class="wall-flux-content">
+               <div class="wall-flux-content search_filter">
                     <div class="wall-flux-content-left-picture">
                         <img class="img-blog-artiste-carre" src="<?php echo files('profiles/'.$article->thumb) ?>">
                         <div class="bloc_player">
                         <a class="open_player" href="<?php echo base_url('index.php/mc_musique/player/'.$article->Utilisateur_id.'/album/'.$article->name_alb.'/'.$article->id) ?>">play</a>
                         </div>
                     </div>
-                    <div class="wall-flux-content-right-text">
+                    <div class="wall-flux-content-right-text" id="<?php echo $article->style_joue?>">
 
                         <p class="wall-flux-content-title top">Les internautes écoutent...</p>
 
@@ -230,12 +230,12 @@ if (isset($all_date_calendar))
             endif;
            if(isset($article->salle)):
 ?>
-               <div class="wall-flux-content">
+               <div class="wall-flux-content search_filter">
                     <div class="wall-flux-content-left-picture">
                         <img class="img-blog-artiste-carre" src="<?php echo files('profiles/'.$article->thumb) ?>">
 
                     </div>
-                    <div class="wall-flux-content-right-text">
+                    <div class="wall-flux-content-right-text" id="<?php echo $article->style_joue?>">
                         <p class="wall-flux-content-title top">L’évènement à ne pas rater</p>
 
 
@@ -263,12 +263,12 @@ if (isset($all_date_calendar))
             endif;  
            if(isset($article->description_f_p)):
 ?>
-               <div class="wall-flux-content">
+               <div class="wall-flux-content search_filter">
                     <div class="wall-flux-content-left-picture">
                         <img class="img-blog-artiste-carre" src="<?php echo files('profiles/'.$article->thumb) ?>">
 
                     </div>
-                    <div class="wall-flux-content-right-text">
+                    <div class="wall-flux-content-right-text" id="<?php echo $article->style_joue?>">
 
                         <p class="wall-flux-content-title">Les internautes ont aimé...</p>
 
@@ -327,9 +327,13 @@ if (isset($all_date_calendar))
 				<img src="<?php echo img_url('common/entete_filtres.png'); ?>" alt="logo musique" /><br />
 				<span> Voir les genres </span>
 			</div>
-			<div class="filtre">
-				<span>Pop bubblegum</span>
-			</div>
+
+			<?php foreach($filtre_cat as $filtre): ?>
+				<div class="filtre">
+					<span><?php echo $filtre;?></span>
+				</div>
+			<?php endforeach;?>
+			<!--
 			<div class="filtre">
 				<span>Jazz</span>
 			</div>
@@ -347,7 +351,7 @@ if (isset($all_date_calendar))
 			</div>
 			<div class="filtre">
 				<span>Tout</span>
-			</div>
+			</div>-->
 		</div>
         <div class="pslyset">
             <p class="pslyset-title">Découvrez la mixtape #1</p>
