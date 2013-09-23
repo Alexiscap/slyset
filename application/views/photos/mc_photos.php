@@ -71,7 +71,7 @@ $loger = $this->session->userdata('logged_in');
             if ($media_user_result_unit->type == 1) {
                 ?>		
                 <div class="box col1">
-                    <div class="photo">
+                    <div class="photo" itemscope itemtype="http://schema.org/ImageObject">
 						<!--  edition : HOVER *******************-->
                         <?php if ($profile->id == $uid) { ?> 
                             <div class="edit">
@@ -83,10 +83,10 @@ $loger = $this->session->userdata('logged_in');
                             </div>
                         <?php } ?>
                         <!-- image -->
-                        <a class="iframe" href="<?php echo site_url('media/zoom/' . $media_user_result_unit->id . '/0') ?>"><img src="<?php echo files($infos_profile->id . '/photos/' . $media_user_result_unit->file_name); ?>" class="img_cover" /></a>
+                        <a class="iframe" href="<?php echo site_url('media/zoom/' . $media_user_result_unit->id . '/0') ?>"><img src="<?php echo files($infos_profile->id . '/photos/' . $media_user_result_unit->file_name); ?>" itemprop="contentURL" class="img_cover" /></a>
                         <!-- titre -->
 
-                        <p class="nom_photo"><?php echo $media_user_result_unit->nom ?></p>
+                        <p class="nom_photo" itemprop="description"><?php echo $media_user_result_unit->nom ?></p>
                         <!-- commentaire -->
 
                         <?php
@@ -294,7 +294,7 @@ $loger = $this->session->userdata('logged_in');
     } else if ($media_user_result_unit->type == 3) {
         ?>
                 <div class="box col1">
-				<div class="photo">
+				<div class="photo" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
                     <!--  edition : HOVER *******************-->
                 <?php
                 if ($profile->id == $uid) {
@@ -309,8 +309,8 @@ $loger = $this->session->userdata('logged_in');
                     ?>
 
 
-                    <a href="http://www.youtube.com/v/<?php echo $media_user_result_unit->file_name ?>?version=3"><img src="http://i.ytimg.com/vi/<?php echo $media_user_result_unit->file_name ?>/hqdefault.jpg" class="img_cover" /></a>
-                    <p class="nom_photo"><?php echo $media_user_result_unit->nom ?></p>
+                    <a href="http://www.youtube.com/v/<?php echo $media_user_result_unit->file_name ?>?version=3"><img src="http://i.ytimg.com/vi/<?php echo $media_user_result_unit->file_name ?>/hqdefault.jpg" itemprop="thumbnail" class="img_cover" /></a>
+                    <p class="nom_photo" itemprop="description"><?php echo $media_user_result_unit->nom ?></p>
 
                     <?php
                     $cpt_comment = 0;
