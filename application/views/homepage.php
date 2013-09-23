@@ -208,10 +208,14 @@ if (isset($all_date_calendar))
 ?>
                <div class="wall-flux-content search_filter">
                     <div class="wall-flux-content-left-picture">
-                        <img class="img-blog-artiste-carre" src="<?php echo files('profiles/'.$article->thumb) ?>">
-                        <div class="bloc_player">
-                        <a class="open_player" href="<?php echo base_url('index.php/mc_musique/player/'.$article->Utilisateur_id.'/album/'.$article->name_alb.'/'.$article->id) ?>">play</a>
+                     <div class="bloc_player">
+                        <a class="open_player" href="<?php echo base_url('index.php/mc_musique/player/'.$article->Utilisateur_id.'/album/'.$article->name_alb.'/'.$article->id) ?>">
+                        	<img src="<?php echo base_url('assets/images/musicien/player_top.png')?>">
+
+                        </a>
                         </div>
+                        <img class="img-blog-artiste-carre" src="<?php echo files('profiles/'.$article->thumb) ?>">
+                       
                     </div>
                     <div class="wall-flux-content-right-text" id="<?php echo $article->style_joue?>">
 
@@ -235,7 +239,7 @@ if (isset($all_date_calendar))
                         <img class="img-blog-artiste-carre" src="<?php echo files('profiles/'.$article->thumb) ?>">
 
                     </div>
-                    <div class="wall-flux-content-right-text" id="<?php echo $article->style_joue?>">
+                    <div class="wall-flux-content-right-text top" id="<?php echo $article->style_joue?>">
                         <p class="wall-flux-content-title top">L’évènement à ne pas rater</p>
 
 
@@ -270,7 +274,7 @@ if (isset($all_date_calendar))
                     </div>
                     <div class="wall-flux-content-right-text" id="<?php echo $article->style_joue?>">
 
-                        <p class="wall-flux-content-title">Les internautes ont aimé...</p>
+                        <p class="wall-flux-content-title top">Les internautes ont aimé...</p>
 
                         <p class="wall-flux-content-subtitle top"><?php echo $article->login ?></p>
 

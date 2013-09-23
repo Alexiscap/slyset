@@ -379,7 +379,7 @@ $(document).ready(function(){
 
         
         
-    }
+    
     //    $('audio').bind("play", function(){
     //        var currentAudio = $('ul li.playing').text();
     //        $('#played .infos .ecoute', window.opener.document).html(currentAudio);
@@ -399,13 +399,48 @@ $(document).ready(function(){
     
     $('.more_albpl').click(function(){
     	if($('.drop').is(':visible')==false)
-    	{$('.drop').show();
+    	{
+    		$('.drop').show();
     	}
     	else
     	{
-    	$('.drop').hide();
+    		$('.drop').hide();
     	}
-});
+    });
+    $('.addto').click(function(){
+    	if($('.get_pls').is(':visible')==false)
+    	{
+    		$('.get_pls').show();
+    	}
+    	else
+    	{
+    		$('.get_pls').hide();
+    	}
+    });
+    	$('.modal_alert.get_pls a').click(function(e)
+    	{
+    		e.preventDefault();
+    		var playlist = $(this).text();
+    		var id_morceau = $('.playing .cover_alb').attr('id');
+    		dataid = 'pl='+playlist+'&&id_track='+id_morceau;
+    	 	$.ajax({
+                type: "POST",
+                url : base_url + '/mc_musique/to_pl',
+                data: dataid,
+                success: function(data){ //afficher le bon bouton
+                   $('#modal').reveal({ // The item which will be opened with reveal
+                    	animation: 'fade',                   // fade, fadeAndPop, none
+                    	animationspeed: 600,                       // how fast animtions are
+                    	closeonbackgroundclick: true,              // if you click background will modal close?
+                    	dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+                	});
+					
+                	return false;					
+            	}
+    		});  	
+    	});
+    }
+
     $('.iframe').bind('contextmenu', function(e) {
         return false;
     }); 

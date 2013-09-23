@@ -77,6 +77,8 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .artist_post .right .msg_post{ padding:0 0 20px 0; display:inline-block; width:396px; font-weight:normal; font-size:13px; color:#535353; float:left; margin:0 0 0 5px;}
 .artist_post .right .msg_post a{ font-weight:bold; text-decoration:none; color:#31a58c; }
 .artist_post .right .msg_post a:hover{ text-decoration:underline; }
+.artist_post .right .play_img {float:left; padding-bottom : 10px;padding-right : 10px}
+.artist_post .right .info_morceau { color:#535353}
 .artist_post .right .singleWrapper{ width:475px; max-height:500px; overflow:hidden; float:left; clear:both; }
 .artist_post .right img.single{ display:block; min-width:475px; max-width:100%; }
 .artist_post .right .content-mosaic {margin-left : 13px;}
@@ -647,9 +649,14 @@ cursor : pointer;}
 .wall-flux-content .wall-flux-content-goto-profile{ color:#f05f4c; font-size:14px; float:right; margin-top:-17px; margin-right:20px; padding:10px; } 
 */
 .wall-flux-content .wall-flux-content-left-picture {width:210px; float:left;}
-.wall-flux-content .wall-flux-content-right-text {width:300px;margin-left: 200px;min-height : 210px; }
+.wall-flux-content .wall-flux-content-right-text {width:300px;margin-left: 200px;min-height : 190px; margin-top:19px;  }
+.wall-flux-content .wall-flux-content-left-picture {width:210px; float:left;}
+.wall-flux-content .wall-flux-content-right-text .wall-flux-content-text { font-size:14px; line-height:21px; color:#555555; margin:19px 0px 0px 0px; word-wrap:break-word;}
 .wall-flux-content .wall-flux-content-left-picture .img-blog-artiste-carre{ width:170px; height : 170px; margin :19px 19px 19px 19px;}
-.wall-flux-content .wall-flux-content-left-picture .bloc_player {background: rgba(115,115,115,0.68);}
+.wall-flux-content .wall-flux-content-left-picture .bloc_player {background: rgba(115,115,115,0.68);position: absolute; margin-top: 149px;height: 40px;width: 170px;margin-left: 19px;}
+.wall-flux-content .wall-flux-content-left-picture .bloc_player img {margin-left: 71px;margin-top: 7px;}
+.wall-flux-content .wall-flux-content-goto-profile{ color:#f05f4c; font-size:14px; float:right; padding:6px; } 
+
 /*#e6e6e6*/
 #wall-flux .ajax_loader, .melo_actu .ajax_loader2{ text-align:center; width:100%; position:absolute; bottom:0; }
 

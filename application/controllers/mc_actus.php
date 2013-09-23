@@ -29,11 +29,11 @@ class Mc_actus extends CI_Controller {
 
         $sub_data = array();
         $sub_data['profile'] = $this->user_model->getUser($this->user_id);
-        
-        $this->layout->set_description('Retrouvez '.$sub_data['profile']->login.' sur Slyset et découvrez sa musique, ses prochains concerts, ses photos, ses vidéos, ses livrets, ses partitions...');
-        $this->layout->set_titre('Toute l\'actualité de '.$sub_data['profile']->login.' : photos, concerts, news - Slyset');
-        $this->layout->set_keyword($sub_data['profile']->login.', musicien, musique en ligne, streaming musique, slyset, concerts, photos, vidéos, actualités musique');
-        
+        if(isset($sub_data['profile']->login)):
+            $this->layout->set_description('Retrouvez '.$sub_data['profile']->login.' sur Slyset et découvrez sa musique, ses prochains concerts, ses photos, ses vidéos, ses livrets, ses partitions...');
+            $this->layout->set_titre('Toute l\'actualité de '.$sub_data['profile']->login.' : photos, concerts, news - Slyset');
+            $this->layout->set_keyword($sub_data['profile']->login.', musicien, musique en ligne, streaming musique, slyset, concerts, photos, vidéos, actualités musique');
+        endif;
         $sub_data['perso'] = $output;
         if ($this->user_id != null) {
             $sub_data['photo_right'] = $this->user_model->last_photo($this->user_id);

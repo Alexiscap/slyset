@@ -14,6 +14,7 @@
         <!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />-->
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('reset') ?>" />
         <link type="text/css" rel="stylesheet" href="<?php echo css_url('player') ?>" />
+        <link type="text/css" rel="stylesheet" href="<?php echo css_url('information') ?>" />
 
         <!--[if IE]>
           <link type="text/css" rel="stylesheet" href="<?php echo css_url('corrections-ie') ?>" />
@@ -22,6 +23,7 @@
         <!--<script type="text/javascript" src="<?php echo js_url('jquery-1.7.1.min') ?>"></script>-->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo js_url('jquery-ui-1.10.3.min') ?>"></script>
+        <script type="text/javascript" src="<?php echo js_url('jquery.reveal') ?>"></script>
     </head>
 
     <body class="player-audio">
@@ -74,7 +76,7 @@
                     foreach ($playlists[0] as $playlist): ?>
                         <!--<ol><?php // echo ucfirst($this->uri->segment(4));  ?> : <?php // echo $playlist->nom  ?>-->
                         <div class="top">
-                            <span class="txt-ecoute"><?php echo ucfirst($this->uri->segment(4))?>: <?php echo $playlist->nom  ?> <?php if($playlists[2]!= null) echo '<span class="more_albpl"> <img width="30px" src="'.img_url('player/tritrait.png').'"> </span>' ?> </span>
+                            <span class="txt-ecoute"><?php echo ucfirst($this->uri->segment(4))?>: <?php echo $playlist->nom  ?> <?php if($playlists[2]!= null) echo '<span class="more_albpl"> <img class="trit" width="30px" src="'.img_url('player/tritrait.png').'"> </span>' ?> </span>
                         </div>
                             
                         <?php 
@@ -82,12 +84,12 @@
                         ?>
                            <div class="modal_alert drop"><p>Selectionner une playlist</p>
                                
-                                </br>
+                               
                     
 <?php
                                 foreach ($playlists[2] as $all_name_albpl):
                                  ?>
-                                    <span><?php echo ucfirst($this->uri->segment(4))?>: <a href="<?php echo base_url('index.php/mc_musique/player/'.$this->uri->segment(3).'/'.$this->uri->segment(4).'/'.$all_name_albpl->nom) ?>"><?php echo $all_name_albpl->nom  ?></a></span>
+                                    <p><a href="<?php echo base_url('index.php/mc_musique/player/'.$this->uri->segment(3).'/'.$this->uri->segment(4).'/'.$all_name_albpl->nom) ?>"><?php echo $all_name_albpl->nom  ?></a></p>
 
                                 <!--<div class="top">
                                     <span class="txt-ecoute"><?php echo ucfirst($this->uri->segment(4))?>: <a href="<?php echo base_url('index.php/mc_musique/player/'.$this->uri->segment(3).'/'.$this->uri->segment(4).'/'.$all_name_albpl->nom) ?>"><?php echo $all_name_albpl->nom  ?></a></span>
@@ -127,6 +129,30 @@
                 <span style="float:left;" id="duration"></span><span style="float:right;" id="timeleft"></span>
             </div>
         </div>
+         <div class="modal_alert get_pls">
+         	<p>Selectionner une playlist</p>
+                               
+                    
+<?php
+                                foreach ($playlists[2] as $all_name_albpl):
+                                 ?>
+                                    <p><a href="<?php echo base_url('index.php/mc_musique/player/'.$this->uri->segment(3).'/'.$this->uri->segment(4).'/'.$all_name_albpl->nom) ?>"><?php echo $all_name_albpl->nom  ?></a></p>
+
+                                <!--<div class="top">
+                                    <span class="txt-ecoute"><?php echo ucfirst($this->uri->segment(4))?>: <a href="<?php echo base_url('index.php/mc_musique/player/'.$this->uri->segment(3).'/'.$this->uri->segment(4).'/'.$all_name_albpl->nom) ?>"><?php echo $all_name_albpl->nom  ?></a></span>
+                                </div>-->
+                                <?php 
+                                endforeach; 
+                            ?>
+                            </div>
+        <div id="modal">
+			<div id="content-info">
+				<p>Le morceau a bien été ajouté a votre playlist</p>
+
+				<a href="javascript:void(0)" class="button_info green close"><img src="<?php echo base_url('/assets/images/validation_pi/tick.png')?>">OK</a>
+
+			</div>
+		</div>
 
         <script type="text/javascript" src="<?php echo js_url('audiojs/audio.min') ?>"></script>
         <script type="text/javascript" src="<?php echo js_url('slyset') ?>"></script>

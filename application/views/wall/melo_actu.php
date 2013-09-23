@@ -572,9 +572,12 @@
                   <p class="msg_post">
                         Je viens d'ajouter un morceau à ma playlist : <a href="<?php echo base_url('/index.php/my-playlists/'.$entity_wall->Utilisateur_id) ?>"><?php echo $entity_wall->playlist?> </a>
 
-                        <p>
-                           <a class="open_player" href="<?php echo base_url('index.php/mc_musique/player/'.$entity_wall->Utilisateur_id.'/playlist/'.$entity_wall->playlist.'/'.$entity_wall->idproduit) ?>">play</a>
-                           <p><?php echo $entity_wall->login ?> - <?php echo $entity_wall->main_nom ?> </p>
+                        <p class="play_img">
+                           <a class="open_player" href="<?php echo base_url('index.php/mc_musique/player/'.$entity_wall->Utilisateur_id.'/playlist/'.$entity_wall->playlist.'/'.$entity_wall->idproduit) ?>">
+                           
+                              <img  src="<?php echo base_url('assets/images/sidebar-right/lecture.png')?>">
+                           </a>
+                           <p class="info_morceau"><?php echo $entity_wall->login ?> - <?php echo $entity_wall->main_nom ?> </p>
                         </p>
                      </p>
                </div>
@@ -615,9 +618,11 @@
                   <p class="msg_post">
                         <a href="<?php echo base_url('index.php/actualite/'.$entity_wall->Utilisateur_id)?>"><?php echo $entity_wall->login ?></a> vient d'ajouter un morceau à son album : <a href="<?php echo base_url('/index.php/musique/'.$entity_wall->Utilisateur_id) ?>"><?php echo $entity_wall->name_alb?> </a>
 
-                        <p>
-                           <a class="open_player" href="<?php echo base_url('index.php/mc_musique/player/'.$entity_wall->Utilisateur_id.'/playlist/'.$entity_wall->playlist.'/'.$entity_wall->idproduit) ?>">play</a>
-                           <p><?php echo $entity_wall->login ?> - <?php echo $entity_wall->main_nom ?> </p>
+                        <p class="play_img">
+                           <a class="open_player" href="<?php echo base_url('index.php/mc_musique/player/'.$entity_wall->Utilisateur_id.'/playlist/'.$entity_wall->playlist.'/'.$entity_wall->idproduit) ?>">
+                              <img src="<?php echo base_url('assets/images/sidebar-right/lecture.png')?>">
+                            </a>
+                           <p class="info_morceau"><?php echo $entity_wall->login ?> - <?php echo $entity_wall->main_nom ?> </p>
                         </p>
                      </p>
                </div>
