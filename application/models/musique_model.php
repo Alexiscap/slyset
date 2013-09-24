@@ -25,14 +25,14 @@ class Musique_model extends CI_Model {
 
 
 
-    public function get_morceau_by_playlist_user() {
+    public function get_morceau_by_playlist_user($user_id) {
 
         return $this->db->select('Morceaux_id,playlists.nom,morceaux.nom AS title_track,utilisateur.login,albums.nom AS title_album,morceaux.duree,utilisateur.id AS user_id,albums.id AS id_alb')
                         ->from($this->tbl_playlist)
                         ->join($this->tbl_morceaux, 'morceaux.id = playlists.Morceaux_id')
                         ->join($this->tbl_album, 'morceaux.albums_id = albums.id', 'LEFT OUTER')
                         ->join($this->tbl_user, 'morceaux.Utilisateur_id = utilisateur.id')
-                        ->where(array('playlists.Utilisateur_id' => 30))
+                        ->where(array('playlists.Utilisateur_id' => $user_id))
                         ->get()
                         ->result();
     }

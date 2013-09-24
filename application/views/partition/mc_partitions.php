@@ -124,7 +124,7 @@ $loger = $this->session->userdata('logged_in');
 		?>
  			<div class="a_la_une_parti">
 				<?php if($album->img_cover != null){ ?>
-					<img src="<?php echo files($infos_profile->id.'/albums/'.str_replace(' ','_',$album->nom).'/'.$album->img_cover) ?>"/>
+					<img src="<?php echo files($infos_profile->id.'/albums/'.strtolower(str_replace(' ','_',$album->nom)).'/'.$album->img_cover) ?>"/>
 				<?php }
 			
 				else

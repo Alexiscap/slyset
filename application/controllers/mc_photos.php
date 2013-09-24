@@ -142,7 +142,7 @@ class Mc_photos extends CI_Controller {
         	    $data['infos_profile'] = $infos_profile;
         	}
 
- 	       $data['like_photo'] = $this->photo_model->get_like_user($user_visited);
+ 	       $data['like_photo'] = $this->photo_model->get_like_user($user_id);
     	    $data['all_photo_like'] = "";
         	$data['all_album_like'] = "";
         	$data['all_video_like'] = "";
@@ -168,9 +168,9 @@ class Mc_photos extends CI_Controller {
         
         }
 
-        $data['all_follower'] = $this->follower_model->get_all_follower_user($user_visited);
-        $data['album_nbr'] = $this->musique_model->get_nalb($user_visited);
-        $data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($user_visited);
+        $data['all_follower'] = $this->follower_model->get_all_follower_user($user_id);
+        $data['album_nbr'] = $this->musique_model->get_nalb($user_id);
+        $data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($user_id);
 
         $this->layout->view('photos/album', $data, false);
     }
