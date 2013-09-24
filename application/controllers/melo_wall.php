@@ -78,8 +78,7 @@ class Melo_wall extends CI_Controller {
         setlocale(LC_TIME, 'fr', 'fr_FR', 'fr_FR.ISO8859-1');
         $data['playlists'] = $this->musique_model->get_my_playlist($user_visited);
         $data['all_following'] = $this->follower_model->get_all_abonnement($user_visited);
-        
-
+        $data['concert_cover'] = $this->user_model->concert_cover($user_visited);
         $data_follow = $this->melo_actus_model->get_following($user_visited);
         $listforin = "";
         $data['info_user'] = $this->melo_actus_model->get_info_user($user_visited);

@@ -23,7 +23,7 @@ class Mc_photos extends CI_Controller {
         $this->layout->ajouter_js('jquery-ui');
 
         $this->load->helper('form');
-        $this->load->model(array('perso_model', 'user_model', 'photo_model','achat_model'));
+        $this->load->model(array('perso_model', 'user_model', 'photo_model','achat_model','musique_model','follower_model'));
         $this->load->library('form_validation');
 
         $this->layout->set_id_background('photos_videos');
@@ -113,6 +113,10 @@ class Mc_photos extends CI_Controller {
             $data['all_album_like'] .= $data['likes_photo']->Album_media_file_name . "/";
             $data['all_video_like'] .= $data['likes_photo']->Video_id . "/";
         }
+
+        $data['all_follower'] = $this->follower_model->get_all_follower_user($user_visited);
+        $data['album_nbr'] = $this->musique_model->get_nalb($user_visited);
+        $data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($user_visited);
 			
 		//$data['album_wall'] = $this->photo_model->get_album_wall_four($user_visited);
 		//var_dump($data['album_wall'] );
@@ -163,6 +167,10 @@ class Mc_photos extends CI_Controller {
 
         
         }
+
+        $data['all_follower'] = $this->follower_model->get_all_follower_user($user_visited);
+        $data['album_nbr'] = $this->musique_model->get_nalb($user_visited);
+        $data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($user_visited);
 
         $this->layout->view('photos/album', $data, false);
     }

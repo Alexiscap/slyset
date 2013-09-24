@@ -10,7 +10,7 @@ class Mc_stats extends CI_Controller {
 
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_js('Chart');
-        $this->load->model(array('perso_model', 'user_model','achat_model','follower_model','stat_model'));
+        $this->load->model(array('perso_model', 'user_model','achat_model','follower_model','stat_model','musique_model'));
 
         $this->layout->set_id_background('stats');
 
@@ -174,6 +174,10 @@ class Mc_stats extends CI_Controller {
         $data['total_gain'] = $stat_euro_track[0]->gain_track + $stat_euro_album[0]->gain_alb + $data['stat_euro_doc'][0]->gain_doc;
         $data['total_gain_music'] = $stat_euro_track[0]->gain_track + $stat_euro_album[0]->gain_alb;
         
+        $data['all_follower'] = $this->follower_model->get_all_follower_user($user_id);
+        $data['album_nbr'] = $this->musique_model->get_nalb($user_id);
+        $data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($user_id);
+
         $this->layout->view('statistique/mc_stats', $data);
     }
 

@@ -16,7 +16,7 @@ class Melo_concerts extends CI_Controller {
         $this->layout->ajouter_js('maps_api');
         // $this->layout->ajouter_js('maps-google');
 
-        $this->load->model(array('user_model', 'concert_model', 'melo_concert_model','achat_model'));
+        $this->load->model(array('user_model', 'concert_model', 'melo_concert_model','achat_model','musique_model','follower_model'));
         $this->load->helper('date');
 
         $this->layout->set_id_background('concert_melo');
@@ -40,6 +40,7 @@ class Melo_concerts extends CI_Controller {
     public function index($user_id) {
         $uid = $this->session->userdata('uid');
         $infos_profile = $this->user_model->getUser($user_id);
+
         
        //if ($user_id == $uid) {
             $this->page_main($infos_profile, "melo_concerts", ">");
@@ -71,7 +72,12 @@ class Melo_concerts extends CI_Controller {
 
         $data['nbr_concert_par_melo'] = $this->concert_model->count_artiste_concert($user_visited, $inf_sup);
         $data['concert_all'] = $this->melo_concert_model->get_concert($data['nbr_concert_par_melo'], 0, $user_visited, $inf_sup);
-
+        
+        //stat cover profile
+        $data['playlists'] = $this->musique_model->get_my_playlist($user_visited);
+        $data['all_following'] = $this->follower_model->get_all_abonnement($user_visited);
+        $data['concert_cover'] = $this->user_model->concert_cover($user_visited);
+        
         function get_date($date_concert, $test) {
             //gestion des differents formats d'affichage des dates
             $date_format = (date_create($date_concert, timezone_open('Europe/Paris')));

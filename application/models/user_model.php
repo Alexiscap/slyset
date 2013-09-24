@@ -9,6 +9,8 @@ class User_model extends CI_Model {
     protected $data;
     protected $tbl_track = 'morceaux';
  	protected $tbl_album = 'albums';
+    protected $tbl_community_concert = "concerts_activite";
+    protected $tbl_concert = 'concerts';
  	
     public function __construct() {
         parent::__construct();
@@ -235,6 +237,22 @@ class User_model extends CI_Model {
     					->get()
     					->result();
       }
+
+    public function concert_cover($user)
+    {
+      /*  return $this->db->select('COUNT(concerts_activite.id) AS n_concert')
+                        ->from($this->tbl_community_concert)
+                        ->join($this->tbl_concert,'concerts.id = concerts_activite.concerts_id','LEFT OUTER')
+                        ->where(array('concerts_activite.utilisateur_id'=>$user,'concerts.date >'=>'CURRENT_TIMESTAMP()'))
+                        ->get()
+                        ->result();
+    */
+        return $this->db->query('SELECT COUNT(concerts_activite.id) AS n_concert 
+                                FROM concerts_activite
+                                    LEFT OUTER JOIN concerts ON concerts.id = concerts_activite.concerts_id
+                                WHERE concerts_activite.utilisateur_id = '.$user.' AND concerts.date > CURRENT_TIMESTAMP')
+                        ->result();
+    }
 
 }
 

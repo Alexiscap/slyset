@@ -19,7 +19,7 @@ class Mc_actus extends CI_Controller {
         $this->layout->ajouter_js('jquery.easing.min');
 
         $this->load->helper(array('form', 'comments_helper'));
-        $this->load->model(array('mc_actus_model', 'perso_model', 'user_model','achat_model'));
+        $this->load->model(array('mc_actus_model', 'perso_model', 'user_model','achat_model','follower_model','musique_model'));
         $this->load->library(array('form_validation'));
 
         $this->layout->set_id_background('musicien_actus');
@@ -84,6 +84,9 @@ class Mc_actus extends CI_Controller {
         if (!empty($infos_profile)) {
             $data['infos_profile'] = $infos_profile;
         }
+        $data['all_follower'] = $this->follower_model->get_all_follower_user($user_visited);
+        $data['album_nbr'] = $this->musique_model->get_nalb($user_visited);
+        $data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($user_visited);
 
         $this->layout->view('wall/mc_actus', $data);
     }

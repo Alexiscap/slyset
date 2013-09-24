@@ -548,6 +548,9 @@ $(document).ready(function(){
             data: dataid,
             success: function(datas){
                 $(la_cmd).text('Au Panier');
+                var panier_notif = parseInt($('.notif').text().trim()) + 1;
+                $('.notif').html('<div>' + panier_notif  + '</div>');
+                
             }
         })
     });
@@ -1781,6 +1784,9 @@ $(document).ready(function(){
                                 closeonbackgroundclick: true,              // if you click background will modal close?
                                 dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
                             });
+                            var panier_notif = parseInt($('.notif').text().trim()) + 1;
+                			$('.notif').html('<div>' + panier_notif  + '</div>');
+             
                             return false;
                         }
                         else
@@ -1822,6 +1828,9 @@ $(document).ready(function(){
                         });
                         cadis.addClass('cadis_actif');
                         cadis.removeClass('cadis')
+                        var panier_notif = parseInt($('.notif').text().trim()) + 1;
+                		$('.notif').html('<div>' + panier_notif  + '</div>');
+             
                         return false;
                     }
                     else
@@ -1991,6 +2000,9 @@ $(document).ready(function(){
                                     closeonbackgroundclick: true,              // if you click background will modal close?
                                     dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
                                 });
+                                var panier_notif = parseInt($('.notif').text().trim()) + 1;
+                				$('.notif').html('<div>' + panier_notif  + '</div>');
+             
 							
                                 return false;					
                             }
@@ -2016,6 +2028,9 @@ $(document).ready(function(){
                                 closeonbackgroundclick: true,              // if you click background will modal close?
                                 dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
                             });
+                            var panier_notif = parseInt($('.notif').text().trim()) + 1;
+                			$('.notif').html('<div>' + panier_notif  + '</div>');
+             
 							
                             return false;					
                         }
@@ -2046,6 +2061,9 @@ $(document).ready(function(){
                                     closeonbackgroundclick: true,              // if you click background will modal close?
                                     dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
                                 });
+                                var panier_notif = parseInt($('.notif').text().trim()) + 1;
+                				$('.notif').html('<div>' + panier_notif  + '</div>');
+             
 							
                                 return false;					
                             }
@@ -2071,7 +2089,8 @@ $(document).ready(function(){
                                 closeonbackgroundclick: true,              // if you click background will modal close?
                                 dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
                             });
-							
+							var panier_notif = parseInt($('.notif').text().trim()) + 1;
+                			$('.notif').html('<div>' + panier_notif  + '</div>');
                             return false;					
                         }
                     });
@@ -2099,6 +2118,9 @@ $(document).ready(function(){
                             closeonbackgroundclick: true,              // if you click background will modal close?
                             dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
                         });
+                        var panier_notif = parseInt($('.notif').text().trim()) + 1;
+                		$('.notif').html('<div>' + panier_notif  + '</div>');
+             
                         return false
                     }
                     else
@@ -2147,6 +2169,9 @@ $(document).ready(function(){
                                 closeonbackgroundclick: true,              // if you click background will modal close?
                                 dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
                             });
+                            var panier_notif = parseInt($('.notif').text().trim()) + 1;
+                			$('.notif').html('<div>' + panier_notif  + '</div>');
+             
                             return false
                         }
                         else

@@ -57,6 +57,9 @@ class Melo_playlist extends CI_Controller {
         $data['playlists'] = $this->musique_model->get_my_playlist($user_id);
     	$data['morceaux_playlist'] = $this->musique_model->get_morceau_by_playlist_user($user_id);
     	$data['all_following'] = $this->follower_model->get_all_abonnement($user_id);
+
+        $data['concert_cover'] = $this->user_model->concert_cover($user_id);
+
 		$my_panier = $this->achat_model->all_panier();
 		$data['all_panier'] ="";
 			foreach($my_panier as $mpanier):

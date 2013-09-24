@@ -16,7 +16,7 @@ class Mc_followers extends CI_Controller {
         
         $this->layout->ajouter_js('jquery.colorbox');
         
-        $this->load->model(array('perso_model', 'user_model', 'follower_model','achat_model'));
+        $this->load->model(array('perso_model', 'user_model', 'follower_model','achat_model','musique_model'));
         $this->load->helper('form');
 
         $this->layout->set_id_background('followers');
@@ -89,6 +89,10 @@ class Mc_followers extends CI_Controller {
             $data['allifollow'] .=$allmy->Utilisateur_id . ',';
         }
 
+        $data['all_follower'] = $this->follower_model->get_all_follower_user($user_visited);
+        $data['album_nbr'] = $this->musique_model->get_nalb($user_visited);
+        $data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($user_visited);
+
         $this->layout->view('follower/mc_followers', $data);
     }
 
@@ -100,12 +104,17 @@ class Mc_followers extends CI_Controller {
             $data['infos_profile'] = $infos_profile;
         }
 
-        $data['all_follower'] = $this->follower_model->get_follower_bytype($user_id, 2);
+        $data['all_follower_cover'] = $this->follower_model->get_follower_bytype($user_id, 2);
         $ifollow = $this->follower_model->get_abonnement($user_id);
         $data['allifollow'] = "";
         foreach ($ifollow as $allmy) {
             $data['allifollow'] .=$allmy->Utilisateur_id . ',';
         }
+
+        $data['all_follower'] = $this->follower_model->get_all_follower_user($user_id);
+        $data['album_nbr'] = $this->musique_model->get_nalb($user_id);
+        $data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($user_id);
+
         $this->layout->view('follower/musicien', $data);
     }
 
@@ -116,6 +125,10 @@ class Mc_followers extends CI_Controller {
         if (!empty($infos_profile)) {
             $data['infos_profile'] = $infos_profile;
         }
+
+        $data['all_follower_cover'] = $this->follower_model->get_all_follower_user($user_id);
+        $data['album_nbr'] = $this->musique_model->get_nalb($user_id);
+        $data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($user_id);
 
         $data['all_follower'] = $this->follower_model->get_follower_bytype($user_id, 1);
         $this->layout->view('follower/melomane', $data);

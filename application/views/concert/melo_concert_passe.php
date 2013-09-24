@@ -23,18 +23,66 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 
     <div id="stats-cover">
         <div class="stats_cover_block">
-            <span class="stats_number">489</span>
-            <span class="stats_title">écoutes</span>
+          <span class="stats_number">
+            <?php 
+            echo $concert_cover[0]->n_concert ; ?>
+          </span>
+          <span class="stats_title">
+            <?php
+            if($concert_cover[0]->n_concert == 0 || $concert_cover[0]->n_concert == 1){
+              echo 'concert';
+            }
+            else
+            {
+              echo 'concerts';
+            }
+            ?>
+          </span>
         </div>
 
         <div class="stats_cover_block">
-            <span class="stats_number">18</span>
-            <span class="stats_title">playlists</span>
+          <span class="stats_number">
+            <?php 
+            $npl = 0;
+            if(empty($playlists)!=1):
+              $npl =  count($playlists);
+            endif;
+            echo $npl;?>
+          </span>
+          <span class="stats_title">
+            <?php
+            if($npl == 0 || $npl == 1){
+              echo 'playlist';
+            }
+            else
+            {
+              echo 'playlists';
+            }
+            ?>
+          </span>
         </div>
-
+        
         <div class="stats_cover_block">
-            <span class="stats_number">278</span>
-            <span class="stats_title">abonnements</span>
+          <span class="stats_number">
+            <?php
+            $nab = 0;
+            if(empty($all_following)!=1):
+              $nab =  count($all_following);
+            endif;
+            echo $nab;
+            ?>
+          </span>       
+          <span class="stats_title">
+            <?php
+            if($nab == 0 || $nab == 1){
+              echo 'abonnement';
+            }
+            else
+            {
+              echo 'abonnements';
+            }
+            ?>
+          </span>
         </div>
     </div>
 
