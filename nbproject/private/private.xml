@@ -2,18 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="3">
         <file>
-            <url>application/controllers/pop_in_general.php</url>
-            <bookmark id="3">
-                <name/>
-                <line>802</line>
-                <key/>
-            </bookmark>
-        </file>
-        <file>
             <url>application/controllers/mc_reglages.php</url>
             <bookmark id="1">
                 <name/>
                 <line>134</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>application/controllers/pop_in_general.php</url>
+            <bookmark id="3">
+                <name/>
+                <line>802</line>
                 <key/>
             </bookmark>
         </file>

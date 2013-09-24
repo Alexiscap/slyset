@@ -324,7 +324,7 @@ class Musique_model extends CI_Model {
     }
 
     public function get_album_une($user_id) {
-        return $this->db->select('nom,albums.id,img_cover,annee,livret_path,documents.id AS doc_id')
+        return $this->db->select('albums.id,nom,description,participants,producteur,albums.prix,img_cover,une,annee,livret_path,documents.id AS doc_id')
                         ->from($this->tbl_album)
                         ->where(array('une' => 1, 'albums.Utilisateur_id' => $user_id))
                         ->join($this->tbl_doc, 'documents.albums_id = albums.id', 'LEFT OUTER')
@@ -333,7 +333,7 @@ class Musique_model extends CI_Model {
     }
 
     public function get_morceau_une($user_id) {
-        return $this->db->select('morceaux.id, morceaux.nom,duree')
+        return $this->db->select('morceaux.id, morceaux.nom, morceaux.tracknumero, albums.nom AS title_alb, morceaux.duree, albums.id AS id_alb, albums.une AS une')
                         ->from($this->tbl_morceaux)
                         ->join($this->tbl_album, 'morceaux.albums_id = albums.id', 'LEFT OUTER')
                         ->where(array('une' => 1, 'morceaux.Utilisateur_id' => $user_id))
@@ -361,7 +361,7 @@ class Musique_model extends CI_Model {
     }
 
     public function get_morceau_alb_page($user_id, $id_alb) {
-        return $this->db->select('morceaux.id, morceaux.nom, duree, filename')
+        return $this->db->select('morceaux.id, morceaux.nom, morceaux.tracknumero, morceaux.duree, morceaux.filename')
                         ->from($this->tbl_morceaux)
                         ->join($this->tbl_album, 'morceaux.albums_id = albums.id', 'LEFT OUTER')
                         ->where(array('albums.id' => $id_alb, 'morceaux.Utilisateur_id' => $user_id))

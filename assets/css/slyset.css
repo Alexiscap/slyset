@@ -20,7 +20,7 @@ body{ margin:0; padding:0; font-family:"Trebuchet MS", Arial, sans-serif; backgr
 #breadcrumbs li a:hover{ text-decoration:underline; color:#01adbb; }
 #breadcrumbs li:after{ margin:0px 6px; width:9px; height:23px; display:inline-block; content:''; vertical-align:middle; background:url("../images/common/breadcrumbs_arrow.png") no-repeat; }
 .content{ margin:0 0 10px 0; padding:0 0 20px 0; width:560px; position:relative; background:#e6e6e6; float:left; clear:both; }
-.bts_noir{float:right; margin:0 229px 0 0;}
+.bts_noir{float:right; margin:0 230px 0 0;}
 .bt_noir{ height:30px; float:left; margin:4px 0 0 5px; }
 .bt_noir .bt_left{ width:10px; height:30px; float:left; background:url("../images/common/bt_noir.png") no-repeat 0px -10px; }
 .bt_noir .bt_middle{ height:30px; line-height:30px; display:inline-block; float:left; background:url("../images/common/bt_noir.png") no-repeat 0px -60px; font-size:12px; color:white; }
@@ -148,7 +148,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 
 .content p{ font-size:14px; line-height:19px; margin:0 0 0 20px; font-weight:bold; }
 .content .date-heure{ clear:both;margin-top: 15px;color:#3f3f3f;}
-.content hr{ color:#888d95; width:499px; margin:5px auto 10px;clear:both; }
+.content hr{ color:#888d95; width:499px; margin:0px 29px 15px 29px; float:left; clear:both; }
 .content .infos_concert{ width:302px; margin:0 0 0 20px; float:left; }
 .content .calendrier{ background:url("../images/musicien/calendrier.png") no-repeat; width:50px; height:50px; float:left; }
 .content .infos_concert p{ margin:3px; color:#5d5d5b; font-size:14px; line-height: 12px;}
@@ -709,6 +709,7 @@ cursor : pointer;}
 #filtres .select{position:relative; background: #81e1d7;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#81e1d7", endColorstr="#08abb7");background: -webkit-gradient(linear, left top, left bottom, from(#81e1d7), to(#08abb7));background: -webkit-linear-gradient(#81e1d7, #08abb7);background: -moz-linear-gradient(#81e1d7, #08abb7);background: -o-linear-gradient(#81e1d7, #08abb7); background: -ms-linear-gradient(#81e1d7, #08abb7); background: linear-gradient(#81e1d7, #08abb7); }
 #filtres .filtre span{font-size:12px;color:#3a3a3a;font-family:'Trebuchet MS';}
 #filtres .select span {color:#ffffff;}
+#filtres .filtre:hover, #filtres .select:hover{ cursor:pointer; }
 #filtres .select .filtre-check{background:url('../images/common/check_filtre.png');width:10px;height:9px;display: inline-block;position: absolute;left: 10px;top: 10px;}
 
 /* --------- FIN  DE PORTAIL  --------- */
@@ -835,11 +836,12 @@ input[type="file"]{ display:block; width:201px; height:30px; float:left; filter:
 
 
 /* --------- MUSICIEN MUSIQUE --------- */
-.content #une_alb {float:left;clear:both;}
-.content .a_la_une {margin:0 20px 20px;width:172px; position:relative; float:left;}
+.content #une_alb {margin:10px 0 0 0; float:left;clear:both;}
+.content .a_la_une {margin:0 20px;width:172px; position:relative; float:left;}
+.content .a_la_une.album_page { margin:20px 20px 0 20px; }
 .content .a_la_une_parti {margin:0 20px 20px;width:112px;float:left;}
 .content .a_la_une .bandeau_top {position:absolute;margin:0;}
-.content .player{position:absolute;background:rgba(115,115,115,0.68);width: 172px;height: 42px;margin:-42px 0 0 0;}
+.content .player{position:absolute;background:rgba(115,115,115,0.68);width: 172px;height: 40px;margin:-42px 0 0 0;}
 .content .player img{margin:8px 70px;}
 .content .a_la_une_parti img {width : 100%; }
 .content .a_la_une img {width:172px}
@@ -847,19 +849,23 @@ input[type="file"]{ display:block; width:201px; height:30px; float:left; filter:
 .content .a_la_une .bandeau_une {width:auto; top:0; left:0;}
 .content .a_la_une .player img {width : 26px;}
 
-.content .a_la_une .infos,.content .a_la_une_parti .infos{margin:0;}
-.content .a_la_une .infos p, .content .a_la_une_parti .infos p{margin:0;color:#2f2f2f;font-weight:normal;}
-.content .a_la_une .infos p span, .content .a_la_une_parti .infos p span{color:#45baa0;}
-.content .a_la_une .infos .title, .content .a_la_une_parti .infos .title{font-weight:bold;}
-.content .a_la_une .infos .annee_crea, .content .a_la_une_parti .infos .annee_crea{margin:0;color:#888d95;font-size:12px;}
-.content .a_la_une .infos a, .content .a_la_une_parti .infos a{margin:0;color:#3c495a;font-size:12px;}
+.content .infos{margin:0; width:345px;  float:left;}
+.content .infos h1{margin:30px 0 0 0; float:left; clear:none; max-width:348px;}
+.content .infos h1 span{margin:0 0 0 10px; float:left; display:inline-block; height:23px; line-height:25px;}
+.content .infos p{margin:0; color:#2f2f2f;font-weight:normal; float:left; clear:both;}
+.content .infos p span{color:#45baa0; float:left;}
+.content .infos p.infos_alb_desc{margin:10px 0;}
+.content .infos .title{font-weight:bold;}
+.content .infos .annee_crea{margin:0;color:#888d95;font-size:12px;}
+.content .infos .infos_alb_prix{font-weight:bold;color:#888d95;}
+.content .infos a{margin:0;color:#3c495a;font-size:12px; float:left;}
 
 .content .top_album{float:left;}
 /*.content .top_album a{color:#888d95;font-size:12px;text-decoration:none;padding-right:2px;float:left;}*/
 /*.content .top_album p{float:left;margin:-2px 0 0 0;font-weight:normal;float:left;}*/
 /*.content .top_album img{display:inline;width:12px;margin:0 5px;}*/
 
-.content .top_album #articles-tab{ margin:5px 0; float:left; clear:both; width:326px;}
+/*.content .top_album #articles-tab{ margin:5px 0; float:left; clear:both; width:326px;}*/
 .content .top_album #articles-tab table{ margin:0 0 20px 0; border:1px solid #cccfd1; -moz-box-shadow:0px 2px 3px 0px #999999; -webkit-box-shadow:0px 2px 3px 0px #999999; -o-box-shadow:0px 2px 3px 0px #999999; box-shadow:0px 2px 3px 0px #999999; filter:progid:DXImageTransform.Microsoft.Shadow(color=#999999, Direction=180, Strength=3);}
 /*.content .top_album #articles-tab tr{ }
 .content .top_album #articles-tab th{ vertical-align:middle; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:left; color:#666666; }
@@ -924,7 +930,8 @@ input[type="file"]{ display:block; width:201px; height:30px; float:left; filter:
 
 .musique #tablesorter-cb input[type="checkbox"] + label span{ margin:-3px 0 0 0; }
 .musique #tablesorter-cb .article-checkbox{ padding:0 6px; }
-.musique #tablesorter-cb thead .article-title{padding:0 10px; width:253px;}
+.musique #tablesorter-cb thead .article-title{padding:0 10px; width:386px; /*width:253px;*/}
+.musique .tout_titre #tablesorter-cb thead .article-title{width:286px;}
 .musique #tablesorter-cb .article-album{width:100px; padding:0 10px;}
 .musique #tablesorter-cb .article-date{ padding:0 10px;}
 
@@ -939,13 +946,15 @@ input[type="file"]{ display:block; width:201px; height:30px; float:left; filter:
 .musique #tablesorter-cb input[type="submit"]{ margin:0 0 0 0; padding:0 5px; display:block; width:94px; height:32px; line-height:32px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:center; color:#FFFFFF; background:url('../images/admin/btn_supprimer.png') no-repeat 0 0 transparent; float:right; clear:both; }
 .musique #tablesorter-cb input[type="submit"]:hover{ font-size:15px; }
 
-.content .tout_titre{margin:20px 10px;width:540px; float:left; clear:both;}
+.content .tout_titre, .content .top_album.album_page{margin:20px 10px 0 10px; width:540px; float:left; clear:both;}
+.content .top_album{margin:20px 10px; width:540px;}
 .content .top_album p, .content .tout_titre p{display:inline-block; margin:0; height:28px; line-height:28px; font-weight:normal;}
-.content .top_album img, .content .tout_titre img{ display:inline; width:12px; margin:7px 4px 7px 0; float:left; }
-.content .top_album a, .content .tout_titre a{ margin:0 15px 0 0; color:#888d95; font-size:12px; text-decoration:none;float: left; line-height:30px; }
+.content .top_album img, .content .tout_titre img{ display:inline; width:12px; margin:8px 4px 8px 0; float:left; }
+.content .top_album a, .content .tout_titre a{ margin:2px 15px 0 0; color:#888d95; font-size:12px; text-decoration:none;float: left; line-height:30px; }
 .content .top_album table a.open_player, .content .tout_titre table a.open_player{ margin:0; width:28px; height:28px; line-height:28px; text-align:center; }
 
-.musique #tablesorter-cb .miniat_titre { display:none; height:28px; line-height:28px; float:right}
+.musique #tablesorter-cb .miniat_titre {padding:0 10px 0 0; display:none; height:28px; line-height:28px; float:right}
+.musique .tout_titre #tablesorter-cb .miniat_titre {padding:0;} 
 .musique #tablesorter-cb .miniat_titre a{width:17px;height:13px;display:inline;margin:8px 1px; float:right;}
 .musique #tablesorter-cb .miniat_titre span{display:inline-block; text-indent: -5000px;}
 .musique #tablesorter-cb .miniat_titre .cam{background:url('../images/common/sprite_edit_titre.png') 0px -2px;}

@@ -35,38 +35,19 @@ $loger = $this->session->userdata('logged_in');
             <span class="stats_number">
             	<?php
             	$nab = 0;
-            	if(empty($all_follower)!=1):
-            		$nab =  count($all_follower);
-            	endif;
+            	if(empty($all_follower)!=1){ $nab =  count($all_follower); }
             	echo $nab;
-            	 ?>
+            	?>
             </span>       
             <span class="stats_title">
-            	<?php
-            	if($nab == 0 || $nab == 1){
-            		echo 'abonné';
-            	}
-            	else
-            	{
-            		echo 'abonnés';
-            	}
-            	?>
+            	<?php if($nab == 0 || $nab == 1){ echo 'abonné'; } else { echo 'abonnés'; } ?>
             </span>
         </div>
 
         <div class="stats_cover_block">
             <span class="stats_number"><?php print $album_nbr[0]->n_alb;?></span>
             <span class="stats_title">
-            	<?php
-            	if($album_nbr[0]->n_alb == 0 || $album_nbr[0]->n_alb == 1){
-            		echo 'album';
-            	}
-            	else
-            	{
-            		echo 'albums';
-            	}
-            	?>
-            
+            	<?php if($album_nbr[0]->n_alb == 0 || $album_nbr[0]->n_alb == 1){ echo 'album'; } else { echo 'albums'; } ?>
             </span>
         </div>
 
@@ -74,22 +55,12 @@ $loger = $this->session->userdata('logged_in');
         	 <span class="stats_number">
             	<?php
             	$nm = 0;
-            	if(empty($all_morceau_artiste)!=1):
-            		$nm =  count($all_morceau_artiste);
-            	endif;
+            	if(empty($all_morceau_artiste)!=1){ $nm =  count($all_morceau_artiste); }
             	echo $nm;
             	 ?>
             </span>       
             <span class="stats_title">
-            	<?php
-            	if($nm == 0 || $nm == 1){
-            		echo 'morceau';
-            	}
-            	else
-            	{
-            		echo 'morceaux';
-            	}
-            	?>
+            	<?php if($nm == 0 || $nm == 1){ echo 'morceau'; } else { echo 'morceaux'; } ?>
             </span>
         </div>
     </div>
@@ -117,12 +88,10 @@ $loger = $this->session->userdata('logged_in');
     <?php endif;?>
 
     <div class="content">
-        <h1><a href="<?php echo base_url('index.php/musique/'.$uid_visit)?>"><img width = "23px" src="<?php echo img_url('common/arrow-back.png')?>"></a><?php echo $this_album[0]->nom;  ?> - <?php echo $login; ?></h1>
-
 		<?php
 		if(empty($this_album)!=1):
 		?>
-        <div class="a_la_une">
+        <div class="a_la_une album_page">
           <?php if ($this_album[0]->img_cover!= null):?>
             <?php $str_album = str_replace(' ', '_', strtolower($this_album[0]->nom)); ?>
             <img src="<?php echo files($infos_profile->id.'/musique/'.$str_album.'/'.$this_album[0]->img_cover); ?>"/>
@@ -132,18 +101,25 @@ $loger = $this->session->userdata('logged_in');
             <?php endif;?>
            <!-- <img src="<?php echo img_url('portail/alaune.png'); ?>" class="bandeau_top"/>-->
             <div class="player">
-
                 <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$this_album[0]->nom); ?>" class="open_player"><img src="<?php echo img_url('musicien/player_top.png'); ?>"/></a>
-            </div>
-            <div class="infos">
-                <p class="title" id="<?php echo $this_album[0]->id; ?>"><?php echo $this_album[0]->nom; ?></p>
-                <p class="annee_crea"><?php echo $this_album[0]->annee; ?></p>
-                <p><?php if (isset($this_album[0]->livret_path)): ?><span>> </span><a href="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$this_album[0]->nom).'/livret/'.$this_album[0]->livret_path); ?>"><?php  echo 'Voir le livret d\'album'; ?></a><?php endif; ?></p>
-                <p><?php if (isset($this_album[0]->doc_id)): ?><span>> </span><a href="<?php echo base_url('index.php/document/'.$uid_visit.'#album-'.$this_album[0]->id) ?>">Voir les partitions</a><?php endif; ?></p>
             </div>
         </div>
         
-        <div class="top_album">
+        <div class="infos">
+            <h1><a href="<?php echo base_url('index.php/musique/'.$uid_visit)?>"><img width = "23px" src="<?php echo img_url('common/arrow-back.png')?>"></a><span><?php echo $this_album[0]->nom;  ?> - <?php echo $login; ?></span></h1>
+        
+            <!--<p class="title" id="<?php echo $this_album[0]->id; ?>"><?php echo ucwords($this_album[0]->nom); ?></p>-->
+            <p class="annee_crea"><?php echo $this_album[0]->annee; ?> - <?php if (isset($this_album[0]->producteur)): ?><?php echo $this_album[0]->producteur; ?><?php endif; ?></p>
+            
+            <?php if (isset($this_album[0]->description)): ?><p class="infos_alb_desc"><?php echo ucfirst($this_album[0]->description); ?></p><?php else: ?><p>Aucune description d'album renseignée.</p><?php endif; ?>
+            <?php if (isset($this_album[0]->participants)): ?><p><?php echo $this_album[0]->participants; ?></p><?php endif; ?>
+            <?php if (isset($this_album[0]->prix)): ?><p class="infos_alb_prix"><?php echo $this_album[0]->prix; ?> €</p><?php endif; ?>
+            <br>
+            <?php if (isset($this_album[0]->livret_path)): ?><p><span>> </span><a href="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$this_album[0]->nom).'/livret/'.$this_album[0]->livret_path); ?>"><?php  echo 'Voir le livret d\'album'; ?></a></p><?php endif; ?>
+            <?php if (isset($this_album[0]->doc_id)): ?><p><span>> </span><a href="<?php echo base_url('index.php/document/'.$uid_visit.'#album-'.$this_album[0]->id) ?>">Voir les partitions</a></p><?php endif; ?>
+        </div>
+        
+        <div class="top_album album_page">
             <div>
                 <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$this_album[0]->nom); ?>" class="open_player">
                     <img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
@@ -155,11 +131,15 @@ $loger = $this->session->userdata('logged_in');
                 </a>
             </div>
             <div id="articles-tab">
+                <input type="button" value="Acheter" class="bt_cadis unealb">
+                <input type="button" value="Dans ma playlist" class="bt_playlist">
+                    
                 <form action="<?php echo site_url('admin_articles/delete_multi_article'); ?>" method="post" accept-charset="utf-8">          
                     <table id="tablesorter-cb">
                         <thead>
                             <tr class="tab-head">
                                 <th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
+                                <th class="article-date">#</th>
                                 <th class="article-title">Titre de la chanson</th>
                                 <th class="article-date">Durée</th>
                             </tr>
@@ -168,13 +148,14 @@ $loger = $this->session->userdata('logged_in');
                             <?php foreach ($this_album_morceau as $morceau):?>
                             <tr>
                                 <td class="article-checkbox checkbox-style2"><input type="checkbox" name="checkarticle[]" value="<?php echo $morceau->nom; ?>" id="article-<?php echo $morceau->nom; ?>" class="checkbox-article"><label for="article-<?php echo $morceau->nom; ?>"></label></td>
+                                <td class="article-date"><?php echo $morceau->tracknumero; ?></td>
                                 <td class="article-title">
                                 	<a href="<?php echo site_url('mc_musique/player/'.$this->session->userdata('uid').'/album/'.$this_album[0]->nom.'/'.$morceau->id); ?>" class="open_player">
 
                                 		<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
                                 	</a>
 
-                                    <p class="<?php echo $morceau->id;?> track-id"><?php echo $title = (strlen($morceau->nom) > 20) ? substr($morceau->nom,0,17).'...' : $morceau->nom; ?></p>
+                                    <p class="<?php echo $morceau->id;?> track-id"><?php echo $title = (strlen($morceau->nom) > 43) ? substr($morceau->nom,0,40).'...' : $morceau->nom; ?></p>
                                     <?php if($loger == 1): ?>
                                         <div class="miniat_titre">
                                             <?php if($session_id == $uid_visit): ?>
@@ -204,8 +185,6 @@ $loger = $this->session->userdata('logged_in');
                             <?php endforeach;?>
                         </tbody>
                     </table>
-                    <input type="button" value="Acheter" class="bt_cadis unealb">
-                    <input type="button" value="Dans ma playlist" class="bt_playlist">
                 </form>
             </div>
         </div>

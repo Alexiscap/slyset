@@ -34,10 +34,10 @@
                     <span class="txt-ecoute">Vous écoutez ...</span>
                 </div>
 
-                <div class="current-music" style="background:url('<?php echo base_url() . 'assets/images/player/bkg-current.png'; ?>') no-repeat 0 0 transparent;background-size:100%;">
+                <div class="current-music" style="background:url('<?php echo base_url() . 'assets/images/sidebar-right/default-photo-profil.png'; ?>') no-repeat 0 0 transparent;background-size:100%;">
                     <div class="infos-txt">
-                        <h2 class="title">Comme Together</h2>
-                        <p class="artist">The Beatles</p>
+                        <h2 class="title">- Title -</h2>
+                        <p class="artist">- Artist -</p>
                     </div>
 
                     <div class="controls">
@@ -108,7 +108,7 @@
                                     if ($morceaux->nom == $playlist->nom): ?>
                                         <li>
                                             <a href="#" data-src="<?php echo base_url() .'files/'.$this->uri->segment(3).'/musique/'.str_replace(' ','_',$morceaux->title_album).'/'.$morceaux->filename; ?>"><div class="track"><?php if(strlen($morceaux->title_track)<21) { echo $morceaux->title_track ;} else {echo substr($morceaux->title_track, 0,18).' ...';}?></div> <div class="artiste"><?php echo $morceaux->login ?></div></a>
-                                            <span class="cover_alb" id="<?php echo $morceaux->id ?>" style="visibility:hidden" href="<?php echo files($morceaux->user_id_cur.'/albums/'.str_replace(' ','_',$morceaux->title_album).'/'.$morceaux->cover_path)?>"></span>
+                                            <span class="cover_alb" id="<?php echo $morceaux->id ?>" style="visibility:hidden" href="<?php echo files($morceaux->user_id_cur.'/musique/'.str_replace(' ', '_', strtolower($morceaux->title_album)).'/'.$morceaux->cover_path)?>"></span>
                                         </li>
 
                                         <!-- <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Luno.mp3'; ?>">2222<?php  echo $morceaux->title_track  ?></a></li>
