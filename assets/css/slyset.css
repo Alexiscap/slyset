@@ -941,10 +941,11 @@ border-top : 1px solid #d9dadb;}
 
 /* --------- MUSICIEN PARTITIONS ------------*/
 .content .top_partition p{display:inline;margin:0;font-weight:normal;}
-.content .top_partition a{color:#888d95;font-size:12px;text-decoration:none;}
+.content .top_partition a{color:#888d95;font-size:12px;text-decoration:none;line-height:28px;float:left;}
 .content .top_partition img{display:inline;width:12px;margin:0 0 0 5px;}
 .content .top_partition .parti_name{float: left;width: 50px;}
-.content .top_partition .miniat_titre a{width:17px;height:13px;margin:0 2px 0 0;display:block;float:right;}
+.content .top_partition .miniat_titre{ float:right; display:inline-block; line-height:28px; height:28px; }
+.content .top_partition .miniat_titre a{width:17px;height:13px;margin:7px 2px 8px 0;display:block;float:right;}
 .content .top_partition .miniat_titre span{display:inline-block; text-indent: -5000px;}
 .content .top_partition .miniat_titre .edit{background:url('../images/common/sprite_edit_titre.png') -37px -2px;}
 .content .top_partition .miniat_titre .edit:hover{background-position:-37px -22px;}
@@ -1223,7 +1224,7 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 
 .content .playlist .nom_pl {float: left;font-size:18px;font-weight:bold;color:#3f3f3f;margin:0 10px 0 0;}
 .content .playlist .detail_pl {float: left;font-size:12px;color:#888d95;margin:5px 2px;}
-.content .playlist .edit {float: left;margin:5px 15px;}
+.content .playlist .edit {float:right;margin:5px 50px 5px 0;}
 .content .playlist hr { width:400px; border-top: 1px solid #7a7a7a;margin:0;clear:none;}
 .content .playlist .lecture_pl {margin:12px 0; float:left; }
 .content .playlist .ecouter_pl {font-size:12px;color:#888d95;}

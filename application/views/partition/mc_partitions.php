@@ -120,7 +120,8 @@ $loger = $this->session->userdata('logged_in');
   			<?php
   		endif;
 
-  		foreach($get_album as $album):
+  		foreach($get_album as $key => $album):
+        $last_key = end(array_keys($get_album));
 		?>
  			<div class="a_la_une_parti corr_doc_marg_tit">
 				<?php if($album->img_cover != null){ ?>
@@ -272,7 +273,10 @@ $loger = $this->session->userdata('logged_in');
 		
  			 	</div>
  			 </div>
-		<hr class="corr_doc_hr" />
+    
+        <?php if($key != $last_key): ?>
+            <hr class="corr_doc_hr" />
+        <?php endif; ?>
 		
 		<?php endforeach; ?></div>
 
