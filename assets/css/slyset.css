@@ -1157,8 +1157,8 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 
 
 /* ------------------ STATS ---------------*/
-.content .stats_carre {width: 504px;height: 105px;margin: 0 auto 10px;text-align: center;}
-.content .stats_carre div{width:108px;height:108px;float:left;margin:0 9px;}
+.content .stats_carre {width: 540px;margin:5px 10px 0 10px;text-align: center; float:left; clear:both;}
+.content .stats_carre div{width:108px;height:108px;float:left;margin:0 10px;}
 .content .stats_carre span{font-size:20px;color:#f9f9f9;position: relative;top: 60px;}
 .content .stats_carre .abonnes{background:url("../images/musicien/sprite_carre_stats.png") no-repeat 0px 0px;}
 .content .stats_carre .visites{background:url("../images/musicien/sprite_carre_stats.png") no-repeat -131px 0px;}
@@ -1166,14 +1166,14 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 .content .stats_carre .ventes{background:url("../images/musicien/sprite_carre_stats.png") no-repeat -389px 0px;}
 .content .visites_quotidiennes{margin:20px 0;}
 .content .visites_quotidiennes span{margin:0 20px;font-size:14px;font-weight:bold;color:#676666;float:left;}
-.content .visites_quotidiennes .legende{margin:0 0 0 320px;}
+.content .visites_quotidiennes .legende{margin:0 0 0 340px;}
 .content .visites_quotidiennes .legende span{font-size:12px;font-weight:normal;color:#676666;margin:5px 10px;}
 .content .visites_quotidiennes .legende .visites{background:url("../images/musicien/sprite_legende.png") no-repeat -8px 0px;width:20px;height:4px;float:left;margin:8px 0;}
 .content .visites_quotidiennes .legende .unique{background:url("../images/musicien/sprite_legende.png") no-repeat -32px 0px;width:20px;height:4px;float:left;margin:8px 0;}
-.content .visites_quotidiennes .graph_stats{background:white;width:497px;height:204px;margin:0 20px;}
-.content .provenance {width:305px;float:left;}
+.content .visites_quotidiennes .graph_stats{background:white;width:520px;height:204px;margin:0 20px;}
+.content .provenance {/*width:305px;*/float:left;}
 .content .provenance span{margin:0 20px;font-size:14px;font-weight:bold;color:#676666;}
-.content .provenance .graph{width:305px;height:169px;background:#fff;margin:5px 0 20px 20px;}
+.content .provenance .graph{width:309px;height:169px;background:#fff;margin:5px 0 20px 20px;}
 .content .provenance .graph .stats{width:150px;height:169px;float:left;text-align: center;}
 .content .provenance .graph .stats span{font-size:17px;color:#ffffff;margin: 0;position: relative;top: 10px;}
 .content .provenance .graph .stats .portail{width:55px;height:55px;float:left;margin:20px 10px;background:url("../images/musicien/sprite_provenance.png") no-repeat 0px 0px;}
@@ -1181,7 +1181,7 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 .content .provenance .graph .stats .site{width:55px;height:55px;float:left;margin:0px 10px;background:url("../images/musicien/sprite_provenance.png") no-repeat 0px -58px;}
 .content .provenance .graph .stats .autre{width:55px;height:55px;float:left;margin:0px 10px;background:url("../images/musicien/sprite_provenance.png") no-repeat -64px -58px;}
 .content .provenance .graph .cercle {width:150px;height:169px;float:left;margin:0px 0 0 5px;}
-.content .vente{width:171px;float:left;margin:0 20px;}
+.content .vente{width:191px;float:left;margin:0 20px;}
 .content .vente span{margin:0 20px;font-size:14px;font-weight:bold;color:#676666;}
 .content .vente .resume_vente{width:171px;height:169px;background:white;margin:5px 20px;}
 .content .vente .resume_vente .nb_vente{font-size:36px;font-weight:bold;color:#f05f4c;margin: 0;text-align: center;}
