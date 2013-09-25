@@ -390,7 +390,7 @@
 						<?php $cover = 'sidebar-right/default-photo-profil.png'; 
 						if($playlist->img_cover != null)
 						{ ?>
-						<img src="<?php echo base_url('files/'.$playlist->user_alb.'/albums/'.str_replace(' ','_',$playlist->name_alb).'/'.$playlist->img_cover) ; ?>"/>
+						<img src="<?php echo base_url('files/'.$playlist->user_alb.'/musique/'.strtolower(str_replace(' ','_',$playlist->name_alb)).'/'.$playlist->img_cover) ; ?>"/>
 						<?php
 						}
 						else

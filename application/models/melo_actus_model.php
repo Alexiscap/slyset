@@ -77,7 +77,7 @@ class Melo_actus_model extends CI_Model {
 				JOIN photos
 						ON photos.id = wall_melo_component.Photos_id
 				JOIN utilisateur
-						ON utilisateur.id = wall_melo_component.Utilisateur_id
+						ON utilisateur.id = photos.Utilisateur_id
 					WHERE (wall_melo_component.Utilisateur_id = ' . $user_id . '
 					AND wall_melo_component.type = "ME"
 					AND wall_melo_component.albums_media_file_name IS NULL)
@@ -117,13 +117,25 @@ class Melo_actus_model extends CI_Model {
 					AND wall_melo_component.type = "ME"))		
         UNION
         (
-              SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,morceaux.id,morceaux.nom,"null",utilisateur.id,Utilisateur.thumb,utilisateur.login,"null","null","null","null",playlists.nom,albums.nom, 6 AS product
+              SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,morceaux.id,morceaux.nom,"null",utilisateur.id,Utilisateur.thumb,utilisateur.login,"null","null","null","null",playlists.nom,"null", 6 AS product
               FROM wall_melo_component
               JOIN morceaux
               ON morceaux.id = wall_melo_component.morceaux_id
-              LEFT OUTER JOIN playlists
-              ON playlists.morceaux_id = morceaux.id
-              LEFT OUTER JOIN albums
+              JOIN playlists
+              ON playlists.morceaux_id = morceaux.id AND playlists.Utilisateur_id = ' . $user_id . '       
+        JOIN Utilisateur
+            ON Utilisateur.id = wall_melo_component.Utilisateur_id
+              WHERE 
+          (wall_melo_component.Utilisateur_id= ' . $user_id . '
+          AND wall_melo_component.type = "ME")
+          )
+        UNION
+        (
+              SELECT wall_melo_component.id,wall_melo_component.type,wall_melo_component.date,morceaux.id,morceaux.nom,"null",utilisateur.id,Utilisateur.thumb,utilisateur.login,"null","null","null","null","null",albums.nom, 6 AS product
+              FROM wall_melo_component
+              JOIN morceaux
+              ON morceaux.id = wall_melo_component.morceaux_id
+              JOIN albums
               ON albums.id = morceaux.albums_id
 
         JOIN Utilisateur
@@ -131,8 +143,6 @@ class Melo_actus_model extends CI_Model {
               WHERE (wall_melo_component.Utilisateur_id   
             IN (' . $list_id . ') 
           AND wall_melo_component.type = "MU")
-          OR(wall_melo_component.Utilisateur_id= ' . $user_id . '
-          AND wall_melo_component.type = "ME")
           )
 						ORDER BY date DESC  
 						LIMIT ' . $limit . ' OFFSET ' . $offset . '

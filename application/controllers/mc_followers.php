@@ -82,7 +82,7 @@ class Mc_followers extends CI_Controller {
         $data['ifollow'] = $this->follower_model->ifollow($infos_profile->id, $this->session->userdata('uid'));
 
         $data['all_follower'] = $this->follower_model->get_all_follower_user($user_visited);
-        $ifollow = $this->follower_model->get_abonnement($user_visited);
+        $ifollow = $this->follower_model->get_abonnement($uid);
         $data['allifollow'] = "";
 
         foreach ($ifollow as $allmy) {
@@ -105,7 +105,7 @@ class Mc_followers extends CI_Controller {
         }
 
         $data['all_follower_cover'] = $this->follower_model->get_follower_bytype($user_id, 2);
-        $ifollow = $this->follower_model->get_abonnement($user_id);
+        $ifollow = $this->follower_model->get_abonnement($this->session->userdata('uid'));
         $data['allifollow'] = "";
         foreach ($ifollow as $allmy) {
             $data['allifollow'] .=$allmy->Utilisateur_id . ',';

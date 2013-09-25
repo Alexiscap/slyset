@@ -444,7 +444,7 @@ $loger = $this->session->userdata('logged_in');
                         <div class="edit" style="background:rgba(255, 255, 255, 0.5);">  <!-- METTRE CE STYLE DANS LE JS -->
                         </div>
                         <div class="open_alb">
-                            <a href="<?php echo site_url('album/' . $infos_profile->id . '/wall') ?>"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
+                            <a href="<?php echo site_url('album/' . $infos_profile->id . '/wall/') ?>"><img src="<?php echo img_url('musicien/open_plus.png'); ?>"/></a>
                         </div>
                         <?php //}
 

@@ -294,6 +294,7 @@ class Pop_in_general extends CI_Controller {
             $this->load->view('photos/add_video', $data);
         } else {
             $noespace_filename_album = str_replace(' ', '_', $this->input->post('albums'));
+            $data['message_success'] = "La video a bien été ajoutée";
 
             $this->photo_model->add_video($id_url, $user_id, $description, $this->input->post('albums'), $noespace_filename_album);
             $this->load->view('photos/photos_success', $data);
@@ -333,6 +334,7 @@ class Pop_in_general extends CI_Controller {
             //$_POST['photo'] = $data['file_name'];
             //envoyer id utilisateur, nom photos, noms albums
             $this->photo_model->insert_photos($upload_data['file_name'], $user_id, $noespace_filename_album, $this->input->post('albums'), $this->input->post('description'));
+            $upload_data['message_success'] = "La photo a bien été ajoutée";
 
             $this->load->view('photos/photos_success', $upload_data);
         }
@@ -399,6 +401,7 @@ class Pop_in_general extends CI_Controller {
                 //changement de paths du fichiers
                 rename($file_base, $file_obj);
                 $data['update_photos'] = $this->photo_model->update_photo($user_id, $id_media, $this->input->post('description'), $this->input->post('albums'), $file_name_album, $data['info_photo'][0]->file_name);
+                $data['message_success'] = "L'album a bien été modifié";
 
                 $this->load->view('photos/photos_success', $data);
             }
@@ -417,6 +420,8 @@ class Pop_in_general extends CI_Controller {
 
 
                 $data['update_photos'] = $this->photo_model->update_album($user_id, $id_media, $this->input->post('description'), $file_name_album);
+                $data['message_success'] = "La photo a bien été modifiée";
+
                 $this->load->view('photos/photos_success', $data);
             }
 
@@ -455,21 +460,26 @@ class Pop_in_general extends CI_Controller {
         if ($user_id != $uid) {
             show_404();
         }
-
         if ($this->input->post("delete")) {
             if ($type_media == 1) {
                 $this->photo_model->delete_photo($media_id);
-                $this->load->view('photos/photos_success');
+                 $data['message_success'] = "La photo a bien été supprimée";
+
+                $this->load->view('photos/photos_success',$data);
             }
 
             if ($type_media == 2) {
                 $this->photo_model->delete_album($media_id);
-                $this->load->view('photos/photos_success');
+                $data['message_success'] = "L'album a bien été supprimé";
+
+                $this->load->view('photos/photos_success',$data);
             }
 
             if ($type_media == 3) {
                 $this->photo_model->delete_video($media_id);
-                $this->load->view('photos/photos_success');
+                $data['message_success'] = "La video a bien été supprimée";
+
+                $this->load->view('photos/photos_success',$data);
             }
         }
         echo $this->input->post("no_delete");
@@ -643,13 +653,11 @@ class Pop_in_general extends CI_Controller {
 
             $album = $this->input->post('livret');
             //print $morceau = $this->input->post('morceaux');
-            print $album;
             $album_exp = explode('+', $album);
             $album_name = $album_exp[0];
             $album_file_name = str_replace(' ', '_', $album_exp[0]);
             $album_id = $album_exp[1];
-            print $album_id;
-            print $album_file_name;
+           
             $noespace_filename_album = str_replace(' ', '_', $album_name);
             $dynamic_path = './files/' . $this->session->userdata('uid') . '/albums/' . $noespace_filename_album . '/livret';
 
@@ -672,7 +680,9 @@ class Pop_in_general extends CI_Controller {
 
 
                 $this->document_model->insert_livret($album_id, $data['upload_data']['file_name']);
-                //	$this->load->view('partition/pi_ajout_paroles', $data);
+                $data['message_success'] = "Le livret a bien été ajouté";
+
+                $this->load->view('photos/photos_success', $data);
             }
         }
     }
@@ -696,6 +706,9 @@ class Pop_in_general extends CI_Controller {
         $album_id = $album_exp[1];
         if ($this->input->post("delete")) {
             $this->document_model->delete_livret($album_id);
+             $data['message_success'] = "Le livret a bien été supprimé";
+
+            $this->load->view('photos/photos_success', $data);
         } else {
             if ($this->form_validation->run() == FALSE) {
 
@@ -731,7 +744,9 @@ class Pop_in_general extends CI_Controller {
                 } else {
                     $data = array('upload_data' => $this->upload->data());
                     $this->document_model->insert_livret($album_id, $data['upload_data']['file_name']);
-                    //	$this->load->view('partition/pi_ajout_paroles', $data);
+                    $data['message_success'] = "Le livret a bien été modifié";
+
+                    $this->load->view('photos/photos_success', $data);
                 }
             }
         }
@@ -744,6 +759,9 @@ class Pop_in_general extends CI_Controller {
             $this->document_model->delete_paroles($doc_id);
             $dynamic_path = './files/' . $this->session->userdata('uid') . '/albums/' . str_replace(' ', '_', $doc[0]->alb_name) . '/paroles';
             unlink('./files/' . $this->session->userdata('uid') . '/albums/' . str_replace(' ', '_', $doc[0]->alb_name) . '/paroles/' . $doc[0]->doc_path);
+             $data['message_success'] = "Les paroles ont bien été supprimées";
+
+                $this->load->view('photos/photos_success', $data);
         } else {
             /* if ($this->form_validation->run() == FALSE)
               {
@@ -765,6 +783,9 @@ class Pop_in_general extends CI_Controller {
                 if ($this->input->post('parole_price') != null) {
                     $prix = $this->input->post('parole_price');
                     $this->document_model->update_paroles_price($doc_id, $prix);
+                    $data['message_success'] = "Les paroles ont bien été modifiées";
+
+                    $this->load->view('photos/photos_success', $data);
                 } else {
                     $error = array('error' => $this->upload->display_errors());
                     var_dump($error);
@@ -778,6 +799,9 @@ class Pop_in_general extends CI_Controller {
                 $prix = $this->input->post('parole_price');
                 $data = array('upload_data' => $this->upload->data());
                 $this->document_model->update_paroles($doc_id, $data['upload_data']['file_name'], $prix);
+                $data['message_success'] = "Les paroles ont bien été modifiées";
+
+                $this->load->view('photos/photos_success', $data);
                 //  $this->load->view('partition/pi_ajout_paroles', $data);
             }
             //}
@@ -800,7 +824,6 @@ class Pop_in_general extends CI_Controller {
 
             $album = $this->input->post('album_doc');
             $morceau = $this->input->post('morceaux');
-            print $morceau;
             $album_exp = explode('+', $album);
             $album_name = $album_exp[0];
             if (isset($album_exp[1])) {
@@ -826,21 +849,26 @@ class Pop_in_general extends CI_Controller {
             if (!$this->upload->do_upload()) {
                 $error = array('error' => $this->upload->display_errors());
                 $this->load->view('partition/pi_ajout_paroles', $error);
+
             } else {
                 $data = array('upload_data' => $this->upload->data());
 
                 $parole_price = $this->input->post('parole_price');
                 $this->document_model->insert_doc($parole_price, $album_id, $morceau, $data['upload_data']['file_name'], "paroles");
-                //	$this->load->view('partition/pi_ajout_paroles', $data);
+               $data['message_success'] = "Les paroles ont bien été ajoutées";
+
+                $this->load->view('photos/photos_success', $data);
             }
         } else if ($this->input->post("delete")) {
             $album = $this->input->post('album');
-            print 'delete';
             $album_exp = explode('+', $album);
             $album_name = $album_exp[0];
             $album_id = $album_exp[1];
             $noespace_filename_album = str_replace(' ', '_', $album_name);
             $dynamic_path = './files/' . $this->session->userdata('uid') . '/documents/' . $album_id;
+            $data['message_success'] = "Les paroles ont bien été supprimées";
+
+                $this->load->view('photos/photos_success', $data);
         }
     }
 
@@ -897,7 +925,9 @@ class Pop_in_general extends CI_Controller {
 
                 $partition_price = $this->input->post('partition_price');
                 $this->document_model->insert_doc($partition_price, $album_id, $morceau, $data['upload_data']['file_name'], "partition");
-                //  $this->load->view('partition/pi_ajout_paroles', $data);
+                $data['message_success'] = "La partition a bien été ajoutée";
+
+                $this->load->view('photos/photos_success', $data);
             }
         }
     }
@@ -918,6 +948,9 @@ class Pop_in_general extends CI_Controller {
             $this->document_model->delete_paroles($doc_id);
             $dynamic_path = './files/' . $this->session->userdata('uid') . '/albums/' . str_replace(' ', '_', $doc[0]->alb_name) . '/partition';
             unlink('./files/' . $this->session->userdata('uid') . '/albums/' . str_replace(' ', '_', $doc[0]->alb_name) . '/partition/' . $doc[0]->doc_path);
+            $data['message_success'] = "La partition a bien été supprimée";
+
+            $this->load->view('photos/photos_success', $data);
         } else {
             /* if ($this->form_validation->run() == FALSE)
               {
@@ -939,6 +972,9 @@ class Pop_in_general extends CI_Controller {
                 if ($this->input->post('partition_price') != null) {
                     $prix = $this->input->post('partition_price');
                     $this->document_model->update_paroles_price($doc_id, $prix);
+                    $data['message_success'] = "La partition a bien été modifiée";
+
+                    $this->load->view('photos/photos_success', $data);
                 } else {
                     $error = array('error' => $this->upload->display_errors());
                     var_dump($error);
@@ -952,7 +988,9 @@ class Pop_in_general extends CI_Controller {
                 $prix = $this->input->post('partition_price');
                 $data = array('upload_data' => $this->upload->data());
                 $this->document_model->update_paroles($doc_id, $data['upload_data']['file_name'], $prix);
-                //  $this->load->view('partition/pi_ajout_paroles', $data);
+               $data['message_success'] = "La partition a bien été modifiée";
+
+                $this->load->view('photos/photos_success', $data);
             }
             //}
         }

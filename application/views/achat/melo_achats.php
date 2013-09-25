@@ -178,7 +178,10 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
         									<td class="article-title">
         								<?php
         								}
-        								echo $commande->nom ?></td>
+                                        if(strlen($commande->nom) > 20) {echo substr($commande->nom,0,20).'...';} else {echo $commande->nom;}
+                                        ?>
+
+        								</td>
 
                                         <td class="article-artiste"><?php echo $commande->user_login ?></td>
                                         <td class="article-type"><?php echo $commande->type ?></td>
@@ -290,9 +293,11 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
                                             <td class="article-title">
                                         <?php
                                         }
+                                        if(strlen($commande->nom) > 20) {echo substr($commande->nom,0,20).'...';} else {echo $commande->nom;}
+                                        
+                                        
 
-
-                                        echo $commande->nom ?></td>
+?>                                        </td>
                                         <td class="article-artiste"><?php echo $commande->user_login ?></td>
                                         <td class="article-type"><?php echo $commande->type ?></td>
                                         <td class="article-prix"><?php echo $commande->prix ?> €</td>

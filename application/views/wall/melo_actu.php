@@ -471,14 +471,14 @@
         							<img src="<?php echo base_url('files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->idproduit.'/'.$photo->file_name); ?>" alt="<?php echo $photo->nom ?>" class="mosaic first" />
           						</a>
 
-                           <?php if ($n_p == 4)
+                           <?php if ($n_p == 3)
                            {
 
                            break;
                            }
                            ?>
                            <?php endforeach; ?>
-                           <?php if ($n_p < 4)
+                           <?php if ($n_p < 3)
                            {
                               ?>
                               <div class='album_flux_empty_alb'>

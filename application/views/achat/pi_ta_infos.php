@@ -38,9 +38,10 @@
 
 		
 			<?php
+			$total = 0;
 			 foreach ($cmd as $commande):
-					if($commande->status=="P"): ?>
-		
+				if($commande->status=="P"): 
+				$total = $total + $commande->prix;?>
 			<tr>
 				<td class="le_titre"><?php echo $commande->nom ?></td>
 				<td class="artiste"><?php echo $commande->user_login ?></td>
@@ -69,7 +70,7 @@
 			
 		</table>
 	</div>
-	<p class="total">10,80€</p><p>Montant total :</p>
+	<p class="total"><?php echo $total.' €';?></p><p>Montant total :</p>
 	
 	<?php
 	echo form_submit('submit', 'Paiment sécurisé');

@@ -124,7 +124,7 @@ $loger = $this->session->userdata('logged_in');
 		?>
  			<div class="a_la_une_parti">
 				<?php if($album->img_cover != null){ ?>
-					<img src="<?php echo files($infos_profile->id.'/albums/'.strtolower(str_replace(' ','_',$album->nom)).'/'.$album->img_cover) ?>"/>
+					<img src="<?php echo files($infos_profile->id.'/musique/'.strtolower(str_replace(' ','_',$album->nom)).'/'.$album->img_cover) ?>"/>
 				<?php }
 			
 				else
@@ -135,13 +135,15 @@ $loger = $this->session->userdata('logged_in');
 				<div class="infos">
 					<p class="title"><?php echo $album->nom ?></p>
 					<p class="annee_crea"><?php if(isset($album->annee))echo $album->annee ?></p>
+					<?php if ($infos_profile->id == $uid) { ?>
 					<?php if($album->livret_path != null){ ?>
 						<p><span>> </span><a class="link_livret" href="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$album->nom).'/livret/'.$album->livret_path) ?>">Voir le livret d'album</a></p>
 						<p><span>> </span><a href="<?php echo base_url('index.php/document/update-livret/'.$album->id) ?>" class="iframe link_livret">Modifier le livret</a></p>
 					<?php }
 					else {?>
 						<p><span>> </span><a class="iframe link_livret" href="<?php echo base_url('index.php/document/new-livret/'.$album->id) ?>">Ajouter le livret</a></p>
-					<?php } ?>
+					<?php }
+					} ?>
 				</div>
 			</div>
 			
@@ -204,7 +206,7 @@ $loger = $this->session->userdata('logged_in');
 														<?php endif;?>
 <?php 												endif; ?>
 													<div class="miniat_titre">
-														<a href="<?php echo base_url('index.php/document/update-score/'.$partition->document_id) ?>" class="edit iframe"><span>edit</span></a>
+															<?php if ($infos_profile->id == $uid) { ?><a href="<?php echo base_url('index.php/document/update-score/'.$partition->document_id) ?>" class="edit iframe"><span>edit</span></a> <?php }?>
 													</div>
 												</td>		
 												<?php
@@ -240,7 +242,7 @@ $loger = $this->session->userdata('logged_in');
 
 													 endif; ?>
 														<div class="miniat_titre">
-															<a href="<?php echo base_url('index.php/document/update-paroles/'.$paroles->document_id) ?>" class="edit iframe"><span>edit</span></a>
+																<?php if ($infos_profile->id == $uid) { ?><a href="<?php echo base_url('index.php/document/update-paroles/'.$paroles->document_id) ?>" class="edit iframe"><span>edit</span></a> <?php } ?>
 														</div>
 													</td>	
 												<?php
