@@ -1556,7 +1556,7 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 .pop-in_ta .play_achat img{margin:0 5px 0 0;}
 .bt_dl_achat {margin:0 25px!important;}
 
-.content .historique #articles-tab table, .content .liste_partitions table.table_doc_corr {
+.content .liste_partitions table.table_doc_corr {
 width : 390px;
 }
 
