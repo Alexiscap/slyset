@@ -87,7 +87,7 @@
 				$delete = array(
               'class'        => 'delete del_livret',
               'name'          => 'delete',
-			  'value'	=> 'Supprimer le livret',
+			  'value'	=> 'Supprimer',
               );
 			
 			  echo form_submit($delete);

@@ -21,11 +21,11 @@
                 $data = array(
                     'name' => 'userfile',
                     'type' => 'file',
-                    'class' => 'partition_upd',
+                    'class' => 'livret_up',
                     'value' => 'Choisir une partition'
                 );
                 ?>
-                <div class="bt_noir">
+                <div class="bt_noir bt_livret_up">
                 	<?php echo form_upload($data); ?>
                 </div>
             </div>
@@ -83,13 +83,13 @@
 				$delete = array(
               'class'        => 'delete',
               'name'          => 'delete',
-			  'value'	=> 'Supprimer la partition',
+			  'value'	=> 'Supprimer',
               );
 			
 			  echo form_submit($delete);
 			  
 			  $nodelete = array(
-              'class'        => 'submit',
+              'class'        => 'submit submit_partition',
               'name'          => 'submit',
 			  'value'	=> 'Modifier la partition',
               );
