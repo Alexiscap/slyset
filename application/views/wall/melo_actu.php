@@ -471,14 +471,14 @@
         							<img src="<?php echo base_url('files/'.$entity_wall->Utilisateur_id.'/photos/'.$entity_wall->idproduit.'/'.$photo->file_name); ?>" alt="<?php echo $photo->nom ?>" class="mosaic first" />
           						</a>
 
-                           <?php if ($n_p == 4)
+                           <?php if ($n_p == 3)
                            {
 
                            break;
                            }
                            ?>
                            <?php endforeach; ?>
-                           <?php if ($n_p < 4)
+                           <?php if ($n_p < 3)
                            {
                               ?>
                               <div class='album_flux_empty_alb'>
@@ -575,7 +575,7 @@
                         <p class="play_img">
                            <a class="open_player" href="<?php echo base_url('index.php/mc_musique/player/'.$entity_wall->Utilisateur_id.'/playlist/'.$entity_wall->playlist.'/'.$entity_wall->idproduit) ?>">
                            
-                              <img  src="<?php echo base_url('assets/images/sidebar-right/lecture.png')?>">
+                              <img  src="<?php echo base_url('assets/images/sidebar-right/lecture.png')?>" alt="Bouton lecture">
                            </a>
                            <p class="info_morceau"><?php echo $entity_wall->login ?> - <?php echo $entity_wall->main_nom ?> </p>
                         </p>
@@ -618,7 +618,7 @@
 
                         <p class="play_img">
                            <a class="open_player" href="<?php echo base_url('index.php/mc_musique/player/'.$entity_wall->Utilisateur_id.'/playlist/'.$entity_wall->playlist.'/'.$entity_wall->idproduit) ?>">
-                              <img src="<?php echo base_url('assets/images/sidebar-right/lecture.png')?>">
+                              <img src="<?php echo base_url('assets/images/sidebar-right/lecture.png')?>" alt="Bouton lecture">
                             </a>
                            <p class="info_morceau"><?php echo $entity_wall->login ?> - <?php echo $entity_wall->main_nom ?> </p>
                         </p>

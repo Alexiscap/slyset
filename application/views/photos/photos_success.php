@@ -6,14 +6,15 @@
 				//appel à la function "register" du controller "user"
 				$user = $this->uri->segment(3);
 				$media = $this->uri->segment(4);
-				$type = $this->uri->segment(5);
-
-		if($type==1)
-			{echo "<span class='confirm_sup'>Modifier une photo</span><br />" ;}
-		if($type==2)
-			{echo "<span class='confirm_sup'>Modifier un album</span><br />" ;}
-		if($type==3)
-			{echo "<span class='confirm_sup'>Modifier une vidéo</span><br />" ;}
+				$type = $this->uri->segment(3);
+			echo "<span class='confirm_sup'>".$message_success."</span><br />";
+		//if($type==1)
+		//	{echo "<span class='confirm_sup'>La photo a bien été ".$verbe."</span><br />" ;}
+		//if($type==2)
+		//	{echo "<span class='confirm_sup'>La photo a bien été ".$verbe."</span><br />" ;}
+		//if($type==3)
+		//	{echo "<span class='confirm_sup'>La video a bien été ".$verbe."</span><br />" ;}
 	?>
+	
 	  </div>
 	 </div>

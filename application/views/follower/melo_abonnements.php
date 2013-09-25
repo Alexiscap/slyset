@@ -110,7 +110,7 @@
 		<div class="description">
 			<p class="nom_follow"><a href="<?php echo base_url('index.php/actualite/'.$follower->Utilisateur_id) ?>"><?php echo $follower->login ?></a></p>
 			<p class="text_follow"><?php echo $follower->description ?></p>
-				<img src="<?php echo img_url('common/casque.png'); ?>" /><span> <?php echo $follower->style_joue ?></span>
+				<img src="<?php echo img_url('common/casque.png'); ?>" alt="Musique jouée"/><span> <?php echo $follower->style_joue ?></span>
 		</div>
 		<div class="bouton" id="<?php echo $follower->id ?>">
 			<a href="#" class="participer">

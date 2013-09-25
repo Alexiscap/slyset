@@ -50,9 +50,11 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="label">
-			<img src="<?php echo img_url('musicien/apercu_vid.png'); ?>" alt="visuel video" />
+			<!--<img src="<?php echo img_url('musicien/apercu_vid.png'); ?>" alt="visuel video" />-->
 		</div>
+		
 		<div class="champs">
 			<?php echo form_textarea('description',"",'placeholder="Ajouter une description."'); ?>
 		</div>

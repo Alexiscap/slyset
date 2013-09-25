@@ -76,7 +76,7 @@
                     foreach ($playlists[0] as $playlist): ?>
                         <!--<ol><?php // echo ucfirst($this->uri->segment(4));  ?> : <?php // echo $playlist->nom  ?>-->
                         <div class="top">
-                            <span class="txt-ecoute"><?php echo ucfirst($this->uri->segment(4))?>: <?php echo $playlist->nom  ?> <?php if($playlists[2]!= null) echo '<span class="more_albpl"> <img class="trit" width="30px" src="'.img_url('player/tritrait.png').'"> </span>' ?> </span>
+                            <span class="txt-ecoute"><?php echo ucfirst($this->uri->segment(4))?>: <?php echo $playlist->nom  ?> <?php if($playlists[2]!= null) echo '<span class="more_albpl"> <img class="trit" width="30px" src="'.img_url('player/tritrait.png').'" alt="Trait tri"> </span>' ?> </span>
                         </div>
                             
                         <?php 
@@ -110,7 +110,7 @@
                                     if ($morceaux->nom == $playlist->nom): ?>
                                         <li>
                                             <a href="#" data-src="<?php echo base_url() .'files/'.$morceaux->user_id_cur.'/musique/'.str_replace(' ','_',$morceaux->title_album).'/'.$morceaux->filename; ?>"><div class="track"><?php if(strlen($morceaux->title_track)<21) { echo $morceaux->title_track ;} else {echo substr($morceaux->title_track, 0,18).' ...';}?></div> <div class="artiste"><?php echo $morceaux->login ?></div></a>
-                                            <span class="cover_alb" id="<?php echo $morceaux->id ?>" style="visibility:hidden" href="<?php echo files($morceaux->user_id_cur.'/musique/'.str_replace(' ', '_', strtolower($morceaux->title_album)).'/'.$morceaux->cover_path)?>"></span>
+                                            <span class="cover_alb" id="<?php echo $morceaux->id ?>" style="visibility:hidden" href="<?php if(isset($morceaux->cover_path)) { echo files($morceaux->user_id_cur.'/musique/'.str_replace(' ', '_', strtolower($morceaux->title_album)).'/'.$morceaux->cover_path);} else { echo base_url('assets/images/sidebar-right/default-photo-profil.png'); } ?>"></span>
                                         </li>
 
                                         <!-- <li><a href="#" data-src="<?php echo base_url() . 'assets/musique/Luno.mp3'; ?>">2222<?php  echo $morceaux->title_track  ?></a></li>

@@ -127,7 +127,7 @@ $loger = $this->session->userdata('logged_in');
 			<p class="text_follow"><?php echo $follower->description ?></p>
 			
 			
-			<img src="<?php echo img_url('common/casque.png'); ?>" /><span><?php echo $follower->style_joue ?></span>
+			<img src="<?php echo img_url('common/casque.png'); ?>" alt="Musique jouée"/><span><?php echo $follower->style_joue ?></span>
 			</div>
 		 	<?php if (substr_count($allifollow, $follower->Follower_id) >= 1) {
                             ?>

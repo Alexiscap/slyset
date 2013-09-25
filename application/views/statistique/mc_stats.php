@@ -121,7 +121,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 	<div class="vente">
 		<span>Vos ventes</span>
 		<div class="resume_vente">
-			<img src="<?php echo img_url('common/cadis.png'); ?>"/>
+			<img src="<?php echo img_url('common/cadis.png'); ?>" alt="Bouton achat"/>
 			<p class="nb_vente"><?php echo $count_vente_titre[0]->vente_titre ?></p>
 			<p class="titres_vendus"> <?php if($count_vente_titre[0]->vente_titre<2){echo 'titre vendu';} else { echo 'titres vendus';} ?></p>
 			<div class="source">Revenus générés</div><div class="revenu"><?php echo $total_gain?> €</div>
