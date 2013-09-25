@@ -130,8 +130,8 @@
                     <h3>Suivez-nous !</h3>
                     <div id="liens-rsx">
                         <a href="#" target="_blank" id="twitter"><span>Twitter</span></a>
-                        <a href="#" target="_blank" id="fb"><span>Facebook</span></a>
-                        <a href="#" target="_blank" id="google"><span>Google+</span></a>
+                        <a href="https://www.facebook.com/slysetmusic" target="_blank" id="fb"><span>Facebook</span></a>
+                        <a href="https://plus.google.com/100903861272654509674/posts" target="_blank" id="google"><span>Google+</span></a>
                     </div>
 
                     <p>Recevez notre newsletter</p>

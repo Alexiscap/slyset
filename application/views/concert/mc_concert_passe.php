@@ -122,6 +122,7 @@ $loger = $this->session->userdata('logged_in');
    { 
    	    foreach($concert_all as $concert_unit): ?>
  
+        <div class="concert-wrapper">
   		<p id='<?php echo $concert_unit->id;?>' class="date-heure" ><span><?php
 		get_date($concert_unit->date,'complete');?> <?php if(isset($concert_unit->prix))echo ' - '.$concert_unit->prix.'&euro;'?></span>
 		</p>
@@ -188,6 +189,7 @@ $loger = $this->session->userdata('logged_in');
 
                     </div>
                 </div>
+        </div>
     <?php
     endforeach;
 }
@@ -203,15 +205,5 @@ else {
     </div>
 
 <?php if (isset($sidebar_right)) echo $sidebar_right; ?>
-
-    <!--<div class="pagination">
-        <a href="#" id="precedent"><span><</span></a>
-        <a href="#" class="page">1</a>
-        <a href="#" class="page">2</a>
-        <a href="#" class="page">3</a>
-        <a href="#" class="page">4</a>
-        <a href="#" class="page">5</a>
-        <a href="#" id="suivant"><span>></span></a>
-    </div>-->
 
 </div>

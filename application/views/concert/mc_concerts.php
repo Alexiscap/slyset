@@ -123,94 +123,95 @@ $loger = $this->session->userdata('logged_in');
 		if($nbr_concert_par_artiste != 0)
    		{ 
    	   		foreach($concert_all as $concert_unit): ?>
+        <div class="concert-wrapper">
+            <p id='<?php echo $concert_unit->id;?>' class="date-heure">
+              <span><?php
+              get_date($concert_unit->date,'complete');?> <?php if(isset($concert_unit->prix))echo ' - '.$concert_unit->prix.'&euro;'?>
+            </span>
+          </p>
+          <?php
+            if( $this->uri->segment(2) ==$this->session->userdata('uid'))
+            { ?>
+              <div class="edition">
+                <a class="iframe" href="<?php echo base_url('index.php/concert/modifier/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>">
+                  <span class="edit">editer</span>
+                </a>
+                <a class="iframe" href="<?php echo base_url('index.php/concert/supprimer/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>">
+                  <span class="suppr">supprimer</span>
+                </a>
+              </div>
 
-  				<p id='<?php echo $concert_unit->id;?>' class="date-heure">
-  					<span><?php
-						get_date($concert_unit->date,'complete');?> <?php if(isset($concert_unit->prix))echo ' - '.$concert_unit->prix.'&euro;'?>
-					</span>
-				</p>
-				<?php
-  		 		if( $this->uri->segment(2) ==$this->session->userdata('uid'))
-  		 		{ ?>
-   					<div class="edition">
-   		 				<a class="iframe" href="<?php echo base_url('index.php/concert/modifier/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>">
-   		 					<span class="edit">editer</span>
-   		 				</a>
-   		 				<a class="iframe" href="<?php echo base_url('index.php/concert/supprimer/'.$infos_profile->id.'/'.$concert_unit->id.'/'.$concert_unit->Adresse_id );?>">
-   		 					<span class="suppr">supprimer</span>
-   		 				</a>
-   					</div>
+        <?php }?> <hr/>	 
+           <div class="infos_concert">
+               <div class="calendrier"><p class="mois"><?php
+            get_date($concert_unit->date,'mois_trois');?></p><p class="jour"><?php
+            get_date($concert_unit->date,'jour_texte');?></p></div>
+             <p><?php echo $concert_unit->titre ?></p>
+             <p><?php if(isset($concert_unit->seconde_partie)) echo '+ '.$concert_unit->seconde_partie ?></p>
+             <?php      			 $nparticipant = 'Aucun participant';
 
-   		<?php }?> <hr/>	 
-   			 <div class="infos_concert">
-      			 <div class="calendrier"><p class="mois"><?php
-					get_date($concert_unit->date,'mois_trois');?></p><p class="jour"><?php
-					get_date($concert_unit->date,'jour_texte');?></p></div>
-     			 <p><?php echo $concert_unit->titre ?></p>
-     			 <p><?php if(isset($concert_unit->seconde_partie)) echo '+ '.$concert_unit->seconde_partie ?></p>
-     			 <?php      			 $nparticipant = '0 participant';
+             foreach($publics as $public):
+             if($public->concerts_id == $concert_unit->id):
+             if($public->nperson == 1): $nparticipant =  $public->nperson.' participant'; endif;$nparticipant =  $public->nperson.' participants';  endif;
 
-     			 foreach($publics as $public):
-     			 if($public->concerts_id == $concert_unit->id):
-     			 if($public->nperson == 1): $nparticipant =  $public->nperson.' participant'; endif;$nparticipant =  $public->nperson.' participants';  endif;
-     			
-     			  endforeach;
-     			   ?><p> <?php echo $nparticipant;?></p>
-    		 </div>
-   			 <div class="adr_concert">
-     	 		<img src="<?php echo img_url('musicien/localisation.png'); ?>" />
-    	 		<p class="adr_lieu"><?php echo $concert_unit->salle ?></p>
-      	 		<p class="adr_rue"><?php if(isset($concert_unit->numero_adresse,$concert_unit->voie_adresse))echo $concert_unit->numero_adresse." ".$concert_unit->voie_adresse ?> <!--Bis Rue de Bagnolet--></p>
-      			 <p class="adr_ville"><?php echo $concert_unit->ville.", ".$concert_unit->pays ?></p>
-   		 	</div>
-   		 <a href="javascript:void(0);" class="more" id="more_<?php echo $concert_unit->id ?>" onclick='showInfo(more_<?php echo $concert_unit->id ?>,more_info_<?php echo $concert_unit->id ?>)' >Voir plus d'informations</a>
-    	    	<div id="concert_activity>">
+              endforeach;
+               ?><p> <?php echo $nparticipant;?></p>
+           </div>
+           <div class="adr_concert">
+            <img src="<?php echo img_url('musicien/localisation.png'); ?>" />
+            <p class="adr_lieu"><?php echo $concert_unit->salle ?></p>
+              <p class="adr_rue"><?php if(isset($concert_unit->numero_adresse,$concert_unit->voie_adresse))echo $concert_unit->numero_adresse." ".$concert_unit->voie_adresse ?> <!--Bis Rue de Bagnolet--></p>
+               <p class="adr_ville"><?php echo $concert_unit->ville.", ".$concert_unit->pays ?></p>
+          </div>
+         <a href="javascript:void(0);" class="more" id="more_<?php echo $concert_unit->id ?>" onclick='showInfo(more_<?php echo $concert_unit->id ?>,more_info_<?php echo $concert_unit->id ?>)' >Voir plus d'informations</a>
+              <div id="concert_activity>">
 
-    	<?php 
-    	$count = substr_count($all_concert_act,$concert_unit->id.'/');
-    	if ($count>=1)
-    	{?>
-    	    		<a id="<?php echo $concert_unit->id;?>" href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">J'y vais</span><span class="button_right"></span></a>
+        <?php 
+        $count = substr_count($all_concert_act,$concert_unit->id.'/');
+        if ($count>=1)
+        {?>
+                <a id="<?php echo $concert_unit->id;?>" href="#" class="noparticiper"><span class="button_left"></span><span  class="button_center">J'y vais</span><span class="button_right"></span></a>
 
-    	<?php
-    	}
-    	else{?>
-    	    	 	<a id="<?php echo $concert_unit->id;?>" href="#" class="participer"><span class="button_left_red"></span><span  class="button_center_red">Je veux y aller</span><span class="button_right_red"></span></a>
+        <?php
+        }
+        else{?>
+                <a id="<?php echo $concert_unit->id;?>" href="#" class="participer"><span class="button_left_red"></span><span  class="button_center_red">Je veux y aller</span><span class="button_right_red"></span></a>
 
-		<?php }
-    	 ?> 
-    	 </div>
-
-  
-    
-    <div class="info_sup" id="more_info_<?php echo $concert_unit->id ?>" style="display:none">
-      <div class="informations">
-        <p class="nom_date"><?php echo $concert_unit->titre.',' ?> <!--le 28/11/13 &agrave; 20h30--></p>
-        <p id='<?php echo $concert_unit->id;?>' class="lieu_salle">
-  					<span><?php
-						get_date($concert_unit->date,'complete');?>
-					</span>
-				</p>
-        <p class="lieu_salle"><?php echo $concert_unit->salle.',' ?></p>
-        <p class="lieu_rue"><?php if(isset($concert_unit->numero_adresse,$concert_unit->voie_adresse))echo $concert_unit->numero_adresse." ".$concert_unit->voie_adresse."," ?> </p>
-        <p class="lieu_ville"><?php if(isset($concert_unit->code_postal))echo $concert_unit->code_postal." ".$concert_unit->ville;?></p>
-        <p class="tel"><?php if (isset($concert_unit->phone_number)) echo "Tel. : ".$concert_unit->phone_number ;?> </p>
-        <p class="site"><?php if (isset($concert_unit->website)) echo "Site web :<a href='.$concert_unit->website.'> ".$concert_unit->website."</a>" ;?></p>
-        <p class="partager">Partager l'événement :</p>
-        <div class="partage_reseaux">
-          
-          	<a href="https://twitter.com/share?text=Je vais participer au concert de <?php echo $concert_unit->titre ?>"  data-lang="en"><span class="twitter">twitter</span></a>
-        	<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo current_url(); ?>" target="_blank"><span class="facebook">fb</span></a>
-          	<a href="https://plus.google.com/share?url=http://127.0.0.1/slyset/index.php/concert/ <?php echo $concert_unit->id ?>" ><span class="google">g+</span></a>
-      
+      <?php }
+         ?> 
+         </div>
 
 
-                        </div>
-                    </div>
-                    <div id="plan_google">
-                        <img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php echo $concert_unit->numero_adresse . "+" . $concert_unit->voie_adresse . "+" . $concert_unit->ville ?>&zoom=16&size=233x198&maptype=roadmap&markers=size:mid%7Ccolor:red%7C<?php echo $concert_unit->numero_adresse . "+" . $concert_unit->voie_adresse . "+" . $concert_unit->ville ?>&sensor=false">
-                    </div>
-                </div>
+
+      <div class="info_sup" id="more_info_<?php echo $concert_unit->id ?>" style="display:none">
+        <div class="informations">
+          <p class="nom_date"><?php echo $concert_unit->titre.',' ?> <!--le 28/11/13 &agrave; 20h30--></p>
+          <p id='<?php echo $concert_unit->id;?>' class="lieu_salle">
+              <span><?php
+              get_date($concert_unit->date,'complete');?>
+            </span>
+          </p>
+          <p class="lieu_salle"><?php echo $concert_unit->salle.',' ?></p>
+          <p class="lieu_rue"><?php if(isset($concert_unit->numero_adresse,$concert_unit->voie_adresse))echo $concert_unit->numero_adresse." ".$concert_unit->voie_adresse."," ?> </p>
+          <p class="lieu_ville"><?php if(isset($concert_unit->code_postal))echo $concert_unit->code_postal." ".$concert_unit->ville;?></p>
+          <p class="tel"><?php if (isset($concert_unit->phone_number)) echo "Tel. : ".$concert_unit->phone_number ;?> </p>
+          <p class="site"><?php if (isset($concert_unit->website)) echo "Site web :<a href='.$concert_unit->website.'> ".$concert_unit->website."</a>" ;?></p>
+          <p class="partager">Partager l'événement :</p>
+          <div class="partage_reseaux">
+
+              <a href="https://twitter.com/share?text=Je vais participer au concert de <?php echo $concert_unit->titre ?>"  data-lang="en"><span class="twitter">twitter</span></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo current_url(); ?>" target="_blank"><span class="facebook">fb</span></a>
+              <a href="https://plus.google.com/share?url=http://127.0.0.1/slyset/index.php/concert/ <?php echo $concert_unit->id ?>" ><span class="google">g+</span></a>
+
+
+
+                          </div>
+                      </div>
+                      <div id="plan_google">
+                          <img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php echo $concert_unit->numero_adresse . "+" . $concert_unit->voie_adresse . "+" . $concert_unit->ville ?>&zoom=16&size=233x198&maptype=roadmap&markers=size:mid%7Ccolor:red%7C<?php echo $concert_unit->numero_adresse . "+" . $concert_unit->voie_adresse . "+" . $concert_unit->ville ?>&sensor=false">
+                      </div>
+                  </div>
+        </div>
     <?php
     endforeach;
 }
@@ -224,15 +225,5 @@ else {
     </div>
 
 <?php if (isset($sidebar_right)) echo $sidebar_right; ?>
-
-    <!--<div class="pagination">
-        <a href="#" id="precedent"><span><</span></a>
-        <a href="#" class="page">1</a>
-        <a href="#" class="page">2</a>
-        <a href="#" class="page">3</a>
-        <a href="#" class="page">4</a>
-        <a href="#" class="page">5</a>
-        <a href="#" id="suivant"><span>></span></a>
-    </div>-->
 
 </div>

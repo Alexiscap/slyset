@@ -4,7 +4,7 @@
 host = "localhost"
 username = "slyset"
 password = "slyset"
-dbname = "preprod-slyset"
+dbname = "prod-slyset"
 tables_prefix = "piwik_"
 charset = "utf8"
 

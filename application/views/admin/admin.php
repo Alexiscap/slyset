@@ -36,11 +36,11 @@ $session_id = $this->session->userdata('uid');
         </div>
                 
         <div id="admin_chiffres">
-            <h3> Quelques chiffres...</h3>
+            <h3>Quelques chiffres...</h3>
             
             <div class="admin_chiffre abuse_attente">
                 <div class="ico"></div>
-                <div class="count">23</div>
+                <div class="count">0</div>
                 <div class="raison">abus en attente</div>
             </div>
             
