@@ -810,7 +810,7 @@ $(document).ready(function(){
 				
                 var photo_height=$(this).parents('.box').height();
                 var comm_height=$(this).parents('.box').find('.allcomment').height();
-                comm_height+=60;
+                comm_height+=55;
                 var total_height=photo_height-comm_height;
                 $(this).parents('.box').find('.open_alb').css("height",total_height+"px");
 				
@@ -833,7 +833,7 @@ $(document).ready(function(){
             if($(this).find('.allcomment').is(':visible') == true)
             {   
                 var comm_height=$(this).find('.allcomment').height();
-                comm_height+=60;
+                comm_height+=55;
                 var total_height=photo_height-comm_height;
                 $(this).find('.open_alb').css("height",total_height+"px");
             }
