@@ -97,21 +97,21 @@ class Mc_photos extends CI_Controller {
         $data['all_photos'] = $this->photo_model->all_photos();
        	$data['comments_wall'] = $this->photo_model->get_comment_wall($user_visited);
         $data['all_photos_albums'] = $this->photo_model->all_photos_album();
-        $data['like_photo'] = $this->photo_model->get_like_user($user_visited);
+        $data['like_photo'] = $this->photo_model->get_like_user($this->session->userdata('uid'));
         $data['all_photo_like'] = "";
         $data['all_album_like'] = "";
         $data['all_video_like'] = "";
 
         foreach ($data['like_photo'] as $data['likes_photo']) {
-            $data['all_photo_like'] .= $data['likes_photo']->Photo_id . "/";
-            $data['all_album_like'] .= $data['likes_photo']->Album_media_file_name . "/";
-            $data['all_video_like'] .= $data['likes_photo']->Video_id . "/";
+            $data['all_photo_like'] .= '/'.$data['likes_photo']->Photo_id . "/";
+            $data['all_album_like'] .= '/'.$data['likes_photo']->Album_media_file_name . "/";
+            $data['all_video_like'] .= '/'.$data['likes_photo']->Video_id . "/";
         }
 
         foreach ($data['like_photo'] as $data['likes_photo']) {
-            $data['all_photo_like'] .= $data['likes_photo']->Photo_id . "/";
-            $data['all_album_like'] .= $data['likes_photo']->Album_media_file_name . "/";
-            $data['all_video_like'] .= $data['likes_photo']->Video_id . "/";
+            $data['all_photo_like'] .= '/'.$data['likes_photo']->Photo_id . "/";
+            $data['all_album_like'] .= '/'.$data['likes_photo']->Album_media_file_name . "/";
+            $data['all_video_like'] .= '/'.$data['likes_photo']->Video_id . "/";
         }
 
         $data['all_follower'] = $this->follower_model->get_all_follower_user($user_visited);

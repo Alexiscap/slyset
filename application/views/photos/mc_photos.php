@@ -150,7 +150,7 @@ $loger = $this->session->userdata('logged_in');
                         <a href="javascript:void(0);">
                             <p><?php if ($cpt_comment == 0) print "0 commentaire"; if ($cpt_comment == 1) print "1 commentaire"; if ($cpt_comment > 1) print $cpt_comment . " commentaires" ?></p></a>
                         <?php
-                        $count = substr_count($all_photo_like, $media_user_result_unit->id . '/');
+                        $count = substr_count($all_photo_like, '/'.$media_user_result_unit->id . '/');
                         if ($count >= 1) {
                             ?>
                             <img src="<?php echo img_url('musicien/pink_heart.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="nolike" alt="coeur gris"/>
@@ -286,7 +286,7 @@ $loger = $this->session->userdata('logged_in');
                     <div class="bord_photo">
                         <a href="javascript:void(0);"><p><?php if ($cpt_comment == 0) echo "0 commentaire"; if ($cpt_comment == 1) echo "1 commentaire"; if ($cpt_comment > 1) echo $cpt_comment . " commentaires"; ?></p></a>
         <?php
-        $count = substr_count($all_album_like, $media_user_result_unit->file_name . '/');
+        $count = substr_count($all_album_like, '/'.$media_user_result_unit->file_name . '/');
         if ($count >= 1) {
             ?>
                             <img src="<?php echo img_url('musicien/pink_heart.png'); ?>" id="<?php echo $media_user_result_unit->file_name ?>" class="nolike-album" alt="coeur gris"/>
@@ -372,7 +372,7 @@ $loger = $this->session->userdata('logged_in');
                         <a href="javascript:void(0);"><p><?php if ($cpt_comment == 0) print "0 commentaire"; if ($cpt_comment == 1) print "1 commentaire"; if ($cpt_comment > 1) print $cpt_comment . " commentaires"; ?></p>
                         </a>
                     <?php
-                    $count = substr_count($all_video_like, $media_user_result_unit->id . '/');
+                    $count = substr_count($all_video_like, '/'.$media_user_result_unit->id . '/');
                     if ($count >= 1) {
                         ?>
                             <img src="<?php echo img_url('musicien/pink_heart.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="nolike-video" alt="coeur gris"/>

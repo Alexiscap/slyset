@@ -165,7 +165,7 @@ $loger = $this->session->userdata('logged_in');
        			
        			<?php 
        			if($this->uri->segment(3)!='wall') 
-       			{$count = substr_count($all_photo_like,$media_user_result_unit->id.'/');
+       			{$count = substr_count($all_photo_like,'/'.$media_user_result_unit->id.'/');
     	if ($count>=1)
     	{ ?>
     	       			 <img src="<?php echo img_url('musicien/pink_heart.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="nolike" alt="coeur gris"/>
@@ -285,7 +285,7 @@ $loger = $this->session->userdata('logged_in');
 
 
                 <?php
-                $count = substr_count($all_video_like,$media_user_result_unit->id.'/');
+                $count = substr_count($all_video_like,'/'.$media_user_result_unit->id.'/');
                 if ($count>=1)
                 { ?>
                    <img src="<?php echo img_url('musicien/pink_heart.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="nolike-video" alt="coeur gris"/>
