@@ -109,14 +109,14 @@ $loger = $this->session->userdata('logged_in');
             <h1><a href="<?php echo base_url('index.php/musique/'.$uid_visit)?>"><img width = "23px" src="<?php echo img_url('common/arrow-back.png')?>"></a><span><?php echo $this_album[0]->nom;  ?> - <?php echo $login; ?></span></h1>
         
             <!--<p class="title" id="<?php echo $this_album[0]->id; ?>"><?php echo ucwords($this_album[0]->nom); ?></p>-->
-            <?php if(isset($this_album[0]->annee)): ?><p class="annee_crea"><?php echo $this_album[0]->annee; ?><?php endif; ?><?php if (isset($this_album[0]->producteur)): ?><?php echo ' - '.$this_album[0]->producteur; ?></p><?php endif; ?>
+            <?php if(!empty($this_album[0]->annee)): ?><p class="annee_crea"><?php echo $this_album[0]->annee; ?><?php endif; ?><?php if (!empty($this_album[0]->producteur)): ?><?php echo ' - '.$this_album[0]->producteur; ?></p><?php endif; ?>
             
-            <?php if (isset($this_album[0]->description)): ?><p class="infos_alb_desc"><?php echo ucfirst($this_album[0]->description); ?></p><?php else: ?><p>Aucune description d'album renseignée.</p><?php endif; ?>
-            <?php if (isset($this_album[0]->participants)): ?><p><?php echo $this_album[0]->participants; ?></p><?php endif; ?>
-            <?php if (isset($this_album[0]->prix)): ?><p class="infos_alb_prix"><?php echo $this_album[0]->prix; ?> €</p><?php endif; ?>
+            <?php if (!empty($this_album[0]->description)): ?><p class="infos_alb_desc"><?php echo ucfirst($this_album[0]->description); ?></p><?php else: ?><p>Aucune description d'album renseignée.</p><?php endif; ?>
+            <?php if (!empty($this_album[0]->participants)): ?><p><?php echo $this_album[0]->participants; ?></p><?php endif; ?>
+            <?php if (!empty($this_album[0]->prix)): ?><p class="infos_alb_prix"><?php echo $this_album[0]->prix; ?> €</p><?php endif; ?>
             <br>
-            <?php if (isset($this_album[0]->livret_path)): ?><p><span>> </span><a href="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$this_album[0]->nom).'/livret/'.$this_album[0]->livret_path); ?>"><?php  echo 'Voir le livret d\'album'; ?></a></p><?php endif; ?>
-            <?php if (isset($this_album[0]->doc_id)): ?><p><span>> </span><a href="<?php echo base_url('index.php/document/'.$uid_visit.'#album-'.$this_album[0]->id) ?>">Voir les partitions</a></p><?php endif; ?>
+            <?php if (!empty($this_album[0]->livret_path)): ?><p><span>> </span><a href="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$this_album[0]->nom).'/livret/'.$this_album[0]->livret_path); ?>"><?php  echo 'Voir le livret d\'album'; ?></a></p><?php endif; ?>
+            <?php if (!empty($this_album[0]->doc_id)): ?><p><span>> </span><a href="<?php echo base_url('index.php/document/'.$uid_visit.'#album-'.$this_album[0]->id) ?>">Voir les partitions</a></p><?php endif; ?>
         </div>
         
         <div class="top_album album_page">

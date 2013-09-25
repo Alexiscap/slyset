@@ -64,7 +64,7 @@
 </script>
 
 
-<div class="pop-in_cent">
+<div class="pop-in_cent pop-in-upload-music">
     <span>Ajouter des musiques</span>
     
     <div class="content-pi-cent">
@@ -79,12 +79,6 @@
                     <?php echo form_upload('userfile', '', 'id="userfile"'); ?>
                     <?php echo (isset($error)) ? $error : ''; ?>
                 </li>
-<!--                <li>
-                    <?php echo form_input('uid', set_value('uid'), array('id' => 'uid', 'placeholder' => 'Votre uid')); ?>
-                </li>
-                <li>
-                    <?php echo form_input('guid', set_value('duid'), array('id' => 'duid', 'placeholder' => 'Votre guid')); ?>
-                </li>-->
                 <li>
                     <?php echo form_button(array('content' => 'Upload', 'id' => 'upload-file', 'class' => 'btn btn-large btn-primary')); ?>
                 </li>

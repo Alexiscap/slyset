@@ -93,6 +93,8 @@
     width: 100%;
     height: 320px;
     position: relative;
+    background: url('assets/images/sidebar-right/default-photo-profil.png') no-repeat 0 0 transparent;
+    background-size:100%;
     float: left;
     clear: both;
 }
@@ -349,7 +351,7 @@
 }
 
 .player-audio .list-morceaux ul{
-    margin: 0 5px;
+    margin: 0 10px;
 }
     
 .player-audio .list-morceaux li{
@@ -409,7 +411,7 @@
     width: 15px;
     height: 19px;
     background: url('../images/player/ico-small-casque.png') no-repeat 0 0 transparent;
-    background-position : 0px 3px;
+    background-position : 0px 5px;
     float: left;
     vertical-align : bottom;
 }

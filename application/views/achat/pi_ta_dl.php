@@ -6,6 +6,7 @@
 
 
 <div class="pop-in_ta pop_in3 pop-in_center">
+  <div class="elem_center">
   <span class="info">Informations</span><span  class="paiement">Paiement</span><span  class="telechargement et_active">Téléchargements</span>
   <!--<img src="<?php echo img_url('musicien/pop_close.png'); ?>" alt="Fermer" />-->
   <div class="content-pi">
@@ -18,9 +19,9 @@
 	</div>
 	<div class="clear"></div>
 	<h2>Téléchargez vos morceaux</h2>
-	<div class="titre_achete">
+	<div class="titre_achete" id="articles-tab_pi">
 		<!--<div class="en_tete">-->
-		     <form class="last_tunnel" action="" method="post" accept-charset="utf-8">          
+		     <form class="last_tunnel" action="" method="post" accept-charset="utf-8" class="historiq_dwld">          
 
 			<table id="tablesorter-cb">
 				<thead>
@@ -71,5 +72,6 @@
 
 	
 	<div class="clear"></div>
+  </div>
   </div>
 </div>

@@ -129,15 +129,15 @@ $loger = $this->session->userdata('logged_in');
         
         <div class="infos">
             <p class="title"><?php echo ucwords($album_alaune[0]->nom); ?></p>
-            <?php if(isset($album_alaune[0]->annee)): ?><p class="annee_crea"><?php echo $album_alaune[0]->annee; ?><?php endif; ?><?php if (isset($album_alaune[0]->producteur)): ?><?php echo ' - '.$album_alaune[0]->producteur; ?></p><?php endif; ?>
+            <?php if(!empty($album_alaune[0]->annee)): ?><p class="annee_crea"><?php echo $album_alaune[0]->annee; ?><?php endif; ?><?php if (!empty($album_alaune[0]->producteur)): ?><?php echo ' - '.$album_alaune[0]->producteur; ?></p><?php endif; ?>
             
-            <?php if (isset($album_alaune[0]->description)): ?><p class="infos_alb_desc"><?php echo ucfirst($album_alaune[0]->description); ?></p><?php else: ?><p>Aucune description d'album renseignée.</p><?php endif; ?>
+            <?php if (!empty($album_alaune[0]->description)): ?><p class="infos_alb_desc"><?php echo ucfirst($album_alaune[0]->description); ?></p><?php else: ?><p>Aucune description d'album renseignée.</p><?php endif; ?>
             
-            <?php if (isset($album_alaune[0]->participants)): ?><p><?php echo $album_alaune[0]->participants; ?></p><?php endif; ?>
-            <?php if (isset($album_alaune[0]->prix)): ?><p class="infos_alb_prix"><?php echo $album_alaune[0]->prix; ?></p><?php endif; ?>
+            <?php if (!empty($album_alaune[0]->participants)): ?><p><?php echo $album_alaune[0]->participants; ?></p><?php endif; ?>
+            <?php if (!empty($album_alaune[0]->prix)): ?><p class="infos_alb_prix"><?php echo $album_alaune[0]->prix; ?></p><?php endif; ?>
             <br>
-            <?php if (isset($album_alaune[0]->livret_path)): ?><p><span>> </span><a href="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$album_alaune[0]->nom).'/livret/'.$album_alaune[0]->livret_path); ?>"><?php  echo 'Voir le livret d\'album'; ?></a></p><?php endif; ?>
-            <?php if (isset($album_alaune[0]->doc_id)): ?><p><span>> </span><a href="<?php echo base_url('index.php/document/'.$uid_visit.'#album-'.$album_alaune[0]->id) ?>">Voir les partitions</a></p><?php endif; ?>
+            <?php if (!empty($album_alaune[0]->livret_path)): ?><p><span>> </span><a href="<?php echo base_url('files/'.$infos_profile->id.'/albums/'.str_replace(' ','_',$album_alaune[0]->nom).'/livret/'.$album_alaune[0]->livret_path); ?>"><?php  echo 'Voir le livret d\'album'; ?></a></p><?php endif; ?>
+            <?php if (!empty($album_alaune[0]->doc_id)): ?><p><span>> </span><a href="<?php echo base_url('index.php/document/'.$uid_visit.'#album-'.$album_alaune[0]->id) ?>">Voir les partitions</a></p><?php endif; ?>
         </div>
         
         <div class="top_album">
