@@ -34,7 +34,7 @@ class Admin_model extends CI_Model {
         $data['artiste_4'] = $artiste4;
         $data['artiste_5'] = $artiste5;
 
-        $this->db->insert($this->table, $data);
+        $this->db->insert('coverflow', $data);
     }
 
     public function update_artiste($artiste1, $artiste2 = NULL, $artiste3 = NULL, $artiste4 = NULL, $artiste5 = NULL) {
@@ -43,7 +43,7 @@ class Admin_model extends CI_Model {
         $data['artiste_3'] = $artiste3;
         $data['artiste_4'] = $artiste4;
         $data['artiste_5'] = $artiste5;
-
-        $this->db->update($this->table, $data);
+        
+        $this->db->update('coverflow', $data);
     }
 }

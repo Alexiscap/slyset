@@ -46,24 +46,41 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 | the active record class
 */
 
-$active_group = 'default';
+$active_group = 'prod';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'slyset';
-$db['default']['password'] = 'slyset';
-$db['default']['database'] = 'preprod-slyset';
-$db['default']['dbdriver'] = 'mysql';
-$db['default']['dbprefix'] = '';
-$db['default']['pconnect'] = TRUE;
-$db['default']['db_debug'] = TRUE;
-$db['default']['cache_on'] = FALSE;
-$db['default']['cachedir'] = '';
-$db['default']['char_set'] = 'utf8';
-$db['default']['dbcollat'] = 'utf8_general_ci';
-$db['default']['swap_pre'] = '';
-$db['default']['autoinit'] = TRUE;
-$db['default']['stricton'] = FALSE;
+$db['preprod']['hostname'] = 'localhost';
+$db['preprod']['username'] = 'slyset';
+$db['preprod']['password'] = 'slyset';
+$db['preprod']['database'] = 'preprod-slyset';
+$db['preprod']['dbdriver'] = 'mysql';
+$db['preprod']['dbprefix'] = '';
+$db['preprod']['pconnect'] = TRUE;
+$db['preprod']['db_debug'] = TRUE;
+$db['preprod']['cache_on'] = FALSE;
+$db['preprod']['cachedir'] = '';
+$db['preprod']['char_set'] = 'utf8';
+$db['preprod']['dbcollat'] = 'utf8_general_ci';
+$db['preprod']['swap_pre'] = '';
+$db['preprod']['autoinit'] = TRUE;
+$db['preprod']['stricton'] = FALSE;
+
+
+$db['prod']['hostname'] = 'localhost';
+$db['prod']['username'] = 'slyset';
+$db['prod']['password'] = 'slyset';
+$db['prod']['database'] = 'prod-slyset';
+$db['prod']['dbdriver'] = 'mysql';
+$db['prod']['dbprefix'] = '';
+$db['prod']['pconnect'] = TRUE;
+$db['prod']['db_debug'] = TRUE;
+$db['prod']['cache_on'] = FALSE;
+$db['prod']['cachedir'] = '';
+$db['prod']['char_set'] = 'utf8';
+$db['prod']['dbcollat'] = 'utf8_general_ci';
+$db['prod']['swap_pre'] = '';
+$db['prod']['autoinit'] = TRUE;
+$db['prod']['stricton'] = FALSE;
 
 
 $db['heroku']['hostname'] = 'us-cdbr-east-04.cleardb.com';

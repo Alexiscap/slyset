@@ -68,10 +68,12 @@ class Admin_artistes extends CI_Controller {
                 $exist = $this->admin_model->get_cover_artistes();
                 if ($exist == FALSE) {
                     $this->admin_model->insert_artiste($artiste1, $artiste2, $artiste3, $artiste4, $artiste5);
+                    print 11111111;
                 } else {
                     $this->admin_model->update_artiste($artiste1, $artiste2, $artiste3, $artiste4, $artiste5);
+                    print 2222222;
                 }
-
+                
                 redirect('admin_artistes', 'refresh');
             }
         } else {

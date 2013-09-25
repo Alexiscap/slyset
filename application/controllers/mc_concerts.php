@@ -15,10 +15,10 @@ class Mc_concerts extends CI_Controller {
         $this->layout->ajouter_css('colorbox');
         
         $this->layout->ajouter_js('concert');
-        $this->layout->ajouter_js('social_media');
         $this->layout->ajouter_js('maps_api');
         // $this->layout->ajouter_js('maps-google');
         $this->layout->ajouter_js('jquery.colorbox');
+//        $this->layout->ajouter_js('social_media');
 
         $this->load->model(array('perso_model', 'user_model', 'concert_model','achat_model','follower_model','musique_model'));
 

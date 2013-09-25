@@ -102,7 +102,7 @@
       <div class="actus_post_links">
         <a href="#comments-msg" class="active">Message</a>
         <a href="#comments-photo">Photo</a>
-        <a href="#comments-link-video">Lien/Vidéo</a>
+        <a href="#comments-link-video">Vidéo</a>
       </div>
       <?php
         $form_comments_1 = array("id" => "comments-msg", "style" => "display:block;");
