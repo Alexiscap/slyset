@@ -109,7 +109,7 @@ $loger = $this->session->userdata('logged_in');
             <h1><a href="<?php echo base_url('index.php/musique/'.$uid_visit)?>"><img width = "23px" src="<?php echo img_url('common/arrow-back.png')?>"></a><span><?php echo $this_album[0]->nom;  ?> - <?php echo $login; ?></span></h1>
         
             <!--<p class="title" id="<?php echo $this_album[0]->id; ?>"><?php echo ucwords($this_album[0]->nom); ?></p>-->
-            <p class="annee_crea"><?php echo $this_album[0]->annee; ?> - <?php if (isset($this_album[0]->producteur)): ?><?php echo $this_album[0]->producteur; ?><?php endif; ?></p>
+            <?php if(isset($this_album[0]->annee)): ?><p class="annee_crea"><?php echo $this_album[0]->annee; ?><?php endif; ?><?php if (isset($this_album[0]->producteur)): ?><?php echo ' - '.$this_album[0]->producteur; ?></p><?php endif; ?>
             
             <?php if (isset($this_album[0]->description)): ?><p class="infos_alb_desc"><?php echo ucfirst($this_album[0]->description); ?></p><?php else: ?><p>Aucune description d'album renseignée.</p><?php endif; ?>
             <?php if (isset($this_album[0]->participants)): ?><p><?php echo $this_album[0]->participants; ?></p><?php endif; ?>
@@ -245,13 +245,16 @@ $loger = $this->session->userdata('logged_in');
 	</div>
     
     <div id="playlist_alert" class="modal_alert"><p>Ajouter à une playlist existante</p>
-        </br>
-        <?php foreach($playlists as $playlist):?>
-           	<a href ="javascript:void(0)" id="<?php echo $playlist->nom;?>"><?php echo $playlist->nom;?></a>
-        	</br>
-        <?php endforeach;?>
-          <p>Ou crée en une</p>
-          <input id="input_alert" type='text'/> <a class="cree" href="javascript:void(0)">Creer</a>
+        <?php if(!empty($playlists)): ?>
+            <?php foreach($playlists as $playlist):?>
+                    <a href ="javascript:void(0)" id="<?php echo $playlist->nom;?>"><?php echo $playlist->nom;?></a>
+            <?php endforeach;?>
+        <?php else: ?>
+            <span>Aucune playlist existante</span>
+        <?php endif; ?>
+        </br></br>
+        <p>Ou créé en une</p>
+        <input id="input_alert" type='text'/> <a class="cree" href="javascript:void(0)">Créer</a>
     </div>
 
     <?php if (isset($sidebar_right)) echo $sidebar_right; ?>

@@ -129,7 +129,7 @@ $loger = $this->session->userdata('logged_in');
         
         <div class="infos">
             <p class="title"><?php echo ucwords($album_alaune[0]->nom); ?></p>
-            <p class="annee_crea"><?php echo $album_alaune[0]->annee; ?> - <?php if (isset($album_alaune[0]->producteur)): ?><?php echo $album_alaune[0]->producteur; ?><?php endif; ?></p>
+            <?php if(isset($album_alaune[0]->annee)): ?><p class="annee_crea"><?php echo $album_alaune[0]->annee; ?><?php endif; ?><?php if (isset($album_alaune[0]->producteur)): ?><?php echo ' - '.$album_alaune[0]->producteur; ?></p><?php endif; ?>
             
             <?php if (isset($album_alaune[0]->description)): ?><p class="infos_alb_desc"><?php echo ucfirst($album_alaune[0]->description); ?></p><?php else: ?><p>Aucune description d'album renseignée.</p><?php endif; ?>
             
@@ -336,13 +336,16 @@ $loger = $this->session->userdata('logged_in');
 	</div>
 	
 	<div id="playlist_alert" class="modal_alert"><p>Ajouter à une playlist existante</p>
-        </br>
-        <?php foreach($playlists as $playlist): ?>
-           	<a href ="javascript:void(0)" id="<?php echo $playlist->nom;?>"><?php echo $playlist->nom;?></a>
-        	</br>
-        <?php endforeach; ?>
-        <p>Ou crée en une</p>
-          <input id="input_alert" type='text'/> <a class="cree" href="javascript:void(0)">Creer</a>
+        <?php if(!empty($playlists)): ?>
+            <?php foreach($playlists as $playlist):?>
+                    <a href ="javascript:void(0)" id="<?php echo $playlist->nom;?>"><?php echo $playlist->nom;?></a>
+            <?php endforeach;?>
+        <?php else: ?>
+            <span>Aucune playlist existante</span>
+        <?php endif; ?>
+        </br></br>
+        <p>Ou créé en une</p>
+        <input id="input_alert" type='text'/> <a class="cree" href="javascript:void(0)">Créer</a>
     </div>
     
     <div id="album_une_alert" class="modal_alert">
