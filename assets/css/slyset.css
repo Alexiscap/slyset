@@ -500,6 +500,8 @@ cursor : pointer;}
 .pop-in_ta #articles-tab .filter{ margin:0 0 0 8px; display:inline-block; width:11px; height:7px; cursor:pointer; background:url('../images/common/filters.png') no-repeat 0 0 transparent; }
 .pop-in_ta #articles-tab input[type="submit"]{ margin:0 0 0 0; padding:0 5px; display:block; width:94px; height:32px; line-height:32px; border:none; outline:none; font-family:"Trebuchet MS", Arial, sans-serif; font-size:14px; font-weight:bold; text-align:center; color:#FFFFFF; background:url('../images/admin/btn_supprimer.png') no-repeat 0 0 transparent; float:right; clear:both; }
 .pop-in_ta #articles-tab input[type="submit"]:hover{ font-size:15px; }
+
+.pop-in_ta .tab_centre{float:none!important;}
 /* --------------- FIN POP IN ----------- */
 
 /* ---------- POP IN 100% ------------- */
