@@ -21,7 +21,7 @@
                 $data = array(
                     'name' => 'userfile',
                     'type' => 'file',
-                    'class' => 'livret_new',
+                    'class' => 'livret_up',
                     'value' => 'Choisir un livret'
                 );
                 ?>
