@@ -20,7 +20,7 @@ class Mc_concerts extends CI_Controller {
         // $this->layout->ajouter_js('maps-google');
         $this->layout->ajouter_js('jquery.colorbox');
 
-        $this->load->model(array('perso_model', 'user_model', 'concert_model','achat_model'));
+        $this->load->model(array('perso_model', 'user_model', 'concert_model','achat_model','follower_model','musique_model'));
 
         $this->load->helper('form');
 
@@ -130,6 +130,10 @@ class Mc_concerts extends CI_Controller {
             $data['all_concert_act'] .= "/" . $data['activite']->Concerts_id . "/";
         }
         $data['publics'] = $this->concert_model->get_public();
+
+        $data['all_follower'] = $this->follower_model->get_all_follower_user($user_visited);
+        $data['album_nbr'] = $this->musique_model->get_nalb($user_visited);
+        $data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($user_visited);
 
         $this->layout->view('concert/' . $moment, $data);
     }

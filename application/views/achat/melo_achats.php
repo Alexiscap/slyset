@@ -24,8 +24,21 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
 
     <div id="stats-cover">
         <div class="stats_cover_block">
-            <span class="stats_number">489</span>
-            <span class="stats_title">écoutes</span>
+            <span class="stats_number">
+                <?php 
+                echo $concert_cover[0]->n_concert ; ?>
+            </span>
+            <span class="stats_title">
+                <?php
+                if($concert_cover[0]->n_concert == 0 || $concert_cover[0]->n_concert == 1){
+                    echo 'concert';
+                }
+                else
+                {
+                    echo 'concerts';
+                }
+                ?>
+            </span>
         </div>
 
         <div class="stats_cover_block">

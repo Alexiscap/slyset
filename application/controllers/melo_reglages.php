@@ -57,7 +57,9 @@ class Melo_reglages extends CI_Controller {
         $data = $this->data;
         $data['all_following'] = $this->follower_model->get_all_abonnement($user_id);
         $data['playlists'] = $this->musique_model->get_my_playlist($user_id);
-
+        $data['playlists'] = $this->musique_model->get_my_playlist($user_id);
+        $data['all_following'] = $this->follower_model->get_all_abonnement($user_id);
+        $data['concert_cover'] = $this->user_model->concert_cover($user_id);
 
         $this->layout->view('reglage/melo_reglages', $data);
     }

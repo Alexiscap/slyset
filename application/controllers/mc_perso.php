@@ -19,7 +19,7 @@ class Mc_perso extends CI_Controller {
         $this->layout->ajouter_js('colorpicker/utils');
 
         $this->load->helper(array('form', 'comments_helper'));
-        $this->load->model(array('perso_model', 'user_model','achat_model'));
+        $this->load->model(array('perso_model', 'user_model','achat_model','follower_model','musique_model'));
         $this->load->library(array('form_validation'));
 
         $this->layout->set_id_background('personnaliser');
@@ -72,6 +72,10 @@ class Mc_perso extends CI_Controller {
         $data = $this->data;
         $data['profile'] = $this->user_model->getUser($this->user_id);
         $data['perso'] = $this->perso_model->get_perso($this->user_id);
+$data['all_follower'] = $this->follower_model->get_all_follower_user($this->user_id);
+        $data['album_nbr'] = $this->musique_model->get_nalb($this->user_id);
+        $data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($this->user_id);
+
         $this->layout->view('personnalisation/mc_perso', $data);
     }
 

@@ -13,7 +13,7 @@ class Mc_reglages extends CI_Controller
         $this->layout->ajouter_css('slyset');
 
         $this->load->helper(array('form', 'comments_helper'));
-        $this->load->model(array('mc_actus_model', 'perso_model', 'user_model','achat_model'));
+        $this->load->model(array('mc_actus_model', 'perso_model', 'user_model','achat_model','musique_model','follower_model'));
         $this->load->library(array('form_validation', 'layout'));
 
         $this->layout->set_id_background('reglages-music');
@@ -85,6 +85,11 @@ class Mc_reglages extends CI_Controller
     {
         $data = $this->data;
         $data['profile'] = $this->user_model->getUser($this->user_id);
+
+        $data['all_follower'] = $this->follower_model->get_all_follower_user($this->user_id);
+        $data['album_nbr'] = $this->musique_model->get_nalb($this->user_id);
+        $data['all_morceau_artiste'] = $this->musique_model->get_morceau_user($this->user_id);
+
         $this->layout->view('reglage/mc_reglages', $data);
     }
     

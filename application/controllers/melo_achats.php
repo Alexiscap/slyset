@@ -58,9 +58,10 @@ class Melo_achats extends CI_Controller {
         if (!empty($profile)) {
             $data['infos_profile'] = $profile;
         }
+        //infos stats de la cover
         $data['playlists'] = $this->musique_model->get_my_playlist($user_visited);
-
         $data['all_following'] = $this->follower_model->get_all_abonnement($user_visited);
+        $data['concert_cover'] = $this->user_model->concert_cover($user_visited);
 
         $data['cmd'] = $this->achat_model->get_achat($user_visited);
         //print $this->input->post("article-all");

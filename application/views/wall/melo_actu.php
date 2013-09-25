@@ -27,8 +27,21 @@
 
     <div id="stats-cover">
         <div class="stats_cover_block">
-            <span class="stats_number">489</span>
-            <span class="stats_title">écoutes</span>
+          <span class="stats_number">
+            <?php 
+            echo $concert_cover[0]->n_concert ; ?>
+          </span>
+          <span class="stats_title">
+            <?php
+            if($concert_cover[0]->n_concert == 0 || $concert_cover[0]->n_concert == 1){
+              echo 'concert';
+            }
+            else
+            {
+              echo 'concerts';
+            }
+            ?>
+          </span>
         </div>
 
         <div class="stats_cover_block">
@@ -452,7 +465,6 @@
                           foreach($photo_album as $photo):
                          $n_p ++;
         						?>
-                                                    <?php echo $n_p; ?>
 
                            <a class="iframe" href="<?php echo site_url('media/zoom/' . $photo->id_produit . '/0') ?>">
 

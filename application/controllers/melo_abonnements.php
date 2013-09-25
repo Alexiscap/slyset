@@ -12,7 +12,7 @@ class Melo_abonnements extends CI_Controller {
 
         $this->layout->ajouter_css('slyset');
 
-        $this->load->model(array('user_model', 'follower_model','achat_model'));
+        $this->load->model(array('user_model', 'follower_model','achat_model','musique_model'));
 
         $this->layout->set_id_background('abonnements');
 
@@ -53,6 +53,9 @@ class Melo_abonnements extends CI_Controller {
         }
 
         $data['all_follower'] = $this->follower_model->get_all_abonnement($user_visited);
+        $data['playlists'] = $this->musique_model->get_my_playlist($user_visited);
+        $data['all_following'] = $this->follower_model->get_all_abonnement($user_visited);
+        $data['concert_cover'] = $this->user_model->concert_cover($user_visited);
 
         $this->layout->view('follower/melo_abonnements', $data);
     }

@@ -21,36 +21,67 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
     </div>
 
   <div id="stats-cover">
-    <div class="stats_cover_block">
-   
-    
-    	<span class="stats_number">
-            	<?php
-            	echo $count_follower[0]->count_follower;
-            	?>
+          <div class="stats_cover_block">
+            <span class="stats_number">
+                <?php
+                $nab = 0;
+                if(empty($all_follower)!=1):
+                    $nab =  count($all_follower);
+                endif;
+                echo $nab;
+                 ?>
             </span>       
             <span class="stats_title">
-            	<?php
-            	if($count_follower[0]->count_follower == 0 || $count_follower[0]->count_follower == 1){
-            		echo 'abonné';
-            	}
-            	else
-            	{
-            		echo 'abonnés';
-            	}
-            	?>
+                <?php
+                if($nab == 0 || $nab == 1){
+                    echo 'abonné';
+                }
+                else
+                {
+                    echo 'abonnés';
+                }
+                ?>
             </span>
-    </div>
+        </div>
+        
+        <div class="stats_cover_block">
+            <span class="stats_number"><?php print $album_nbr[0]->n_alb;?></span>
+            <span class="stats_title">
+                <?php
+                if($album_nbr[0]->n_alb == 0 || $album_nbr[0]->n_alb == 1){
+                    echo 'album';
+                }
+                else
+                {
+                    echo 'albums';
+                }
+                ?>
+            
+            </span>
+        </div>
 
-    <div class="stats_cover_block">
-      <span class="stats_number">18</span>
-      <span class="stats_title">albums</span>
-    </div>
-
-    <div class="stats_cover_block">
-      <span class="stats_number">278</span>
-      <span class="stats_title">morceaux</span>
-    </div>
+        <div class="stats_cover_block">
+             <span class="stats_number">
+                <?php
+                $nm = 0;
+                if(empty($all_morceau_artiste)!=1):
+                    $nm =  count($all_morceau_artiste);
+                endif;
+                echo $nm;
+                 ?>
+            </span>       
+            <span class="stats_title">
+                <?php
+                if($nm == 0 || $nm == 1){
+                    echo 'morceau';
+                }
+                else
+                {
+                    echo 'morceaux';
+                }
+                ?>
+            </span>
+        </div>
   </div>
 
   <div class="content">
