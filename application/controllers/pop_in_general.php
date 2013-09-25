@@ -1143,6 +1143,7 @@ class Pop_in_general extends CI_Controller {
         $config['allowed_types'] = 'jpg|png';
         $config['max_size'] = '2048';
         $config['overwrite'] = TRUE;
+        $config['file_name'] = 'cover';
 
         $this->load->library('upload', $config);
 
@@ -1156,7 +1157,7 @@ class Pop_in_general extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('musique/edit_album', $data);
-        } else {
+        } else {            
             if(!empty($_FILES['cover']['type'])){
                 switch ($_FILES['cover']['type']) {
                     case 'image/jpeg' :

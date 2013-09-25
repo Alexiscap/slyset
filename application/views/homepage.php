@@ -195,9 +195,9 @@ if (isset($all_date_calendar))
                     <div class="wall-flux-content-text">
                         <?php echo htmlspecialchars_decode($article->article); ?>
                         <div class="partage">
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo current_url(); ?>" target="_blank"><img src="<?php echo img_url('common/img_fb.png') ?>" alt="logo Facebook"/></a>
-                            <a href="https://twitter.com/share?text=<?php echo $article->titre; ?> - Slyset <?php echo current_url() ?>"><img src="<?php echo img_url('common/img_twitter.png') ?>" alt="logo Twitter"/></a>
-                            <a href="https://plus.google.com/share?url=<?php echo current_url(); ?>" ><img src="<?php echo img_url('common/img_gplus.png') ?>" alt="logo Google+"/></a>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo current_url(); ?>" target="_blank"><span class="facebook"></span></a>
+                            <a href="https://twitter.com/share?text=<?php echo $article->titre; ?> - Slyset <?php echo current_url() ?>"><span class="twitter"></span></a>
+                            <a href="https://plus.google.com/share?url=<?php echo current_url(); ?>" ><span class="google"></span></a>
                         </div>
                     </div>
                 </div>

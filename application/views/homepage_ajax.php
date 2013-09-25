@@ -15,6 +15,12 @@ $session_id = $this->session->userdata('uid');
 
         <div class="wall-flux-content-text">
             <?php echo htmlspecialchars_decode($article->article); ?>
+            
+            <div class="partage">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo current_url(); ?>" target="_blank"><span class="facebook"></span></a>
+                <a href="https://twitter.com/share?text=<?php echo $article->titre; ?> - Slyset <?php echo current_url() ?>"><span class="twitter"></span></a>
+                <a href="https://plus.google.com/share?url=<?php echo current_url(); ?>" ><span class="google"></span></a>
+            </div>
         </div>
     </div>
 <?php endforeach; ?>

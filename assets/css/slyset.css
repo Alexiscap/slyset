@@ -151,7 +151,7 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .content .date-heure{ clear:both;color:#3f3f3f;}
 .content hr{ color:#888d95; width:499px; margin:0px 29px 15px 29px; float:left; clear:both; }
 .concert_mu .content hr{ margin:5px 29px 15px 29px; }
-.followers .content hr, .search .content hr{ margin:15px 29px 15px 29px; }
+.followers .content hr, .search .content hr{ margin:0px 29px 5px 29px; }
 .content .infos_concert{ width:302px; margin:0 0 0 20px; float:left; }
 .content .calendrier{ background:url("../images/musicien/calendrier.png") no-repeat; width:50px; height:50px; float:left; }
 .content .infos_concert p{ margin:3px; color:#5d5d5b; font-size:14px; line-height: 12px;}
@@ -226,10 +226,10 @@ th.headerSortDown{ cursor:pointer; background:url('../images/common/filter_desc.
 .content .info_sup .site{ font-size:14px; font-family:'Trebuchet MS'; margin:5px 0 0 20px; color:#4e4e4e; }
 .content .info_sup .partager{ font-size:12px; font-family:'Trebuchet MS'; margin:5px 0 0 20px; color:#4e4e4e; }
 .content .partage_reseaux{ margin:5px 0 0 25px; color:#4e4e4e; width:114px; }
-.content .partage_reseaux span{ display:inline-block; text-indent:-50000px; }
-.content .partage_reseaux .twitter{ width:30px; height:29px; margin:0; padding:0; background:url('../images/musicien/sprite_info_sup.png') -7px -10px; }
-.content .partage_reseaux .facebook{ width:30px; height:29px; margin:0; padding:0; background:url('../images/musicien/sprite_info_sup.png') -48px -10px; }
-.content .partage_reseaux .google{ width:30px; height:29px; margin:0; padding:0; background:url('../images/musicien/sprite_info_sup.png') -90px -10px; }
+.content .partage_reseaux span, #wall-flux .partage span{ display:inline-block; text-indent:-50000px; }
+.content .partage_reseaux .twitter, #wall-flux .partage .twitter{ width:30px; height:29px; margin:0; padding:0; background:url('../images/musicien/sprite_info_sup.png') -7px -10px; }
+.content .partage_reseaux .facebook, #wall-flux .partage .facebook{ width:30px; height:29px; margin:0; padding:0; background:url('../images/musicien/sprite_info_sup.png') -48px -10px; }
+.content .partage_reseaux .google, #wall-flux .partage .google{ width:30px; height:29px; margin:0; padding:0; background:url('../images/musicien/sprite_info_sup.png') -90px -10px; }
 .content #plan_google{ width:233px; height:198px; float:left; margin: 0px 0 5px 10px;}
 .content .edition{ float:right; margin:-16px 20px 0 0; }
 .content .edition span{ margin:0 5px 0 5px; display:inline-block; text-indent:-50000px; }
@@ -562,7 +562,7 @@ cursor : pointer;}
 #coverflow{ width:790px; height:308px !important; position:relative; z-index:1; overflow:hidden; }
 #coverflow a{ display:block; width:100%; height:100%; position: relative; }
 #coverflow > div{ width:790px; height:100%; }
-#coverflow a img{ margin:0; overflow:hidden; height:308px; /*width:100%;*/ display:block; }
+#coverflow a img{ margin:0; overflow:hidden; height:308px; width:100%; display:block; }
 #coverflow a .coverflow_artist{ margin:0; display:inline-block; text-align:left; font-family:'Myriad Pro'; font-weight:bold; font-size:20px; text-transform:uppercase; color:white; position:relative; left:22px; width:115px; overflow:hidden; }
 #coverflow a .coverflow_player{ background:rgba(68, 68, 68, 0.5); width:185px; height:60px; position:absolute; top:65%; right:0; z-index:2; overflow:hidden; transition: background 0.2s ease-in-out; }
 #coverflow a .coverflow_player:hover{ background: rgba(68, 68, 68, 0.8); }
@@ -1291,8 +1291,8 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 .content .historique .nom_pl {float: left;font-size:18px;font-weight:bold;color:#3f3f3f;margin:0;}
 .content .historique .detail_pl,.content .panier .detail_pl {float: right;font-size:12px;color:#888d95;margin:5px 0px 10px 7px;}
 .content .historique span.detail_pl {padding-top:3px;}
-.content .historique hr {width:518px;}
-.content .panier hr {width:518px;}
+.content .historique hr {width:468px;}
+.content .panier hr {width:468px;}
 
 .content  .historique tr{border-bottom:1px solid #cbcbcb;}
 .content  .historique .titres tr{background:#fafafa;}
