@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="<?php echo css_url('slyset') ?>" media="screen" />
+<link rel="stylesheet" type="text/css" href="<?php echo css_url('pop_in') ?>" media="screen" />
 
 <script  src="<?php echo js_url('jquery-1.8.3.min') ?>" media="screen" ></script>
 
@@ -19,7 +20,7 @@
 	</div>
 	<div class="clear"></div>
 	<h2>Téléchargez vos morceaux</h2>
-	<div class="titre_achete" id="articles-tab_pi">
+	<div class="titre_achete tab_centre" id="articles-tab">
 		<!--<div class="en_tete">-->
 		     <form class="last_tunnel" action="" method="post" accept-charset="utf-8" class="historiq_dwld">          
 

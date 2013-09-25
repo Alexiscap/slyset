@@ -49,7 +49,7 @@ body { margin:0; font-family:'Trebuchet MS'; }
 .pop_in2{ width:557px; padding:16px 0 75px; border:1px solid #bbbbbb; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; margin:10px auto; background:#eff4f3 url('../images/common/etapes_2.png')no-repeat -12px -8px; }
 .pop_in3{ width:557px; padding:16px 0 75px; border:1px solid #bbbbbb; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px; margin:10px auto; background:#eff4f3 url('../images/common/etapes_3.png')no-repeat -12px -8px; }
 .pop-in_ta span{ margin:0; float:left; font-size:16px; color:#cdcdcd; width:140px; min-height:15px; }
-.pop-in_ta span.info{ margin:6px 0 0 50px; }
+.pop-in_ta span.info{ margin:6px 0 0 50px; height: 40px;}
 .pop-in_ta span.paiement{ margin:6px 0 0 26px; }
 .pop-in_ta span.telechargement{ margin:6px 0 0 10px; }
 .pop-in_ta span.et_active{ color:#01adbb; }
@@ -115,8 +115,8 @@ body { margin:0; font-family:'Trebuchet MS'; }
 .pop-in_ta .content-pi .titre_achete .telechargements .dwl img { width:21px; margin:0; padding:0 0 0 40px; }
 
 
-.pop-in_ta .content-pi input.dl_red { width:165px; background:url("../images/common/bg_dl_red.png") no-repeat; margin:20px 25px 0 0; padding:0 0 0 30px; clear:none; }
-.pop-in_ta .content-pi input.dl_black { width:123px; background:url("../images/common/bg_dl_black.png") no-repeat; margin:20px 25px 0 0; padding:0 0 0 22px; clear:none; }
+.pop-in_ta .elem_center input.dl_red { width:165px; background:url("../images/common/bg_dl_red.png") no-repeat; margin:20px 25px 0 0; padding:0 0 0 30px; clear:none;color: white;height: 30px;border: none;}
+.pop-in_ta .elem_center input.dl_black { width:123px; background:url("../images/common/bg_dl_black.png") no-repeat; margin:20px 25px 0 10px; padding:0 0 0 22px; clear:none;color: white;height: 30px;border: none;}
 /* --------------- FIN POP IN ----------- */
 
 /* ---------- POP IN 100% ------------- */
@@ -233,9 +233,9 @@ body { margin:0; font-family:'Trebuchet MS'; }
 .styled-select {width: 240px;}
 
 .del_livret {margin:30px !important;}
-.submit_livret{margin:30px 0 0 135px !important;}
-.submit_paroles{margin:30px 0 0 135px !important;}
-.submit_partition{margin:30px 0 0 135px !important;}
+.submit_livret{margin:30px 0 0 140px !important;}
+.submit_paroles{margin:30px 0 0 175px !important;}
+.submit_partition{margin:30px 0 0 180px !important;}
 
 .pop-in-upload-music .content-pi-cent{ float:left; }
 .pop-in-upload-music form{ margin:20px 0 0 0; width:100%; float:left; clear:both; }
