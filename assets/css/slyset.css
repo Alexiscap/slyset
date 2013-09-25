@@ -395,9 +395,9 @@ cursor : pointer;}
 .pop-in_big .content-pi .ajout_comm input[type=text]{width:405px;height:25px;border:1px solid #cccccc;outline:none;padding:0 5px;}
 .pop-in_big .content-pi .ajout_comm input[type=image]{float:right;margin:10px 40px;}
 
-.pop-in_ta{width:557px;padding:16px 0 75px;border:1px solid #bbbbbb;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;background:#eff4f3 url('../images/common/etapes_1.png')no-repeat 255px -4px;}
-.pop_in2{width:557px;padding:16px 0 75px;border:1px solid #bbbbbb;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;background:#eff4f3 url('../images/common/etapes_2.png')no-repeat 240px -8px;}
-.pop_in3{width:557px;padding:16px 0 75px;border:1px solid #bbbbbb;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;background:#eff4f3 url('../images/common/etapes_3.png')no-repeat 240px -8px;}.pop-in_ta span{margin:0;float:left;font-size:16px;color:#cdcdcd;width:140px;min-height:15px;}
+.pop-in_ta{width:557px;padding:16px 0 75px;border:1px solid #bbbbbb;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;background:#eff4f3 url('../images/common/etapes_1.png')no-repeat 145px -4px;}
+.pop_in2{width:557px;padding:16px 0 75px;border:1px solid #bbbbbb;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;background:#eff4f3 url('../images/common/etapes_2.png')no-repeat 135px -8px;}
+.pop_in3{width:557px;padding:16px 0 75px;border:1px solid #bbbbbb;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;background:#eff4f3 url('../images/common/etapes_3.png')no-repeat 135px -8px;}.pop-in_ta span{margin:0;float:left;font-size:16px;color:#cdcdcd;width:140px;min-height:15px;}
 .pop-in_ta span.info{margin:-10px 0 0 50px;}
 .pop-in_ta span.paiement{margin:-10px 0 0 26px;}
 .pop-in_ta span.telechargement{margin:-10px 0 16px 10px;}
@@ -1280,6 +1280,7 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 .content #articles-tab .article-title .miniat_titre .coeur_actif{background:url('../images/common/sprite_edit_titre.png'); background-position:-20px -22px;}
 .content .cadis_pl{float:right;width:93px;height:30px;background:url('../images/common/bt_cadis.png');border:none;color:white;padding:0 0 0 25px;font-weight:bold;font-size:14px;margin:0 0 10px 0;}
 .content .bt_supp_playlist{float:right;width:108px;height:30px;background:url('../images/common/bt_supp_pl.png');border:none;color:white;padding:0 0 0 17px;font-weight:bold;font-size:13px;margin:0 10px 10px 0;}
+.achats .content .bt_supp_playlist{ margin:10px 10px 10px 0; }
 
 .content .nopl {font-size:12px;font-weight:normal;}
 
@@ -1296,8 +1297,8 @@ p.detail_perso, p.detail_reglages{ margin:0 0 20px 0; font-family:"Trebuchet MS"
 .content .historique .nom_pl {float: left;font-size:18px;font-weight:bold;color:#3f3f3f;margin:0;}
 .content .historique .detail_pl,.content .panier .detail_pl {float: right;font-size:12px;color:#888d95;margin:5px 0px 10px 7px;}
 .content .historique span.detail_pl {padding-top:3px;}
-.content .historique hr {width:468px;}
-.content .panier hr {width:468px;}
+.content .historique hr {width:468px;margin:5px 29px 10px 29px;}
+.content .panier hr {width:468px; margin:8px 29px 0px 29px;}
 
 .content  .historique tr{border-bottom:1px solid #cbcbcb;}
 .content  .historique .titres tr{background:#fafafa;}
@@ -1570,4 +1571,4 @@ width : 390px;
 {width : 89px;}
 
 hr.corr_doc_hr {
-margin : 0px 29px 3px 29px}
+margin : 20px 29px 10px 29px}
