@@ -1571,4 +1571,9 @@ width : 390px;
 {width : 89px;}
 
 hr.corr_doc_hr {
-margin : 20px 29px 10px 29px}
+margin : 20px 29px 10px 29px
+}
+.content .panier #articles-tab table.corr_tabl_panier_one
+{
+width: 521px;
+}

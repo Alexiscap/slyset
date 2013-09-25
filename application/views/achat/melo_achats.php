@@ -136,7 +136,7 @@ $login = (empty($infos_profile)) ? $this->session->userdata('login') : $infos_pr
             <div id="articles-tab">
                 <form action="<?php echo site_url('melo_achats/delete_panier'); ?>" method="post" accept-charset="utf-8">          
                  
-                    <table>
+                    <table class='corr_tabl_panier_one'>
                         <tbody>
                             <tr class="tab-head odd row-color-2">
                                 <th class="article-checkbox checkbox-style2">
