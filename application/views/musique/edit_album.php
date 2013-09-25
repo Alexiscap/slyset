@@ -12,8 +12,7 @@
     });
 </script>
 
-<div class="pop-in_cent">
-    <?php // print_r($album); ?>
+<div class="pop-in_cent pop-in-music">
     <span>Modifier album : <?php echo $album[0]->nom; ?></span>
         
     <div class="content-pi-cent">
@@ -22,25 +21,29 @@
         
         <p class="explication">Modifiez les informations de votre album.</p>
 
-        <div class="elem_center">       
-            <?php if(isset($success)) echo $success; ?>
-            <?php if(isset($warning)) echo $warning; ?>
-            <?php if(isset($failed)) echo $failed; ?>
-            <?php if(isset($error)) echo $error; ?>
-            <?php echo validation_errors(); ?>
+        <div class="elem_center">
+            <div class="alert">
+                <?php if(isset($success)) echo '<p class="success">'.$success.'</p>'; ?>
+                <?php if(isset($warning)) echo $warning; ?>
+                <?php if(isset($failed)) echo $failed; ?>
+                <?php if(isset($error)) echo $error; ?>
+                <?php echo validation_errors(); ?>
+            </div>
 
-            <?php echo form_open_multipart('pop_in_general/edit_album/'.$album[0]->id); ?>
+            <?php $label_attributes = array('class'=>'label_big'); ?>
             
-                <?php $label_attributes = array('class'=>'label_big'); ?>
-                <?php echo form_label('Cover','cover', $label_attributes); ?>
-                <?php $str_album = str_replace(' ', '_', strtolower($album[0]->nom)); ?>
-                <div class="preview_upload thumb" style="background-image:url('<?php echo files($uid.'/musique/'.$str_album.'/'.$album[0]->img_cover); ?>');"></div>
-                <div class="upload-file-container container-thumb">
-                   <input type="file" name="cover" size="200" id="upload_images_thumb" />
+            <?php echo form_open_multipart('pop_in_general/edit_album/'.$album[0]->id); ?>
+                <div class="champs">
+                    <?php echo form_label('Cover','cover', $label_attributes); ?>
+                    <?php $str_album = str_replace(' ', '_', strtolower($album[0]->nom)); ?>
+                    <div class="preview_upload thumb" style="background-image:url('<?php echo files($uid.'/musique/'.$str_album.'/'.$album[0]->img_cover); ?>');"></div>
+                    <div class="upload-file-container container-thumb">
+                       <input type="file" name="cover" size="200" id="upload_images_thumb" />
+                    </div>
+                    <?php $cover_name = $album[0]->img_cover; ?>
+                    <span class="upload_photo_name_file"><?php echo $cov_name = (empty($cover_name)) ? '' : $cover_name; ?></span>
+                    <?php echo form_error('cover', '<span class="error-form">', '</span>'); ?>
                 </div>
-                <?php $cover_name = $album[0]->img_cover; ?>
-                <span class="upload_photo_name_file"><?php echo $cov_name = (empty($cover_name)) ? '' : $cover_name; ?></span>
-                <?php echo form_error('cover', '<span class="error-form">', '</span>'); ?>
             
                 <div class="champs">
                     <?php echo form_label('Titre','titre', $label_attributes); ?>
@@ -64,7 +67,7 @@
                 
                 <div class="champs">
                     <?php echo form_label('Prix','prix', $label_attributes); ?>
-                    <?php echo form_input('prix', $album[0]->prix, 'id="album-prix" placeholder="Prix de l\'album"'); ?>
+                    <?php echo form_input('prix', $album[0]->prix, 'id="album-prix" placeholder="Prix de l\'album"'); ?><span class="euro">€</span>
                 </div>
                 
                 <div class="champs">

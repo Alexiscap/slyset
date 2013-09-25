@@ -76,7 +76,7 @@
                     foreach ($playlists[0] as $playlist): ?>
                         <!--<ol><?php // echo ucfirst($this->uri->segment(4));  ?> : <?php // echo $playlist->nom  ?>-->
                         <div class="top">
-                            <span class="txt-ecoute"><?php echo ucfirst($this->uri->segment(4))?>: <?php echo $playlist->nom  ?> <?php if($playlists[2]!= null) echo '<span class="more_albpl"> <img class="trit" width="30px" src="'.img_url('player/tritrait.png').'"> </span>' ?> </span>
+                            <span class="txt-ecoute"><?php echo ucfirst($this->uri->segment(4))?>: <?php echo $playlist->nom  ?> <?php if($playlists[2]!= null) echo '<span class="more_albpl"> <img class="trit" width="30px" src="'.img_url('player/tritrait.png').'" alt="Trait tri"> </span>' ?> </span>
                         </div>
                             
                         <?php 

@@ -168,12 +168,12 @@ $loger = $this->session->userdata('logged_in');
        			{$count = substr_count($all_photo_like,$media_user_result_unit->id.'/');
     	if ($count>=1)
     	{ ?>
-    	       			 <img src="<?php echo img_url('musicien/pink_heart.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="nolike" />
+    	       			 <img src="<?php echo img_url('musicien/pink_heart.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="nolike" alt="coeur gris"/>
 
        			<?php }
        			else
        			{ ?>
-       			 <img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="like" />
+       			 <img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="like" alt="coeur rouge"/>
 
       		<?php } ?>
       		<p class="nb_like" ><?php echo $media_user_result_unit->like_total ?></p>
@@ -187,8 +187,8 @@ $loger = $this->session->userdata('logged_in');
                         <?php foreach ($commentaires as $commentaire): ?>
                             <?php if ($media_user_result_unit->id == $commentaire->photos_id): ?>      
                                 <div class="comm">
-                                    <?php  if ($profile->id == $uid) { ?> <img id="<?php echo $commentaire->comm_id ?>" src="<?php echo img_url('common/del.png'); ?>" class="del"/>
-                                 <?php } ?>   <img src="<?php echo base_url('/files/profiles/'.$commentaire->thumb); ?>" />
+                                    <?php  if ($profile->id == $uid) { ?> <img id="<?php echo $commentaire->comm_id ?>" src="<?php echo img_url('common/del.png'); ?>" alt="Suppression" class="del"/>
+                                 <?php } ?>   <img src="<?php echo base_url('/files/profiles/'.$commentaire->thumb); ?>" alt="Photo profile"/>
                                     <p class="name_comm"> <?php echo $commentaire->login ?></p>
                                     <p class="commentaire"><?php echo $commentaire->comment ?></p> 
                                 </div>
@@ -200,7 +200,7 @@ $loger = $this->session->userdata('logged_in');
                         ?>
 
                         <div class="comment-form">
-                            <img src="<?php echo base_url('/files/profiles/'.$this->session->userdata('thumb')) ?>" />
+                            <img src="<?php echo base_url('/files/profiles/'.$this->session->userdata('thumb')) ?>" alt="Photo profil"/>
                             <form  action="" method="post">
                                 <!--<input type="text" name="usercomment" id="usercomment"/>-->
                                 <textarea id="usercomment" placeholder="Votre commentaire..."></textarea>
@@ -219,7 +219,7 @@ $loger = $this->session->userdata('logged_in');
                         {
                         ?>
                         <div class="comment-form-alb-wall">
-                            <img src="<?php echo base_url('/files/profiles/'.$this->session->userdata('thumb')) ?>" />
+                            <img src="<?php echo base_url('/files/profiles/'.$this->session->userdata('thumb')) ?>" alt="Photo profil"/>
                             <form  action="" method="post">
                                 <!--<input type="text" name="usercomment" id="usercomment"/>-->
                                 <textarea id="usercomment" placeholder="Votre commentaire..."></textarea>
@@ -288,12 +288,12 @@ $loger = $this->session->userdata('logged_in');
                 $count = substr_count($all_video_like,$media_user_result_unit->id.'/');
                 if ($count>=1)
                 { ?>
-                   <img src="<?php echo img_url('musicien/pink_heart.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="nolike-video" />
+                   <img src="<?php echo img_url('musicien/pink_heart.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="nolike-video" alt="coeur gris"/>
 
             <?php }
             else
             { ?>
-             <img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="like-video" />
+             <img src="<?php echo img_url('musicien/icon_coeur.png'); ?>" id="<?php echo $media_user_result_unit->id ?>" class="like-video" alt="coeur rouge"/>
 
           <?php } ?>
        
@@ -307,8 +307,8 @@ $loger = $this->session->userdata('logged_in');
 					if($media_user_result_unit->id == $commentaire->video_id): ?>  
                 	<div class="comm">
                 	 <?php if ($profile->id == $uid) { ?>
-						<img id="<?php echo $commentaire->comm_id ?>" src="<?php echo img_url('common/del.png'); ?>" class="del"/><?php } ?>
-    					 <img src="<?php echo base_url('/files/profiles/'.$commentaire->thumb); ?>" />
+						<img id="<?php echo $commentaire->comm_id ?>" src="<?php echo img_url('common/del.png'); ?>" class="del" alt="Suppression"/><?php } ?>
+    					 <img src="<?php echo base_url('/files/profiles/'.$commentaire->thumb); ?>" alt="Photo profil"/>
       					<p class="name_comm"> <?php $commentaire->login ?></p>
       					<p class="commentaire"><?php echo $commentaire->comment?></p> 
     				</div>
@@ -318,7 +318,7 @@ $loger = $this->session->userdata('logged_in');
        			
             <?php endforeach; ?>
                   <div class="comment-form-video">
-                            <img src="<?php echo base_url('/files/profiles/'.$this->session->userdata('thumb')) ?>" />
+                            <img src="<?php echo base_url('/files/profiles/'.$this->session->userdata('thumb')) ?>" alt="Photo profil"/>
       <form  action="" method="post">
         <!--<input type="text" name="usercomment" id="usercomment"/>-->
         <textarea id="usercomment" placeholder="Votre commentaire..."></textarea>

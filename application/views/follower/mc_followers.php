@@ -137,7 +137,7 @@ $loger = $this->session->userdata('logged_in');
                     	<div class="description">
                         	<p class="nom_follow"><a href="<?php echo base_url('index.php/actualite/' . $follower->Follower_id) ?>"><?php echo $follower->login ?></a></p>
                         	<p class="text_follow"><?php echo $follower->description ?></p>                   
-                            <img src="<?php echo img_url('common/casque.png'); ?>" /><span><?php echo ' ' . $follower->style_ecoute ?></span>
+                            <img src="<?php echo img_url('common/casque.png'); ?>" alt="Musique écoutée"/><span><?php echo ' ' . $follower->style_ecoute ?></span>
                     	</div>
                     	<div class="bouton">
                             <a href="<?php echo base_url('index.php/my-wall/' . $follower->Follower_id) ?> " onclick="location.href='<?php echo base_url('index.php/my-wall/' . $follower->Follower_id) ?>';" class="melo"><span class="button_left_red"></span><span class="button_center_red">Voir le profil</span><span class="button_right_red"></span></a>
@@ -158,7 +158,7 @@ $loger = $this->session->userdata('logged_in');
 
                    
 
-                        <img src="<?php echo img_url('common/casque.png'); ?>" /><span><?php echo ' ' . $follower->style_joue ?></span>
+                        <img src="<?php echo img_url('common/casque.png'); ?>" alt="Musique écoutée"/><span><?php echo ' ' . $follower->style_joue ?></span>
                     </div>
             <?php if (substr_count($allifollow, $follower->Follower_id) >= 1): ?>
                         <div class="bouton" >

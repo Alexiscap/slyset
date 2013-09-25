@@ -25,12 +25,12 @@
 	foreach($zoom_comment as $comment): 
 ?>
 	<div class="comm">
-      <img src="<?php echo base_url('files/profiles/'.$comment->thumb); ?>" />
+      <img src="<?php echo base_url('files/profiles/'.$comment->thumb); ?>" alt="Photo profil"/>
 	  <div class="info_comm">
 		<p class="name_comm"> <?php echo $comment->login; ?> </p>
 		<p class="commentaire"> <?php echo $comment->comment; ?> </p> 
 	  </div>
-	  <img src="<?php echo img_url('common/del.png'); ?>" class="del"/>
+	  <img src="<?php echo img_url('common/del.png'); ?>" class="del" alt="Suppression"/>
 	  <div class="clear"></div>
 	 
     </div>
@@ -38,7 +38,7 @@
      <?php endforeach; ?>
 
 		<div class="ajout_comm">
-      		<img src="<?php echo base_url('files/profiles/'.$this->session->userdata('thumb')) ?>" />
+      		<img src="<?php echo base_url('files/profiles/'.$this->session->userdata('thumb')) ?>" alt="Photo profil"/>
 	      		<form action="" method="post">
 		 			<input type="text" name="usercomment" id="usercomment" class="commz"/>
         			<input type="hidden" name="baseurl" value="<?php echo base_url(); ?>" id="baseurl" />

@@ -856,7 +856,7 @@ input[type="file"]{ display:block; width:201px; height:30px; float:left; filter:
 .content .infos p span{color:#45baa0; float:left;}
 .content .infos p.infos_alb_desc{margin:10px 0;}
 .content .infos .title{font-weight:bold;}
-.content .infos .annee_crea{margin:0;color:#888d95;font-size:12px;}
+.content .infos .annee_crea{display:inline-block;margin:0;color:#888d95;font-size:12px;float:left;}
 .content .infos .infos_alb_prix{font-weight:bold;color:#888d95;}
 .content .infos a{margin:0;color:#3c495a;font-size:12px; float:left;}
 

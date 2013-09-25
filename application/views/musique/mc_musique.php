@@ -115,12 +115,12 @@ $loger = $this->session->userdata('logged_in');
         <div class="a_la_une">
             <?php if ($album_alaune[0]->img_cover!= null):?>
             <?php $str_album = str_replace(' ', '_', strtolower($album_alaune[0]->nom)); ?>
-            <img src="<?php echo files($infos_profile->id.'/musique/'.$str_album.'/'.$album_alaune[0]->img_cover); ?>" class="alb_cover"/>
+            <img src="<?php echo files($infos_profile->id.'/musique/'.$str_album.'/'.$album_alaune[0]->img_cover); ?>" class="alb_cover" alt="Couverture album a la une"/>
             <?php endif;?>
             <?php if ($album_alaune[0]->img_cover== null):?>
-            <img src="<?php echo img_url('sidebar-right/default-photo-profil.png'); ?>" class="alb_cover"/>
+            <img src="<?php echo img_url('sidebar-right/default-photo-profil.png'); ?>" class="alb_cover" alt="Photo de profil"/>
             <?php endif;?>
-            <img src="<?php echo img_url('portail/alaune.png'); ?>" class="bandeau_top bandeau_une"/>
+            <img src="<?php echo img_url('portail/alaune.png'); ?>" class="bandeau_top bandeau_une" alt="Bandeau a la une"/>
             <div class="player">
                 <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$album_alaune[0]->nom); ?>" class="open_player"><img src="<?php echo img_url('musicien/player_top.png'); ?>"/></a>
             </div>
@@ -129,7 +129,7 @@ $loger = $this->session->userdata('logged_in');
         
         <div class="infos">
             <p class="title"><?php echo ucwords($album_alaune[0]->nom); ?></p>
-            <p class="annee_crea"><?php echo $album_alaune[0]->annee; ?> - <?php if (isset($album_alaune[0]->producteur)): ?><?php echo $album_alaune[0]->producteur; ?><?php endif; ?></p>
+            <?php if(isset($album_alaune[0]->annee)): ?><p class="annee_crea"><?php echo $album_alaune[0]->annee; ?><?php endif; ?><?php if (isset($album_alaune[0]->producteur)): ?><?php echo ' - '.$album_alaune[0]->producteur; ?></p><?php endif; ?>
             
             <?php if (isset($album_alaune[0]->description)): ?><p class="infos_alb_desc"><?php echo ucfirst($album_alaune[0]->description); ?></p><?php else: ?><p>Aucune description d'album renseignée.</p><?php endif; ?>
             
@@ -143,11 +143,11 @@ $loger = $this->session->userdata('logged_in');
         <div class="top_album">
             <div>
             <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$album_alaune[0]->nom); ?>" class="open_player">
-              <img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
+              <img src="<?php echo img_url('musicien/player_top2.png'); ?>" alt="Bouton player"/>
 						<p>Ecouter l'album</p>
 					</a>
 					<a href="javascript:void(0)">
-                    	<img src="<?php echo img_url('common/cadis.png'); ?>"/>
+                    	<img src="<?php echo img_url('common/cadis.png'); ?>" alt="Bouton acheter"/>
                   		<p class="panier_alb" id="<?php echo $album_alaune[0]->id; ?>">Acheter l'album</p>
             		</a>
                 
@@ -174,7 +174,7 @@ $loger = $this->session->userdata('logged_in');
                                 <td class="article-title">
                                 	<a href="<?php echo site_url('mc_musique/player/'.$uid_visit.'/album/'.$album_alaune[0]->nom.'/'.$morceau_alune->id); ?>" class="open_player">
 
-                                		<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
+                                		<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play" alt="bouton play"/>
                                 	</a>
                                     <!--<p class="<?php echo $morceau_alune->id; ?> track-id"><?php echo $morceau_alune->nom; ?> </p>-->
                                     
@@ -224,7 +224,7 @@ $loger = $this->session->userdata('logged_in');
             <input type="button" value="Dans ma playlist" class="bt_playlist all_track"/>
             
             <a href="<?php echo site_url('mc_musique/player/'.$uid_visit.'/albums'); ?>" class="open_player">
-                <img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
+                <img src="<?php echo img_url('musicien/player_top2.png'); ?>" alt="bouton lecture"/>
                 <p>&Eacute;couter les morceaux de <?php echo $login?></p>
             </a>
             
@@ -247,7 +247,7 @@ $loger = $this->session->userdata('logged_in');
                                 <td class="article-date"><?php echo $morceau_artiste->tracknumero; ?></td>
                                 <td class="article-title"><!--onMouseOver="this.id='select';bt_edit();show_play();" onMouseOut="cache_edit();cache_play();this.id='';"-->
                                 	<a href="<?php echo site_url('mc_musique/player/'.$uid_visit.'/album/'.$morceau_artiste->title_alb.'/'.$morceau_artiste->id); ?>" class="open_player" >
-										<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
+										<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play" alt="Bouton lecture"/>
 									</a>
                                     <!--<p class="<?php echo $morceau_artiste->id; ?> track-id"> <?php echo $morceau_artiste->nom?></p>-->
                                     <?php echo $title_substr = (strlen($morceau_artiste->nom) > 30) ? '<p title="'.$morceau_artiste->nom.'" class="'.$morceau_artiste->id.' track-id">'.substr($morceau_artiste->nom,0,27).'...</p>' : '<p class="'.$morceau_artiste->id.' track-id">'.$morceau_artiste->nom.'</p>'; ?>
@@ -336,13 +336,16 @@ $loger = $this->session->userdata('logged_in');
 	</div>
 	
 	<div id="playlist_alert" class="modal_alert"><p>Ajouter à une playlist existante</p>
-        </br>
-        <?php foreach($playlists as $playlist): ?>
-           	<a href ="javascript:void(0)" id="<?php echo $playlist->nom;?>"><?php echo $playlist->nom;?></a>
-        	</br>
-        <?php endforeach; ?>
-        <p>Ou crée en une</p>
-          <input id="input_alert" type='text'/> <a class="cree" href="javascript:void(0)">Creer</a>
+        <?php if(!empty($playlists)): ?>
+            <?php foreach($playlists as $playlist):?>
+                    <a href ="javascript:void(0)" id="<?php echo $playlist->nom;?>"><?php echo $playlist->nom;?></a>
+            <?php endforeach;?>
+        <?php else: ?>
+            <span>Aucune playlist existante</span>
+        <?php endif; ?>
+        </br></br>
+        <p>Ou créé en une</p>
+        <input id="input_alert" type='text'/> <a class="cree" href="javascript:void(0)">Créer</a>
     </div>
     
     <div id="album_une_alert" class="modal_alert">

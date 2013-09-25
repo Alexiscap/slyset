@@ -49,7 +49,7 @@ if (isset($all_date_calendar))
             <div>
                  <a href="<?php echo site_url('mc_musique/player/' . $coverflow_cover[0]->idU).'/albums'; ?>" class="open_player">
                <!-- <a href="<?php echo site_url('actualite/' . $coverflow_cover[0]->idU); ?>">-->
-                    <img class="coverflow-img" src="<?php echo $thumb = (!empty($coverflow_cover[0]->coverU)) ? files('profiles/' . $coverflow_cover[0]->coverU) : img_url('sidebar-right/default-photo-profil.png'); ?>" />
+                    <img class="coverflow-img" src="<?php echo $thumb = (!empty($coverflow_cover[0]->coverU)) ? files('profiles/' . $coverflow_cover[0]->coverU) : img_url('sidebar-right/default-photo-profil.png'); ?>" alt="Photo de profil Coverflow"/>
                     <div class="coverflow_player">
                         <span class="coverflow_player_btn"></span>
                         <span class="coverflow_artist"><?php echo $coverflow_cover[0]->loginU; ?></span>
@@ -151,7 +151,7 @@ if (isset($all_date_calendar))
                     <div class="newbies-peoples">
                         <p class="newbies-picture">
                             <a href="<?php echo site_url('my-wall/' . $newbie->id); ?>">
-                                <img src="<?php echo $thumb = (!empty($newbie->thumb)) ? files('profiles/' . $newbie->thumb) : img_url('sidebar-right/default-photo-profil.png'); ?>" height="38px" alt="Photo Profil" />
+                                <img src="<?php echo $thumb = (!empty($newbie->thumb)) ? files('profiles/' . $newbie->thumb) : img_url('sidebar-right/default-photo-profil.png'); ?>" height="38px" alt="Photo Profil Newbies" />
                             </a>
                         </p>
                         <div class="newbies-people">
@@ -210,11 +210,11 @@ if (isset($all_date_calendar))
                     <div class="wall-flux-content-left-picture">
                      <div class="bloc_player">
                         <a class="open_player" href="<?php echo base_url('index.php/mc_musique/player/'.$article->Utilisateur_id.'/album/'.$article->name_alb.'/'.$article->id) ?>">
-                        	<img src="<?php echo base_url('assets/images/musicien/player_top.png')?>">
+                        	<img src="<?php echo base_url('assets/images/musicien/player_top.png')?>" alt="Ouvrir player">
 
                         </a>
                         </div>
-                        <img class="img-blog-artiste-carre" src="<?php echo files('profiles/'.$article->thumb) ?>">
+                        <img class="img-blog-artiste-carre" src="<?php echo files('profiles/'.$article->thumb) ?>" alt="Image blog">
                        
                     </div>
                     <div class="wall-flux-content-right-text" id="<?php echo $article->style_joue?>">
@@ -236,7 +236,7 @@ if (isset($all_date_calendar))
 ?>
                <div class="wall-flux-content search_filter">
                     <div class="wall-flux-content-left-picture">
-                        <img class="img-blog-artiste-carre" src="<?php echo files('profiles/'.$article->thumb) ?>">
+                        <img class="img-blog-artiste-carre" src="<?php echo files('profiles/'.$article->thumb) ?>" alt="Image blog">
 
                     </div>
                     <div class="wall-flux-content-right-text top" id="<?php echo $article->style_joue?>">
@@ -269,7 +269,7 @@ if (isset($all_date_calendar))
 ?>
                <div class="wall-flux-content search_filter">
                     <div class="wall-flux-content-left-picture">
-                        <img class="img-blog-artiste-carre" src="<?php echo files('profiles/'.$article->thumb) ?>">
+                        <img class="img-blog-artiste-carre" src="<?php echo files('profiles/'.$article->thumb) ?>" alt="Image blog">
 
                     </div>
                     <div class="wall-flux-content-right-text" id="<?php echo $article->style_joue?>">

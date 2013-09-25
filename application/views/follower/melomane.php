@@ -127,7 +127,7 @@ $loger = $this->session->userdata('logged_in');
 			<?php 
 			if($follower->type==1)
 			{?>
-			<img src="<?php echo img_url('common/casque.png'); ?>" /><span><?php echo $follower->style_ecoute ?></span>
+			<img src="<?php echo img_url('common/casque.png'); ?>" alt="Musique écoutée"/><span><?php echo $follower->style_ecoute ?></span>
 			</div>
 		<div class="bouton" >
             <a href="<?php echo base_url('index.php/my-wall/'.$follower->Follower_id) ?> " onclick="location.href='<?php echo base_url('index.php/my-wall/'.$follower->Follower_id) ?>';" class="melo"><span class="button_left_red"></span><span class="button_center_red">Voir le profil</span><span class="button_right_red"></span></a>

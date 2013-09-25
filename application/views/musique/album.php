@@ -94,7 +94,7 @@ $loger = $this->session->userdata('logged_in');
         <div class="a_la_une album_page">
           <?php if ($this_album[0]->img_cover!= null):?>
             <?php $str_album = str_replace(' ', '_', strtolower($this_album[0]->nom)); ?>
-            <img src="<?php echo files($infos_profile->id.'/musique/'.$str_album.'/'.$this_album[0]->img_cover); ?>"/>
+            <img src="<?php echo files($infos_profile->id.'/musique/'.$str_album.'/'.$this_album[0]->img_cover); ?>" alt="Couverture album"/>
             <?php endif;?>
             <?php if ($this_album[0]->img_cover== null):?>
             <img src="<?php echo img_url('sidebar-right/default-photo-profil.png'); ?>" class="alb_cover"/>
@@ -109,7 +109,7 @@ $loger = $this->session->userdata('logged_in');
             <h1><a href="<?php echo base_url('index.php/musique/'.$uid_visit)?>"><img width = "23px" src="<?php echo img_url('common/arrow-back.png')?>"></a><span><?php echo $this_album[0]->nom;  ?> - <?php echo $login; ?></span></h1>
         
             <!--<p class="title" id="<?php echo $this_album[0]->id; ?>"><?php echo ucwords($this_album[0]->nom); ?></p>-->
-            <p class="annee_crea"><?php echo $this_album[0]->annee; ?> - <?php if (isset($this_album[0]->producteur)): ?><?php echo $this_album[0]->producteur; ?><?php endif; ?></p>
+            <?php if(isset($this_album[0]->annee)): ?><p class="annee_crea"><?php echo $this_album[0]->annee; ?><?php endif; ?><?php if (isset($this_album[0]->producteur)): ?><?php echo ' - '.$this_album[0]->producteur; ?></p><?php endif; ?>
             
             <?php if (isset($this_album[0]->description)): ?><p class="infos_alb_desc"><?php echo ucfirst($this_album[0]->description); ?></p><?php else: ?><p>Aucune description d'album renseignée.</p><?php endif; ?>
             <?php if (isset($this_album[0]->participants)): ?><p><?php echo $this_album[0]->participants; ?></p><?php endif; ?>
@@ -122,11 +122,11 @@ $loger = $this->session->userdata('logged_in');
         <div class="top_album album_page">
             <div>
                 <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$this_album[0]->nom); ?>" class="open_player">
-                    <img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
+                    <img src="<?php echo img_url('musicien/player_top2.png'); ?>" alt="Ouvrir player"/>
 					<span>Ecouter l'album</span>
 				</a>
 				 <a href="#">
-                    <img src="<?php echo img_url('common/cadis.png'); ?>"/>
+                    <img src="<?php echo img_url('common/cadis.png'); ?>" alt="Acheter"/>
                     <span class="panier_alb" id="<?php echo $this_album[0]->id;?>">Acheter l'album</span>
                 </a>
             </div>
@@ -152,7 +152,7 @@ $loger = $this->session->userdata('logged_in');
                                 <td class="article-title">
                                 	<a href="<?php echo site_url('mc_musique/player/'.$this->session->userdata('uid').'/album/'.$this_album[0]->nom.'/'.$morceau->id); ?>" class="open_player">
 
-                                		<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
+                                		<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play" alt="Bouton Lecture"/>
                                 	</a>
 
                                     <p class="<?php echo $morceau->id;?> track-id"><?php echo $title = (strlen($morceau->nom) > 43) ? substr($morceau->nom,0,40).'...' : $morceau->nom; ?></p>
@@ -245,13 +245,16 @@ $loger = $this->session->userdata('logged_in');
 	</div>
     
     <div id="playlist_alert" class="modal_alert"><p>Ajouter à une playlist existante</p>
-        </br>
-        <?php foreach($playlists as $playlist):?>
-           	<a href ="javascript:void(0)" id="<?php echo $playlist->nom;?>"><?php echo $playlist->nom;?></a>
-        	</br>
-        <?php endforeach;?>
-          <p>Ou crée en une</p>
-          <input id="input_alert" type='text'/> <a class="cree" href="javascript:void(0)">Creer</a>
+        <?php if(!empty($playlists)): ?>
+            <?php foreach($playlists as $playlist):?>
+                    <a href ="javascript:void(0)" id="<?php echo $playlist->nom;?>"><?php echo $playlist->nom;?></a>
+            <?php endforeach;?>
+        <?php else: ?>
+            <span>Aucune playlist existante</span>
+        <?php endif; ?>
+        </br></br>
+        <p>Ou créé en une</p>
+        <input id="input_alert" type='text'/> <a class="cree" href="javascript:void(0)">Créer</a>
     </div>
 
     <?php if (isset($sidebar_right)) echo $sidebar_right; ?>

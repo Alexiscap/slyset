@@ -124,12 +124,13 @@ $loger = $this->session->userdata('logged_in');
 		?>
  			<div class="a_la_une_parti">
 				<?php if($album->img_cover != null){ ?>
-					<img src="<?php echo files($infos_profile->id.'/musique/'.strtolower(str_replace(' ','_',$album->nom)).'/'.$album->img_cover) ?>"/>
+
+					<img src="<?php echo files($infos_profile->id.'/musique/'.strtolower(str_replace(' ','_',$album->nom)).'/'.$album->img_cover) ?>" alt="Couverture partition a la une"/>
 				<?php }
 			
 				else
 				{ ?>
-					<img src="<?php echo base_url('assets/images/musicien/logo_slyset_partition.png') ?>"/>
+					<img src="<?php echo base_url('assets/images/musicien/logo_slyset_partition.png') ?>" alt="Couverture partition par defaut"/>
 				<?php } ?>
 			
 				<div class="infos">
@@ -150,7 +151,7 @@ $loger = $this->session->userdata('logged_in');
 			<div class="top_partition" id="album-<?php echo $album->id?>">
 				<div>
 					<a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$album->nom); ?>" class="open_player">
-						<img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
+						<img src="<?php echo img_url('musicien/player_top2.png'); ?>" alt="Lecture"/>
 						<p class> Ecouter l'album</p>
 					</a>
 				</div>
