@@ -158,7 +158,7 @@ $loger = $this->session->userdata('logged_in');
      			   ?><p> <?php echo $nparticipant;?></p>
     		 </div>
    			 <div class="adr_concert">
-     	 		<img src="<?php echo img_url('musicien/localisation.png'); ?>" />
+     	 		<img src="<?php echo img_url('musicien/localisation.png'); ?>" alt="Adresse concert" />
     	 		<p class="adr_lieu"><?php echo $concert_unit->salle ?></p>
       	 		<p class="adr_rue"><?php if(isset($concert_unit->numero_adresse,$concert_unit->voie_adresse))echo $concert_unit->numero_adresse." ".$concert_unit->voie_adresse ?> <!--Bis Rue de Bagnolet--></p>
       			 <p class="adr_ville"><?php echo $concert_unit->ville.", ".$concert_unit->pays ?></p>
@@ -208,7 +208,7 @@ $loger = $this->session->userdata('logged_in');
                         </div>
                     </div>
                     <div id="plan_google">
-                        <img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php echo $concert_unit->numero_adresse . "+" . $concert_unit->voie_adresse . "+" . $concert_unit->ville ?>&zoom=16&size=233x198&maptype=roadmap&markers=size:mid%7Ccolor:red%7C<?php echo $concert_unit->numero_adresse . "+" . $concert_unit->voie_adresse . "+" . $concert_unit->ville ?>&sensor=false">
+                        <img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php echo $concert_unit->numero_adresse . "+" . $concert_unit->voie_adresse . "+" . $concert_unit->ville ?>&zoom=16&size=233x198&maptype=roadmap&markers=size:mid%7Ccolor:red%7C<?php echo $concert_unit->numero_adresse . "+" . $concert_unit->voie_adresse . "+" . $concert_unit->ville ?>&sensor=false" alt="GoogleMap">
                     </div>
                 </div>
     <?php

@@ -390,13 +390,13 @@
 						<?php $cover = 'sidebar-right/default-photo-profil.png'; 
 						if($playlist->img_cover != null)
 						{ ?>
-						<img src="<?php echo base_url('files/'.$playlist->user_alb.'/albums/'.str_replace(' ','_',$playlist->name_alb).'/'.$playlist->img_cover) ; ?>"/>
+						<img src="<?php echo base_url('files/'.$playlist->user_alb.'/albums/'.str_replace(' ','_',$playlist->name_alb).'/'.$playlist->img_cover) ; ?>" alt="Couverture playlist"/>
 						<?php
 						}
 						else
 						{
 						?>
-						<img src="<?php echo img_url($cover) ; ?>"/>
+						<img src="<?php echo img_url($cover) ; ?>" alt="Couverture defaut"/>
 						<?php 
 						}
 						?>
@@ -415,7 +415,7 @@
 						<hr/>
 						<div class="lecture_pl">
                             <a href="<?php echo site_url('mc_musique/player/'.$this->session->userdata('uid').'/playlist/'.$playlist->nom); ?>" class="open_player">
-                                <img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
+                                <img src="<?php echo img_url('musicien/player_top2.png'); ?>" alt="Lecture"/>
 								<span class="ecouter_pl">Ecouter toute la playlist</span>
 							</a>
 						</div>
@@ -442,7 +442,7 @@
 												<td class="article-title" onMouseOver="this.id='select';bt_edit();" onMouseOut="cache_edit();this.id='';">
 														<a href="<?php echo site_url().'/mc_musique/player/'.$this->session->userdata('uid').'/playlist/'.$playlist->nom.'/'.$morceaux->Morceaux_id; ?>" class="open_player">
 
-															<img src="<?php echo img_url('common/btn_play2.png'); ?>"/>
+															<img src="<?php echo img_url('common/btn_play2.png'); ?>" alt="Lire"/>
 														</a>
                                                     <?php echo $title = (strlen($morceaux->title_track) > 20) ? substr($morceaux->title_track,0,17).'...' : $morceaux->title_track; ?>
 													<div class="miniat_titre">

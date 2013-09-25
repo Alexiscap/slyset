@@ -94,7 +94,7 @@ $loger = $this->session->userdata('logged_in');
         <div class="a_la_une album_page">
           <?php if ($this_album[0]->img_cover!= null):?>
             <?php $str_album = str_replace(' ', '_', strtolower($this_album[0]->nom)); ?>
-            <img src="<?php echo files($infos_profile->id.'/musique/'.$str_album.'/'.$this_album[0]->img_cover); ?>"/>
+            <img src="<?php echo files($infos_profile->id.'/musique/'.$str_album.'/'.$this_album[0]->img_cover); ?>" alt="Couverture album"/>
             <?php endif;?>
             <?php if ($this_album[0]->img_cover== null):?>
             <img src="<?php echo img_url('sidebar-right/default-photo-profil.png'); ?>" class="alb_cover"/>
@@ -122,11 +122,11 @@ $loger = $this->session->userdata('logged_in');
         <div class="top_album album_page">
             <div>
                 <a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$this_album[0]->nom); ?>" class="open_player">
-                    <img src="<?php echo img_url('musicien/player_top2.png'); ?>"/>
+                    <img src="<?php echo img_url('musicien/player_top2.png'); ?>" alt="Ouvrir player"/>
 					<span>Ecouter l'album</span>
 				</a>
 				 <a href="#">
-                    <img src="<?php echo img_url('common/cadis.png'); ?>"/>
+                    <img src="<?php echo img_url('common/cadis.png'); ?>" alt="Acheter"/>
                     <span class="panier_alb" id="<?php echo $this_album[0]->id;?>">Acheter l'album</span>
                 </a>
             </div>
@@ -152,7 +152,7 @@ $loger = $this->session->userdata('logged_in');
                                 <td class="article-title">
                                 	<a href="<?php echo site_url('mc_musique/player/'.$this->session->userdata('uid').'/album/'.$this_album[0]->nom.'/'.$morceau->id); ?>" class="open_player">
 
-                                		<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play"/>
+                                		<img src="<?php echo img_url('common/btn_play.png'); ?>" class="play" alt="Bouton Lecture"/>
                                 	</a>
 
                                     <p class="<?php echo $morceau->id;?> track-id"><?php echo $title = (strlen($morceau->nom) > 43) ? substr($morceau->nom,0,40).'...' : $morceau->nom; ?></p>
