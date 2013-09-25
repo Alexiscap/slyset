@@ -12,6 +12,7 @@ class Melo_playlist extends CI_Controller {
 
         $this->layout->ajouter_css('slyset');
         $this->layout->ajouter_css('information');
+        $this->layout->ajouter_css('colorbox');
 
         $this->layout->ajouter_js('jquery.colorbox');
         $this->layout->ajouter_js('jquery.reveal');
