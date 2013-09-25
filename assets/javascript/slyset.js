@@ -654,6 +654,7 @@ $(document).ready(function(){
             cssAsc:	"headerSortUp",
             cssDesc: "headerSortDown"
         });
+        
     }
     
     /*Specification second tableau page*/
@@ -2394,7 +2395,7 @@ $(document).ready(function(){
 });
 
 function bt_edit(){
-    document.getElementById('select').getElementsByClassName('miniat_titre')[0].style.display="inline";
+    document.getElementById('select').getElementsByClassName('miniat_titre')[0].style.display="inline-block";
 }
 
 function cache_edit(){
