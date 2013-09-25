@@ -233,9 +233,9 @@ body { margin:0; font-family:'Trebuchet MS'; }
 .styled-select {width: 240px;}
 
 .del_livret {margin:30px !important;}
-.submit_livret{margin:30px 0 0 135px !important;}
-.submit_paroles{margin:30px 0 0 135px !important;}
-.submit_partition{margin:30px 0 0 135px !important;}
+.submit_livret{margin:30px 0 0 143px !important;}
+.submit_paroles{margin:30px 0 0 179px !important;}
+.submit_partition{margin:30px 0 0 182px !important;}
 
 .pop-in-upload-music .content-pi-cent{ float:left; }
 .pop-in-upload-music form{ margin:20px 0 0 0; width:100%; float:left; clear:both; }
