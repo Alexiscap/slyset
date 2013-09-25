@@ -122,7 +122,7 @@ $loger = $this->session->userdata('logged_in');
 
   		foreach($get_album as $album):
 		?>
- 			<div class="a_la_une_parti">
+ 			<div class="a_la_une_parti corr_doc_marg_tit">
 				<?php if($album->img_cover != null){ ?>
 
 					<img src="<?php echo files($infos_profile->id.'/musique/'.strtolower(str_replace(' ','_',$album->nom)).'/'.$album->img_cover) ?>" alt="Couverture partition a la une"/>
@@ -148,9 +148,9 @@ $loger = $this->session->userdata('logged_in');
 				</div>
 			</div>
 			
-			<div class="top_partition" id="album-<?php echo $album->id?>">
+			<div class="top_partition corr_doc_marg_tit" id="album-<?php echo $album->id?>">
 				<div>
-					<a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$album->nom); ?>" class="open_player">
+					<a href="<?php echo site_url('mc_musique/player/'.$uid.'/album/'.$album->nom); ?>" class="open_player corr">
 						<img src="<?php echo img_url('musicien/player_top2.png'); ?>" alt="Lecture"/>
 						<p class> Ecouter l'album</p>
 					</a>
@@ -158,7 +158,7 @@ $loger = $this->session->userdata('logged_in');
 			
 				<div class="liste_partitions">
 					<div class="en_tete">
-						<table>				
+						<table class="table_doc_corr">				
 							<tbody>
                       
 								<tr class="tab-head odd row-color-2">
@@ -168,7 +168,7 @@ $loger = $this->session->userdata('logged_in');
                                 		</label>
                                 	</th>-->
                                 	<th class="article-title">Titre  de la chanson<span id="titre" class="filter filter-bottom"></span></th>
-                                	<th class="article-artiste">Partition<span id="titre" class="filter filter-bottom"></span></th>
+                                	<th class="article-artiste corr_doc_w_th">Partition<span id="titre" class="filter filter-bottom"></span></th>
                                 	<th class="article-type">Paroles<span id="titre" class="filter filter-bottom"></span></th>
                               		<!--  <th class="article-prix">Prix<span id="created" class="filter filter-bottom"></span></th> -->
                             	</tr>
@@ -272,7 +272,7 @@ $loger = $this->session->userdata('logged_in');
 		
  			 	</div>
  			 </div>
-		<hr />
+		<hr class="corr_doc_hr" />
 		
 		<?php endforeach; ?></div>
 
