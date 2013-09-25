@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="<?php echo css_url('pop_in') ?>" media="screen" />
- 
+
  	 <div class="pop-in_cent confirmation">
 		<span></span>
 		<div class="content-pi-cent content-pi-cent_success">
@@ -11,7 +11,7 @@
 
 			  echo form_open('pop_in_general/delete_playlist/'.$user);
      
-			  echo "<p class='confirm_sup'>Etes vous sur de vouloir supprimer cette playlist ?</p><br />" ;
+			  echo "<p class='confirm_sup corr_sup_pl'>Etes vous sur de vouloir supprimer cette playlist ?</p><br />" ;
 			  
 			  $delete = array(
               'class'        => 'delete',
