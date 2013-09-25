@@ -133,17 +133,22 @@
 					</div>
 					<div class="clear"></div>
 					<div id="articles-tab">
+            <input type="button" value="Acheter" class="cadis_pl">
+            <input type="button" value="Supprimer" class="bt_supp_playlist">
+            
 						<form action="<?php echo site_url('admin_articles/delete_multi_article'); ?>" method="post" accept-charset="utf-8">          
-							<table>
+							<table id="tablesorter-cb">
+                <thead>
+                    <tr class="tab-head">
+                        <th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
+                        <th class="article-title">Titre</th>
+                        <th class="article-album">Artiste</th>
+                        <th class="article-album">Album</th>
+                        <th class="article-date">Durée</th>
+                    </tr>
+                </thead>
+                  
 								<tbody>
-									<tr class="tab-head odd row-color-2">
-										<th class="article-checkbox checkbox-style2"><input type="checkbox" name="article-all" value="all" class="check_all checkbox-article" id="article-all"><label for="article-all"></label></th>
-										<th class="article-title">Titre<span id="titre" class="filter filter-bottom"></span></th>
-										<th class="article-artiste">Artiste<span id="titre" class="filter filter-bottom"></span></th>
-										<th class="article-album">Album<span id="titre" class="filter filter-bottom"></span></th>
-										<th class="article-duree">Durée<span id="created" class="filter filter-bottom"></span></th>
-									</tr>
-						
 									<?php 
 									foreach ($morceaux_playlist as $key => $morceaux):
                       $last_key = end(array_keys($morceaux_playlist));
@@ -200,10 +205,7 @@
       						 		endforeach;?>
 							
 								</tbody>
-							</table>
-							<input type="button" value="Acheter" class="cadis_pl">
-                			<input type="button" value="Supprimer" class="bt_supp_playlist">
-        
+							</table>        
 						</form>
 					</div>
 				</div>
