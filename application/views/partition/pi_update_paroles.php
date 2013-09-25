@@ -21,11 +21,11 @@
                 $data = array(
                     'name' => 'userfile',
                     'type' => 'file',
-                    'class' => 'paroles_upd',
+                    'class' => 'livret_up',
                     'value' => 'Choisir des paroles'
                 );
                 ?>
-                <div class="bt_noir">
+                <div class="bt_noir bt_livret_up">
                 	<?php echo form_upload($data); ?>
                 </div>
             </div>
@@ -83,13 +83,13 @@
 				$delete = array(
               'class'        => 'delete',
               'name'          => 'delete',
-			  'value'	=> 'Supprimer les paroles',
+			  'value'	=> 'Supprimer',
               );
 			
 			  echo form_submit($delete);
 			  
 			  $nodelete = array(
-              'class'        => 'submit',
+              'class'        => 'submit submit_paroles',
               'name'          => 'submit',
 			  'value'	=> 'Modifier les paroles',
               );
